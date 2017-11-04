@@ -20,7 +20,7 @@ limit cases to guarantee that all functions behave as specified by the C standar
 
 ### Documentation
 
-- On-line help is available [here](https://machinecognitis.github.io/C.math.NET/).
+- On-line help is available [here](https://machinecognitis.github.io/Math.Gmp.Native/).
 
 ### NuGet
 
