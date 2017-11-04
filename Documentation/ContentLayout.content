@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="846f5c8a-6cba-433e-9f18-cde2ff5695cd" visible="True" isDefault="true" isSelected="true" title="Welcome to the GMP Native Interface for .NET Library">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="Welcome" />
+    </HelpKeywords>
+  </Topic>
+</Topics>
