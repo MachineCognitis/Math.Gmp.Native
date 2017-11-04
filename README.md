@@ -12,8 +12,8 @@ any available assembly language code optimization for that CPU, thus providing o
 
 ### NuGet
 
-The C.math.NET library can be installed in your Visual Studio solution or project with this
-[NuGet package](https://www.nuget.org/packages/C.math.NET/).
+The GMP Native Interface for .NET library can be installed in your Visual Studio solution or project
+with this [NuGet package](https://www.nuget.org/packages/Math.Gmp.Native/).
 
 ### Latest Build
 
