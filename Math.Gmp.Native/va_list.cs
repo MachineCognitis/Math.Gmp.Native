@@ -163,7 +163,7 @@ namespace Math.Gmp.Native
                             Marshal.WriteIntPtr(arguments, va_args[i].arg_offset, data_ptr);
                             string data = (string)args[i];
                             Marshal.Copy(Encoding.ASCII.GetBytes(data), 0, data_ptr, data.Length);
-                            data_ptr += data.Length;
+                            data_ptr = (IntPtr)((Int64)data_ptr + data.Length);
                             Marshal.Copy(new Byte[] { 0 }, 0, data_ptr, 1);
                         };
                         break;
@@ -177,14 +177,14 @@ namespace Math.Gmp.Native
                             Marshal.WriteIntPtr(arguments, va_args[i].arg_offset, data_ptr);
                             StringBuilder data = (StringBuilder)args[i];
                             Marshal.Copy(Encoding.ASCII.GetBytes(data.ToString()), 0, data_ptr, data.Length);
-                            Marshal.Copy(new Byte[] { 0 }, 0, data_ptr + data.Length, 1);
-                            data_ptr += data.Capacity + 1;
+                            Marshal.Copy(new Byte[] { 0 }, 0, (IntPtr)((Int64)data_ptr + data.Length), 1);
+                            data_ptr = (IntPtr)((Int64)data_ptr + data.Capacity + 1);
                         };
                         va_args[j].read = (i) =>
                         {
                             StringBuilder data = (StringBuilder)args[i];
                             IntPtr data_ptr = (IntPtr)(arguments.ToInt64() + args_size + va_args[i].data_offset);
-                            data.Clear();
+                            data.Remove(0, data.Length);
                             data.Append(Marshal.PtrToStringAnsi(data_ptr));
                         };
                         readables.Push(j);
