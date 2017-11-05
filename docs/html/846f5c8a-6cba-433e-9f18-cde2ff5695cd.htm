@@ -6,14 +6,30 @@
         architecture, thus allowing building Visual Studio Projects for AnyCPU, x86, or x64.
         It is based on the GNU MP "fat" build which automatically detects the current CPU type, and selects any available
         assembly language code optimization for that CPU, thus providing optimal performance.
-      </p><p /><p><a href="http://en.cppreference.com/w/c/numeric/math" target="_blank">C Standard</a>
-        functions that are missing from the .NET framework.
-        Functions include among others:
-        
-        Both double and single precision functions are implemented.
-        All functions are static and their names follow the
-        <a href="http://en.cppreference.com/w/c/numeric/math" target="_blank">C Standard</a>.
-      </p><p>
-        All functions have been thoroughly tested using a large set of unit tests that cover all
-        limit cases to guarantee that all functions behave as specified by the C standard.
-      </p></div><div class="collapsibleAreaRegion" id="seeAlsoSection"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID0RB')" onkeypress="SectionExpandCollapse_CheckKey('ID0RB', event)" tabindex="0"><img id="ID0RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />See Also</span></div><div id="ID0RBSection" class="collapsibleSection"><h4 class="subHeading">Other Resources</h4><div class="seeAlsoStyle"><a href="http://en.cppreference.com/w/c/numeric/math" target="_self">C Standard</a></div><div class="seeAlsoStyle"><a href="https://github.com/MachineCognitis/C.math.NET" target="_self">C.math.NET on GitHub</a></div></div></div></div><div id="pageFooter" class="pageFooter" /></body></html>
+      </p></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID0RB')" onkeypress="SectionExpandCollapse_CheckKey('ID0RB', event)" tabindex="0"><img id="ID0RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />Overview</span></div><div id="ID0RBSection" class="collapsibleSection"><p>
+          The <a href="3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm">gmp_lib</a> class has a static
+          method for each one of the GNU MP functions.
+          Other types are defined to mimic struct's and typedef's of the GNU MP and C libraries, as well as C language
+          constructs such as <span class="code">char *</span> and <span class="code">void *</span>.
+        </p><p>
+          The GMP Native Interface for .NET Library relies on pre-built 32-bit and 64-bit versions of the GNU MP Library.
+          Instructions for building the GNU MP Library on Windows are given below.
+        </p><p>
+          For convenience, this help file has been created from the GNU MP manual version 6.1.2. It shows with examples
+          how each GNU MP function is called in .NET. For an introduction to GNU MP, refer to the
+          <a href="https://gmplib.org/manual/" target="_blank">GNU MP Manual</a>.
+        </p></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID1RB')" onkeypress="SectionExpandCollapse_CheckKey('ID1RB', event)" tabindex="0"><img id="ID1RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />C and .NET Types Equivalence</span></div><div id="ID1RBSection" class="collapsibleSection"><p>
+          The table below shows how each C type maps to .NET.
+          Note that the <a href="bf1f694d-f9b2-6413-12e5-ebae603d5b49.htm">mp_limb_t</a>
+          and <a href="d9761bfb-1882-59d2-e89b-c6460141f9a6.htm">size_t</a> C types map
+          to the CPU word, i.e., 32 or 64 bits.
+          In particular, because <a href="bf1f694d-f9b2-6413-12e5-ebae603d5b49.htm">mp_limb_t</a>
+          is the type of the integers that make up multi-precision numbers, matching the CPU word size ensures
+          maximum performance.
+          Unless you intend to use low-level (mpn) functions, you do not need to take into account the
+          CPU word size, and can build for the "Any CPU" platform.
+        </p><div class="tableSection"><table><tr><th><p>C Types</p></th><th><p>.NET Types</p></th></tr><tr><td><p>short</p></td><td><p>Int16</p></td></tr><tr><td><p>int</p></td><td><p>Int32</p></td></tr><tr><td><p>long</p></td><td><p>Int32</p></td></tr><tr><td><p>long long</p></td><td><p>Int64</p></td></tr><tr><td><p><a href="1b2b1d64-20c1-7a64-0278-d9ff58ee9cc3.htm">mp_bitcnt_t</a></p></td><td><p>UInt32</p></td></tr><tr><td><p><a href="e6a17880-791f-37d4-4942-cf26ce7d4cbf.htm">mp_exp_t</a></p></td><td><p>Int32</p></td></tr><tr><td><p><a href="4b58a584-7a0e-b600-18fa-ebd493861eb3.htm">mp_size_t</a></p></td><td><p>Int32</p></td></tr><tr><td><p><a href="bf1f694d-f9b2-6413-12e5-ebae603d5b49.htm">mp_limb_t</a></p></td><td><p>UInt32 (on 32-bit CPU) / UInt64 (on 64-bit CPU)</p></td></tr><tr><td><p><a href="d9761bfb-1882-59d2-e89b-c6460141f9a6.htm">size_t</a></p></td><td><p>UInt32 (on 32-bit CPU) / UInt64 (on 64-bit CPU)</p></td></tr></table></div></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID2RB')" onkeypress="SectionExpandCollapse_CheckKey('ID2RB', event)" tabindex="0"><img id="ID2RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />Building the GNU MP Library on Windows</span></div><div id="ID2RBSection" class="collapsibleSection"><ol><li><p>
+              Install MSYS2
+            </p><p>
+              Get the latest version from...
+            </p></li><li><p>Install yasm</p></li><li><p>Install GNU MP</p></li><li><p>Build GNU MP</p></li></ol></div><div class="collapsibleAreaRegion" id="seeAlsoSection"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID3RB')" onkeypress="SectionExpandCollapse_CheckKey('ID3RB', event)" tabindex="0"><img id="ID3RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />See Also</span></div><div id="ID3RBSection" class="collapsibleSection"><h4 class="subHeading">Other Resources</h4><div class="seeAlsoStyle"><a href="http://en.cppreference.com/w/c/numeric/math" target="_self">C Standard</a></div><div class="seeAlsoStyle"><a href="https://github.com/MachineCognitis/Math.Gmp.Native" target="_self">Math.Gmp.Native on GitHub</a></div></div></div></div><div id="pageFooter" class="pageFooter" /></body></html>

@@ -15,42 +15,112 @@
         It is based on the GNU MP "fat" build which automatically detects the current CPU type, and selects any available
         assembly language code optimization for that CPU, thus providing optimal performance.
       </para>
-      <para>
-      </para>
-      <para>
-        <externalLink>
-          <linkText>C Standard</linkText>
-          <linkUri>http://en.cppreference.com/w/c/numeric/math</linkUri>
-        </externalLink>
-        functions that are missing from the .NET framework.
-        Functions include among others:
-        <!--<codeEntityReference autoUpgrade="true">M:C.math.frexp(System.Double,System.Int32@)</codeEntityReference>,
-        <codeEntityReference autoUpgrade="true">M:C.math.ilogb(System.Double)</codeEntityReference>,
-        <codeEntityReference autoUpgrade="true">M:C.math.ldexp(System.Double,System.Int32)</codeEntityReference>,
-        <codeEntityReference autoUpgrade="true">M:C.math.logb(System.Double)</codeEntityReference>,
-        <codeEntityReference autoUpgrade="true">M:C.math.scalbn(System.Double,System.Int32)</codeEntityReference>,
-        <codeEntityReference autoUpgrade="true">M:C.math.copysign(System.Double,System.Double)</codeEntityReference>,
-        <codeEntityReference autoUpgrade="true">M:C.math.nextafter(System.Double,System.Double)</codeEntityReference>,
-        <codeEntityReference autoUpgrade="true">M:C.math.isunordered(System.Double,System.Double)</codeEntityReference>, and
-        <codeEntityReference autoUpgrade="true">M:C.math.fpclassify(System.Double)</codeEntityReference>.-->
-        Both double and single precision functions are implemented.
-        All functions are static and their names follow the
-        <externalLink>
-          <linkText>C Standard</linkText>
-          <linkUri>http://en.cppreference.com/w/c/numeric/math</linkUri>
-        </externalLink>.
-      </para>
-      <para>
-        All functions have been thoroughly tested using a large set of unit tests that cover all
-        limit cases to guarantee that all functions behave as specified by the C standard.
-      </para>
-		</introduction>
+ 		</introduction>
 
+    <section>
+      <title>Overview</title>
+      <content>
+        <para>
+          The <codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.gmp_lib</codeEntityReference> class has a static
+          method for each one of the GNU MP functions.
+          Other types are defined to mimic struct's and typedef's of the GNU MP and C libraries, as well as C language
+          constructs such as <codeInline>char *</codeInline> and <codeInline>void *</codeInline>.
+        </para>
+        <para>
+          The GMP Native Interface for .NET Library relies on pre-built 32-bit and 64-bit versions of the GNU MP Library.
+          Instructions for building the GNU MP Library on Windows are given below.
+        </para>
+        <para>
+          For convenience, this help file has been created from the GNU MP manual version 6.1.2. It shows with examples
+          how each GNU MP function is called in .NET. For an introduction to GNU MP, refer to the
+          <externalLink>
+            <linkText>GNU MP Manual</linkText>
+            <linkUri>https://gmplib.org/manual/</linkUri>
+          </externalLink>.
+        </para>
+      </content>
+    </section>
     
-    
-    
-    
-    
+    <section>
+      <title>C and .NET Types Equivalence</title>
+      <content>
+        <para>
+          The table below shows how each C type maps to .NET.
+          Note that the <codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.mp_limb_t</codeEntityReference>
+          and <codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.size_t</codeEntityReference> C types map
+          to the CPU word, i.e., 32 or 64 bits.
+          In particular, because <codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.mp_limb_t</codeEntityReference>
+          is the type of the integers that make up multi-precision numbers, matching the CPU word size ensures
+          maximum performance.
+          Unless you intend to use low-level (mpn) functions, you do not need to take into account the
+          CPU word size, and can build for the "Any CPU" platform.
+        </para>
+        <table>
+          <tableHeader>
+            <row>
+              <entry><para>C Types</para></entry>
+              <entry><para>.NET Types</para></entry>
+            </row>
+          </tableHeader>
+          <row>
+            <entry><para>short</para></entry>
+            <entry><para>Int16</para></entry>
+          </row>
+          <row>
+            <entry><para>int</para></entry>
+            <entry><para>Int32</para></entry>
+          </row>
+          <row>
+            <entry><para>long</para></entry>
+            <entry><para>Int32</para></entry>
+          </row>
+          <row>
+            <entry><para>long long</para></entry>
+            <entry><para>Int64</para></entry>
+          </row>
+          <row>
+            <entry><para><codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.mp_bitcnt_t</codeEntityReference></para></entry>
+            <entry><para>UInt32</para></entry>
+          </row>
+          <row>
+            <entry><para><codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.mp_exp_t</codeEntityReference></para></entry>
+            <entry><para>Int32</para></entry>
+          </row>
+          <row>
+            <entry><para><codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.mp_size_t</codeEntityReference></para></entry>
+            <entry><para>Int32</para></entry>
+          </row>
+          <row>
+            <entry><para><codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.mp_limb_t</codeEntityReference></para></entry>
+            <entry><para>UInt32 (on 32-bit CPU) / UInt64 (on 64-bit CPU)</para></entry>
+          </row>
+          <row>
+            <entry><para><codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.size_t</codeEntityReference></para></entry>
+            <entry><para>UInt32 (on 32-bit CPU) / UInt64 (on 64-bit CPU)</para></entry>
+          </row>
+        </table>
+      </content>
+    </section>
+
+    <section>
+      <title>Building the GNU MP Library on Windows</title>
+      <content>
+        <list class="ordered">
+          <listItem>
+            <para>
+              Install <externalLink><linkText>MSYS2</linkText><linkUri>https://github.com/msys2/msys2/wiki/MSYS2-introduction</linkUri></externalLink>.
+              
+            </para>
+            <para>
+              Get the latest version from...
+            </para>
+          </listItem>
+          <listItem><para>Install yasm</para></listItem>
+          <listItem><para>Install GNU MP</para></listItem>
+          <listItem><para>Build GNU MP</para></listItem>
+        </list>
+      </content>
+    </section>        
     
 		<relatedTopics>
       <externalLink>
@@ -59,8 +129,8 @@
         <linkTarget>_self</linkTarget>
       </externalLink>
       <externalLink>
-        <linkText>C.math.NET on GitHub</linkText>
-        <linkUri>https://github.com/MachineCognitis/C.math.NET</linkUri>
+        <linkText>Math.Gmp.Native on GitHub</linkText>
+        <linkUri>https://github.com/MachineCognitis/Math.Gmp.Native</linkUri>
         <linkTarget>_self</linkTarget>
       </externalLink>
     </relatedTopics>
