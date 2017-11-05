@@ -22458,7 +22458,7 @@ namespace Math.Gmp.Native
             return new mp_size_t(SafeNativeMethods.__gmpn_sec_invert_itch(n));
         }
 
-#endregion
+        #endregion
 
         [SuppressUnmanagedCodeSecurity]
         private static class SafeNativeMethods
@@ -22531,7 +22531,7 @@ namespace Math.Gmp.Native
             [DllImport(@"libgmp-10.dll", CallingConvention = CallingConvention.Cdecl)]
             public static extern uint /*unsigned long int*/ __gmp_urandomm_ui(IntPtr /*gmp_randstate_t*/ state, uint /*unsigned long int*/ n);
 
-#endregion
+            #endregion
 
             #region "Formatted output routines."
 

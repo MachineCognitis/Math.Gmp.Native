@@ -153,25 +153,25 @@
           </listItem>
           <listItem>
             <para>
-              Install <externalLink><linkText>yasm</linkText><linkUri>http://yasm.tortall.net/Download.html</linkUri></externalLink>.
+              Install <externalLink><linkText>yasm</linkText><linkUri>http://yasm.tortall.net/Download.html</linkUri><linkTarget>_self</linkTarget></externalLink>.
             </para>
             <para>
-              On a 64-bit computer, copy <externalLink><linkText>yasm-1.3.0-win64.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri></externalLink>
+              On a 64-bit computer, copy <externalLink><linkText>yasm-1.3.0-win64.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri><linkTarget>_self</linkTarget></externalLink>
               to <localUri>C:\msys64\usr\bin</localUri>, and rename it to <localUri>yasm.exe</localUri>.
             </para>
             <para>
-              Similarly on a 32-bit computer, copy <externalLink><linkText>yasm-1.3.0-win32.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri></externalLink>
+              Similarly on a 32-bit computer, copy <externalLink><linkText>yasm-1.3.0-win32.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri><linkTarget>_self</linkTarget></externalLink>
               to <localUri>C:\msys32\usr\bin</localUri>, and rename it to <localUri>yasm.exe</localUri>.
             </para>
           </listItem>
           <listItem>
             <para>
-              Build <externalLink><linkText>GNU MP</linkText><linkUri>https://gmplib.org/</linkUri></externalLink>.
+              Build <externalLink><linkText>GNU MP</linkText><linkUri>https://gmplib.org/</linkUri><linkTarget>_self</linkTarget></externalLink>.
             </para>
             <para>
               Create folders <localUri>C:\Temp\x86</localUri> and <localUri>C:\Temp\x64</localUri>.
               These are the folder where the compiled 32-bit and 64-bit versions of GNU MP will be installed.
-              Unzip <externalLink><linkText>gmp-6.1.2.tar.bz2</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri></externalLink>
+              Unzip <externalLink><linkText>gmp-6.1.2.tar.bz2</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri><linkTarget>_self</linkTarget></externalLink>
               in folder <localUri>C:\Temp</localUri>.
               This puts GNU MP in subfolder <localUri>gmp-6.1.2</localUri>.
             </para>
@@ -213,7 +213,7 @@
           The <userInput>--enable-fat</userInput> build option above creates a library where optimized low level subroutines are chosen at runtime according to the CPU detected.
           By using instead the <userInput>--host</userInput> option, you can build a library for a specific CPU type.
           You will end up with a library that runs only on that CPU type, but the library will be samller.
-          See the <externalLink><linkText>Build Options</linkText><linkUri>https://gmplib.org/manual/Build-Options.html#Build-Options/</linkUri></externalLink> from the GNU MP Manual for the supported CPU types.
+          See the <externalLink><linkText>Build Options</linkText><linkUri>https://gmplib.org/manual/Build-Options.html#Build-Options/</linkUri><linkTarget>_self</linkTarget></externalLink> from the GNU MP Manual for the supported CPU types.
         </para>
       </content>
     </section>        
@@ -232,7 +232,7 @@
           Run your application.
         </para>
         <para>
-          See <externalLink><linkText>ConsoleApplication12.zip</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri></externalLink>
+          See <externalLink><linkText>ConsoleApplication12.zip</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri><linkTarget>_self</linkTarget></externalLink>
           for a sample Visual Studio C++ project.
         </para>
       </content>
@@ -242,18 +242,22 @@
       <externalLink>
         <linkText>MSYS2</linkText>
         <linkUri>https://github.com/msys2/msys2/wiki/MSYS2-introduction</linkUri>
+        <linkTarget>_self</linkTarget>
       </externalLink>
       <externalLink>
         <linkText>yasm</linkText>
         <linkUri>http://yasm.tortall.net/Download.html</linkUri>
+        <linkTarget>_self</linkTarget>
       </externalLink>
       <externalLink>
         <linkText>GNU MP</linkText>
         <linkUri>https://gmplib.org/</linkUri>
+        <linkTarget>_self</linkTarget>
       </externalLink>
       <externalLink>
         <linkText>Math.Gmp.Native on GitHub</linkText>
         <linkUri>https://github.com/MachineCognitis/Math.Gmp.Native</linkUri>
+        <linkTarget>_self</linkTarget>
       </externalLink>
     </relatedTopics>
 	
