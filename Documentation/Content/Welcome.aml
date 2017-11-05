@@ -9,6 +9,7 @@
         <externalLink>
           <linkText>GNU MP Library</linkText>
           <linkUri>https://gmplib.org/</linkUri>
+          <linkTarget>_self</linkTarget>
         </externalLink>
         (version 6.1.2). It automatically loads at runtime the 32-bit or 64-bit GNU MP library that matches the current CPU
         architecture, thus allowing building Visual Studio Projects for Any CPU, x86, or x64.
@@ -36,6 +37,7 @@
           <externalLink>
             <linkText>GNU MP Manual</linkText>
             <linkUri>https://gmplib.org/manual/</linkUri>
+            <linkTarget>_self</linkTarget>
           </externalLink>.
         </para>
       </content>
@@ -108,11 +110,11 @@
         <list class="ordered">
           <listItem>
             <para>
-              Install <externalLink><linkText>MSYS2</linkText><linkUri>https://github.com/msys2/msys2/wiki/MSYS2-introduction</linkUri></externalLink>.              
+              Install <externalLink><linkText>MSYS2</linkText><linkUri>https://github.com/msys2/msys2/wiki/MSYS2-introduction</linkUri><linkTarget>_self</linkTarget></externalLink>.              
             </para>
             <para>
-              On a 64-bit computer, install <externalLink><linkText>msys2-x86_64-20161025.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri></externalLink>,
-              and on a 32-bit computer, install <externalLink><linkText>msys2-i686-20161025.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/tree/master/Math.Gmp.Native/Dependencies/</linkUri></externalLink>.
+              On a 64-bit computer, install <externalLink><linkText>msys2-x86_64-20161025.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri><linkTarget>_self</linkTarget></externalLink>,
+              and on a 32-bit computer, install <externalLink><linkText>msys2-i686-20161025.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/tree/master/Math.Gmp.Native/Dependencies/</linkUri><linkTarget>_self</linkTarget></externalLink>.
               You can also check for a more recent version of MSYS2 <externalLink><linkText>here</linkText><linkUri>https://github.com/msys2/msys2/wiki/MSYS2-installation</linkUri></externalLink>.
               Install MSYS2 to its default location.
             </para>
