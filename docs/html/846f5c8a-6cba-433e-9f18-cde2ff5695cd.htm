@@ -3,7 +3,7 @@
         all of the functionality of the
         <a href="https://gmplib.org/" target="_blank">GNU MP Library</a>
         (version 6.1.2). It automatically loads at runtime the 32-bit or 64-bit GNU MP library that matches the current CPU
-        architecture, thus allowing building Visual Studio Projects for AnyCPU, x86, or x64.
+        architecture, thus allowing building Visual Studio Projects for Any CPU, x86, or x64.
         It is based on the GNU MP "fat" build which automatically detects the current CPU type, and selects any available
         assembly language code optimization for that CPU, thus providing optimal performance.
       </p></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID0RB')" onkeypress="SectionExpandCollapse_CheckKey('ID0RB', event)" tabindex="0"><img id="ID0RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />Overview</span></div><div id="ID0RBSection" class="collapsibleSection"><p>
@@ -29,7 +29,68 @@
           Unless you intend to use low-level (mpn) functions, you do not need to take into account the
           CPU word size, and can build for the "Any CPU" platform.
         </p><div class="tableSection"><table><tr><th><p>C Types</p></th><th><p>.NET Types</p></th></tr><tr><td><p>short</p></td><td><p>Int16</p></td></tr><tr><td><p>int</p></td><td><p>Int32</p></td></tr><tr><td><p>long</p></td><td><p>Int32</p></td></tr><tr><td><p>long long</p></td><td><p>Int64</p></td></tr><tr><td><p><a href="1b2b1d64-20c1-7a64-0278-d9ff58ee9cc3.htm">mp_bitcnt_t</a></p></td><td><p>UInt32</p></td></tr><tr><td><p><a href="e6a17880-791f-37d4-4942-cf26ce7d4cbf.htm">mp_exp_t</a></p></td><td><p>Int32</p></td></tr><tr><td><p><a href="4b58a584-7a0e-b600-18fa-ebd493861eb3.htm">mp_size_t</a></p></td><td><p>Int32</p></td></tr><tr><td><p><a href="bf1f694d-f9b2-6413-12e5-ebae603d5b49.htm">mp_limb_t</a></p></td><td><p>UInt32 (on 32-bit CPU) / UInt64 (on 64-bit CPU)</p></td></tr><tr><td><p><a href="d9761bfb-1882-59d2-e89b-c6460141f9a6.htm">size_t</a></p></td><td><p>UInt32 (on 32-bit CPU) / UInt64 (on 64-bit CPU)</p></td></tr></table></div></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID2RB')" onkeypress="SectionExpandCollapse_CheckKey('ID2RB', event)" tabindex="0"><img id="ID2RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />Building the GNU MP Library on Windows</span></div><div id="ID2RBSection" class="collapsibleSection"><ol><li><p>
-              Install MSYS2
+              Install <a href="https://github.com/msys2/msys2/wiki/MSYS2-introduction" target="_blank">MSYS2</a>.              
             </p><p>
-              Get the latest version from...
-            </p></li><li><p>Install yasm</p></li><li><p>Install GNU MP</p></li><li><p>Build GNU MP</p></li></ol></div><div class="collapsibleAreaRegion" id="seeAlsoSection"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID3RB')" onkeypress="SectionExpandCollapse_CheckKey('ID3RB', event)" tabindex="0"><img id="ID3RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />See Also</span></div><div id="ID3RBSection" class="collapsibleSection"><h4 class="subHeading">Other Resources</h4><div class="seeAlsoStyle"><a href="http://en.cppreference.com/w/c/numeric/math" target="_self">C Standard</a></div><div class="seeAlsoStyle"><a href="https://github.com/MachineCognitis/Math.Gmp.Native" target="_self">Math.Gmp.Native on GitHub</a></div></div></div></div><div id="pageFooter" class="pageFooter" /></body></html>
+              On a 64-bit computer, install <a href="https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/" target="_blank">msys2-x86_64-20161025.exe</a>,
+              and on a 32-bit computer, install <a href="https://github.com/MachineCognitis/Math.Gmp.Native/tree/master/Math.Gmp.Native/Dependencies/" target="_blank">msys2-i686-20161025.exe</a>.
+              You can also check for a more recent version of MSYS2 <a href="https://github.com/msys2/msys2/wiki/MSYS2-installation" target="_blank">here</a>.
+              Install MSYS2 to its default location.
+            </p><p>
+              After installation, you need to updates MSYS2 packages. From the Windows Start Menu, start <span class="command">MSYS2 MSYS</span>. In the shell command window,
+              enter the command:
+            </p><ul class="noBullet"><li><p><span class="input">pacman -Syuu</span></p></li></ul><p>
+              and follow instructions.
+              You will have to close the command window, reopen a new one, and reenter the command <span class="input">pacman -Syuu</span>.
+            </p><p>
+              Finally, in order to build software, you need to install a number of packages with the command:
+            </p><ul class="noBullet"><li><p><span class="input">pacman -S --needed base-devel mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain git subversion mercurial mingw-w64-i686-cmake mingw-w64-x86_64-cmake</span></p></li></ul><p>
+              run from the same command window as in the previous step.
+            </p><p>
+              To build 32-bit software, use the <span class="command">MSYS2 MinGW 32-bit</span> command from the Windows Start Menu, and
+              for 64-bit software, use <span class="command">MSYS2 MinGW 64-bit</span>.
+            </p></li><li><p>
+              Install <a href="http://yasm.tortall.net/Download.html" target="_blank">yasm</a>.
+            </p><p>
+              On a 64-bit computer, copy <a href="https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/" target="_blank">yasm-1.3.0-win64.exe</a>
+              to <em>C:\msys64\usr\bin</em>, and rename it to <em>yasm.exe</em>.
+            </p><p>
+              Similarly on a 32-bit computer, copy <a href="https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/" target="_blank">yasm-1.3.0-win32.exe</a>
+              to <em>C:\msys32\usr\bin</em>, and rename it to <em>yasm.exe</em>.
+            </p></li><li><p>
+              Build <a href="https://gmplib.org/" target="_blank">GNU MP</a>.
+            </p><p>
+              Create folders <em>C:\Temp\x86</em> and <em>C:\Temp\x64</em>.
+              These are the folder where the compiled 32-bit and 64-bit versions of GNU MP will be installed.
+              Unzip <a href="https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/" target="_blank">gmp-6.1.2.tar.bz2</a>
+              in folder <em>C:\Temp</em>.
+              This puts GNU MP in subfolder <em>gmp-6.1.2</em>.
+            </p><p>
+              In each one of the command windows openend with the commands <span class="command">MSYS2 MinGW 32-bit</span>
+              and <span class="command">MSYS2 MinGW 64-bit</span> from the Windows Start Menu, run the commands below:
+            </p><ul class="noBullet"><li><p><span class="input">cd /c/Temp/gmp-6.1.2</span><br /><span class="input">./configure --enable-fat --disable-static --enable-shared --prefix=/c/Temp/x86</span> or <span class="input">x64</span><br /><span class="input">make</span><br /><span class="input">make check</span><br /><span class="input">make install</span><br /></p></li></ul><p>
+              The <span class="input">--prefix</span> specifies the install folder.
+              Note that the Windows <em>C:\</em> drive is specified as the root <em>/C/</em> folder in the <span class="command">MinGW</span> window.
+              Note also that the <span class="input">configure</span> and <span class="input">make</span> commands are to be run against a fresly uncompressed GNU MP source.
+              The <span class="input">make install</span> command creates <em>libgmp-10.dll</em> in the <em>C:\Temp\x86</em> and <em>C:\Temp\x64</em> folders.
+              These two compiled versions of the GNU MP library are to be copied to the <em>x86</em> and <em>x64</em> folders of the <em>Math.Gmp.Native</em> Visual Studio projects.
+              They can also be copied directly into the <em>x86</em> and <em>x64</em> folders of the <em>bin/Debug</em> or <em>bin/Release</em> folders.
+            </p><p>
+              The 32-bit and 64-bit <span class="input">make check</span> commands generate some warnings, but all tests passed successfully.
+            </p></li></ol></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID3RB')" onkeypress="SectionExpandCollapse_CheckKey('ID3RB', event)" tabindex="0"><img id="ID3RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />Building the GNU MP Library for a Specific CPU Type on Windows</span></div><div id="ID3RBSection" class="collapsibleSection"><p>
+          The <span class="input">--enable-fat</span> build option above creates a library where optimized low level subroutines are chosen at runtime according to the CPU detected.
+          By using instead the <span class="input">--host</span> option, you can build a library for a specific CPU type.
+          You will end up with a library that runs only on that CPU type, but the library will be samller.
+          See the <a href="https://gmplib.org/manual/Build-Options.html#Build-Options/" target="_blank">Build Options</a> from the GNU MP Manual for the supported CPU types.
+        </p></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID4RB')" onkeypress="SectionExpandCollapse_CheckKey('ID4RB', event)" tabindex="0"><img id="ID4RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />Using the GNU MP Library in a Visual Studio C++ Project</span></div><div id="ID4RBSection" class="collapsibleSection"><p>
+          Although our main goal was to compile GNU MP in order to use it from .NET, the compiled 32-bit and 64-bit GNU MP libraries may be used directly in Visual Studio C++ projects.
+          For example, create a default Visual Studio C++ Console Application.
+          Set the <strong>Platform</strong> to <strong>x64</strong>.
+          Copy from the <em>C:\Temp\x64</em> folder the files <em>include\gmp.h</em>, <em>bin\libgmp-10.dll</em>, and <em>lib\libgmp.dll.a</em> to the Visual Studio C++ project folder.
+          Include <em>gmp.h</em> in your C++ source file.
+          In the <strong>Linker</strong>, <strong>Input Property Page</strong> of the project, add <em>libgmp.dll.a</em> to the <strong>Additional Dependencies</strong>.
+          Build your C++ project, and copy <em>libgmp-10.dll</em> to the output <em>bin</em> folder.
+          Run your application.
+        </p><p>
+          See <a href="https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/" target="_blank">ConsoleApplication12.zip</a>
+          for a sample Visual Studio C++ project.
+        </p></div><div class="collapsibleAreaRegion" id="seeAlsoSection"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID5RB')" onkeypress="SectionExpandCollapse_CheckKey('ID5RB', event)" tabindex="0"><img id="ID5RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />See Also</span></div><div id="ID5RBSection" class="collapsibleSection"><h4 class="subHeading">Other Resources</h4><div class="seeAlsoStyle"><a href="https://github.com/msys2/msys2/wiki/MSYS2-introduction" target="_blank">MSYS2</a></div><div class="seeAlsoStyle"><a href="http://yasm.tortall.net/Download.html" target="_blank">yasm</a></div><div class="seeAlsoStyle"><a href="https://gmplib.org/" target="_blank">GNU MP</a></div><div class="seeAlsoStyle"><a href="https://github.com/MachineCognitis/Math.Gmp.Native" target="_blank">Math.Gmp.Native on GitHub</a></div></div></div></div><div id="pageFooter" class="pageFooter" /></body></html>

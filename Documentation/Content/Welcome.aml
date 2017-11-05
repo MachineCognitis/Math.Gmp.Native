@@ -11,7 +11,7 @@
           <linkUri>https://gmplib.org/</linkUri>
         </externalLink>
         (version 6.1.2). It automatically loads at runtime the 32-bit or 64-bit GNU MP library that matches the current CPU
-        architecture, thus allowing building Visual Studio Projects for AnyCPU, x86, or x64.
+        architecture, thus allowing building Visual Studio Projects for Any CPU, x86, or x64.
         It is based on the GNU MP "fat" build which automatically detects the current CPU type, and selects any available
         assembly language code optimization for that CPU, thus providing optimal performance.
       </para>
@@ -111,43 +111,147 @@
               Install <externalLink><linkText>MSYS2</linkText><linkUri>https://github.com/msys2/msys2/wiki/MSYS2-introduction</linkUri></externalLink>.              
             </para>
             <para>
-              On a 64-bit computer, install <externalLink><linkText>msys2-x86_64-20161025.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/tree/master/Math.Gmp.Native/Dependencies/msys2-x86_64-20161025.exe</linkUri></externalLink>,
-              and on a 32-bit computer, install <externalLink><linkText>msys2-i686-20161025.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/tree/master/Math.Gmp.Native/Dependencies/msys2-i686-20161025.exe</linkUri></externalLink>.
+              On a 64-bit computer, install <externalLink><linkText>msys2-x86_64-20161025.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri></externalLink>,
+              and on a 32-bit computer, install <externalLink><linkText>msys2-i686-20161025.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/tree/master/Math.Gmp.Native/Dependencies/</linkUri></externalLink>.
               You can also check for a more recent version of MSYS2 <externalLink><linkText>here</linkText><linkUri>https://github.com/msys2/msys2/wiki/MSYS2-installation</linkUri></externalLink>.
               Install MSYS2 to its default location.
             </para>
             <para>
-              After installation, you need to updates MSYS2 packages. From the Windows Start Menu, start 'MSYS2 MSYS'. In the shell command window,
-              enter the command 'pacman -Syuu' and follow instructions. You will have to close the command window, reopen a new one, and reenter
-              the command 'pacman -Syuu'.
+              After installation, you need to updates MSYS2 packages. From the Windows Start Menu, start <command>MSYS2 MSYS</command>. In the shell command window,
+              enter the command:
+            </para>
+            <list class="nobullet">
+               <listItem>
+                 <para>
+                  <userInput>pacman -Syuu</userInput>
+                </para>
+              </listItem>
+            </list>
+            <para>
+              and follow instructions.
+              You will have to close the command window, reopen a new one, and reenter the command <userInput>pacman -Syuu</userInput>.
             </para>
             <para>
-              Finally, in order to build software, you need to install a number of packages with the command
-              'pacman -S --needed base-devel mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain git subversion mercurial mingw-w64-i686-cmake mingw-w64-x86_64-cmake'
+              Finally, in order to build software, you need to install a number of packages with the command:
+            </para>
+            <list class="nobullet">
+               <listItem>
+                 <para>
+                  <userInput>pacman -S --needed base-devel mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain git subversion mercurial mingw-w64-i686-cmake mingw-w64-x86_64-cmake</userInput>
+                </para>
+              </listItem>
+            </list>
+            <para>
               run from the same command window as in the previous step.
             </para>
             <para>
-              To build 32-bit software, use the 'MSYS2 MinGW 32-bit' command from the Windows Start Menu, and
-              for 64-bit software, use 'MSYS2 MinGW 64-bit'.
+              To build 32-bit software, use the <command>MSYS2 MinGW 32-bit</command> command from the Windows Start Menu, and
+              for 64-bit software, use <command>MSYS2 MinGW 64-bit</command>.
             </para>
           </listItem>
-          <listItem><para>Install yasm</para></listItem>
-          <listItem><para>Install GNU MP</para></listItem>
-          <listItem><para>Build GNU MP</para></listItem>
+          <listItem>
+            <para>
+              Install <externalLink><linkText>yasm</linkText><linkUri>http://yasm.tortall.net/Download.html</linkUri></externalLink>.
+            </para>
+            <para>
+              On a 64-bit computer, copy <externalLink><linkText>yasm-1.3.0-win64.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri></externalLink>
+              to <localUri>C:\msys64\usr\bin</localUri>, and rename it to <localUri>yasm.exe</localUri>.
+            </para>
+            <para>
+              Similarly on a 32-bit computer, copy <externalLink><linkText>yasm-1.3.0-win32.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri></externalLink>
+              to <localUri>C:\msys32\usr\bin</localUri>, and rename it to <localUri>yasm.exe</localUri>.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Build <externalLink><linkText>GNU MP</linkText><linkUri>https://gmplib.org/</linkUri></externalLink>.
+            </para>
+            <para>
+              Create folders <localUri>C:\Temp\x86</localUri> and <localUri>C:\Temp\x64</localUri>.
+              These are the folder where the compiled 32-bit and 64-bit versions of GNU MP will be installed.
+              Unzip <externalLink><linkText>gmp-6.1.2.tar.bz2</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri></externalLink>
+              in folder <localUri>C:\Temp</localUri>.
+              This puts GNU MP in subfolder <localUri>gmp-6.1.2</localUri>.
+            </para>
+            <para>
+              In each one of the command windows openend with the commands <command>MSYS2 MinGW 32-bit</command>
+              and <command>MSYS2 MinGW 64-bit</command> from the Windows Start Menu, run the commands below:
+            </para>
+            <list class="nobullet">
+               <listItem>
+                 <para>
+                  <userInput>cd /c/Temp/gmp-6.1.2</userInput><markup><br/></markup>
+                  <userInput>./configure --enable-fat --disable-static --enable-shared --prefix=/c/Temp/x86</userInput> or <userInput>x64</userInput><markup><br/></markup>
+                  <userInput>make</userInput><markup><br/></markup>
+                  <userInput>make check</userInput><markup><br/></markup>
+                  <userInput>make install</userInput><markup><br/></markup>
+                </para>
+              </listItem>
+            </list>
+            <para>
+              The <userInput>--prefix</userInput> specifies the install folder.
+              Note that the Windows <localUri>C:\</localUri> drive is specified as the root <localUri>/C/</localUri> folder in the <command>MinGW</command> window.
+              Note also that the <userInput>configure</userInput> and <userInput>make</userInput> commands are to be run against a fresly uncompressed GNU MP source.
+              The <userInput>make install</userInput> command creates <localUri>libgmp-10.dll</localUri> in the <localUri>C:\Temp\x86</localUri> and <localUri>C:\Temp\x64</localUri> folders.
+              These two compiled versions of the GNU MP library are to be copied to the <localUri>x86</localUri> and <localUri>x64</localUri> folders of the <localUri>Math.Gmp.Native</localUri> Visual Studio projects.
+              They can also be copied directly into the <localUri>x86</localUri> and <localUri>x64</localUri> folders of the <localUri>bin/Debug</localUri> or <localUri>bin/Release</localUri> folders.
+            </para>
+            <para>
+              The 32-bit and 64-bit <userInput>make check</userInput> commands generate some warnings, but all tests passed successfully.
+            </para>
+          </listItem>
         </list>
+      </content>
+    </section>        
+    
+    <section>
+      <title>Building the GNU MP Library for a Specific CPU Type on Windows</title>
+      <content>
+        <para>
+          The <userInput>--enable-fat</userInput> build option above creates a library where optimized low level subroutines are chosen at runtime according to the CPU detected.
+          By using instead the <userInput>--host</userInput> option, you can build a library for a specific CPU type.
+          You will end up with a library that runs only on that CPU type, but the library will be samller.
+          See the <externalLink><linkText>Build Options</linkText><linkUri>https://gmplib.org/manual/Build-Options.html#Build-Options/</linkUri></externalLink> from the GNU MP Manual for the supported CPU types.
+        </para>
+      </content>
+    </section>        
+    
+    <section>
+      <title>Using the GNU MP Library in a Visual Studio C++ Project</title>
+      <content>
+        <para>
+          Although our main goal was to compile GNU MP in order to use it from .NET, the compiled 32-bit and 64-bit GNU MP libraries may be used directly in Visual Studio C++ projects.
+          For example, create a default Visual Studio C++ Console Application.
+          Set the <system>Platform</system> to <system>x64</system>.
+          Copy from the <localUri>C:\Temp\x64</localUri> folder the files <localUri>include\gmp.h</localUri>, <localUri>bin\libgmp-10.dll</localUri>, and <localUri>lib\libgmp.dll.a</localUri> to the Visual Studio C++ project folder.
+          Include <localUri>gmp.h</localUri> in your C++ source file.
+          In the <system>Linker</system>, <system>Input Property Page</system> of the project, add <localUri>libgmp.dll.a</localUri> to the <system>Additional Dependencies</system>.
+          Build your C++ project, and copy <localUri>libgmp-10.dll</localUri> to the output <localUri>bin</localUri> folder.
+          Run your application.
+        </para>
+        <para>
+          See <externalLink><linkText>ConsoleApplication12.zip</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/blob/master/Math.Gmp.Native/Dependencies/</linkUri></externalLink>
+          for a sample Visual Studio C++ project.
+        </para>
       </content>
     </section>        
     
 		<relatedTopics>
       <externalLink>
-        <linkText>C Standard</linkText>
-        <linkUri>http://en.cppreference.com/w/c/numeric/math</linkUri>
-        <linkTarget>_self</linkTarget>
+        <linkText>MSYS2</linkText>
+        <linkUri>https://github.com/msys2/msys2/wiki/MSYS2-introduction</linkUri>
+      </externalLink>
+      <externalLink>
+        <linkText>yasm</linkText>
+        <linkUri>http://yasm.tortall.net/Download.html</linkUri>
+      </externalLink>
+      <externalLink>
+        <linkText>GNU MP</linkText>
+        <linkUri>https://gmplib.org/</linkUri>
       </externalLink>
       <externalLink>
         <linkText>Math.Gmp.Native on GitHub</linkText>
         <linkUri>https://github.com/MachineCognitis/Math.Gmp.Native</linkUri>
-        <linkTarget>_self</linkTarget>
       </externalLink>
     </relatedTopics>
 	

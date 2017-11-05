@@ -87,6 +87,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Dependencies\ConsoleApplication12.zip" />
     <None Include="Dependencies\gmp-6.1.2.tar.bz2" />
     <None Include="ReadMe.txt" />
     <None Include="Dependencies\msys2-i686-20161025.exe" />
