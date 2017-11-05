@@ -108,11 +108,27 @@
         <list class="ordered">
           <listItem>
             <para>
-              Install <externalLink><linkText>MSYS2</linkText><linkUri>https://github.com/msys2/msys2/wiki/MSYS2-introduction</linkUri></externalLink>.
-              
+              Install <externalLink><linkText>MSYS2</linkText><linkUri>https://github.com/msys2/msys2/wiki/MSYS2-introduction</linkUri></externalLink>.              
             </para>
             <para>
-              Get the latest version from...
+              On a 64-bit computer, install <externalLink><linkText>msys2-x86_64-20161025.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/tree/master/Math.Gmp.Native/Dependencies/msys2-x86_64-20161025.exe</linkUri></externalLink>,
+              and on a 32-bit computer, install <externalLink><linkText>msys2-i686-20161025.exe</linkText><linkUri>https://github.com/MachineCognitis/Math.Gmp.Native/tree/master/Math.Gmp.Native/Dependencies/msys2-i686-20161025.exe</linkUri></externalLink>.
+              You can also check for a more recent version of MSYS2 <externalLink><linkText>here</linkText><linkUri>https://github.com/msys2/msys2/wiki/MSYS2-installation</linkUri></externalLink>.
+              Install MSYS2 to its default location.
+            </para>
+            <para>
+              After installation, you need to updates MSYS2 packages. From the Windows Start Menu, start 'MSYS2 MSYS'. In the shell command window,
+              enter the command 'pacman -Syuu' and follow instructions. You will have to close the command window, reopen a new one, and reenter
+              the command 'pacman -Syuu'.
+            </para>
+            <para>
+              Finally, in order to build software, you need to install a number of packages with the command
+              'pacman -S --needed base-devel mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain git subversion mercurial mingw-w64-i686-cmake mingw-w64-x86_64-cmake'
+              run from the same command window as in the previous step.
+            </para>
+            <para>
+              To build 32-bit software, use the 'MSYS2 MinGW 32-bit' command from the Windows Start Menu, and
+              for 64-bit software, use 'MSYS2 MinGW 64-bit'.
             </para>
           </listItem>
           <listItem><para>Install yasm</para></listItem>
