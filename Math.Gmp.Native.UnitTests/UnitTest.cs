@@ -716,7 +716,7 @@ namespace UnitTests
         #region "Memory allocation functions."
 
         [TestMethod]
-        public void gmp_get_memory_functions()
+        public void mp_get_memory_functions()
         {
             allocate_function allocate;
             reallocate_function reallocate;
@@ -724,7 +724,7 @@ namespace UnitTests
 
             // Retrieve the GMP memory allocation functions.
             allocate = null; reallocate = null; free = null;
-            gmp_lib.gmp_get_memory_functions(ref allocate, ref reallocate, ref free);
+            gmp_lib.mp_get_memory_functions(ref allocate, ref reallocate, ref free);
             Assert.IsTrue(allocate != null && reallocate != null && free != null);
 
             // Allocate and free memory.
@@ -733,26 +733,26 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void gmp_set_memory_functions()
+        public void mp_set_memory_functions()
         {
             // Retrieve GMP default memory allocation functions.
             allocate_function default_allocate = null;
             reallocate_function default_reallocate = null;
             free_function default_free = null;
-            gmp_lib.gmp_get_memory_functions(ref default_allocate, ref default_reallocate, ref default_free);
+            gmp_lib.mp_get_memory_functions(ref default_allocate, ref default_reallocate, ref default_free);
 
             // Create and set new memory allocation functions that count the number of times they are called.
             int counter = 0;
             allocate_function new_allocate = (size_t alloc_size) => { counter++; return default_allocate(alloc_size); };
             reallocate_function new_reallocate = (void_ptr ptr, size_t old_size, size_t new_size) => { counter++; return default_reallocate(ptr, old_size, new_size); };
             free_function new_free = (void_ptr ptr, size_t size) => { counter++; default_free(ptr, size); };
-            gmp_lib.gmp_set_memory_functions(new_allocate, new_reallocate, new_free);
+            gmp_lib.mp_set_memory_functions(new_allocate, new_reallocate, new_free);
 
             // Retrieve GMP memory allocation functions.
             allocate_function allocate = null;
             reallocate_function reallocate = null;
             free_function free = null;
-            gmp_lib.gmp_get_memory_functions(ref allocate, ref reallocate, ref free);
+            gmp_lib.mp_get_memory_functions(ref allocate, ref reallocate, ref free);
 
             // Call memory function and assert calls count.
             void_ptr p = allocate(10);
@@ -765,7 +765,7 @@ namespace UnitTests
             Assert.IsTrue(counter == 3);
 
             // Restore default memory allocation functions.
-            gmp_lib.gmp_set_memory_functions(null, null, null);
+            gmp_lib.mp_set_memory_functions(null, null, null);
         }
 
         #endregion

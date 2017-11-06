@@ -73,7 +73,6 @@
   <HelpKINode Title="gmp_errno property" Url="html/4c3f1727-1891-2918-da3a-321930e883ed.htm" />
   <HelpKINode Title="gmp_fprintf method" Url="html/e3abec5c-9d83-babc-a020-ca4817962a21.htm" />
   <HelpKINode Title="gmp_fscanf method" Url="html/50306850-d92d-5038-bbcc-c452cd3c69a9.htm" />
-  <HelpKINode Title="gmp_get_memory_functions method" Url="html/37510828-012a-9e6a-7916-776acfd8f1f9.htm" />
   <HelpKINode Title="gmp_lib class">
     <HelpKINode Title="gmp_lib Class" Url="html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm" />
     <HelpKINode Title="about gmp_lib class" Url="html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm" />
@@ -87,7 +86,6 @@
   <HelpKINode Title="gmp_lib.gmp_errno property" Url="html/4c3f1727-1891-2918-da3a-321930e883ed.htm" />
   <HelpKINode Title="gmp_lib.gmp_fprintf method" Url="html/e3abec5c-9d83-babc-a020-ca4817962a21.htm" />
   <HelpKINode Title="gmp_lib.gmp_fscanf method" Url="html/50306850-d92d-5038-bbcc-c452cd3c69a9.htm" />
-  <HelpKINode Title="gmp_lib.gmp_get_memory_functions method" Url="html/37510828-012a-9e6a-7916-776acfd8f1f9.htm" />
   <HelpKINode Title="gmp_lib.gmp_printf method" Url="html/5c2015f3-41d2-7b80-5309-e41ccec0baaf.htm" />
   <HelpKINode Title="gmp_lib.gmp_randclear method" Url="html/7ef82a61-e43a-78c7-a28f-8f2d0a5f59b1.htm" />
   <HelpKINode Title="gmp_lib.gmp_randinit_default method" Url="html/89fff39e-9dc4-4d23-9460-301ae7df92d1.htm" />
@@ -98,7 +96,6 @@
   <HelpKINode Title="gmp_lib.gmp_randseed method" Url="html/b31d5778-362b-b75f-40cc-4c8280ca889c.htm" />
   <HelpKINode Title="gmp_lib.gmp_randseed_ui method" Url="html/c5f4e595-de6c-a555-426d-6cb8f429a960.htm" />
   <HelpKINode Title="gmp_lib.gmp_scanf method" Url="html/880c96b7-378e-3cdb-057e-b6eea1c9e529.htm" />
-  <HelpKINode Title="gmp_lib.gmp_set_memory_functions method" Url="html/3568dd4d-d565-0b12-2da2-2fed2d433257.htm" />
   <HelpKINode Title="gmp_lib.gmp_snprintf method" Url="html/61686857-e4a0-ad60-1419-2b87a79b06c1.htm" />
   <HelpKINode Title="gmp_lib.gmp_sprintf method" Url="html/8916c18b-a745-2699-2f0a-035cf62dd051.htm" />
   <HelpKINode Title="gmp_lib.gmp_sscanf method" Url="html/279d21b9-bd04-522e-0759-d1add6fe6fae.htm" />
@@ -452,6 +449,8 @@
   <HelpKINode Title="gmp_lib.mpz_xor method" Url="html/fd4c285a-e2e1-f8ba-97b3-08d4ae6a2ebf.htm" />
   <HelpKINode Title="gmp_lib.mp_bits_per_limb field" Url="html/f88c76a8-118a-5cbd-0df1-e30adcacb8ae.htm" />
   <HelpKINode Title="gmp_lib.mp_bytes_per_limb field" Url="html/47695d57-9a89-48db-97c3-2ed03965d913.htm" />
+  <HelpKINode Title="gmp_lib.mp_get_memory_functions method" Url="html/9a229bed-b8b6-e0ad-f153-689455252ec4.htm" />
+  <HelpKINode Title="gmp_lib.mp_set_memory_functions method" Url="html/15ac48e3-750c-d154-7d8f-6dcaa137f5db.htm" />
   <HelpKINode Title="gmp_lib.mp_uint_per_limb field" Url="html/af9533ce-5e67-245d-1cb3-9efb7772a6c8.htm" />
   <HelpKINode Title="gmp_lib.reallocate method" Url="html/067f64f9-7014-8c6a-3c02-153c1460a1dd.htm" />
   <HelpKINode Title="gmp_lib.ZeroMemory method" Url="html/e3d53be6-a0ad-fb21-5381-ff688f5984a6.htm" />
@@ -473,7 +472,6 @@
   </HelpKINode>
   <HelpKINode Title="gmp_randstate_t.gmp_randstate_t constructor" Url="html/20a4edb9-f361-6367-9965-64b0f7aeddaa.htm" />
   <HelpKINode Title="gmp_scanf method" Url="html/880c96b7-378e-3cdb-057e-b6eea1c9e529.htm" />
-  <HelpKINode Title="gmp_set_memory_functions method" Url="html/3568dd4d-d565-0b12-2da2-2fed2d433257.htm" />
   <HelpKINode Title="gmp_snprintf method" Url="html/61686857-e4a0-ad60-1419-2b87a79b06c1.htm" />
   <HelpKINode Title="gmp_sprintf method" Url="html/8916c18b-a745-2699-2f0a-035cf62dd051.htm" />
   <HelpKINode Title="gmp_sscanf method" Url="html/279d21b9-bd04-522e-0759-d1add6fe6fae.htm" />
@@ -966,6 +964,7 @@
   <HelpKINode Title="mp_exp_t.Inequality operator" Url="html/931e55b9-30c1-aa94-c044-0400b5abea60.htm" />
   <HelpKINode Title="mp_exp_t.mp_exp_t constructor" Url="html/d4cd9f0b-9f54-1f1d-6a27-a0ce3122249c.htm" />
   <HelpKINode Title="mp_exp_t.ToString method" Url="html/cd071eb3-c175-836d-c47a-f9c007b8738d.htm" />
+  <HelpKINode Title="mp_get_memory_functions method" Url="html/9a229bed-b8b6-e0ad-f153-689455252ec4.htm" />
   <HelpKINode Title="mp_limb_t structure">
     <HelpKINode Title="mp_limb_t Structure" Url="html/bf1f694d-f9b2-6413-12e5-ebae603d5b49.htm" />
     <HelpKINode Title="about mp_limb_t structure" Url="html/bf1f694d-f9b2-6413-12e5-ebae603d5b49.htm" />
@@ -998,6 +997,7 @@
   <HelpKINode Title="mp_ptr.Item property" Url="html/a7661bd2-2bcb-01c5-9833-5ab6d6305daf.htm" />
   <HelpKINode Title="mp_ptr.mp_ptr constructor" Url="html/33563f2c-baba-b555-20fb-9def8b70074c.htm" />
   <HelpKINode Title="mp_ptr.Size property" Url="html/562de56d-c1a8-5f66-59dc-e2886d89bfc3.htm" />
+  <HelpKINode Title="mp_set_memory_functions method" Url="html/15ac48e3-750c-d154-7d8f-6dcaa137f5db.htm" />
   <HelpKINode Title="mp_size_t structure">
     <HelpKINode Title="mp_size_t Structure" Url="html/4b58a584-7a0e-b600-18fa-ebd493861eb3.htm" />
     <HelpKINode Title="about mp_size_t structure" Url="html/4b58a584-7a0e-b600-18fa-ebd493861eb3.htm" />

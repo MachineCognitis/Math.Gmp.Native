@@ -9,9 +9,8 @@ namespace Math.Gmp.Native
 {
 
     /// <summary>
-    /// 
+    /// Represents all of the functions of the GNU MP library.
     /// </summary>
-    /// <remarks></remarks>
     public static class gmp_lib
     {
 
@@ -255,7 +254,7 @@ namespace Math.Gmp.Native
         /// <param name="alloc_func_ptr">The memory allocation function.</param>
         /// <param name="realloc_func_ptr">The memory reallocation function.</param>
         /// <param name="free_func_ptr">The memory de-allocation function.</param>
-        /// <seealso cref="gmp_set_memory_functions"/>
+        /// <seealso cref="mp_set_memory_functions"/>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -267,7 +266,7 @@ namespace Math.Gmp.Native
         /// allocate = null;
         /// reallocate = null;
         /// free = null;
-        /// gmp_lib.gmp_get_memory_functions(ref allocate, ref reallocate, ref free);
+        /// gmp_lib.mp_get_memory_functions(ref allocate, ref reallocate, ref free);
         /// Assert.IsTrue(allocate != null &amp;&amp; reallocate != null &amp;&amp; free != null);
         /// 
         /// // Allocate and free memory.
@@ -283,7 +282,7 @@ namespace Math.Gmp.Native
         /// allocate = Nothing
         /// reallocate = Nothing
         /// free = Nothing
-        /// gmp_lib.gmp_get_memory_functions(allocate, reallocate, free)
+        /// gmp_lib.mp_get_memory_functions(allocate, reallocate, free)
         /// Assert.IsTrue(allocate IsNot Nothing AndAlso reallocate IsNot Nothing AndAlso free IsNot Nothing)
         /// 
         /// ' Allocate and free memory.
@@ -291,7 +290,7 @@ namespace Math.Gmp.Native
         /// free(p, 100)
         /// </code> 
         /// </example>
-        public static void gmp_get_memory_functions(ref allocate_function alloc_func_ptr, ref reallocate_function realloc_func_ptr, ref free_function free_func_ptr)
+        public static void mp_get_memory_functions(ref allocate_function alloc_func_ptr, ref reallocate_function realloc_func_ptr, ref free_function free_func_ptr)
         {
             alloc_func_ptr = gmp_lib.allocate_func_ptr;
             realloc_func_ptr = gmp_lib.reallocate_func_ptr;
@@ -310,7 +309,7 @@ namespace Math.Gmp.Native
         /// default function is used.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_get_memory_functions"/>
+        /// <seealso cref="mp_get_memory_functions"/>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -318,20 +317,20 @@ namespace Math.Gmp.Native
         /// allocate_function default_allocate = null;
         /// reallocate_function default_reallocate = null;
         /// free_function default_free = null;
-        /// gmp_lib.gmp_get_memory_functions(ref default_allocate, ref default_reallocate, ref default_free);
+        /// gmp_lib.mp_get_memory_functions(ref default_allocate, ref default_reallocate, ref default_free);
         /// 
         /// // Create and set new memory allocation functions that count the number of times they are called.
         /// int counter = 0;
         /// allocate_function new_allocate = (size_t alloc_size) => { counter++; return default_allocate(alloc_size); };
         /// reallocate_function new_reallocate = (void_ptr ptr, size_t old_size, size_t new_size) => { counter++; return default_reallocate(ptr, old_size, new_size); };
         /// free_function new_free = (void_ptr ptr, size_t size) => { counter++; default_free(ptr, size); };
-        /// gmp_lib.gmp_set_memory_functions(new_allocate, new_reallocate, new_free);
+        /// gmp_lib.mp_set_memory_functions(new_allocate, new_reallocate, new_free);
         /// 
         /// // Retrieve GMP memory allocation functions.
         /// allocate_function allocate = null;
         /// reallocate_function reallocate = null;
         /// free_function free = null;
-        /// gmp_lib.gmp_get_memory_functions(ref allocate, ref reallocate, ref free);
+        /// gmp_lib.mp_get_memory_functions(ref allocate, ref reallocate, ref free);
         /// 
         /// // Call memory function and assert calls count.
         /// void_ptr p = allocate(10);
@@ -344,7 +343,7 @@ namespace Math.Gmp.Native
         /// Assert.IsTrue(counter == 3);
         /// 
         /// // Restore default memory allocation functions.
-        /// gmp_lib.gmp_set_memory_functions(null, null, null);
+        /// gmp_lib.mp_set_memory_functions(null, null, null);
         /// </code> 
         /// <code language="VB.NET">
         /// ' Retrieve GMP default memory allocation functions.
@@ -392,7 +391,7 @@ namespace Math.Gmp.Native
         /// gmp_lib.gmp_set_memory_functions(Nothing, Nothing, Nothing)
         /// </code> 
         /// </example>
-        public static void gmp_set_memory_functions(allocate_function alloc_func_ptr, reallocate_function realloc_func_ptr, free_function free_func_ptr)
+        public static void mp_set_memory_functions(allocate_function alloc_func_ptr, reallocate_function realloc_func_ptr, free_function free_func_ptr)
         {
             IntPtr allocate = IntPtr.Zero;
             IntPtr reallocate = IntPtr.Zero;
