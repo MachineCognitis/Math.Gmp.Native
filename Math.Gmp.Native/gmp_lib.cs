@@ -538,7 +538,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize <paramref name="state"/> with a linear congruential algorithm <c>X = (<paramref name="a"/>X + <paramref name="c"/>) mod 2^<paramref name="m2exp"/></c>.
+        /// Initialize <paramref name="state"/> with a linear congruential algorithm X = (<paramref name="a"/>X + <paramref name="c"/>) mod 2^<paramref name="m2exp"/>.
         /// </summary>
         /// <param name="state">The state to initialize.</param>
         /// <param name="a">Parameter of the algorithm.</param>
@@ -546,12 +546,12 @@ namespace Math.Gmp.Native
         /// <param name="m2exp">Parameter of the algorithm.</param>
         /// <remarks>
         /// <para>
-        /// The low bits of <c>X</c> in this algorithm are not very random.
-        /// The least significant bit will have a period no more than <c>2</c>, and the second bit
-        /// no more than <c>4</c>, etc. For this reason only the high half of each <c>X</c> is actually used.
+        /// The low bits of X in this algorithm are not very random.
+        /// The least significant bit will have a period no more than 2, and the second bit
+        /// no more than 4, etc. For this reason only the high half of each X is actually used.
         /// </para>
         /// <para>
-        /// When a random number of more than <c><paramref name="m2exp"/> / 2</c> bits is to be generated,
+        /// When a random number of more than <paramref name="m2exp"/> / 2 bits is to be generated,
         /// multiple iterations of the recurrence are used and the results concatenated.
         /// </para>
         /// </remarks>
@@ -605,8 +605,8 @@ namespace Math.Gmp.Native
         /// <returns>If successful the return value is non-zero. If <paramref name="size"/> is bigger than the table data provides then the return value is zero.</returns>
         /// <remarks>
         /// <para>
-        /// <c>a</c>, <c>c</c> and <c>m2exp</c> are selected from a table, chosen so that <paramref name="size"/>
-        /// bits (or more) of each <c>X</c> will be used, i.e. <c>m2exp / 2 &#8805; <paramref name="size"/></c>.
+        /// a, c and m2exp are selected from a table, chosen so that <paramref name="size"/>
+        /// bits (or more) of each X will be used, i.e. m2exp / 2 &#8805; <paramref name="size"/>.
         /// </para>
         /// </remarks>
         /// <seealso cref="gmp_randclear"/>
@@ -867,7 +867,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Generate a uniformly distributed random number of <paramref name="n"/> bits, i.e. in the range <c>0</c> to <c>2^<paramref name="n"/> - 1</c> inclusive.
+        /// Generate a uniformly distributed random number of <paramref name="n"/> bits, i.e. in the range 0 to 2^<paramref name="n"/> - 1 inclusive.
         /// </summary>
         /// <param name="state">The state of the random number generator to use.</param>
         /// <param name="n">The numbe rof bits.</param>
@@ -915,7 +915,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Generate a uniformly distributed random number in the range <c>0</c> to <c><paramref name="n"/> - 1</c>, inclusive.
+        /// Generate a uniformly distributed random number in the range 0 to <paramref name="n"/> - 1, inclusive.
         /// </summary>
         /// <param name="state">The state of the random number generator to use.</param>
         /// <param name="n">The upper bound of the range.</param>
@@ -971,7 +971,7 @@ namespace Math.Gmp.Native
         /// The block will be the size of the string and null-terminator. The address of the block in stored to <paramref name="pp"/>.
         /// </para>
         /// <para>
-        /// Unlike the C library asprintf, <see cref="gmp_asprintf"/> doesn’t return <c>-1</c> if there’s no more memory available,
+        /// Unlike the C library asprintf, <see cref="gmp_asprintf"/> doesn’t return -1 if there’s no more memory available,
         /// it lets the current allocation function handle that. 
         /// </para>
         /// </remarks>
@@ -1031,7 +1031,7 @@ namespace Math.Gmp.Native
         /// <param name="fp">File stream.</param>
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">Formatted Output Strings</a>.</param>
         /// <param name="args">Arguments.</param>
-        /// <returns>Return the number of characters written, or <c>-1</c> if an error occurred.</returns>
+        /// <returns>Return the number of characters written, or -1 if an error occurred.</returns>
         /// <seealso cref="gmp_printf"/>
         /// <seealso cref="gmp_sprintf"/>
         /// <seealso cref="gmp_vfprintf"/>
@@ -1097,11 +1097,11 @@ namespace Math.Gmp.Native
         //#endif
 
         /// <summary>
-        /// Print to the standard output <c>stdout</c>.
+        /// Print to the standard output stdout.
         /// </summary>
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">Formatted Output Strings</a>.</param>
         /// <param name="args">Arguments.</param>
-        /// <returns>Return the number of characters written, or <c>-1</c> if an error occurred.</returns>
+        /// <returns>Return the number of characters written, or -1 if an error occurred.</returns>
         /// <seealso cref="gmp_fprintf"/>
         /// <seealso cref="gmp_sprintf"/>
         /// <seealso cref="gmp_vprintf"/>
@@ -1149,7 +1149,7 @@ namespace Math.Gmp.Native
         /// <param name="size">The maximum number of bytes to write.</param>
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">Formatted Output Strings</a>.</param>
         /// <param name="args">Arguments.</param>
-        /// <returns>The return value is the total number of characters which ought to have been produced, excluding the terminating null. If retval &#8805; <paramref name="size"/> then the actual output has been truncated to the first <c><paramref name="size"/> - 1</c> characters, and a null appended.</returns>
+        /// <returns>The return value is the total number of characters which ought to have been produced, excluding the terminating null. If retval &#8805; <paramref name="size"/> then the actual output has been truncated to the first <paramref name="size"/> - 1 characters, and a null appended.</returns>
         /// <remarks>
         /// <para>
         /// No more than <paramref name="size"/> bytes will be written. To get the full output, <paramref name="size"/> must be enough for the string and null-terminator. 
@@ -1290,7 +1290,7 @@ namespace Math.Gmp.Native
         /// The block will be the size of the string and null-terminator. The address of the block in stored to <paramref name="ptr"/>.
         /// </para>
         /// <para>
-        /// Unlike the C library vasprintf, <see cref="gmp_vasprintf"/> doesn’t return <c>-1</c> if there’s no more memory available,
+        /// Unlike the C library vasprintf, <see cref="gmp_vasprintf"/> doesn’t return -1 if there’s no more memory available,
         /// it lets the current allocation function handle that. 
         /// </para>
         /// </remarks>
@@ -1356,7 +1356,7 @@ namespace Math.Gmp.Native
         /// <param name="fp">File stream.</param>
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">Formatted Output Strings</a>.</param>
         /// <param name="ap">Arguments.</param>
-        /// <returns>Return the number of characters written, or <c>-1</c> if an error occurred.</returns>
+        /// <returns>Return the number of characters written, or -1 if an error occurred.</returns>
         /// <seealso cref="gmp_fprintf"/>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
@@ -1417,11 +1417,11 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Print to the standard output <c>stdout</c>.
+        /// Print to the standard output stdout.
         /// </summary>
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">Formatted Output Strings</a>.</param>
         /// <param name="ap">Arguments.</param>
-        /// <returns>Return the number of characters written, or <c>-1</c> if an error occurred.</returns>
+        /// <returns>Return the number of characters written, or -1 if an error occurred.</returns>
         /// <seealso cref="gmp_printf"/>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
@@ -1474,7 +1474,7 @@ namespace Math.Gmp.Native
         /// <param name="size">The maximum number of bytes to write.</param>
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">Formatted Output Strings</a>.</param>
         /// <param name="ap">Arguments.</param>
-        /// <returns>The return value is the total number of characters which ought to have been produced, excluding the terminating null. If retval &#8805; <paramref name="size"/> then the actual output has been truncated to the first <c><paramref name="size"/> - 1</c> characters, and a null appended.</returns>
+        /// <returns>The return value is the total number of characters which ought to have been produced, excluding the terminating null. If retval &#8805; <paramref name="size"/> then the actual output has been truncated to the first <paramref name="size"/> - 1 characters, and a null appended.</returns>
         /// <remarks>
         /// <para>
         /// No more than <paramref name="size"/> bytes will be written. To get the full output, <paramref name="size"/> must be enough for the string and null-terminator. 
@@ -1622,7 +1622,7 @@ namespace Math.Gmp.Native
         #region "Formatted input routines."
 
         /// <summary>
-        /// Read from the stream <c>fp</c>.
+        /// Read from the stream <paramref name="fp"/>.
         /// </summary>
         /// <param name="fp">File stream.</param>
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">Formatted Input Strings</a>.</param>
@@ -1832,7 +1832,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Read from the stream <c>fp</c>.
+        /// Read from the stream <paramref name="fp"/>.
         /// </summary>
         /// <param name="fp">File stream.</param>
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">Formatted Input Strings</a>.</param>
@@ -2077,7 +2077,7 @@ namespace Math.Gmp.Native
         /// <param name="new_alloc">The new number of limbs.</param>
         /// <remarks>
         /// <para>
-        /// The value in <paramref name="integer"/> is preserved if it fits, or is set to <c>0</c> if not.
+        /// The value in <paramref name="integer"/> is preserved if it fits, or is set to 0 if not.
         /// </para>
         /// <para>
         /// <see cref="mpz_realloc2"/> is the preferred way to accomplish allocation changes like this.
@@ -2206,7 +2206,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> + <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> + <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -2274,7 +2274,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> + <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> + <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -2327,7 +2327,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="rop"/> + <paramref name="op1"/> * <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="rop"/> + <paramref name="op1"/> * <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -2395,7 +2395,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="rop"/> + <paramref name="op1"/> * <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="rop"/> + <paramref name="op1"/> * <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -2540,7 +2540,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// Negative values of n are supported by <see cref="mpz_bin_ui"/>, using the identity
-        /// <c>bin(-<paramref name="n"/>, <paramref name="k"/>) = (-1)^<paramref name="k"/> * bin(<paramref name="n"/> + <paramref name="k"/> - 1, <paramref name="k"/>)</c>,
+        /// bin(-<paramref name="n"/>, <paramref name="k"/>) = (-1)^<paramref name="k"/> * bin(<paramref name="n"/> + <paramref name="k"/> - 1, <paramref name="k"/>),
         /// see Knuth volume 1 section 1.2.6 part G.
         /// </para>
         /// </remarks>
@@ -2636,7 +2636,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the quotient <paramref name="q"/> to <c>ceiling(<paramref name="n"/> / <paramref name="d"/>)</c>.
+        /// Set the quotient <paramref name="q"/> to ceiling(<paramref name="n"/> / <paramref name="d"/>).
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -2711,7 +2711,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the quotient <paramref name="q"/> to <c>ceiling(<paramref name="n"/> / 2^<paramref name="b"/>)</c>.
+        /// Set the quotient <paramref name="q"/> to ceiling(<paramref name="n"/> / 2^<paramref name="b"/>).
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -2777,12 +2777,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the quotient <paramref name="q"/> to <c>ceiling(<paramref name="n"/> / <paramref name="d"/>)</c>, and return the remainder <c>r = |<paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/>|</c>.
+        /// Set the quotient <paramref name="q"/> to ceiling(<paramref name="n"/> / <paramref name="d"/>), and return the remainder r = | <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/> |.
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <returns>Return the remainder <c>r = |<paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/>|</c>.</returns>
+        /// <returns>Return the remainder r = | <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/> |.</returns>
         /// <seealso cref="mpz_cdiv_q"/>
         /// <seealso cref="mpz_cdiv_r"/>
         /// <seealso cref="mpz_cdiv_qr"/>
@@ -2842,7 +2842,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the quotient <paramref name="q"/> to <c>ceiling(<paramref name="n"/> / <paramref name="d"/>)</c>, and set the remainder <paramref name="r"/> to <c><paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/></c>.
+        /// Set the quotient <paramref name="q"/> to ceiling(<paramref name="n"/> / <paramref name="d"/>), and set the remainder <paramref name="r"/> to <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/>.
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="r">The result remainder integer.</param>
@@ -2923,13 +2923,13 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set quotient <paramref name="q"/> to <c>ceiling(<paramref name="n"/> / <paramref name="d"/>)</c>, set the remainder <paramref name="r"/> to <c><paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/></c>, and return <c>|<paramref name="r"/>|</c>.
+        /// Set quotient <paramref name="q"/> to ceiling(<paramref name="n"/> / <paramref name="d"/>), set the remainder <paramref name="r"/> to <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/>, and return | <paramref name="r"/> |.
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <returns>Return <c>|<paramref name="r"/>|</c>.</returns>
+        /// <returns>Return | <paramref name="r"/> |.</returns>
         /// <seealso cref="mpz_cdiv_q"/>
         /// <seealso cref="mpz_cdiv_r"/>
         /// <seealso cref="mpz_cdiv_qr"/>
@@ -2996,7 +2996,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the remainder <paramref name="r"/> to <c><paramref name="n"/> - q * <paramref name="d"/></c> where <c>q = ceiling(<paramref name="n"/> / <paramref name="d"/>)</c>.
+        /// Set the remainder <paramref name="r"/> to <paramref name="n"/> - q * <paramref name="d"/> where q = ceiling(<paramref name="n"/> / <paramref name="d"/>).
         /// </summary>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -3071,7 +3071,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the remainder <paramref name="r"/> to <c><paramref name="n"/> - q * 2^<paramref name="b"/></c> where <c>q = ceiling(<paramref name="n"/> / 2^<paramref name="b"/>)</c>.
+        /// Set the remainder <paramref name="r"/> to <paramref name="n"/> - q * 2^<paramref name="b"/> where q = ceiling(<paramref name="n"/> / 2^<paramref name="b"/>).
         /// </summary>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -3136,12 +3136,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the remainder <paramref name="r"/> to <c><paramref name="n"/> - q * <paramref name="d"/></c> where <c>q = ceiling(<paramref name="n"/> / <paramref name="d"/>)</c>, and return <c>|<paramref name="r"/>|</c>.
+        /// Set the remainder <paramref name="r"/> to <paramref name="n"/> - q * <paramref name="d"/> where q = ceiling(<paramref name="n"/> / <paramref name="d"/>), and return | <paramref name="r"/> |.
         /// </summary>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <returns>Return <c>|<paramref name="r"/>|</c>.</returns>
+        /// <returns>Return | <paramref name="r"/> |.</returns>
         /// <seealso cref="mpz_cdiv_q"/>
         /// <seealso cref="mpz_cdiv_r"/>
         /// <seealso cref="mpz_cdiv_qr"/>
@@ -3203,11 +3203,11 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return the remainder <c>|r|</c> where <c>r = <paramref name="n"/> - q * <paramref name="d"/></c>, and where <c>q = ceiling(<paramref name="n"/> / <paramref name="d"/>)</c>.
+        /// Return the remainder | r | where r = <paramref name="n"/> - q * <paramref name="d"/>, and where q = ceiling(<paramref name="n"/> / <paramref name="d"/>).
         /// </summary>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <returns>The remainder <c>|r|</c> where <c>r = <paramref name="n"/> - q * <paramref name="d"/></c>, and where <c>q = ceiling(<paramref name="n"/> / <paramref name="d"/>)</c>.</returns>
+        /// <returns>The remainder | r | where r = <paramref name="n"/> - q * <paramref name="d"/>, and where q = ceiling(<paramref name="n"/> / <paramref name="d"/>).</returns>
         /// <seealso cref="mpz_cdiv_q"/>
         /// <seealso cref="mpz_cdiv_r"/>
         /// <seealso cref="mpz_cdiv_qr"/>
@@ -3359,7 +3359,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number <c>0</c>. 
+        /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and"/>
@@ -3415,7 +3415,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <returns>Return a positive value if <c><paramref name="op1"/> &gt; <paramref name="op2"/></c>, zero if <c><paramref name="op1"/> = <paramref name="op2"/></c>, or a negative value if <c><paramref name="op1"/> &lt; <paramref name="op2"/></c>.</returns>
+        /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, or a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
         /// <seealso cref="mpz_cmp_d"/>
         /// <seealso cref="mpz_cmp_si"/>
         /// <seealso cref="mpz_cmp_ui"/>
@@ -3468,7 +3468,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <returns>Return a positive value if <c><paramref name="op1"/> &gt; <paramref name="op2"/></c>, zero if <c><paramref name="op1"/> = <paramref name="op2"/></c>, or a negative value if <c><paramref name="op1"/> &lt; <paramref name="op2"/></c>.</returns>
+        /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, or a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
         /// <remarks>
         /// <para>
         /// <see cref="mpz_cmp_d"/> can be called with an infinity (see <see cref="double.PositiveInfinity"/> or <see cref="double.NegativeInfinity"/>),
@@ -3518,7 +3518,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <returns>Return a positive value if <c><paramref name="op1"/> &gt; <paramref name="op2"/></c>, zero if <c><paramref name="op1"/> = <paramref name="op2"/></c>, or a negative value if <c><paramref name="op1"/> &lt; <paramref name="op2"/></c>.</returns>
+        /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, or a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
         /// <seealso cref="mpz_cmp"/>
         /// <seealso cref="mpz_cmp_d"/>
         /// <seealso cref="mpz_cmp_ui"/>
@@ -3562,7 +3562,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <returns>Return a positive value if <c><paramref name="op1"/> &gt; <paramref name="op2"/></c>, zero if <c><paramref name="op1"/> = <paramref name="op2"/></c>, or a negative value if <c><paramref name="op1"/> &lt; <paramref name="op2"/></c>.</returns>
+        /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, or a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
         /// <seealso cref="mpz_cmp"/>
         /// <seealso cref="mpz_cmp_d"/>
         /// <seealso cref="mpz_cmp_si"/>
@@ -3605,7 +3605,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <returns>Return a positive value if <c>|<paramref name="op1"/>| &gt; |<paramref name="op2"/>|</c>, zero if <c>|<paramref name="op1"/>| = |<paramref name="op2"/>|</c>, or a negative value if <c>|<paramref name="op1"/>| &lt; |<paramref name="op2"/>|</c>.</returns>
+        /// <returns>Return a positive value if | <paramref name="op1"/> | &gt; | <paramref name="op2"/> |, zero if | <paramref name="op1"/> | = | <paramref name="op2"/> |, or a negative value if | <paramref name="op1"/> | &lt; | <paramref name="op2"/> |.</returns>
         /// <seealso cref="mpz_cmp"/>
         /// <seealso cref="mpz_cmp_d"/>
         /// <seealso cref="mpz_cmp_si"/>
@@ -3658,7 +3658,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <returns>Return a positive value if <c>|<paramref name="op1"/>| &gt; |<paramref name="op2"/>|</c>, zero if <c>|<paramref name="op1"/>| = |<paramref name="op2"/>|</c>, or a negative value if <c>|<paramref name="op1"/>| &lt; |<paramref name="op2"/>|</c>.</returns>
+        /// <returns>Return a positive value if | <paramref name="op1"/> | &gt; | <paramref name="op2"/> |, zero if | <paramref name="op1"/> | = | <paramref name="op2"/> |, or a negative value if | <paramref name="op1"/> | &lt; | <paramref name="op2"/> |.</returns>
         /// <remarks>
         /// <para>
         /// <see cref="mpz_cmpabs_d"/> can be called with an infinity (see <see cref="double.PositiveInfinity"/> or <see cref="double.NegativeInfinity"/>),
@@ -3708,7 +3708,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <returns>Return a positive value if <c>|<paramref name="op1"/>| &gt; |<paramref name="op2"/>|</c>, zero if <c>|<paramref name="op1"/>| = |<paramref name="op2"/>|</c>, or a negative value if <c>|<paramref name="op1"/>| &lt; |<paramref name="op2"/>|</c>.</returns>
+        /// <returns>Return a positive value if | <paramref name="op1"/> | &gt; | <paramref name="op2"/> |, zero if | <paramref name="op1"/> | = | <paramref name="op2"/> |, or a negative value if | <paramref name="op1"/> | &lt; | <paramref name="op2"/> |.</returns>
         /// <seealso cref="mpz_cmp"/>
         /// <seealso cref="mpz_cmp_d"/>
         /// <seealso cref="mpz_cmp_si"/>
@@ -3746,7 +3746,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number <c>0</c>. 
+        /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and"/>
@@ -3815,7 +3815,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number <c>0</c>. 
+        /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and"/>
@@ -3874,10 +3874,10 @@ namespace Math.Gmp.Native
         /// <returns>Non-zero if <paramref name="n"/> is congruent to <paramref name="c"/> modulo <paramref name="d"/>.</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="n"/> is congruent to <c><paramref name="c"/> mod <paramref name="d"/></c> if there exists an integer <c>q</c>
-        /// satisfying <c><paramref name="n"/> = <paramref name="c"/> + q * <paramref name="d"/></c>.
-        /// Unlike the other division functions, <c><paramref name="d"/> = 0</c> is accepted and following the rule it can be seen
-        /// that <paramref name="n"/> and <paramref name="c"/> are considered congruent <c>mod 0</c> only when exactly equal.
+        /// <paramref name="n"/> is congruent to <paramref name="c"/> mod <paramref name="d"/> if there exists an integer q
+        /// satisfying <paramref name="n"/> = <paramref name="c"/> + q * <paramref name="d"/>.
+        /// Unlike the other division functions, <paramref name="d"/> = 0 is accepted and following the rule it can be seen
+        /// that <paramref name="n"/> and <paramref name="c"/> are considered congruent mod 0 only when exactly equal.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_cdiv_qr"/>
@@ -3938,16 +3938,16 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return non-zero if <paramref name="n"/> is congruent to <paramref name="c"/> modulo <c>2^<paramref name="b"/></c>.
+        /// Return non-zero if <paramref name="n"/> is congruent to <paramref name="c"/> modulo 2^<paramref name="b"/>.
         /// </summary>
         /// <param name="n">An operand integer.</param>
-        /// <param name="c">The remainder of the division by <c>2^<paramref name="b"/></c>.</param>
+        /// <param name="c">The remainder of the division by 2^<paramref name="b"/>.</param>
         /// <param name="b">The exponent of the power of two divisor.</param>
-        /// <returns>Non-zero if <paramref name="n"/> is congruent to <paramref name="c"/> modulo <c>2^<paramref name="b"/></c>.</returns>
+        /// <returns>Non-zero if <paramref name="n"/> is congruent to <paramref name="c"/> modulo 2^<paramref name="b"/>.</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="n"/> is congruent to <c><paramref name="c"/> mod 2^<paramref name="b"/></c> if there exists an integer <c>q</c>
-        /// satisfying <c><paramref name="n"/> = <paramref name="c"/> + q * 2^<paramref name="b"/></c>.
+        /// <paramref name="n"/> is congruent to <paramref name="c"/> mod 2^<paramref name="b"/> if there exists an integer q
+        /// satisfying <paramref name="n"/> = <paramref name="c"/> + q * 2^<paramref name="b"/>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_cdiv_qr"/>
@@ -4007,10 +4007,10 @@ namespace Math.Gmp.Native
         /// <returns>Non-zero if <paramref name="n"/> is congruent to <paramref name="c"/> modulo <paramref name="d"/>.</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="n"/> is congruent to <c><paramref name="c"/> mod <paramref name="d"/></c> if there exists an integer <c>q</c>
-        /// satisfying <c><paramref name="n"/> = <paramref name="c"/> + q * <paramref name="d"/></c>.
-        /// Unlike the other division functions, <c><paramref name="d"/> = 0</c> is accepted and following the rule it can be seen
-        /// that <paramref name="n"/> and <paramref name="c"/> are considered congruent <c>mod 0</c> only when exactly equal.
+        /// <paramref name="n"/> is congruent to <paramref name="c"/> mod <paramref name="d"/> if there exists an integer q
+        /// satisfying <paramref name="n"/> = <paramref name="c"/> + q * <paramref name="d"/>.
+        /// Unlike the other division functions, <paramref name="d"/> = 0 is accepted and following the rule it can be seen
+        /// that <paramref name="n"/> and <paramref name="c"/> are considered congruent mod 0 only when exactly equal.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_cdiv_qr"/>
@@ -4053,7 +4053,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="q"/> to <c><paramref name="n"/> / <paramref name="d"/></c> when it is known in advance that <paramref name="d"/> divides <paramref name="n"/>. 
+        /// Set <paramref name="q"/> to <paramref name="n"/> / <paramref name="d"/> when it is known in advance that <paramref name="d"/> divides <paramref name="n"/>. 
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -4121,7 +4121,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="q"/> to <c><paramref name="n"/> / <paramref name="d"/></c> when it is known in advance that <paramref name="d"/> divides <paramref name="n"/>. 
+        /// Set <paramref name="q"/> to <paramref name="n"/> / <paramref name="d"/> when it is known in advance that <paramref name="d"/> divides <paramref name="n"/>. 
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -4187,10 +4187,10 @@ namespace Math.Gmp.Native
         /// <returns>Non-zero if <paramref name="n"/> is exactly divisible by <paramref name="d"/>.</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="n"/> is divisible by <paramref name="d"/> if there exists an integer <c>q</c>
-        /// satisfying <c><paramref name="n"/> = q * <paramref name="d"/></c>. Unlike the other division functions,
-        /// <c><paramref name="d"/> = 0</c> is accepted and following the rule it can be seen that only <c>0</c> is
-        /// considered divisible by <c>0</c>. 
+        /// <paramref name="n"/> is divisible by <paramref name="d"/> if there exists an integer q
+        /// satisfying <paramref name="n"/> = q * <paramref name="d"/>. Unlike the other division functions,
+        /// <paramref name="d"/> = 0 is accepted and following the rule it can be seen that only 0 is
+        /// considered divisible by 0. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_cdiv_qr"/>
@@ -4249,10 +4249,10 @@ namespace Math.Gmp.Native
         /// <returns>Non-zero if <paramref name="n"/> is exactly divisible by <paramref name="d"/>.</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="n"/> is divisible by <paramref name="d"/> if there exists an integer <c>q</c>
-        /// satisfying <c><paramref name="n"/> = q * <paramref name="d"/></c>. Unlike the other division functions,
-        /// <c><paramref name="d"/> = 0</c> is accepted and following the rule it can be seen that only <c>0</c> is
-        /// considered divisible by <c>0</c>. 
+        /// <paramref name="n"/> is divisible by <paramref name="d"/> if there exists an integer q
+        /// satisfying <paramref name="n"/> = q * <paramref name="d"/>. Unlike the other division functions,
+        /// <paramref name="d"/> = 0 is accepted and following the rule it can be seen that only 0 is
+        /// considered divisible by 0. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_cdiv_qr"/>
@@ -4295,15 +4295,15 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return non-zero if <paramref name="n"/> is exactly divisible by <c>2^<paramref name="b"/></c>.
+        /// Return non-zero if <paramref name="n"/> is exactly divisible by 2^<paramref name="b"/>.
         /// </summary>
         /// <param name="n">The numerator integer.</param>
         /// <param name="b">The exponent of the power of two denominator integer.</param>
-        /// <returns>Non-zero if <paramref name="n"/> is exactly divisible by <c>2^<paramref name="b"/></c>.</returns>
+        /// <returns>Non-zero if <paramref name="n"/> is exactly divisible by 2^<paramref name="b"/>.</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="n"/> is divisible by <c>2^<paramref name="b"/></c> if there exists an integer <c>q</c>
-        /// satisfying <c><paramref name="n"/> = q * 2^<paramref name="b"/></c>. 
+        /// <paramref name="n"/> is divisible by 2^<paramref name="b"/> if there exists an integer q
+        /// satisfying <paramref name="n"/> = q * 2^<paramref name="b"/>. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_cdiv_qr"/>
@@ -4394,21 +4394,21 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="countp">The number of words produced.</param>
-        /// <param name="order"><c>1</c> for most significant word first or <c>-1</c> for least significant first.</param>
+        /// <param name="order">1 for most significant word first or -1 for least significant first.</param>
         /// <param name="size">The number of bytes in each word.</param>
-        /// <param name="endian"><c>1</c> for most significant byte first, <c>-1</c> for least significant first, or <c>0</c> for the native endianness of the host CPU.</param>
+        /// <param name="endian">1 for most significant byte first, -1 for least significant first, or 0 for the native endianness of the host CPU.</param>
         /// <param name="nails">The number of most significant bits to skip.</param>
         /// <param name="op">The operand integer.</param>
         /// <returns>Either <paramref name="rop"/> or the allocated block.</returns>
         /// <remarks>
         /// <para>
         /// The parameters specify the format of the data produced.
-        /// Each word will be <paramref name="size"/> bytes and <paramref name="order"/> can be <c>1</c> for most significant word first
-        /// or <c>-1</c> for least significant first.
-        /// Within each word <paramref name="endian"/> can be <c>1</c> for most significant byte first,
-        /// <c>-1</c> for least significant first, or <c>0</c> for the native endianness of the host CPU.
+        /// Each word will be <paramref name="size"/> bytes and <paramref name="order"/> can be 1 for most significant word first
+        /// or -1 for least significant first.
+        /// Within each word <paramref name="endian"/> can be 1 for most significant byte first,
+        /// -1 for least significant first, or 0 for the native endianness of the host CPU.
         /// The most significant <paramref name="nails"/> bits of each word are unused and set to zero,
-        /// this can be <c>0</c> to produce full words. 
+        /// this can be 0 to produce full words. 
         /// </para>
         /// <para>
         /// The number of words produced is written to <paramref name="countp"/>, or <paramref name="countp"/> can be NULL to discard the count.
@@ -4432,8 +4432,8 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// When an application is allocating space itself the required size can be determined with a calculation like the following.
-        /// Since <see cref="mpz_sizeinbase"/> always returns at least <c>1</c>, count here will be at least one, which avoids any portability
-        /// problems with <c>malloc(0)</c>, though if <c>z</c> is zero no space at all is actually needed (or written). 
+        /// Since <see cref="mpz_sizeinbase"/> always returns at least 1, count here will be at least one, which avoids any portability
+        /// problems with malloc(0), though if z is zero no space at all is actually needed (or written). 
         /// </para> 
         /// <code language="C++">
         /// numb = 8 * size - nail;
@@ -4529,7 +4529,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to the factorial <c><paramref name="n"/>!</c>.
+        /// Set <paramref name="rop"/> to the factorial <paramref name="n"/>!.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="n">The operand integer.</param>
@@ -4573,7 +4573,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to the double-factorial <c><paramref name="n"/>!!</c>.
+        /// Set <paramref name="rop"/> to the double-factorial <paramref name="n"/>!!.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="n">The operand integer.</param>
@@ -4617,7 +4617,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to the m-multi-factorial <c><paramref name="n"/>!^(<paramref name="m"/>)</c>n.
+        /// Set <paramref name="rop"/> to the m-multi-factorial <paramref name="n"/>!^(<paramref name="m"/>)n.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="n">The first operand integer.</param>
@@ -4662,7 +4662,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to the primorial of <paramref name="n"/>, i.e. the product of all positive prime numbers <c>&#8804; <paramref name="n"/></c>. 
+        /// Set <paramref name="rop"/> to the primorial of <paramref name="n"/>, i.e. the product of all positive prime numbers &#8804; <paramref name="n"/>. 
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="n">The operand integer.</param>
@@ -4704,7 +4704,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the quotient <paramref name="q"/> to <c>floor(<paramref name="n"/> / <paramref name="d"/>)</c>.
+        /// Set the quotient <paramref name="q"/> to floor(<paramref name="n"/> / <paramref name="d"/>).
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -4779,7 +4779,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the quotient <paramref name="q"/> to <c>floor(<paramref name="n"/> / 2^<paramref name="b"/>)</c>.
+        /// Set the quotient <paramref name="q"/> to floor(<paramref name="n"/> / 2^<paramref name="b"/>).
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -4845,12 +4845,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the quotient <paramref name="q"/> to <c>floor(<paramref name="n"/> / <paramref name="d"/>)</c>, and return the remainder <c>r = |<paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/>|</c>.
+        /// Set the quotient <paramref name="q"/> to floor(<paramref name="n"/> / <paramref name="d"/>), and return the remainder r = | <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/> |.
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <returns>Return the remainder <c>r = |<paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/>|</c>.</returns>
+        /// <returns>Return the remainder r = | <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/> |.</returns>
         /// <seealso cref="mpz_cdiv_qr"/>
         /// <seealso cref="mpz_fdiv_r"/>
         /// <seealso cref="mpz_fdiv_qr"/>
@@ -4909,7 +4909,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the quotient <paramref name="q"/> to <c>floor(<paramref name="n"/> / <paramref name="d"/>)</c>, and set the remainder <paramref name="r"/> to <c><paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/></c>.
+        /// Set the quotient <paramref name="q"/> to floor(<paramref name="n"/> / <paramref name="d"/>), and set the remainder <paramref name="r"/> to <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/>.
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="r">The result remainder integer.</param>
@@ -4990,13 +4990,13 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set quotient <paramref name="q"/> to <c>floor(<paramref name="n"/> / <paramref name="d"/>)</c>, set the remainder <paramref name="r"/> to <c><paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/></c>, and return <c>|<paramref name="r"/>|</c>.
+        /// Set quotient <paramref name="q"/> to floor(<paramref name="n"/> / <paramref name="d"/>), set the remainder <paramref name="r"/> to <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/>, and return | <paramref name="r"/> |.
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <returns>Return <c>|<paramref name="r"/>|</c>.</returns>
+        /// <returns>Return | <paramref name="r"/> |.</returns>
         /// <seealso cref="mpz_cdiv_qr"/>
         /// <seealso cref="mpz_fdiv_q"/>
         /// <seealso cref="mpz_fdiv_r"/>
@@ -5063,7 +5063,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the remainder <paramref name="r"/> to <c><paramref name="n"/> - q * <paramref name="d"/></c> where <c>q = floor(<paramref name="n"/> / <paramref name="d"/>)</c>.
+        /// Set the remainder <paramref name="r"/> to <paramref name="n"/> - q * <paramref name="d"/> where q = floor(<paramref name="n"/> / <paramref name="d"/>).
         /// </summary>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -5137,7 +5137,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the remainder <paramref name="r"/> to <c><paramref name="n"/> - q * 2^<paramref name="b"/></c> where <c>q = floor(<paramref name="n"/> / 2^<paramref name="b"/>)</c>.
+        /// Set the remainder <paramref name="r"/> to <paramref name="n"/> - q * 2^<paramref name="b"/> where q = floor(<paramref name="n"/> / 2^<paramref name="b"/>).
         /// </summary>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -5203,12 +5203,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the remainder <paramref name="r"/> to <c><paramref name="n"/> - q * <paramref name="d"/></c> where <c>q = floor(<paramref name="n"/> / <paramref name="d"/>)</c>, and return <c>|<paramref name="r"/>|</c>.
+        /// Set the remainder <paramref name="r"/> to <paramref name="n"/> - q * <paramref name="d"/> where q = floor(<paramref name="n"/> / <paramref name="d"/>), and return | <paramref name="r"/> |.
         /// </summary>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <returns>Return <c>|<paramref name="r"/>|</c>.</returns>
+        /// <returns>Return | <paramref name="r"/> |.</returns>
         /// <seealso cref="mpz_cdiv_qr"/>
         /// <seealso cref="mpz_fdiv_q"/>
         /// <seealso cref="mpz_fdiv_r"/>
@@ -5271,11 +5271,11 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return the remainder <c>|r|</c> where <c>r = <paramref name="n"/> - q * <paramref name="d"/></c>, and where <c>q = floor(<paramref name="n"/> / <paramref name="d"/>)</c>.
+        /// Return the remainder | r | where r = <paramref name="n"/> - q * <paramref name="d"/>, and where q = floor(<paramref name="n"/> / <paramref name="d"/>).
         /// </summary>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <returns>The remainder <c>|r|</c> where <c>r = <paramref name="n"/> - q * <paramref name="d"/></c>, and where <c>q = floor(<paramref name="n"/> / <paramref name="d"/>)</c>.</returns>
+        /// <returns>The remainder | r | where r = <paramref name="n"/> - q * <paramref name="d"/>, and where q = floor(<paramref name="n"/> / <paramref name="d"/>).</returns>
         /// <seealso cref="mpz_cdiv_qr"/>
         /// <seealso cref="mpz_fdiv_q"/>
         /// <seealso cref="mpz_fdiv_r"/>
@@ -5322,9 +5322,9 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Sets <paramref name="fn"/> to to <c>F[<paramref name="n"/>]</c>, the <paramref name="n"/>’th Fibonacci number. 
+        /// Sets <paramref name="fn"/> to to F[<paramref name="n"/>], the <paramref name="n"/>’th Fibonacci number. 
         /// </summary>
-        /// <param name="fn">The <c>F[<paramref name="n"/>]</c> result.</param>
+        /// <param name="fn">The F[<paramref name="n"/>] result.</param>
         /// <param name="n">The operand integer.</param>
         /// <remarks>
         /// <para>
@@ -5374,16 +5374,16 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Sets <paramref name="fn"/> to <c>F[<paramref name="n"/>]</c>, and <paramref name="fnsub1"/> to <c>F[<paramref name="n"/> - 1]</c>. 
+        /// Sets <paramref name="fn"/> to F[<paramref name="n"/>], and <paramref name="fnsub1"/> to F[<paramref name="n"/> - 1]. 
         /// </summary>
-        /// <param name="fn">The <c>F[<paramref name="n"/>]</c> result.</param>
-        /// <param name="fnsub1">The <c>F[<paramref name="n"/> - 1]</c> result.</param>
+        /// <param name="fn">The F[<paramref name="n"/>] result.</param>
+        /// <param name="fnsub1">The F[<paramref name="n"/> - 1] result.</param>
         /// <param name="n">The operand integer.</param>
         /// <remarks>
         /// <para>
         /// This function is designed for calculating isolated Fibonacci numbers. 
         /// When a sequence of values is wanted it’s best to start with <see cref="mpz_fib2_ui"/> 
-        /// and iterate the defining <c>F[n + 1] = F[n] + F[n - 1]</c> or similar.
+        /// and iterate the defining F[n + 1] = F[n] + F[n - 1] or similar.
         /// </para>
         /// <para>
         /// The Fibonacci numbers and Lucas numbers are related sequences, so it’s never necessary to call both
@@ -5709,7 +5709,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The result is always positive even if one or both input operands are negative.
-        /// Except if both inputs are zero; then this function defines <c>gcd(0,0) = 0</c>.
+        /// Except if both inputs are zero; then this function defines gcd(0,0) = 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_gcd_ui"/>
@@ -5770,12 +5770,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Compute the greatest common divisor of <paramref name="op1"/> and <paramref name="op2"/>. If <paramref name="rop"/> is not <c>null</c>, store the result there. 
+        /// Compute the greatest common divisor of <paramref name="op1"/> and <paramref name="op2"/>. If <paramref name="rop"/> is not null, store the result there. 
         /// </summary>
         /// <param name="rop">The result operand integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <returns>If the result is small enough to fit in an unsigned int, it is returned. If the result does not fit, <c>0</c> is returned, and the result is equal to the argument <paramref name="op1"/>.</returns>
+        /// <returns>If the result is small enough to fit in an unsigned int, it is returned. If the result does not fit, 0 is returned, and the result is equal to the argument <paramref name="op1"/>.</returns>
         /// <remarks>
         /// <para>
         /// Note that the result will always fit if <paramref name="op2"/> is non-zero.
@@ -5814,7 +5814,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="g"/> to the greatest common divisor of <paramref name="a"/> and <paramref name="b"/>, and in addition set <paramref name="s"/> and <paramref name="t"/> to coefficients satisfying <c><paramref name="a"/> * <paramref name="s"/> + <paramref name="b"/> * <paramref name="t"/> = <paramref name="g"/></c>.
+        /// Set <paramref name="g"/> to the greatest common divisor of <paramref name="a"/> and <paramref name="b"/>, and in addition set <paramref name="s"/> and <paramref name="t"/> to coefficients satisfying <paramref name="a"/> * <paramref name="s"/> + <paramref name="b"/> * <paramref name="t"/> = <paramref name="g"/>.
         /// </summary>
         /// <param name="g">The greateast common divisor.</param>
         /// <param name="s">The first result coefficient.</param>
@@ -5825,27 +5825,27 @@ namespace Math.Gmp.Native
         /// <para>
         /// The value in <paramref name="g"/> is always positive, even if one or both of <paramref name="a"/> and <paramref name="b"/>
         /// are negative (or zero if both inputs are zero). The values in <paramref name="s"/> and <paramref name="t"/> are chosen such
-        /// that normally, <c>|<paramref name="s"/>| &lt; |<paramref name="b"/>| / (2 <paramref name="g"/>)</c>
-        /// and <c>|<paramref name="t"/>| &lt; |<paramref name="a"/>| / (2 <paramref name="g"/>)</c>, and these relations
+        /// that normally, | <paramref name="s"/> | &lt; | <paramref name="b"/> | / (2 <paramref name="g"/>)
+        /// and | <paramref name="t"/> | &lt; | <paramref name="a"/> | / (2 <paramref name="g"/>), and these relations
         /// define <paramref name="s"/> and <paramref name="t"/> uniquely. There are a few exceptional cases: 
         /// </para>
         /// <para>
-        /// If <c>|<paramref name="a"/>| = |<paramref name="b"/>|</c>, then <c><paramref name="s"/> = 0</c>,
-        /// <c><paramref name="t"/> = sgn(<paramref name="b"/>)</c>.
+        /// If | <paramref name="a"/> | = | <paramref name="b"/> |, then <paramref name="s"/> = 0,
+        /// <paramref name="t"/> = sgn(<paramref name="b"/>).
         /// </para>
         /// <para>
-        /// Otherwise, <c><paramref name="s"/> = sgn(<paramref name="a"/>)</c> if <c><paramref name="b"/> = 0</c> 
-        /// or <c>|<paramref name="b"/>| = 2 <paramref name="g"/></c>, and <c><paramref name="t"/> = sgn(<paramref name="b"/>)</c>
-        /// if <c><paramref name="a"/> = 0</c> or <c>|<paramref name="a"/>| = 2 <paramref name="g"/></c>. 
+        /// Otherwise, <paramref name="s"/> = sgn(<paramref name="a"/>) if <paramref name="b"/> = 0 
+        /// or | <paramref name="b"/> | = 2 <paramref name="g"/>, and <paramref name="t"/> = sgn(<paramref name="b"/>)
+        /// if <paramref name="a"/> = 0 or | <paramref name="a"/> | = 2 <paramref name="g"/>. 
         /// </para>
         /// <para>
-        /// In all cases, <c><paramref name="s"/> = 0</c> if and only if
-        /// <c><paramref name="g"/> = |<paramref name="b"/>|</c>, i.e.,
+        /// In all cases, <paramref name="s"/> = 0 if and only if
+        /// <paramref name="g"/> = | <paramref name="b"/> |, i.e.,
         /// if <paramref name="b"/> divides <paramref name="a"/>
-        /// or <c><paramref name="a"/> = <paramref name="b"/> = 0</c>. 
+        /// or <paramref name="a"/> = <paramref name="b"/> = 0. 
         /// </para>
         /// <para>
-        /// If <paramref name="t"/> is <c>null</c> then that value is not computed. 
+        /// If <paramref name="t"/> is null then that value is not computed. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_gcd"/>
@@ -5968,9 +5968,9 @@ namespace Math.Gmp.Native
         /// <returns><paramref name="op"/> as a double, truncating if necessary (i.e. rounding towards zero).</returns>
         /// <remarks>
         /// <para>
-        /// The return value is in the range <c>0.5 &#8804; |d| &lt; 1</c> and the exponent is stored to <paramref name="exp"/>.
-        /// <c>d x 2^<paramref name="exp"/></c> is the (truncated) <paramref name="op"/> value.
-        /// If <paramref name="op"/> is zero, the return value is <c>0.0</c> and <c>0</c> is stored to <paramref name="exp"/>.
+        /// The return value is in the range 0.5 &#8804; | d | &lt; 1 and the exponent is stored to <paramref name="exp"/>.
+        /// d x 2^<paramref name="exp"/> is the (truncated) <paramref name="op"/> value.
+        /// If <paramref name="op"/> is zero, the return value is 0.0 and 0 is stored to <paramref name="exp"/>.
         /// </para>
         /// <para>
         /// This is similar to the standard C <c>frexp</c> function.
@@ -6078,11 +6078,11 @@ namespace Math.Gmp.Native
         /// <returns>A pointer to the result string is returned, being either the allocated block, or the given <paramref name="str"/>.</returns>
         /// <remarks>
         /// <para>
-        /// The base argument may vary from <c>2</c> to <c>62</c> or from <c>−2</c> to <c>−36</c>.
+        /// The base argument may vary from 2 to 62 or from −2 to −36.
         /// </para>
         /// <para>
-        /// For base in the range <c>2..36</c>, digits and lower-case letters are used; for <c>−2..−36</c>, digits and
-        /// upper-case letters are used; for <c>37..62</c>, digits, upper-case letters, and lower-case letters (in that
+        /// For base in the range 2..36, digits and lower-case letters are used; for −2..−36, digits and
+        /// upper-case letters are used; for 37..62, digits, upper-case letters, and lower-case letters (in that
         /// significance order) are used.
         /// </para>
         /// <para>
@@ -6092,7 +6092,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// If <paramref name="str"/> is not <see cref="char_ptr.Zero"/>, it should point to a block of storage large
-        /// enough for the result, that being <c><see cref="mpz_sizeinbase"/>(op, base) + 2</c>.
+        /// enough for the result, that being <see cref="mpz_sizeinbase"/>(op, base) + 2.
         /// The two extra bytes are for a possible minus sign, and the null-terminator.
         /// </para>
         /// </remarks>
@@ -6191,12 +6191,12 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The sign of <paramref name="op"/> is ignored, just the absolute value is used.
-        /// The least significant limb is number <c>0</c>.
+        /// The least significant limb is number 0.
         /// </para>
         /// <para>
         /// <see cref="mpz_size"/> can be used to find how many limbs make up <paramref name="op"/>.
-        /// <see cref="mpz_getlimbn"/> returns zero if <paramref name="n"/> is outside the range <c>0</c>
-        /// to <c>mpz_size(<paramref name="op"/>) - 1</c>.
+        /// <see cref="mpz_getlimbn"/> returns zero if <paramref name="n"/> is outside the range 0
+        /// to mpz_size(<paramref name="op"/>) - 1.
         /// </para>
         /// </remarks>
         /// <seealso cref="_mpz_realloc"/>
@@ -6269,15 +6269,15 @@ namespace Math.Gmp.Native
         /// <returns>The hamming distance between the two operands.</returns>
         /// <remarks>
         /// <para>
-        /// If <paramref name="op1"/> and <paramref name="op2"/> are both <c>&#8805; 0</c> or both <c>&lt; 0</c>,
+        /// If <paramref name="op1"/> and <paramref name="op2"/> are both &#8805; 0 or both &lt; 0,
         /// return the hamming distance between the two operands, which is the number of bit positions where
         /// <paramref name="op1"/> and <paramref name="op2"/> have different bit values. If one operand is
-        /// <c>&#8805; 0</c> and the other <c>&lt; 0</c> then the number of bits different is infinite, and the
+        /// &#8805; 0 and the other &lt; 0 then the number of bits different is infinite, and the
         /// return value is the largest possible <see cref="mp_bitcnt_t"/>. 
         /// </para>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number <c>0</c>. 
+        /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and"/>
@@ -6336,18 +6336,18 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="count">The number of words to read.</param>
-        /// <param name="order"><c>1</c> for most significant word first or <c>-1</c> for least significant first.</param>
+        /// <param name="order">1 for most significant word first or -1 for least significant first.</param>
         /// <param name="size">The number of bytes in each word.</param>
-        /// <param name="endian"><c>1</c> for most significant byte first, <c>-1</c> for least significant first, or <c>0</c> for the native endianness of the host CPU.</param>
+        /// <param name="endian">1 for most significant byte first, -1 for least significant first, or 0 for the native endianness of the host CPU.</param>
         /// <param name="nails">The number of most significant bits to skip.</param>
         /// <param name="op">The operand integer.</param>
         /// <remarks>
         /// <para>
         /// The parameters specify the format of the data.
         /// <paramref name="count"/> many words are read, each <paramref name="size"/> bytes.
-        /// <paramref name="order"/> can be <c>1</c> for most significant word first or <c>-1</c> for least significant first.
-        /// Within each word endian can be <c>1</c> for most significant byte first, <c>-1</c> for least significant first, or <c>0</c> for the native endianness of the host CPU.
-        /// The most significant <paramref name="nails"/> bits of each word are skipped, this can be <c>0</c> to use the full words. 
+        /// <paramref name="order"/> can be 1 for most significant word first or -1 for least significant first.
+        /// Within each word endian can be 1 for most significant byte first, -1 for least significant first, or 0 for the native endianness of the host CPU.
+        /// The most significant <paramref name="nails"/> bits of each word are skipped, this can be 0 to use the full words. 
         /// </para>
         /// <para>
         /// There is no sign taken from the data, <paramref name="rop"/> will simply be a positive integer.
@@ -6365,10 +6365,10 @@ namespace Math.Gmp.Native
         /// mpz_import(z, 20, 1, sizeof(a[0]), 0, 0, a);
         /// </code> 
         /// <para>
-        /// This example assumes the full <c>sizeof</c> bytes are used for data in the given type, which is usually true,
+        /// This example assumes the full sizeof bytes are used for data in the given type, which is usually true,
         /// and certainly true for unsigned long everywhere we know of. However on Cray vector systems it may be noted that <c>short</c>
-        /// and <c>int</c> are always stored in 8 bytes (and with <c>sizeof</c> indicating that) but use only 32 or 46 bits.
-        /// The <paramref name="nails"/> feature can account for this, by passing for instance <c>8 * sizeof(int) - INT_BIT</c>. 
+        /// and <c>int</c> are always stored in 8 bytes (and with sizeof indicating that) but use only 32 or 46 bits.
+        /// The <paramref name="nails"/> feature can account for this, by passing for instance 8 * sizeof(int) - INT_BIT. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_export"/>
@@ -6427,7 +6427,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize <paramref name="x"/>, and set its value to <c>0</c>.
+        /// Initialize <paramref name="x"/>, and set its value to 0.
         /// </summary>
         /// <param name="x">The integer.</param>
         /// <seealso cref="mpz_clear"/>
@@ -6471,7 +6471,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize <paramref name="x"/>, with space for <paramref name="n"/>-bit numbers, and set its value to <c>0</c>.
+        /// Initialize <paramref name="x"/>, with space for <paramref name="n"/>-bit numbers, and set its value to 0.
         /// </summary>
         /// <param name="x">The integer.</param>
         /// <param name="n">The number of bits.</param>
@@ -6528,7 +6528,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize a NULL-terminated list of <see cref="mpz_t"/> variables, and set their values to <c>0</c>.
+        /// Initialize a NULL-terminated list of <see cref="mpz_t"/> variables, and set their values to 0.
         /// </summary>
         /// <param name="x">A NULL-terminated list of <see cref="mpz_t"/> variables.</param>
         /// <seealso cref="mpz_clear"/>
@@ -6724,7 +6724,7 @@ namespace Math.Gmp.Native
         /// <param name="rop">The destination integer.</param>
         /// <param name="str">The source integer.</param>
         /// <param name="base">The base.</param>
-        /// <returns>If the string is a correct base <paramref name="base"/> number, the function returns <c>0</c>; if an error occurs it returns <c>−1</c>. <paramref name="rop"/> is initialized even if an error occurs.</returns>
+        /// <returns>If the string is a correct base <paramref name="base"/> number, the function returns 0; if an error occurs it returns −1. <paramref name="rop"/> is initialized even if an error occurs.</returns>
         /// <remarks>
         /// <para>
         /// See <see cref="mpz_set_str"/> for details.
@@ -6818,7 +6818,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result operand.</param>
         /// <param name="stream">Pointer to file stream.</param>
-        /// <returns>Return the number of bytes read, or if an error occurred, return <c>0</c>.</returns>
+        /// <returns>Return the number of bytes read, or if an error occurred, return 0.</returns>
         /// <remarks>
         /// <para>
         /// This routine can read the output from <see cref="mpz_out_raw"/> also from GMP 1,
@@ -6898,17 +6898,17 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="stream">Pointer to file stream.</param>
         /// <param name="base">The base operand.</param>
-        /// <returns>Return the number of bytes read, or if an error occurred, return <c>0</c>.</returns>
+        /// <returns>Return the number of bytes read, or if an error occurred, return 0.</returns>
         /// <remarks>
         /// <para>
-        /// The <paramref name="base"/> may vary from <c>2</c> to <c>62</c>, or if base is <c>0</c>,
-        /// then the leading characters are used: <c>0x</c> and <c>0X</c> for hexadecimal,
-        /// <c>0b</c> and <c>0B</c> for binary, <c>0</c> for octal, or decimal otherwise. 
+        /// The <paramref name="base"/> may vary from 2 to 62, or if base is 0,
+        /// then the leading characters are used: 0x and 0X for hexadecimal,
+        /// 0b and 0B for binary, 0 for octal, or decimal otherwise. 
         /// </para>
         /// <para>
-        /// For bases up to <c>36</c>, case is ignored; upper-case and lower-case letters have the same value.
-        /// For bases <c>37</c> to <c>62</c>, upper-case letter represent the usual <c>10..35</c> while
-        /// lower-case letter represent <c>36..61</c>. 
+        /// For bases up to 36, case is ignored; upper-case and lower-case letters have the same value.
+        /// For bases 37 to 62, upper-case letter represent the usual 10..35 while
+        /// lower-case letter represent 36..61. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_out_str"/>
@@ -6984,8 +6984,8 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// If the inverse exists, the return value is non-zero and <paramref name="rop"/> will satisfy
-        /// <c>0 &#8804; <paramref name="rop"/> &lt; |<paramref name="op2"/>|</c> (with <c><paramref name="rop"/> = 0</c>
-        /// possible only when <c>|<paramref name="op2"/>| = 1</c>, i.e., in the somewhat degenerate zero ring).
+        /// 0 &#8804; <paramref name="rop"/> &lt; | <paramref name="op2"/> | (with <paramref name="rop"/> = 0
+        /// possible only when | <paramref name="op2"/> | = 1, i.e., in the somewhat degenerate zero ring).
         /// If an inverse doesn’t exist the return value is zero and <paramref name="rop"/> is undefined.
         /// The behaviour of this function is undefined when <paramref name="op2"/> is zero.
         /// </para>
@@ -7124,11 +7124,11 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Calculate the Jacobi symbol <c>(<paramref name="a"/>/<paramref name="b"/>)</c>.
+        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>).
         /// </summary>
         /// <param name="a">The first operand integer.</param>
         /// <param name="b">The second operand integer.</param>
-        /// <returns>The Jacobi symbol <c>(<paramref name="a"/>/<paramref name="b"/>)</c>.</returns>
+        /// <returns>The Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>).</returns>
         /// <remarks>
         /// <para>
         /// This is defined only for <paramref name="b"/> odd. 
@@ -7176,11 +7176,11 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Calculate the Jacobi symbol <c>(<paramref name="a"/>/<paramref name="b"/>)</c> with the Kronecker extension <c>(<paramref name="a"/>/2) = (2/<paramref name="a"/>)</c> when <paramref name="a"/> odd, or <c>(<paramref name="a"/>/2) = 0</c> when <paramref name="a"/> even. 
+        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even. 
         /// </summary>
         /// <param name="a">The first operand integer.</param>
         /// <param name="b">The second operand integer.</param>
-        /// <returns>The Jacobi symbol <c>(<paramref name="a"/>/<paramref name="b"/>)</c> with the Kronecker extension <c>(<paramref name="a"/>/2) = (2/<paramref name="a"/>)</c> when <paramref name="a"/> odd, or <c>(<paramref name="a"/>/2) = 0</c> when <paramref name="a"/> even.</returns>
+        /// <returns>The Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.</returns>
         /// <remarks>
         /// <para>
         /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
@@ -7233,11 +7233,11 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Calculate the Jacobi symbol <c>(<paramref name="a"/>/<paramref name="b"/>)</c> with the Kronecker extension <c>(<paramref name="a"/>/2) = (2/<paramref name="a"/>)</c> when <paramref name="a"/> odd, or <c>(<paramref name="a"/>/2) = 0</c> when <paramref name="a"/> even. 
+        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even. 
         /// </summary>
         /// <param name="a">The first operand integer.</param>
         /// <param name="b">The second operand integer.</param>
-        /// <returns>The Jacobi symbol <c>(<paramref name="a"/>/<paramref name="b"/>)</c> with the Kronecker extension <c>(<paramref name="a"/>/2) = (2/<paramref name="a"/>)</c> when <paramref name="a"/> odd, or <c>(<paramref name="a"/>/2) = 0</c> when <paramref name="a"/> even.</returns>
+        /// <returns>The Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.</returns>
         /// <remarks>
         /// <para>
         /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
@@ -7281,11 +7281,11 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Calculate the Jacobi symbol <c>(<paramref name="a"/>/<paramref name="b"/>)</c> with the Kronecker extension <c>(<paramref name="a"/>/2) = (2/<paramref name="a"/>)</c> when <paramref name="a"/> odd, or <c>(<paramref name="a"/>/2) = 0</c> when <paramref name="a"/> even. 
+        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even. 
         /// </summary>
         /// <param name="a">The first operand integer.</param>
         /// <param name="b">The second operand integer.</param>
-        /// <returns>The Jacobi symbol <c>(<paramref name="a"/>/<paramref name="b"/>)</c> with the Kronecker extension <c>(<paramref name="a"/>/2) = (2/<paramref name="a"/>)</c> when <paramref name="a"/> odd, or <c>(<paramref name="a"/>/2) = 0</c> when <paramref name="a"/> even.</returns>
+        /// <returns>The Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.</returns>
         /// <remarks>
         /// <para>
         /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
@@ -7329,11 +7329,11 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Calculate the Jacobi symbol <c>(<paramref name="a"/>/<paramref name="b"/>)</c> with the Kronecker extension <c>(<paramref name="a"/>/2) = (2/<paramref name="a"/>)</c> when <paramref name="a"/> odd, or <c>(<paramref name="a"/>/2) = 0</c> when <paramref name="a"/> even. 
+        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even. 
         /// </summary>
         /// <param name="a">The first operand integer.</param>
         /// <param name="b">The second operand integer.</param>
-        /// <returns>The Jacobi symbol <c>(<paramref name="a"/>/<paramref name="b"/>)</c> with the Kronecker extension <c>(<paramref name="a"/>/2) = (2/<paramref name="a"/>)</c> when <paramref name="a"/> odd, or <c>(<paramref name="a"/>/2) = 0</c> when <paramref name="a"/> even.</returns>
+        /// <returns>The Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.</returns>
         /// <remarks>
         /// <para>
         /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
@@ -7377,11 +7377,11 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Calculate the Jacobi symbol <c>(<paramref name="a"/>/<paramref name="b"/>)</c> with the Kronecker extension <c>(<paramref name="a"/>/2) = (2/<paramref name="a"/>)</c> when <paramref name="a"/> odd, or <c>(<paramref name="a"/>/2) = 0</c> when <paramref name="a"/> even. 
+        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even. 
         /// </summary>
         /// <param name="a">The first operand integer.</param>
         /// <param name="b">The second operand integer.</param>
-        /// <returns>The Jacobi symbol <c>(<paramref name="a"/>/<paramref name="b"/>)</c> with the Kronecker extension <c>(<paramref name="a"/>/2) = (2/<paramref name="a"/>)</c> when <paramref name="a"/> odd, or <c>(<paramref name="a"/>/2) = 0</c> when <paramref name="a"/> even.</returns>
+        /// <returns>The Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.</returns>
         /// <remarks>
         /// <para>
         /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
@@ -7573,9 +7573,9 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Sets <paramref name="ln"/> to to <c>L[<paramref name="n"/>]</c>, the <paramref name="n"/>’th Lucas number. 
+        /// Sets <paramref name="ln"/> to to L[<paramref name="n"/>], the <paramref name="n"/>’th Lucas number. 
         /// </summary>
-        /// <param name="ln">The <c>L[<paramref name="n"/>]</c> result.</param>
+        /// <param name="ln">The L[<paramref name="n"/>] result.</param>
         /// <param name="n">The operand integer.</param>
         /// <remarks>
         /// <para>
@@ -7625,16 +7625,16 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Sets <paramref name="ln"/> to <c>L[<paramref name="n"/>]</c>, and <paramref name="lnsub1"/> to <c>L[<paramref name="n"/> - 1]</c>. 
+        /// Sets <paramref name="ln"/> to L[<paramref name="n"/>], and <paramref name="lnsub1"/> to L[<paramref name="n"/> - 1]. 
         /// </summary>
-        /// <param name="ln">The <c>L[<paramref name="n"/>]</c> result.</param>
-        /// <param name="lnsub1">The <c>L[<paramref name="n"/> - 1]</c> result.</param>
+        /// <param name="ln">The L[<paramref name="n"/>] result.</param>
+        /// <param name="lnsub1">The L[<paramref name="n"/> - 1] result.</param>
         /// <param name="n">The operand integer.</param>
         /// <remarks>
         /// <para>
         /// This function is designed for calculating isolated Lucas numbers. 
         /// When a sequence of values is wanted it’s best to start with <see cref="mpz_lucnum2_ui"/> 
-        /// and iterate the defining <c>L[n + 1] = L[n] + L[n - 1]</c> or similar.
+        /// and iterate the defining L[n + 1] = L[n] + L[n - 1] or similar.
         /// </para>
         /// <para>
         /// The Fibonacci numbers and Lucas numbers are related sequences, so it’s never necessary to call both
@@ -7692,10 +7692,10 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="n">The operand integer.</param>
         /// <param name="reps">The number of internal passes of the probabilistic algorithm.</param>
-        /// <returns>If the function <see cref="mpz_millerrabin"/> returns <c>0</c> then <paramref name="n"/> is not prime. If it returns <c>1</c>, then <paramref name="n"/> is 'probably' prime.</returns>
+        /// <returns>If the function <see cref="mpz_millerrabin"/> returns 0 then <paramref name="n"/> is not prime. If it returns 1, then <paramref name="n"/> is 'probably' prime.</returns>
         /// <remarks>
         /// <para>
-        /// The probability of a false positive is <c>(1/4)^<paramref name="reps"/></c>, where <paramref name="reps"/>
+        /// The probability of a false positive is (1/4)^<paramref name="reps"/>, where <paramref name="reps"/>
         /// is the number of internal passes of the probabilistic algorithm.
         /// Knuth indicates that 25 passes are reasonable.
         /// </para>
@@ -7733,7 +7733,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="r"/> to <c><paramref name="n"/> mod <paramref name="d"/></c>.
+        /// Set <paramref name="r"/> to <paramref name="n"/> mod <paramref name="d"/>.
         /// </summary>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -7806,7 +7806,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="r"/> to <c><paramref name="n"/> mod <paramref name="d"/></c>.
+        /// Set <paramref name="r"/> to <paramref name="n"/> mod <paramref name="d"/>.
         /// </summary>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -7875,7 +7875,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> * <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> * <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -7945,7 +7945,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> * 2^<paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> * 2^<paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -8011,7 +8011,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> * <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> * <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -8072,7 +8072,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> * <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> * <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -8133,7 +8133,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c>-<paramref name="op"/></c>.
+        /// Set <paramref name="rop"/> to -<paramref name="op"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op">The operand integer.</param>
@@ -8299,7 +8299,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="stream">Pointer to file streama.</param>
         /// <param name="op">The operand integer.</param>
-        /// <returns>Return the number of bytes written, or if an error occurred, return <c>0</c>. </returns>
+        /// <returns>Return the number of bytes written, or if an error occurred, return 0.</returns>
         /// <remarks>
         /// <para>
         /// The integer is written in a portable format, with 4 bytes of size information, and that many bytes of limbs.
@@ -8390,14 +8390,14 @@ namespace Math.Gmp.Native
         /// <param name="stream">Pointer to file stream.</param>
         /// <param name="base">The base operand.</param>
         /// <param name="op">The operand integer.</param>
-        /// <returns>Return the number of bytes written, or if an error occurred, return <c>0</c>. </returns>
+        /// <returns>Return the number of bytes written, or if an error occurred, return 0. </returns>
         /// <remarks>
         /// <para>
-        /// The <paramref name="base"/> argument may vary from <c>2</c> to <c>62</c> or from <c>-2</c> to <c>-36</c>. 
+        /// The <paramref name="base"/> argument may vary from 2 to 62 or from -2 to -36. 
         /// </para>
         /// <para>
-        /// For <paramref name="base"/> in the range <c>2..36</c>, digits and lower-case letters are used;
-        /// for <c>-2..-36</c>, digits and upper-case letters are used; for <c>37..62</c>, digits, upper-case letters,
+        /// For <paramref name="base"/> in the range 2..36, digits and lower-case letters are used;
+        /// for -2..-36, digits and upper-case letters are used; for 37..62, digits, upper-case letters,
         /// and lower-case letters (in that significance order) are used. 
         /// </para>
         /// </remarks>
@@ -8473,13 +8473,13 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return non-zero if <paramref name="op"/> is a perfect power, i.e., if there exist integers <c>a</c> and <c>b</c>, with <c>b &gt; 1</c>, such that <c><paramref name="op"/> = a^b</c>. 
+        /// Return non-zero if <paramref name="op"/> is a perfect power, i.e., if there exist integers a and b, with b &gt; 1, such that <paramref name="op"/> = a^b. 
         /// </summary>
         /// <param name="op">The operand integer.</param>
-        /// <returns>Non-zero if <paramref name="op"/> is a perfect power, i.e., if there exist integers <c>a</c> and <c>b</c>, with <c>b &gt; 1</c>, such that <c><paramref name="op"/> = a^b</c>.</returns>
+        /// <returns>Non-zero if <paramref name="op"/> is a perfect power, i.e., if there exist integers a and b, with b &gt; 1, such that <paramref name="op"/> = a^b.</returns>
         /// <remarks>
         /// <para>
-        /// Under this definition both <c>0</c> and <c>1</c> are considered to be perfect powers. Negative values of <paramref name="op"/> are accepted, but of course can only be odd perfect powers. 
+        /// Under this definition both 0 and 1 are considered to be perfect powers. Negative values of <paramref name="op"/> are accepted, but of course can only be odd perfect powers. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_perfect_square_p"/>
@@ -8525,7 +8525,7 @@ namespace Math.Gmp.Native
         /// <returns>Non-zero if <paramref name="op"/> is a perfect square, i.e., if the square root of <paramref name="op"/> is an integer.</returns>
         /// <remarks>
         /// <para>
-        /// Under this definition both <c>0</c> and <c>1</c> are considered to be perfect squares. 
+        /// Under this definition both 0 and 1 are considered to be perfect squares. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_perfect_power_p"/>
@@ -8568,11 +8568,11 @@ namespace Math.Gmp.Native
         /// Return the population count of <paramref name="op"/>.
         /// </summary>
         /// <param name="op">The operand integer.</param>
-        /// <returns>If <c><paramref name="op"/> &#8805; 0</c>, return the population count of <paramref name="op"/>, which is the number of <c>1</c> bits in the binary representation. If <c><paramref name="op"/> &lt; 0</c>, the number of <c>1</c>s is infinite, and the return value is the largest possible <see cref="mp_bitcnt_t"/>.</returns>
+        /// <returns>If <paramref name="op"/> &#8805; 0, return the population count of <paramref name="op"/>, which is the number of 1 bits in the binary representation. If <paramref name="op"/> &lt; 0, the number of 1s is infinite, and the return value is the largest possible <see cref="mp_bitcnt_t"/>.</returns>
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number <c>0</c>. 
+        /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and"/>
@@ -8617,7 +8617,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="base"/>^<paramref name="exp"/></c>. The case <c>0^0</c> yields <c>1</c>. 
+        /// Set <paramref name="rop"/> to <paramref name="base"/>^<paramref name="exp"/>. The case 0^0 yields 1. 
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="base">The base integer.</param>
@@ -8673,7 +8673,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c>(<paramref name="base"/>^<paramref name="exp"/>) modulo <paramref name="mod"/></c>. 
+        /// Set <paramref name="rop"/> to (<paramref name="base"/>^<paramref name="exp"/>) modulo <paramref name="mod"/>. 
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="base">The base integer.</param>
@@ -8681,7 +8681,7 @@ namespace Math.Gmp.Native
         /// <param name="mod">The modulo integer.</param>
         /// <remarks>
         /// <para>
-        /// Negative <paramref name="exp"/> is supported if an inverse <c><paramref name="base"/>^-1 modulo <paramref name="mod"/></c> exists (see <see cref="mpz_invert"/>).
+        /// Negative <paramref name="exp"/> is supported if an inverse <paramref name="base"/>^-1 modulo <paramref name="mod"/> exists (see <see cref="mpz_invert"/>).
         /// If an inverse doesn’t exist then a divide by zero is raised.
         /// </para>
         /// </remarks>
@@ -8754,7 +8754,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c>(<paramref name="base"/>^<paramref name="exp"/>) modulo <paramref name="mod"/></c>.
+        /// Set <paramref name="rop"/> to (<paramref name="base"/>^<paramref name="exp"/>) modulo <paramref name="mod"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="base">The base integer.</param>
@@ -8762,7 +8762,7 @@ namespace Math.Gmp.Native
         /// <param name="mod">The modulo integer.</param>
         /// <remarks>
         /// <para>
-        /// It is required that <c><paramref name="exp"/> &gt; 0</c> and that <paramref name="mod"/> is odd.
+        /// It is required that <paramref name="exp"/> &gt; 0 and that <paramref name="mod"/> is odd.
         /// </para>
         /// <para>
         /// This function is designed to take the same time and have the same cache access patterns for any two same-size arguments,
@@ -8839,7 +8839,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c>(<paramref name="base"/>^<paramref name="exp"/>) modulo <paramref name="mod"/></c>. 
+        /// Set <paramref name="rop"/> to (<paramref name="base"/>^<paramref name="exp"/>) modulo <paramref name="mod"/>. 
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="base">The base integer.</param>
@@ -8847,7 +8847,7 @@ namespace Math.Gmp.Native
         /// <param name="mod">The modulo integer.</param>
         /// <remarks>
         /// <para>
-        /// Negative <paramref name="exp"/> is supported if an inverse <c><paramref name="base"/>^-1 modulo <paramref name="mod"/></c> exists (see <see cref="mpz_invert"/>).
+        /// Negative <paramref name="exp"/> is supported if an inverse <paramref name="base"/>^-1 modulo <paramref name="mod"/> exists (see <see cref="mpz_invert"/>).
         /// If an inverse doesn’t exist then a divide by zero is raised.
         /// </para>
         /// </remarks>
@@ -8912,13 +8912,13 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="n">The operand integer.</param>
         /// <param name="reps">The number of Miller-Rabin probabilistic primality tests to perform.</param>
-        /// <returns>Return <c>2</c> if <paramref name="n"/> is definitely prime, return <c>1</c> if <paramref name="n"/> is probably prime (without being certain), or return <c>0</c> if <paramref name="n"/> is definitely non-prime.</returns>
+        /// <returns>Return 2 if <paramref name="n"/> is definitely prime, return 1 if <paramref name="n"/> is probably prime (without being certain), or return 0 if <paramref name="n"/> is definitely non-prime.</returns>
         /// <remarks>
         /// <para>
         /// This function performs some trial divisions, then <paramref name="reps"/> Miller-Rabin probabilistic primality tests.
         /// A higher <paramref name="reps"/> value will reduce the chances of a non-prime being identified as “probably prime”.
-        /// A composite number will be identified as a prime with a probability of less than <c>4^(-reps)</c>.
-        /// Reasonable values of <paramref name="reps"/> are between <c>15</c> and <c>50</c>.
+        /// A composite number will be identified as a prime with a probability of less than 4^(-reps).
+        /// Reasonable values of <paramref name="reps"/> are between 15 and 50.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_millerrabin"/>
@@ -9071,7 +9071,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The number of bits.</param>
         /// <remarks>
         /// <para>
-        /// The value in <paramref name="x"/> is preserved if it fits, or is set to <c>0</c> if not.
+        /// The value in <paramref name="x"/> is preserved if it fits, or is set to 0 if not.
         /// </para>
         /// <para>
         /// Calling this function is never necessary; reallocation is handled automatically by GMP when
@@ -9260,7 +9260,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="root"/> to the truncated integer part of the <paramref name="n"/>th root of <paramref name="u"/>. Set <paramref name="rem"/> to the remainder, <c><paramref name="u"/> - <paramref name="root"/>^<paramref name="n"/></c>. 
+        /// Set <paramref name="root"/> to the truncated integer part of the <paramref name="n"/>th root of <paramref name="u"/>. Set <paramref name="rem"/> to the remainder, <paramref name="u"/> - <paramref name="root"/>^<paramref name="n"/>. 
         /// </summary>
         /// <param name="root">The result root integer.</param>
         /// <param name="rem">The result remainder integer.</param>
@@ -9332,7 +9332,7 @@ namespace Math.Gmp.Native
         /// <para>
         /// Useful for testing functions and algorithms, since this kind of random numbers have proven to be more
         /// likely to trigger corner-case bugs. The random number will be in the
-        /// range <c>2^(<paramref name="n"/> - 1)</c> to <c>2^<paramref name="n"/> - 1</c>, inclusive. 
+        /// range 2^(<paramref name="n"/> - 1) to 2^<paramref name="n"/> - 1, inclusive. 
         /// </para>
         /// <para>
         /// The variable <paramref name="state"/> must be initialized by calling one of the <c>gmp_randinit</c>
@@ -9394,7 +9394,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Scan <paramref name="op"/> for <c>0</c> bit.
+        /// Scan <paramref name="op"/> for 0 bit.
         /// </summary>
         /// <param name="op">The operand integer.</param>
         /// <param name="starting_bit">The start bit index position.</param>
@@ -9402,7 +9402,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// Scan <paramref name="op"/>, starting from bit <paramref name="starting_bit"/>, towards more significant bits,
-        /// until the first <c>0</c> bit is found. Return the index of the found bit.
+        /// until the first 0 bit is found. Return the index of the found bit.
         /// </para>
         /// <para>
         /// If the bit at <paramref name="starting_bit"/> is already what’s sought,
@@ -9415,7 +9415,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number <c>0</c>. 
+        /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and"/>
@@ -9461,7 +9461,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Scan <paramref name="op"/> for <c>1</c> bit.
+        /// Scan <paramref name="op"/> for 1 bit.
         /// </summary>
         /// <param name="op">The operand integer.</param>
         /// <param name="starting_bit">The start bit index position.</param>
@@ -9469,7 +9469,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// Scan <paramref name="op"/>, starting from bit <paramref name="starting_bit"/>, towards more significant bits,
-        /// until the first <c>1</c> bit is found. Return the index of the found bit.
+        /// until the first 1 bit is found. Return the index of the found bit.
         /// </para>
         /// <para>
         /// If the bit at <paramref name="starting_bit"/> is already what’s sought,
@@ -9482,7 +9482,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number <c>0</c>. 
+        /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and"/>
@@ -9815,20 +9815,20 @@ namespace Math.Gmp.Native
         /// <param name="rop">The destination integer.</param>
         /// <param name="str">The source integer.</param>
         /// <param name="base">The base.</param>
-        /// <returns>This function returns <c>0</c> if the entire string is a valid number in base <paramref name="base"/>. Otherwise it returns <c>−1</c>.</returns>
+        /// <returns>This function returns 0 if the entire string is a valid number in base <paramref name="base"/>. Otherwise it returns −1.</returns>
         /// <remarks>
         /// <para>
         /// White space is allowed in the string, and is simply ignored.
         /// </para>
         /// <para>
-        /// The base may vary from <c>2</c> to <c>62</c>, or if base is <c>0</c>, then the leading characters are
-        /// used: <c>0x</c> and <c>0X</c> for hexadecimal, <c>0b</c> and <c>0B</c> for binary, <c>0</c> for octal,
+        /// The base may vary from 2 to 62, or if base is 0, then the leading characters are
+        /// used: 0x and 0X for hexadecimal, 0b and 0B for binary, 0 for octal,
         /// or decimal otherwise.
         /// </para>
         /// <para>
-        /// For bases up to <c>36</c>, case is ignored; upper-case and lower-case letters have the same value.
-        /// For bases <c>37</c> to <c>62</c>, upper-case letter represent the usual <c>10..35</c> while lower-case
-        /// letter represent <c>36..61</c>.
+        /// For bases up to 36, case is ignored; upper-case and lower-case letters have the same value.
+        /// For bases 37 to 62, upper-case letter represent the usual 10..35 while lower-case
+        /// letter represent 36..61.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_set"/>
@@ -9941,7 +9941,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number <c>0</c>. 
+        /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and"/>
@@ -9993,10 +9993,10 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return <c>+1</c> if <c><paramref name="op"/> &gt; 0</c>, <c>0</c> if <c><paramref name="op"/> = 0</c>, and <c>-1</c> if <c><paramref name="op"/> &lt; 0</c>.
+        /// Return +1 if <paramref name="op"/> &gt; 0, 0 if <paramref name="op"/> = 0, and -1 if <paramref name="op"/> &lt; 0.
         /// </summary>
         /// <param name="op">The operand integer.</param>
-        /// <returns>Return <c>+1</c> if <c><paramref name="op"/> &gt; 0</c>, <c>0</c> if <c><paramref name="op"/> = 0</c>, and <c>-1</c> if <c><paramref name="op"/> &lt; 0</c>.</returns>
+        /// <returns>Return +1 if <paramref name="op"/> &gt; 0, 0 if <paramref name="op"/> = 0, and -1 if <paramref name="op"/> &lt; 0.</returns>
         /// <seealso cref="mpz_cmp"/>
         /// <seealso cref="mpz_cmp_d"/>
         /// <seealso cref="mpz_cmp_si"/>
@@ -10102,11 +10102,11 @@ namespace Math.Gmp.Native
         /// <returns>The size of <paramref name="op"/> measured in number of digits in the given <paramref name="base"/>.</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="base"/> can vary from <c>2</c> to <c>62</c>.
+        /// <paramref name="base"/> can vary from 2 to 62.
         /// The sign of <paramref name="op"/> is ignored, just the absolute value is used.
         /// The result will be either exact or 1 too big.
         /// If <paramref name="base"/> is a power of 2, the result is always exact.
-        /// If <paramref name="op"/> is zero the return value is always <c>1</c>.
+        /// If <paramref name="op"/> is zero the return value is always 1.
         /// </para>
         /// <para>
         /// This function can be used to determine the space required when converting <paramref name="op"/> to a string.
@@ -10114,9 +10114,9 @@ namespace Math.Gmp.Native
         /// one extra for a minus sign and one for the null-terminator. 
         /// </para>
         /// <para>
-        /// It will be noted that <c>mpz_sizeinbase(<paramref name="op"/>, 2)</c> can be used to locate the most
-        /// significant <c>1</c> bit in <paramref name="op"/>, counting from <c>1</c>.
-        /// (Unlike the bitwise functions which start from <c>0</c>,
+        /// It will be noted that mpz_sizeinbase(<paramref name="op"/>, 2) can be used to locate the most
+        /// significant 1 bit in <paramref name="op"/>, counting from 1.
+        /// (Unlike the bitwise functions which start from 0,
         /// see <a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Logical and Bit Manipulation Functions</a>.)
         /// </para>
         /// </remarks>
@@ -10225,7 +10225,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop1"/> to the truncated integer part of the square root of <paramref name="op"/>, like <see cref="mpz_sqrt"/>. Set <paramref name="rop2"/> to the remainder <c><paramref name="op"/> - <paramref name="rop1"/> * <paramref name="rop1"/></c>, which will be zero if <paramref name="op"/> is a perfect square.
+        /// Set <paramref name="rop1"/> to the truncated integer part of the square root of <paramref name="op"/>, like <see cref="mpz_sqrt"/>. Set <paramref name="rop2"/> to the remainder <paramref name="op"/> - <paramref name="rop1"/> * <paramref name="rop1"/>, which will be zero if <paramref name="op"/> is a perfect square.
         /// </summary>
         /// <param name="rop1">The result square root integer.</param>
         /// <param name="rop2">The result remainder integer.</param>
@@ -10287,7 +10287,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> - <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> - <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -10356,7 +10356,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> - <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> - <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -10416,7 +10416,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> - <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> - <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -10476,7 +10476,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="rop"/> - <paramref name="op1"/> * <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="rop"/> - <paramref name="op1"/> * <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -10544,7 +10544,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="rop"/> - <paramref name="op1"/> * <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="rop"/> - <paramref name="op1"/> * <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -10663,11 +10663,11 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return the remainder <c>|r|</c> where <c>r = <paramref name="n"/> - q * <paramref name="d"/></c>, and where <c>q = trunc(<paramref name="n"/> / <paramref name="d"/>)</c>.
+        /// Return the remainder | r | where r = <paramref name="n"/> - q * <paramref name="d"/>, and where q = trunc(<paramref name="n"/> / <paramref name="d"/>).
         /// </summary>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <returns>The remainder <c>|r|</c> where <c>r = <paramref name="n"/> - q * <paramref name="d"/></c>, and where <c>q = trunc(<paramref name="n"/> / <paramref name="d"/>)</c>.</returns>
+        /// <returns>The remainder | r | where r = <paramref name="n"/> - q * <paramref name="d"/>, and where q = trunc(<paramref name="n"/> / <paramref name="d"/>).</returns>
         /// <seealso cref="mpz_cdiv_qr"/>
         /// <seealso cref="mpz_congruent_p"/>
         /// <seealso cref="mpz_divexact"/>
@@ -10714,7 +10714,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the quotient <paramref name="q"/> to <c>trunc(<paramref name="n"/> / <paramref name="d"/>)</c>.
+        /// Set the quotient <paramref name="q"/> to trunc(<paramref name="n"/> / <paramref name="d"/>).
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -10789,7 +10789,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the quotient <paramref name="q"/> to <c>trunc(<paramref name="n"/> / 2^<paramref name="b"/>)</c>.
+        /// Set the quotient <paramref name="q"/> to trunc(<paramref name="n"/> / 2^<paramref name="b"/>).
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -10855,12 +10855,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the quotient <paramref name="q"/> to <c>trunc(<paramref name="n"/> / <paramref name="d"/>)</c>, and return the remainder <c>r = |<paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/>|</c>.
+        /// Set the quotient <paramref name="q"/> to trunc(<paramref name="n"/> / <paramref name="d"/>), and return the remainder r = | <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/> |.
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <returns>Return the remainder <c>r = |<paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/>|</c>.</returns>
+        /// <returns>Return the remainder r = | <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/> |.</returns>
         /// <seealso cref="mpz_cdiv_qr"/>
         /// <seealso cref="mpz_congruent_p"/>
         /// <seealso cref="mpz_divexact"/>
@@ -10920,7 +10920,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the quotient <paramref name="q"/> to <c>trunc(<paramref name="n"/> / <paramref name="d"/>)</c>, and set the remainder <paramref name="r"/> to <c><paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/></c>.
+        /// Set the quotient <paramref name="q"/> to trunc(<paramref name="n"/> / <paramref name="d"/>), and set the remainder <paramref name="r"/> to <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/>.
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="r">The result remainder integer.</param>
@@ -11001,13 +11001,13 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set quotient <paramref name="q"/> to <c>trunc(<paramref name="n"/> / <paramref name="d"/>)</c>, set the remainder <paramref name="r"/> to <c><paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/></c>, and return <c>|<paramref name="r"/>|</c>.
+        /// Set quotient <paramref name="q"/> to trunc(<paramref name="n"/> / <paramref name="d"/>), set the remainder <paramref name="r"/> to <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/>, and return | <paramref name="r"/> |.
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <returns>Return <c>|<paramref name="r"/>|</c>.</returns>
+        /// <returns>Return | <paramref name="r"/> |.</returns>
         /// <seealso cref="mpz_cdiv_qr"/>
         /// <seealso cref="mpz_congruent_p"/>
         /// <seealso cref="mpz_divexact"/>
@@ -11074,7 +11074,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the remainder <paramref name="r"/> to <c><paramref name="n"/> - q * <paramref name="d"/></c> where <c>q = trunc(<paramref name="n"/> / <paramref name="d"/>)</c>.
+        /// Set the remainder <paramref name="r"/> to <paramref name="n"/> - q * <paramref name="d"/> where q = trunc(<paramref name="n"/> / <paramref name="d"/>).
         /// </summary>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -11149,7 +11149,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the remainder <paramref name="r"/> to <c><paramref name="n"/> - q * 2^<paramref name="b"/></c> where <c>q = trunc(<paramref name="n"/> / 2^<paramref name="b"/>)</c>.
+        /// Set the remainder <paramref name="r"/> to <paramref name="n"/> - q * 2^<paramref name="b"/> where q = trunc(<paramref name="n"/> / 2^<paramref name="b"/>).
         /// </summary>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -11215,12 +11215,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the remainder <paramref name="r"/> to <c><paramref name="n"/> - q * <paramref name="d"/></c> where <c>q = trunc(<paramref name="n"/> / <paramref name="d"/>)</c>, and return <c>|<paramref name="r"/>|</c>.
+        /// Set the remainder <paramref name="r"/> to <paramref name="n"/> - q * <paramref name="d"/> where q = trunc(<paramref name="n"/> / <paramref name="d"/>), and return | <paramref name="r"/> |.
         /// </summary>
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <returns>Return <c>|<paramref name="r"/>|</c>.</returns>
+        /// <returns>Return | <paramref name="r"/> |.</returns>
         /// <seealso cref="mpz_cdiv_qr"/>
         /// <seealso cref="mpz_congruent_p"/>
         /// <seealso cref="mpz_divexact"/>
@@ -11282,15 +11282,15 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Test bit <paramref name="bit_index"/> in <paramref name="op"/> and return <c>0</c> or <c>1</c> accordingly. 
+        /// Test bit <paramref name="bit_index"/> in <paramref name="op"/> and return 0 or 1 accordingly. 
         /// </summary>
         /// <param name="op"></param>
         /// <param name="bit_index"></param>
-        /// <returns>Test bit <paramref name="bit_index"/> in <paramref name="op"/> and return <c>0</c> or <c>1</c> accordingly.</returns>
+        /// <returns>Test bit <paramref name="bit_index"/> in <paramref name="op"/> and return 0 or 1 accordingly.</returns>
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number <c>0</c>. 
+        /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and"/>
@@ -11336,7 +11336,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="base"/>^<paramref name="exp"/></c>. The case <c>0^0</c> yields <c>1</c>.
+        /// Set <paramref name="rop"/> to <paramref name="base"/>^<paramref name="exp"/>. The case 0^0 yields 1.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="base">The base integer.</param>
@@ -11383,7 +11383,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Generate a uniformly distributed random integer in the range <c>0</c> to <c>2^<paramref name="n"/> - 1</c>, inclusive.
+        /// Generate a uniformly distributed random integer in the range 0 to 2^<paramref name="n"/> - 1, inclusive.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="state">The random number generator state.</param>
@@ -11449,7 +11449,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Generate a uniform random integer in the range <c>0</c> to <c><paramref name="n"/> - 1</c>, inclusive.
+        /// Generate a uniform random integer in the range 0 to <paramref name="n"/> - 1, inclusive.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="state">The random number generator state.</param>
@@ -11610,7 +11610,7 @@ namespace Math.Gmp.Native
         /// <returns>A pointer to the limb array representing the absolute value of <paramref name="x"/>.</returns>
         /// <remarks>
         /// <para>
-        /// The size of the array is <c><see cref="mpz_size"/>(x)</c>. Intended for read access only.
+        /// The size of the array is <see cref="mpz_size"/>(x). Intended for read access only.
         /// </para>
         /// </remarks>
         /// <seealso cref="_mpz_realloc"/>
@@ -11679,7 +11679,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The array is reallocated as needed, to make room for <paramref name="n"/> limbs.
-        /// Requires <c><paramref name="n"/> &gt; 0</c>.
+        /// Requires <paramref name="n"/> &gt; 0.
         /// The <see cref="mpz_limbs_write"/> function may destroy the old value and
         /// return an array with unspecified contents.
         /// </para>
@@ -11756,7 +11756,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The array is reallocated as needed, to make room for <paramref name="n"/> limbs.
-        /// Requires <c><paramref name="n"/> &gt; 0</c>.
+        /// Requires <paramref name="n"/> &gt; 0.
         /// The <see cref="mpz_limbs_modify"/> function returns an array that holds the old absolute
         /// value of <paramref name="x"/>
         /// </para>
@@ -11830,7 +11830,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// Used after writing to the limb array pointer returned by <see cref="mpz_limbs_write"/>
-        /// or <see cref="mpz_limbs_modify"/> is completed. The array should contain <c>|<paramref name="s"/>|</c>
+        /// or <see cref="mpz_limbs_modify"/> is completed. The array should contain | <paramref name="s"/> |
         /// valid limbs, representing the new absolute value for <paramref name="x"/>, and the sign of <paramref name="x"/>
         /// is taken from the sign of <paramref name="s"/>.
         /// This function never reallocates <paramref name="x"/>, so the limb pointer remains valid.
@@ -11873,7 +11873,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// <paramref name="x"/> should be treated as readonly: it can be passed safely as input to any mpz function, but not as an output.
-        /// The array <paramref name="xp"/> must point to at least a readable limb, its size is <c>|<paramref name="xs"/>|</c>, and the
+        /// The array <paramref name="xp"/> must point to at least a readable limb, its size is | <paramref name="xs"/> |, and the
         /// sign of <paramref name="x"/> is the sign of <paramref name="xs"/>.
         /// </para>
         /// <code language="C++">
@@ -11982,7 +11982,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="sum"/> to <c><paramref name="addend1"/> + <paramref name="addend2"/></c>. 
+        /// Set <paramref name="sum"/> to <paramref name="addend1"/> + <paramref name="addend2"/>. 
         /// </summary>
         /// <param name="sum">The result rational.</param>
         /// <param name="addend1">The first operand rational.</param>
@@ -12148,7 +12148,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand rational.</param>
         /// <param name="op2">The second operand rational.</param>
-        /// <returns>Return a positive value if <c><paramref name="op1"/> &gt; <paramref name="op2"/></c>, zero if <c><paramref name="op1"/> = <paramref name="op2"/></c>, and a negative value if <c><paramref name="op1"/> &lt; <paramref name="op2"/></c>.</returns>
+        /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, and a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
         /// <remarks>
         /// <para>
         /// To determine if two rationals are equal, <see cref="mpq_equal"/> is faster than <see cref="mpq_cmp"/>. 
@@ -12204,12 +12204,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Compare <paramref name="op1"/> and <c><paramref name="num2"/> / <paramref name="den2"/></c>.
+        /// Compare <paramref name="op1"/> and <paramref name="num2"/> / <paramref name="den2"/>.
         /// </summary>
         /// <param name="op1">The first operand rational.</param>
         /// <param name="num2">The second operand numerator integer.</param>
         /// <param name="den2">The second operand denominator integer.</param>
-        /// <returns>Return a positive value if <c><paramref name="op1"/> &gt; <paramref name="num2"/> / <paramref name="den2"/></c>, zero if <c><paramref name="op1"/> = <paramref name="num2"/> / <paramref name="den2"/></c>, and a negative value if <c><paramref name="op1"/> &lt; <paramref name="num2"/> / <paramref name="den2"/></c>.</returns>
+        /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="num2"/> / <paramref name="den2"/>, zero if <paramref name="op1"/> = <paramref name="num2"/> / <paramref name="den2"/>, and a negative value if <paramref name="op1"/> &lt; <paramref name="num2"/> / <paramref name="den2"/>.</returns>
         /// <remarks>
         /// <para>
         /// <paramref name="num2"/> and <paramref name="den2"/> are allowed to have common factors. 
@@ -12254,12 +12254,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Compare <paramref name="op1"/> and <c><paramref name="num2"/> / <paramref name="den2"/></c>.
+        /// Compare <paramref name="op1"/> and <paramref name="num2"/> / <paramref name="den2"/>.
         /// </summary>
         /// <param name="op1">The first operand rational.</param>
         /// <param name="num2">The second operand numerator integer.</param>
         /// <param name="den2">The second operand denominator integer.</param>
-        /// <returns>Return a positive value if <c><paramref name="op1"/> &gt; <paramref name="num2"/> / <paramref name="den2"/></c>, zero if <c><paramref name="op1"/> = <paramref name="num2"/> / <paramref name="den2"/></c>, and a negative value if <c><paramref name="op1"/> &lt; <paramref name="num2"/> / <paramref name="den2"/></c>.</returns>
+        /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="num2"/> / <paramref name="den2"/>, zero if <paramref name="op1"/> = <paramref name="num2"/> / <paramref name="den2"/>, and a negative value if <paramref name="op1"/> &lt; <paramref name="num2"/> / <paramref name="den2"/>.</returns>
         /// <remarks>
         /// <para>
         /// <paramref name="num2"/> and <paramref name="den2"/> are allowed to have common factors. 
@@ -12308,7 +12308,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand rational.</param>
         /// <param name="op2">The second operand rational.</param>
-        /// <returns>Return a positive value if <c><paramref name="op1"/> &gt; <paramref name="op2"/></c>, zero if <c><paramref name="op1"/> = <paramref name="op2"/></c>, and a negative value if <c><paramref name="op1"/> &lt; <paramref name="op2"/></c>.</returns>
+        /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, and a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
         /// <remarks>
         /// <para>
         /// To determine if two rationals are equal, <see cref="mpq_equal"/> is faster than <see cref="mpq_cmp"/>. 
@@ -12422,7 +12422,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="quotient"/> to <c><paramref name="dividend"/> / <paramref name="divisor"/></c>. 
+        /// Set <paramref name="quotient"/> to <paramref name="dividend"/> / <paramref name="divisor"/>. 
         /// </summary>
         /// <param name="quotient">The result rational.</param>
         /// <param name="dividend">The first operand rational.</param>
@@ -12451,7 +12451,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> / 2^<paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> / 2^<paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result rational.</param>
         /// <param name="op1">The first operand rational.</param>
@@ -12688,7 +12688,7 @@ namespace Math.Gmp.Native
         /// <para>
         /// If the exponent from the conversion is too big or too small to fit a <see cref="double"/> then the result is system dependent.
         /// For too big an infinity is returned when available.
-        /// For too small <c>0.0</c> is normally returned.
+        /// For too small 0.0 is normally returned.
         /// Hardware overflow, underflow and denorm traps may or may not occur. 
         /// </para>
         /// </remarks>
@@ -12737,12 +12737,12 @@ namespace Math.Gmp.Native
         /// <returns>A pointer to the result string is returned, being either the allocated block, or the given <paramref name="str"/>.</returns>
         /// <remarks>
         /// <para>
-        /// The base may vary from <c>2</c> to <c>36</c>. The string will be of the form "num/den", or if the denominator is <c>1</c> then just "num". 
+        /// The base may vary from 2 to 36. The string will be of the form "num/den", or if the denominator is 1 then just "num". 
         /// </para>
         /// <para>
         /// If <paramref name="str"/> is NULL, the result string is allocated using the current allocation function
         /// (see <a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a>).
-        /// The block will be <c>strlen(<paramref name="str"/>) + 1</c> bytes, that being exactly enough for the string and null-terminator. 
+        /// The block will be strlen(<paramref name="str"/>) + 1 bytes, that being exactly enough for the string and null-terminator. 
         /// </para>
         /// <para>
         /// If <paramref name="str"/> is not NULL, it should point to a block of storage large enough for the result, that being 
@@ -12795,7 +12795,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize <paramref name="x"/> and set it to <c>0/1</c>.
+        /// Initialize <paramref name="x"/> and set it to 0/1.
         /// </summary>
         /// <param name="x">The operand rational.</param>
         /// <remarks>
@@ -12850,7 +12850,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize a NULL-terminated list of <see cref="mpq_t"/> variables, and set their values to <c>0/1</c>. 
+        /// Initialize a NULL-terminated list of <see cref="mpq_t"/> variables, and set their values to 0/1. 
         /// </summary>
         /// <param name="x">The operand rational.</param>
         /// <seealso cref="mpq_canonicalize"/>
@@ -12912,7 +12912,7 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result rational.</param>
         /// <param name="stream">Pointer to file stream.</param>
         /// <param name="base">The base.</param>
-        /// <returns>Return the number of characters read (including white space), or <c>0</c> if a rational could not be read.</returns>
+        /// <returns>Return the number of characters read (including white space), or 0 if a rational could not be read.</returns>
         /// <remarks>
         /// <para>
         /// Any initial white-space characters are read and discarded.
@@ -12924,10 +12924,10 @@ namespace Math.Gmp.Native
         /// (see <a href="https://gmplib.org/manual/Rational-Number-Functions.html#Rational-Number-Functions">GNU MP - Rational Number Functions</a>). 
         /// </para>
         /// <para>
-        /// The base can be between <c>2</c> and <c>36</c>, or can be <c>0</c> in which case the leading characters
-        /// of the string determine the base, <c>"0x"</c> or <c>"0X"</c> for hexadecimal, <c>"0"</c> for octal, or decimal otherwise.
+        /// The base can be between 2 and 36, or can be 0 in which case the leading characters
+        /// of the string determine the base, "0x" or "0X" for hexadecimal, "0" for octal, or decimal otherwise.
         /// The leading characters are examined separately for the numerator and denominator of a fraction, so for instance
-        /// <c>"0x10/11"</c> is <c>16/11</c>, whereas <c>"0x10/0x11"</c> is <c>16/17</c>. 
+        /// "0x10/11" is 16/11, whereas "0x10/0x11" is 16/17. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_out_str"/>
@@ -12992,7 +12992,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="inverted_number"/> to <c>1 / <paramref name="number"/></c>.
+        /// Set <paramref name="inverted_number"/> to 1 / <paramref name="number"/>.
         /// </summary>
         /// <param name="inverted_number">The result rational.</param>
         /// <param name="number">The operand rational.</param>
@@ -13024,7 +13024,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="product"/> to <c><paramref name="multiplier"/> * <paramref name="multiplicand"/></c>. 
+        /// Set <paramref name="product"/> to <paramref name="multiplier"/> * <paramref name="multiplicand"/>. 
         /// </summary>
         /// <param name="product">The result rational.</param>
         /// <param name="multiplier">The first operand rational.</param>
@@ -13053,7 +13053,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> * 2*<paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> * 2*<paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result rational.</param>
         /// <param name="op1">The first operand rational.</param>
@@ -13081,7 +13081,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="negated_operand"/> to <c>-<paramref name="operand"/></c>.
+        /// Set <paramref name="negated_operand"/> to -<paramref name="operand"/>.
         /// </summary>
         /// <param name="negated_operand">The result rational.</param>
         /// <param name="operand">The operand rational.</param>
@@ -13169,11 +13169,11 @@ namespace Math.Gmp.Native
         /// <param name="stream">Pointer to file stream.</param>
         /// <param name="base">The base.</param>
         /// <param name="op">The operand rational.</param>
-        /// <returns>Return the number of bytes written, or if an error occurred, return <c>0</c>.</returns>
+        /// <returns>Return the number of bytes written, or if an error occurred, return 0.</returns>
         /// <remarks>
         /// <para>
-        /// The <paramref name="base"/> may vary from <c>2</c> to <c>36</c>.
-        /// Output is in the form "num/den" or if the denominator is <c>1</c> then just "num". 
+        /// The <paramref name="base"/> may vary from 2 to 36.
+        /// Output is in the form "num/den" or if the denominator is 1 then just "num". 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_inp_str"/>
@@ -13550,7 +13550,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the value of <paramref name="rop"/> to <c><paramref name="op1"/> / <paramref name="op2"/></c>.
+        /// Set the value of <paramref name="rop"/> to <paramref name="op1"/> / <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result rational.</param>
         /// <param name="op1">The first operand rational.</param>
@@ -13615,10 +13615,10 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result rational.</param>
         /// <param name="str">The source string.</param>
         /// <param name="base">The base,</param>
-        /// <returns>The return value is <c>0</c> if the entire string is a valid number, or <c>-1</c> if not.</returns>
+        /// <returns>The return value is 0 if the entire string is a valid number, or -1 if not.</returns>
         /// <remarks>
         /// <para>
-        /// The string can be an integer like <c>"41"</c> or a fraction like <c>"41/152"</c>.
+        /// The string can be an integer like "41" or a fraction like "41/152".
         /// The fraction must be in canonical form
         /// (see <a href="https://gmplib.org/manual/Rational-Number-Functions.html#Rational-Number-Functions">GNU MP - Rational Number Functions</a>),
         /// or if not then <see cref="mpq_canonicalize"/> must be called.
@@ -13627,10 +13627,10 @@ namespace Math.Gmp.Native
         /// The numerator and optional denominator are parsed the same as in <see cref="mpz_set_str"/>
         /// (see <a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a>).
         /// White space is allowed in the string, and is simply ignored.
-        /// The base can vary from <c>2</c> to <c>62</c>, or if <paramref name="base"/> is <c>0</c> then the leading characters are used:
-        /// <c>0x</c> or <c>0X</c> for hex, <c>0b</c> or <c>0B</c> for binary, <c>0</c> for octal, or decimal otherwise.
-        /// Note that this is done separately for the numerator and denominator, so for instance <c>0xEF/100</c> is <c>239/100</c>,
-        /// whereas <c>0xEF/0x100</c> is <c>239/256</c>.
+        /// The base can vary from 2 to 62, or if <paramref name="base"/> is 0 then the leading characters are used:
+        /// 0x or 0X for hex, 0b or 0B for binary, 0 for octal, or decimal otherwise.
+        /// Note that this is done separately for the numerator and denominator, so for instance 0xEF/100 is 239/100,
+        /// whereas 0xEF/0x100 is 239/256.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_canonicalize"/>
@@ -13673,7 +13673,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set the value of <paramref name="rop"/> to <c><paramref name="op1"/> / <paramref name="op2"/></c>.
+        /// Set the value of <paramref name="rop"/> to <paramref name="op1"/> / <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result rational.</param>
         /// <param name="op1">The first operand rational.</param>
@@ -13800,10 +13800,10 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return <c>+1</c> if <c><paramref name="op"/> &gt; 0</c>, <c>0</c> if <c><paramref name="op"/> = 0</c>, and <c>-1</c> if <c><paramref name="op"/> &lt; 0</c>. 
+        /// Return +1 if <paramref name="op"/> &gt; 0, 0 if <paramref name="op"/> = 0, and -1 if <paramref name="op"/> &lt; 0. 
         /// </summary>
         /// <param name="op">The operand rational.</param>
-        /// <returns>Return <c>+1</c> if <c><paramref name="op"/> &gt; 0</c>, <c>0</c> if <c><paramref name="op"/> = 0</c>, and <c>-1</c> if <c><paramref name="op"/> &lt; 0</c>.</returns>
+        /// <returns>Return +1 if <paramref name="op"/> &gt; 0, 0 if <paramref name="op"/> = 0, and -1 if <paramref name="op"/> &lt; 0.</returns>
         /// <seealso cref="mpq_cmp"/>
         /// <seealso cref="mpq_cmp_z"/>
         /// <seealso cref="mpq_cmp_ui"/>
@@ -13843,7 +13843,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="difference"/> to <c><paramref name="minuend"/> - <paramref name="subtrahend"/></c>.
+        /// Set <paramref name="difference"/> to <paramref name="minuend"/> - <paramref name="subtrahend"/>.
         /// </summary>
         /// <param name="difference">The result rational.</param>
         /// <param name="minuend">The first operand rational.</param>
@@ -13943,7 +13943,7 @@ namespace Math.Gmp.Native
         #region "Float (i.e. F) routines."
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c>|<paramref name="op"/>|</c>. 
+        /// Set <paramref name="rop"/> to | <paramref name="op"/> |. 
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
@@ -14008,7 +14008,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> + <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> + <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -14083,7 +14083,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> + <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> + <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -14333,7 +14333,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand float.</param>
         /// <param name="op2">The second operand float.</param>
-        /// <returns>Return a positive value if <c>op1 &gt; op2</c>, zero if <c>op1 = op2</c>, and a negative value if <c>op1 &lt; op2</c>.</returns>
+        /// <returns>Return a positive value if op1 &gt; op2, zero if op1 = op2, and a negative value if op1 &lt; op2.</returns>
         /// <seealso cref="mpf_cmp"/>
         /// <seealso cref="mpf_cmp_z"/>
         /// <seealso cref="mpf_cmp_d"/>
@@ -14392,7 +14392,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand float.</param>
         /// <param name="op2">The second operand float.</param>
-        /// <returns>Return a positive value if <c>op1 &gt; op2</c>, zero if <c>op1 = op2</c>, and a negative value if <c>op1 &lt; op2</c>.</returns>
+        /// <returns>Return a positive value if op1 &gt; op2, zero if op1 = op2, and a negative value if op1 &lt; op2.</returns>
         /// <seealso cref="mpf_cmp"/>
         /// <seealso cref="mpf_cmp_d"/>
         /// <seealso cref="mpf_cmp_ui"/>
@@ -14451,10 +14451,10 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand float.</param>
         /// <param name="op2">The second operand float.</param>
-        /// <returns>Return a positive value if <c>op1 &gt; op2</c>, zero if <c>op1 = op2</c>, and a negative value if <c>op1 &lt; op2</c>.</returns>
+        /// <returns>Return a positive value if op1 &gt; op2, zero if op1 = op2, and a negative value if op1 &lt; op2.</returns>
         /// <remarks>
         /// <para>
-        /// <see cref="mpf_cmp_d"/> can be called with an infinity, but results are undefined for a <c>NaN</c>. 
+        /// <see cref="mpf_cmp_d"/> can be called with an infinity, but results are undefined for a NaN. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_cmp"/>
@@ -14504,7 +14504,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand float.</param>
         /// <param name="op2">The second operand float.</param>
-        /// <returns>Return a positive value if <c>op1 &gt; op2</c>, zero if <c>op1 = op2</c>, and a negative value if <c>op1 &lt; op2</c>.</returns>
+        /// <returns>Return a positive value if op1 &gt; op2, zero if op1 = op2, and a negative value if op1 &lt; op2.</returns>
         /// <seealso cref="mpf_cmp"/>
         /// <seealso cref="mpf_cmp_z"/>
         /// <seealso cref="mpf_cmp_d"/>
@@ -14553,7 +14553,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op1">The first operand float.</param>
         /// <param name="op2">The second operand float.</param>
-        /// <returns>Return a positive value if <c>op1 &gt; op2</c>, zero if <c>op1 = op2</c>, and a negative value if <c>op1 &lt; op2</c>.</returns>
+        /// <returns>Return a positive value if op1 &gt; op2, zero if op1 = op2, and a negative value if op1 &lt; op2.</returns>
         /// <seealso cref="mpf_cmp"/>
         /// <seealso cref="mpf_cmp_z"/>
         /// <seealso cref="mpf_cmp_d"/>
@@ -14597,7 +14597,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> / <paramref name="op2"/></c>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> / <paramref name="op2"/>. 
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -14682,7 +14682,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> / 2^<paramref name="op2"/></c>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> / 2^<paramref name="op2"/>. 
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The fisrt operand.</param>
@@ -14750,7 +14750,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> / <paramref name="op2"/></c>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> / <paramref name="op2"/>. 
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -15165,7 +15165,7 @@ namespace Math.Gmp.Native
         /// <para>
         /// If the exponent in <paramref name="op"/> is too big or too small to fit a <see cref="double"/> then the result is system dependent.
         /// For too big an infinity is returned when available.
-        /// For too small <c>0.0</c> is normally returned.
+        /// For too small 0.0 is normally returned.
         /// Hardware overflow, underflow and denorm traps may or may not occur. 
         /// </para>
         /// </remarks>
@@ -15215,7 +15215,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="exp">Pointer to 32-bit signed integer.</param>
         /// <param name="op">The operand float.</param>
-        /// <returns>The return value is in the range <c>0.5 &#8804; |d| &lt; 1</c> and the exponent is stored at <paramref name="exp"/>. <c>d * 2^<paramref name="exp"/></c> is the (truncated) <paramref name="op"/> value. If <paramref name="op"/> is zero, the return is <c>0.0</c> and <c>0</c> is stored at <paramref name="exp"/>.</returns>
+        /// <returns>The return value is in the range 0.5 &#8804; | d | &lt; 1 and the exponent is stored at <paramref name="exp"/>. d * 2^<paramref name="exp"/> is the (truncated) <paramref name="op"/> value. If <paramref name="op"/> is zero, the return is 0.0 and 0 is stored at <paramref name="exp"/>.</returns>
         /// <remarks>
         /// <para>
         /// This is similar to the standard C <c>frexp</c> function
@@ -15421,35 +15421,35 @@ namespace Math.Gmp.Native
         /// <returns>A pointer to the result string is returned, being either the allocated block or the given <paramref name="str"/>.</returns>
         /// <remarks>
         /// <para>
-        /// The <paramref name="base"/> argument may vary from <c>2</c> to <c>62</c> or from <c>-2</c> to <c>-36</c>.
+        /// The <paramref name="base"/> argument may vary from 2 to 62 or from -2 to -36.
         /// Up to <paramref name="n_digits"/> digits will be generated.
         /// Trailing zeros are not returned.
         /// No more digits than can be accurately represented by <paramref name="op"/> are ever generated.
-        /// If <paramref name="n_digits"/> is <c>0</c> then that accurate maximum number of digits are generated. 
+        /// If <paramref name="n_digits"/> is 0 then that accurate maximum number of digits are generated. 
         /// </para>
         /// <para>
-        /// For <paramref name="base"/> in the range <c>2..36</c>, digits and lower-case letters are used; for <c>-2..-36</c>,
-        /// digits and upper-case letters are used; for <c>37..62</c>, digits, upper-case letters, and lower-case letters
+        /// For <paramref name="base"/> in the range 2..36, digits and lower-case letters are used; for -2..-36,
+        /// digits and upper-case letters are used; for 37..62, digits, upper-case letters, and lower-case letters
         /// (in that significance order) are used. 
         /// </para>
         /// <para>
         /// If <paramref name="str"/> is NULL, the result string is allocated using the current allocation function
         /// (see <a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a>).
-        /// The block will be <c>strlen(str) + 1</c> bytes, that being exactly enough for the string and null-terminator.
+        /// The block will be strlen(str) + 1 bytes, that being exactly enough for the string and null-terminator.
         /// </para>
         /// <para>
-        /// If <paramref name="str"/> is not NULL, it should point to a block of <c><paramref name="n_digits"/> + 2</c> bytes,
+        /// If <paramref name="str"/> is not NULL, it should point to a block of <paramref name="n_digits"/> + 2 bytes,
         /// that being enough for the mantissa, a possible minus sign, and a null-terminator.
-        /// When <paramref name="n_digits"/> is <c>0</c> to get all significant digits, an application won’t be able to know
+        /// When <paramref name="n_digits"/> is 0 to get all significant digits, an application won’t be able to know
         /// the space required, and <paramref name="str"/> should be NULL in that case. 
         /// </para>
         /// <para>
         /// The generated string is a fraction, with an implicit radix point immediately to the left of the first digit.
         /// The applicable exponent is written through the <paramref name="expptr"/> pointer.
-        /// For example, the number <c>3.1416</c> would be returned as string <c>"31416"</c> and exponent <c>1</c>.
+        /// For example, the number 3.1416 would be returned as string "31416" and exponent 1.
         /// </para>
         /// <para>
-        /// When <paramref name="op"/> is zero, an empty string is produced and the exponent returned is <c>0</c>. 
+        /// When <paramref name="op"/> is zero, an empty string is produced and the exponent returned is 0. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_get_d"/>
@@ -15536,7 +15536,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize <paramref name="x"/> to <c>0</c>.
+        /// Initialize <paramref name="x"/> to 0.
         /// </summary>
         /// <param name="x">The operand float.</param>
         /// <remarks>
@@ -15595,7 +15595,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize <paramref name="x"/> to <c>0</c> and set its precision to be at least <paramref name="prec"/> bits.
+        /// Initialize <paramref name="x"/> to 0 and set its precision to be at least <paramref name="prec"/> bits.
         /// </summary>
         /// <param name="x">The operand float.</param>
         /// <param name="prec">The minimum precision in bits.</param>
@@ -15650,7 +15650,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize a NULL-terminated list of <see cref="mpf_t"/> variables, and set their values to <c>0</c>.
+        /// Initialize a NULL-terminated list of <see cref="mpf_t"/> variables, and set their values to 0.
         /// </summary>
         /// <param name="x">The operand float.</param>
         /// <remarks>
@@ -15867,7 +15867,7 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="str">The operand string.</param>
         /// <param name="base">The base.</param>
-        /// <returns>This function returns <c>0</c> if the entire string is a valid number in base <paramref name="base"/>. Otherwise it returns <c>-1</c>.</returns>
+        /// <returns>This function returns 0 if the entire string is a valid number in base <paramref name="base"/>. Otherwise it returns -1.</returns>
         /// <remarks>
         /// <para>
         /// See <see cref="mpf_set_str"/> for details on the assignment operation. 
@@ -15984,23 +15984,23 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="stream">Pointer to file stream.</param>
         /// <param name="base">The base.</param>
-        /// <returns>Return the number of bytes read, or if an error occurred, return <c>0</c>.</returns>
+        /// <returns>Return the number of bytes read, or if an error occurred, return 0.</returns>
         /// <remarks>
         /// <para>
-        /// The string is of the form "M@N" or, if the base is <c>10</c> or less, alternatively "MeN".
+        /// The string is of the form "M@N" or, if the base is 10 or less, alternatively "MeN".
         /// "M" is the mantissa and "N’" is the exponent.
         /// The mantissa is always in the specified <paramref name="base"/>.
         /// The exponent is either in the specified <paramref name="base"/> or, if <paramref name="base"/> is negative, in decimal.
         /// The decimal point expected is taken from the current locale, on systems providing <c>localeconv</c>.
         /// </para>
         /// <para>
-        /// The argument <paramref name="base"/> may be in the ranges <c>2</c> to <c>36</c>, or <c>-36</c> to <c>-2</c>.
+        /// The argument <paramref name="base"/> may be in the ranges 2 to 36, or -36 to -2.
         /// Negative values are used to specify that the exponent is in decimal. 
         /// </para>
         /// <para>
         /// Unlike the corresponding <c>mpz</c> function, the <paramref name="base"/> will not be determined from the leading
-        /// characters of the string if base is <c>0</c>.
-        /// This is so that numbers like <c>"0.23"</c> are not interpreted as octal.
+        /// characters of the string if base is 0.
+        /// This is so that numbers like "0.23" are not interpreted as octal.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_out_str"/>
@@ -16117,7 +16117,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> * <paramref name="op2"/></c>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> * <paramref name="op2"/>. 
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -16193,7 +16193,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> * 2^<paramref name="op2"/></c>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> * 2^<paramref name="op2"/>. 
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -16260,7 +16260,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> * <paramref name="op2"/></c>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> * <paramref name="op2"/>. 
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -16327,7 +16327,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c>-<paramref name="op"/></c>. 
+        /// Set <paramref name="rop"/> to -<paramref name="op"/>. 
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
@@ -16400,22 +16400,22 @@ namespace Math.Gmp.Native
         /// <returns>Return the number of bytes written, or if an error occurred, return 0.</returns>
         /// <remarks>
         /// <para>
-        /// The mantissa is prefixed with an <c>"0."</c> and is in the given <paramref name="base"/>,
-        /// which may vary from <c>2</c> to <c>62</c> or from <c>-2</c> to <c>-36</c>.
-        /// An exponent is then printed, separated by an <c>"e"</c>, or if the <paramref name="base"/>
-        /// is greater than <c>10</c> then by an <c>"@"</c>.
+        /// The mantissa is prefixed with an "0." and is in the given <paramref name="base"/>,
+        /// which may vary from 2 to 62 or from -2 to -36.
+        /// An exponent is then printed, separated by an "e", or if the <paramref name="base"/>
+        /// is greater than 10 then by an "@".
         /// The exponent is always in decimal.
         /// The decimal point follows the current locale, on systems providing <c>localeconv</c>. 
         /// </para>
         /// <para>
-        /// For <paramref name="base"/> in the range <c>2..36</c>, digits and lower-case letters are used;
-        /// for <c>-2..-36</c>, digits and upper-case letters are used; for <c>37..62</c>, digits,
+        /// For <paramref name="base"/> in the range 2..36, digits and lower-case letters are used;
+        /// for -2..-36, digits and upper-case letters are used; for 37..62, digits,
         /// upper-case letters, and lower-case letters (in that significance order) are used. 
         /// </para>
         /// <para>
         /// Up to <paramref name="n_digits"/> will be printed from the mantissa, except that no more
         /// digits than are accurately representable by op will be printed.
-        /// <paramref name="n_digits"/> can be <c>0</c> to select that accurate maximum. 
+        /// <paramref name="n_digits"/> can be 0 to select that accurate maximum. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_inp_str"/>
@@ -16462,7 +16462,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/>^<paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/>^<paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -16534,7 +16534,7 @@ namespace Math.Gmp.Native
         /// <param name="exp">The range of the random exponent.</param>
         /// <remarks>
         /// <para>
-        /// The exponent of the number is in the interval <c>-<paramref name="exp"/></c> to <c><paramref name="exp"/></c> (in limbs).
+        /// The exponent of the number is in the interval -<paramref name="exp"/> to <paramref name="exp"/> (in limbs).
         /// This function is useful for testing functions and algorithms, since these kind of random numbers have proven to be more
         /// likely to trigger corner-case bugs.
         /// Negative random numbers are generated when <paramref name="max_size"/> is negative. 
@@ -16583,7 +16583,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Compute the relative difference between <paramref name="op1"/> and <paramref name="op2"/> and store the result in <paramref name="rop"/>. This is <c>|<paramref name="op1"/> - <paramref name="op2"/>| / <paramref name="op1"/></c>. 
+        /// Compute the relative difference between <paramref name="op1"/> and <paramref name="op2"/> and store the result in <paramref name="rop"/>. This is | <paramref name="op1"/> - <paramref name="op2"/> | / <paramref name="op1"/>. 
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand float.</param>
@@ -17082,10 +17082,10 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="str">The input string.</param>
         /// <param name="base">The base.</param>
-        /// <returns>This function returns <c>0</c> if the entire string is a valid number in base <paramref name="base"/>. Otherwise it returns <c>-1</c>.</returns>
+        /// <returns>This function returns 0 if the entire string is a valid number in base <paramref name="base"/>. Otherwise it returns -1.</returns>
         /// <remarks>
         /// <para>
-        /// The string is of the form "M@N" or, if the <paramref name="base"/> is <c>10</c> or less,
+        /// The string is of the form "M@N" or, if the <paramref name="base"/> is 10 or less,
         /// alternatively "MeN".
         /// "M" is the mantissa and "N" is the exponent.
         /// The mantissa is always in the specified <paramref name="base"/>.
@@ -17093,17 +17093,17 @@ namespace Math.Gmp.Native
         /// The decimal point expected is taken from the current locale, on systems providing <c>localeconv</c>. 
         /// </para>
         /// <para>
-        /// The argument <paramref name="base"/> may be in the ranges <c>2</c> to <c>62</c>, or <c>-62</c> to <c>-2</c>.
+        /// The argument <paramref name="base"/> may be in the ranges 2 to 62, or -62 to -2.
         /// Negative values are used to specify that the exponent is in decimal. 
         /// </para>
         /// <para>
-        /// For bases up to <c>36</c>, case is ignored; upper-case and lower-case letters have the same value;
-        /// for bases <c>37</c> to <c>62</c>, upper-case letter represent the usual <c>10..35</c> while lower-case
-        /// letter represent <c>36..61</c>. 
+        /// For bases up to 36, case is ignored; upper-case and lower-case letters have the same value;
+        /// for bases 37 to 62, upper-case letter represent the usual 10..35 while lower-case
+        /// letter represent 36..61. 
         /// </para>
         /// <para>
         /// Unlike the corresponding <c>mpz</c> function, the <paramref name="base"/> will not be determined from the leading characters
-        /// of the string if base is <c>0</c>. This is so that numbers like "0.23" are not interpreted as octal. 
+        /// of the string if base is 0. This is so that numbers like "0.23" are not interpreted as octal. 
         /// </para>
         /// <para>
         /// White space is allowed in the string, and is simply ignored.
@@ -17267,10 +17267,10 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return <c>+1</c> if <c>op &gt; 0</c>, <c>0</c> if <c>op = 0</c>, and <c>-1</c> if <c>op &lt; 0</c>. 
+        /// Return +1 if op &gt; 0, 0 if op = 0, and -1 if op &lt; 0. 
         /// </summary>
         /// <param name="op">The operand float.</param>
-        /// <returns>Return <c>+1</c> if <c>op &gt; 0</c>, <c>0</c> if <c>op = 0</c>, and <c>-1</c> if <c>op &lt; 0</c>.</returns>
+        /// <returns>Return +1 if op &gt; 0, 0 if op = 0, and -1 if op &lt; 0.</returns>
         /// <seealso cref="mpf_cmp"/>
         /// <seealso cref="mpf_cmp_z"/>
         /// <seealso cref="mpf_cmp_d"/>
@@ -17473,7 +17473,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> - <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> - <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -17550,7 +17550,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> - <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> - <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -17758,7 +17758,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> / <paramref name="op2"/></c>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> / <paramref name="op2"/>. 
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -17834,7 +17834,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <c><paramref name="op1"/> - <paramref name="op2"/></c>.
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> - <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -17901,7 +17901,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Generate a uniformly distributed random float in <paramref name="rop"/>, such that <c>0 &#8804; rop &lt; 1</c>, with <paramref name="nbits"/> significant bits in the mantissa or less if the precision of <paramref name="rop"/> is smaller.
+        /// Generate a uniformly distributed random float in <paramref name="rop"/>, such that 0 &#8804; rop &lt; 1, with <paramref name="nbits"/> significant bits in the mantissa or less if the precision of <paramref name="rop"/> is smaller.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="state">The random number generator state.</param>
@@ -17979,7 +17979,7 @@ namespace Math.Gmp.Native
         /// <param name="s1n">The number of limbs in <paramref name="s1p"/>.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="s2n">The number of limbs in <paramref name="s2p"/>.</param>
-        /// <returns>Return carry, either <c>0</c> or <c>1</c>.</returns>
+        /// <returns>Return carry, either 0 or 1.</returns>
         /// <remarks>
         /// <para>
         /// This function requires that <paramref name="s1n"/> is greater than or equal to <paramref name="s2n"/>.
@@ -18059,7 +18059,7 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="n">The number of limbs in <paramref name="s1p"/>.</param>
         /// <param name="s2limb">The second operand integer.</param>
-        /// <returns>Return carry, either <c>0</c> or <c>1</c>.</returns>
+        /// <returns>Return carry, either 0 or 1.</returns>
         /// <seealso cref="mpn_add"/>
         /// <seealso cref="mpn_add_n"/>
         /// <seealso cref="mpn_addmul_1"/>
@@ -18131,13 +18131,13 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs in <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
-        /// <returns>Return carry, either <c>0</c> or <c>1</c>.</returns>
+        /// <returns>Return carry, either 0 or 1.</returns>
         /// <remarks>
         /// <para>
         /// This is the lowest-level function for addition.
         /// It is the preferred function for addition, since it is written in assembly for most CPUs.
         /// For addition of a variable to itself (i.e., <paramref name="s1p"/> equals <paramref name="s2p"/>)
-        /// use <see cref="mpn_lshift"/> with a count of <c>1</c> for optimal speed.
+        /// use <see cref="mpn_lshift"/> with a count of 1 for optimal speed.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add"/>
@@ -18219,7 +18219,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="rp"/>, <paramref name="n"/>} are allowed
-        /// to overlap provided <c><paramref name="rp"/> &#8804; <paramref name="s1p"/></c>. 
+        /// to overlap provided <paramref name="rp"/> &#8804; <paramref name="s1p"/>. 
         /// </para>
         /// <para>
         /// This is a low-level function that is a building block for general multiplication as well as other operations in GMP.
@@ -18334,11 +18334,11 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Test {<paramref name="sp"/>, <paramref name="n"/>} and return <c>1</c> if the operand is zero, <c>0</c> otherwise.
+        /// Test {<paramref name="sp"/>, <paramref name="n"/>} and return 1 if the operand is zero, 0 otherwise.
         /// </summary>
         /// <param name="sp">The operand integer.</param>
         /// <param name="n">The number of limbs in <paramref name="sp"/>.</param>
-        /// <returns>Return <c>1</c> if the operand is zero, <c>0</c> otherwise.</returns>
+        /// <returns>Return 1 if the operand is zero, 0 otherwise.</returns>
         /// <seealso cref="mpn_cmp"/>
         /// <seealso cref="mpn_perfect_power_p"/>
         /// <seealso cref="mpn_perfect_square_p"/>
@@ -18448,29 +18448,29 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Divide {<paramref name="sp"/>, <paramref name="n"/>} by <c>3</c>, expecting it to divide exactly, and writing the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
+        /// Divide {<paramref name="sp"/>, <paramref name="n"/>} by 3, expecting it to divide exactly, and writing the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="sp">The operand integer.</param>
         /// <param name="n">The number of limbs in <paramref name="sp"/>.</param>
-        /// <returns>If <c>3</c> divides exactly, the return value is zero and the result is the quotient. If not, the return value is non-zero and the result won’t be anything useful.</returns>
+        /// <returns>If 3 divides exactly, the return value is zero and the result is the quotient. If not, the return value is non-zero and the result won’t be anything useful.</returns>
         /// <remarks>
         /// <para>
         /// <see cref="mpn_divexact_by3c"/> takes an initial carry parameter, which can be the return value from a previous call,
         /// so a large calculation can be done piece by piece from low to high.
-        /// <see cref="mpn_divexact_by3"/> is simply a macro calling <see cref="mpn_divexact_by3c"/> with a <c>0</c> carry parameter.
+        /// <see cref="mpn_divexact_by3"/> is simply a macro calling <see cref="mpn_divexact_by3c"/> with a 0 carry parameter.
         /// </para>
         /// <para>
         /// These routines use a multiply-by-inverse and will be faster than <see cref="mpn_divrem_1"/> on CPUs with
         /// fast multiplication but slow division. 
         /// </para>
         /// <para>
-        /// The source <c>a</c>, result <c>q</c>, size <c>n</c>, initial carry <c>i</c>, and return value <c>c</c> satisfy
-        /// <c>c * b^n + a - i = 3 * q</c>, where <c>b = 2^<see cref="mp_bits_per_limb"/></c>.
-        /// The return <c>c</c> is always <c>0</c>, <c>1</c> or <c>2,</c> and the initial carry <c>i</c> must also be <c>0</c>,
-        /// <c>1</c> or <c>2</c> (these are both borrows really). When <c>c = 0</c> clearly <c>q = (a - i) / 3</c>.
-        /// When <c>c != 0</c>, the remainder <c>(a - i) mod 3</c> is given by <c>3 - c</c>, because
-        /// <c>b ≡ 1 mod 3</c> (when <see cref="mp_bits_per_limb"/> is even, which is always so currently). 
+        /// The source a, result q, size n, initial carry i, and return value c satisfy
+        /// c * b^n + a - i = 3 * q, where b = 2^<see cref="mp_bits_per_limb"/>.
+        /// The return c is always 0, 1 or 2, and the initial carry i must also be 0,
+        /// 1 or 2 (these are both borrows really). When c = 0 clearly q = (a - i) / 3.
+        /// When c != 0, the remainder (a - i) mod 3 is given by 3 - c, because
+        /// b ≡ 1 mod 3 (when <see cref="mp_bits_per_limb"/> is even, which is always so currently). 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add"/>
@@ -18540,30 +18540,30 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Divide {<paramref name="sp"/>, <paramref name="n"/>} by <c>3</c>, expecting it to divide exactly, and writing the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
+        /// Divide {<paramref name="sp"/>, <paramref name="n"/>} by 3, expecting it to divide exactly, and writing the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="sp">The operand integer.</param>
         /// <param name="n">The number of limbs in <paramref name="sp"/>.</param>
         /// <param name="carry">The initial carry.</param>
-        /// <returns>If <c>3</c> divides exactly, the return value is zero and the result is the quotient. If not, the return value is non-zero and the result won’t be anything useful.</returns>
+        /// <returns>If 3 divides exactly, the return value is zero and the result is the quotient. If not, the return value is non-zero and the result won’t be anything useful.</returns>
         /// <remarks>
         /// <para>
         /// <see cref="mpn_divexact_by3c"/> takes an initial carry parameter, which can be the return value from a previous call,
         /// so a large calculation can be done piece by piece from low to high.
-        /// <see cref="mpn_divexact_by3"/> is simply a macro calling <see cref="mpn_divexact_by3c"/> with a <c>0</c> carry parameter.
+        /// <see cref="mpn_divexact_by3"/> is simply a macro calling <see cref="mpn_divexact_by3c"/> with a 0 carry parameter.
         /// </para>
         /// <para>
         /// These routines use a multiply-by-inverse and will be faster than <see cref="mpn_divrem_1"/> on CPUs with
         /// fast multiplication but slow division. 
         /// </para>
         /// <para>
-        /// The source <c>a</c>, result <c>q</c>, size <c>n</c>, initial carry <c>i</c>, and return value <c>c</c> satisfy
-        /// <c>c * b^n + a - i = 3 * q</c>, where <c>b = 2^<see cref="mp_bits_per_limb"/></c>.
-        /// The return <c>c</c> is always <c>0</c>, <c>1</c> or <c>2,</c> and the initial carry <c>i</c> must also be <c>0</c>,
-        /// <c>1</c> or <c>2</c> (these are both borrows really). When <c>c = 0</c> clearly <c>q = (a - i) / 3</c>.
-        /// When <c>c != 0</c>, the remainder <c>(a - i) mod 3</c> is given by <c>3 - c</c>, because
-        /// <c>b ≡ 1 mod 3</c> (when <see cref="mp_bits_per_limb"/> is even, which is always so currently). 
+        /// The source a, result q, size n, initial carry i, and return value c satisfy
+        /// c * b^n + a - i = 3 * q, where b = 2^<see cref="mp_bits_per_limb"/>.
+        /// The return c is always 0, 1 or 2, and the initial carry i must also be 0,
+        /// 1 or 2 (these are both borrows really). When c = 0 clearly q = (a - i) / 3.
+        /// When c != 0, the remainder (a - i) mod 3 is given by 3 - c, because
+        /// b ≡ 1 mod 3 (when <see cref="mp_bits_per_limb"/> is even, which is always so currently). 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add"/>
@@ -18642,14 +18642,14 @@ namespace Math.Gmp.Native
         /// <returns>Return the remainder.</returns>
         /// <remarks>
         /// <para>
-        /// The integer quotient is written to {<c><paramref name="r1p"/> + <paramref name="qxn"/></c>, <paramref name="s2n"/>}
+        /// The integer quotient is written to {<paramref name="r1p"/> + <paramref name="qxn"/>, <paramref name="s2n"/>}
         /// and in addition <paramref name="qxn"/> fraction limbs are developed and written to {<paramref name="r1p"/>, <paramref name="qxn"/>}.
         /// Either or both <paramref name="s2n"/> and <paramref name="qxn"/> can be zero.
         /// For most usages, <paramref name="qxn"/> will be zero. 
         /// </para>
         /// <para>
         /// <see cref="mpn_divmod_1"/> exists for upward source compatibility and is simply a macro
-        /// calling <see cref="mpn_divrem_1"/> with a <paramref name="qxn"/> of <c>0</c>. 
+        /// calling <see cref="mpn_divrem_1"/> with a <paramref name="qxn"/> of 0. 
         /// </para>
         /// <para>
         /// The areas at <paramref name="r1p"/> and <paramref name="s2p"/> have to be identical or
@@ -18736,7 +18736,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// <see cref="mpn_divmod_1"/> exists for upward source compatibility and is simply a macro
-        /// calling <see cref="mpn_divrem_1"/> with a <c>qxn</c> of <c>0</c>. 
+        /// calling <see cref="mpn_divrem_1"/> with a qxn of 0. 
         /// </para>
         /// <para>
         /// The areas at <paramref name="r1p"/> and <paramref name="s2p"/> have to be identical or
@@ -18855,7 +18855,7 @@ namespace Math.Gmp.Native
         /// Both source operands are destroyed. 
         /// </para>
         /// <para>
-        /// It is required that <c><paramref name="xn"/> &#8805; <paramref name="yn"/> &gt; 0</c>, and the most significant limb
+        /// It is required that <paramref name="xn"/> &#8805; <paramref name="yn"/> &gt; 0, and the most significant limb
         /// of {<paramref name="yp"/>, <paramref name="yn"/>} must be non-zero.
         /// No overlap is permitted between {<paramref name="xp"/>, <paramref name="xn"/>} and {<paramref name="yp"/>, <paramref name="yn"/>}. 
         /// </para>
@@ -18960,7 +18960,7 @@ namespace Math.Gmp.Native
         //}
 
         /// <summary>
-        /// Compute the greatest common divisor <c>G</c> of <c>U</c> and <c>V</c>. Compute a cofactor <c>S</c> such that <c>G = US + VT</c>.
+        /// Compute the greatest common divisor G of U and V. Compute a cofactor S such that G = US + VT.
         /// </summary>
         /// <param name="gp">The fisrt result operand.</param>
         /// <param name="sp">The second result operand.</param>
@@ -18972,32 +18972,32 @@ namespace Math.Gmp.Native
         /// <returns>The number of limbs of <paramref name="gp"/>.</returns>
         /// <remarks>
         /// <para>
-        /// Let <c>U</c> be defined by {<paramref name="up"/>, <paramref name="un"/>}
-        /// and let <c>V</c> be defined by {<paramref name="vp"/>, <paramref name="vn"/>}.
+        /// Let U be defined by {<paramref name="up"/>, <paramref name="un"/>}
+        /// and let V be defined by {<paramref name="vp"/>, <paramref name="vn"/>}.
         /// </para>
         /// <para>
-        /// The second cofactor <c>T</c> is not computed but can easily be obtained from <c>(G - U * S) / V</c> (the division will be exact).
-        /// It is required that <c><paramref name="un"/> &#8805; <paramref name="vn"/> &gt; 0</c>, 
+        /// The second cofactor T is not computed but can easily be obtained from (G - U * S) / V (the division will be exact).
+        /// It is required that <paramref name="un"/> &#8805; <paramref name="vn"/> &gt; 0, 
         /// and the most significant limb of {<paramref name="vp"/>, <paramref name="vn"/>} must be non-zero. 
         /// </para>
         /// <para>
-        /// Store <c>G</c> at <paramref name="gp"/> and let the return value define its limb count.
-        /// Store <c>S</c> at <paramref name="sp"/> and let <c>|<paramref name="sn"/>.Value|</c> define its limb count.
-        /// <c>S</c> can be negative; when this happens <c><paramref name="sn"/>.Value</c> will be negative.
+        /// Store G at <paramref name="gp"/> and let the return value define its limb count.
+        /// Store S at <paramref name="sp"/> and let | <paramref name="sn"/>.Value | define its limb count.
+        /// S can be negative; when this happens <paramref name="sn"/>.Value will be negative.
         /// The area at <paramref name="gp"/> should have room for <paramref name="vn"/> limbs
-        /// and the area at <paramref name="sp"/> should have room for <c><paramref name="vn"/> + 1</c> limbs. 
+        /// and the area at <paramref name="sp"/> should have room for <paramref name="vn"/> + 1 limbs. 
         /// </para>
         /// <para>
         /// Both source operands are destroyed. 
         /// </para>
         /// <para>
-        /// Compatibility notes: GMP 4.3.0 and 4.3.1 defined <c>S</c> less strictly.
-        /// Earlier as well as later GMP releases define <c>S</c> as described here.
+        /// Compatibility notes: GMP 4.3.0 and 4.3.1 defined S less strictly.
+        /// Earlier as well as later GMP releases define S as described here.
         /// GMP releases before GMP 4.3.0 required additional space for both input and output areas.
-        /// More precisely, the areas {<paramref name="up"/>, <c><paramref name="un"/> + 1</c>} and
-        /// {<paramref name="vp"/>, <c><paramref name="vn"/> + 1</c>} were destroyed (i.e. the operands
+        /// More precisely, the areas {<paramref name="up"/>, <paramref name="un"/> + 1} and
+        /// {<paramref name="vp"/>, <paramref name="vn"/> + 1} were destroyed (i.e. the operands
         /// plus an extra limb past the end of each), and the areas pointed to by <paramref name="gp"/>
-        /// and <paramref name="sp"/> should each have room for <c><paramref name="un"/> + 1</c> limbs.
+        /// and <paramref name="sp"/> should each have room for <paramref name="un"/> + 1 limbs.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_gcd"/>
@@ -19070,11 +19070,11 @@ namespace Math.Gmp.Native
         /// <para>
         /// There may be leading zeros in the string.
         /// The string is not in ASCII; to convert it to printable format, add the ASCII codes for "0" or "A",
-        /// depending on the base and range. <paramref name="base"/> can vary from <c>2</c> to <c>256</c>. 
+        /// depending on the base and range. <paramref name="base"/> can vary from 2 to 256. 
         /// </para>
         /// <para>
         /// The most significant limb of the input {<paramref name="s1p"/>, <paramref name="s1n"/>} must be non-zero.
-        /// The input {<paramref name="s1p"/>, <paramref name="s1n"/>} is clobbered, except when base is a power of <c>2</c>,
+        /// The input {<paramref name="s1p"/>, <paramref name="s1n"/>} is clobbered, except when base is a power of 2,
         /// in which case it’s unchanged. 
         /// </para>
         /// <para>
@@ -19188,9 +19188,9 @@ namespace Math.Gmp.Native
         /// <returns>The bits shifted out at the left are returned in the least significant count bits of the return value (the rest of the return value is zero).</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="count"/> must be in the range <c>1</c> to <c><see cref="mp_bits_per_limb"/> - 1</c>.
+        /// <paramref name="count"/> must be in the range 1 to <see cref="mp_bits_per_limb"/> - 1.
         /// The regions {<paramref name="sp"/>, <paramref name="n"/>} and {<paramref name="rp"/>, <paramref name="n"/>} may overlap,
-        /// provided <c><paramref name="rp"/> &#8805; <paramref name="sp"/></c>. 
+        /// provided <paramref name="rp"/> &#8805; <paramref name="sp"/>. 
         /// </para>
         /// <para>
         /// This function is written in assembly for most CPUs. 
@@ -19311,7 +19311,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Multiply {<paramref name="s1p"/>, <paramref name="s1n"/>} and {<paramref name="s2p"/>, <paramref name="s2n"/>}, and write the <c>(<paramref name="s1n"/> + <paramref name="s2n"/>)</c>-limb result to <paramref name="rp"/>.
+        /// Multiply {<paramref name="s1p"/>, <paramref name="s1n"/>} and {<paramref name="s2p"/>, <paramref name="s2n"/>}, and write the (<paramref name="s1n"/> + <paramref name="s2n"/>)-limb result to <paramref name="rp"/>.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The first operand integer.</param>
@@ -19321,7 +19321,7 @@ namespace Math.Gmp.Native
         /// <returns>Return the most significant limb of the result.</returns>
         /// <remarks>
         /// <para>
-        /// The destination has to have space for <c><paramref name="s1n"/> + <paramref name="s2n"/></c> limbs,
+        /// The destination has to have space for <paramref name="s1n"/> + <paramref name="s2n"/> limbs,
         /// even if the product’s most significant limb is zero.
         /// No overlap is permitted between the destination and either source.
         /// </para>
@@ -19406,14 +19406,14 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="rp"/>, <paramref name="n"/>} 
-        /// are allowed to overlap provided <c><paramref name="rp"/> &#8804; <paramref name="s1p"/></c>.
+        /// are allowed to overlap provided <paramref name="rp"/> &#8804; <paramref name="s1p"/>.
         /// </para>
         /// <para>
         /// This is a low-level function that is a building block for general multiplication as well as 
         /// other operations in GMP. It is written in assembly for most CPUs.
         /// </para>
         /// <para>
-        /// Don’t call this function if <paramref name="s2limb"/> is a power of <c>2</c>;
+        /// Don’t call this function if <paramref name="s2limb"/> is a power of 2;
         /// use <see cref="mpn_lshift"/> with a count equal to the logarithm of
         /// <paramref name="s2limb"/> instead, for optimal speed. 
         /// </para>
@@ -19484,7 +19484,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Multiply {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the <c>(2 * <paramref name="n"/>)</c>-limb result to <paramref name="rp"/>.
+        /// Multiply {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the (2 * <paramref name="n"/>)-limb result to <paramref name="rp"/>.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The first operand integer.</param>
@@ -19492,7 +19492,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The number of limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
         /// <remarks>
         /// <para>
-        /// The destination has to have space for <c>2 * <paramref name="n"/></c> limbs, even if the product’s
+        /// The destination has to have space for 2 * <paramref name="n"/> limbs, even if the product’s
         /// most significant limb is zero. No overlap is permitted between the destination and either source. 
         /// </para>
         /// <para>
@@ -19563,14 +19563,14 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Compute the square of {<paramref name="s1p"/>, <paramref name="n"/>} and write the <c>(2 * <paramref name="n"/>)</c>-limb result to <paramref name="rp"/>.
+        /// Compute the square of {<paramref name="s1p"/>, <paramref name="n"/>} and write the (2 * <paramref name="n"/>)-limb result to <paramref name="rp"/>.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/>.</param>
         /// <remarks>
         /// <para>
-        /// The destination has to have space for <c>2 * <paramref name="n"/></c> limbs, even if the result’s
+        /// The destination has to have space for 2 * <paramref name="n"/> limbs, even if the result’s
         /// most significant limb is zero. No overlap is permitted between the destination and the source. 
         /// </para>
         /// </remarks>
@@ -20001,9 +20001,9 @@ namespace Math.Gmp.Native
         /// <returns>The bits shifted out at the right are returned in the most significant <paramref name="count"/> bits of the return value (the rest of the return value is zero).</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="count"/> must be in the range <c>1</c> to <c><see cref="mp_bits_per_limb"/> - 1</c>.
+        /// <paramref name="count"/> must be in the range 1 to <see cref="mp_bits_per_limb"/> - 1.
         /// The regions {<paramref name="sp"/>, <paramref name="n"/>} and {<paramref name="rp"/>, <paramref name="n"/>}
-        /// may overlap, provided <c><paramref name="rp"/> &#8804; <paramref name="sp"/></c>. 
+        /// may overlap, provided <paramref name="rp"/> &#8804; <paramref name="sp"/>. 
         /// </para>
         /// <para>
         /// This function is written in assembly for most CPUs. 
@@ -20161,16 +20161,16 @@ namespace Math.Gmp.Native
         /// <returns>The number of limbs of <paramref name="rp"/>.</returns>
         /// <remarks>
         /// <para>
-        /// <c><paramref name="str"/>[0]</c> is the most significant input byte and
-        /// <c><paramref name="str"/>[<paramref name="strsize"/> - 1]</c> is the least significant input byte.
-        /// Each byte should be a value in the range <c>0</c> to <c><paramref name="base"/> - 1</c>,
-        /// not an ASCII character. base can vary from <c>2</c> to <c>256</c>.
+        /// <paramref name="str"/>[0] is the most significant input byte and
+        /// <paramref name="str"/>[<paramref name="strsize"/> - 1] is the least significant input byte.
+        /// Each byte should be a value in the range 0 to <paramref name="base"/> - 1,
+        /// not an ASCII character. base can vary from 2 to 256.
         /// </para>
         /// <para>
-        /// The converted value is {<paramref name="rp"/>, rn} where <c>rn</c> is the return value.
-        /// If the most significant input byte <c><paramref name="str"/>[0]</c> is non-zero,
-        /// then <c><paramref name="rp"/>[rn - 1]</c> will be non-zero,
-        /// else <c><paramref name="rp"/>[rn - 1]</c> and some number of subsequent limbs may be zero. 
+        /// The converted value is {<paramref name="rp"/>, rn} where rn is the return value.
+        /// If the most significant input byte <paramref name="str"/>[0] is non-zero,
+        /// then <paramref name="rp"/>[rn - 1] will be non-zero,
+        /// else <paramref name="rp"/>[rn - 1] and some number of subsequent limbs may be zero. 
         /// </para>
         /// <para>
         /// The area at <paramref name="rp"/> has to have space for the largest possible number with
@@ -20242,10 +20242,10 @@ namespace Math.Gmp.Native
         /// <returns>The size of {<paramref name="xp"/>, <paramref name="n"/>} measured in number of digits in the given <paramref name="base"/>.</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="base"/> can vary from <c>2</c> to <c>62</c>.
-        /// Requires <c><paramref name="n"/> &gt; 0</c> and <c><paramref name="xp"/>[<paramref name="n"/> - 1] &gt; 0</c>.
-        /// The result will be either exact or <c>1</c> too big.
-        /// If base is a power of <c>2</c>, the result is always exact. 
+        /// <paramref name="base"/> can vary from 2 to 62.
+        /// Requires <paramref name="n"/> &gt; 0 and <paramref name="xp"/>[<paramref name="n"/> - 1] &gt; 0.
+        /// The result will be either exact or 1 too big.
+        /// If base is a power of 2, the result is always exact. 
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_get_str"/>
@@ -20283,7 +20283,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Compute the square root of {<paramref name="sp"/>, <paramref name="n"/>} and put the result at {<paramref name="r1p"/>, <c>ceil(<paramref name="n"/> / 2)</c>} and the remainder at {<paramref name="r2p"/>, retval}.
+        /// Compute the square root of {<paramref name="sp"/>, <paramref name="n"/>} and put the result at {<paramref name="r1p"/>, ceil(<paramref name="n"/> / 2)} and the remainder at {<paramref name="r2p"/>, retval}.
         /// </summary>
         /// <param name="r1p">The first result integer.</param>
         /// <param name="r2p">The second result integer.</param>
@@ -20297,7 +20297,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// The most significant limb of {<paramref name="sp"/>, <paramref name="n"/>} must be non-zero.
-        /// The areas {<paramref name="r1p"/>, <c>ceil(<paramref name="n"/> / 2)</c>} and
+        /// The areas {<paramref name="r1p"/>, ceil(<paramref name="n"/> / 2)} and
         /// {<paramref name="sp"/>, <paramref name="n"/>} must be completely separate. 
         /// The areas {<paramref name="r2p"/>, <paramref name="n"/>} and {<paramref name="sp"/>, <paramref name="n"/>}
         /// must be either identical or completely separate.
@@ -20387,7 +20387,7 @@ namespace Math.Gmp.Native
         /// <param name="s1n">The number of limbs of <paramref name="s1p"/>.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="s2n">The number of limbs of <paramref name="s2p"/>.</param>
-        /// <returns>Return borrow, either <c>0</c> or <c>1</c>.</returns>
+        /// <returns>Return borrow, either 0 or 1.</returns>
         /// <remarks>
         /// <para>
         /// This is the lowest-level function for subtraction. It is the preferred function for subtraction, since it is written in assembly for most CPUs.
@@ -20468,7 +20468,7 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="n">The numbe rof limbs of <paramref name="s1p"/>.</param>
         /// <param name="s2limb">The second operand integer.</param>
-        /// <returns>Return borrow, either <c>0</c> or <c>1</c>.</returns>
+        /// <returns>Return borrow, either 0 or 1.</returns>
         /// <seealso cref="mpn_add"/>
         /// <seealso cref="mpn_add_1"/>
         /// <seealso cref="mpn_add_n"/>
@@ -20541,7 +20541,7 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The numbe rof limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
-        /// <returns>Return borrow, either <c>0</c> or <c>1</c>.</returns>
+        /// <returns>Return borrow, either 0 or 1.</returns>
         /// <seealso cref="mpn_add"/>
         /// <seealso cref="mpn_add_1"/>
         /// <seealso cref="mpn_add_n"/>
@@ -20621,7 +20621,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="rp"/>, <paramref name="n"/>}
-        /// are allowed to overlap provided <c><paramref name="rp"/> &#8804; <paramref name="s1p"/></c>.
+        /// are allowed to overlap provided <paramref name="rp"/> &#8804; <paramref name="s1p"/>.
         /// </para>
         /// <para>
         /// This is a low-level function that is a building block for general multiplication and division
@@ -20694,18 +20694,18 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Divide {<paramref name="np"/>, <paramref name="nn"/>} by {<paramref name="dp"/>, <paramref name="dn"/>} and put the quotient at {<paramref name="qp"/>, <c><paramref name="nn"/> - <paramref name="dn"/> + 1</c>} and the remainder at {<paramref name="rp"/>, <paramref name="dn"/>}.
+        /// Divide {<paramref name="np"/>, <paramref name="nn"/>} by {<paramref name="dp"/>, <paramref name="dn"/>} and put the quotient at {<paramref name="qp"/>, <paramref name="nn"/> - <paramref name="dn"/> + 1} and the remainder at {<paramref name="rp"/>, <paramref name="dn"/>}.
         /// </summary>
         /// <param name="qp">The result quotient integer.</param>
         /// <param name="rp">The result remainder integer.</param>
-        /// <param name="qxn">Must be <c>0</c>.</param>
+        /// <param name="qxn">Must be 0.</param>
         /// <param name="np">The numerator operand integer.</param>
         /// <param name="nn">The number of limbs of <paramref name="np"/>.</param>
         /// <param name="dp">The denominator operand integer.</param>
         /// <param name="dn">The number of limbs of <paramref name="dp"/>.</param>
         /// <remarks>
         /// <para>
-        /// The quotient is rounded towards <c>0</c>.
+        /// The quotient is rounded towards 0.
         /// </para>
         /// <para>
         /// No overlap is permitted between arguments, except that <paramref name="np"/> might
@@ -21398,7 +21398,7 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
-        /// <returns>If <paramref name="cnd"/> is non-zero, return carry, either <c>0</c> or <c>1</c>, and if <paramref name="cnd"/> is zero, return <c>0</c>.</returns>
+        /// <returns>If <paramref name="cnd"/> is non-zero, return carry, either 0 or 1, and if <paramref name="cnd"/> is zero, return 0.</returns>
         /// <remarks>
         /// <para>
         /// This function does conditional addition.
@@ -21478,7 +21478,7 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
-        /// <returns>If <paramref name="cnd"/> is non-zero, return borrow, either <c>0</c> or <c>1</c>, and if <paramref name="cnd"/> is zero, return <c>0</c>.</returns>
+        /// <returns>If <paramref name="cnd"/> is non-zero, return borrow, either 0 or 1, and if <paramref name="cnd"/> is zero, return 0.</returns>
         /// <remarks>
         /// <para>
         /// This function does conditional addition.
@@ -21550,18 +21550,18 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <c>R</c> to <c>A + b</c>, where <c>R = {<paramref name="rp"/>, <paramref name="n"/>}</c>, <c>A = {<paramref name="ap"/>, <paramref name="n"/>}</c>, and <paramref name="b"/> is a single limb.
+        /// Set R to A + b, where R = {<paramref name="rp"/>, <paramref name="n"/>}, A = {<paramref name="ap"/>, <paramref name="n"/>}, and <paramref name="b"/> is a single limb.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="ap">The first operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="ap"/> and <paramref name="rp"/>.</param>
         /// <param name="b">The second operand integer.</param>
         /// <param name="tp">The scratch operand integer.</param>
-        /// <returns>Returns carry, either <c>0</c> or <c>1</c>.</returns>
+        /// <returns>Returns carry, either 0 or 1.</returns>
         /// <remarks>
         /// <para>
-        /// This function takes <c>O(N)</c> time, unlike the leaky functions <see cref="mpn_add_1"/> which is <c>O(1)</c> on average.
-        /// It requires scratch space of <c><see cref="mpn_sec_add_1_itch"/>(n)</c> limbs, to be passed in the <paramref name="tp"/> parameter.
+        /// This function takes O(N) time, unlike the leaky functions <see cref="mpn_add_1"/> which is O(1) on average.
+        /// It requires scratch space of <see cref="mpn_sec_add_1_itch"/>(n) limbs, to be passed in the <paramref name="tp"/> parameter.
         /// The scratch space requirements are guaranteed to be at most <paramref name="n"/> limbs, and increase monotonously in the operand size.
         /// </para>
         /// </remarks>
@@ -21644,18 +21644,18 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <c>R</c> to <c>A - b</c>, where <c>R = {<paramref name="rp"/>, <paramref name="n"/>}</c>, <c>A = {<paramref name="ap"/>, <paramref name="n"/>}</c>, and <paramref name="b"/> is a single limb.
+        /// Set R to A - b, where R = {<paramref name="rp"/>, <paramref name="n"/>}, A = {<paramref name="ap"/>, <paramref name="n"/>}, and <paramref name="b"/> is a single limb.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="ap">The first operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="ap"/> and <paramref name="rp"/>.</param>
         /// <param name="b">The second operand integer.</param>
         /// <param name="tp">The scratch operand integer.</param>
-        /// <returns>Returns borrow, either <c>0</c> or <c>1</c>.</returns>
+        /// <returns>Returns borrow, either 0 or 1.</returns>
         /// <remarks>
         /// <para>
-        /// This function takes <c>O(N)</c> time, unlike the leaky functions <see cref="mpn_sub_1"/> which is <c>O(1)</c> on average.
-        /// It requires scratch space of <c><see cref="mpn_sec_sub_1_itch"/>(n)</c> limbs, to be passed in the <paramref name="tp"/> parameter.
+        /// This function takes O(N) time, unlike the leaky functions <see cref="mpn_sub_1"/> which is O(1) on average.
+        /// It requires scratch space of <see cref="mpn_sec_sub_1_itch"/>(n) limbs, to be passed in the <paramref name="tp"/> parameter.
         /// The scratch space requirements are guaranteed to be at most <paramref name="n"/> limbs, and increase monotonously in the operand size.
         /// </para>
         /// </remarks>
@@ -21808,7 +21808,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <c>R</c> to <c>A * B</c>, where <c>A = {<paramref name="ap"/>, <paramref name="an"/>}</c>, <c>B = {<paramref name="bp"/>, <paramref name="bn"/>}</c>, and <c>R = {<paramref name="rp"/>, <paramref name="an"/> + <paramref name="bn"/>}</c>. 
+        /// Set R to A * B, where A = {<paramref name="ap"/>, <paramref name="an"/>}, B = {<paramref name="bp"/>, <paramref name="bn"/>}, and R = {<paramref name="rp"/>, <paramref name="an"/> + <paramref name="bn"/>}. 
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="ap">The first operand integer.</param>
@@ -21818,14 +21818,14 @@ namespace Math.Gmp.Native
         /// <param name="tp">The scratch operand integer.</param>
         /// <remarks>
         /// <para>
-        /// It is required that <c><paramref name="an"/> &#8805; bn &gt; 0</c>. 
+        /// It is required that <paramref name="an"/> &#8805; bn &gt; 0. 
         /// </para>
         /// <para>
-        /// No overlapping between <c>R</c> and the input operands is allowed.
-        /// For <c>A = B</c>, use <see cref="mpn_sec_sqr"/> for optimal performance. 
+        /// No overlapping between R and the input operands is allowed.
+        /// For A = B, use <see cref="mpn_sec_sqr"/> for optimal performance. 
         /// </para>
         /// <para>
-        /// This function requires scratch space of <c><see cref="mpn_sec_mul_itch"/>(<paramref name="an"/>, <paramref name="bn"/>)</c>
+        /// This function requires scratch space of <see cref="mpn_sec_mul_itch"/>(<paramref name="an"/>, <paramref name="bn"/>)
         /// limbs to be passed in the tp parameter. The scratch space requirements are guaranteed to increase monotonously in the operand sizes. 
         /// </para>
         /// </remarks>
@@ -21907,7 +21907,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <c>R</c> to <c>A^2</c>, where <c>A = {<paramref name="ap"/>, <paramref name="an"/>}</c>, and <c>R = {<paramref name="rp"/>, 2 * <paramref name="an"/>}</c>. 
+        /// Set R to A^2, where A = {<paramref name="ap"/>, <paramref name="an"/>}, and R = {<paramref name="rp"/>, 2 * <paramref name="an"/>}. 
         /// </summary>
         /// <param name="rp">The result operand.</param>
         /// <param name="ap">The operand integer.</param>
@@ -21915,13 +21915,13 @@ namespace Math.Gmp.Native
         /// <param name="tp">The scratch operand integer.</param>
         /// <remarks>
         /// <para>
-        /// It is required that <c><paramref name="an"/> &gt; 0</c>. 
+        /// It is required that <paramref name="an"/> &gt; 0. 
         /// </para>
         /// <para>
-        /// No overlapping between <c>R</c> and the input operands is allowed. 
+        /// No overlapping between R and the input operands is allowed. 
         /// </para>
         /// <para>
-        /// This function requires scratch space of <c><see cref="mpn_sec_sqr_itch"/>(<paramref name="an"/>)</c>
+        /// This function requires scratch space of <see cref="mpn_sec_sqr_itch"/>(<paramref name="an"/>)
         /// limbs to be passed in the <paramref name="tp"/> parameter.
         /// The scratch space requirements are guaranteed to increase monotonously in the operand size. 
         /// </para>
@@ -22000,7 +22000,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <c>R</c> to <c>(B^E) modulo M</c>, where <c>R = {<paramref name="rp"/>, <paramref name="n"/>}</c>, <c>M = {<paramref name="mp"/>, <paramref name="n"/>}</c>, and <c>E = {<paramref name="ep"/>, ceil(<paramref name="enb"/> / <see cref="mp_bits_per_limb"/>)}</c>. 
+        /// Set R to (B^E) modulo M, where R = {<paramref name="rp"/>, <paramref name="n"/>}, M = {<paramref name="mp"/>, <paramref name="n"/>}, and E = {<paramref name="ep"/>, ceil(<paramref name="enb"/> / <see cref="mp_bits_per_limb"/>)}. 
         /// </summary>
         /// <param name="rp">The result operand.</param>
         /// <param name="bp">The first operand integer.</param>
@@ -22012,13 +22012,13 @@ namespace Math.Gmp.Native
         /// <param name="tp">The scratch operand integer.</param>
         /// <remarks>
         /// <para>
-        /// It is required that <c>B &gt; 0</c>, that <c>M &gt; 0</c> is odd, and that <c>E &lt; 2^<paramref name="enb"/></c>.
+        /// It is required that B &gt; 0, that M &gt; 0 is odd, and that E &lt; 2^<paramref name="enb"/>.
         /// </para>
         /// <para>
-        /// No overlapping between <c>R</c> and the input operands is allowed. 
+        /// No overlapping between R and the input operands is allowed. 
         /// </para>
         /// <para>
-        /// This function requires scratch space of <c><see cref="mpn_sec_powm_itch"/>(<paramref name="bn"/>, <paramref name="enb"/>, <paramref name="n"/>)</c>
+        /// This function requires scratch space of <see cref="mpn_sec_powm_itch"/>(<paramref name="bn"/>, <paramref name="enb"/>, <paramref name="n"/>)
         /// limbs to be passed in the <paramref name="tp"/> parameter.
         /// The scratch space requirements are guaranteed to increase monotonously in the operand sizes. 
         /// </para>
@@ -22170,7 +22170,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <c>Q</c> to the truncated quotient <c>N / D</c> and <c>R</c> to <c>N modulo D</c>, where <c>N = {<paramref name="np"/>, <paramref name="nn"/>}</c>, <c>D = {<paramref name="dp"/>, <paramref name="dn"/>}</c>, <c>Q</c>’s most significant limb is the function return value and the remaining limbs are <c>{<paramref name="qp"/>, <paramref name="nn"/> - <paramref name="dn"/>}</c>, and <c>R = {<paramref name="np"/>, <paramref name="dn"/>}</c>. 
+        /// Set Q to the truncated quotient N / D and R to N modulo D, where N = {<paramref name="np"/>, <paramref name="nn"/>}, D = {<paramref name="dp"/>, <paramref name="dn"/>}, Q’s most significant limb is the function return value and the remaining limbs are {<paramref name="qp"/>, <paramref name="nn"/> - <paramref name="dn"/>}, and R = {<paramref name="np"/>, <paramref name="dn"/>}. 
         /// </summary>
         /// <param name="qp">The quotient result operand.</param>
         /// <param name="np">The first operand and remainder result integer.</param>
@@ -22178,19 +22178,19 @@ namespace Math.Gmp.Native
         /// <param name="dp">The second operand integer.</param>
         /// <param name="dn">The number of limbs of <paramref name="dp"/>.</param>
         /// <param name="tp">The scratch operand integer.</param>
-        /// <returns><c>Q</c>’s most significant limb.</returns>
+        /// <returns>Q’s most significant limb.</returns>
         /// <remarks>
         /// <para>
-        /// It is required that <c><paramref name="nn"/> &#8805; <paramref name="dn"/> &#8805; 1</c>, and that <c><paramref name="dp"/>[<paramref name="dn"/> - 1] &#8800; 0</c>.
-        /// This does not imply that <c>N &#8805; D</c> since <c>N</c> might be zero-padded. 
+        /// It is required that <paramref name="nn"/> &#8805; <paramref name="dn"/> &#8805; 1, and that <paramref name="dp"/>[<paramref name="dn"/> - 1] &#8800; 0.
+        /// This does not imply that N &#8805; D since N might be zero-padded. 
         /// </para>
         /// <para>
-        /// Note the overlapping between <c>N</c> and <c>R</c>.
+        /// Note the overlapping between N and R.
         /// No other operand overlapping is allowed.
-        /// The entire space occupied by <c>N</c> is overwritten. 
+        /// The entire space occupied by N is overwritten. 
         /// </para>
         /// <para>
-        /// This function requires scratch space of <c><see cref="mpn_sec_div_qr_itch"/>(<paramref name="nn"/>, <paramref name="dn"/>)</c>
+        /// This function requires scratch space of <see cref="mpn_sec_div_qr_itch"/>(<paramref name="nn"/>, <paramref name="dn"/>)
         /// limbs to be passed in the <paramref name="tp"/> parameter. 
         /// </para>
         /// </remarks>
@@ -22279,7 +22279,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <c>R</c> to <c>N modulo D</c>, where <c>N = {<paramref name="np"/>, <paramref name="nn"/>}</c>, <c>D = {<paramref name="dp"/>, <paramref name="dn"/>}</c>, and <c>R = {<paramref name="np"/>, <paramref name="dn"/>}</c>. 
+        /// Set R to N modulo D, where N = {<paramref name="np"/>, <paramref name="nn"/>}, D = {<paramref name="dp"/>, <paramref name="dn"/>}, and R = {<paramref name="np"/>, <paramref name="dn"/>}. 
         /// </summary>
         /// <param name="np">The first operand and result integer.</param>
         /// <param name="nn">The number of limbs of <paramref name="np"/>.</param>
@@ -22288,17 +22288,17 @@ namespace Math.Gmp.Native
         /// <param name="tp">The scratch operand integer.</param>
         /// <remarks>
         /// <para>
-        /// It is required that <c><paramref name="nn"/> &#8805; <paramref name="dn"/> &#8805; 1</c>,
-        /// and that <c><paramref name="dp"/>[<paramref name="dn"/> - 1] &#8800; 0</c>.
-        /// This does not imply that <c>N &#8805; D</c> since <c>N</c> might be zero-padded. 
+        /// It is required that <paramref name="nn"/> &#8805; <paramref name="dn"/> &#8805; 1,
+        /// and that <paramref name="dp"/>[<paramref name="dn"/> - 1] &#8800; 0.
+        /// This does not imply that N &#8805; D since N might be zero-padded. 
         /// </para>
         /// <para>
-        /// Note the overlapping between <c>N</c> and <c>R</c>.
+        /// Note the overlapping between N and R.
         /// No other operand overlapping is allowed.
-        /// The entire space occupied by <c>N</c> is overwritten. 
+        /// The entire space occupied by N is overwritten. 
         /// </para>
         /// <para>
-        /// This function requires scratch space of <c><see cref="mpn_sec_div_r_itch"/>(<paramref name="nn"/>, <paramref name="dn"/>)</c>
+        /// This function requires scratch space of <see cref="mpn_sec_div_r_itch"/>(<paramref name="nn"/>, <paramref name="dn"/>)
         /// limbs to be passed in the <paramref name="tp"/> parameter. 
         /// </para>
         /// </remarks>
@@ -22375,7 +22375,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <c>R</c> to the inverse of <c>A modulo M</c>, where <c>R = {<paramref name="rp"/>, <paramref name="n"/>}</c>, <c>A = {<paramref name="ap"/>, <paramref name="n"/>}</c>, and <c>M = {<paramref name="mp"/>, <paramref name="n"/>}</c>. This function’s interface is preliminary. 
+        /// Set R to the inverse of A modulo M, where R = {<paramref name="rp"/>, <paramref name="n"/>}, A = {<paramref name="ap"/>, <paramref name="n"/>}, and M = {<paramref name="mp"/>, <paramref name="n"/>}. This function’s interface is preliminary. 
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="ap">The first operand integer.</param>
@@ -22383,19 +22383,19 @@ namespace Math.Gmp.Native
         /// <param name="n">The number of limbs of <paramref name="ap"/> and <paramref name="mp"/>.</param>
         /// <param name="nbcnt">The third operand integer.</param>
         /// <param name="tp">The scratch operand integer.</param>
-        /// <returns>If an inverse exists, return <c>1</c>, otherwise return <c>0</c> and leave <c>R</c> undefined.</returns>
+        /// <returns>If an inverse exists, return 1, otherwise return 0 and leave R undefined.</returns>
         /// <remarks>
         /// <para>
-        /// If an inverse exists, return <c>1</c>, otherwise return <c>0</c> and leave <c>R</c> undefined.
-        /// In either case, the input <c>A</c> is destroyed. 
+        /// If an inverse exists, return 1, otherwise return 0 and leave R undefined.
+        /// In either case, the input A is destroyed. 
         /// </para>
         /// <para>
-        /// It is required that <c>M</c> is odd, and that <c><paramref name="nbcnt"/> &#8805; ceil(log(A + 1)) + ceil(log(M + 1))</c>.
-        /// A safe choice is <c><paramref name="nbcnt"/> = 2 * <paramref name="n"/> * <see cref="mp_bits_per_limb"/></c>,
-        /// but a smaller value might improve performance if <c>M</c> or <c>A</c> are known to have leading zero bits. 
+        /// It is required that M is odd, and that <paramref name="nbcnt"/> &#8805; ceil(log(A + 1)) + ceil(log(M + 1)).
+        /// A safe choice is <paramref name="nbcnt"/> = 2 * <paramref name="n"/> * <see cref="mp_bits_per_limb"/>,
+        /// but a smaller value might improve performance if M or A are known to have leading zero bits. 
         /// </para>
         /// <para>
-        /// This function requires scratch space of <c><see cref="mpn_sec_invert_itch"/>(<paramref name="n"/>)</c>
+        /// This function requires scratch space of <see cref="mpn_sec_invert_itch"/>(<paramref name="n"/>)
         /// limbs to be passed in the <paramref name="tp"/> parameter. 
         /// </para>
         /// </remarks>

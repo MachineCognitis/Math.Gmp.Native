@@ -2,12 +2,12 @@
 <HelpTOC>
 
   <HelpTOCNode Title="Welcome to the GMP Native Interface for .NET Library" Url="html/846f5c8a-6cba-433e-9f18-cde2ff5695cd.htm" />
-  <HelpTOCNode Id="91c329dc-a9a1-41fd-b68b-0c98b2653be0" Title="Math.Gmp.Native" Url="html/d9c51b9f-0c54-770b-28ea-6eebd8fef368.htm">
+  <HelpTOCNode Id="a08eebe5-57f1-4b48-b908-d529b50470d1" Title="Math.Gmp.Native" Url="html/d9c51b9f-0c54-770b-28ea-6eebd8fef368.htm">
     <HelpTOCNode Title="allocate_function Delegate" Url="html/dfe3609d-cc50-e357-4254-e3a8e2847f07.htm" />
-    <HelpTOCNode Id="9c0a0f88-e2fe-4d9f-812f-1c6170af1eb2" Title="char_ptr Structure" Url="html/06249483-9daf-95f9-32c7-30195550bbcc.htm">
+    <HelpTOCNode Id="b3c83be9-4403-4595-bf93-cfc641d9d547" Title="char_ptr Structure" Url="html/06249483-9daf-95f9-32c7-30195550bbcc.htm">
       <HelpTOCNode Title="char_ptr Constructor " Url="html/255d9de2-3cf6-50f3-3276-a4332896da07.htm" />
-      <HelpTOCNode Id="a029aba2-6f55-4d70-9b47-b7f7c0d3a90a" Title="char_ptr Methods" Url="html/73876566-4eec-b421-e4d6-3593e9641f0a.htm">
-        <HelpTOCNode Id="50daa707-0947-44df-bf7b-e52f77d5540f" Title="Equals Method " Url="html/2d2c429f-5828-694d-2ad7-9d13e5c412b3.htm">
+      <HelpTOCNode Id="896ae17e-9ead-4416-9159-7136c3c05949" Title="char_ptr Methods" Url="html/73876566-4eec-b421-e4d6-3593e9641f0a.htm">
+        <HelpTOCNode Id="212ef378-d306-4319-8acd-cdb7668389f3" Title="Equals Method " Url="html/2d2c429f-5828-694d-2ad7-9d13e5c412b3.htm">
           <HelpTOCNode Title="Equals Method (Object)" Url="html/77d1beb2-2aed-58e8-dc50-bba2ff56afee.htm" />
           <HelpTOCNode Title="Equals Method (char_ptr)" Url="html/b1eefed1-412c-fcb1-29ff-34094bc8d57e.htm" />
         </HelpTOCNode>
@@ -15,39 +15,39 @@
         <HelpTOCNode Title="ToIntPtr Method " Url="html/42a15292-978c-35c6-bfa3-9d5acf725ca7.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/1eedfa7e-7135-6b5d-e395-9a6b90fab236.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="c14c90e6-eb8d-4cd8-8cf4-f25e1f6a6b3f" Title="char_ptr Operators" Url="html/84b523e8-bc53-01e9-49af-f7996af73647.htm">
+      <HelpTOCNode Id="0a8d7d28-4f6d-4229-86f5-584cc6684bb2" Title="char_ptr Operators" Url="html/84b523e8-bc53-01e9-49af-f7996af73647.htm">
         <HelpTOCNode Title="Equality Operator " Url="html/a4f47fa4-8285-638d-c094-bc9e249a49a0.htm" />
         <HelpTOCNode Title="Inequality Operator " Url="html/f090e7f3-7440-c789-5594-e5512076a61a.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="2c24211e-95d8-4da7-a5d8-c9b342c8b98d" Title="char_ptr Fields" Url="html/b32f2955-fb82-d5d4-3b3d-7dcd95a5d305.htm">
+      <HelpTOCNode Id="bd79796a-7222-4c79-828c-0922dad1109b" Title="char_ptr Fields" Url="html/b32f2955-fb82-d5d4-3b3d-7dcd95a5d305.htm">
         <HelpTOCNode Title="Zero Field" Url="html/76481715-8a8b-e739-905c-f0d83de503ab.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="5cd20034-5a32-4b58-af9c-6933032a6a83" Title="FILE Structure" Url="html/1bcc07bd-8fee-1107-844c-a5ff10e7660c.htm">
-      <HelpTOCNode Id="01a6658c-d212-4d7f-b3dc-46a2ae475de0" Title="FILE Methods" Url="html/00586c66-53ac-3fe3-16a4-3ceb2f94620b.htm">
-        <HelpTOCNode Id="9ffd28fd-447f-4575-9059-1afbc1198b89" Title="Equals Method " Url="html/4e0b1b66-de5f-3451-d835-df0116b8c789.htm">
+    <HelpTOCNode Id="b1668b17-e587-453d-bc5b-30d27738e3ca" Title="FILE Structure" Url="html/1bcc07bd-8fee-1107-844c-a5ff10e7660c.htm">
+      <HelpTOCNode Id="8d65dd80-bb24-4d6e-9882-bb0f247b879b" Title="FILE Methods" Url="html/00586c66-53ac-3fe3-16a4-3ceb2f94620b.htm">
+        <HelpTOCNode Id="db79fc81-0c59-41db-b99c-7437112a1fd7" Title="Equals Method " Url="html/4e0b1b66-de5f-3451-d835-df0116b8c789.htm">
           <HelpTOCNode Title="Equals Method (Object)" Url="html/c35318b5-343e-5f6f-2a46-89cb3019121c.htm" />
           <HelpTOCNode Title="Equals Method (FILE)" Url="html/a964376d-5264-550c-0dc6-5ce21c48ac93.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="GetHashCode Method " Url="html/b6911fef-883d-ec11-c2ad-1ff1ff565601.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="dc6c8d5e-d2a2-4089-84c8-2549db2dd406" Title="FILE Operators" Url="html/4fe7aa66-0d05-7853-360a-72c4b55b69bd.htm">
+      <HelpTOCNode Id="8a42c98e-ac91-4068-8ad5-e10d44d8b2d9" Title="FILE Operators" Url="html/4fe7aa66-0d05-7853-360a-72c4b55b69bd.htm">
         <HelpTOCNode Title="Equality Operator " Url="html/cdb5f955-23ce-e22d-5090-d137153e866f.htm" />
         <HelpTOCNode Title="Inequality Operator " Url="html/77413435-917b-2cdc-cfde-d0891b6ede82.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="2b3e97b3-1705-4e7a-b405-88ff31ffc929" Title="FILE Fields" Url="html/76b37dae-ecff-2bd9-2e80-002354a7dddc.htm">
+      <HelpTOCNode Id="1ee24fc3-c54c-453d-b46f-5c83ba88f2f7" Title="FILE Fields" Url="html/76b37dae-ecff-2bd9-2e80-002354a7dddc.htm">
         <HelpTOCNode Title="Value Field" Url="html/fb70a49d-b7b0-b8fc-83f5-0864f381cc76.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="free_function Delegate" Url="html/2c9876e2-a0f5-14c6-5069-1a9d50b89185.htm" />
-    <HelpTOCNode Id="7f48438c-67a0-466b-ba7c-4ff1ec268def" Title="gmp_lib Class" Url="html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm">
-      <HelpTOCNode Id="4dd7a50f-9aff-4fd1-abf4-6d07f796c53c" Title="gmp_lib Properties" Url="html/4c8c8860-0cde-fd90-76f1-81cd6fb7a125.htm">
+    <HelpTOCNode Id="7ed10385-ae08-4839-946a-b8bc320ef3c1" Title="gmp_lib Class" Url="html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm">
+      <HelpTOCNode Id="2144a6d3-2d29-4e48-9056-3854bb8a2f0e" Title="gmp_lib Properties" Url="html/4c8c8860-0cde-fd90-76f1-81cd6fb7a125.htm">
         <HelpTOCNode Title="gmp_errno Property " Url="html/4c3f1727-1891-2918-da3a-321930e883ed.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="37e9ed57-c5e1-4bc5-9962-1162ab581874" Title="gmp_lib Methods" Url="html/0fa7cbf3-e8f4-6b14-d829-8aa663e77c74.htm">
+      <HelpTOCNode Id="8336a6ba-d0e6-49f5-8062-b43762da225a" Title="gmp_lib Methods" Url="html/0fa7cbf3-e8f4-6b14-d829-8aa663e77c74.htm">
         <HelpTOCNode Title="_mpz_realloc Method " Url="html/c9cb6a67-59b8-5c03-f31d-f252441c53f6.htm" />
         <HelpTOCNode Title="allocate Method " Url="html/2c68671c-cd5c-e2ec-52a2-65b0ca31c3d1.htm" />
-        <HelpTOCNode Id="93956c28-9405-4bc4-adb2-17da44475e37" Title="free Method " Url="html/92160da3-b1af-e005-cb05-e3fb4dd524d8.htm">
+        <HelpTOCNode Id="6bc177ea-0483-4ada-9c9d-b77b35a0fd51" Title="free Method " Url="html/92160da3-b1af-e005-cb05-e3fb4dd524d8.htm">
           <HelpTOCNode Title="free Method (char_ptr)" Url="html/d3ad552c-4d46-029e-9eeb-44d8abb800e2.htm" />
           <HelpTOCNode Title="free Method (gmp_randstate_t)" Url="html/f46e4103-d4c4-69c2-1363-a4cb17d9cfda.htm" />
           <HelpTOCNode Title="free Method (mp_ptr[])" Url="html/7924a2a3-75c1-0aa9-636f-4772d74a723f.htm" />
@@ -422,38 +422,38 @@
         <HelpTOCNode Title="reallocate Method " Url="html/067f64f9-7014-8c6a-3c02-153c1460a1dd.htm" />
         <HelpTOCNode Title="ZeroMemory Method " Url="html/e3d53be6-a0ad-fb21-5381-ff688f5984a6.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e878f8fd-daef-4815-b361-7ed26d73009f" Title="gmp_lib Fields" Url="html/b4507d49-5a58-a25b-6ae3-ac7e599caab1.htm">
+      <HelpTOCNode Id="4ec22149-f1ec-4782-a769-3381f061ebfd" Title="gmp_lib Fields" Url="html/b4507d49-5a58-a25b-6ae3-ac7e599caab1.htm">
         <HelpTOCNode Title="gmp_version Field" Url="html/3f1b2832-ff9c-cc4a-3e85-e2ee16acc69b.htm" />
         <HelpTOCNode Title="mp_bits_per_limb Field" Url="html/f88c76a8-118a-5cbd-0df1-e30adcacb8ae.htm" />
         <HelpTOCNode Title="mp_bytes_per_limb Field" Url="html/47695d57-9a89-48db-97c3-2ed03965d913.htm" />
         <HelpTOCNode Title="mp_uint_per_limb Field" Url="html/af9533ce-5e67-245d-1cb3-9efb7772a6c8.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="08956f64-dbc0-4bb1-b2cf-6f0e258b757a" Title="gmp_randstate_t Class" Url="html/f7e5846d-548d-3bf3-74ac-219fde42a041.htm">
+    <HelpTOCNode Id="ac325d47-0af0-4570-ab4e-618bd98939bf" Title="gmp_randstate_t Class" Url="html/f7e5846d-548d-3bf3-74ac-219fde42a041.htm">
       <HelpTOCNode Title="gmp_randstate_t Constructor " Url="html/20a4edb9-f361-6367-9965-64b0f7aeddaa.htm" />
       <HelpTOCNode Title="gmp_randstate_t Methods" Url="html/94df18f5-d7f6-b30a-5f00-f168e513840c.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="2defbf4c-c4c5-4134-bba0-7b64f88bc847" Title="mp_base Class" Url="html/8f3c572b-8133-bccc-b838-9d22e3467898.htm">
+    <HelpTOCNode Id="56b2b86c-79a0-4f21-b06f-5e8cdb5342e1" Title="mp_base Class" Url="html/8f3c572b-8133-bccc-b838-9d22e3467898.htm">
       <HelpTOCNode Title="mp_base Constructor " Url="html/3e385e89-d6d3-27df-ec51-6580f6bea08b.htm" />
-      <HelpTOCNode Id="783cd7d1-f572-4dc9-b3a4-8aa2f7eede79" Title="mp_base Properties" Url="html/c65a20b0-ddd8-db62-1d34-19bf1a71ce8c.htm">
+      <HelpTOCNode Id="c3b565e6-e7a3-45ed-b1ca-7ca280f517af" Title="mp_base Properties" Url="html/c65a20b0-ddd8-db62-1d34-19bf1a71ce8c.htm">
         <HelpTOCNode Title="_mp_d Property " Url="html/db55f1a9-cd4c-b7e9-c831-4391c0497ef7.htm" />
         <HelpTOCNode Title="_mp_size Property " Url="html/178d8d44-2485-2972-fe2f-eb9848059e6f.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="mp_base Methods" Url="html/dc319ce0-0560-799e-9187-8445d98b802b.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="c7675627-e934-4c2a-8116-e95e36fb7367" Title="mp_bitcnt_t Structure" Url="html/1b2b1d64-20c1-7a64-0278-d9ff58ee9cc3.htm">
+    <HelpTOCNode Id="39d2d60f-e005-4de5-951e-666a27ffb598" Title="mp_bitcnt_t Structure" Url="html/1b2b1d64-20c1-7a64-0278-d9ff58ee9cc3.htm">
       <HelpTOCNode Title="mp_bitcnt_t Constructor " Url="html/5846cdbc-83b9-0197-aa29-fd226641eb76.htm" />
-      <HelpTOCNode Id="6f222690-fd95-4f28-9619-d7e153c90963" Title="mp_bitcnt_t Methods" Url="html/0968b601-ff25-497d-c2eb-28487c3d29cf.htm">
-        <HelpTOCNode Id="8303af3b-4d6e-49f0-aea2-578cff6bc0a6" Title="Equals Method " Url="html/cfedc4a1-b264-82a8-cf48-a6416e4afce7.htm">
+      <HelpTOCNode Id="2e4a04ff-d60a-4d39-ae22-109afa532fd3" Title="mp_bitcnt_t Methods" Url="html/0968b601-ff25-497d-c2eb-28487c3d29cf.htm">
+        <HelpTOCNode Id="8dcb75e0-e982-42aa-b58b-9012f5ba6f82" Title="Equals Method " Url="html/cfedc4a1-b264-82a8-cf48-a6416e4afce7.htm">
           <HelpTOCNode Title="Equals Method (Object)" Url="html/5b4fc57b-2ab5-9b95-6c35-ec9b499a6d59.htm" />
           <HelpTOCNode Title="Equals Method (mp_bitcnt_t)" Url="html/306b1c06-9439-c811-b7b9-42777ca691e6.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="GetHashCode Method " Url="html/540dc183-f6ab-a0bb-d6ef-a08f5a464b78.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/0dd7a5d2-ab07-87dc-79d2-d9b361bc0a34.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="958dea1c-3c8b-4597-a19e-d704ec85183f" Title="mp_bitcnt_t Operators and Type Conversions" Url="html/bee91f05-75c7-52c6-18ae-eb792710655d.htm">
+      <HelpTOCNode Id="e10193ca-1f1b-444c-bfcb-ffecafbd80c4" Title="mp_bitcnt_t Operators and Type Conversions" Url="html/bee91f05-75c7-52c6-18ae-eb792710655d.htm">
         <HelpTOCNode Title="Equality Operator " Url="html/c0825a57-1ba5-e1d1-3fa9-9c43008c1ada.htm" />
-        <HelpTOCNode Id="74f5d4c6-22f0-44a4-b83c-06921b369b38" Title="Explicit Conversion Operators" Url="html/a2b35c8b-a71a-2e93-2f3b-cd5f8dcb51b4.htm">
+        <HelpTOCNode Id="aa63d86e-53d2-41ce-8fd0-3b7dc9150ca0" Title="Explicit Conversion Operators" Url="html/a2b35c8b-a71a-2e93-2f3b-cd5f8dcb51b4.htm">
           <HelpTOCNode Title="Explicit Conversion (Int16 to mp_bitcnt_t)" Url="html/29b5075a-d6d3-6fe8-5125-d679317b1022.htm" />
           <HelpTOCNode Title="Explicit Conversion (Int32 to mp_bitcnt_t)" Url="html/6ba37de9-82cf-e884-2537-0d8e83b8ffa0.htm" />
           <HelpTOCNode Title="Explicit Conversion (Int64 to mp_bitcnt_t)" Url="html/56fbe432-4b26-efff-13e9-242996bfa78d.htm" />
@@ -465,7 +465,7 @@
           <HelpTOCNode Title="Explicit Conversion (mp_bitcnt_t to Int16)" Url="html/55d30a4b-ca4f-4f4b-208a-026c54586e64.htm" />
           <HelpTOCNode Title="Explicit Conversion (mp_bitcnt_t to Int32)" Url="html/ecccb4d7-41db-d565-2551-4c15730c6d2f.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="379e703c-5f5d-4690-b42b-60191cb184fa" Title="Implicit Conversion Operators" Url="html/72fbcc09-5765-7f60-3897-57fec21cc9f9.htm">
+        <HelpTOCNode Id="be8f6708-d0eb-48d2-9328-7dc7297bb1c2" Title="Implicit Conversion Operators" Url="html/72fbcc09-5765-7f60-3897-57fec21cc9f9.htm">
           <HelpTOCNode Title="Implicit Conversion (Byte to mp_bitcnt_t)" Url="html/906e0eef-6efb-c60b-60d8-4827d7d57bf7.htm" />
           <HelpTOCNode Title="Implicit Conversion (UInt16 to mp_bitcnt_t)" Url="html/55809d71-2a62-422c-a7e5-955b2b62fe37.htm" />
           <HelpTOCNode Title="Implicit Conversion (UInt32 to mp_bitcnt_t)" Url="html/6280cd97-b728-ab06-89e1-7181e2ab72fe.htm" />
@@ -476,19 +476,19 @@
         <HelpTOCNode Title="Inequality Operator " Url="html/8ae70a65-d9d6-0c44-b148-82f39dc474ab.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="a2929628-5cfa-45e8-a766-6792f80adb7c" Title="mp_exp_t Structure" Url="html/e6a17880-791f-37d4-4942-cf26ce7d4cbf.htm">
+    <HelpTOCNode Id="a73743b2-93fd-4f82-b405-1e355c98fdd1" Title="mp_exp_t Structure" Url="html/e6a17880-791f-37d4-4942-cf26ce7d4cbf.htm">
       <HelpTOCNode Title="mp_exp_t Constructor " Url="html/d4cd9f0b-9f54-1f1d-6a27-a0ce3122249c.htm" />
-      <HelpTOCNode Id="a8208d80-15b4-4962-afa1-3b5b2166aa34" Title="mp_exp_t Methods" Url="html/8968de81-b069-4c5d-e694-8aad8a2c3cdb.htm">
-        <HelpTOCNode Id="4f39e1a2-7934-44fe-a153-b3fe5341fd0f" Title="Equals Method " Url="html/5a3c38b8-5205-bc81-58e8-60b155c0579c.htm">
+      <HelpTOCNode Id="a59d467b-5ac4-457f-968b-a70aa9f8a4bd" Title="mp_exp_t Methods" Url="html/8968de81-b069-4c5d-e694-8aad8a2c3cdb.htm">
+        <HelpTOCNode Id="17cc8a9c-064e-41ef-b8c4-e7ca2533df6c" Title="Equals Method " Url="html/5a3c38b8-5205-bc81-58e8-60b155c0579c.htm">
           <HelpTOCNode Title="Equals Method (Object)" Url="html/b91d6398-e5f7-0ee9-e982-4ec2e009d0bc.htm" />
           <HelpTOCNode Title="Equals Method (mp_exp_t)" Url="html/c349463b-04b6-167b-b8f7-9f117789577d.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="GetHashCode Method " Url="html/1443760d-18a5-f276-ec75-7b8ead9d8332.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/cd071eb3-c175-836d-c47a-f9c007b8738d.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="40f573b9-0987-43a1-9dea-57396bda181b" Title="mp_exp_t Operators and Type Conversions" Url="html/d0d07662-13f1-e033-9619-1c9f89c37939.htm">
+      <HelpTOCNode Id="308629d0-9ab1-410c-a894-35c6f2c90753" Title="mp_exp_t Operators and Type Conversions" Url="html/d0d07662-13f1-e033-9619-1c9f89c37939.htm">
         <HelpTOCNode Title="Equality Operator " Url="html/4a543b73-f62d-cf04-fa49-22bc93e657e7.htm" />
-        <HelpTOCNode Id="9c8e1225-5263-4f75-a7da-8208b947379c" Title="Explicit Conversion Operators" Url="html/021c96a1-51fa-2b2a-4c65-7ae3bb374c33.htm">
+        <HelpTOCNode Id="19c3082c-231e-4750-8139-b11c477651ce" Title="Explicit Conversion Operators" Url="html/021c96a1-51fa-2b2a-4c65-7ae3bb374c33.htm">
           <HelpTOCNode Title="Explicit Conversion (Int64 to mp_exp_t)" Url="html/70eabcfd-22ae-e08e-1bc5-54f8e1ccb736.htm" />
           <HelpTOCNode Title="Explicit Conversion (UInt32 to mp_exp_t)" Url="html/78fdf4c2-15a1-fdab-23fa-806cdf3dc983.htm" />
           <HelpTOCNode Title="Explicit Conversion (UInt64 to mp_exp_t)" Url="html/6b879622-df00-c9b2-deba-307574416ff2.htm" />
@@ -499,7 +499,7 @@
           <HelpTOCNode Title="Explicit Conversion (mp_exp_t to UInt32)" Url="html/6b71bf90-ded3-6f2b-f59b-19b7e3442ef4.htm" />
           <HelpTOCNode Title="Explicit Conversion (mp_exp_t to UInt64)" Url="html/bb3fdf5b-8b0e-e922-a1bd-cd337a89f971.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="876f4e98-da25-42b3-ac7c-4cb436ce80c4" Title="Implicit Conversion Operators" Url="html/c7574415-f402-d74d-8dfc-c4ec2f893a5f.htm">
+        <HelpTOCNode Id="ac4932d3-0734-49ad-a1b1-7b7345b10abc" Title="Implicit Conversion Operators" Url="html/c7574415-f402-d74d-8dfc-c4ec2f893a5f.htm">
           <HelpTOCNode Title="Implicit Conversion (Byte to mp_exp_t)" Url="html/fa401922-089c-d6e0-8ef7-e9013676e9e5.htm" />
           <HelpTOCNode Title="Implicit Conversion (Int16 to mp_exp_t)" Url="html/835b1c14-21a0-f806-1953-af0ddf068758.htm" />
           <HelpTOCNode Title="Implicit Conversion (Int32 to mp_exp_t)" Url="html/82a3fa70-9dcd-a931-eb3e-18095e458891.htm" />
@@ -511,19 +511,19 @@
         <HelpTOCNode Title="Inequality Operator " Url="html/931e55b9-30c1-aa94-c044-0400b5abea60.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="9e5ceb2c-9c01-4c46-9ad3-bdcf4ad19c18" Title="mp_limb_t Structure" Url="html/bf1f694d-f9b2-6413-12e5-ebae603d5b49.htm">
+    <HelpTOCNode Id="595000b5-f224-4bc8-b21e-a115dd35c8b7" Title="mp_limb_t Structure" Url="html/bf1f694d-f9b2-6413-12e5-ebae603d5b49.htm">
       <HelpTOCNode Title="mp_limb_t Constructor " Url="html/89d25f98-71ed-79b0-9b85-7cb9fcbab79d.htm" />
-      <HelpTOCNode Id="3aa5070e-8eeb-4a1f-9804-f0edb7c63360" Title="mp_limb_t Methods" Url="html/1e30b810-66a8-52cc-8501-8bdda18bfaa7.htm">
-        <HelpTOCNode Id="06fea90d-4e20-44cf-a8dc-8ba7f73a790b" Title="Equals Method " Url="html/f3da8743-4110-ef69-3809-3261d9304977.htm">
+      <HelpTOCNode Id="ed746dc2-8535-4b83-a179-ea216b7712cc" Title="mp_limb_t Methods" Url="html/1e30b810-66a8-52cc-8501-8bdda18bfaa7.htm">
+        <HelpTOCNode Id="1e27b332-6c76-495f-8e7d-eb8e41597738" Title="Equals Method " Url="html/f3da8743-4110-ef69-3809-3261d9304977.htm">
           <HelpTOCNode Title="Equals Method (Object)" Url="html/33b840cd-1b41-ad67-8956-b5811ddc6175.htm" />
           <HelpTOCNode Title="Equals Method (mp_limb_t)" Url="html/a1075491-112f-885c-7097-2745d8c251a2.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="GetHashCode Method " Url="html/1bd10056-1935-a793-4930-68ebfaf82cd1.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/7ae8e775-5b2d-4ce0-c45b-5afd1b66ac62.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="26c26011-d6b3-48fa-99f0-016f32f9d639" Title="mp_limb_t Operators and Type Conversions" Url="html/88234d39-a3da-db4f-71ff-17d0f2e2c7fe.htm">
+      <HelpTOCNode Id="00d22e3d-b661-47b4-985b-2a63df6e25bf" Title="mp_limb_t Operators and Type Conversions" Url="html/88234d39-a3da-db4f-71ff-17d0f2e2c7fe.htm">
         <HelpTOCNode Title="Equality Operator " Url="html/2e8177f2-fc95-380b-ef64-a51cf494c686.htm" />
-        <HelpTOCNode Id="98aa0fdb-88fc-4bdc-aadf-1ab65817dd91" Title="Explicit Conversion Operators" Url="html/e2434db6-d7f3-e7d6-2bd7-04e29ba0a7a8.htm">
+        <HelpTOCNode Id="811e10eb-f080-427b-8529-f78d567b6c3e" Title="Explicit Conversion Operators" Url="html/e2434db6-d7f3-e7d6-2bd7-04e29ba0a7a8.htm">
           <HelpTOCNode Title="Explicit Conversion (Int16 to mp_limb_t)" Url="html/b88446f7-b9cf-5692-d4fe-7b809ef197eb.htm" />
           <HelpTOCNode Title="Explicit Conversion (Int32 to mp_limb_t)" Url="html/06428417-fb0b-82c7-4b50-99dfe28c7afb.htm" />
           <HelpTOCNode Title="Explicit Conversion (Int64 to mp_limb_t)" Url="html/03a17ed9-19e1-9de3-0ea4-4ff3f63938a6.htm" />
@@ -536,7 +536,7 @@
           <HelpTOCNode Title="Explicit Conversion (mp_limb_t to Int32)" Url="html/72723d8b-579c-0c0f-d5c8-868ae849457e.htm" />
           <HelpTOCNode Title="Explicit Conversion (mp_limb_t to Int64)" Url="html/63e2f5c3-b5bb-ebf6-3bcf-682671a0dbc3.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="8177311d-b9f5-40be-b21e-2ce2ccd3b2ae" Title="Implicit Conversion Operators" Url="html/015a8bc4-a8de-d7c7-3aac-2524de5dfd03.htm">
+        <HelpTOCNode Id="bbc562bf-d56c-42b5-8ad8-d8d078e06ec4" Title="Implicit Conversion Operators" Url="html/015a8bc4-a8de-d7c7-3aac-2524de5dfd03.htm">
           <HelpTOCNode Title="Implicit Conversion (Byte to mp_limb_t)" Url="html/7dbd9949-90ab-2b31-978d-9fde0a2ba7ee.htm" />
           <HelpTOCNode Title="Implicit Conversion (UInt16 to mp_limb_t)" Url="html/4e7a1224-4cf6-269a-82b6-8fdb83429949.htm" />
           <HelpTOCNode Title="Implicit Conversion (UInt32 to mp_limb_t)" Url="html/adc5aae1-accd-ed83-fe1b-8910aa034c17.htm" />
@@ -546,35 +546,35 @@
         <HelpTOCNode Title="Inequality Operator " Url="html/be93bccd-2cad-322c-e211-5523de89b567.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="6404f0ad-091c-40ee-bf14-0ee7e3e34feb" Title="mp_ptr Class" Url="html/4609ac5e-5cf9-cd20-2fa9-8040101c165c.htm">
-      <HelpTOCNode Id="47650d21-9a47-4448-9940-dbf0b5951f28" Title="mp_ptr Constructor " Url="html/33563f2c-baba-b555-20fb-9def8b70074c.htm">
+    <HelpTOCNode Id="0755ed9c-c0a2-49f4-85ce-887208470d0f" Title="mp_ptr Class" Url="html/4609ac5e-5cf9-cd20-2fa9-8040101c165c.htm">
+      <HelpTOCNode Id="7279d854-c302-483a-ab3c-0ae3135e1531" Title="mp_ptr Constructor " Url="html/33563f2c-baba-b555-20fb-9def8b70074c.htm">
         <HelpTOCNode Title="mp_ptr Constructor (Byte[])" Url="html/be2f5733-8c21-c6e9-c4be-ca5f0b0ebba9.htm" />
         <HelpTOCNode Title="mp_ptr Constructor (UInt16[])" Url="html/54ac0eda-b14f-8083-16dc-6c0abe8a5e5e.htm" />
         <HelpTOCNode Title="mp_ptr Constructor (UInt32[])" Url="html/cad424b2-4a92-fda9-45dd-243ef9e5f321.htm" />
         <HelpTOCNode Title="mp_ptr Constructor (UInt64[])" Url="html/ef5be106-0301-8122-c640-70bda121b879.htm" />
         <HelpTOCNode Title="mp_ptr Constructor (mp_size_t)" Url="html/e0c0acc3-41cd-cb7d-68e7-3bf8dc5039d4.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8fc65d0a-8fac-4180-90e6-fd30bb71da4a" Title="mp_ptr Properties" Url="html/9b1ae76e-d9d8-e72d-9fa6-fe8e2d833d40.htm">
+      <HelpTOCNode Id="1d5f45ec-3cfd-4e94-a214-93d4ef37e8f0" Title="mp_ptr Properties" Url="html/9b1ae76e-d9d8-e72d-9fa6-fe8e2d833d40.htm">
         <HelpTOCNode Title="Item Property " Url="html/a7661bd2-2bcb-01c5-9833-5ab6d6305daf.htm" />
         <HelpTOCNode Title="Size Property " Url="html/562de56d-c1a8-5f66-59dc-e2886d89bfc3.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ffaa3730-fc3f-4a98-aa1f-8f367e71b048" Title="mp_ptr Methods" Url="html/f324e472-a709-9f28-6b3c-ffdeda0376bf.htm">
+      <HelpTOCNode Id="d6de07e5-7484-4041-b62a-ef0ba451f612" Title="mp_ptr Methods" Url="html/f324e472-a709-9f28-6b3c-ffdeda0376bf.htm">
         <HelpTOCNode Title="GetEnumerator Method " Url="html/f9a60366-d1e2-5565-bbc2-63d98d779e27.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="86c0c32e-ef56-4198-96d2-42ff60b91858" Title="mp_size_t Structure" Url="html/4b58a584-7a0e-b600-18fa-ebd493861eb3.htm">
+    <HelpTOCNode Id="2756ccfd-f075-42e4-907c-acba93e74085" Title="mp_size_t Structure" Url="html/4b58a584-7a0e-b600-18fa-ebd493861eb3.htm">
       <HelpTOCNode Title="mp_size_t Constructor " Url="html/be71a625-32c1-841d-0915-f0771323d00a.htm" />
-      <HelpTOCNode Id="c3e83724-efdf-480d-bcf9-96fd3da812ad" Title="mp_size_t Methods" Url="html/afc0fd4e-39a7-905a-93b9-8bd291904211.htm">
-        <HelpTOCNode Id="54df0770-065d-4746-a947-d3af2a4bb6a4" Title="Equals Method " Url="html/096397d8-2db8-7eeb-3b75-25ed0bad8379.htm">
+      <HelpTOCNode Id="0d29a79f-2355-418c-831b-7a760181a190" Title="mp_size_t Methods" Url="html/afc0fd4e-39a7-905a-93b9-8bd291904211.htm">
+        <HelpTOCNode Id="056726c1-5b6c-4b89-8aa5-5fbf90740857" Title="Equals Method " Url="html/096397d8-2db8-7eeb-3b75-25ed0bad8379.htm">
           <HelpTOCNode Title="Equals Method (Object)" Url="html/764c23ab-f2fe-b3e4-68a4-4a27fb6dc6b0.htm" />
           <HelpTOCNode Title="Equals Method (mp_size_t)" Url="html/b93a08cc-4dfe-0c34-c1ac-25344489f2d3.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="GetHashCode Method " Url="html/c82e8cd1-5053-7e58-3b57-c20583dcc5e7.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/abd28ab6-f7d7-296e-852b-ef28b35a08d8.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="82ae5158-cc01-402d-b85f-4465dc767923" Title="mp_size_t Operators and Type Conversions" Url="html/884aef1a-9faa-b787-ff5e-022615bd41eb.htm">
+      <HelpTOCNode Id="bf3f2593-acde-42da-b299-a2486b40c974" Title="mp_size_t Operators and Type Conversions" Url="html/884aef1a-9faa-b787-ff5e-022615bd41eb.htm">
         <HelpTOCNode Title="Equality Operator " Url="html/a6d79a12-4568-8617-30a9-e36698ef5994.htm" />
-        <HelpTOCNode Id="73184d3f-c4b2-4d4e-a48c-e07a34bfe3e1" Title="Explicit Conversion Operators" Url="html/9c49193c-e71d-9d5a-ce64-27446b2d8c1b.htm">
+        <HelpTOCNode Id="2030da28-88fa-4e8a-9f31-0588ccb54849" Title="Explicit Conversion Operators" Url="html/9c49193c-e71d-9d5a-ce64-27446b2d8c1b.htm">
           <HelpTOCNode Title="Explicit Conversion (Int64 to mp_size_t)" Url="html/fecd3260-6eb9-5e31-0266-9bb52bf9b038.htm" />
           <HelpTOCNode Title="Explicit Conversion (UInt32 to mp_size_t)" Url="html/edf58344-c7ce-6c94-dea2-e07f06eb7987.htm" />
           <HelpTOCNode Title="Explicit Conversion (UInt64 to mp_size_t)" Url="html/43436692-e9c9-739f-aa96-be2b775dae62.htm" />
@@ -585,7 +585,7 @@
           <HelpTOCNode Title="Explicit Conversion (mp_size_t to UInt32)" Url="html/ee84dcdc-769f-5829-0e77-99ea66f0151b.htm" />
           <HelpTOCNode Title="Explicit Conversion (mp_size_t to UInt64)" Url="html/969bef9e-e9a3-e671-5378-0767ee7f946b.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="e8a39b62-55ce-4af3-b30b-c68091f9d584" Title="Implicit Conversion Operators" Url="html/13c05087-b2db-4751-d548-4fa64e30f663.htm">
+        <HelpTOCNode Id="cfab3761-d641-4d99-baf3-8a7518b27b61" Title="Implicit Conversion Operators" Url="html/13c05087-b2db-4751-d548-4fa64e30f663.htm">
           <HelpTOCNode Title="Implicit Conversion (Byte to mp_size_t)" Url="html/e2817889-195b-d443-500d-2568ebfefe4f.htm" />
           <HelpTOCNode Title="Implicit Conversion (Int16 to mp_size_t)" Url="html/8f9e1df5-6eb0-4f14-3a1f-0d40ab45aac6.htm" />
           <HelpTOCNode Title="Implicit Conversion (Int32 to mp_size_t)" Url="html/4d1fd187-6b51-f72c-b150-3cc4eb7ead18.htm" />
@@ -597,73 +597,73 @@
         <HelpTOCNode Title="Inequality Operator " Url="html/d7d60484-ecc2-8e26-1dac-de2617ab1867.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="5d0a3a60-70f7-4cc7-8897-d276c9cd2f3a" Title="mpf_t Class" Url="html/37c88d6c-8d02-2330-ad77-f20fb73d1677.htm">
+    <HelpTOCNode Id="1bfb26f3-e6cc-405c-95a1-5cc3640f221e" Title="mpf_t Class" Url="html/37c88d6c-8d02-2330-ad77-f20fb73d1677.htm">
       <HelpTOCNode Title="mpf_t Constructor " Url="html/0e0a10d5-52ab-1821-6fe1-97514e009418.htm" />
-      <HelpTOCNode Id="6e3191b5-a7d5-4ae3-a00a-a7edb3ab3049" Title="mpf_t Properties" Url="html/44d8440b-0daa-0393-510e-a0ace6d299f7.htm">
+      <HelpTOCNode Id="c868742b-fd25-4b92-8591-c0c8a4bfdc7b" Title="mpf_t Properties" Url="html/44d8440b-0daa-0393-510e-a0ace6d299f7.htm">
         <HelpTOCNode Title="_mp_exp Property " Url="html/f63ee104-afaa-e0b8-ff39-f60b9a934ea3.htm" />
         <HelpTOCNode Title="_mp_prec Property " Url="html/772c3bd8-b9ec-225d-3d98-e17ae89d4294.htm" />
         <HelpTOCNode Title="_mp_size Property " Url="html/9aa3bb30-32b3-b465-af05-9b048bb610f1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="5d8d3df0-ad19-412b-a0e6-39e67adc86f0" Title="mpf_t Methods" Url="html/2583789b-09c3-0f9a-fbf9-4d362bd9129a.htm">
+      <HelpTOCNode Id="f9e3b040-5ddc-4e28-8929-dc39bfc923d9" Title="mpf_t Methods" Url="html/2583789b-09c3-0f9a-fbf9-4d362bd9129a.htm">
         <HelpTOCNode Title="ToIntPtr Method " Url="html/b77413f7-f862-7996-838a-f510fc3f69ed.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/77eccd6b-888f-b3a8-0800-ead4af162af0.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="9dcca196-1e4e-4c08-9b39-7cef69bbada6" Title="mpf_t Type Conversions" Url="html/3ca44c9f-677e-d5fa-5414-399843506633.htm">
+      <HelpTOCNode Id="f49cb1ac-5a29-42c6-941b-c23e30738177" Title="mpf_t Type Conversions" Url="html/3ca44c9f-677e-d5fa-5414-399843506633.htm">
         <HelpTOCNode Title="Implicit Conversion (String to mpf_t)" Url="html/058e477a-0126-b073-ee83-77ed89a58351.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="61af1139-c0ad-4fa2-a98f-048ca375ca56" Title="mpq_t Class" Url="html/635f1879-5f85-881e-cca8-3222baf5045a.htm">
+    <HelpTOCNode Id="1f2bb157-f65b-44b3-9ccc-fcfb2e94c8d4" Title="mpq_t Class" Url="html/635f1879-5f85-881e-cca8-3222baf5045a.htm">
       <HelpTOCNode Title="mpq_t Constructor " Url="html/2c2936bd-f40b-391b-de4c-e5111654993b.htm" />
-      <HelpTOCNode Id="291060e3-90af-446f-8280-d617262fdbf6" Title="mpq_t Properties" Url="html/0e7e8afb-9c1f-87e4-4f01-0575c8203613.htm">
+      <HelpTOCNode Id="292458f1-c3e5-4d1d-a324-fdcab756cf9f" Title="mpq_t Properties" Url="html/0e7e8afb-9c1f-87e4-4f01-0575c8203613.htm">
         <HelpTOCNode Title="_mp_den Property " Url="html/fb8c2e17-4a22-899c-77af-6d3bef099fc2.htm" />
         <HelpTOCNode Title="_mp_num Property " Url="html/3fad7a3a-76d1-7e19-0ab4-c93a4bf3655e.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="7a0935ec-4e30-4a96-8db2-e04e84a82635" Title="mpq_t Methods" Url="html/6871c168-60e1-5bd2-5a03-2d60f473d7b8.htm">
+      <HelpTOCNode Id="1675c7a1-5ed4-4c2e-a178-7852d8670d6d" Title="mpq_t Methods" Url="html/6871c168-60e1-5bd2-5a03-2d60f473d7b8.htm">
         <HelpTOCNode Title="ToIntPtr Method " Url="html/ce76ca4d-3aab-d682-1f85-aa95ce7d43a9.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/e9fce326-9ff5-0bbc-87d7-53ace305f107.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="400b4e22-1497-496b-8e3c-2a310489034a" Title="mpq_t Type Conversions" Url="html/25bb755c-4475-9382-5601-dd83fda02afe.htm">
+      <HelpTOCNode Id="42efa69f-f8f0-4651-b8e2-96726c8690b1" Title="mpq_t Type Conversions" Url="html/25bb755c-4475-9382-5601-dd83fda02afe.htm">
         <HelpTOCNode Title="Implicit Conversion (String to mpq_t)" Url="html/5d499247-7cb9-266f-eb4f-78bcf5768aa4.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="67fd77e2-c44f-4b2a-925b-72cc3cb3a213" Title="mpz_t Class" Url="html/8beda7fb-bbc4-b56f-fd1f-1459377ecb3b.htm">
+    <HelpTOCNode Id="64d8513d-f183-485b-a9d1-c7a897b03887" Title="mpz_t Class" Url="html/8beda7fb-bbc4-b56f-fd1f-1459377ecb3b.htm">
       <HelpTOCNode Title="mpz_t Constructor " Url="html/0fcbb911-bc5a-1b11-90c5-96babff86526.htm" />
-      <HelpTOCNode Id="19b12811-055c-445d-9df5-45bba1c8784a" Title="mpz_t Properties" Url="html/5f492d5c-72f0-17b4-24a4-e5b58a061ef7.htm">
+      <HelpTOCNode Id="b714a107-c2ec-45a6-9417-911aea23cac0" Title="mpz_t Properties" Url="html/5f492d5c-72f0-17b4-24a4-e5b58a061ef7.htm">
         <HelpTOCNode Title="_mp_alloc Property " Url="html/93206a07-9ee6-f89b-f029-f0e80982c911.htm" />
         <HelpTOCNode Title="_mp_size Property " Url="html/15e1db51-a27c-7eee-03dd-5c6457889be1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="4779430b-0c85-4716-b6e8-87f92af1a891" Title="mpz_t Methods" Url="html/430d894e-57e0-6020-0ad7-40b74cbd969f.htm">
+      <HelpTOCNode Id="79691929-7238-4f59-a958-01d6115799eb" Title="mpz_t Methods" Url="html/430d894e-57e0-6020-0ad7-40b74cbd969f.htm">
         <HelpTOCNode Title="ToIntPtr Method " Url="html/018d9747-3053-df6d-2bb3-5273ad735860.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/709eb598-ee38-4031-9dc5-74a73d8f9142.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="54cb7dae-8442-492e-af01-29f6d1aaf6b1" Title="mpz_t Type Conversions" Url="html/1cc35e31-9ab0-7239-d05b-1e2a426338bc.htm">
+      <HelpTOCNode Id="f2adb3c9-2a23-4f5a-a041-1156fa9c5b70" Title="mpz_t Type Conversions" Url="html/1cc35e31-9ab0-7239-d05b-1e2a426338bc.htm">
         <HelpTOCNode Title="Implicit Conversion (String to mpz_t)" Url="html/d07ddfe6-a0d0-51e7-180c-481fe678fc38.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="f8b0334e-cbba-43b9-8435-1968a16491df" Title="ptr(T) Class" Url="html/542faa00-d28a-72a2-2dd8-6c6021e683ce.htm">
-      <HelpTOCNode Id="5476d775-55ab-4ea6-b8cd-479b8985def9" Title="ptr(T) Constructor " Url="html/1b117248-4e1d-a985-2ab6-4bd8e5b3e769.htm">
+    <HelpTOCNode Id="ec8f47d9-3b7c-49a6-8949-19bb89269c3d" Title="ptr(T) Class" Url="html/542faa00-d28a-72a2-2dd8-6c6021e683ce.htm">
+      <HelpTOCNode Id="ad35b498-af6e-4088-83bb-ceec3ca2f849" Title="ptr(T) Constructor " Url="html/1b117248-4e1d-a985-2ab6-4bd8e5b3e769.htm">
         <HelpTOCNode Title="ptr(T) Constructor " Url="html/8e86c547-280b-afb8-98ea-aebfb3ec04b9.htm" />
         <HelpTOCNode Title="ptr(T) Constructor (T)" Url="html/b7987d45-5188-14f6-7ac7-bbe14184971b.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ptr(T) Methods" Url="html/b390b506-1cff-5bd4-fcf5-a135127497dc.htm" />
-      <HelpTOCNode Id="edd2a7b6-aefd-4471-bdca-7b30c2da80d6" Title="ptr(T) Fields" Url="html/50e025ca-c11a-c1db-2233-d11f66776439.htm">
+      <HelpTOCNode Id="263e9127-7fae-4092-80de-a5c23ff262a1" Title="ptr(T) Fields" Url="html/50e025ca-c11a-c1db-2233-d11f66776439.htm">
         <HelpTOCNode Title="Value Field" Url="html/448dfb4b-f4d7-8db7-3d44-31f3bd032771.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="reallocate_function Delegate" Url="html/aa9d21b4-a929-d550-5a65-f9cbcfa7f638.htm" />
-    <HelpTOCNode Id="0dc2b2a4-4051-4f82-834a-93260a48ffde" Title="size_t Structure" Url="html/d9761bfb-1882-59d2-e89b-c6460141f9a6.htm">
+    <HelpTOCNode Id="7ef89415-eb6f-453b-ac28-b52b5ee0ca04" Title="size_t Structure" Url="html/d9761bfb-1882-59d2-e89b-c6460141f9a6.htm">
       <HelpTOCNode Title="size_t Constructor " Url="html/4a5eee32-b03c-e613-22b1-6b4f54a95362.htm" />
-      <HelpTOCNode Id="ea65fd0a-b9fb-4325-9b60-81a9db2b2d6a" Title="size_t Methods" Url="html/0777a4c0-90d5-95bc-1192-f390bfbcbc43.htm">
-        <HelpTOCNode Id="01288974-4296-437a-9ce9-27c0e3a85b32" Title="Equals Method " Url="html/255140dc-27a7-cc9d-df9a-dc4d03c9a8e4.htm">
+      <HelpTOCNode Id="361569fe-573d-42f7-99b8-1ef0e4800d40" Title="size_t Methods" Url="html/0777a4c0-90d5-95bc-1192-f390bfbcbc43.htm">
+        <HelpTOCNode Id="2472b291-0130-4c6b-8d09-7a70a07bbe14" Title="Equals Method " Url="html/255140dc-27a7-cc9d-df9a-dc4d03c9a8e4.htm">
           <HelpTOCNode Title="Equals Method (Object)" Url="html/3c3a57f3-ab98-976d-e470-2b8da8c97b53.htm" />
           <HelpTOCNode Title="Equals Method (size_t)" Url="html/b08a01e0-6ae7-c9db-4d46-9fdeadaca5ed.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="GetHashCode Method " Url="html/6feeab0d-dc91-818f-ef60-2434ff3a1146.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/e465d040-0d35-f8c8-51db-c56b3d14b4c8.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="9dfebf83-bd18-471b-bac6-880160ff6afe" Title="size_t Operators and Type Conversions" Url="html/c27b5f76-606f-b512-9424-8e74cea9f6da.htm">
+      <HelpTOCNode Id="0e1cd5a6-ec51-4986-8cb3-e95de9422c16" Title="size_t Operators and Type Conversions" Url="html/c27b5f76-606f-b512-9424-8e74cea9f6da.htm">
         <HelpTOCNode Title="Equality Operator " Url="html/46b18925-3e4b-f26c-ef9c-ade34e23f518.htm" />
-        <HelpTOCNode Id="64a7c3fa-c3d9-4432-9684-8ead3b02f748" Title="Explicit Conversion Operators" Url="html/1f76425d-66dd-c23e-2032-d6f1f2337813.htm">
+        <HelpTOCNode Id="fbb40dbc-6b09-40c3-a769-31f8614f3532" Title="Explicit Conversion Operators" Url="html/1f76425d-66dd-c23e-2032-d6f1f2337813.htm">
           <HelpTOCNode Title="Explicit Conversion (Int16 to size_t)" Url="html/8da2a46e-34a6-f8be-270d-32fbf6424d98.htm" />
           <HelpTOCNode Title="Explicit Conversion (Int32 to size_t)" Url="html/25c0e500-2d89-f414-530f-a0a53b57766f.htm" />
           <HelpTOCNode Title="Explicit Conversion (Int64 to size_t)" Url="html/e9177dc9-2049-a649-3bf2-735ed6927aae.htm" />
@@ -676,7 +676,7 @@
           <HelpTOCNode Title="Explicit Conversion (size_t to Int32)" Url="html/47fd5e17-2217-5e2f-8d68-440cfcf85179.htm" />
           <HelpTOCNode Title="Explicit Conversion (size_t to Int64)" Url="html/fd60a636-df2f-3c60-40c7-b46077830f00.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="81e4823f-abab-493e-a289-40a363c9f37c" Title="Implicit Conversion Operators" Url="html/a35ea6b8-48fa-4e62-bdbd-fee74574cac5.htm">
+        <HelpTOCNode Id="45ced454-c42a-4ac8-ac13-207a2348cecd" Title="Implicit Conversion Operators" Url="html/a35ea6b8-48fa-4e62-bdbd-fee74574cac5.htm">
           <HelpTOCNode Title="Implicit Conversion (Byte to size_t)" Url="html/6d0766fc-29bc-75e6-aa00-ed7b80fe586e.htm" />
           <HelpTOCNode Title="Implicit Conversion (UInt16 to size_t)" Url="html/18ef1696-938e-0932-1d55-eaced0d92464.htm" />
           <HelpTOCNode Title="Implicit Conversion (UInt32 to size_t)" Url="html/e76254b7-0a0e-d726-a1a2-ebc21dab1c96.htm" />
@@ -686,9 +686,9 @@
         <HelpTOCNode Title="Inequality Operator " Url="html/a68386d1-23de-611a-543f-fbd5600f674a.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="39b42cc4-c0d0-48be-b92b-ab4263bfdde8" Title="void_ptr Structure" Url="html/e200d734-044d-4cc7-acc7-2333d7cf3c9a.htm">
-      <HelpTOCNode Id="b7c38c4e-d541-4acc-a425-538b408eda26" Title="void_ptr Methods" Url="html/e267ef2f-54a1-a3f1-441f-0655b542bf55.htm">
-        <HelpTOCNode Id="316778b0-f300-4184-9bd7-df8f91146163" Title="Equals Method " Url="html/0521b935-27ad-ca39-ed8a-6c4b4fc51116.htm">
+    <HelpTOCNode Id="61f10c66-edda-439d-98cc-29d27bcfca1c" Title="void_ptr Structure" Url="html/e200d734-044d-4cc7-acc7-2333d7cf3c9a.htm">
+      <HelpTOCNode Id="cfe612b2-cb66-4bed-9d31-38076b605d25" Title="void_ptr Methods" Url="html/e267ef2f-54a1-a3f1-441f-0655b542bf55.htm">
+        <HelpTOCNode Id="ea48d1c2-295a-4ad2-a95f-f1615299481a" Title="Equals Method " Url="html/0521b935-27ad-ca39-ed8a-6c4b4fc51116.htm">
           <HelpTOCNode Title="Equals Method (Object)" Url="html/0177c7b6-b5d5-3815-b64a-4f3a7686bf6d.htm" />
           <HelpTOCNode Title="Equals Method (void_ptr)" Url="html/c39c5883-0cbc-86ee-d3a6-be3a95f8cadc.htm" />
         </HelpTOCNode>
@@ -696,11 +696,11 @@
         <HelpTOCNode Title="GetHashCode Method " Url="html/04ef14d3-d09c-cfcb-0cea-8984c92612f5.htm" />
         <HelpTOCNode Title="ToIntPtr Method " Url="html/3e1375c2-3f44-721d-6ef3-32e49a3d7d3b.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="674c18c6-e0cf-414d-8da4-87b416e0943f" Title="void_ptr Operators" Url="html/578ac23c-2986-d809-fa1b-c9a111d0c780.htm">
+      <HelpTOCNode Id="451b2df8-f8f0-47d3-beca-06934f809565" Title="void_ptr Operators" Url="html/578ac23c-2986-d809-fa1b-c9a111d0c780.htm">
         <HelpTOCNode Title="Equality Operator " Url="html/3d7c5927-d163-5d46-1f0b-5c35ca116b22.htm" />
         <HelpTOCNode Title="Inequality Operator " Url="html/bd89f9a0-7e6f-d1e7-46b3-051bfbe290f4.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8df3e587-22ab-4d80-9867-10c0551fb72e" Title="void_ptr Fields" Url="html/12a4c9d6-02cf-e913-816e-ad530e77722c.htm">
+      <HelpTOCNode Id="86e9a774-3344-4d65-95bb-ab5ffe65f2ca" Title="void_ptr Fields" Url="html/12a4c9d6-02cf-e913-816e-ad530e77722c.htm">
         <HelpTOCNode Title="Zero Field" Url="html/3fce2dbc-bac6-d24f-d6d4-84454567b8f5.htm" />
       </HelpTOCNode>
     </HelpTOCNode>

@@ -21,23 +21,23 @@
         <span class="parameter">rop</span> : <span class="identifier">mpf_t</span> * 
         <span class="parameter">str</span> : <span class="identifier">char_ptr</span> * 
         <span class="parameter">base</span> : <span class="identifier">int</span> <span class="keyword">-&gt;</span> <span class="identifier">int</span> 
-</pre></div></div></div><script type="text/javascript">AddLanguageTabSet("ID0EDCA");</script><h4 class="subHeading">Parameters</h4><dl><dt><span class="parameter">rop</span></dt><dd>Type: <a href="37c88d6c-8d02-2330-ad77-f20fb73d1677.htm">Math.Gmp.Native<span id="LST19DC7C0C_1"></span><script type="text/javascript">AddLanguageSpecificTextSet("LST19DC7C0C_1?cs=.|vb=.|cpp=::|nu=.|fs=.");</script>mpf_t</a><br />The result float.</dd><dt><span class="parameter">str</span></dt><dd>Type: <a href="06249483-9daf-95f9-32c7-30195550bbcc.htm">Math.Gmp.Native<span id="LST19DC7C0C_2"></span><script type="text/javascript">AddLanguageSpecificTextSet("LST19DC7C0C_2?cs=.|vb=.|cpp=::|nu=.|fs=.");</script>char_ptr</a><br />The input string.</dd><dt><span class="parameter">base</span></dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="LST19DC7C0C_3"></span><script type="text/javascript">AddLanguageSpecificTextSet("LST19DC7C0C_3?cs=.|vb=.|cpp=::|nu=.|fs=.");</script>Int32</a><br />The base.</dd></dl><h4 class="subHeading">Return Value</h4>Type: <a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">Int32</a><br />This function returns <span class="code">0</span> if the entire string is a valid number in base <span class="parameter">base</span>. Otherwise it returns <span class="code">-1</span>.</div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID2RB')" onkeypress="SectionExpandCollapse_CheckKey('ID2RB', event)" tabindex="0"><img id="ID2RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />Remarks</span></div><div id="ID2RBSection" class="collapsibleSection"><p>
-            The string is of the form "M@N" or, if the <span class="parameter">base</span> is <span class="code">10</span> or less,
+</pre></div></div></div><script type="text/javascript">AddLanguageTabSet("ID0EDCA");</script><h4 class="subHeading">Parameters</h4><dl><dt><span class="parameter">rop</span></dt><dd>Type: <a href="37c88d6c-8d02-2330-ad77-f20fb73d1677.htm">Math.Gmp.Native<span id="LST19DC7C0C_1"></span><script type="text/javascript">AddLanguageSpecificTextSet("LST19DC7C0C_1?cs=.|vb=.|cpp=::|nu=.|fs=.");</script>mpf_t</a><br />The result float.</dd><dt><span class="parameter">str</span></dt><dd>Type: <a href="06249483-9daf-95f9-32c7-30195550bbcc.htm">Math.Gmp.Native<span id="LST19DC7C0C_2"></span><script type="text/javascript">AddLanguageSpecificTextSet("LST19DC7C0C_2?cs=.|vb=.|cpp=::|nu=.|fs=.");</script>char_ptr</a><br />The input string.</dd><dt><span class="parameter">base</span></dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="LST19DC7C0C_3"></span><script type="text/javascript">AddLanguageSpecificTextSet("LST19DC7C0C_3?cs=.|vb=.|cpp=::|nu=.|fs=.");</script>Int32</a><br />The base.</dd></dl><h4 class="subHeading">Return Value</h4>Type: <a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">Int32</a><br />This function returns 0 if the entire string is a valid number in base <span class="parameter">base</span>. Otherwise it returns -1.</div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID2RB')" onkeypress="SectionExpandCollapse_CheckKey('ID2RB', event)" tabindex="0"><img id="ID2RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />Remarks</span></div><div id="ID2RBSection" class="collapsibleSection"><p>
+            The string is of the form "M@N" or, if the <span class="parameter">base</span> is 10 or less,
             alternatively "MeN".
             "M" is the mantissa and "N" is the exponent.
             The mantissa is always in the specified <span class="parameter">base</span>.
             The exponent is either in the specified <span class="parameter">base</span> or, if <span class="parameter">base</span> is negative, in decimal.
             The decimal point expected is taken from the current locale, on systems providing <span class="code">localeconv</span>. 
             </p><p>
-            The argument <span class="parameter">base</span> may be in the ranges <span class="code">2</span> to <span class="code">62</span>, or <span class="code">-62</span> to <span class="code">-2</span>.
+            The argument <span class="parameter">base</span> may be in the ranges 2 to 62, or -62 to -2.
             Negative values are used to specify that the exponent is in decimal. 
             </p><p>
-            For bases up to <span class="code">36</span>, case is ignored; upper-case and lower-case letters have the same value;
-            for bases <span class="code">37</span> to <span class="code">62</span>, upper-case letter represent the usual <span class="code">10..35</span> while lower-case
-            letter represent <span class="code">36..61</span>. 
+            For bases up to 36, case is ignored; upper-case and lower-case letters have the same value;
+            for bases 37 to 62, upper-case letter represent the usual 10..35 while lower-case
+            letter represent 36..61. 
             </p><p>
             Unlike the corresponding <span class="code">mpz</span> function, the <span class="parameter">base</span> will not be determined from the leading characters
-            of the string if base is <span class="code">0</span>. This is so that numbers like "0.23" are not interpreted as octal. 
+            of the string if base is 0. This is so that numbers like "0.23" are not interpreted as octal. 
             </p><p>
             White space is allowed in the string, and is simply ignored.
             [This is not really true; white-space is ignored in the beginning of the string and within the mantissa,
