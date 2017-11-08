@@ -94,9 +94,7 @@
     <None Include="Dependencies\msys2-x86_64-20161025.exe" />
     <None Include="Dependencies\yasm-1.3.0-win32.exe" />
     <None Include="Dependencies\yasm-1.3.0-win64.exe" />
-    <Content Include="x64\libgmp-10.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="x64\libgmp-10.dll" />
     <Content Include="x86\libgmp-10.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
