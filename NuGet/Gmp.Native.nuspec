@@ -16,7 +16,7 @@ All functions have been thoroughly tested using a large set of unit tests that c
 Supported Platform: .NET Framework 2.0+</description>
         <summary>C math (in .NET)</summary>
         <releaseNotes>Initial release.</releaseNotes>
-        <copyright>Copyright (c) 2016 Robert Baron, Machine Cognitis</copyright>
+        <copyright>Copyright (c) 2017 Robert Baron, Machine Cognitis</copyright>
         <tags>fpclassify isfinite isinf isnan isnormal signbit frexp ilogb ldexp logb scalbn scalbln copysign nextafter nexttoward significand isunordered</tags>
         <frameworkAssemblies>
             <frameworkAssembly assemblyName="System" targetFramework=".NETFramework2.0" />

@@ -1,3 +1,5 @@
+# THIS PROJECT IS IN PRE-RELEASE
+
 # Welcome to the GMP Native Interface for .NET Library
 The GMP Native Interface for .NET Library exposes to .NET (through P-Invoke and .NET types) all of
 the functionality of the [GNU MP](https://gmplib.org/) Library (version 6.1.2).
