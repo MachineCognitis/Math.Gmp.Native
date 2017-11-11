@@ -22,7 +22,7 @@ The build file includes the compiled library and the help file (.chm) ready to b
 The library targets the .NET Framework 2.0, so it can be used with all newer versions of the .NET Framework.
 For other builds, see the [Releases](https://github.com/MachineCognitis/Math.Gmp.Native/releases) page.
 
-- [Math.Gmp.Native.v1.0.build.zip](https://github.com/MachineCognitis/Math.Gmp.Native/releases/download/v1.1/Math.Gmp.Native.v1.0.build.zip).
+- [Math.Gmp.Native.v1.6.build.zip](https://github.com/MachineCognitis/Math.Gmp.Native/releases/download/v1.1/Math.Gmp.Native.v1.6.build.zip).
 
 **NOTE**: On some systems, the content of the ZIP file may be blocked. To unblock it, right click on the
 ZIP file, select Properties, and click on the Unblock button, if it is present.
