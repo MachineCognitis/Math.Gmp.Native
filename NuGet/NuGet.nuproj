@@ -15,7 +15,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Gmp.Native.nuspec">
+    <Compile Include="Math.Gmp.Native.nuspec">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

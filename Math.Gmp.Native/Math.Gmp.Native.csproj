@@ -89,12 +89,20 @@
   <ItemGroup>
     <None Include="Dependencies\ConsoleApplication12.zip" />
     <None Include="Dependencies\gmp-6.1.2.tar.bz2" />
+    <None Include="GMP_COPYING">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GMP_README">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ReadMe.txt" />
     <None Include="Dependencies\msys2-i686-20161025.exe" />
     <None Include="Dependencies\msys2-x86_64-20161025.exe" />
     <None Include="Dependencies\yasm-1.3.0-win32.exe" />
     <None Include="Dependencies\yasm-1.3.0-win64.exe" />
-    <Content Include="x64\libgmp-10.dll" />
+    <Content Include="x64\libgmp-10.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="x86\libgmp-10.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

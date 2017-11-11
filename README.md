@@ -1,4 +1,3 @@
-# THIS PROJECT IS IN PRE-RELEASE
 
 # Welcome to the GMP Native Interface for .NET Library
 The GMP Native Interface for .NET Library exposes to .NET (through P-Invoke and .NET types) all of
@@ -15,7 +14,7 @@ any available assembly language code optimization for that CPU, thus providing o
 ### NuGet
 
 The GMP Native Interface for .NET library can be installed in your Visual Studio solution or project
-with this [NuGet package](https://www.nuget.org/packages/Math.Gmp.Native/).
+with this [NuGet package](https://www.nuget.org/packages/Math.Gmp.Native.NET/).
 
 ### Latest Build
 
