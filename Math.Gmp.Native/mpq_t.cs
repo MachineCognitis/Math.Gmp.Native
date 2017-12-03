@@ -23,9 +23,19 @@ namespace Math.Gmp.Native
         /// </summary>
         public mpq_t()
         {
+        }
+
+        internal void Initializing()
+        {
             size_t length = /*2 * (sizeof(int) + sizeof(int))*/ 16 + 2 * (size_t)IntPtr.Size;
             _pointer = gmp_lib.allocate(length).ToIntPtr();
-            gmp_lib.ZeroMemory(_pointer, (int)length);
+            //gmp_lib.ZeroMemory(_pointer, (int)length);
+        }
+
+        internal void Clear()
+        {
+            if (_pointer != IntPtr.Zero) gmp_lib.free(_pointer);
+            _pointer = IntPtr.Zero;
         }
 
         /// <summary>
@@ -91,6 +101,7 @@ namespace Math.Gmp.Native
         /// <returns>The string representation of the rational.</returns>
         public override string ToString()
         {
+            if (this._pointer == IntPtr.Zero) return "uninitialized";
             char_ptr s_ptr = gmp_lib.mpq_get_str(char_ptr.Zero, 10, this);
             string s = s_ptr.ToString();
             gmp_lib.free(s_ptr);

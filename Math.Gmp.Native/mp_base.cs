@@ -11,8 +11,13 @@ namespace Math.Gmp.Native
     public class mp_base
     {
 
+        /// <summary>
+        /// Pointer to limbs in unmanaged memory.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2111:PointersShouldNotBeVisible")]
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        internal IntPtr _pointer;
+        public IntPtr Pointer;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         internal mp_size_t _size;
@@ -29,16 +34,19 @@ namespace Math.Gmp.Native
             }
         }
 
+        /// <summary>
+        /// Gets or sets the pointer to limbs in unmanaged memory.
+        /// </summary>
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        internal virtual IntPtr _mp_d_intptr
+        public virtual IntPtr _mp_d_intptr
         {
             get
             {
-                return _pointer;
+                return Pointer;
             }
             set
             {
-                _pointer = value;
+                Pointer = value;
             }
         }
 

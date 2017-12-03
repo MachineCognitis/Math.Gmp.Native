@@ -10,16 +10,17 @@
   <HelpKINode Title="char_ptr structure">
     <HelpKINode Title="char_ptr Structure" Url="html/06249483-9daf-95f9-32c7-30195550bbcc.htm" />
     <HelpKINode Title="about char_ptr structure" Url="html/06249483-9daf-95f9-32c7-30195550bbcc.htm" />
-    <HelpKINode Title="constructor" Url="html/255d9de2-3cf6-50f3-3276-a4332896da07.htm" />
+    <HelpKINode Title="constructor" Url="html/9006f054-e796-6460-45df-47d6ab808697.htm" />
     <HelpKINode Title="fields" Url="html/b32f2955-fb82-d5d4-3b3d-7dcd95a5d305.htm" />
     <HelpKINode Title="methods" Url="html/73876566-4eec-b421-e4d6-3593e9641f0a.htm" />
     <HelpKINode Title="operators" Url="html/84b523e8-bc53-01e9-49af-f7996af73647.htm" />
   </HelpKINode>
-  <HelpKINode Title="char_ptr.char_ptr constructor" Url="html/255d9de2-3cf6-50f3-3276-a4332896da07.htm" />
+  <HelpKINode Title="char_ptr.char_ptr constructor" Url="html/9006f054-e796-6460-45df-47d6ab808697.htm" />
   <HelpKINode Title="char_ptr.Equality operator" Url="html/a4f47fa4-8285-638d-c094-bc9e249a49a0.htm" />
   <HelpKINode Title="char_ptr.Equals method" Url="html/2d2c429f-5828-694d-2ad7-9d13e5c412b3.htm" />
   <HelpKINode Title="char_ptr.GetHashCode method" Url="html/84492195-83e7-7738-6678-c299663dd02c.htm" />
   <HelpKINode Title="char_ptr.Inequality operator" Url="html/f090e7f3-7440-c789-5594-e5512076a61a.htm" />
+  <HelpKINode Title="char_ptr.Pointer field" Url="html/cfa68b4c-3d5d-c5b1-1ef1-ab054ef87097.htm" />
   <HelpKINode Title="char_ptr.ToIntPtr method" Url="html/42a15292-978c-35c6-bfa3-9d5acf725ca7.htm" />
   <HelpKINode Title="char_ptr.ToString method" Url="html/1eedfa7e-7135-6b5d-e395-9a6b90fab236.htm" />
   <HelpKINode Title="char_ptr.Zero field" Url="html/76481715-8a8b-e739-905c-f0d83de503ab.htm" />
@@ -136,7 +137,7 @@
   <HelpKINode Title="gmp_lib.mpf_get_d_2exp method" Url="html/e1edc21e-74a0-b44c-216b-bad204b5a48a.htm" />
   <HelpKINode Title="gmp_lib.mpf_get_prec method" Url="html/96c4a09e-3f83-00ab-30d0-78a82764b0ce.htm" />
   <HelpKINode Title="gmp_lib.mpf_get_si method" Url="html/d948e832-ee71-628a-6a7b-766138afff62.htm" />
-  <HelpKINode Title="gmp_lib.mpf_get_str method" Url="html/bad56282-fbca-6e3b-03c8-085cff07eed8.htm" />
+  <HelpKINode Title="gmp_lib.mpf_get_str method" Url="html/73766ead-a037-a852-4589-04adc3407e15.htm" />
   <HelpKINode Title="gmp_lib.mpf_get_ui method" Url="html/aa3fd0ea-a8b6-674b-59ff-b6d4785baed1.htm" />
   <HelpKINode Title="gmp_lib.mpf_init method" Url="html/0dd846ac-56b6-3ea8-0441-12490f67fbf7.htm" />
   <HelpKINode Title="gmp_lib.mpf_init2 method" Url="html/98083eac-9993-41b2-4943-678785fce712.htm" />
@@ -196,7 +197,7 @@
   <HelpKINode Title="gmp_lib.mpn_divmod_1 method" Url="html/9074a45b-0d68-cf18-75fe-076e720a9a61.htm" />
   <HelpKINode Title="gmp_lib.mpn_divrem_1 method" Url="html/f5c3f25d-1ad5-b3be-fc4b-280a62869912.htm" />
   <HelpKINode Title="gmp_lib.mpn_gcd method" Url="html/24ecd2d5-422f-e538-fd43-94b749652393.htm" />
-  <HelpKINode Title="gmp_lib.mpn_gcdext method" Url="html/746d102a-5f3e-6142-b02a-63f3cac385ab.htm" />
+  <HelpKINode Title="gmp_lib.mpn_gcdext method" Url="html/1d98a5d2-dff5-3fd2-c322-13c56beabb21.htm" />
   <HelpKINode Title="gmp_lib.mpn_gcd_1 method" Url="html/64373933-f98b-74b4-c10f-3b1a98c410bc.htm" />
   <HelpKINode Title="gmp_lib.mpn_get_str method" Url="html/1e9cacd7-32b3-7f3b-659a-efdb3e064092.htm" />
   <HelpKINode Title="gmp_lib.mpn_hamdist method" Url="html/caf28774-7b13-0802-858c-a49970d7aa55.htm" />
@@ -325,7 +326,7 @@
   <HelpKINode Title="gmp_lib.mpz_divisible_p method" Url="html/4bafc7fe-d2a8-7cf2-b9b8-c296550b4ef2.htm" />
   <HelpKINode Title="gmp_lib.mpz_divisible_ui_p method" Url="html/6c026976-a6c9-6f12-6b31-c113166ea236.htm" />
   <HelpKINode Title="gmp_lib.mpz_even_p method" Url="html/e6012778-c71b-b078-2ef3-9f9db90f1769.htm" />
-  <HelpKINode Title="gmp_lib.mpz_export method" Url="html/c9d371c8-8c16-77a3-2c47-8edae05276c5.htm" />
+  <HelpKINode Title="gmp_lib.mpz_export method" Url="html/5fbffc1a-1ac4-6ca6-e528-abe7f8c96667.htm" />
   <HelpKINode Title="gmp_lib.mpz_fac_ui method" Url="html/17280f99-d0dc-6714-12c7-be17c97c0cdb.htm" />
   <HelpKINode Title="gmp_lib.mpz_fdiv_q method" Url="html/b0d00a52-e539-c5f7-7d6d-ab202e72ad98.htm" />
   <HelpKINode Title="gmp_lib.mpz_fdiv_qr method" Url="html/d9ab5220-69aa-8e5d-8d15-375eb27149ad.htm" />
@@ -471,6 +472,7 @@
     <HelpKINode Title="methods" Url="html/94df18f5-d7f6-b30a-5f00-f168e513840c.htm" />
   </HelpKINode>
   <HelpKINode Title="gmp_randstate_t.gmp_randstate_t constructor" Url="html/20a4edb9-f361-6367-9965-64b0f7aeddaa.htm" />
+  <HelpKINode Title="gmp_randstate_t.ToIntPtr method" Url="html/a19b1d7a-9367-0447-a5a6-106e15386cdb.htm" />
   <HelpKINode Title="gmp_scanf method" Url="html/880c96b7-378e-3cdb-057e-b6eea1c9e529.htm" />
   <HelpKINode Title="gmp_snprintf method" Url="html/61686857-e4a0-ad60-1419-2b87a79b06c1.htm" />
   <HelpKINode Title="gmp_sprintf method" Url="html/8916c18b-a745-2699-2f0a-035cf62dd051.htm" />
@@ -532,6 +534,7 @@
   <HelpKINode Title="Math.Gmp.Native.ptr&lt;T&gt; class" Url="html/542faa00-d28a-72a2-2dd8-6c6021e683ce.htm" />
   <HelpKINode Title="Math.Gmp.Native.reallocate_function delegate" Url="html/aa9d21b4-a929-d550-5a65-f9cbcfa7f638.htm" />
   <HelpKINode Title="Math.Gmp.Native.size_t structure" Url="html/d9761bfb-1882-59d2-e89b-c6460141f9a6.htm" />
+  <HelpKINode Title="Math.Gmp.Native.va_list class" Url="html/4f2255b8-b87a-7b1b-286a-abb7293059d7.htm" />
   <HelpKINode Title="Math.Gmp.Native.void_ptr structure" Url="html/e200d734-044d-4cc7-acc7-2333d7cf3c9a.htm" />
   <HelpKINode Title="mpf_abs method" Url="html/17731ba4-bf91-6b9b-737a-a9cc306ba17d.htm" />
   <HelpKINode Title="mpf_add method" Url="html/c19999f1-01ee-a3fe-dc4d-2a459e73492d.htm" />
@@ -559,7 +562,7 @@
   <HelpKINode Title="mpf_get_d_2exp method" Url="html/e1edc21e-74a0-b44c-216b-bad204b5a48a.htm" />
   <HelpKINode Title="mpf_get_prec method" Url="html/96c4a09e-3f83-00ab-30d0-78a82764b0ce.htm" />
   <HelpKINode Title="mpf_get_si method" Url="html/d948e832-ee71-628a-6a7b-766138afff62.htm" />
-  <HelpKINode Title="mpf_get_str method" Url="html/bad56282-fbca-6e3b-03c8-085cff07eed8.htm" />
+  <HelpKINode Title="mpf_get_str method" Url="html/73766ead-a037-a852-4589-04adc3407e15.htm" />
   <HelpKINode Title="mpf_get_ui method" Url="html/aa3fd0ea-a8b6-674b-59ff-b6d4785baed1.htm" />
   <HelpKINode Title="mpf_init method" Url="html/0dd846ac-56b6-3ea8-0441-12490f67fbf7.htm" />
   <HelpKINode Title="mpf_init2 method" Url="html/98083eac-9993-41b2-4943-678785fce712.htm" />
@@ -600,6 +603,7 @@
     <HelpKINode Title="mpf_t Class" Url="html/37c88d6c-8d02-2330-ad77-f20fb73d1677.htm" />
     <HelpKINode Title="about mpf_t class" Url="html/37c88d6c-8d02-2330-ad77-f20fb73d1677.htm" />
     <HelpKINode Title="constructor" Url="html/0e0a10d5-52ab-1821-6fe1-97514e009418.htm" />
+    <HelpKINode Title="fields" Url="html/373cd52b-c12c-bae1-1a8c-b7627903d709.htm" />
     <HelpKINode Title="methods" Url="html/2583789b-09c3-0f9a-fbf9-4d362bd9129a.htm" />
     <HelpKINode Title="properties" Url="html/44d8440b-0daa-0393-510e-a0ace6d299f7.htm" />
     <HelpKINode Title="type conversions" Url="html/3ca44c9f-677e-d5fa-5414-399843506633.htm" />
@@ -607,6 +611,7 @@
   <HelpKINode Title="mpf_t.mpf_t constructor" Url="html/0e0a10d5-52ab-1821-6fe1-97514e009418.htm" />
   <HelpKINode Title="mpf_t.ToIntPtr method" Url="html/b77413f7-f862-7996-838a-f510fc3f69ed.htm" />
   <HelpKINode Title="mpf_t.ToString method" Url="html/77eccd6b-888f-b3a8-0800-ead4af162af0.htm" />
+  <HelpKINode Title="mpf_t._mp_d_intptr property" Url="html/39182adf-3ed6-8c68-c2e7-05a9bfcef6ab.htm" />
   <HelpKINode Title="mpf_t._mp_exp property" Url="html/f63ee104-afaa-e0b8-ff39-f60b9a934ea3.htm" />
   <HelpKINode Title="mpf_t._mp_prec property" Url="html/772c3bd8-b9ec-225d-3d98-e17ae89d4294.htm" />
   <HelpKINode Title="mpf_t._mp_size property" Url="html/9aa3bb30-32b3-b465-af05-9b048bb610f1.htm" />
@@ -633,7 +638,7 @@
   <HelpKINode Title="mpn_divmod_1 method" Url="html/9074a45b-0d68-cf18-75fe-076e720a9a61.htm" />
   <HelpKINode Title="mpn_divrem_1 method" Url="html/f5c3f25d-1ad5-b3be-fc4b-280a62869912.htm" />
   <HelpKINode Title="mpn_gcd method" Url="html/24ecd2d5-422f-e538-fd43-94b749652393.htm" />
-  <HelpKINode Title="mpn_gcdext method" Url="html/746d102a-5f3e-6142-b02a-63f3cac385ab.htm" />
+  <HelpKINode Title="mpn_gcdext method" Url="html/1d98a5d2-dff5-3fd2-c322-13c56beabb21.htm" />
   <HelpKINode Title="mpn_gcd_1 method" Url="html/64373933-f98b-74b4-c10f-3b1a98c410bc.htm" />
   <HelpKINode Title="mpn_get_str method" Url="html/1e9cacd7-32b3-7f3b-659a-efdb3e064092.htm" />
   <HelpKINode Title="mpn_hamdist method" Url="html/caf28774-7b13-0802-858c-a49970d7aa55.htm" />
@@ -775,7 +780,7 @@
   <HelpKINode Title="mpz_divisible_p method" Url="html/4bafc7fe-d2a8-7cf2-b9b8-c296550b4ef2.htm" />
   <HelpKINode Title="mpz_divisible_ui_p method" Url="html/6c026976-a6c9-6f12-6b31-c113166ea236.htm" />
   <HelpKINode Title="mpz_even_p method" Url="html/e6012778-c71b-b078-2ef3-9f9db90f1769.htm" />
-  <HelpKINode Title="mpz_export method" Url="html/c9d371c8-8c16-77a3-2c47-8edae05276c5.htm" />
+  <HelpKINode Title="mpz_export method" Url="html/5fbffc1a-1ac4-6ca6-e528-abe7f8c96667.htm" />
   <HelpKINode Title="mpz_fac_ui method" Url="html/17280f99-d0dc-6714-12c7-be17c97c0cdb.htm" />
   <HelpKINode Title="mpz_fdiv_q method" Url="html/b0d00a52-e539-c5f7-7d6d-ab202e72ad98.htm" />
   <HelpKINode Title="mpz_fdiv_qr method" Url="html/d9ab5220-69aa-8e5d-8d15-375eb27149ad.htm" />
@@ -885,6 +890,7 @@
     <HelpKINode Title="mpz_t Class" Url="html/8beda7fb-bbc4-b56f-fd1f-1459377ecb3b.htm" />
     <HelpKINode Title="about mpz_t class" Url="html/8beda7fb-bbc4-b56f-fd1f-1459377ecb3b.htm" />
     <HelpKINode Title="constructor" Url="html/0fcbb911-bc5a-1b11-90c5-96babff86526.htm" />
+    <HelpKINode Title="fields" Url="html/18a76f9f-3507-5e96-06ac-0167e0359410.htm" />
     <HelpKINode Title="methods" Url="html/430d894e-57e0-6020-0ad7-40b74cbd969f.htm" />
     <HelpKINode Title="properties" Url="html/5f492d5c-72f0-17b4-24a4-e5b58a061ef7.htm" />
     <HelpKINode Title="type conversions" Url="html/1cc35e31-9ab0-7239-d05b-1e2a426338bc.htm" />
@@ -893,6 +899,7 @@
   <HelpKINode Title="mpz_t.ToIntPtr method" Url="html/018d9747-3053-df6d-2bb3-5273ad735860.htm" />
   <HelpKINode Title="mpz_t.ToString method" Url="html/709eb598-ee38-4031-9dc5-74a73d8f9142.htm" />
   <HelpKINode Title="mpz_t._mp_alloc property" Url="html/93206a07-9ee6-f89b-f029-f0e80982c911.htm" />
+  <HelpKINode Title="mpz_t._mp_d_intptr property" Url="html/f91fdfb5-06bb-23e0-45be-934dd1088a1b.htm" />
   <HelpKINode Title="mpz_t._mp_size property" Url="html/15e1db51-a27c-7eee-03dd-5c6457889be1.htm" />
   <HelpKINode Title="mpz_tdiv_q method" Url="html/4c830876-cdf6-9d94-1ceb-24d30f873bc2.htm" />
   <HelpKINode Title="mpz_tdiv_qr method" Url="html/387ec1dd-15b3-4cc9-862a-e3f0a8e2cb78.htm" />
@@ -914,16 +921,20 @@
     <HelpKINode Title="mp_base Class" Url="html/8f3c572b-8133-bccc-b838-9d22e3467898.htm" />
     <HelpKINode Title="about mp_base class" Url="html/8f3c572b-8133-bccc-b838-9d22e3467898.htm" />
     <HelpKINode Title="constructor" Url="html/3e385e89-d6d3-27df-ec51-6580f6bea08b.htm" />
+    <HelpKINode Title="fields" Url="html/0525612d-5a63-106e-2d53-4ad25dd2e3a1.htm" />
     <HelpKINode Title="methods" Url="html/dc319ce0-0560-799e-9187-8445d98b802b.htm" />
     <HelpKINode Title="properties" Url="html/c65a20b0-ddd8-db62-1d34-19bf1a71ce8c.htm" />
   </HelpKINode>
   <HelpKINode Title="mp_base.mp_base constructor" Url="html/3e385e89-d6d3-27df-ec51-6580f6bea08b.htm" />
+  <HelpKINode Title="mp_base.Pointer field" Url="html/8d76a7b0-6917-c5d0-3b4a-de767fd3ddd4.htm" />
   <HelpKINode Title="mp_base._mp_d property" Url="html/db55f1a9-cd4c-b7e9-c831-4391c0497ef7.htm" />
+  <HelpKINode Title="mp_base._mp_d_intptr property" Url="html/01baafdb-caf3-5653-428f-0ba9c42c3a9a.htm" />
   <HelpKINode Title="mp_base._mp_size property" Url="html/178d8d44-2485-2972-fe2f-eb9848059e6f.htm" />
   <HelpKINode Title="mp_bitcnt_t structure">
     <HelpKINode Title="mp_bitcnt_t Structure" Url="html/1b2b1d64-20c1-7a64-0278-d9ff58ee9cc3.htm" />
     <HelpKINode Title="about mp_bitcnt_t structure" Url="html/1b2b1d64-20c1-7a64-0278-d9ff58ee9cc3.htm" />
     <HelpKINode Title="constructor" Url="html/5846cdbc-83b9-0197-aa29-fd226641eb76.htm" />
+    <HelpKINode Title="fields" Url="html/376be8f2-7fe0-c6c4-e08d-7883d4d19594.htm" />
     <HelpKINode Title="methods" Url="html/0968b601-ff25-497d-c2eb-28487c3d29cf.htm" />
     <HelpKINode Title="operators and type conversions" Url="html/bee91f05-75c7-52c6-18ae-eb792710655d.htm" />
   </HelpKINode>
@@ -941,12 +952,14 @@
   <HelpKINode Title="mp_bitcnt_t.Inequality operator" Url="html/8ae70a65-d9d6-0c44-b148-82f39dc474ab.htm" />
   <HelpKINode Title="mp_bitcnt_t.mp_bitcnt_t constructor" Url="html/5846cdbc-83b9-0197-aa29-fd226641eb76.htm" />
   <HelpKINode Title="mp_bitcnt_t.ToString method" Url="html/0dd7a5d2-ab07-87dc-79d2-d9b361bc0a34.htm" />
+  <HelpKINode Title="mp_bitcnt_t.Value field" Url="html/3ae51295-d9e7-e4e5-a660-07940dcfcfde.htm" />
   <HelpKINode Title="mp_bits_per_limb field" Url="html/f88c76a8-118a-5cbd-0df1-e30adcacb8ae.htm" />
   <HelpKINode Title="mp_bytes_per_limb field" Url="html/47695d57-9a89-48db-97c3-2ed03965d913.htm" />
   <HelpKINode Title="mp_exp_t structure">
     <HelpKINode Title="mp_exp_t Structure" Url="html/e6a17880-791f-37d4-4942-cf26ce7d4cbf.htm" />
     <HelpKINode Title="about mp_exp_t structure" Url="html/e6a17880-791f-37d4-4942-cf26ce7d4cbf.htm" />
     <HelpKINode Title="constructor" Url="html/d4cd9f0b-9f54-1f1d-6a27-a0ce3122249c.htm" />
+    <HelpKINode Title="fields" Url="html/a423051c-4997-14ad-8e54-e6b961ce6932.htm" />
     <HelpKINode Title="methods" Url="html/8968de81-b069-4c5d-e694-8aad8a2c3cdb.htm" />
     <HelpKINode Title="operators and type conversions" Url="html/d0d07662-13f1-e033-9619-1c9f89c37939.htm" />
   </HelpKINode>
@@ -964,11 +977,13 @@
   <HelpKINode Title="mp_exp_t.Inequality operator" Url="html/931e55b9-30c1-aa94-c044-0400b5abea60.htm" />
   <HelpKINode Title="mp_exp_t.mp_exp_t constructor" Url="html/d4cd9f0b-9f54-1f1d-6a27-a0ce3122249c.htm" />
   <HelpKINode Title="mp_exp_t.ToString method" Url="html/cd071eb3-c175-836d-c47a-f9c007b8738d.htm" />
+  <HelpKINode Title="mp_exp_t.Value field" Url="html/40dbbc73-ebfe-df0e-4a28-ef5646a9a25b.htm" />
   <HelpKINode Title="mp_get_memory_functions method" Url="html/9a229bed-b8b6-e0ad-f153-689455252ec4.htm" />
   <HelpKINode Title="mp_limb_t structure">
     <HelpKINode Title="mp_limb_t Structure" Url="html/bf1f694d-f9b2-6413-12e5-ebae603d5b49.htm" />
     <HelpKINode Title="about mp_limb_t structure" Url="html/bf1f694d-f9b2-6413-12e5-ebae603d5b49.htm" />
     <HelpKINode Title="constructor" Url="html/89d25f98-71ed-79b0-9b85-7cb9fcbab79d.htm" />
+    <HelpKINode Title="fields" Url="html/a1100e83-1a57-f861-4850-83b9bce3ebc2.htm" />
     <HelpKINode Title="methods" Url="html/1e30b810-66a8-52cc-8501-8bdda18bfaa7.htm" />
     <HelpKINode Title="operators and type conversions" Url="html/88234d39-a3da-db4f-71ff-17d0f2e2c7fe.htm" />
   </HelpKINode>
@@ -986,6 +1001,7 @@
   <HelpKINode Title="mp_limb_t.Inequality operator" Url="html/be93bccd-2cad-322c-e211-5523de89b567.htm" />
   <HelpKINode Title="mp_limb_t.mp_limb_t constructor" Url="html/89d25f98-71ed-79b0-9b85-7cb9fcbab79d.htm" />
   <HelpKINode Title="mp_limb_t.ToString method" Url="html/7ae8e775-5b2d-4ce0-c45b-5afd1b66ac62.htm" />
+  <HelpKINode Title="mp_limb_t.Value field" Url="html/73d48b1a-0a79-41fa-2b80-d1d0bc90ce3d.htm" />
   <HelpKINode Title="mp_ptr class">
     <HelpKINode Title="mp_ptr Class" Url="html/4609ac5e-5cf9-cd20-2fa9-8040101c165c.htm" />
     <HelpKINode Title="about mp_ptr class" Url="html/4609ac5e-5cf9-cd20-2fa9-8040101c165c.htm" />
@@ -997,11 +1013,13 @@
   <HelpKINode Title="mp_ptr.Item property" Url="html/a7661bd2-2bcb-01c5-9833-5ab6d6305daf.htm" />
   <HelpKINode Title="mp_ptr.mp_ptr constructor" Url="html/33563f2c-baba-b555-20fb-9def8b70074c.htm" />
   <HelpKINode Title="mp_ptr.Size property" Url="html/562de56d-c1a8-5f66-59dc-e2886d89bfc3.htm" />
+  <HelpKINode Title="mp_ptr.ToIntPtr method" Url="html/659f2b6c-790b-e9b9-cc61-e8fc8a4bd2c0.htm" />
   <HelpKINode Title="mp_set_memory_functions method" Url="html/15ac48e3-750c-d154-7d8f-6dcaa137f5db.htm" />
   <HelpKINode Title="mp_size_t structure">
     <HelpKINode Title="mp_size_t Structure" Url="html/4b58a584-7a0e-b600-18fa-ebd493861eb3.htm" />
     <HelpKINode Title="about mp_size_t structure" Url="html/4b58a584-7a0e-b600-18fa-ebd493861eb3.htm" />
     <HelpKINode Title="constructor" Url="html/be71a625-32c1-841d-0915-f0771323d00a.htm" />
+    <HelpKINode Title="fields" Url="html/64df5728-6963-d01f-d17c-21ee6df7c418.htm" />
     <HelpKINode Title="methods" Url="html/afc0fd4e-39a7-905a-93b9-8bd291904211.htm" />
     <HelpKINode Title="operators and type conversions" Url="html/884aef1a-9faa-b787-ff5e-022615bd41eb.htm" />
   </HelpKINode>
@@ -1019,7 +1037,12 @@
   <HelpKINode Title="mp_size_t.Inequality operator" Url="html/d7d60484-ecc2-8e26-1dac-de2617ab1867.htm" />
   <HelpKINode Title="mp_size_t.mp_size_t constructor" Url="html/be71a625-32c1-841d-0915-f0771323d00a.htm" />
   <HelpKINode Title="mp_size_t.ToString method" Url="html/abd28ab6-f7d7-296e-852b-ef28b35a08d8.htm" />
+  <HelpKINode Title="mp_size_t.Value field" Url="html/6860df77-97f9-01e3-007e-2af1985315e9.htm" />
   <HelpKINode Title="mp_uint_per_limb field" Url="html/af9533ce-5e67-245d-1cb3-9efb7772a6c8.htm" />
+  <HelpKINode Title="Pointer field">
+    <HelpKINode Title="char_ptr.Pointer Field" Url="html/cfa68b4c-3d5d-c5b1-1ef1-ab054ef87097.htm" />
+    <HelpKINode Title="mp_base.Pointer Field" Url="html/8d76a7b0-6917-c5d0-3b4a-de767fd3ddd4.htm" />
+  </HelpKINode>
   <HelpKINode Title="ptr(Of T) class">
     <HelpKINode Title="ptr(T) Class" Url="html/542faa00-d28a-72a2-2dd8-6c6021e683ce.htm" />
     <HelpKINode Title="about ptr(Of T) class" Url="html/542faa00-d28a-72a2-2dd8-6c6021e683ce.htm" />
@@ -1040,6 +1063,7 @@
   <HelpKINode Title="ptr&lt;T&gt;.Value field" Url="html/448dfb4b-f4d7-8db7-3d44-31f3bd032771.htm" />
   <HelpKINode Title="reallocate method" Url="html/067f64f9-7014-8c6a-3c02-153c1460a1dd.htm" />
   <HelpKINode Title="reallocate_function delegate" Url="html/aa9d21b4-a929-d550-5a65-f9cbcfa7f638.htm" />
+  <HelpKINode Title="RetrieveArgumentValues method" Url="html/ddbcfc40-f5e5-a37b-6a8c-76e08932025a.htm" />
   <HelpKINode Title="SByte to mp_bitcnt_t conversion" Url="html/aaf1db64-d29e-3aa5-0a72-6fe2578210de.htm" />
   <HelpKINode Title="SByte to mp_exp_t conversion" Url="html/2f9a1c6d-82f4-6ef2-476a-8231d6b7d497.htm" />
   <HelpKINode Title="SByte to mp_limb_t conversion" Url="html/3006d511-ecd7-0e95-44e1-b9effd406cbf.htm" />
@@ -1050,6 +1074,7 @@
     <HelpKINode Title="size_t Structure" Url="html/d9761bfb-1882-59d2-e89b-c6460141f9a6.htm" />
     <HelpKINode Title="about size_t structure" Url="html/d9761bfb-1882-59d2-e89b-c6460141f9a6.htm" />
     <HelpKINode Title="constructor" Url="html/4a5eee32-b03c-e613-22b1-6b4f54a95362.htm" />
+    <HelpKINode Title="fields" Url="html/23937a87-c622-7fe6-7dfc-89d66a88c1fb.htm" />
     <HelpKINode Title="methods" Url="html/0777a4c0-90d5-95bc-1192-f390bfbcbc43.htm" />
     <HelpKINode Title="operators and type conversions" Url="html/c27b5f76-606f-b512-9424-8e74cea9f6da.htm" />
   </HelpKINode>
@@ -1067,14 +1092,18 @@
   <HelpKINode Title="size_t.Inequality operator" Url="html/a68386d1-23de-611a-543f-fbd5600f674a.htm" />
   <HelpKINode Title="size_t.size_t constructor" Url="html/4a5eee32-b03c-e613-22b1-6b4f54a95362.htm" />
   <HelpKINode Title="size_t.ToString method" Url="html/e465d040-0d35-f8c8-51db-c56b3d14b4c8.htm" />
+  <HelpKINode Title="size_t.Value field" Url="html/b7dbc63c-92d3-28ce-a69a-ed84f6dd720f.htm" />
   <HelpKINode Title="String to mpf_t conversion" Url="html/058e477a-0126-b073-ee83-77ed89a58351.htm" />
   <HelpKINode Title="String to mpq_t conversion" Url="html/5d499247-7cb9-266f-eb4f-78bcf5768aa4.htm" />
   <HelpKINode Title="String to mpz_t conversion" Url="html/d07ddfe6-a0d0-51e7-180c-481fe678fc38.htm" />
   <HelpKINode Title="ToIntPtr method">
     <HelpKINode Title="char_ptr.ToIntPtr Method " Url="html/42a15292-978c-35c6-bfa3-9d5acf725ca7.htm" />
+    <HelpKINode Title="gmp_randstate_t.ToIntPtr Method " Url="html/a19b1d7a-9367-0447-a5a6-106e15386cdb.htm" />
     <HelpKINode Title="mpf_t.ToIntPtr Method " Url="html/b77413f7-f862-7996-838a-f510fc3f69ed.htm" />
     <HelpKINode Title="mpq_t.ToIntPtr Method " Url="html/ce76ca4d-3aab-d682-1f85-aa95ce7d43a9.htm" />
     <HelpKINode Title="mpz_t.ToIntPtr Method " Url="html/018d9747-3053-df6d-2bb3-5273ad735860.htm" />
+    <HelpKINode Title="mp_ptr.ToIntPtr Method " Url="html/659f2b6c-790b-e9b9-cc61-e8fc8a4bd2c0.htm" />
+    <HelpKINode Title="va_list.ToIntPtr Method " Url="html/13e99044-0242-c6b6-6a32-e9abb01ceaaa.htm" />
     <HelpKINode Title="void_ptr.ToIntPtr Method " Url="html/3e1375c2-3f44-721d-6ef3-32e49a3d7d3b.htm" />
   </HelpKINode>
   <HelpKINode Title="ToString method">
@@ -1105,11 +1134,26 @@
   <HelpKINode Title="UInt64 to size_t conversion" Url="html/c9d426b1-7505-f34c-5122-7ccd2571f577.htm" />
   <HelpKINode Title="Value field">
     <HelpKINode Title="FILE.Value Field" Url="html/fb70a49d-b7b0-b8fc-83f5-0864f381cc76.htm" />
+    <HelpKINode Title="mp_bitcnt_t.Value Field" Url="html/3ae51295-d9e7-e4e5-a660-07940dcfcfde.htm" />
+    <HelpKINode Title="mp_exp_t.Value Field" Url="html/40dbbc73-ebfe-df0e-4a28-ef5646a9a25b.htm" />
+    <HelpKINode Title="mp_limb_t.Value Field" Url="html/73d48b1a-0a79-41fa-2b80-d1d0bc90ce3d.htm" />
+    <HelpKINode Title="mp_size_t.Value Field" Url="html/6860df77-97f9-01e3-007e-2af1985315e9.htm" />
     <HelpKINode Title="ptr(T).Value Field" Url="html/448dfb4b-f4d7-8db7-3d44-31f3bd032771.htm" />
+    <HelpKINode Title="size_t.Value Field" Url="html/b7dbc63c-92d3-28ce-a69a-ed84f6dd720f.htm" />
   </HelpKINode>
+  <HelpKINode Title="va_list class">
+    <HelpKINode Title="va_list Class" Url="html/4f2255b8-b87a-7b1b-286a-abb7293059d7.htm" />
+    <HelpKINode Title="about va_list class" Url="html/4f2255b8-b87a-7b1b-286a-abb7293059d7.htm" />
+    <HelpKINode Title="constructor" Url="html/ae56ba7a-658c-10a7-c441-f44b82161113.htm" />
+    <HelpKINode Title="methods" Url="html/0af0c5f7-045d-d0b0-fe24-f20f44b030dc.htm" />
+  </HelpKINode>
+  <HelpKINode Title="va_list.RetrieveArgumentValues method" Url="html/ddbcfc40-f5e5-a37b-6a8c-76e08932025a.htm" />
+  <HelpKINode Title="va_list.ToIntPtr method" Url="html/13e99044-0242-c6b6-6a32-e9abb01ceaaa.htm" />
+  <HelpKINode Title="va_list.va_list constructor" Url="html/ae56ba7a-658c-10a7-c441-f44b82161113.htm" />
   <HelpKINode Title="void_ptr structure">
     <HelpKINode Title="void_ptr Structure" Url="html/e200d734-044d-4cc7-acc7-2333d7cf3c9a.htm" />
     <HelpKINode Title="about void_ptr structure" Url="html/e200d734-044d-4cc7-acc7-2333d7cf3c9a.htm" />
+    <HelpKINode Title="constructor" Url="html/e85d4d94-22d0-5888-54e5-e1e3289dfe90.htm" />
     <HelpKINode Title="fields" Url="html/12a4c9d6-02cf-e913-816e-ad530e77722c.htm" />
     <HelpKINode Title="methods" Url="html/e267ef2f-54a1-a3f1-441f-0655b542bf55.htm" />
     <HelpKINode Title="operators" Url="html/578ac23c-2986-d809-fa1b-c9a111d0c780.htm" />
@@ -1120,6 +1164,7 @@
   <HelpKINode Title="void_ptr.GetHashCode method" Url="html/04ef14d3-d09c-cfcb-0cea-8984c92612f5.htm" />
   <HelpKINode Title="void_ptr.Inequality operator" Url="html/bd89f9a0-7e6f-d1e7-46b3-051bfbe290f4.htm" />
   <HelpKINode Title="void_ptr.ToIntPtr method" Url="html/3e1375c2-3f44-721d-6ef3-32e49a3d7d3b.htm" />
+  <HelpKINode Title="void_ptr.void_ptr constructor" Url="html/e85d4d94-22d0-5888-54e5-e1e3289dfe90.htm" />
   <HelpKINode Title="void_ptr.Zero field" Url="html/3fce2dbc-bac6-d24f-d6d4-84454567b8f5.htm" />
   <HelpKINode Title="Welcome" Url="html/846f5c8a-6cba-433e-9f18-cde2ff5695cd.htm" />
   <HelpKINode Title="Zero field">
@@ -1131,6 +1176,11 @@
   <HelpKINode Title="_mp_alloc property" Url="html/93206a07-9ee6-f89b-f029-f0e80982c911.htm" />
   <HelpKINode Title="_mp_d property" Url="html/db55f1a9-cd4c-b7e9-c831-4391c0497ef7.htm" />
   <HelpKINode Title="_mp_den property" Url="html/fb8c2e17-4a22-899c-77af-6d3bef099fc2.htm" />
+  <HelpKINode Title="_mp_d_intptr property">
+    <HelpKINode Title="mpf_t._mp_d_intptr Property " Url="html/39182adf-3ed6-8c68-c2e7-05a9bfcef6ab.htm" />
+    <HelpKINode Title="mpz_t._mp_d_intptr Property " Url="html/f91fdfb5-06bb-23e0-45be-934dd1088a1b.htm" />
+    <HelpKINode Title="mp_base._mp_d_intptr Property " Url="html/01baafdb-caf3-5653-428f-0ba9c42c3a9a.htm" />
+  </HelpKINode>
   <HelpKINode Title="_mp_exp property" Url="html/f63ee104-afaa-e0b8-ff39-f60b9a934ea3.htm" />
   <HelpKINode Title="_mp_num property" Url="html/3fad7a3a-76d1-7e19-0ab4-c93a4bf3655e.htm" />
   <HelpKINode Title="_mp_prec property" Url="html/772c3bd8-b9ec-225d-3d98-e17ae89d4294.htm" />

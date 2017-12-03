@@ -19,11 +19,13 @@ namespace Math.Gmp.Native
     /// types defined with names ending in <c>_ptr</c>.
     /// </para>
     /// </remarks>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1049:TypesThatOwnNativeResourcesShouldBeDisposable")]
     public class ptr<T> where T : struct
     {
         /// <summary>
         /// The value that is "pointed to".
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields")]
         public T Value;
 
         /// <summary>

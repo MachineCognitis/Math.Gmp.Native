@@ -26,16 +26,26 @@ namespace Math.Gmp.Native
     {
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        internal bool _initialized = false;
+        private bool _initialized = false;
 
-        /// <summary>
-        /// Creates a new multiple precision floating-point number.
-        /// </summary>
-        public mpf_t()
+        internal void Initializing()
         {
             size_t length = /*sizeof(int) + sizeof(int) + sizeof(int)*/ 12U + (size_t)IntPtr.Size;
-            _pointer = gmp_lib.allocate(length).ToIntPtr();
-            gmp_lib.ZeroMemory(_pointer, (int)length);
+            Pointer = gmp_lib.allocate(length).ToIntPtr();
+            //gmp_lib.ZeroMemory(Pointer, (int)length);
+        }
+
+        internal void Initialized()
+        {
+            //gmp_lib.ZeroMemory(Pointer, (int)length);
+            _initialized = true;
+        }
+
+        internal void Clear()
+        {
+            if (_initialized) gmp_lib.free(Pointer);
+            Pointer = IntPtr.Zero;
+            _initialized = false;
         }
 
         /// <summary>
@@ -52,7 +62,7 @@ namespace Math.Gmp.Native
         {
             get
             {
-                return Marshal.ReadInt32(_pointer,  /*sizeof(int)*/ 4);
+                return Marshal.ReadInt32(Pointer,  /*sizeof(int)*/ 4);
             }
         }
 
@@ -68,7 +78,7 @@ namespace Math.Gmp.Native
         {
             get
             {
-                return Marshal.ReadInt32(_pointer, 0);
+                return Marshal.ReadInt32(Pointer, 0);
             }
         }
 
@@ -91,20 +101,23 @@ namespace Math.Gmp.Native
         {
             get
             {
-                return Marshal.ReadInt32(_pointer, /*sizeof(int) + sizeof(int)*/ 8);
+                return Marshal.ReadInt32(Pointer, /*sizeof(int) + sizeof(int)*/ 8);
             }
         }
 
+        /// <summary>
+        /// Gets or sets the pointer to the significand array of limbs of the floating-point number.
+        /// </summary>
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        internal override IntPtr _mp_d_intptr
+        public override IntPtr _mp_d_intptr
         {
             get
             {
-                return Marshal.ReadIntPtr(_pointer, /*sizeof(int) + sizeof(int) + sizeof(int)*/ 12);
+                return Marshal.ReadIntPtr(Pointer, /*sizeof(int) + sizeof(int) + sizeof(int)*/ 12);
             }
             set
             {
-                Marshal.WriteIntPtr(_pointer, /*sizeof(int) + sizeof(int) + sizeof(int)*/ 12, value);
+                Marshal.WriteIntPtr(Pointer, /*sizeof(int) + sizeof(int) + sizeof(int)*/ 12, value);
             }
         }
 
@@ -114,7 +127,7 @@ namespace Math.Gmp.Native
         /// <returns>The unmanaged memory pointer of the multiple precision floating-point number.</returns>
         public IntPtr ToIntPtr()
         {
-            return _pointer;
+            return Pointer;
         }
 
         /// <summary>
@@ -159,9 +172,9 @@ namespace Math.Gmp.Native
             string s = s_ptr.ToString();
             gmp_lib.free(s_ptr);
             if (s.StartsWith("-", StringComparison.Ordinal))
-                return "-0." + s.Substring(1) + "e" + exp.Value._value.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                return "-0." + s.Substring(1) + "e" + exp.Value.Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
             else
-                return "0." + s + "e" + exp.Value._value.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                return "0." + s + "e" + exp.Value.Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
         }
 
     }

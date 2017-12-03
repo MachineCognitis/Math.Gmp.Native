@@ -1548,31 +1548,31 @@
           </tableHeader>
           <row>
             <entry><para>short</para></entry>
-            <entry><para>Int16</para></entry>
+            <entry><para>Int16 / short (C#) / Short (VB.NET)</para></entry>
           </row>
           <row>
             <entry><para>int</para></entry>
-            <entry><para>Int32</para></entry>
+            <entry><para>Int32 / int (C#) / Integer (VB.NET)</para></entry>
           </row>
           <row>
             <entry><para>long</para></entry>
-            <entry><para>Int32</para></entry>
+            <entry><para>Int32 / int (C#) / Integer (VB.NET)</para></entry>
           </row>
           <row>
             <entry><para>long long</para></entry>
-            <entry><para>Int64</para></entry>
+            <entry><para>Int64 / long (C#) / Long (VB.NET)</para></entry>
           </row>
           <row>
             <entry><para><codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.mp_bitcnt_t</codeEntityReference></para></entry>
-            <entry><para>UInt32</para></entry>
+            <entry><para>UInt32 / uint (C#) / UInteger (VB.NET)</para></entry>
           </row>
           <row>
             <entry><para><codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.mp_exp_t</codeEntityReference></para></entry>
-            <entry><para>Int32</para></entry>
+            <entry><para>Int32 / int (C#) / Integer (VB.NET)</para></entry>
           </row>
           <row>
             <entry><para><codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.mp_size_t</codeEntityReference></para></entry>
-            <entry><para>Int32</para></entry>
+            <entry><para>Int32 / int (C#) / Integer (VB.NET)</para></entry>
           </row>
           <row>
             <entry><para><codeEntityReference autoUpgrade="true">T:Math.Gmp.Native.mp_limb_t</codeEntityReference></para></entry>

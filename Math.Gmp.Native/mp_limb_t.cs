@@ -21,7 +21,11 @@ namespace Math.Gmp.Native
     public struct mp_limb_t
     {
 
-        internal ulong _value;
+        /// <summary>
+        ///  The <see cref="mp_limb_t"/> value.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields")]
+        public ulong Value;
 
         /// <summary>
         /// Creates a new <see cref="mp_limb_t"/>, and sets its <paramref name="value"/>.
@@ -29,7 +33,7 @@ namespace Math.Gmp.Native
         /// <param name="value">The value of the new <see cref="mp_limb_t"/>.</param>
         public mp_limb_t(ulong value)
         {
-            _value = value;
+            this.Value = value;
         }
 
         /// <summary>
@@ -91,8 +95,8 @@ namespace Math.Gmp.Native
         /// <returns>An <see cref="mp_limb_t"/> value.</returns>
         public static explicit operator mp_limb_t(int value)
         {
-            //if (value < 0) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the mp_limb_t data type.", value));
-            return new mp_limb_t(unchecked((ulong)(uint)value));
+            if (value < 0) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the mp_limb_t data type.", value));
+            return new mp_limb_t((ulong)(uint)value);
         }
 
         /// <summary>
@@ -112,8 +116,8 @@ namespace Math.Gmp.Native
         /// <returns>An <see cref="mp_limb_t"/> value.</returns>
         public static explicit operator mp_limb_t(long value)
         {
-            //if (value < 0) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the mp_limb_t data type.", value));
-            return new mp_limb_t(unchecked((ulong)value));
+            if (value < 0) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the mp_limb_t data type.", value));
+            return new mp_limb_t((ulong)value);
         }
 
         /// <summary>
@@ -123,8 +127,8 @@ namespace Math.Gmp.Native
         /// <returns>A <see cref="Byte"/> value.</returns>
         public static explicit operator byte(mp_limb_t value)
         {
-            if (value._value > byte.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the Byte data type.", value));
-            return (byte)value._value;
+            if (value.Value > byte.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the Byte data type.", value));
+            return (byte)value.Value;
         }
 
         /// <summary>
@@ -134,8 +138,8 @@ namespace Math.Gmp.Native
         /// <returns>An <see cref="SByte"/> value.</returns>
         public static explicit operator sbyte(mp_limb_t value)
         {
-            if (value._value > (ulong)sbyte.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the SByte data type.", value));
-            return (sbyte)value._value;
+            if (value.Value > (ulong)sbyte.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the SByte data type.", value));
+            return (sbyte)value.Value;
         }
 
         /// <summary>
@@ -145,8 +149,8 @@ namespace Math.Gmp.Native
         /// <returns>A <see cref="UInt16"/> value.</returns>
         public static explicit operator ushort(mp_limb_t value)
         {
-            if (value._value > ushort.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the UInt16 data type.", value));
-            return (ushort)value._value;
+            if (value.Value > ushort.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the UInt16 data type.", value));
+            return (ushort)value.Value;
         }
 
         /// <summary>
@@ -156,8 +160,8 @@ namespace Math.Gmp.Native
         /// <returns>An <see cref="Int16"/> value.</returns>
         public static explicit operator short(mp_limb_t value)
         {
-            if (value._value > (ulong)short.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the Int16 data type.", value));
-            return (short)value._value;
+            if (value.Value > (ulong)short.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the Int16 data type.", value));
+            return (short)value.Value;
         }
 
         /// <summary>
@@ -167,8 +171,8 @@ namespace Math.Gmp.Native
         /// <returns>A <see cref="UInt32"/> value.</returns>
         public static explicit operator uint(mp_limb_t value)
         {
-            if (value._value > uint.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the UInt32 data type.", value));
-            return (uint)value._value;
+            if (value.Value > uint.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the UInt32 data type.", value));
+            return (uint)value.Value;
         }
 
         /// <summary>
@@ -178,8 +182,8 @@ namespace Math.Gmp.Native
         /// <returns>An <see cref="Int32"/> value.</returns>
         public static explicit operator int(mp_limb_t value)
         {
-            //if (value._value > int.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the Int32 data type.", value));
-            return unchecked((int)value._value);
+            if (value.Value > int.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the Int32 data type.", value));
+            return (int)value.Value;
         }
 
         /// <summary>
@@ -189,7 +193,7 @@ namespace Math.Gmp.Native
         /// <returns>A <see cref="UInt64"/> value.</returns>
         public static implicit operator ulong(mp_limb_t value)
         {
-            return value._value;
+            return value.Value;
         }
 
         /// <summary>
@@ -199,8 +203,8 @@ namespace Math.Gmp.Native
         /// <returns>An <see cref="Int64"/> value.</returns>
         public static explicit operator long(mp_limb_t value)
         {
-            //if (value._value > long.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the Int64 data type.", value));
-            return unchecked((long)value._value);
+            if (value.Value > long.MaxValue) throw new System.OverflowException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "'{0}' is out of range of the Int64 data type.", value));
+            return (long)value.Value;
         }
 
         /// <summary>
@@ -209,7 +213,7 @@ namespace Math.Gmp.Native
         /// <returns>The string representation of the <see cref="mp_limb_t"/>.</returns>
         public override string ToString()
         {
-            return "0x" + _value.ToString(gmp_lib.mp_bytes_per_limb == 4 ? "x8" : "x16", System.Globalization.CultureInfo.InvariantCulture);
+            return "0x" + Value.ToString(gmp_lib.mp_bytes_per_limb == 4 ? "x8" : "x16", System.Globalization.CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -232,7 +236,7 @@ namespace Math.Gmp.Native
         /// <returns><c>True</c> if <paramref name="other"/> has the same value as this instance; otherwise, <c>False</c>.</returns>
         public bool Equals(mp_limb_t other)
         {
-            return _value == other._value;
+            return Value == other.Value;
         }
 
         /// <summary>
@@ -241,7 +245,7 @@ namespace Math.Gmp.Native
         /// <returns>A 32-bit signed integer hash code.</returns>
         public override int GetHashCode()
         {
-            return _value.GetHashCode();
+            return Value.GetHashCode();
         }
 
         /// <summary>

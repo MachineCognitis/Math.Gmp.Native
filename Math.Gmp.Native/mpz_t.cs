@@ -21,14 +21,24 @@ namespace Math.Gmp.Native
         /// </summary>
         public mpz_t()
         {
-            size_t length = /*sizeof(int) + sizeof(int)*/ 8 + (size_t)IntPtr.Size;
-            _pointer = gmp_lib.allocate(length).ToIntPtr();
-            gmp_lib.ZeroMemory(_pointer, (int)length);
         }
 
         internal mpz_t(IntPtr pointer)
         {
-            _pointer = pointer;
+            Pointer = pointer;
+        }
+
+        internal void Initializing()
+        {
+            size_t length = /*sizeof(int) + sizeof(int)*/ 8 + (size_t)IntPtr.Size;
+            Pointer = gmp_lib.allocate(length).ToIntPtr();
+            //gmp_lib.ZeroMemory(Pointer, (int)length);
+        }
+
+        internal void Clear()
+        {
+            if (Pointer != IntPtr.Zero) gmp_lib.free(Pointer);
+            Pointer = IntPtr.Zero;
         }
 
         /// <summary>
@@ -46,7 +56,7 @@ namespace Math.Gmp.Native
         {
             get
             {
-                return Marshal.ReadInt32(_pointer, 0);
+                return Marshal.ReadInt32(Pointer, 0);
             }
         }
 
@@ -64,20 +74,23 @@ namespace Math.Gmp.Native
         {
             get
             {
-                return Marshal.ReadInt32(_pointer, sizeof(int));
+                return Marshal.ReadInt32(Pointer, sizeof(int));
             }
         }
 
+        /// <summary>
+        /// Gets or sets the pointer to the array of limbs of the integer.
+        /// </summary>
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        internal override IntPtr _mp_d_intptr
+        public override IntPtr _mp_d_intptr
         {
             get
             {
-                return Marshal.ReadIntPtr(_pointer, sizeof(int) + sizeof(int));
+                return Marshal.ReadIntPtr(Pointer, sizeof(int) + sizeof(int));
             }
             set
             {
-                Marshal.WriteIntPtr(_pointer, sizeof(int) + sizeof(int), value);
+                Marshal.WriteIntPtr(Pointer, sizeof(int) + sizeof(int), value);
             }
         }
 
@@ -87,7 +100,7 @@ namespace Math.Gmp.Native
         /// <returns>The unmanaged memory pointer of the multiple precision integer.</returns>
         public IntPtr ToIntPtr()
         {
-            return _pointer;
+            return Pointer;
         }
 
         /// <summary>
@@ -117,6 +130,7 @@ namespace Math.Gmp.Native
         /// <returns>The string representation of the integer.</returns>
         public override string ToString()
         {
+            if (Pointer == IntPtr.Zero) return "uninitialized";
             char_ptr s_ptr = gmp_lib.mpz_get_str(char_ptr.Zero, 10, this);
             string s = s_ptr.ToString();
             gmp_lib.free(s_ptr);

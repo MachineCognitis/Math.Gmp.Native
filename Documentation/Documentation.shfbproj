@@ -43,7 +43,7 @@
     <CleanIntermediates>True</CleanIntermediates>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="False" />
-    </NamespaceSummaries>
+<NamespaceSummaryItem name="Math.Gmp.Native" isDocumented="True">The Math.Gmp.Native namespace contains types defined to expose all of the GNU GMP functionality to .NET.</NamespaceSummaryItem></NamespaceSummaries>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
     <MaximumGroupParts>2</MaximumGroupParts>
@@ -58,6 +58,7 @@
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <ComponentConfigurations />
     <ComponentPath>..\packages\EWSoftware.SHFB.NETFramework.4.6.2\</ComponentPath>
+    <PlugInConfigurations />
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->

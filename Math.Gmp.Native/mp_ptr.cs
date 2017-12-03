@@ -53,14 +53,14 @@ namespace Math.Gmp.Native
             if (values.GetLength(0) == 0)
             {
                 mp._size = 0;
-                mp._pointer = IntPtr.Zero;
+                mp.Pointer = IntPtr.Zero;
             }
             else
             {
                 mp._size = (values.Length + IntPtr.Size - 1) / IntPtr.Size;
-                mp._pointer = gmp_lib.allocate((size_t)(mp._size * IntPtr.Size)).ToIntPtr();
-                Marshal.Copy(new Int32[] { 0, 0 }, 0, (IntPtr)(mp._pointer.ToInt64() + IntPtr.Size * (mp._size - 1)), IntPtr.Size >> 2);
-                Marshal.Copy(values, 0, mp._pointer, values.Length);
+                mp.Pointer = gmp_lib.allocate((size_t)(mp._size * IntPtr.Size)).ToIntPtr();
+                Marshal.Copy(new Int32[] { 0, 0 }, 0, (IntPtr)(mp.Pointer.ToInt64() + IntPtr.Size * (mp._size - 1)), IntPtr.Size >> 2);
+                Marshal.Copy(values, 0, mp.Pointer, values.Length);
             }
         }
 
@@ -81,9 +81,9 @@ namespace Math.Gmp.Native
             if (values == null) throw new ArgumentNullException("values");
             mp = new mp_base();
             mp._size = (2 * values.Length + IntPtr.Size - 1) / IntPtr.Size;
-            mp._pointer = gmp_lib.allocate((size_t)(mp._size * IntPtr.Size)).ToIntPtr();
-            Marshal.Copy(new Int32[] { 0, 0 }, 0, (IntPtr)(mp._pointer.ToInt64() + IntPtr.Size * (mp._size - 1)), IntPtr.Size >> 2);
-            Marshal.Copy((short[])(object)values, 0, mp._pointer, values.Length);
+            mp.Pointer = gmp_lib.allocate((size_t)(mp._size * IntPtr.Size)).ToIntPtr();
+            Marshal.Copy(new Int32[] { 0, 0 }, 0, (IntPtr)(mp.Pointer.ToInt64() + IntPtr.Size * (mp._size - 1)), IntPtr.Size >> 2);
+            Marshal.Copy((short[])(object)values, 0, mp.Pointer, values.Length);
         }
 
         /// <summary>
@@ -103,9 +103,9 @@ namespace Math.Gmp.Native
             if (values == null) throw new ArgumentNullException("values");
             mp = new mp_base();
             mp._size = (4 * values.Length + IntPtr.Size - 1) / IntPtr.Size;
-            mp._pointer = gmp_lib.allocate((size_t)(mp._size * IntPtr.Size)).ToIntPtr();
-            Marshal.Copy(new Int32[] { 0, 0 }, 0, (IntPtr)(mp._pointer.ToInt64() + IntPtr.Size * (mp._size - 1)), IntPtr.Size >> 2);
-            Marshal.Copy((int[])(object)values, 0, mp._pointer, values.Length);
+            mp.Pointer = gmp_lib.allocate((size_t)(mp._size * IntPtr.Size)).ToIntPtr();
+            Marshal.Copy(new Int32[] { 0, 0 }, 0, (IntPtr)(mp.Pointer.ToInt64() + IntPtr.Size * (mp._size - 1)), IntPtr.Size >> 2);
+            Marshal.Copy((int[])(object)values, 0, mp.Pointer, values.Length);
         }
 
         /// <summary>
@@ -125,12 +125,16 @@ namespace Math.Gmp.Native
             if (values == null) throw new ArgumentNullException("values");
             mp = new mp_base();
             mp._size = (8 * values.Length + IntPtr.Size - 1) / IntPtr.Size;
-            mp._pointer = gmp_lib.allocate((size_t)(mp._size * IntPtr.Size)).ToIntPtr();
-            Marshal.Copy(new Int32[] { 0, 0 }, 0, (IntPtr)(mp._pointer.ToInt64() + IntPtr.Size * (mp._size - 1)), IntPtr.Size >> 2);
-            Marshal.Copy((long[])(object)values, 0, mp._pointer, values.Length);
+            mp.Pointer = gmp_lib.allocate((size_t)(mp._size * IntPtr.Size)).ToIntPtr();
+            Marshal.Copy(new Int32[] { 0, 0 }, 0, (IntPtr)(mp.Pointer.ToInt64() + IntPtr.Size * (mp._size - 1)), IntPtr.Size >> 2);
+            Marshal.Copy((long[])(object)values, 0, mp.Pointer, values.Length);
         }
 
-        internal mp_ptr(mp_base mp)
+        /// <summary>
+        /// Creates new pointer to array of limbs at <paramref name="mp"/>.
+        /// </summary>
+        /// <param name="mp">Represents an array of limbs.</param>
+        public mp_ptr(mp_base mp)
         {
             this.mp = mp;
         }
@@ -177,18 +181,22 @@ namespace Math.Gmp.Native
                 {
                     const int max_index = int.MaxValue / sizeof(int);
                     if (index > max_index) throw new ArgumentOutOfRangeException("index", "Index must be less than or equal to " + max_index.ToString(System.Globalization.CultureInfo.InvariantCulture) + ".");
-                    Marshal.WriteInt32(mp._mp_d_intptr, index * sizeof(int), (int)(value._value));
+                    Marshal.WriteInt32(mp._mp_d_intptr, index * sizeof(int), (int)(value.Value));
                 }
                 else
                 {
                     const int max_index = int.MaxValue / sizeof(long);
                     if (index > max_index) throw new ArgumentOutOfRangeException("index", "Index must be less than or equal to " + max_index.ToString(System.Globalization.CultureInfo.InvariantCulture) + ".");
-                    Marshal.WriteInt64(mp._mp_d_intptr, index * sizeof(long), (long)(value._value));
+                    Marshal.WriteInt64(mp._mp_d_intptr, index * sizeof(long), (long)(value.Value));
                 }
             }
         }
 
-        internal IntPtr ToIntPtr()
+        /// <summary>
+        /// Returns pointer to limbs in unmanaged memory.
+        /// </summary>
+        /// <returns>Returns pointer to limbs in unmanaged memory.</returns>
+        public IntPtr ToIntPtr()
         {
             return mp._mp_d_intptr;
         }

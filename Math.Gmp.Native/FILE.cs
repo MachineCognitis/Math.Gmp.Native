@@ -15,6 +15,7 @@ namespace Math.Gmp.Native
         /// <summary>
         /// File pointer in unmanaged memory.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields")]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2111:PointersShouldNotBeVisible")]
         public IntPtr Value;
 

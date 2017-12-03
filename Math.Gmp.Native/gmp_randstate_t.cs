@@ -29,7 +29,11 @@ namespace Math.Gmp.Native
             _pointer = gmp_lib.allocate(IntPtr.Size == 4 ? 20U : 32U).ToIntPtr();
         }
 
-        internal IntPtr ToIntPtr()
+        /// <summary>
+        /// Get unmanaged memory pointer to the state of a random number generator.
+        /// </summary>
+        /// <returns>The unmanaged memory pointer to the state of a random number generator.</returns>
+        public IntPtr ToIntPtr()
         {
             return _pointer;
         }

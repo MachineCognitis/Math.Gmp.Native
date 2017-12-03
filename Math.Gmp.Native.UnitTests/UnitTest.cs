@@ -74,6 +74,7 @@ namespace UnitTests
         [TestMethod]
         public void mp_bitcnt_t_test()
         {
+            // uint
             mp_bitcnt_t v;
 
             byte zero = 0;
@@ -99,20 +100,29 @@ namespace UnitTests
             ulong ul = v;
             long l = v;
 
-            // Check OverflowException cases.
+            // Check OverflowException conversions to mp_bitcnt_t.
+            Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(byte)byte.MaxValue) == byte.MaxValue.ToString());
             Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(sbyte)minusOne) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(sbyte)sbyte.MaxValue) == sbyte.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(ushort)ushort.MaxValue) == ushort.MaxValue.ToString());
             Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(short)minusOne) == typeof(OverflowException).Name);
-            //Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(int)minusOne) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(short)short.MaxValue) == short.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(uint)uint.MaxValue) == uint.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(int)minusOne) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(int)int.MaxValue) == int.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(ulong)ulong.MaxValue) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(long)minusOne) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_bitcnt_t)(long)long.MaxValue) == typeof(OverflowException).Name);
 
-            Assert.IsTrue(Test(() => v = (mp_bitcnt_t)ulong.MaxValue) == typeof(OverflowException).Name);
-            Assert.IsTrue(Test(() => v = (mp_bitcnt_t)long.MaxValue) == typeof(OverflowException).Name);
-
+            // Check OverflowException conversions from mp_bitcnt_t.
             Assert.IsTrue(Test(() => b = (byte)(new mp_bitcnt_t(uint.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => sb = (sbyte)(new mp_bitcnt_t(uint.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => us = (ushort)(new mp_bitcnt_t(uint.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => s = (short)(new mp_bitcnt_t(uint.MaxValue))) == typeof(OverflowException).Name);
-            //Assert.IsTrue(Test(() => i = (int)(new mp_bitcnt_t(uint.MaxValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => ui = (uint)(new mp_bitcnt_t(uint.MaxValue))) == uint.MaxValue.ToString());
+            Assert.IsTrue(Test(() => i = (int)(new mp_bitcnt_t(uint.MaxValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => ul = (ulong)(new mp_bitcnt_t(uint.MaxValue))) == uint.MaxValue.ToString());
+            Assert.IsTrue(Test(() => l = (long)(new mp_bitcnt_t(uint.MaxValue))) == uint.MaxValue.ToString());
 
             // Check equality and inequality.
             Object obj = new mp_bitcnt_t(8);
@@ -162,6 +172,7 @@ namespace UnitTests
         [TestMethod]
         public void mp_exp_t_test()
         {
+            // int
             mp_exp_t v;
 
             byte zero = 0;
@@ -186,17 +197,37 @@ namespace UnitTests
             ulong ul = (ulong)v;
             long l = v;
 
-            // Check OverflowException cases.
-            Assert.IsTrue(Test(() => v = (mp_exp_t)uint.MaxValue) == typeof(OverflowException).Name);
-            Assert.IsTrue(Test(() => v = (mp_exp_t)long.MaxValue) == typeof(OverflowException).Name);
-            Assert.IsTrue(Test(() => v = (mp_exp_t)ulong.MaxValue) == typeof(OverflowException).Name);
+            // Check OverflowException conversions to mp_exp_t.
+            Assert.IsTrue(Test(() => v = (mp_exp_t)(byte)byte.MaxValue) == byte.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_exp_t)(sbyte)sbyte.MinValue) == sbyte.MinValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_exp_t)(sbyte)sbyte.MaxValue) == sbyte.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_exp_t)(ushort)ushort.MaxValue) == ushort.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_exp_t)(short)short.MinValue) == short.MinValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_exp_t)(short)short.MaxValue) == short.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_exp_t)(uint)uint.MaxValue) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_exp_t)(int)int.MinValue) == int.MinValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_exp_t)(int)int.MaxValue) == int.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_exp_t)(ulong)ulong.MaxValue) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_exp_t)(long)long.MinValue) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_exp_t)(long)long.MaxValue) == typeof(OverflowException).Name);
 
+            // Check OverflowException conversions from mp_exp_t.
+            Assert.IsTrue(Test(() => b = (byte)(new mp_exp_t(int.MinValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => b = (byte)(new mp_exp_t(int.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => sb = (sbyte)(new mp_exp_t(int.MinValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => sb = (sbyte)(new mp_exp_t(int.MaxValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => us = (ushort)(new mp_exp_t(int.MinValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => us = (ushort)(new mp_exp_t(int.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => s = (short)(new mp_exp_t(int.MinValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => s = (short)(new mp_exp_t(int.MaxValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => ui = (uint)(new mp_exp_t(int.MinValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => ui = (uint)(new mp_exp_t(int.MaxValue))) == int.MaxValue.ToString());
+            Assert.IsTrue(Test(() => i = (int)(new mp_exp_t(int.MinValue))) == int.MinValue.ToString());
+            Assert.IsTrue(Test(() => i = (int)(new mp_exp_t(int.MaxValue))) == int.MaxValue.ToString());
+            Assert.IsTrue(Test(() => ul = (ulong)(new mp_exp_t(int.MinValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => ul = (ulong)(new mp_exp_t(int.MaxValue))) == int.MaxValue.ToString());
+            Assert.IsTrue(Test(() => l = (long)(new mp_exp_t(int.MinValue))) == int.MinValue.ToString());
+            Assert.IsTrue(Test(() => l = (long)(new mp_exp_t(int.MaxValue))) == int.MaxValue.ToString());
 
             // Check equality and inequality.
             Object obj = new mp_exp_t(8);
@@ -211,6 +242,7 @@ namespace UnitTests
         [TestMethod]
         public void mp_limb_t_test()
         {
+            //ulong
             mp_limb_t v;
 
             byte zero = 0;
@@ -236,19 +268,29 @@ namespace UnitTests
             ulong ul = v;
             long l = (long)v;
 
-            // Check OverflowException cases.
+            // Check OverflowException conversions to mp_limb_t.
+            Assert.IsTrue(Test(() => v = (mp_limb_t)(byte)byte.MaxValue) == "0x000000ff");
             Assert.IsTrue(Test(() => v = (mp_limb_t)(sbyte)minusOne) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_limb_t)(sbyte)sbyte.MaxValue) == "0x0000007f");
+            Assert.IsTrue(Test(() => v = (mp_limb_t)(ushort)ushort.MaxValue) == "0x0000ffff");
             Assert.IsTrue(Test(() => v = (mp_limb_t)(short)minusOne) == typeof(OverflowException).Name);
-            //Assert.IsTrue(Test(() => v = (mp_limb_t)(int)minusOne) == typeof(OverflowException).Name);
-            //Assert.IsTrue(Test(() => v = (mp_limb_t)(long)minusOne) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_limb_t)(short)short.MaxValue) == "0x00007fff");
+            Assert.IsTrue(Test(() => v = (mp_limb_t)(uint)uint.MaxValue) == "0xffffffff");
+            Assert.IsTrue(Test(() => v = (mp_limb_t)(int)minusOne) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_limb_t)(int)int.MaxValue) == "0x7fffffff");
+            Assert.IsTrue(Test(() => v = (mp_limb_t)(ulong)ulong.MaxValue) == "0xffffffffffffffff");
+            Assert.IsTrue(Test(() => v = (mp_limb_t)(long)minusOne) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_limb_t)(long)long.MaxValue) == "0x7fffffffffffffff");
 
+            // Check OverflowException conversions from uintmax_t.
             Assert.IsTrue(Test(() => b = (byte)(new mp_limb_t(ulong.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => sb = (sbyte)(new mp_limb_t(ulong.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => us = (ushort)(new mp_limb_t(ulong.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => s = (short)(new mp_limb_t(ulong.MaxValue))) == typeof(OverflowException).Name);
-            //Assert.IsTrue(Test(() => i = (int)(new mp_limb_t(ulong.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => ui = (uint)(new mp_limb_t(ulong.MaxValue))) == typeof(OverflowException).Name);
-            //Assert.IsTrue(Test(() => l = (long)(new mp_limb_t(ulong.MaxValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => i = (int)(new mp_limb_t(ulong.MaxValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => ul = (ulong)(new mp_limb_t(ulong.MaxValue))) == ulong.MaxValue.ToString());
+            Assert.IsTrue(Test(() => l = (long)(new mp_limb_t(ulong.MaxValue))) == typeof(OverflowException).Name);
 
             // Check equality and inequality.
             Object obj = new mp_limb_t(8);
@@ -394,6 +436,7 @@ namespace UnitTests
         [TestMethod]
         public void mp_size_t_test()
         {
+            // int
             mp_size_t v;
 
             byte zero = 0;
@@ -418,17 +461,37 @@ namespace UnitTests
             ulong ul = (ulong)v;
             long l = v;
 
-            // Check OverflowException cases.
-            Assert.IsTrue(Test(() => v = (mp_size_t)uint.MaxValue) == typeof(OverflowException).Name);
-            Assert.IsTrue(Test(() => v = (mp_size_t)long.MaxValue) == typeof(OverflowException).Name);
-            Assert.IsTrue(Test(() => v = (mp_size_t)ulong.MaxValue) == typeof(OverflowException).Name);
+            // Check OverflowException conversions to mp_size_t.
+            Assert.IsTrue(Test(() => v = (mp_size_t)(byte)byte.MaxValue) == byte.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_size_t)(sbyte)sbyte.MinValue) == sbyte.MinValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_size_t)(sbyte)sbyte.MaxValue) == sbyte.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_size_t)(ushort)ushort.MaxValue) == ushort.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_size_t)(short)short.MinValue) == short.MinValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_size_t)(short)short.MaxValue) == short.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_size_t)(uint)uint.MaxValue) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_size_t)(int)int.MinValue) == int.MinValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_size_t)(int)int.MaxValue) == int.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (mp_size_t)(ulong)ulong.MaxValue) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_size_t)(long)long.MinValue) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (mp_size_t)(long)long.MaxValue) == typeof(OverflowException).Name);
 
+            // Check OverflowException conversions from mp_size_t.
+            Assert.IsTrue(Test(() => b = (byte)(new mp_size_t(int.MinValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => b = (byte)(new mp_size_t(int.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => sb = (sbyte)(new mp_size_t(int.MinValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => sb = (sbyte)(new mp_size_t(int.MaxValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => us = (ushort)(new mp_size_t(int.MinValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => us = (ushort)(new mp_size_t(int.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => s = (short)(new mp_size_t(int.MinValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => s = (short)(new mp_size_t(int.MaxValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => ui = (uint)(new mp_size_t(int.MinValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => ui = (uint)(new mp_size_t(int.MaxValue))) == int.MaxValue.ToString());
+            Assert.IsTrue(Test(() => i = (int)(new mp_size_t(int.MinValue))) == int.MinValue.ToString());
+            Assert.IsTrue(Test(() => i = (int)(new mp_size_t(int.MaxValue))) == int.MaxValue.ToString());
+            Assert.IsTrue(Test(() => ul = (ulong)(new mp_size_t(int.MinValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => ul = (ulong)(new mp_size_t(int.MaxValue))) == int.MaxValue.ToString());
+            Assert.IsTrue(Test(() => l = (long)(new mp_size_t(int.MinValue))) == int.MinValue.ToString());
+            Assert.IsTrue(Test(() => l = (long)(new mp_size_t(int.MaxValue))) == int.MaxValue.ToString());
 
             // Check equality and inequality.
             Object obj = new mp_size_t(8);
@@ -443,6 +506,7 @@ namespace UnitTests
         [TestMethod]
         public void size_t_test()
         {
+            // ulong
             size_t v;
 
             byte zero = 0;
@@ -468,19 +532,29 @@ namespace UnitTests
             ulong ul = v;
             long l = (long)v;
 
-            // Check OverflowException cases.
+            // Check OverflowException conversions to size_t.
+            Assert.IsTrue(Test(() => v = (size_t)(byte)byte.MaxValue) == byte.MaxValue.ToString());
             Assert.IsTrue(Test(() => v = (size_t)(sbyte)minusOne) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (size_t)(sbyte)sbyte.MaxValue) == sbyte.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (size_t)(ushort)ushort.MaxValue) == ushort.MaxValue.ToString());
             Assert.IsTrue(Test(() => v = (size_t)(short)minusOne) == typeof(OverflowException).Name);
-            //Assert.IsTrue(Test(() => v = (size_t)(int)minusOne) == typeof(OverflowException).Name);
-            //Assert.IsTrue(Test(() => v = (size_t)(long)minusOne) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (size_t)(short)short.MaxValue) == short.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (size_t)(uint)uint.MaxValue) == uint.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (size_t)(int)minusOne) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (size_t)(int)int.MaxValue) == int.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (size_t)(ulong)ulong.MaxValue) == ulong.MaxValue.ToString());
+            Assert.IsTrue(Test(() => v = (size_t)(long)minusOne) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => v = (size_t)(long)long.MaxValue) == long.MaxValue.ToString());
 
+            // Check OverflowException conversions from size_t.
             Assert.IsTrue(Test(() => b = (byte)(new size_t(ulong.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => sb = (sbyte)(new size_t(ulong.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => us = (ushort)(new size_t(ulong.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => s = (short)(new size_t(ulong.MaxValue))) == typeof(OverflowException).Name);
-            //Assert.IsTrue(Test(() => i = (int)(new size_t(ulong.MaxValue))) == typeof(OverflowException).Name);
             Assert.IsTrue(Test(() => ui = (uint)(new size_t(ulong.MaxValue))) == typeof(OverflowException).Name);
-            //Assert.IsTrue(Test(() => l = (long)(new size_t(ulong.MaxValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => i = (int)(new size_t(ulong.MaxValue))) == typeof(OverflowException).Name);
+            Assert.IsTrue(Test(() => ul = (ulong)(new size_t(ulong.MaxValue))) == ulong.MaxValue.ToString());
+            Assert.IsTrue(Test(() => l = (long)(new size_t(ulong.MaxValue))) == typeof(OverflowException).Name);
 
             // Check equality and inequality.
             Object obj = new size_t(8);
@@ -501,7 +575,7 @@ namespace UnitTests
 
             // Create new block in unmanaged memory.
             s = gmp_lib.allocate(10);
-            
+
             // Assert that obj and s are the same pointer.
             object obj = s;
             Assert.IsTrue(s.Equals(obj) == true);
@@ -577,97 +651,97 @@ namespace UnitTests
             gmp_lib.mpf_clears(x, y, z, result, null);
         }
 
-        //[TestMethod]
-        //public void va_list()
-        //{
-        //    object[] args;
-        //    va_list va_args;
+        [TestMethod]
+        public void va_list()
+        {
+            object[] args;
+            va_list va_args;
 
-        //    args = new object[] { new ptr<Char>('A') };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<Char>)args[0]).Value == 'A');
+            args = new object[] { new ptr<Char>('A') };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<Char>)args[0]).Value == 'A');
 
-        //    args = new object[] { new ptr<Byte>(Byte.MinValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<Byte>)args[0]).Value == Byte.MinValue);
+            args = new object[] { new ptr<Byte>(Byte.MinValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<Byte>)args[0]).Value == Byte.MinValue);
 
-        //    args = new object[] { new ptr<SByte>(SByte.MaxValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<SByte>)args[0]).Value == SByte.MaxValue);
+            args = new object[] { new ptr<SByte>(SByte.MaxValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<SByte>)args[0]).Value == SByte.MaxValue);
 
-        //    args = new object[] { new ptr<Int16>(Int16.MinValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<Int16>)args[0]).Value == Int16.MinValue);
+            args = new object[] { new ptr<Int16>(Int16.MinValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<Int16>)args[0]).Value == Int16.MinValue);
 
-        //    args = new object[] { new ptr<UInt16>(UInt16.MaxValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<UInt16>)args[0]).Value == UInt16.MaxValue);
+            args = new object[] { new ptr<UInt16>(UInt16.MaxValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<UInt16>)args[0]).Value == UInt16.MaxValue);
 
-        //    args = new object[] { new ptr<Int32>(Int32.MinValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<Int32>)args[0]).Value == Int32.MinValue);
+            args = new object[] { new ptr<Int32>(Int32.MinValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<Int32>)args[0]).Value == Int32.MinValue);
 
-        //    args = new object[] { new ptr<UInt32>(UInt32.MaxValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<UInt32>)args[0]).Value == UInt32.MaxValue);
+            args = new object[] { new ptr<UInt32>(UInt32.MaxValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<UInt32>)args[0]).Value == UInt32.MaxValue);
 
-        //    args = new object[] { new ptr<Int64>(Int64.MinValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<Int64>)args[0]).Value == Int64.MinValue);
+            args = new object[] { new ptr<Int64>(Int64.MinValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<Int64>)args[0]).Value == Int64.MinValue);
 
-        //    args = new object[] { new ptr<UInt64>(UInt64.MaxValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<UInt64>)args[0]).Value == UInt64.MaxValue);
+            args = new object[] { new ptr<UInt64>(UInt64.MaxValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<UInt64>)args[0]).Value == UInt64.MaxValue);
 
-        //    args = new object[] { new ptr<mp_bitcnt_t>(UInt32.MaxValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<mp_bitcnt_t>)args[0]).Value == UInt32.MaxValue);
+            args = new object[] { new ptr<mp_bitcnt_t>(UInt32.MaxValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<mp_bitcnt_t>)args[0]).Value == UInt32.MaxValue);
 
-        //    args = new object[] { new ptr<mp_size_t>(Int32.MinValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<mp_size_t>)args[0]).Value == Int32.MinValue);
+            args = new object[] { new ptr<mp_size_t>(Int32.MinValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<mp_size_t>)args[0]).Value == Int32.MinValue);
 
-        //    args = new object[] { new ptr<Single>(Single.MinValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<Single>)args[0]).Value == Single.MinValue);
+            args = new object[] { new ptr<Single>(Single.MinValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<Single>)args[0]).Value == Single.MinValue);
 
-        //    args = new object[] { new ptr<Double>(Double.MaxValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<Double>)args[0]).Value == Double.MaxValue);
+            args = new object[] { new ptr<Double>(Double.MaxValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<Double>)args[0]).Value == Double.MaxValue);
 
-        //    args = new object[] { new ptr<mp_limb_t>(IntPtr.Size == 4 ? UInt32.MaxValue : UInt64.MaxValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<mp_limb_t>)args[0]).Value == (IntPtr.Size == 4 ? UInt32.MaxValue : UInt64.MaxValue));
+            args = new object[] { new ptr<mp_limb_t>(IntPtr.Size == 4 ? UInt32.MaxValue : UInt64.MaxValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<mp_limb_t>)args[0]).Value == (IntPtr.Size == 4 ? UInt32.MaxValue : UInt64.MaxValue));
 
-        //    args = new object[] { new ptr<size_t>(IntPtr.Size == 4 ? UInt32.MaxValue : UInt64.MaxValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<size_t>)args[0]).Value == (IntPtr.Size == 4 ? UInt32.MaxValue : UInt64.MaxValue));
+            args = new object[] { new ptr<size_t>(IntPtr.Size == 4 ? UInt32.MaxValue : UInt64.MaxValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<size_t>)args[0]).Value == (IntPtr.Size == 4 ? UInt32.MaxValue : UInt64.MaxValue));
 
-        //    args = new object[] { new ptr<mp_exp_t>(Int32.MinValue) };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((ptr<mp_exp_t>)args[0]).Value == Int32.MinValue);
+            args = new object[] { new ptr<mp_exp_t>(Int32.MinValue) };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((ptr<mp_exp_t>)args[0]).Value == Int32.MinValue);
 
-        //    args = new object[] { new StringBuilder("ABCDEFGHIJ") };
-        //    va_args = new va_list(args);
-        //    va_args.RetrieveArgumentValues();
-        //    Assert.IsTrue(((StringBuilder)args[0]).ToString() == "ABCDEFGHIJ");
-        //}
+            args = new object[] { new StringBuilder("ABCDEFGHIJ") };
+            va_args = new va_list(args);
+            va_args.RetrieveArgumentValues();
+            Assert.IsTrue(((StringBuilder)args[0]).ToString() == "ABCDEFGHIJ");
+        }
 
         #endregion
 
@@ -716,6 +790,7 @@ namespace UnitTests
         #region "Memory allocation functions."
 
         [TestMethod]
+        [TestCategory("Memory allocation functions")]
         public void mp_get_memory_functions()
         {
             allocate_function allocate;
@@ -733,6 +808,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [TestCategory("Memory allocation functions")]
         public void mp_set_memory_functions()
         {
             // Retrieve GMP default memory allocation functions.
@@ -2158,7 +2234,7 @@ namespace UnitTests
             Assert.IsTrue(gmp_lib.gmp_vsprintf(str, "%a", (Double)1.0) == 13);
             Assert.IsTrue(str.ToString() == "0x1.000000p+0");
             Assert.IsTrue(gmp_lib.gmp_vsprintf(str, "%a", (Single)1.0) == 13);
-            Assert.IsTrue(str.ToString() == "0x1.000004p+0");
+            Assert.IsTrue(str.ToString() == "0x1.000000p+0");
 
             Assert.IsTrue(gmp_lib.gmp_vsprintf(str, "%s", "Hello World!") == 12);
             Assert.IsTrue(str.ToString() == "Hello World!");
@@ -3286,6 +3362,41 @@ namespace UnitTests
         }
 
         [TestMethod]
+        public void mpz_export_2()
+        {
+            // Create, initialize, and set the value of op to 0x800000000000000000000001.
+            mpz_t op = new mpz_t();
+            char_ptr value = new char_ptr("800000000000000000000001");
+            gmp_lib.mpz_init_set_str(op, value, 16);
+
+            // Export op as 3 words of 4 bytes each, first word is lsb, and first byte in each word is msb.
+            void_ptr data = gmp_lib.allocate(12);
+            ptr<size_t> countp = new ptr<size_t>(0);
+            gmp_lib.mpz_export(data, countp, -1, 4, 1, 0, op);
+
+            // Assert the result.
+            byte[] result = new byte[12];
+            Marshal.Copy(data.ToIntPtr(), result, 0, 12);
+            Assert.IsTrue(result[0] == 0x00);
+            Assert.IsTrue(result[1] == 0x00);
+            Assert.IsTrue(result[2] == 0x00);
+            Assert.IsTrue(result[3] == 0x01);
+            Assert.IsTrue(result[4] == 0x00);
+            Assert.IsTrue(result[5] == 0x00);
+            Assert.IsTrue(result[6] == 0x00);
+            Assert.IsTrue(result[7] == 0x00);
+            Assert.IsTrue(result[8] == 0x80);
+            Assert.IsTrue(result[9] == 0x00);
+            Assert.IsTrue(result[10] == 0x00);
+            Assert.IsTrue(result[11] == 0x00);
+
+            // Release unmanaged memory allocated for rop, data, and value.
+            gmp_lib.mpz_clear(op);
+            gmp_lib.free(data);
+            gmp_lib.free(value);
+        }
+
+        [TestMethod]
         public void mpz_export()
         {
             // Create, initialize, and set the value of op to 0x800000000000000000000001.
@@ -3313,7 +3424,7 @@ namespace UnitTests
             Assert.IsTrue(result[9] == 0x00);
             Assert.IsTrue(result[10] == 0x00);
             Assert.IsTrue(result[11] == 0x00);
-            
+
             // Release unmanaged memory allocated for rop, data, and value.
             gmp_lib.mpz_clear(op);
             gmp_lib.free(data);
@@ -3657,7 +3768,7 @@ namespace UnitTests
             gmp_lib.mpz_init_set_ui(op, uint.MaxValue);
 
             // Assert that op does not fit in short.
-            Assert.IsTrue(gmp_lib.mpz_fits_sshort_p(op) ==  0);
+            Assert.IsTrue(gmp_lib.mpz_fits_sshort_p(op) == 0);
 
             // Release unmanaged memory allocated for op.
             gmp_lib.mpz_clear(op);
@@ -6551,7 +6662,7 @@ namespace UnitTests
             gmp_lib.mpf_init(z);
 
             // Set z = |x|.
-            gmp_lib.mpf_neg(z, x);
+            gmp_lib.mpf_abs(z, x);
 
             // Assert that the value of z is 10.
             Assert.IsTrue(gmp_lib.mpf_get_d(z) == 10.0);
@@ -6704,7 +6815,7 @@ namespace UnitTests
             mpf_t x = new mpf_t();
             gmp_lib.mpf_init_set_si(x, 512);
 
-            // Create and initialize a new floating-point number z.
+            // Create and initialize a new integer z.
             mpz_t z = new mpz_t();
             gmp_lib.mpz_init_set_si(z, 128);
 
@@ -7031,6 +7142,27 @@ namespace UnitTests
 
         [TestMethod]
         public void mpf_get_str()
+        {
+            // Set default precision to 64 bits.
+            gmp_lib.mpf_set_default_prec(64U);
+
+            // Create, initialize, and set a new floating-point number to -8.0
+            mpf_t x = new mpf_t();
+            gmp_lib.mpf_init_set_d(x, -8.0);
+
+            // Assert that the value of x is -8.
+            mp_exp_t exp = 0;
+            char_ptr value = gmp_lib.mpf_get_str(char_ptr.Zero, ref exp, 10, 0, x);
+            Assert.IsTrue(value.ToString() == "-8");
+            Assert.IsTrue(exp == 1);
+
+            // Release unmanaged memory allocated for x.
+            gmp_lib.mpf_clear(x);
+            gmp_lib.free(value);
+        }
+
+        [TestMethod]
+        public void mpf_get_str_2()
         {
             // Set default precision to 64 bits.
             gmp_lib.mpf_set_default_prec(64U);
@@ -7537,7 +7669,7 @@ namespace UnitTests
             gmp_lib.mpf_set_q(x, y);
 
             Assert.IsTrue(x.ToString() == "0.6666666666666666666666666666666666666667e2");
-            
+
             // Change precision of x, and set its value to 10000 / 3.
             gmp_lib.mpf_set_prec_raw(x, 8U);
             gmp_lib.mpq_set_ui(y, 10000, 3U);
@@ -8138,6 +8270,31 @@ namespace UnitTests
             mp_ptr cofactor = new mp_ptr(new uint[] { 0x00000001, 0x00000000, 0x00000000 });
 
             // Set gp = gcd(up, vp).
+            mp_size_t sn = 0;
+            mp_size_t size = gmp_lib.mpn_gcdext(gp, sp, ref sn, up, up.Size, vp, vp.Size);
+
+            // Assert result.
+            Assert.IsTrue(size == 1);
+            Assert.IsTrue(gp.SequenceEqual(result));
+            Assert.IsTrue(sn == 1);
+            Assert.IsTrue(sp.SequenceEqual(cofactor));
+
+            // Release unmanaged memory.
+            gmp_lib.free(gp, up, vp, sp, result, cofactor);
+        }
+
+        [TestMethod]
+        public void mpn_gcdext_2()
+        {
+            // Create multi-precision operands, and expected result.
+            mp_ptr up = new mp_ptr(new uint[] { 0x40000000, 0x00000000 });
+            mp_ptr vp = new mp_ptr(new uint[] { 0x00000000, 0x00000001 });
+            mp_ptr gp = new mp_ptr(new uint[vp.Size * (IntPtr.Size / 4)]);
+            mp_ptr sp = new mp_ptr(new uint[(vp.Size + 1) * (IntPtr.Size / 4)]);
+            mp_ptr result = new mp_ptr(new uint[] { 0x40000000, 0x00000000 });
+            mp_ptr cofactor = new mp_ptr(new uint[] { 0x00000001, 0x00000000, 0x00000000 });
+
+            // Set gp = gcd(up, vp).
             ptr<mp_size_t> sn = new ptr<mp_size_t>(0);
             mp_size_t size = gmp_lib.mpn_gcdext(gp, sp, sn, up, up.Size, vp, vp.Size);
 
@@ -8282,7 +8439,7 @@ namespace UnitTests
             // Create multi-precision operands, and expected result.
             mp_ptr s1p = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
             mp_ptr rp = new mp_ptr(new uint[4]);
-            mp_ptr result = new mp_ptr(new uint[] {0x00000001, 0x00000000, 0xfffffffe, 0xffffffff });
+            mp_ptr result = new mp_ptr(new uint[] { 0x00000001, 0x00000000, 0xfffffffe, 0xffffffff });
 
             // Set rp = s1^2.
             gmp_lib.mpn_sqr(rp, s1p, s1p.Size);

@@ -14,7 +14,11 @@ namespace Math.Gmp.Native
 
         private IntPtr _pointer;
 
-        internal void_ptr(IntPtr pointer)
+        /// <summary>
+        /// Creates new <see cref="void_ptr"/> from an exidting pointer to unmanaged memory.
+        /// </summary>
+        /// <param name="pointer">Pointer to unmanaged memory.</param>
+        public void_ptr(IntPtr pointer)
         {
             _pointer = pointer;
         }

@@ -7,7 +7,10 @@ using System.Text;
 namespace Math.Gmp.Native
 {
 
-    internal class va_list
+    /// <summary>
+    /// Represent a variable argument list.
+    /// </summary>
+    public class va_list
     {
 
         private IntPtr arguments;
@@ -31,7 +34,7 @@ namespace Math.Gmp.Native
         /// <summary>
         /// Creates a variable list of arguments in unmanaged memory.
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">The list of arguments.</param>
         public va_list(params object[] args)
         {
             va_args = new va_arg[args.Length];
@@ -352,13 +355,13 @@ namespace Math.Gmp.Native
                             IntPtr data_ptr = (IntPtr)(arguments.ToInt64() + args_size + va_args[i].data_offset);
                             Marshal.WriteIntPtr(arguments, va_args[i].arg_offset, data_ptr);
                             mp_bitcnt_t data = ((ptr<mp_bitcnt_t>)args[i]).Value;
-                            Marshal.WriteInt32(data_ptr, 0, (Int32)data._value);
+                            Marshal.WriteInt32(data_ptr, 0, (Int32)data.Value);
                         };
                         va_args[j].read = (i) =>
                         {
                             ptr<mp_bitcnt_t> data = (ptr<mp_bitcnt_t>)args[i];
                             IntPtr data_ptr = (IntPtr)(arguments.ToInt64() + args_size + va_args[i].data_offset);
-                            data.Value._value = (uint)Marshal.ReadInt32(data_ptr);
+                            data.Value.Value = (uint)Marshal.ReadInt32(data_ptr);
                         };
                         readables.Push(j);
                         break;
@@ -371,13 +374,13 @@ namespace Math.Gmp.Native
                             IntPtr data_ptr = (IntPtr)(arguments.ToInt64() + args_size + va_args[i].data_offset);
                             Marshal.WriteIntPtr(arguments, va_args[i].arg_offset, data_ptr);
                             mp_size_t data = ((ptr<mp_size_t>)args[i]).Value;
-                            Marshal.WriteInt32(data_ptr, 0, data._value);
+                            Marshal.WriteInt32(data_ptr, 0, data.Value);
                         };
                         va_args[j].read = (i) =>
                         {
                             ptr<mp_size_t> data = (ptr<mp_size_t>)args[i];
                             IntPtr data_ptr = (IntPtr)(arguments.ToInt64() + args_size + va_args[i].data_offset);
-                            data.Value._value = Marshal.ReadInt32(data_ptr);
+                            data.Value.Value = Marshal.ReadInt32(data_ptr);
                         };
                         readables.Push(j);
                         break;
@@ -390,13 +393,13 @@ namespace Math.Gmp.Native
                             IntPtr data_ptr = (IntPtr)(arguments.ToInt64() + args_size + va_args[i].data_offset);
                             Marshal.WriteIntPtr(arguments, va_args[i].arg_offset, data_ptr);
                             mp_exp_t data = ((ptr<mp_exp_t>)args[i]).Value;
-                            Marshal.WriteInt32(data_ptr, 0, data._value);
+                            Marshal.WriteInt32(data_ptr, 0, data.Value);
                         };
                         va_args[j].read = (i) =>
                         {
                             ptr<mp_exp_t> data = (ptr<mp_exp_t>)args[i];
                             IntPtr data_ptr = (IntPtr)(arguments.ToInt64() + args_size + va_args[i].data_offset);
-                            data.Value._value = Marshal.ReadInt32(data_ptr);
+                            data.Value.Value = Marshal.ReadInt32(data_ptr);
                         };
                         readables.Push(j);
                         break;
@@ -469,18 +472,18 @@ namespace Math.Gmp.Native
                             Marshal.WriteIntPtr(arguments, va_args[i].arg_offset, data_ptr);
                             mp_limb_t data = ((ptr<mp_limb_t>)args[i]).Value;
                             if (IntPtr.Size == 4)
-                                Marshal.WriteInt32(data_ptr, 0, (Int32)data._value);
+                                Marshal.WriteInt32(data_ptr, 0, (Int32)data.Value);
                             else
-                                Marshal.WriteInt64(data_ptr, 0, (Int64)data._value);
+                                Marshal.WriteInt64(data_ptr, 0, (Int64)data.Value);
                         };
                         va_args[j].read = (i) =>
                         {
                             ptr<mp_limb_t> data = (ptr<mp_limb_t>)args[i];
                             IntPtr data_ptr = (IntPtr)(arguments.ToInt64() + args_size + va_args[i].data_offset);
                             if (IntPtr.Size == 4)
-                                data.Value._value = (UInt32)Marshal.ReadInt32(data_ptr);
+                                data.Value.Value = (UInt32)Marshal.ReadInt32(data_ptr);
                             else
-                                data.Value._value = (UInt64)Marshal.ReadInt64(data_ptr);
+                                data.Value.Value = (UInt64)Marshal.ReadInt64(data_ptr);
                         };
                         readables.Push(j);
                         break;
@@ -494,18 +497,18 @@ namespace Math.Gmp.Native
                             Marshal.WriteIntPtr(arguments, va_args[i].arg_offset, data_ptr);
                             size_t data = ((ptr<size_t>)args[i]).Value;
                             if (IntPtr.Size == 4)
-                                Marshal.WriteInt32(data_ptr, 0, (Int32)data._value);
+                                Marshal.WriteInt32(data_ptr, 0, (Int32)data.Value);
                             else
-                                Marshal.WriteInt64(data_ptr, 0, (Int64)data._value);
+                                Marshal.WriteInt64(data_ptr, 0, (Int64)data.Value);
                         };
                         va_args[j].read = (i) =>
                         {
                             ptr<size_t> data = (ptr<size_t>)args[i];
                             IntPtr data_ptr = (IntPtr)(arguments.ToInt64() + args_size + va_args[i].data_offset);
                             if (IntPtr.Size == 4)
-                                data.Value._value = (UInt32)Marshal.ReadInt32(data_ptr);
+                                data.Value.Value = (UInt32)Marshal.ReadInt32(data_ptr);
                             else
-                                data.Value._value = (UInt64)Marshal.ReadInt64(data_ptr);
+                                data.Value.Value = (UInt64)Marshal.ReadInt64(data_ptr);
                         };
                         readables.Push(j);
                         break;
@@ -542,6 +545,10 @@ namespace Math.Gmp.Native
 
         }
 
+        /// <summary>
+        /// Return the pointer to the list of arguments in unmanaged memory.
+        /// </summary>
+        /// <returns>The pointer to the list of arguments in unmanaged memory.</returns>
         public IntPtr ToIntPtr()
         {
             return arguments;

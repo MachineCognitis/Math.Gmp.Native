@@ -224,7 +224,11 @@ namespace Math.Gmp.Native
             free_func_ptr(ptr, 0);
         }
 
-        internal static void free(IntPtr ptr)
+        /// <summary>
+        /// Free the unmanaged memory at <paramref name="ptr"/>.
+        /// </summary>
+        /// <param name="ptr">Pointer to unmanaged memory.</param>
+        public static void free(IntPtr ptr)
         {
             free_func_ptr(new void_ptr(ptr), 0);
         }
@@ -729,7 +733,7 @@ namespace Math.Gmp.Native
         /// </example>
         public static void gmp_randinit_set(gmp_randstate_t rop, /*const*/ gmp_randstate_t /*__gmp_randstate_struct **/ op)
         {
-            if (rop == null) throw new ArgumentNullException("state");
+            if (rop == null) throw new ArgumentNullException("rop");
             if (op == null) throw new ArgumentNullException("op");
             SafeNativeMethods.__gmp_randinit_set(rop.ToIntPtr(), op.ToIntPtr());
         }
@@ -1344,7 +1348,7 @@ namespace Math.Gmp.Native
             if (ap == null) throw new ArgumentNullException("ap");
             va_list va_args = new va_list(ap);
             char_ptr format = new char_ptr(fmt);
-            int result = SafeNativeMethods.__gmp_vasprintf(ref ptr.Value.pointer, format.ToIntPtr(), va_args.ToIntPtr());
+            int result = SafeNativeMethods.__gmp_vasprintf(ref ptr.Value.Pointer, format.ToIntPtr(), va_args.ToIntPtr());
             va_args.RetrieveArgumentValues();
             gmp_lib.free(format);
             return result;
@@ -3296,7 +3300,7 @@ namespace Math.Gmp.Native
         {
             if (x == null) throw new ArgumentNullException("x");
             SafeNativeMethods.__gmpz_clear(x.ToIntPtr());
-            gmp_lib.free(new void_ptr(x.ToIntPtr()));
+            x.Clear();
         }
 
         /// <summary>
@@ -4524,6 +4528,146 @@ namespace Math.Gmp.Native
                 ulong temp = countp;
                 IntPtr result = SafeNativeMethods.__gmpz_export_x64(rop.ToIntPtr(), ref temp, order, size, endian, nails, op.ToIntPtr());
                 countp = temp;
+                return new void_ptr(result);
+            }
+        }
+
+        /// <summary>
+        /// Fill <paramref name="rop"/> with word data from <paramref name="op"/>.
+        /// </summary>
+        /// <param name="rop">The result integer.</param>
+        /// <param name="countp">The number of words produced.</param>
+        /// <param name="order">1 for most significant word first or -1 for least significant first.</param>
+        /// <param name="size">The number of bytes in each word.</param>
+        /// <param name="endian">1 for most significant byte first, -1 for least significant first, or 0 for the native endianness of the host CPU.</param>
+        /// <param name="nails">The number of most significant bits to skip.</param>
+        /// <param name="op">The operand integer.</param>
+        /// <returns>Either <paramref name="rop"/> or the allocated block.</returns>
+        /// <remarks>
+        /// <para>
+        /// The parameters specify the format of the data produced.
+        /// Each word will be <paramref name="size"/> bytes and <paramref name="order"/> can be 1 for most significant word first
+        /// or -1 for least significant first.
+        /// Within each word <paramref name="endian"/> can be 1 for most significant byte first,
+        /// -1 for least significant first, or 0 for the native endianness of the host CPU.
+        /// The most significant <paramref name="nails"/> bits of each word are unused and set to zero,
+        /// this can be 0 to produce full words. 
+        /// </para>
+        /// <para>
+        /// The number of words produced is written to <paramref name="countp"/>, or <paramref name="countp"/> can be NULL to discard the count.
+        /// <paramref name="rop"/> must have enough space for the data, or if <paramref name="rop"/> is NULL then a result array of the necessary
+        /// size is allocated using the current GMP allocation function 
+        /// (see <a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a>).
+        /// In either case the return value is the destination used, either <paramref name="rop"/> or the allocated block. 
+        /// </para>
+        /// <para>
+        /// If <paramref name="op"/> is non-zero then the most significant word produced will be non-zero.
+        /// If <paramref name="op"/> is zero then the count returned will be zero and nothing written to <paramref name="rop"/>.
+        /// If <paramref name="rop"/> is NULL in this case, no block is allocated, just NULL is returned. 
+        /// </para>
+        /// <para>
+        /// The sign of <paramref name="op"/> is ignored, just the absolute value is exported.
+        /// An application can use <see cref="mpz_sgn"/> to get the sign and handle it as desired.
+        /// (see <a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a>) 
+        /// </para>
+        /// <para>
+        /// There are no data alignment restrictions on <paramref name="rop"/>, any address is allowed. 
+        /// </para>
+        /// <para>
+        /// When an application is allocating space itself the required size can be determined with a calculation like the following.
+        /// Since <see cref="mpz_sizeinbase"/> always returns at least 1, count here will be at least one, which avoids any portability
+        /// problems with malloc(0), though if z is zero no space at all is actually needed (or written). 
+        /// </para> 
+        /// <code language="C++">
+        /// numb = 8 * size - nail;
+        /// count = (mpz_sizeinbase(z, 2) + numb - 1) / numb;
+        /// p = malloc(count * size);
+        /// </code> 
+        /// </remarks>
+        /// <seealso cref="mpz_import"/>
+        /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Import-and-Export.html#Integer-Import-and-Export">GNU MP - Integer Import and Export</a></seealso>
+        /// <example>
+        /// <code language="C#">
+        /// // Create, initialize, and set the value of op to 0x800000000000000000000001.
+        /// mpz_t op = new mpz_t();
+        /// char_ptr value = new char_ptr("800000000000000000000001");
+        /// gmp_lib.mpz_init_set_str(op, value, 16);
+        /// 
+        /// // Export op as 3 words of 4 bytes each, first word is lsb, and first byte in each word is msb.
+        /// void_ptr data = gmp_lib.allocate(12);
+        /// ptr&lt;size_t&gt; countp = new ptr&lt;size_t&gt;(0);
+        /// gmp_lib.mpz_export(data, countp, -1, 4, 1, 0, op);
+        /// 
+        /// // Assert the result.
+        /// byte[] result = new byte[12];
+        /// Marshal.Copy(data.ToIntPtr(), result, 0, 12);
+        /// Assert.IsTrue(result[0] == 0x00);
+        /// Assert.IsTrue(result[1] == 0x00);
+        /// Assert.IsTrue(result[2] == 0x00);
+        /// Assert.IsTrue(result[3] == 0x01);
+        /// Assert.IsTrue(result[4] == 0x00);
+        /// Assert.IsTrue(result[5] == 0x00);
+        /// Assert.IsTrue(result[6] == 0x00);
+        /// Assert.IsTrue(result[7] == 0x00);
+        /// Assert.IsTrue(result[8] == 0x80);
+        /// Assert.IsTrue(result[9] == 0x00);
+        /// Assert.IsTrue(result[10] == 0x00);
+        /// Assert.IsTrue(result[11] == 0x00);
+        /// 
+        /// // Release unmanaged memory allocated for rop, data, and value.
+        /// gmp_lib.mpz_clear(op);
+        /// gmp_lib.free(data);
+        /// gmp_lib.free(value);
+        /// </code> 
+        /// <code language="VB.NET">
+        /// ' Create, initialize, and set the value of op to 0x800000000000000000000001.
+        /// Dim op As New mpz_t()
+        /// Dim value As New char_ptr("800000000000000000000001")
+        /// gmp_lib.mpz_init_set_str(op, value, 16)
+        /// 
+        /// ' Export op as 3 words of 4 bytes each, first word is lsb, and first byte in each word is msb.
+        /// Dim data As void_ptr = gmp_lib.allocate(12)
+        /// Dim countp As New ptr(Of size_t)(0)
+        /// gmp_lib.mpz_export(data, countp, -1, 4, 1, 0, op)
+        /// 
+        /// ' Assert the result.
+        /// Dim result As Byte() = New Byte(11) { }
+        /// Marshal.Copy(data.ToIntPtr(), result, 0, 12)
+        /// Assert.IsTrue(result(0) = &amp;H0)
+        /// Assert.IsTrue(result(1) = &amp;H0)
+        /// Assert.IsTrue(result(2) = &amp;H0)
+        /// Assert.IsTrue(result(3) = &amp;H1)
+        /// Assert.IsTrue(result(4) = &amp;H0)
+        /// Assert.IsTrue(result(5) = &amp;H0)
+        /// Assert.IsTrue(result(6) = &amp;H0)
+        /// Assert.IsTrue(result(7) = &amp;H0)
+        /// Assert.IsTrue(result(8) = &amp;H80)
+        /// Assert.IsTrue(result(9) = &amp;H0)
+        /// Assert.IsTrue(result(10) = &amp;H0)
+        /// Assert.IsTrue(result(11) = &amp;H0)
+        /// 
+        /// ' Release unmanaged memory allocated for rop, data, and value.
+        /// gmp_lib.mpz_clear(op)
+        /// gmp_lib.free(data)
+        /// gmp_lib.free(value)
+        /// </code> 
+        /// </example>
+        public static void_ptr mpz_export(void_ptr rop, ptr<size_t> countp, int order, size_t size, int endian, size_t nails, /*const*/ mpz_t op)
+        {
+            if (op == null) throw new ArgumentNullException("op");
+            if (countp == null) throw new ArgumentNullException("countp");
+            if (IntPtr.Size == 4)
+            {
+                uint temp = (uint)countp.Value;
+                IntPtr result = SafeNativeMethods.__gmpz_export_x86(rop.ToIntPtr(), ref temp, order, (uint)size, endian, (uint)nails, op.ToIntPtr());
+                countp.Value = temp;
+                return new void_ptr(result);
+            }
+            else
+            {
+                ulong temp = countp.Value;
+                IntPtr result = SafeNativeMethods.__gmpz_export_x64(rop.ToIntPtr(), ref temp, order, size, endian, nails, op.ToIntPtr());
+                countp.Value = temp;
                 return new void_ptr(result);
             }
         }
@@ -6371,7 +6515,7 @@ namespace Math.Gmp.Native
         /// The <paramref name="nails"/> feature can account for this, by passing for instance 8 * sizeof(int) - INT_BIT. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_export"/>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpz_export"/>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Import-and-Export.html#Integer-Import-and-Export">GNU MP - Integer Import and Export</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6467,6 +6611,7 @@ namespace Math.Gmp.Native
         public static void mpz_init(mpz_t x)
         {
             if (x == null) throw new ArgumentNullException("x");
+            x.Initializing();
             SafeNativeMethods.__gmpz_init(x.ToIntPtr());
         }
 
@@ -6524,6 +6669,7 @@ namespace Math.Gmp.Native
         public static void mpz_init2(mpz_t x, mp_bitcnt_t n)
         {
             if (x == null) throw new ArgumentNullException("x");
+            x.Initializing();
             SafeNativeMethods.__gmpz_init2(x.ToIntPtr(), n);
         }
 
@@ -6628,6 +6774,7 @@ namespace Math.Gmp.Native
         {
             if (rop == null) throw new ArgumentNullException("rop");
             if (op == null) throw new ArgumentNullException("op");
+            rop.Initializing();
             SafeNativeMethods.__gmpz_init_set(rop.ToIntPtr(), op.ToIntPtr());
         }
 
@@ -6674,6 +6821,7 @@ namespace Math.Gmp.Native
         public static void mpz_init_set_d(mpz_t rop, double op)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            rop.Initializing();
             SafeNativeMethods.__gmpz_init_set_d(rop.ToIntPtr(), op);
         }
 
@@ -6715,6 +6863,7 @@ namespace Math.Gmp.Native
         public static void mpz_init_set_si(mpz_t rop, int /*long int*/ op)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            rop.Initializing();
             SafeNativeMethods.__gmpz_init_set_si(rop.ToIntPtr(), op);
         }
 
@@ -6770,6 +6919,7 @@ namespace Math.Gmp.Native
         public static int mpz_init_set_str(mpz_t rop, /*const*/ char_ptr str, int @base)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            rop.Initializing();
             return SafeNativeMethods.__gmpz_init_set_str(rop.ToIntPtr(), str.ToIntPtr(), @base);
         }
 
@@ -6810,6 +6960,7 @@ namespace Math.Gmp.Native
         public static void mpz_init_set_ui(mpz_t rop, uint /*unsigned long int*/ op)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            rop.Initializing();
             SafeNativeMethods.__gmpz_init_set_ui(rop.ToIntPtr(), op);
         }
 
@@ -6886,6 +7037,7 @@ namespace Math.Gmp.Native
         public static size_t mpz_inp_raw(mpz_t rop, ptr<FILE> stream)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            if (stream == null) throw new ArgumentNullException("stream");
             if (IntPtr.Size == 4)
                 return new size_t(SafeNativeMethods.__gmpz_inp_raw_x86(rop.ToIntPtr(), stream.Value.Value));
             else
@@ -6968,6 +7120,7 @@ namespace Math.Gmp.Native
         public static size_t mpz_inp_str(mpz_t rop, ptr<FILE> stream, int @base)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            if (stream == null) throw new ArgumentNullException("stream");
             if (IntPtr.Size == 4)
                 return new size_t(SafeNativeMethods.__gmpz_inp_str_x86(rop.ToIntPtr(), stream.Value.Value, @base));
             else
@@ -8378,6 +8531,7 @@ namespace Math.Gmp.Native
         public static size_t mpz_out_raw(ptr<FILE> stream, /*const*/ mpz_t op)
         {
             if (op == null) throw new ArgumentNullException("op");
+            if (stream == null) throw new ArgumentNullException("stream");
             if (IntPtr.Size == 4)
                 return new size_t(SafeNativeMethods.__gmpz_out_raw_x86(stream.Value.Value, op.ToIntPtr()));
             else
@@ -8466,6 +8620,7 @@ namespace Math.Gmp.Native
         public static size_t mpz_out_str(ptr<FILE> stream, int @base, /*const*/ mpz_t op)
         {
             if (op == null) throw new ArgumentNullException("op");
+            if (stream == null) throw new ArgumentNullException("stream");
             if (IntPtr.Size == 4)
                 return new size_t(SafeNativeMethods.__gmpz_out_str_x86(stream.Value.Value, @base, op.ToIntPtr()));
             else
@@ -9699,6 +9854,7 @@ namespace Math.Gmp.Native
         public static void mpz_set_f(mpz_t rop, /*const*/ mpf_t op)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            if (op == null) throw new ArgumentNullException("op");
             SafeNativeMethods.__gmpz_set_f(rop.ToIntPtr(), op.ToIntPtr());
         }
 
@@ -9757,6 +9913,7 @@ namespace Math.Gmp.Native
         public static void mpz_set_q(mpz_t rop, /*const*/ mpq_t op)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            if (op == null) throw new ArgumentNullException("op");
             SafeNativeMethods.__gmpz_set_q(rop.ToIntPtr(), op.ToIntPtr());
         }
 
@@ -12084,6 +12241,7 @@ namespace Math.Gmp.Native
         {
             if (x == null) throw new ArgumentNullException("x");
             SafeNativeMethods.__gmpq_clear(x.ToIntPtr());
+            x.Clear();
         }
 
         /// <summary>
@@ -12846,6 +13004,7 @@ namespace Math.Gmp.Native
         public static void mpq_init(mpq_t x)
         {
             if (x == null) throw new ArgumentNullException("x");
+            x.Initializing();
             SafeNativeMethods.__gmpq_init(x.ToIntPtr());
         }
 
@@ -12985,6 +13144,7 @@ namespace Math.Gmp.Native
         public static size_t mpq_inp_str(mpq_t rop, ptr<FILE> stream, int @base)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            if (stream == null) throw new ArgumentNullException("stream");
             if (IntPtr.Size == 4)
                 return new size_t(SafeNativeMethods.__gmpq_inp_str_x86(rop.ToIntPtr(), stream.Value.Value, @base));
             else
@@ -13242,6 +13402,7 @@ namespace Math.Gmp.Native
         public static size_t mpq_out_str(ptr<FILE> stream, int @base, /*const*/ mpq_t op)
         {
             if (op == null) throw new ArgumentNullException("op");
+            if (stream == null) throw new ArgumentNullException("stream");
             if (IntPtr.Size == 4)
                 return new size_t(SafeNativeMethods.__gmpq_out_str_x86(stream.Value.Value, @base, op.ToIntPtr()));
             else
@@ -13970,7 +14131,7 @@ namespace Math.Gmp.Native
         /// gmp_lib.mpf_init(z);
         /// 
         /// // Set z = |x|.
-        /// gmp_lib.mpf_neg(z, x);
+        /// gmp_lib.mpf_abs(z, x);
         /// 
         /// // Assert that the value of z is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 10.0);
@@ -13991,7 +14152,7 @@ namespace Math.Gmp.Native
         /// gmp_lib.mpf_init(z)
         /// 
         /// ' Set z = |x|.
-        /// gmp_lib.mpf_neg(z, x)
+        /// gmp_lib.mpf_absg(z, x)
         /// 
         /// ' Assert that the value of z is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 10.0)
@@ -14268,8 +14429,8 @@ namespace Math.Gmp.Native
         public static void mpf_clear(mpf_t x)
         {
             if (x == null) throw new ArgumentNullException("x");
-            x._initialized = false;
             SafeNativeMethods.__gmpf_clear(x.ToIntPtr());
+            x.Clear();
         }
 
         /// <summary>
@@ -14408,7 +14569,7 @@ namespace Math.Gmp.Native
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 512);
         /// 
-        /// // Create and initialize a new floating-point number z.
+        /// // Create and initialize a new integer z.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init_set_si(z, 128);
         /// 
@@ -14427,7 +14588,7 @@ namespace Math.Gmp.Native
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 512)
         /// 
-        /// ' Create and initialize a new floating-point number z.
+        /// ' Create and initialize a new integer z.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init_set_si(z, 128)
         /// 
@@ -15172,7 +15333,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_d_2exp"/>
         /// <seealso cref="mpf_get_si"/>
         /// <seealso cref="mpf_get_ui"/>
-        /// <seealso cref="mpf_get_str"/>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str"/>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15225,7 +15386,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_d"/>
         /// <seealso cref="mpf_get_si"/>
         /// <seealso cref="mpf_get_ui"/>
-        /// <seealso cref="mpf_get_str"/>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str"/>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15264,6 +15425,7 @@ namespace Math.Gmp.Native
         public static double mpf_get_d_2exp(ptr<int> /*long int **/ exp, /*const*/ mpf_t op)
         {
             if (op == null) throw new ArgumentNullException("op");
+            if (exp == null) throw new ArgumentNullException("exp");
             return SafeNativeMethods.__gmpf_get_d_2exp(ref exp.Value, op.ToIntPtr());
         }
 
@@ -15372,7 +15534,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_d"/>
         /// <seealso cref="mpf_get_d_2exp"/>
         /// <seealso cref="mpf_get_ui"/>
-        /// <seealso cref="mpf_get_str"/>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str"/>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15413,11 +15575,105 @@ namespace Math.Gmp.Native
         /// <summary>
         /// Convert <paramref name="op"/> to a string of digits in base <paramref name="base"/>.
         /// </summary>
-        /// <param name="str"></param>
-        /// <param name="expptr"></param>
-        /// <param name="base"></param>
-        /// <param name="n_digits"></param>
-        /// <param name="op"></param>
+        /// <param name="str">The output string.</param>
+        /// <param name="expptr">The exponent.</param>
+        /// <param name="base">The base.</param>
+        /// <param name="n_digits">Maximum number of output digits.</param>
+        /// <param name="op">The operand floating-point number.</param>
+        /// <returns>A pointer to the result string is returned, being either the allocated block or the given <paramref name="str"/>.</returns>
+        /// <remarks>
+        /// <para>
+        /// The <paramref name="base"/> argument may vary from 2 to 62 or from -2 to -36.
+        /// Up to <paramref name="n_digits"/> digits will be generated.
+        /// Trailing zeros are not returned.
+        /// No more digits than can be accurately represented by <paramref name="op"/> are ever generated.
+        /// If <paramref name="n_digits"/> is 0 then that accurate maximum number of digits are generated. 
+        /// </para>
+        /// <para>
+        /// For <paramref name="base"/> in the range 2..36, digits and lower-case letters are used; for -2..-36,
+        /// digits and upper-case letters are used; for 37..62, digits, upper-case letters, and lower-case letters
+        /// (in that significance order) are used. 
+        /// </para>
+        /// <para>
+        /// If <paramref name="str"/> is NULL, the result string is allocated using the current allocation function
+        /// (see <a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a>).
+        /// The block will be strlen(str) + 1 bytes, that being exactly enough for the string and null-terminator.
+        /// </para>
+        /// <para>
+        /// If <paramref name="str"/> is not NULL, it should point to a block of <paramref name="n_digits"/> + 2 bytes,
+        /// that being enough for the mantissa, a possible minus sign, and a null-terminator.
+        /// When <paramref name="n_digits"/> is 0 to get all significant digits, an application won’t be able to know
+        /// the space required, and <paramref name="str"/> should be NULL in that case. 
+        /// </para>
+        /// <para>
+        /// The generated string is a fraction, with an implicit radix point immediately to the left of the first digit.
+        /// The applicable exponent is written through the <paramref name="expptr"/> pointer.
+        /// For example, the number 3.1416 would be returned as string "31416" and exponent 1.
+        /// </para>
+        /// <para>
+        /// When <paramref name="op"/> is zero, an empty string is produced and the exponent returned is 0. 
+        /// </para>
+        /// </remarks>
+        /// <seealso cref="mpf_get_d"/>
+        /// <seealso cref="mpf_get_d_2exp"/>
+        /// <seealso cref="mpf_get_si"/>
+        /// <seealso cref="mpf_get_ui"/>
+        /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
+        /// <example>
+        /// <code language="C#">
+        /// // Set default precision to 64 bits.
+        /// gmp_lib.mpf_set_default_prec(64U);
+        /// 
+        /// // Create, initialize, and set a new floating-point number to -8.0
+        /// mpf_t x = new mpf_t();
+        /// gmp_lib.mpf_init_set_d(x, -8.0);
+        /// 
+        /// // Assert that the value of x is -8.
+        /// mp_exp_t exp = 0;
+        /// char_ptr value = gmp_lib.mpf_get_str(char_ptr.Zero, ref exp, 10, 0, x);
+        /// Assert.IsTrue(value.ToString() == "-8");
+        /// Assert.IsTrue(exp == 1);
+        /// 
+        /// // Release unmanaged memory allocated for x.
+        /// gmp_lib.mpf_clear(x);
+        /// gmp_lib.free(value);
+        /// </code> 
+        /// <code language="VB.NET">
+        /// ' Set default precision to 64 bits.
+        /// gmp_lib.mpf_set_default_prec(64UI)
+        /// 
+        /// ' Create, initialize, and set a new floating-point number to -8.0
+        /// Dim x As New mpf_t()
+        /// gmp_lib.mpf_init_set_d(x, -8.0)
+        /// 
+        /// ' Assert that the value of x is -8.
+        /// Dim exp As mp_exp_t = 0
+        /// Dim value As char_ptr = gmp_lib.mpf_get_str(char_ptr.Zero, exp, 10, 0, x)
+        /// Assert.IsTrue(value.ToString() = "-8")
+        /// Assert.IsTrue(exp = 1)
+        /// 
+        /// ' Release unmanaged memory allocated for x.
+        /// gmp_lib.mpf_clear(x)
+        /// gmp_lib.free(value)
+        /// </code> 
+        /// </example>
+        public static char_ptr mpf_get_str(char_ptr str, ref mp_exp_t expptr, int @base, size_t n_digits, /*const*/ mpf_t op)
+        {
+            if (op == null) throw new ArgumentNullException("op");
+            if (IntPtr.Size == 4)
+                return new char_ptr(SafeNativeMethods.__gmpf_get_str_x86(str.ToIntPtr(), ref expptr.Value, @base, (uint)n_digits, op.ToIntPtr()));
+            else
+                return new char_ptr(SafeNativeMethods.__gmpf_get_str_x64(str.ToIntPtr(), ref expptr.Value, @base, n_digits, op.ToIntPtr()));
+        }
+
+        /// <summary>
+        /// Convert <paramref name="op"/> to a string of digits in base <paramref name="base"/>.
+        /// </summary>
+        /// <param name="str">The output string.</param>
+        /// <param name="expptr">The exponent.</param>
+        /// <param name="base">The base.</param>
+        /// <param name="n_digits">Maximum number of output digits.</param>
+        /// <param name="op">The operand floating-point number.</param>
         /// <returns>A pointer to the result string is returned, being either the allocated block or the given <paramref name="str"/>.</returns>
         /// <remarks>
         /// <para>
@@ -15498,10 +15754,11 @@ namespace Math.Gmp.Native
         public static char_ptr mpf_get_str(char_ptr str, ptr<mp_exp_t> expptr, int @base, size_t n_digits, /*const*/ mpf_t op)
         {
             if (op == null) throw new ArgumentNullException("op");
+            if (expptr == null) throw new ArgumentNullException("expptr");
             if (IntPtr.Size == 4)
-                return new char_ptr(SafeNativeMethods.__gmpf_get_str_x86(str.ToIntPtr(), ref expptr.Value._value, @base, (uint)n_digits, op.ToIntPtr()));
+                return new char_ptr(SafeNativeMethods.__gmpf_get_str_x86(str.ToIntPtr(), ref expptr.Value.Value, @base, (uint)n_digits, op.ToIntPtr()));
             else
-                return new char_ptr(SafeNativeMethods.__gmpf_get_str_x64(str.ToIntPtr(), ref expptr.Value._value, @base, n_digits, op.ToIntPtr()));
+                return new char_ptr(SafeNativeMethods.__gmpf_get_str_x64(str.ToIntPtr(), ref expptr.Value.Value, @base, n_digits, op.ToIntPtr()));
         }
 
         /// <summary>
@@ -15521,7 +15778,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_d"/>
         /// <seealso cref="mpf_get_d_2exp"/>
         /// <seealso cref="mpf_get_si"/>
-        /// <seealso cref="mpf_get_str"/>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str"/>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15590,8 +15847,9 @@ namespace Math.Gmp.Native
         public static void mpf_init(mpf_t x)
         {
             if (x == null) throw new ArgumentNullException("x");
+            x.Initializing();
             SafeNativeMethods.__gmpf_init(x.ToIntPtr());
-            x._initialized = true;
+            x.Initialized();
         }
 
         /// <summary>
@@ -15645,8 +15903,9 @@ namespace Math.Gmp.Native
         public static void mpf_init2(mpf_t x, mp_bitcnt_t prec)
         {
             if (x == null) throw new ArgumentNullException("x");
+            x.Initializing();
             SafeNativeMethods.__gmpf_init2(x.ToIntPtr(), prec);
-            x._initialized = true;
+            x.Initialized();
         }
 
         /// <summary>
@@ -15753,8 +16012,9 @@ namespace Math.Gmp.Native
         {
             if (rop == null) throw new ArgumentNullException("rop");
             if (op == null) throw new ArgumentNullException("op");
+            rop.Initializing();
             SafeNativeMethods.__gmpf_init_set(rop.ToIntPtr(), op.ToIntPtr());
-            rop._initialized = true;
+            rop.Initialized();
         }
 
         /// <summary>
@@ -15805,8 +16065,9 @@ namespace Math.Gmp.Native
         public static void mpf_init_set_d(mpf_t rop, double op)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            rop.Initializing();
             SafeNativeMethods.__gmpf_init_set_d(rop.ToIntPtr(), op);
-            rop._initialized = true;
+            rop.Initialized();
         }
 
         /// <summary>
@@ -15857,8 +16118,9 @@ namespace Math.Gmp.Native
         public static void mpf_init_set_si(mpf_t rop, int /*long int*/ op)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            rop.Initializing();
             SafeNativeMethods.__gmpf_init_set_si(rop.ToIntPtr(), op);
-            rop._initialized = true;
+            rop.Initialized();
         }
 
         /// <summary>
@@ -15921,8 +16183,9 @@ namespace Math.Gmp.Native
         public static int mpf_init_set_str(mpf_t rop, /*const*/ char_ptr str, int @base)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            rop.Initializing();
             int result = SafeNativeMethods.__gmpf_init_set_str(rop.ToIntPtr(), str.ToIntPtr(), @base);
-            rop._initialized = true;
+            rop.Initialized();
             return result;
         }
 
@@ -15974,8 +16237,9 @@ namespace Math.Gmp.Native
         public static void mpf_init_set_ui(mpf_t rop, uint /*unsigned long int*/ op)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            rop.Initializing();
             SafeNativeMethods.__gmpf_init_set_ui(rop.ToIntPtr(), op);
-            rop._initialized = true;
+            rop.Initialized();
         }
 
         /// <summary>
@@ -16058,6 +16322,7 @@ namespace Math.Gmp.Native
         public static size_t mpf_inp_str(mpf_t rop, ptr<FILE> stream, int @base)
         {
             if (rop == null) throw new ArgumentNullException("rop");
+            if (stream == null) throw new ArgumentNullException("stream");
             if (IntPtr.Size == 4)
                 return new size_t(SafeNativeMethods.__gmpf_inp_str_x86(rop.ToIntPtr(), stream.Value.Value, @base));
             else
@@ -16455,6 +16720,7 @@ namespace Math.Gmp.Native
         public static size_t mpf_out_str(ptr<FILE> stream, int @base, size_t n_digits, /*const*/ mpf_t op)
         {
             if (op == null) throw new ArgumentNullException("op");
+            if (stream == null) throw new ArgumentNullException("stream");
             if (IntPtr.Size == 4)
                 return new size_t(SafeNativeMethods.__gmpf_out_str_x86(stream.Value.Value, @base, (uint)n_digits, op.ToIntPtr()));
             else
@@ -18861,7 +19127,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_gcd_1"/>
-        /// <seealso cref="mpn_gcdext"/>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpn_gcdext"/>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18920,7 +19186,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_gcd"/>
-        /// <seealso cref="mpn_gcdext"/>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpn_gcdext"/>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18958,6 +19224,105 @@ namespace Math.Gmp.Native
         //{
         //    return SafeNativeMethods.__gmpn_gcdext_1(mp_limb_signed_t*, mp_limb_signed_t*, mp_limb_t, mp_limb_t);
         //}
+
+        /// <summary>
+        /// Compute the greatest common divisor G of U and V. Compute a cofactor S such that G = US + VT.
+        /// </summary>
+        /// <param name="gp">The fisrt result operand.</param>
+        /// <param name="sp">The second result operand.</param>
+        /// <param name="sn">Pointer to the number of limbs of <paramref name="sp"/>.</param>
+        /// <param name="up">The first operand integer.</param>
+        /// <param name="un">The number of limbs of <paramref name="up"/>.</param>
+        /// <param name="vp">The second operand integer.</param>
+        /// <param name="vn">The number of limbs of <paramref name="vp"/>.</param>
+        /// <returns>The number of limbs of <paramref name="gp"/>.</returns>
+        /// <remarks>
+        /// <para>
+        /// Let U be defined by {<paramref name="up"/>, <paramref name="un"/>}
+        /// and let V be defined by {<paramref name="vp"/>, <paramref name="vn"/>}.
+        /// </para>
+        /// <para>
+        /// The second cofactor T is not computed but can easily be obtained from (G - U * S) / V (the division will be exact).
+        /// It is required that <paramref name="un"/> &#8805; <paramref name="vn"/> &gt; 0, 
+        /// and the most significant limb of {<paramref name="vp"/>, <paramref name="vn"/>} must be non-zero. 
+        /// </para>
+        /// <para>
+        /// Store G at <paramref name="gp"/> and let the return value define its limb count.
+        /// Store S at <paramref name="sp"/> and let | <paramref name="sn"/>.Value | define its limb count.
+        /// S can be negative; when this happens <paramref name="sn"/>.Value will be negative.
+        /// The area at <paramref name="gp"/> should have room for <paramref name="vn"/> limbs
+        /// and the area at <paramref name="sp"/> should have room for <paramref name="vn"/> + 1 limbs. 
+        /// </para>
+        /// <para>
+        /// Both source operands are destroyed. 
+        /// </para>
+        /// <para>
+        /// Compatibility notes: GMP 4.3.0 and 4.3.1 defined S less strictly.
+        /// Earlier as well as later GMP releases define S as described here.
+        /// GMP releases before GMP 4.3.0 required additional space for both input and output areas.
+        /// More precisely, the areas {<paramref name="up"/>, <paramref name="un"/> + 1} and
+        /// {<paramref name="vp"/>, <paramref name="vn"/> + 1} were destroyed (i.e. the operands
+        /// plus an extra limb past the end of each), and the areas pointed to by <paramref name="gp"/>
+        /// and <paramref name="sp"/> should each have room for <paramref name="un"/> + 1 limbs.
+        /// </para>
+        /// </remarks>
+        /// <seealso cref="mpn_gcd"/>
+        /// <seealso cref="mpn_gcd_1"/>
+        /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
+        /// <example>
+        /// <code language="C#">
+        /// // Create multi-precision operands, and expected result.
+        /// mp_ptr up = new mp_ptr(new uint[] { 0x40000000, 0x00000000 });
+        /// mp_ptr vp = new mp_ptr(new uint[] { 0x00000000, 0x00000001 });
+        /// mp_ptr gp = new mp_ptr(new uint[vp.Size * (IntPtr.Size / 4)]);
+        /// mp_ptr sp = new mp_ptr(new uint[(vp.Size + 1) * (IntPtr.Size / 4)]);
+        /// mp_ptr result = new mp_ptr(new uint[] { 0x40000000, 0x00000000 });
+        /// mp_ptr cofactor = new mp_ptr(new uint[] { 0x00000001, 0x00000000, 0x00000000 });
+        /// 
+        /// // Set gp = gcd(up, vp).
+        /// mp_size_t sn = 0;
+        /// mp_size_t size = gmp_lib.mpn_gcdext(gp, sp, ref sn, up, up.Size, vp, vp.Size);
+        /// 
+        /// // Assert result.
+        /// Assert.IsTrue(size == 1);
+        /// Assert.IsTrue(gp.SequenceEqual(result));
+        /// Assert.IsTrue(sn == 1);
+        /// Assert.IsTrue(sp.SequenceEqual(cofactor));
+        /// 
+        /// // Release unmanaged memory.
+        /// gmp_lib.free(gp, up, vp, sp, result, cofactor);
+        /// </code> 
+        /// <code language="VB.NET">
+        /// ' Create multi-precision operands, and expected result.
+        /// Dim up As New mp_ptr(New UInteger() { &amp;H40000000, &amp;H0})
+        /// Dim vp As New mp_ptr(New UInteger() { &amp;H0, &amp;H1})
+        /// Dim gp As New mp_ptr(New UInteger(vp.Size* (IntPtr.Size / 4) - 1) {})
+        /// Dim sp As New mp_ptr(New UInteger((vp.Size + 1) * (IntPtr.Size / 4) - 1) {})
+        /// Dim result As New mp_ptr(New UInteger() { &amp;H40000000, &amp;H0})
+        /// Dim cofactor As New mp_ptr(New UInteger() { &amp;H1, &amp;H0, &amp;H0})
+        /// 
+        /// ' Set gp = gcd(up, vp).
+        /// Dim sn As mp_size_t = 0
+        /// Dim size As mp_size_t = gmp_lib.mpn_gcdext(gp, sp, sn, up, up.Size, vp, vp.Size)
+        /// 
+        /// ' Assert result.
+        /// Assert.IsTrue(size = 1)
+        /// Assert.IsTrue(gp.SequenceEqual(result))
+        /// Assert.IsTrue(sn = 1)
+        /// Assert.IsTrue(sp.SequenceEqual(cofactor))
+        /// 
+        /// ' Release unmanaged memory.
+        /// gmp_lib.free(gp, up, vp, sp, result, cofactor)
+        /// </code> 
+        /// </example>
+        public static mp_size_t mpn_gcdext(mp_ptr gp, mp_ptr sp, ref mp_size_t sn, mp_ptr up, mp_size_t un, mp_ptr vp, mp_size_t vn)
+        {
+            if (gp == null) throw new ArgumentNullException("gp");
+            if (sp == null) throw new ArgumentNullException("sp");
+            if (up == null) throw new ArgumentNullException("up");
+            if (vp == null) throw new ArgumentNullException("vp");
+            return new mp_size_t(SafeNativeMethods.__gmpn_gcdext(gp.ToIntPtr(), sp.ToIntPtr(), ref sn.Value, up.ToIntPtr(), un, vp.ToIntPtr(), vn));
+        }
 
         /// <summary>
         /// Compute the greatest common divisor G of U and V. Compute a cofactor S such that G = US + VT.
@@ -19053,9 +19418,10 @@ namespace Math.Gmp.Native
         {
             if (gp == null) throw new ArgumentNullException("gp");
             if (sp == null) throw new ArgumentNullException("sp");
+            if (sn == null) throw new ArgumentNullException("sn");
             if (up == null) throw new ArgumentNullException("up");
             if (vp == null) throw new ArgumentNullException("vp");
-            return new mp_size_t(SafeNativeMethods.__gmpn_gcdext(gp.ToIntPtr(), sp.ToIntPtr(), ref sn.Value._value, up.ToIntPtr(), un, vp.ToIntPtr(), vn));
+            return new mp_size_t(SafeNativeMethods.__gmpn_gcdext(gp.ToIntPtr(), sp.ToIntPtr(), ref sn.Value.Value, up.ToIntPtr(), un, vp.ToIntPtr(), vn));
         }
 
         /// <summary>
@@ -22492,7 +22858,7 @@ namespace Math.Gmp.Native
             [DllImport(@"libgmp-10.dll", CallingConvention = CallingConvention.Cdecl)]
             public static extern void __gmp_set_memory_functions(IntPtr /*void*(*) (size_t)*/ alloc_func_ptr, IntPtr /*void*(*) (void*, size_t, size_t)*/ realloc_func_ptr, IntPtr /*void (*) (void*, size_t)*/ free_func_ptr);
 
-#endregion
+            #endregion
 
             #region "Random number routines."
 
