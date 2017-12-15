@@ -11,6 +11,509 @@ namespace Math.Gmp.Native
     /// <summary>
     /// Represents all of the functions of the GNU MP library.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// <h2>Functions Categories</h2>
+    /// </para>
+    /// <para><a name="Global_Variable_and_Constants"/><h3>Global Variable and Constants:</h3></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="gmp_errno">gmp_errno</see> - Gets or sets the global GMP error number.</description></item>
+    /// <item><description><see cref="gmp_version">gmp_version</see> - The GMP version number in the form “i.j.k”. This release is "6.1.2".</description></item>
+    /// <item><description><see cref="mp_bits_per_limb">mp_bits_per_limb</see> - The number of bits per limb.</description></item>
+    /// <item><description><see cref="mp_bytes_per_limb">mp_bytes_per_limb</see> - The number of bytes per limb.</description></item>
+    /// <item><description><see cref="mp_uint_per_limb">mp_uint_per_limb</see> - The number of 32-bit, unsigned integers per limb.</description></item>
+    /// </list>
+    /// <para><a name="Integer_Functions"/><h3>Integer Functions:</h3></para>
+    /// <para><a name="Initializing_Integers"/><h4>Initializing Integers:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_init">mpz_init</see> - Initialize <i>x</i>, and set its value to 0.</description></item>
+    /// <item><description><see cref="mpz_inits">mpz_inits</see> - Initialize a NULL-terminated list of <see cref="mpz_t">mpz_t</see> variables, and set their values to 0.</description></item>
+    /// <item><description><see cref="mpz_init2">mpz_init2</see> - Initialize <i>x</i>, with space for <i>n</i>-bit numbers, and set its value to 0.</description></item>
+    /// <item><description><see cref="mpz_clear">mpz_clear</see> - Free the space occupied by <i>x</i>.</description></item>
+    /// <item><description><see cref="mpz_clears">mpz_clears</see> - Free the space occupied by a NULL-terminated list of <see cref="mpz_t">mpz_t</see> variables.</description></item>
+    /// <item><description><see cref="mpz_realloc2">mpz_realloc2</see> - Change the space allocated for <i>x</i> to <i>n</i> bits.</description></item>
+    /// </list>
+    /// <para><a name="Assigning_Integers"/><h4>Assigning Integers:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_set">mpz_set</see> - Set the value of <i>rop</i> from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_set_ui">mpz_set_ui</see> - Set the value of <i>rop</i> from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_set_si">mpz_set_si</see> - Set the value of <i>rop</i> from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_set_d">mpz_set_d</see> - Set the value of <i>rop</i> from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_set_q">mpz_set_q</see> - Set the value of <i>rop</i> from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_set_f">mpz_set_f</see> - Set the value of <i>rop</i> from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_set_str">mpz_set_str</see> - Set the value of <i>rop</i> from <i>str</i>, a null-terminated C string in base <i>base</i>.</description></item>
+    /// <item><description><see cref="mpz_swap">mpz_swap</see> - Swap the values <i>rop1</i> and <i>rop2</i> efficiently.</description></item>
+    /// </list>
+    /// <para><a name="Simultaneous_Integer_Init_Assign"/><h4>Simultaneous Integer Init &amp; Assign:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_init_set">mpz_init_set</see> - Initialize <i>rop</i> with limb space and set the initial numeric value from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_init_set_ui">mpz_init_set_ui</see> - Initialize <i>rop</i> with limb space and set the initial numeric value from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_init_set_si">mpz_init_set_si</see> - Initialize <i>rop</i> with limb space and set the initial numeric value from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_init_set_d">mpz_init_set_d</see> - Initialize <i>rop</i> with limb space and set the initial numeric value from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_set_str">mpz_set_str</see> - Set the value of <i>rop</i> from <i>str</i>, a null-terminated C string in base <i>base</i>.</description></item>
+    /// </list>
+    /// <para><a name="Converting_Integers"/><h4>Converting Integers:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_get_ui">mpz_get_ui</see> - Return the value of <i>op</i> as an unsigned long.</description></item>
+    /// <item><description><see cref="mpz_get_si">mpz_get_si</see> - Return the value of <i>op</i> as an signed long.</description></item>
+    /// <item><description><see cref="mpz_get_d">mpz_get_d</see> - Convert <i>op</i> to a double, truncating if necessary (i.e. rounding towards zero).</description></item>
+    /// <item><description><see cref="mpz_get_d_2exp">mpz_get_d_2exp</see> - Convert <i>op</i> to a double, truncating if necessary (i.e. rounding towards zero), and returning the exponent separately.</description></item>
+    /// <item><description><see cref="mpz_get_str">mpz_get_str</see> - Convert <i>op</i> to a string of digits in base <i>base</i>.</description></item>
+    /// </list>
+    /// <para><a name="Integer_Arithmetic"/><h4>Integer Arithmetic:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_add">mpz_add</see> - Set <i>rop</i> to <i>op1</i> + <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_add_ui">mpz_add_ui</see> - Set <i>rop</i> to <i>op1</i> + <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_sub">mpz_sub</see> - Set <i>rop</i> to <i>op1</i> - <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_sub_ui">mpz_sub_ui</see> - Set <i>rop</i> to <i>op1</i> - <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_ui_sub">mpz_ui_sub</see> - Set <i>rop</i> to <i>op1</i> - <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_mul">mpz_mul</see> - Set <i>rop</i> to <i>op1</i> * <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_mul_si">mpz_mul_si</see> - Set <i>rop</i> to <i>op1</i> * <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_mul_ui">mpz_mul_ui</see> - Set <i>rop</i> to <i>op1</i> * <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_addmul">mpz_addmul</see> - Set <i>rop</i> to <i>rop</i> + <i>op1</i> * <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_addmul_ui">mpz_addmul_ui</see> - Set <i>rop</i> to <i>rop</i> + <i>op1</i> * <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_submul">mpz_submul</see> - Set <i>rop</i> to <i>rop</i> - <i>op1</i> * <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_submul_ui">mpz_submul_ui</see> - Set <i>rop</i> to <i>rop</i> - <i>op1</i> * <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_mul_2exp">mpz_mul_2exp</see> - Set <i>rop</i> to <i>op1</i> * 2^<i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_neg">mpz_neg</see> - Set <i>rop</i> to -<i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_abs">mpz_abs</see> - Set <i>rop</i> to the absolute value of <i>op</i>.</description></item>
+    /// </list>
+    /// <para><a name="Integer_Division"/><h4>Integer Division:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_cdiv_q">mpz_cdiv_q</see> - Set the quotient <i>q</i> to ceiling(<i>n</i> / <i>d</i>).</description></item>
+    /// <item><description><see cref="mpz_cdiv_r">mpz_cdiv_r</see> - Set the remainder <i>r</i> to <i>n</i> - q * <i>d</i> where q = ceiling(<i>n</i> / <i>d</i>).</description></item>
+    /// <item><description><see cref="mpz_cdiv_qr">mpz_cdiv_qr</see> - Set the quotient <i>q</i> to ceiling(<i>n</i> / <i>d</i>), and set the remainder <i>r</i> to <i>n</i> - <i>q</i> * <i>d</i>.</description></item>
+    /// <item><description><see cref="mpz_cdiv_q_ui">mpz_cdiv_q_ui</see> - Set the quotient <i>q</i> to ceiling(<i>n</i> / <i>d</i>), and return the remainder r = | <i>n</i> - <i>q</i> * <i>d</i> |.</description></item>
+    /// <item><description><see cref="mpz_cdiv_r_ui">mpz_cdiv_r_ui</see> - Set the remainder <i>r</i> to <i>n</i> - q * <i>d</i> where q = ceiling(<i>n</i> / <i>d</i>), and return | <i>r</i> |.</description></item>
+    /// <item><description><see cref="mpz_cdiv_qr_ui">mpz_cdiv_qr_ui</see> - Set quotient <i>q</i> to ceiling(<i>n</i> / <i>d</i>), set the remainder <i>r</i> to <i>n</i> - <i>q</i> * <i>d</i>, and return | <i>r</i> |.</description></item>
+    /// <item><description><see cref="mpz_cdiv_ui">mpz_cdiv_ui</see> - Return the remainder | r | where r = <i>n</i> - q * <i>d</i>, and where q = ceiling(<i>n</i> / <i>d</i>).</description></item>
+    /// <item><description><see cref="mpz_cdiv_q_2exp">mpz_cdiv_q_2exp</see> - Set the quotient <i>q</i> to ceiling(<i>n</i> / 2^<i>b</i>).</description></item>
+    /// <item><description><see cref="mpz_cdiv_r_2exp">mpz_cdiv_r_2exp</see> - Set the remainder <i>r</i> to <i>n</i> - q * 2^<i>b</i> where q = ceiling(<i>n</i> / 2^<i>b</i>).</description></item>
+    /// <item><description><see cref="mpz_fdiv_q">mpz_fdiv_q</see> - Set the quotient <i>q</i> to floor(<i>n</i> / <i>d</i>).</description></item>
+    /// <item><description><see cref="mpz_fdiv_r">mpz_fdiv_r</see> - Set the remainder <i>r</i> to <i>n</i> - q * <i>d</i> where q = floor(<i>n</i> / <i>d</i>).</description></item>
+    /// <item><description><see cref="mpz_fdiv_qr">mpz_fdiv_qr</see> - Set the quotient <i>q</i> to floor(<i>n</i> / <i>d</i>), and set the remainder <i>r</i> to <i>n</i> - <i>q</i> * <i>d</i>.</description></item>
+    /// <item><description><see cref="mpz_fdiv_q_ui">mpz_fdiv_q_ui</see> - Set the quotient <i>q</i> to floor(<i>n</i> / <i>d</i>), and return the remainder r = | <i>n</i> - <i>q</i> * <i>d</i> |.</description></item>
+    /// <item><description><see cref="mpz_fdiv_r_ui">mpz_fdiv_r_ui</see> - Set the remainder <i>r</i> to <i>n</i> - q * <i>d</i> where q = floor(<i>n</i> / <i>d</i>), and return | <i>r</i> |.</description></item>
+    /// <item><description><see cref="mpz_fdiv_qr_ui">mpz_fdiv_qr_ui</see> - Set quotient <i>q</i> to floor(<i>n</i> / <i>d</i>), set the remainder <i>r</i> to <i>n</i> - <i>q</i> * <i>d</i>, and return | <i>r</i> |.</description></item>
+    /// <item><description><see cref="mpz_fdiv_ui">mpz_fdiv_ui</see> - Return the remainder | r | where r = <i>n</i> - q * <i>d</i>, and where q = floor(<i>n</i> / <i>d</i>).</description></item>
+    /// <item><description><see cref="mpz_fdiv_q_2exp">mpz_fdiv_q_2exp</see> - Set the quotient <i>q</i> to floor(<i>n</i> / 2^<i>b</i>).</description></item>
+    /// <item><description><see cref="mpz_fdiv_r_2exp">mpz_fdiv_r_2exp</see> - Set the remainder <i>r</i> to <i>n</i> - q * 2^<i>b</i> where q = floor(<i>n</i> / 2^<i>b</i>).</description></item>
+    /// <item><description><see cref="mpz_tdiv_q">mpz_tdiv_q</see> - Set the quotient <i>q</i> to trunc(<i>n</i> / <i>d</i>).</description></item>
+    /// <item><description><see cref="mpz_tdiv_r">mpz_tdiv_r</see> - Set the remainder <i>r</i> to <i>n</i> - q * <i>d</i> where q = trunc(<i>n</i> / <i>d</i>).</description></item>
+    /// <item><description><see cref="mpz_tdiv_qr">mpz_tdiv_qr</see> - Set the quotient <i>q</i> to trunc(<i>n</i> / <i>d</i>), and set the remainder <i>r</i> to <i>n</i> - <i>q</i> * <i>d</i>.</description></item>
+    /// <item><description><see cref="mpz_tdiv_q_ui">mpz_tdiv_q_ui</see> - Set the quotient <i>q</i> to trunc(<i>n</i> / <i>d</i>), and return the remainder r = | <i>n</i> - <i>q</i> * <i>d</i> |.</description></item>
+    /// <item><description><see cref="mpz_tdiv_r_ui">mpz_tdiv_r_ui</see> - Set the remainder <i>r</i> to <i>n</i> - q * <i>d</i> where q = trunc(<i>n</i> / <i>d</i>), and return | <i>r</i> |.</description></item>
+    /// <item><description><see cref="mpz_tdiv_qr_ui">mpz_tdiv_qr_ui</see> - Set quotient <i>q</i> to trunc(<i>n</i> / <i>d</i>), set the remainder <i>r</i> to <i>n</i> - <i>q</i> * <i>d</i>, and return | <i>r</i> |.</description></item>
+    /// <item><description><see cref="mpz_tdiv_ui">mpz_tdiv_ui</see> - Return the remainder | r | where r = <i>n</i> - q * <i>d</i>, and where q = trunc(<i>n</i> / <i>d</i>).</description></item>
+    /// <item><description><see cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</see> - Set the quotient <i>q</i> to trunc(<i>n</i> / 2^<i>b</i>).</description></item>
+    /// <item><description><see cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</see> - Set the remainder <i>r</i> to <i>n</i> - q * 2^<i>b</i> where q = trunc(<i>n</i> / 2^<i>b</i>).</description></item>
+    /// <item><description><see cref="mpz_mod">mpz_mod</see> - Set <i>r</i> to <i>n</i> mod <i>d</i>.</description></item>
+    /// <item><description><see cref="mpz_mod_ui">mpz_mod_ui</see> - Set <i>r</i> to <i>n</i> mod <i>d</i>.</description></item>
+    /// <item><description><see cref="mpz_divexact">mpz_divexact</see> - Set <i>q</i> to <i>n</i> / <i>d</i> when it is known in advance that <i>d</i> divides <i>n</i>. </description></item>
+    /// <item><description><see cref="mpz_divexact_ui">mpz_divexact_ui</see> - Set <i>q</i> to <i>n</i> / <i>d</i> when it is known in advance that <i>d</i> divides <i>n</i>. </description></item>
+    /// <item><description><see cref="mpz_divisible_p">mpz_divisible_p</see> - Return non-zero if <i>n</i> is exactly divisible by <i>d</i>.</description></item>
+    /// <item><description><see cref="mpz_divisible_ui_p">mpz_divisible_ui_p</see> - Return non-zero if <i>n</i> is exactly divisible by <i>d</i>.</description></item>
+    /// <item><description><see cref="mpz_divisible_2exp_p">mpz_divisible_2exp_p</see> - Return non-zero if <i>n</i> is exactly divisible by 2^<i>b</i>.</description></item>
+    /// <item><description><see cref="mpz_congruent_p">mpz_congruent_p</see> - Return non-zero if <i>n</i> is congruent to <i>c</i> modulo <i>d</i>.</description></item>
+    /// <item><description><see cref="mpz_congruent_ui_p">mpz_congruent_ui_p</see> - Return non-zero if <i>n</i> is congruent to <i>c</i> modulo <i>d</i>.</description></item>
+    /// <item><description><see cref="mpz_congruent_2exp_p">mpz_congruent_2exp_p</see> - Return non-zero if <i>n</i> is congruent to <i>c</i> modulo 2^<i>b</i>.</description></item>
+    /// </list>
+    /// <para><a name="Integer_Exponentiation"/><h4>Integer Exponentiation:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_powm">mpz_powm</see> - Set <i>rop</i> to (<i>base</i>^<i>exp</i>) modulo <i>mod</i>. </description></item>
+    /// <item><description><see cref="mpz_powm_ui">mpz_powm_ui</see> - Set <i>rop</i> to (<i>base</i>^<i>exp</i>) modulo <i>mod</i>. </description></item>
+    /// <item><description><see cref="mpz_powm_sec">mpz_powm_sec</see> - Set <i>rop</i> to (<i>base</i>^<i>exp</i>) modulo <i>mod</i>.</description></item>
+    /// <item><description><see cref="mpz_pow_ui">mpz_pow_ui</see> - Set <i>rop</i> to <i>base</i>^<i>exp</i>. The case 0^0 yields 1. </description></item>
+    /// <item><description><see cref="mpz_ui_pow_ui">mpz_ui_pow_ui</see> - Set <i>rop</i> to <i>base</i>^<i>exp</i>. The case 0^0 yields 1.</description></item>
+    /// </list>
+    /// <para><a name="Integer_Roots"/><h4>Integer Roots:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_root">mpz_root</see> - Set <i>rop</i> to the truncated integer part of the <i>n</i>th root of <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_rootrem">mpz_rootrem</see> - Set <i>root</i> to the truncated integer part of the <i>n</i>th root of <i>u</i>. Set <i>rem</i> to the remainder, <i>u</i> - <i>root</i>^<i>n</i>. </description></item>
+    /// <item><description><see cref="mpz_sqrt">mpz_sqrt</see> - Set <i>rop</i> to the truncated integer part of the square root of <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_sqrtrem">mpz_sqrtrem</see> - Set <i>rop1</i> to the truncated integer part of the square root of <i>op</i>, like <see cre="mpz_sqrt">mpz_sqrt</see>. Set <i>rop2</i> to the remainder <i>op</i> - <i>rop1</i> * <i>rop1</i>, which will be zero if <i>op</i> is a perfect square.</description></item>
+    /// <item><description><see cref="mpz_perfect_power_p">mpz_perfect_power_p</see> - Return non-zero if <i>op</i> is a perfect power, i.e., if there exist integers a and b, with b &gt; 1, such that <i>op</i> = a^b. </description></item>
+    /// <item><description><see cref="mpz_perfect_square_p">mpz_perfect_square_p</see> - Return non-zero if <i>op</i> is a perfect square, i.e., if the square root of <i>op</i> is an integer.</description></item>
+    /// </list>
+    /// <para><a name="Number_Theoretic_Functions"/><h4>Number Theoretic Functions:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_probab_prime_p">mpz_probab_prime_p</see> - Determine whether <i>n</i> is prime.</description></item>
+    /// <item><description><see cref="mpz_nextprime">mpz_nextprime</see> - Set <i>rop</i> to the next prime greater than <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_gcd">mpz_gcd</see> - Set <i>rop</i> to the greatest common divisor of <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_gcd_ui">mpz_gcd_ui</see> - Compute the greatest common divisor of <i>op1</i> and <i>op2</i>. If <i>rop</i> is not null, store the result there. </description></item>
+    /// <item><description><see cref="mpz_gcdext">mpz_gcdext</see> - Set <i>g</i> to the greatest common divisor of <i>a</i> and <i>b</i>, and in addition set <i>s</i> and <i>t</i> to coefficients satisfying <i>a</i> * <i>s</i> + <i>b</i> * <i>t</i> = <i>g</i>.</description></item>
+    /// <item><description><see cref="mpz_lcm">mpz_lcm</see> - Set <i>rop</i> to the least common multiple of <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_lcm_ui">mpz_lcm_ui</see> - Set <i>rop</i> to the least common multiple of <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_invert">mpz_invert</see> - Compute the inverse of <i>op1</i> modulo <i>op2</i> and put the result in <i>rop</i>.</description></item>
+    /// <item><description><see cref="mpz_jacobi">mpz_jacobi</see> - Calculate the Jacobi symbol (<i>a</i>/<i>b</i>).</description></item>
+    /// <item><description><see cref="mpz_legendre">mpz_legendre</see> - Calculate the Legendre symbol (<i>a</i>/<i>p</i>).</description></item>
+    /// <item><description><see cref="mpz_kronecker">mpz_kronecker</see> - Calculate the Jacobi symbol (<i>a</i>/<i>b</i>) with the Kronecker extension (<i>a</i>/2) = (2/<i>a</i>) when <i>a</i> odd, or (<i>a</i>/2) = 0 when <i>a</i> even. </description></item>
+    /// <item><description><see cref="mpz_kronecker_si">mpz_kronecker_si</see> - Calculate the Jacobi symbol (<i>a</i>/<i>b</i>) with the Kronecker extension (<i>a</i>/2) = (2/<i>a</i>) when <i>a</i> odd, or (<i>a</i>/2) = 0 when <i>a</i> even. </description></item>
+    /// <item><description><see cref="mpz_kronecker_ui">mpz_kronecker_ui</see> - Calculate the Jacobi symbol (<i>a</i>/<i>b</i>) with the Kronecker extension (<i>a</i>/2) = (2/<i>a</i>) when <i>a</i> odd, or (<i>a</i>/2) = 0 when <i>a</i> even. </description></item>
+    /// <item><description><see cref="mpz_si_kronecker">mpz_si_kronecker</see> - Calculate the Jacobi symbol (<i>a</i>/<i>b</i>) with the Kronecker extension (<i>a</i>/2) = (2/<i>a</i>) when <i>a</i> odd, or (<i>a</i>/2) = 0 when <i>a</i> even. </description></item>
+    /// <item><description><see cref="mpz_ui_kronecker">mpz_ui_kronecker</see> - Calculate the Jacobi symbol (<i>a</i>/<i>b</i>) with the Kronecker extension (<i>a</i>/2) = (2/<i>a</i>) when <i>a</i> odd, or (<i>a</i>/2) = 0 when <i>a</i> even. </description></item>
+    /// <item><description><see cref="mpz_remove">mpz_remove</see> - Remove all occurrences of the factor <i>f</i> from <i>op</i> and store the result in <i>rop</i>.</description></item>
+    /// <item><description><see cref="mpz_fac_ui">mpz_fac_ui</see> - Set <i>rop</i> to the factorial <i>n</i>!.</description></item>
+    /// <item><description><see cref="mpz_2fac_ui">mpz_2fac_ui</see> - Set <i>rop</i> to the double-factorial <i>n</i>!!.</description></item>
+    /// <item><description><see cref="mpz_mfac_uiui">mpz_mfac_uiui</see> - Set <i>rop</i> to the m-multi-factorial <i>n</i>!^(<i>m</i>)n.</description></item>
+    /// <item><description><see cref="mpz_primorial_ui">mpz_primorial_ui</see> - Set <i>rop</i> to the primorial of <i>n</i>, i.e. the product of all positive prime numbers &#8804; <i>n</i>. </description></item>
+    /// <item><description><see cref="mpz_bin_ui">mpz_bin_ui</see> - Compute the binomial coefficient <i>n</i> over <i>k</i> and store the result in <i>rop</i>.</description></item>
+    /// <item><description><see cref="mpz_bin_uiui">mpz_bin_uiui</see> - Compute the binomial coefficient <i>n</i> over <i>k</i> and store the result in <i>rop</i>.</description></item>
+    /// <item><description><see cref="mpz_fib_ui">mpz_fib_ui</see> - Sets <i>fn</i> to to F[<i>n</i>], the <i>n</i>’th Fibonacci number. </description></item>
+    /// <item><description><see cref="mpz_fib2_ui">mpz_fib2_ui</see> - Sets <i>fn</i> to F[<i>n</i>], and <i>fnsub1</i> to F[<i>n</i> - 1]. </description></item>
+    /// <item><description><see cref="mpz_lucnum_ui">mpz_lucnum_ui</see> - Sets <i>ln</i> to to L[<i>n</i>], the <i>n</i>’th Lucas number. </description></item>
+    /// <item><description><see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see> - Sets <i>ln</i> to L[<i>n</i>], and <i>lnsub1</i> to L[<i>n</i> - 1]. </description></item>
+    /// <item><description><see cref="mpz_millerrabin">mpz_millerrabin</see> - An implementation of the probabilistic primality test found in Knuth's Seminumerical Algorithms book.</description></item>
+    /// </list>
+    /// <para><a name="Integer_Comparisons"/><h4>Integer Comparisons:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_cmp">mpz_cmp</see> - Compare <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_cmp_d">mpz_cmp_d</see> - Compare <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_cmp_si">mpz_cmp_si</see> - Compare <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_cmp_ui">mpz_cmp_ui</see> - Compare <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_cmpabs">mpz_cmpabs</see> - Compare the absolute values of <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_cmpabs_d">mpz_cmpabs_d</see> - Compare the absolute values of <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_cmpabs_ui">mpz_cmpabs_ui</see> - Compare the absolute values of <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpz_sgn">mpz_sgn</see> - Return +1 if <i>op</i> &gt; 0, 0 if <i>op</i> = 0, and -1 if <i>op</i> &lt; 0.</description></item>
+    /// </list>
+    /// <para><a name="Integer_Logic_and_Bit_Fiddling"/><h4>Integer Logic and Bit Fiddling:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_and">mpz_and</see> - Set <i>rop</i> to <i>op1</i> bitwise-and <i>op2</i>. </description></item>
+    /// <item><description><see cref="mpz_ior">mpz_ior</see> - Set <i>rop</i> to <i>op1</i> bitwise inclusive-or <i>op2</i>. </description></item>
+    /// <item><description><see cref="mpz_xor">mpz_xor</see> - Set <i>rop</i> to <i>op1</i> bitwise exclusive-or <i>op2</i>. </description></item>
+    /// <item><description><see cref="mpz_com">mpz_com</see> - Set <i>rop</i> to the one’s complement of <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_popcount">mpz_popcount</see> - Return the population count of <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_hamdist">mpz_hamdist</see> - Return the hamming distance between the two operands.</description></item>
+    /// <item><description><see cref="mpz_scan0">mpz_scan0</see> - Scan <i>op</i> for 0 bit.</description></item>
+    /// <item><description><see cref="mpz_scan1">mpz_scan1</see> - Scan <i>op</i> for 1 bit.</description></item>
+    /// <item><description><see cref="mpz_setbit">mpz_setbit</see> - Set bit <i>bit_index</i> in <i>rop</i>.</description></item>
+    /// <item><description><see cref="mpz_clrbit">mpz_clrbit</see> - Clear bit <i>bit_index</i> in <i>rop</i>.</description></item>
+    /// <item><description><see cref="mpz_combit">mpz_combit</see> - Complement bit <i>bit_index</i> in <i>rop</i>. </description></item>
+    /// <item><description><see cref="mpz_tstbit">mpz_tstbit</see> - Test bit <i>bit_index</i> in <i>op</i> and return 0 or 1 accordingly. </description></item>
+    /// </list>
+    /// <para><a name="IO_of_Integers"/><h4>I/O of Integers:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_out_str">mpz_out_str</see> - Output <i>op</i> on stdio stream <i>stream</i>, as a string of digits in base <i>base</i>.</description></item>
+    /// <item><description><see cref="mpz_inp_str">mpz_inp_str</see> - Input a possibly white-space preceded string in base <i>base</i> from stdio stream <i>stream</i>, and put the read integer in <i>rop</i>. </description></item>
+    /// <item><description><see cref="mpz_out_raw">mpz_out_raw</see> - Output <i>op</i> on stdio stream <i>stream</i>, in raw binary format.</description></item>
+    /// <item><description><see cref="mpz_out_raw">mpz_out_raw</see>, and put the result in <i>rop</i>.</description></item>
+    /// </list>
+    /// <para><a name="Integer_Random_Numbers"/><h4>Integer Random Numbers:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_urandomb">mpz_urandomb</see> - Generate a uniformly distributed random integer in the range 0 to 2^<i>n</i> - 1, inclusive.</description></item>
+    /// <item><description><see cref="mpz_urandomm">mpz_urandomm</see> - Generate a uniform random integer in the range 0 to <i>n</i> - 1, inclusive.</description></item>
+    /// <item><description><see cref="mpz_rrandomb">mpz_rrandomb</see> - Generate a random integer with long strings of zeros and ones in the binary representation.</description></item>
+    /// <item><description><see cref="mpz_random">mpz_random</see> - Generate a random integer of at most <i>max_size</i> limbs.</description></item>
+    /// <item><description><see cref="mpz_random2">mpz_random2</see> - Generate a random integer of at most <i>max_size</i> limbs, with long strings of zeros and ones in the binary representation.</description></item>
+    /// </list>
+    /// <para><a name="Integer_Import_and_Export"/><h4>Integer Import and Export:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_import">mpz_import</see> - Set <i>rop</i> from an array of word data at <i>op</i>.</description></item>
+    /// <item><description><see cref="O:Math.Gmp.Native.gmp_lib.mpz_export">mpz_export</see> - Fill <i>rop</i> with word data from <i>op</i>.</description></item>
+    /// </list>
+    /// <para><a name="Miscellaneous_Integer_Functions"/><h4>Miscellaneous Integer Functions:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpz_fits_sint_p">mpz_fits_sint_p</see> - Return non-zero iff the value of <i>op</i> fits in a signed 32-bit integer. Otherwise, return zero.</description></item>
+    /// <item><description><see cref="mpz_fits_slong_p">mpz_fits_slong_p</see> - Return non-zero iff the value of <i>op</i> fits in a signed 32-bit integer. Otherwise, return zero.</description></item>
+    /// <item><description><see cref="mpz_fits_sshort_p">mpz_fits_sshort_p</see> - Return non-zero iff the value of <i>op</i> fits in a signed 16-bit integer. Otherwise, return zero.</description></item>
+    /// <item><description><see cref="mpz_fits_uint_p">mpz_fits_uint_p</see> - Return non-zero iff the value of <i>op</i> fits in an unsigned 32-bit integer. Otherwise, return zero.</description></item>
+    /// <item><description><see cref="mpz_fits_ulong_p">mpz_fits_ulong_p</see> - Return non-zero iff the value of <i>op</i> fits in an unsigned 32-bit integer. Otherwise, return zero.</description></item>
+    /// <item><description><see cref="mpz_fits_ushort_p">mpz_fits_ushort_p</see> - Return non-zero iff the value of <i>op</i> fits in an unsigned 16-bit integer. Otherwise, return zero.</description></item>
+    /// <item><description><see cref="mpz_sizeinbase">mpz_sizeinbase</see> - Return the size of <i>op</i> measured in number of digits in the given <i>base</i>.</description></item>
+    /// <item><description><see cref="mpz_even_p">mpz_even_p</see> - Determine whether <i>op</i> is even.</description></item>
+    /// <item><description><see cref="mpz_odd_p">mpz_odd_p</see> - Determine whether <i>op</i> is odd.</description></item>
+    /// </list>
+    /// <para><a name="Integer_Special_Functions"/><h4>Integer Special Functions:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="_mpz_realloc">_mpz_realloc</see> - Change the space for <i>integer</i> to <i>new_alloc</i> limbs.</description></item>
+    /// <item><description><see cref="mpz_getlimbn">mpz_getlimbn</see> - Return limb number <i>n</i> from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpz_size">mpz_size</see> - Return the size of <i>op</i> measured in number of limbs.</description></item>
+    /// <item><description><see cref="mpz_limbs_read">mpz_limbs_read</see> - Return a pointer to the limb array representing the absolute value of <i>x</i>.</description></item>
+    /// <item><description><see cref="mpz_limbs_write">mpz_limbs_write</see> - Return a pointer to the limb array of <i>x</i>, intended for write access.</description></item>
+    /// <item><description><see cref="mpz_limbs_modify">mpz_limbs_modify</see> - Return a pointer to the limb array of <i>x</i>, intended for write access.</description></item>
+    /// <item><description><see cref="mpz_limbs_finish">mpz_limbs_finish</see> - Updates the internal size field of <i>x</i>.</description></item>
+    /// <item><description><see cref="mpz_roinit_n">mpz_roinit_n</see> - Special initialization of <i>x</i>, using the given limb array and size.</description></item>
+    /// </list>
+    /// <para><a name="Rational_Number_Functions"/><h3>Rational Number Functions:</h3></para>
+    /// <para><a name="Initializing_Rationals"/><h4>Initializing Rationals:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpq_canonicalize">mpq_canonicalize</see> - Remove any factors that are common to the numerator and denominator of <i>op</i>, and make the denominator positive.</description></item>
+    /// <item><description><see cref="mpq_init">mpq_init</see> - Initialize <i>x</i> and set it to 0/1.</description></item>
+    /// <item><description><see cref="mpq_inits">mpq_inits</see> - Initialize a NULL-terminated list of <see cref="mpq_t">mpq_t</see> variables, and set their values to 0/1. </description></item>
+    /// <item><description><see cref="mpq_clear">mpq_clear</see> - Free the space occupied by <i>x</i>.</description></item>
+    /// <item><description><see cref="mpq_clears">mpq_clears</see> - Free the space occupied by a NULL-terminated list of <see cref="mpq_t">mpq_t</see> variables. </description></item>
+    /// <item><description><see cref="mpq_set">mpq_set</see> - Assign <i>rop</i> from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpq_set_z">mpq_set_z</see> - Assign <i>rop</i> from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpq_set_ui">mpq_set_ui</see> - Set the value of <i>rop</i> to <i>op1</i> / <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpq_set_si">mpq_set_si</see> - Set the value of <i>rop</i> to <i>op1</i> / <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpq_set_str">mpq_set_str</see> - Set <i>rop</i> from a null-terminated string <i>str</i> in the given <i>base</i>.</description></item>
+    /// <item><description><see cref="mpq_swap">mpq_swap</see> - Swap the values <i>rop1</i> and <i>rop2</i> efficiently. </description></item>
+    /// </list>
+    /// <para><a name="Rational_Conversions"/><h4>Rational Conversions:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpq_get_d">mpq_get_d</see> - Convert <i>op</i> to a <see cref="System.Double">System.Double</see>, truncating if necessary (i.e. rounding towards zero). </description></item>
+    /// <item><description><see cref="mpq_set_d">mpq_set_d</see> - Set <i>rop</i> to the value of <i>op</i>. There is no rounding, this conversion is exact. </description></item>
+    /// <item><description><see cref="mpq_set_f">mpq_set_f</see> - Set <i>rop</i> to the value of <i>op</i>. There is no rounding, this conversion is exact. </description></item>
+    /// <item><description><see cref="mpq_get_str">mpq_get_str</see> - Convert <i>op</i> to a string of digits in base <i>base</i>.</description></item>
+    /// </list>
+    /// <para><a name="Rational_Arithmetic"/><h4>Rational Arithmetic:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpq_add">mpq_add</see> - Set <i>sum</i> to <i>addend1</i> + <i>addend2</i>. </description></item>
+    /// <item><description><see cref="mpq_sub">mpq_sub</see> - Set <i>difference</i> to <i>minuend</i> - <i>subtrahend</i>.</description></item>
+    /// <item><description><see cref="mpq_mul">mpq_mul</see> - Set <i>product</i> to <i>multiplier</i> * <i>multiplicand</i>. </description></item>
+    /// <item><description><see cref="mpq_mul_2exp">mpq_mul_2exp</see> - Set <i>rop</i> to <i>op1</i> * 2^<i>op2</i>.</description></item>
+    /// <item><description><see cref="mpq_div">mpq_div</see> - Set <i>quotient</i> to <i>dividend</i> / <i>divisor</i>. </description></item>
+    /// <item><description><see cref="mpq_div_2exp">mpq_div_2exp</see> - Set <i>rop</i> to <i>op1</i> / 2^<i>op2</i>.</description></item>
+    /// <item><description><see cref="mpq_neg">mpq_neg</see> - Set <i>negated_operand</i> to -<i>operand</i>.</description></item>
+    /// <item><description><see cref="mpq_abs">mpq_abs</see> - Set <i>rop</i> to the absolute value of <i>op</i>.</description></item>
+    /// <item><description><see cref="mpq_inv">mpq_inv</see> - Set <i>inverted_number</i> to 1 / <i>number</i>.</description></item>
+    /// </list>
+    /// <para><a name="Comparing_Rationals"/><h4>Comparing Rationals:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpq_cmp">mpq_cmp</see> - Compare <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpq_cmp_z">mpq_cmp_z</see> - Compare <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpq_cmp_ui">mpq_cmp_ui</see> - Compare <i>op1</i> and <i>num2</i> / <i>den2</i>.</description></item>
+    /// <item><description><see cref="mpq_cmp_si">mpq_cmp_si</see> - Compare <i>op1</i> and <i>num2</i> / <i>den2</i>.</description></item>
+    /// <item><description><see cref="mpq_sgn">mpq_sgn</see> - Return +1 if <i>op</i> &gt; 0, 0 if <i>op</i> = 0, and -1 if <i>op</i> &lt; 0. </description></item>
+    /// <item><description><see cref="mpq_equal">mpq_equal</see> - Return non-zero if <i>op1</i> and <i>op2</i> are equal, zero if they are non-equal. </description></item>
+    /// </list>
+    /// <para><a name="Applying_Integer_Functions"/><h4>Applying Integer Functions:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpq_numref">mpq_numref</see> - Return a reference to the numerator <i>op</i>.</description></item>
+    /// <item><description><see cref="mpq_denref">mpq_denref</see> - Return a reference to the denominator <i>op</i>.</description></item>
+    /// <item><description><see cref="mpq_get_num">mpq_get_num</see> - Set <i>numerator</i> to the numerator of <i>rational</i>.</description></item>
+    /// <item><description><see cref="mpq_get_den">mpq_get_den</see> - Set <i>denominator</i> to the denominator of <i>rational</i>.</description></item>
+    /// <item><description><see cref="mpq_set_num">mpq_set_num</see> - Set the numerator of <i>rational</i> to <i>numerator</i>.</description></item>
+    /// <item><description><see cref="mpq_set_den">mpq_set_den</see> - Set the denominator of <i>rational</i> to <i>denominator</i>.</description></item>
+    /// </list>
+    /// <para><a name="IO_of_Rationals"/><h4>I/O of Rationals:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpq_out_str">mpq_out_str</see> - Output <i>op</i> on stdio stream <i>stream</i>, as a string of digits in base <i>base</i>.</description></item>
+    /// <item><description><see cref="mpq_inp_str">mpq_inp_str</see> - Read a string of digits from <i>stream</i> and convert them to a rational in <i>rop</i>.</description></item>
+    /// </list>
+    /// <para><a name="Floating_point_Functions"/><h3>Floating-point Functions:</h3></para>
+    /// <para><a name="Initializing_Floats"/><h4>Initializing Floats:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpf_set_default_prec">mpf_set_default_prec</see> - Set the default precision to be at least <i>prec</i> bits.</description></item>
+    /// <item><description><see cref="mpf_get_default_prec">mpf_get_default_prec</see> - Return the default precision actually used. </description></item>
+    /// <item><description><see cref="mpf_init">mpf_init</see> - Initialize <i>x</i> to 0.</description></item>
+    /// <item><description><see cref="mpf_init2">mpf_init2</see> - Initialize <i>x</i> to 0 and set its precision to be at least <i>prec</i> bits.</description></item>
+    /// <item><description><see cref="mpf_inits">mpf_inits</see> - Initialize a NULL-terminated list of <see cref="mpf_t">mpf_t</see> variables, and set their values to 0.</description></item>
+    /// <item><description><see cref="mpf_clear">mpf_clear</see> - Free the space occupied by <i>x</i>.</description></item>
+    /// <item><description><see cref="mpf_clears">mpf_clears</see> - Free the space occupied by a NULL-terminated list of <see cref="mpf_t">mpf_t</see> variables. </description></item>
+    /// <item><description><see cref="mpf_get_prec">mpf_get_prec</see> - Return the current precision of <i>op</i>, in bits. </description></item>
+    /// <item><description><see cref="mpf_set_prec">mpf_set_prec</see> - Set the precision of <i>rop</i> to be at least <i>prec</i> bits.</description></item>
+    /// <item><description><see cref="mpf_set_prec_raw">mpf_set_prec_raw</see> - Set the precision of <i>rop</i> to be at least <i>prec</i> bits, without changing the memory allocated. </description></item>
+    /// <item><description><see cref="mpf_size">mpf_size</see> - Return the number of limbs currently in use.</description></item>
+    /// </list>
+    /// <para><a name="Assigning_Floats"/><h4>Assigning Floats:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpf_set">mpf_set</see> - Set the value of <i>rop</i> from <i>op</i>. </description></item>
+    /// <item><description><see cref="mpf_set_ui">mpf_set_ui</see> - Set the value of <i>rop</i> from <i>op</i>. </description></item>
+    /// <item><description><see cref="mpf_set_si">mpf_set_si</see> - Set the value of <i>rop</i> from <i>op</i>. </description></item>
+    /// <item><description><see cref="mpf_set_d">mpf_set_d</see> - Set the value of <i>rop</i> from <i>op</i>. </description></item>
+    /// <item><description><see cref="mpf_set_z">mpf_set_z</see> - Set the value of <i>rop</i> from <i>op</i>. </description></item>
+    /// <item><description><see cref="mpf_set_q">mpf_set_q</see> - Set the value of <i>rop</i> from <i>op</i>. </description></item>
+    /// <item><description><see cref="mpf_set_str">mpf_set_str</see> - Set the value of <i>rop</i> from the string in <i>str</i>.</description></item>
+    /// <item><description><see cref="mpf_swap">mpf_swap</see> - Swap <i>rop1</i> and <i>rop2</i> efficiently. </description></item>
+    /// </list>
+    /// <para><a name="Simultaneous_Float_Init_Assign"/><h4>Simultaneous Float Init &amp; Assign:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpf_init_set">mpf_init_set</see> - Initialize <i>rop</i> and set its value from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpf_init_set_ui">mpf_init_set_ui</see> - Initialize <i>rop</i> and set its value from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpf_init_set_si">mpf_init_set_si</see> - Initialize <i>rop</i> and set its value from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpf_init_set_d">mpf_init_set_d</see> - Initialize <i>rop</i> and set its value from <i>op</i>.</description></item>
+    /// <item><description><see cref="mpf_init_set_str">mpf_init_set_str</see> - Initialize <i>rop</i> and set its value from the string in <i>str</i>.</description></item>
+    /// </list>
+    /// <para><a name="Converting_Floats"/><h4>Converting Floats:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpf_get_d">mpf_get_d</see> - Convert <i>op</i> to a <see cref="System.Double">System.Double</see>, truncating if necessary (i.e. rounding towards zero). </description></item>
+    /// <item><description><see cref="mpf_get_d_2exp">mpf_get_d_2exp</see> - Convert op to a double, truncating if necessary (i.e. rounding towards zero), and with an exponent returned separately. </description></item>
+    /// <item><description><see cref="mpf_get_si">mpf_get_si</see> - Convert <i>op</i> to a 32-bit integer, truncating any fraction part.</description></item>
+    /// <item><description><see cref="mpf_get_ui">mpf_get_ui</see> - Convert <i>op</i> to an unsigned 32-bit integer, truncating any fraction part.</description></item>
+    /// <item><description><see cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str">mpf_get_str</see> - Convert <i>op</i> to a string of digits in base <i>base</i>.</description></item>
+    /// </list>
+    /// <para><a name="Float_Arithmetic"/><h4>Float Arithmetic:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpf_add">mpf_add</see> - Set <i>rop</i> to <i>op1</i> + <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpf_add_ui">mpf_add_ui</see> - Set <i>rop</i> to <i>op1</i> + <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpf_sub">mpf_sub</see> - Set <i>rop</i> to <i>op1</i> - <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpf_ui_sub">mpf_ui_sub</see> - Set <i>rop</i> to <i>op1</i> - <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpf_sub_ui">mpf_sub_ui</see> - Set <i>rop</i> to <i>op1</i> - <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpf_mul">mpf_mul</see> - Set <i>rop</i> to <i>op1</i> * <i>op2</i>. </description></item>
+    /// <item><description><see cref="mpf_mul_ui">mpf_mul_ui</see> - Set <i>rop</i> to <i>op1</i> * <i>op2</i>. </description></item>
+    /// <item><description><see cref="mpf_div">mpf_div</see> - Set <i>rop</i> to <i>op1</i> / <i>op2</i>. </description></item>
+    /// <item><description><see cref="mpf_ui_div">mpf_ui_div</see> - Set <i>rop</i> to <i>op1</i> / <i>op2</i>. </description></item>
+    /// <item><description><see cref="mpf_div_ui">mpf_div_ui</see> - Set <i>rop</i> to <i>op1</i> / <i>op2</i>. </description></item>
+    /// <item><description><see cref="mpf_sqrt">mpf_sqrt</see> - Set <i>rop</i> to the square root of <i>op</i>. </description></item>
+    /// <item><description><see cref="mpf_sqrt_ui">mpf_sqrt_ui</see> - Set <i>rop</i> to the square root of <i>op</i>. </description></item>
+    /// <item><description><see cref="mpf_pow_ui">mpf_pow_ui</see> - Set <i>rop</i> to <i>op1</i>^<i>op2</i>.</description></item>
+    /// <item><description><see cref="mpf_neg">mpf_neg</see> - Set <i>rop</i> to -<i>op</i>. </description></item>
+    /// <item><description><see cref="mpf_abs">mpf_abs</see> - Set <i>rop</i> to | <i>op</i> |. </description></item>
+    /// <item><description><see cref="mpf_mul_2exp">mpf_mul_2exp</see> - Set <i>rop</i> to <i>op1</i> * 2^<i>op2</i>. </description></item>
+    /// <item><description><see cref="mpf_div_2exp">mpf_div_2exp</see> - Set <i>rop</i> to <i>op1</i> / 2^<i>op2</i>. </description></item>
+    /// </list>
+    /// <para><a name="Float_Comparison"/><h4>Float Comparison:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpf_cmp">mpf_cmp</see> - Compare <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpf_cmp_z">mpf_cmp_z</see> - Compare <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpf_cmp_d">mpf_cmp_d</see> - Compare <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpf_cmp_ui">mpf_cmp_ui</see> - Compare <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpf_cmp_si">mpf_cmp_si</see> - Compare <i>op1</i> and <i>op2</i>.</description></item>
+    /// <item><description><see cref="mpf_reldiff">mpf_reldiff</see> - Compute the relative difference between <i>op1</i> and <i>op2</i> and store the result in <i>rop</i>. This is | <i>op1</i> - <i>op2</i> | / <i>op1</i>. </description></item>
+    /// <item><description><see cref="mpf_sgn">mpf_sgn</see> - Return +1 if op &gt; 0, 0 if op = 0, and -1 if op &lt; 0. </description></item>
+    /// </list>
+    /// <para><a name="IO_of_Floats"/><h4>I/O of Floats:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpf_out_str">mpf_out_str</see> - Print <i>op</i> to <i>stream</i>, as a string of digits.</description></item>
+    /// <item><description><see cref="mpf_inp_str">mpf_inp_str</see> - Read a string in base <i>base</i> from <i>stream</i>, and put the read float in <i>rop</i>.</description></item>
+    /// </list>
+    /// <para><a name="Miscellaneous_Float_Functions"/><h4>Miscellaneous Float Functions:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpf_ceil">mpf_ceil</see> - Set <i>rop</i> to <i>op</i> rounded to the next higher integer. </description></item>
+    /// <item><description><see cref="mpf_floor">mpf_floor</see> - Set <i>rop</i> to <i>op</i> rounded to the next lower integer.</description></item>
+    /// <item><description><see cref="mpf_trunc">mpf_trunc</see> - Set <i>rop</i> to <i>op</i> rounded to the integer towards zero. </description></item>
+    /// <item><description><see cref="mpf_integer_p">mpf_integer_p</see> - Return non-zero if <i>op</i> is an integer.</description></item>
+    /// <item><description><see cref="mpf_fits_ulong_p">mpf_fits_ulong_p</see> - Return non-zero if <i>op</i> fits in an unsigned 32-bit integer, when truncated to an integer. </description></item>
+    /// <item><description><see cref="mpf_fits_slong_p">mpf_fits_slong_p</see> - Return non-zero if <i>op</i> fits in a 32-bit integer, when truncated to an integer. </description></item>
+    /// <item><description><see cref="mpf_fits_uint_p">mpf_fits_uint_p</see> - Return non-zero if <i>op</i> fits in an unsigned 32-bit integer, when truncated to an integer. </description></item>
+    /// <item><description><see cref="mpf_fits_sint_p">mpf_fits_sint_p</see> - Return non-zero if <i>op</i> fits in a 32-bit integer, when truncated to an integer. </description></item>
+    /// <item><description><see cref="mpf_fits_sshort_p">mpf_fits_sshort_p</see> - Return non-zero if <i>op</i> fits in a 16-bit integer, when truncated to an integer. </description></item>
+    /// <item><description><see cref="mpf_fits_ushort_p">mpf_fits_ushort_p</see> - Return non-zero if <i>op</i> fits in an unsigned 16-bit integer, when truncated to an integer. </description></item>
+    /// <item><description><see cref="mpf_urandomb">mpf_urandomb</see> - Generate a uniformly distributed random float in <i>rop</i>, such that 0 &#8804; rop &lt; 1, with <i>nbits</i> significant bits in the mantissa or less if the precision of <i>rop</i> is smaller.</description></item>
+    /// <item><description><see cref="mpf_random2">mpf_random2</see> - Generate a random float of at most <i>max_size</i> limbs, with long strings of zeros and ones in the binary representation.</description></item>
+    /// </list>
+    /// <para><a name="Low_level_Functions"/><h3>Low-level Functions:</h3></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpn_add_n">mpn_add_n</see> - Add {<i>s1p</i>, <i>n</i>} and {<i>s2p</i>, <i>n</i>}, and write the <i>n</i> least significant limbs of the result to <i>rp</i>. </description></item>
+    /// <item><description><see cref="mpn_add_1">mpn_add_1</see> - Add {<i>s1p</i>, <i>n</i>} and <i>s2limb</i>, and write the <i>n</i> least significant limbs of the result to <i>rp</i>.</description></item>
+    /// <item><description><see cref="mpn_add">mpn_add</see> - Add {<i>s1p</i>, <i>s1n</i>} and {<i>s2p</i>, <i>s2n</i>}, and write the <i>s1n</i> least significant limbs of the result to <i>rp</i>. </description></item>
+    /// <item><description><see cref="mpn_sub_n">mpn_sub_n</see> - Subtract {<i>s2p</i>, <i>n</i>} from {<i>s1p</i>, <i>n</i>}, and write the <i>n</i> least significant limbs of the result to <i>rp</i>.</description></item>
+    /// <item><description><see cref="mpn_sub_1">mpn_sub_1</see> - Subtract <i>s2limb</i> from {<i>s1p</i>, <i>n</i>}, and write the <i>n</i> least significant limbs of the result to <i>rp</i>.</description></item>
+    /// <item><description><see cref="mpn_sub">mpn_sub</see> - Subtract {<i>s2p</i>, <i>s2n</i>} from {<i>s1p</i>, <i>s1n</i>}, and write the <i>s1n</i> least significant limbs of the result to <i>rp</i>.</description></item>
+    /// <item><description><see cref="mpn_neg">mpn_neg</see> - Perform the negation of {<i>sp</i>, <i>n</i>}, and write the result to {<i>rp</i>, <i>n</i>}.</description></item>
+    /// <item><description><see cref="mpn_mul_n">mpn_mul_n</see> - Multiply {<i>s1p</i>, <i>n</i>} and {<i>s2p</i>, <i>n</i>}, and write the (2 * <i>n</i>)-limb result to <i>rp</i>.</description></item>
+    /// <item><description><see cref="mpn_mul">mpn_mul</see> - Multiply {<i>s1p</i>, <i>s1n</i>} and {<i>s2p</i>, <i>s2n</i>}, and write the (<i>s1n</i> + <i>s2n</i>)-limb result to <i>rp</i>.</description></item>
+    /// <item><description><see cref="mpn_sqr">mpn_sqr</see> - Compute the square of {<i>s1p</i>, <i>n</i>} and write the (2 * <i>n</i>)-limb result to <i>rp</i>.</description></item>
+    /// <item><description><see cref="mpn_mul_1">mpn_mul_1</see> - Multiply {<i>s1p</i>, <i>n</i>} by <i>s2limb</i>, and write the <i>n</i> least significant limbs of the product to <i>rp</i>.</description></item>
+    /// <item><description><see cref="mpn_addmul_1">mpn_addmul_1</see> - Multiply {<i>s1p</i>, <i>n</i>} and <i>s2limb</i>, and add the <i>n</i> least significant limbs of the product to {<i>rp</i>, <i>n</i>} and write the result to <i>rp</i>. </description></item>
+    /// <item><description><see cref="mpn_submul_1">mpn_submul_1</see> - Multiply {<i>s1p</i>, <i>n</i>} and <i>s2limb</i>, and subtract the <i>n</i> least significant limbs of the product from {<i>rp</i>, <i>n</i>} and write the result to <i>rp</i>.</description></item>
+    /// <item><description><see cref="mpn_tdiv_qr">mpn_tdiv_qr</see> - Divide {<i>np</i>, <i>nn</i>} by {<i>dp</i>, <i>dn</i>} and put the quotient at {<i>qp</i>, <i>nn</i> - <i>dn</i> + 1} and the remainder at {<i>rp</i>, <i>dn</i>}.</description></item>
+    /// <item><description><see cref="mpn_divrem_1">mpn_divrem_1</see> - Divide {<i>s2p</i>, <i>s2n</i>} by <i>s3limb</i>, and write the quotient at <i>r1p</i>.</description></item>
+    /// <item><description><see cref="mpn_divmod_1">mpn_divmod_1</see> - Divide {<i>s2p</i>, <i>s2n</i>} by <i>s3limb</i>, and write the quotient at <i>r1p</i>.</description></item>
+    /// <item><description><see cref="mpn_divexact_1">mpn_divexact_1</see> - Divide {<i>sp</i>, <i>n</i>} by <i>d</i>, expecting it to divide exactly, and writing the result to {r<i>rp</i>, <i>n</i>}.</description></item>
+    /// <item><description><see cref="mpn_divexact_by3">mpn_divexact_by3</see> - Divide {<i>sp</i>, <i>n</i>} by 3, expecting it to divide exactly, and writing the result to {<i>rp</i>, <i>n</i>}. </description></item>
+    /// <item><description><see cref="mpn_divexact_by3c">mpn_divexact_by3c</see> - Divide {<i>sp</i>, <i>n</i>} by 3, expecting it to divide exactly, and writing the result to {<i>rp</i>, <i>n</i>}. </description></item>
+    /// <item><description><see cref="mpn_mod_1">mpn_mod_1</see> - Divide {<i>s1p</i>, <i>s1n</i>} by <i>s2limb</i>, and return the remainder. </description></item>
+    /// <item><description><see cref="mpn_lshift">mpn_lshift</see> - Shift {<i>sp</i>, <i>n</i>} left by <i>count</i> bits, and write the result to {<i>rp</i>, <i>n</i>}. </description></item>
+    /// <item><description><see cref="mpn_rshift">mpn_rshift</see> - Shift {<i>sp</i>, <i>n</i>} right by <i>count</i> bits, and write the result to {<i>rp</i>, <i>n</i>}. </description></item>
+    /// <item><description><see cref="mpn_cmp">mpn_cmp</see> - Compare {<i>s1p</i>, <i>n</i>} and {<i>s2p</i>, <i>n</i>}.</description></item>
+    /// <item><description><see cref="mpn_zero_p">mpn_zero_p</see> - Test {<i>sp</i>, <i>n</i>} and return 1 if the operand is zero, 0 otherwise.</description></item>
+    /// <item><description><see cref="mpn_gcd">mpn_gcd</see> - Set {<i>rp</i>, retval} to the greatest common divisor of {<i>xp</i>, <i>xn</i>} and {<i>yp</i>, <i>yn</i>}.</description></item>
+    /// <item><description><see cref="mpn_gcd_1">mpn_gcd_1</see> - Return the greatest common divisor of {<i>xp</i>, <i>xn</i>} and <i>ylimb</i>.</description></item>
+    /// <item><description><see cref="O:Math.Gmp.Native.gmp_lib.mpn_gcdext">mpn_gcdext</see> - Compute the greatest common divisor G of U and V. Compute a cofactor S such that G = US + VT.</description></item>
+    /// <item><description><see cref="mpn_sqrtrem">mpn_sqrtrem</see> - Compute the square root of {<i>sp</i>, <i>n</i>} and put the result at {<i>r1p</i>, ceil(<i>n</i> / 2)} and the remainder at {<i>r2p</i>, retval}.</description></item>
+    /// <item><description><see cref="mpn_sizeinbase">mpn_sizeinbase</see> - Return the size of {<i>xp</i>, <i>n</i>} measured in number of digits in the given <i>base</i>.</description></item>
+    /// <item><description><see cref="mpn_get_str">mpn_get_str</see> - Convert {<i>s1p</i>, <i>s1n</i>} to a raw unsigned char array at <i>str</i> in base <i>base</i>, and return the number of characters produced.</description></item>
+    /// <item><description><see cref="mpn_set_str">mpn_set_str</see> - Convert bytes {<i>str</i>, <i>strsize</i>} in the given <i>base</i> to limbs at <i>rp</i>. </description></item>
+    /// <item><description><see cref="mpn_scan0">mpn_scan0</see> - Scan <i>s1p</i> from bit position <i>bit</i> for the next clear bit.</description></item>
+    /// <item><description><see cref="mpn_scan1">mpn_scan1</see> - Scan <i>s1p</i> from bit position <i>bit</i> for the next set bit.</description></item>
+    /// <item><description><see cref="mpn_random">mpn_random</see> - Generate a random number of length <i>r1n</i> and store it at <i>r1p</i>.</description></item>
+    /// <item><description><see cref="mpn_random2">mpn_random2</see> - Generate a random number of length <i>r1n</i> and store it at <i>r1p</i>.</description></item>
+    /// <item><description><see cref="mpn_popcount">mpn_popcount</see> - Count the number of set bits in {<i>s1p</i>, <i>n</i>}. </description></item>
+    /// <item><description><see cref="mpn_hamdist">mpn_hamdist</see> - Compute the hamming distance between {<i>s1p</i>, <i>n</i>} and {<i>s2p</i>, <i>n</i>}, which is the number of bit positions where the two operands have different bit values. </description></item>
+    /// <item><description><see cref="mpn_perfect_square_p">mpn_perfect_square_p</see> - Return non-zero iff {<i>s1p</i>, <i>n</i>} is a perfect square.</description></item>
+    /// <item><description><see cref="mpn_perfect_power_p">mpn_perfect_power_p</see> - Return non-zero iff {<i>sp</i>, <i>n</i>} is a perfect power.</description></item>
+    /// <item><description><see cref="mpn_and_n">mpn_and_n</see> - Perform the bitwise logical and of {<i>s1p</i>, <i>n</i>} and {<i>s2p</i>, <i>n</i>}, and write the result to {<i>rp</i>, <i>n</i>}. </description></item>
+    /// <item><description><see cref="mpn_ior_n">mpn_ior_n</see> - Perform the bitwise logical inclusive or of {<i>s1p</i>, <i>n</i>} and {<i>s2p</i>, <i>n</i>}, and write the result to {<i>rp</i>, <i>n</i>}. </description></item>
+    /// <item><description><see cref="mpn_xor_n">mpn_xor_n</see> - Perform the bitwise logical exclusive or of {<i>s1p</i>, <i>n</i>} and {<i>s2p</i>, <i>n</i>}, and write the result to {<i>rp</i>, <i>n</i>}. </description></item>
+    /// <item><description><see cref="mpn_andn_n">mpn_andn_n</see> - Perform the bitwise logical and of {<i>s1p</i>, <i>n</i>} and the bitwise complement of {<i>s2p</i>, <i>n</i>}, and write the result to {<i>rp</i>, <i>n</i>}.</description></item>
+    /// <item><description><see cref="mpn_iorn_n">mpn_iorn_n</see> - Perform the bitwise logical inclusive or of {<i>s1p</i>, <i>n</i>} and the bitwise complement of {<i>s2p</i>, <i>n</i>}, and write the result to {<i>rp</i>, <i>n</i>}. </description></item>
+    /// <item><description><see cref="mpn_nand_n">mpn_nand_n</see> - Perform the bitwise logical and of {<i>s1p</i>, <i>n</i>} and {<i>s2p</i>, <i>n</i>}, and write the bitwise complement of the result to {<i>rp</i>, <i>n</i>}. </description></item>
+    /// <item><description><see cref="mpn_nior_n">mpn_nior_n</see> - Perform the bitwise logical inclusive or of {<i>s1p</i>, <i>n</i>} and {<i>s2p</i>, <i>n</i>}, and write the bitwise complement of the result to {<i>rp</i>, <i>n</i>}.</description></item>
+    /// <item><description><see cref="mpn_xnor_n">mpn_xnor_n</see> - Perform the bitwise logical exclusive or of {<i>s1p</i>, <i>n</i>} and {<i>s2p</i>, <i>n</i>}, and write the bitwise complement of the result to {<i>rp</i>, <i>n</i>}. </description></item>
+    /// <item><description><see cref="mpn_com">mpn_com</see> - Perform the bitwise complement of {<i>sp</i>, <i>n</i>}, and write the result to {<i>rp</i>, <i>n</i>}.</description></item>
+    /// <item><description><see cref="mpn_copyi">mpn_copyi</see> - Copy from {<i>s1p</i>, <i>n</i>} to {<i>rp</i>, <i>n</i>}, increasingly. </description></item>
+    /// <item><description><see cref="mpn_copyd">mpn_copyd</see> - Copy from {<i>s1p</i>, <i>n</i>} to {<i>rp</i>, <i>n</i>}, decreasingly. </description></item>
+    /// <item><description><see cref="mpn_zero">mpn_zero</see> - Zero {<i>rp</i>, <i>n</i>}.</description></item>
+    /// </list>
+    /// <para><a name="Low_level_functions_for_cryptography"/><h4>Low-level functions for cryptography:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mpn_cnd_add_n">mpn_cnd_add_n</see> - If <i>cnd</i> is non-zero, it produces the same result as a regular <see cref="mpn_add_n">mpn_add_n</see>, and if <i>cnd</i> is zero, it copies {<i>s1p</i>, <i>n</i>} to the result area and returns zero.</description></item>
+    /// <item><description><see cref="mpn_cnd_sub_n">mpn_cnd_sub_n</see> - If <i>cnd</i> is non-zero, it produces the same result as a regular <see cref="mpn_sub_n">mpn_sub_n</see>, and if <i>cnd</i> is zero, it copies {<i>s1p</i>, <i>n</i>} to the result area and returns zero.</description></item>
+    /// <item><description><see cref="mpn_sec_add_1">mpn_sec_add_1</see> - Set R to A + b, where R = {<i>rp</i>, <i>n</i>}, A = {<i>ap</i>, <i>n</i>}, and <i>b</i> is a single limb.</description></item>
+    /// <item><description><see cref="mpn_sec_add_1_itch">mpn_sec_add_1_itch</see> - Return the scratch space in number of limbs required by the function <see cref="mpn_sec_add_1">mpn_sec_add_1</see>.</description></item>
+    /// <item><description><see cref="mpn_sec_sub_1">mpn_sec_sub_1</see> - Set R to A - b, where R = {<i>rp</i>, <i>n</i>}, A = {<i>ap</i>, <i>n</i>}, and <i>b</i> is a single limb.</description></item>
+    /// <item><description><see cref="mpn_sec_sub_1_itch">mpn_sec_sub_1_itch</see> - Return the scratch space in number of limbs required by the function <see cref="mpn_sec_sub_1">mpn_sec_sub_1</see>.</description></item>
+    /// <item><description><see cref="mpn_cnd_swap">mpn_cnd_swap</see> - If <i>cnd</i> is non-zero, swaps the contents of the areas {<i>ap</i>, <i>n</i>} and {<i>bp</i>, <i>n</i>}. Otherwise, the areas are left unmodified.</description></item>
+    /// <item><description><see cref="mpn_sec_mul">mpn_sec_mul</see> - Set R to A * B, where A = {<i>ap</i>, <i>an</i>}, B = {<i>bp</i>, <i>bn</i>}, and R = {<i>rp</i>, <i>an</i> + <i>bn</i>}. </description></item>
+    /// <item><description><see cref="mpn_sec_mul_itch">mpn_sec_mul_itch</see> - Return the scratch space in number of limbs required by the function <see cref="mpn_sec_mul">mpn_sec_mul</see>.</description></item>
+    /// <item><description><see cref="mpn_sec_sqr">mpn_sec_sqr</see> - Set R to A^2, where A = {<i>ap</i>, <i>an</i>}, and R = {<i>rp</i>, 2 * <i>an</i>}. </description></item>
+    /// <item><description><see cref="mpn_sec_sqr_itch">mpn_sec_sqr_itch</see> - Return the scratch space in number of limbs required by the function <see cref="mpn_sec_sqr">mpn_sec_sqr</see>.</description></item>
+    /// <item><description><see cref="mpn_sec_powm">mpn_sec_powm</see> - Set R to (B^E) modulo M, where R = {<i>rp</i>, <i>n</i>}, M = {<i>mp</i>, <i>n</i>}, and E = {<i>ep</i>, ceil(<i>enb</i> / <see cref="mp_bits_per_limb">mp_bits_per_limb</see>)}.</description></item>
+    /// <item><description><see cref="mpn_sec_powm_itch">mpn_sec_powm_itch</see> - Return the scratch space in number of limbs required by the function <see cref="mpn_sec_powm">mpn_sec_powm</see>.</description></item>
+    /// <item><description><see cref="mpn_sec_tabselect">mpn_sec_tabselect</see> - Select entry <i>which</i> from table <i>tab</i>, which has <i>nents</i> entries, each <i>n</i> limbs. Store the selected entry at <i>rp</i>.</description></item>
+    /// <item><description><see cref="mpn_sec_div_qr">mpn_sec_div_qr</see> - Set Q to the truncated quotient N / D and R to N modulo D, where N = {<i>np</i>, <i>nn</i>}, D = {<i>dp</i>, <i>dn</i>}, Q’s most significant limb is the function return value and the remaining limbs are {<i>qp</i>, <i>nn</i> - <i>dn</i>}, and R = {<i>np</i>, <i>dn</i>}. </description></item>
+    /// <item><description><see cref="mpn_sec_div_qr_itch">mpn_sec_div_qr_itch</see> - Return the scratch space in number of limbs required by the function <see cref="mpn_sec_div_qr">mpn_sec_div_qr</see>.</description></item>
+    /// <item><description><see cref="mpn_sec_div_r">mpn_sec_div_r</see> - Set R to N modulo D, where N = {<i>np</i>, <i>nn</i>}, D = {<i>dp</i>, <i>dn</i>}, and R = {<i>np</i>, <i>dn</i>}. </description></item>
+    /// <item><description><see cref="mpn_sec_div_r_itch">mpn_sec_div_r_itch</see> - Return the scratch space in number of limbs required by the function <see cref="mpn_sec_div_r">mpn_sec_div_r</see>.</description></item>
+    /// <item><description><see cref="mpn_sec_invert">mpn_sec_invert</see> - Set R to the inverse of A modulo M, where R = {<i>rp</i>, <i>n</i>}, A = {<i>ap</i>, <i>n</i>}, and M = {<i>mp</i>, <i>n</i>}. This function’s interface is preliminary. </description></item>
+    /// <item><description><see cref="mpn_sec_invert_itch">mpn_sec_invert_itch</see> - Return the scratch space in number of limbs required by the function <see cref="mpn_sec_invert">mpn_sec_invert</see>.</description></item>
+    /// </list>
+    /// <para><a name="Random_Number_Functions"/><h3>Random Number Functions:</h3></para>
+    /// <para><a name="Random_State_Initialization"/><h4>Random State Initialization:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="gmp_randinit_default">gmp_randinit_default</see> - Initialize <i>state</i> with a default algorithm.</description></item>
+    /// <item><description><see cref="gmp_randinit_mt">gmp_randinit_mt</see> - Initialize <i>state</i> for a Mersenne Twister algorithm.</description></item>
+    /// <item><description><see cref="gmp_randinit_lc_2exp">gmp_randinit_lc_2exp</see> - Initialize <i>state</i> with a linear congruential algorithm X = (<i>a</i>X + <i>c</i>) mod 2^<i>m2exp</i>.</description></item>
+    /// <item><description><see cref="gmp_randinit_lc_2exp_size">gmp_randinit_lc_2exp_size</see> - Initialize <i>state</i> for a linear congruential algorithm as per <see cref="gmp_randinit_lc_2exp">gmp_randinit_lc_2exp</see>.</description></item>
+    /// <item><description><see cref="gmp_randinit_set">gmp_randinit_set</see> - Initialize <i>rop</i> with a copy of the algorithm and state from <i>op</i>.</description></item>
+    /// <item><description><see cref="gmp_randclear">gmp_randclear</see> - Free all memory occupied by <i>state</i>.</description></item>
+    /// </list>
+    /// <para><a name="Random_State_Seeding"/><h4>Random State Seeding:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="gmp_randseed">gmp_randseed</see> - Set an initial <i>seed</i> value into <i>state</i>.</description></item>
+    /// <item><description><see cref="gmp_randseed_ui">gmp_randseed_ui</see> - Set an initial <i>seed</i> value into <i>state</i>.</description></item>
+    /// </list>
+    /// <para><a name="Random_State_Miscellaneous"/><h4>Random State Miscellaneous:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="gmp_urandomb_ui">gmp_urandomb_ui</see> - Generate a uniformly distributed random number of <i>n</i> bits, i.e. in the range 0 to 2^<i>n</i> - 1 inclusive.</description></item>
+    /// <item><description><see cref="gmp_urandomm_ui">gmp_urandomm_ui</see> - Generate a uniformly distributed random number in the range 0 to <i>n</i> - 1, inclusive.</description></item>
+    /// </list>
+    /// <para><a name="Formatted_Output"/><h3>Formatted Output:</h3></para>
+    /// <para><a name="Formatted_Output_Functions"/><h4>Formatted Output Functions:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="gmp_printf">gmp_printf</see> - Print to the standard output stdout.</description></item>
+    /// <item><description><see cref="gmp_vprintf">gmp_vprintf</see> - Print to the standard output stdout.</description></item>
+    /// <item><description><see cref="gmp_fprintf">gmp_fprintf</see> - Print to the stream <i>fp</i>.</description></item>
+    /// <item><description><see cref="gmp_vfprintf">gmp_vfprintf</see> - Print to the stream <i>fp</i>.</description></item>
+    /// <item><description><see cref="gmp_sprintf">gmp_sprintf</see> - Form a null-terminated string in <i>buf</i>.</description></item>
+    /// <item><description><see cref="gmp_vsprintf">gmp_vsprintf</see> - Form a null-terminated string in <i>buf</i>.</description></item>
+    /// <item><description><see cref="gmp_snprintf">gmp_snprintf</see> - Form a null-terminated string in <i>buf</i>.</description></item>
+    /// <item><description><see cref="gmp_vsnprintf">gmp_vsnprintf</see> - Form a null-terminated string in <i>buf</i>.</description></item>
+    /// <item><description><see cref="gmp_asprintf">gmp_asprintf</see> - Form a null-terminated string in a block of memory obtained from the current memory allocation function.</description></item>
+    /// <item><description><see cref="gmp_vasprintf">gmp_vasprintf</see> - Form a null-terminated string in a block of memory obtained from the current memory allocation function.</description></item>
+    /// </list>
+    /// <para><a name="Formatted_Input"/><h3>Formatted Input:</h3></para>
+    /// <para><a name="Formatted_Input_Functions"/><h4>Formatted Input Functions:</h4></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="gmp_scanf">gmp_scanf</see> - Read from the standard input stdin.</description></item>
+    /// <item><description><see cref="gmp_vscanf">gmp_vscanf</see> - Read from the standard input stdin.</description></item>
+    /// <item><description><see cref="gmp_fscanf">gmp_fscanf</see> - Read from the stream fp.</description></item>
+    /// <item><description><see cref="gmp_vfscanf">gmp_vfscanf</see> - Read from the stream fp.</description></item>
+    /// <item><description><see cref="gmp_sscanf">gmp_sscanf</see> - Read from a null-terminated string <i>s</i>.</description></item>
+    /// <item><description><see cref="gmp_vsscanf">gmp_vsscanf</see> - Read from a null-terminated string <i>s</i>.</description></item>
+    /// </list>
+    /// <para><a name="Custom_Allocation"/><h3>Custom Allocation:</h3></para>
+    /// <list type="bullet">
+    /// <item><description><see cref="mp_set_memory_functions">mp_set_memory_functions</see> - Replace the current allocation functions from the arguments.</description></item>
+    /// <item><description><see cref="mp_get_memory_functions">mp_get_memory_functions</see> - Get the current allocation functions, storing function pointers to the locations given by the arguments.</description></item>
+    /// <item><description><see cref="allocate">allocate</see> - Return a pointer to newly allocated space with at least <i>alloc_size</i> bytes.</description></item>
+    /// <item><description><see cref="reallocate">reallocate</see> - Resize a previously allocated block <i>ptr</i> of <i>old_size</i> bytes to be <i>new_size</i> bytes.</description></item>
+    /// <item><description><see cref="O:Math.Gmp.Native.gmp_lib.free">free</see> - De-allocate the space pointed to by <i>ptrs</i>.</description></item>
+    /// <item><description><see cref="ZeroMemory">ZeroMemory</see> - The <see cref="ZeroMemory">ZeroMemory</see> routine fills a block of memory with zeros, given a pointer to the block and the length, in bytes, to be filled.</description></item>
+    /// </list>
+    /// </remarks>
     public static class gmp_lib
     {
 
@@ -48,6 +551,8 @@ namespace Math.Gmp.Native
         /// <summary>
         /// Gets or sets the global GMP error number.
         /// </summary>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Useful-Macros-and-Constants.html#Useful-Macros-and-Constants">GNU MP - Useful Macros and Constants</a></seealso>
         public static int gmp_errno
         {
             get
@@ -63,6 +568,7 @@ namespace Math.Gmp.Native
         /// <summary>
         /// The GMP version number in the form “i.j.k”. This release is "6.1.2".
         /// </summary>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Useful-Macros-and-Constants.html#Useful-Macros-and-Constants">GNU MP - Useful Macros and Constants</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -79,8 +585,9 @@ namespace Math.Gmp.Native
         /// <summary>
         /// The number of bits per limb.
         /// </summary>
-        /// <seealso cref="mp_bytes_per_limb"/>
-        /// <seealso cref="mp_uint_per_limb"/>
+        /// <seealso cref="mp_bytes_per_limb">mp_bytes_per_limb</seealso>
+        /// <seealso cref="mp_uint_per_limb">mp_uint_per_limb</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Useful-Macros-and-Constants.html#Useful-Macros-and-Constants">GNU MP - Useful Macros and Constants</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -97,8 +604,9 @@ namespace Math.Gmp.Native
         /// <summary>
         /// The number of bytes per limb.
         /// </summary>
-        /// <seealso cref="mp_bits_per_limb"/>
-        /// <seealso cref="mp_uint_per_limb"/>
+        /// <seealso cref="mp_bits_per_limb">mp_bits_per_limb</seealso>
+        /// <seealso cref="mp_uint_per_limb">mp_uint_per_limb</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
         /// <example>
         /// <code language="C#">
         /// mp_size_t bytesPerLimb = gmp_lib.mp_bytes_per_limb;
@@ -114,8 +622,9 @@ namespace Math.Gmp.Native
         /// <summary>
         /// The number of 32-bit, unsigned integers per limb.
         /// </summary>
-        /// <seealso cref="mp_bits_per_limb"/>
-        /// <seealso cref="mp_bytes_per_limb"/>
+        /// <seealso cref="mp_bits_per_limb">mp_bits_per_limb</seealso>
+        /// <seealso cref="mp_bytes_per_limb">mp_bytes_per_limb</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
         /// <example>
         /// <code language="C#">
         /// mp_size_t uintsPerLimb = gmp_lib.mp_uint_per_limb;
@@ -138,8 +647,9 @@ namespace Math.Gmp.Native
         /// <param name="alloc_size">The minimum number of bytes to allocate.</param>
         /// <returns>A pointer to newly allocated space with at least <paramref name="alloc_size"/> bytes.</returns>
         /// <remarks></remarks>
-        /// <seealso cref="free(void_ptr, size_t)"/>
-        /// <seealso cref="reallocate"/>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.free">free</seealso>
+        /// <seealso cref="reallocate">reallocate</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a></seealso>
         public static void_ptr allocate(size_t alloc_size)
         {
@@ -168,8 +678,9 @@ namespace Math.Gmp.Native
         /// if not needed by an implementation. The default functions using malloc and friends for instance don’t use it.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_lib.allocate"/>
-        /// <seealso cref="gmp_lib.free(void_ptr, size_t)"/>
+        /// <seealso cref="allocate">allocate</seealso>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.free">free</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a></seealso>
         public static void_ptr reallocate(void_ptr ptr, size_t old_size, size_t new_size)
         {
@@ -244,8 +755,9 @@ namespace Math.Gmp.Native
         /// if not needed by an implementation. The default functions using malloc and friends for instance don’t use it.
         /// </para>
         /// </remarks>
-        /// <seealso cref="allocate"/>
-        /// <seealso cref="reallocate"/>
+        /// <seealso cref="allocate">allocate</seealso>
+        /// <seealso cref="reallocate">reallocate</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a></seealso>
         public static void free(void_ptr ptr, size_t size)
         {
@@ -258,7 +770,8 @@ namespace Math.Gmp.Native
         /// <param name="alloc_func_ptr">The memory allocation function.</param>
         /// <param name="realloc_func_ptr">The memory reallocation function.</param>
         /// <param name="free_func_ptr">The memory de-allocation function.</param>
-        /// <seealso cref="mp_set_memory_functions"/>
+        /// <seealso cref="mp_set_memory_functions">mp_set_memory_functions</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -313,7 +826,8 @@ namespace Math.Gmp.Native
         /// default function is used.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mp_get_memory_functions"/>
+        /// <seealso cref="mp_get_memory_functions">mp_get_memory_functions</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -483,7 +997,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// The <see cref="ZeroMemory"/> routine fills a block of memory with zeros, given a pointer to the block and the length, in bytes, to be filled.
+        /// The <see cref="ZeroMemory">ZeroMemory</see> routine fills a block of memory with zeros, given a pointer to the block and the length, in bytes, to be filled.
         /// </summary>
         /// <param name="dst">A pointer to the memory block to be filled with zeros.</param>
         /// <param name="length">The number of bytes to fill with zeros.</param>
@@ -504,14 +1018,15 @@ namespace Math.Gmp.Native
         /// <para>
         /// This will be a compromise between speed and randomness, 
         /// and is recommended for applications with no special requirements.
-        /// Currently this is <see cref="gmp_randinit_mt"/>.
+        /// Currently this is <see cref="gmp_randinit_mt">gmp_randinit_mt</see>.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_randclear"/>
-        /// <seealso cref="gmp_randinit_lc_2exp"/>
-        /// <seealso cref="gmp_randinit_lc_2exp_size"/>
-        /// <seealso cref="gmp_randinit_mt"/>
-        /// <seealso cref="gmp_randinit_set"/>
+        /// <seealso cref="gmp_randclear">gmp_randclear</seealso>
+        /// <seealso cref="gmp_randinit_lc_2exp">gmp_randinit_lc_2exp</seealso>
+        /// <seealso cref="gmp_randinit_lc_2exp_size">gmp_randinit_lc_2exp_size</seealso>
+        /// <seealso cref="gmp_randinit_mt">gmp_randinit_mt</seealso>
+        /// <seealso cref="gmp_randinit_set">gmp_randinit_set</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -559,11 +1074,12 @@ namespace Math.Gmp.Native
         /// multiple iterations of the recurrence are used and the results concatenated.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_randclear"/>
-        /// <seealso cref="gmp_randinit_default"/>
-        /// <seealso cref="gmp_randinit_lc_2exp_size"/>
-        /// <seealso cref="gmp_randinit_mt"/>
-        /// <seealso cref="gmp_randinit_set"/>
+        /// <seealso cref="gmp_randclear">gmp_randclear</seealso>
+        /// <seealso cref="gmp_randinit_default">gmp_randinit_default</seealso>
+        /// <seealso cref="gmp_randinit_lc_2exp_size">gmp_randinit_lc_2exp_size</seealso>
+        /// <seealso cref="gmp_randinit_mt">gmp_randinit_mt</seealso>
+        /// <seealso cref="gmp_randinit_set">gmp_randinit_set</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -602,7 +1118,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize <paramref name="state"/> for a linear congruential algorithm as per <see cref="gmp_randinit_lc_2exp"/>.
+        /// Initialize <paramref name="state"/> for a linear congruential algorithm as per <see cref="gmp_randinit_lc_2exp">gmp_randinit_lc_2exp</see>.
         /// </summary>
         /// <param name="state">The state to initialize.</param>
         /// <param name="size"></param>
@@ -613,11 +1129,12 @@ namespace Math.Gmp.Native
         /// bits (or more) of each X will be used, i.e. m2exp / 2 &#8805; <paramref name="size"/>.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_randclear"/>
-        /// <seealso cref="gmp_randinit_default"/>
-        /// <seealso cref="gmp_randinit_lc_2exp"/>
-        /// <seealso cref="gmp_randinit_mt"/>
-        /// <seealso cref="gmp_randinit_set"/>
+        /// <seealso cref="gmp_randclear">gmp_randclear</seealso>
+        /// <seealso cref="gmp_randinit_default">gmp_randinit_default</seealso>
+        /// <seealso cref="gmp_randinit_lc_2exp">gmp_randinit_lc_2exp</seealso>
+        /// <seealso cref="gmp_randinit_mt">gmp_randinit_mt</seealso>
+        /// <seealso cref="gmp_randinit_set">gmp_randinit_set</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -656,11 +1173,12 @@ namespace Math.Gmp.Native
         /// This algorithm is fast and has good randomness properties.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_randclear"/>
-        /// <seealso cref="gmp_randinit_default"/>
-        /// <seealso cref="gmp_randinit_lc_2exp"/>
-        /// <seealso cref="gmp_randinit_lc_2exp_size"/>
-        /// <seealso cref="gmp_randinit_set"/>
+        /// <seealso cref="gmp_randclear">gmp_randclear</seealso>
+        /// <seealso cref="gmp_randinit_default">gmp_randinit_default</seealso>
+        /// <seealso cref="gmp_randinit_lc_2exp">gmp_randinit_lc_2exp</seealso>
+        /// <seealso cref="gmp_randinit_lc_2exp_size">gmp_randinit_lc_2exp_size</seealso>
+        /// <seealso cref="gmp_randinit_set">gmp_randinit_set</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -695,11 +1213,12 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The state to initialize.</param>
         /// <param name="op">The source state.</param>
-        /// <seealso cref="gmp_randclear"/>
-        /// <seealso cref="gmp_randinit_default"/>
-        /// <seealso cref="gmp_randinit_lc_2exp"/>
-        /// <seealso cref="gmp_randinit_lc_2exp_size"/>
-        /// <seealso cref="gmp_randinit_mt"/>
+        /// <seealso cref="gmp_randclear">gmp_randclear</seealso>
+        /// <seealso cref="gmp_randinit_default">gmp_randinit_default</seealso>
+        /// <seealso cref="gmp_randinit_lc_2exp">gmp_randinit_lc_2exp</seealso>
+        /// <seealso cref="gmp_randinit_lc_2exp_size">gmp_randinit_lc_2exp_size</seealso>
+        /// <seealso cref="gmp_randinit_mt">gmp_randinit_mt</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -759,7 +1278,8 @@ namespace Math.Gmp.Native
         /// there’s a special device /dev/random which provides random data better suited for use as a seed.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_randseed_ui"/>
+        /// <seealso cref="gmp_randseed_ui">gmp_randseed_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Seeding">Random State Seeding</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Seeding.html#Random-State-Seeding">GNU MP - Random State Seeding</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -821,7 +1341,8 @@ namespace Math.Gmp.Native
         /// there’s a special device /dev/random which provides random data better suited for use as a seed.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_randseed"/>
+        /// <seealso cref="gmp_randseed">gmp_randseed</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Seeding">Random State Seeding</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Seeding.html#Random-State-Seeding">GNU MP - Random State Seeding</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -857,11 +1378,12 @@ namespace Math.Gmp.Native
         /// Free all memory occupied by <paramref name="state"/>.
         /// </summary>
         /// <param name="state">A state.</param>
-        /// <seealso cref="gmp_randinit_default"/>
-        /// <seealso cref="gmp_randinit_lc_2exp"/>
-        /// <seealso cref="gmp_randinit_lc_2exp_size"/>
-        /// <seealso cref="gmp_randinit_mt"/>
-        /// <seealso cref="gmp_randinit_set"/>
+        /// <seealso cref="gmp_randinit_default">gmp_randinit_default</seealso>
+        /// <seealso cref="gmp_randinit_lc_2exp">gmp_randinit_lc_2exp</seealso>
+        /// <seealso cref="gmp_randinit_lc_2exp_size">gmp_randinit_lc_2exp_size</seealso>
+        /// <seealso cref="gmp_randinit_mt">gmp_randinit_mt</seealso>
+        /// <seealso cref="gmp_randinit_set">gmp_randinit_set</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a></seealso>
         public static void gmp_randclear(gmp_randstate_t state)
         {
@@ -884,7 +1406,8 @@ namespace Math.Gmp.Native
         /// In .NET, <paramref name="n"/> must be less than or equal to the number of bits in an unsigned 32-bit integer.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_urandomm_ui"/>
+        /// <seealso cref="gmp_urandomm_ui">gmp_urandomm_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Miscellaneous">Random State Miscellaneous</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Miscellaneous.html#Random-State-Miscellaneous">GNU MP - Random State Miscellaneous</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -924,7 +1447,8 @@ namespace Math.Gmp.Native
         /// <param name="state">The state of the random number generator to use.</param>
         /// <param name="n">The upper bound of the range.</param>
         /// <returns>The generated random number.</returns>
-        /// <seealso cref="gmp_urandomb_ui"/>
+        /// <seealso cref="gmp_urandomb_ui">gmp_urandomb_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Miscellaneous">Random State Miscellaneous</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Miscellaneous.html#Random-State-Miscellaneous">GNU MP - Random State Miscellaneous</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -975,13 +1499,14 @@ namespace Math.Gmp.Native
         /// The block will be the size of the string and null-terminator. The address of the block in stored to <paramref name="pp"/>.
         /// </para>
         /// <para>
-        /// Unlike the C library asprintf, <see cref="gmp_asprintf"/> doesn’t return -1 if there’s no more memory available,
+        /// Unlike the C library asprintf, <see cref="gmp_asprintf">gmp_asprintf</see> doesn’t return -1 if there’s no more memory available,
         /// it lets the current allocation function handle that. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_snprintf"/>
-        /// <seealso cref="gmp_sprintf"/>
-        /// <seealso cref="gmp_vasprintf"/>
+        /// <seealso cref="gmp_snprintf">gmp_snprintf</seealso>
+        /// <seealso cref="gmp_sprintf">gmp_sprintf</seealso>
+        /// <seealso cref="gmp_vasprintf">gmp_vasprintf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1036,9 +1561,10 @@ namespace Math.Gmp.Native
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">Formatted Output Strings</a>.</param>
         /// <param name="args">Arguments.</param>
         /// <returns>Return the number of characters written, or -1 if an error occurred.</returns>
-        /// <seealso cref="gmp_printf"/>
-        /// <seealso cref="gmp_sprintf"/>
-        /// <seealso cref="gmp_vfprintf"/>
+        /// <seealso cref="gmp_printf">gmp_printf</seealso>
+        /// <seealso cref="gmp_sprintf">gmp_sprintf</seealso>
+        /// <seealso cref="gmp_vfprintf">gmp_vfprintf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1106,9 +1632,10 @@ namespace Math.Gmp.Native
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">Formatted Output Strings</a>.</param>
         /// <param name="args">Arguments.</param>
         /// <returns>Return the number of characters written, or -1 if an error occurred.</returns>
-        /// <seealso cref="gmp_fprintf"/>
-        /// <seealso cref="gmp_sprintf"/>
-        /// <seealso cref="gmp_vprintf"/>
+        /// <seealso cref="gmp_fprintf">gmp_fprintf</seealso>
+        /// <seealso cref="gmp_sprintf">gmp_sprintf</seealso>
+        /// <seealso cref="gmp_vprintf">gmp_vprintf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1165,9 +1692,10 @@ namespace Math.Gmp.Native
         /// Notice the return value is in ISO C99 snprintf style. This is so even if the C library vsnprintf is the older GLIBC 2.0.x style.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_asprintf"/>
-        /// <seealso cref="gmp_sprintf"/>
-        /// <seealso cref="gmp_vsnprintf"/>
+        /// <seealso cref="gmp_asprintf">gmp_asprintf</seealso>
+        /// <seealso cref="gmp_sprintf">gmp_sprintf</seealso>
+        /// <seealso cref="gmp_vsnprintf">gmp_vsnprintf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1230,11 +1758,12 @@ namespace Math.Gmp.Native
         /// These functions are not recommended, since there’s no protection against exceeding the space available at <paramref name="buf"/>.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_asprintf"/>
-        /// <seealso cref="gmp_printf"/>
-        /// <seealso cref="gmp_fprintf"/>
-        /// <seealso cref="gmp_snprintf"/>
-        /// <seealso cref="gmp_vsprintf"/>
+        /// <seealso cref="gmp_asprintf">gmp_asprintf</seealso>
+        /// <seealso cref="gmp_printf">gmp_printf</seealso>
+        /// <seealso cref="gmp_fprintf">gmp_fprintf</seealso>
+        /// <seealso cref="gmp_snprintf">gmp_snprintf</seealso>
+        /// <seealso cref="gmp_vsprintf">gmp_vsprintf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1294,11 +1823,12 @@ namespace Math.Gmp.Native
         /// The block will be the size of the string and null-terminator. The address of the block in stored to <paramref name="ptr"/>.
         /// </para>
         /// <para>
-        /// Unlike the C library vasprintf, <see cref="gmp_vasprintf"/> doesn’t return -1 if there’s no more memory available,
+        /// Unlike the C library vasprintf, <see cref="gmp_vasprintf">gmp_vasprintf</see> doesn’t return -1 if there’s no more memory available,
         /// it lets the current allocation function handle that. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_asprintf"/>
+        /// <seealso cref="gmp_asprintf">gmp_asprintf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1361,7 +1891,8 @@ namespace Math.Gmp.Native
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">Formatted Output Strings</a>.</param>
         /// <param name="ap">Arguments.</param>
         /// <returns>Return the number of characters written, or -1 if an error occurred.</returns>
-        /// <seealso cref="gmp_fprintf"/>
+        /// <seealso cref="gmp_fprintf">gmp_fprintf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1426,7 +1957,8 @@ namespace Math.Gmp.Native
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">Formatted Output Strings</a>.</param>
         /// <param name="ap">Arguments.</param>
         /// <returns>Return the number of characters written, or -1 if an error occurred.</returns>
-        /// <seealso cref="gmp_printf"/>
+        /// <seealso cref="gmp_printf">gmp_printf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1490,7 +2022,8 @@ namespace Math.Gmp.Native
         /// Notice the return value is in ISO C99 snprintf style. This is so even if the C library vsnprintf is the older GLIBC 2.0.x style. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_snprintf"/>
+        /// <seealso cref="gmp_snprintf">gmp_snprintf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1565,7 +2098,8 @@ namespace Math.Gmp.Native
         /// These functions are not recommended, since there’s no protection against exceeding the space available at <paramref name="buf"/>.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_sprintf"/>
+        /// <seealso cref="gmp_sprintf">gmp_sprintf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1632,9 +2166,10 @@ namespace Math.Gmp.Native
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">Formatted Input Strings</a>.</param>
         /// <param name="ap">Arguments.</param>
         /// <returns>The return value the number of fields successfully parsed and stored. ‘%n’ fields and fields read but suppressed by ‘*’ don’t count towards the return value.</returns>
-        /// <seealso cref="gmp_scanf"/>
-        /// <seealso cref="gmp_sscanf"/>
-        /// <seealso cref="gmp_vfscanf"/>
+        /// <seealso cref="gmp_scanf">gmp_scanf</seealso>
+        /// <seealso cref="gmp_sscanf">gmp_sscanf</seealso>
+        /// <seealso cref="gmp_vfscanf">gmp_vfscanf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Functions.html#Formatted-Input-Functions">GNU MP - Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">GNU MP - Formatted Input Strings</a></seealso>
         /// <example>
@@ -1712,9 +2247,10 @@ namespace Math.Gmp.Native
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">Formatted Input Strings</a>.</param>
         /// <param name="ap">Arguments.</param>
         /// <returns>The return value the number of fields successfully parsed and stored. ‘%n’ fields and fields read but suppressed by ‘*’ don’t count towards the return value.</returns>
-        /// <seealso cref="gmp_fscanf"/>
-        /// <seealso cref="gmp_sscanf"/>
-        /// <seealso cref="gmp_vscanf"/>
+        /// <seealso cref="gmp_fscanf">gmp_fscanf</seealso>
+        /// <seealso cref="gmp_sscanf">gmp_sscanf</seealso>
+        /// <seealso cref="gmp_vscanf">gmp_vscanf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Functions.html#Formatted-Input-Functions">GNU MP - Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">GNU MP - Formatted Input Strings</a></seealso>
         /// <example>
@@ -1779,9 +2315,10 @@ namespace Math.Gmp.Native
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">Formatted Input Strings</a>.</param>
         /// <param name="ap">Arguments.</param>
         /// <returns>The return value the number of fields successfully parsed and stored. ‘%n’ fields and fields read but suppressed by ‘*’ don’t count towards the return value.</returns>
-        /// <seealso cref="gmp_fscanf"/>
-        /// <seealso cref="gmp_scanf"/>
-        /// <seealso cref="gmp_vsscanf"/>
+        /// <seealso cref="gmp_fscanf">gmp_fscanf</seealso>
+        /// <seealso cref="gmp_scanf">gmp_scanf</seealso>
+        /// <seealso cref="gmp_vsscanf">gmp_vsscanf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Functions.html#Formatted-Input-Functions">GNU MP - Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">GNU MP - Formatted Input Strings</a></seealso>
         /// <example>
@@ -1842,9 +2379,10 @@ namespace Math.Gmp.Native
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">Formatted Input Strings</a>.</param>
         /// <param name="ap">Arguments.</param>
         /// <returns>The return value the number of fields successfully parsed and stored. ‘%n’ fields and fields read but suppressed by ‘*’ don’t count towards the return value.</returns>
-        /// <seealso cref="gmp_fscanf"/>
-        /// <seealso cref="gmp_vscanf"/>
-        /// <seealso cref="gmp_vsscanf"/>
+        /// <seealso cref="gmp_fscanf">gmp_fscanf</seealso>
+        /// <seealso cref="gmp_vscanf">gmp_vscanf</seealso>
+        /// <seealso cref="gmp_vsscanf">gmp_vsscanf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Functions.html#Formatted-Input-Functions">GNU MP - Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">GNU MP - Formatted Input Strings</a></seealso>
         /// <example>
@@ -1930,9 +2468,10 @@ namespace Math.Gmp.Native
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">Formatted Input Strings</a>.</param>
         /// <param name="ap">Arguments.</param>
         /// <returns>The return value the number of fields successfully parsed and stored. ‘%n’ fields and fields read but suppressed by ‘*’ don’t count towards the return value.</returns>
-        /// <seealso cref="gmp_scanf"/>
-        /// <seealso cref="gmp_vfscanf"/>
-        /// <seealso cref="gmp_vsscanf"/>
+        /// <seealso cref="gmp_scanf">gmp_scanf</seealso>
+        /// <seealso cref="gmp_vfscanf">gmp_vfscanf</seealso>
+        /// <seealso cref="gmp_vsscanf">gmp_vsscanf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Functions.html#Formatted-Input-Functions">GNU MP - Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">GNU MP - Formatted Input Strings</a></seealso>
         /// <example>
@@ -2004,9 +2543,10 @@ namespace Math.Gmp.Native
         /// <param name="fmt">Format string. See <a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">Formatted Input Strings</a>.</param>
         /// <param name="ap">Arguments.</param>
         /// <returns>The return value the number of fields successfully parsed and stored. ‘%n’ fields and fields read but suppressed by ‘*’ don’t count towards the return value.</returns>
-        /// <seealso cref="gmp_sscanf"/>
-        /// <seealso cref="gmp_vfscanf"/>
-        /// <seealso cref="gmp_vscanf"/>
+        /// <seealso cref="gmp_sscanf">gmp_sscanf</seealso>
+        /// <seealso cref="gmp_vfscanf">gmp_vfscanf</seealso>
+        /// <seealso cref="gmp_vscanf">gmp_vscanf</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Functions.html#Formatted-Input-Functions">GNU MP - Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">GNU MP - Formatted Input Strings</a></seealso>
         /// <example>
@@ -2084,19 +2624,20 @@ namespace Math.Gmp.Native
         /// The value in <paramref name="integer"/> is preserved if it fits, or is set to 0 if not.
         /// </para>
         /// <para>
-        /// <see cref="mpz_realloc2"/> is the preferred way to accomplish allocation changes like this.
-        /// <see cref="mpz_realloc2"/> and <see cref="_mpz_realloc"/> are the same except that
-        /// <see cref="_mpz_realloc"/> takes its size in limbs.
+        /// <see cref="mpz_realloc2">mpz_realloc2</see> is the preferred way to accomplish allocation changes like this.
+        /// <see cref="mpz_realloc2">mpz_realloc2</see> and <see cref="_mpz_realloc">_mpz_realloc</see> are the same except that
+        /// <see cref="_mpz_realloc">_mpz_realloc</see> takes its size in limbs.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_realloc2"/>
-        /// <seealso cref="mpz_getlimbn"/>
-        /// <seealso cref="mpz_size"/>
-        /// <seealso cref="mpz_limbs_read"/>
-        /// <seealso cref="mpz_limbs_write"/>
-        /// <seealso cref="mpz_limbs_modify"/>
-        /// <seealso cref="mpz_limbs_finish"/>
-        /// <seealso cref="mpz_roinit_n"/>
+        /// <seealso cref="mpz_realloc2">mpz_realloc2</seealso>
+        /// <seealso cref="mpz_getlimbn">mpz_getlimbn</seealso>
+        /// <seealso cref="mpz_size">mpz_size</seealso>
+        /// <seealso cref="mpz_limbs_read">mpz_limbs_read</seealso>
+        /// <seealso cref="mpz_limbs_write">mpz_limbs_write</seealso>
+        /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
+        /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
+        /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2157,12 +2698,13 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op">The operand integer.</param>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul"/>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2215,13 +2757,14 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add_ui"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add_ui">mpz_add_ui</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2283,13 +2826,14 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2336,13 +2880,14 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul_ui"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul_ui">mpz_addmul_ui</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2404,13 +2949,14 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2469,17 +3015,18 @@ namespace Math.Gmp.Native
         /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_ior"/>
-        /// <seealso cref="mpz_xor"/>
-        /// <seealso cref="mpz_com"/>
-        /// <seealso cref="mpz_popcount"/>
-        /// <seealso cref="mpz_hamdist"/>
-        /// <seealso cref="mpz_scan0"/>
-        /// <seealso cref="mpz_scan1"/>
-        /// <seealso cref="mpz_setbit"/>
-        /// <seealso cref="mpz_clrbit"/>
-        /// <seealso cref="mpz_combit"/>
-        /// <seealso cref="mpz_tstbit"/>
+        /// <seealso cref="mpz_ior">mpz_ior</seealso>
+        /// <seealso cref="mpz_xor">mpz_xor</seealso>
+        /// <seealso cref="mpz_com">mpz_com</seealso>
+        /// <seealso cref="mpz_popcount">mpz_popcount</seealso>
+        /// <seealso cref="mpz_hamdist">mpz_hamdist</seealso>
+        /// <seealso cref="mpz_scan0">mpz_scan0</seealso>
+        /// <seealso cref="mpz_scan1">mpz_scan1</seealso>
+        /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
+        /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
+        /// <seealso cref="mpz_combit">mpz_combit</seealso>
+        /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2543,12 +3090,13 @@ namespace Math.Gmp.Native
         /// <param name="k">The second operand integer.</param>
         /// <remarks>
         /// <para>
-        /// Negative values of n are supported by <see cref="mpz_bin_ui"/>, using the identity
+        /// Negative values of n are supported by <see cref="mpz_bin_ui">mpz_bin_ui</see>, using the identity
         /// bin(-<paramref name="n"/>, <paramref name="k"/>) = (-1)^<paramref name="k"/> * bin(<paramref name="n"/> + <paramref name="k"/> - 1, <paramref name="k"/>),
         /// see Knuth volume 1 section 1.2.6 part G.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_bin_uiui"/>
+        /// <seealso cref="mpz_bin_uiui">mpz_bin_uiui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2601,7 +3149,8 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="n">The first operand integer.</param>
         /// <param name="k">The second operand integer.</param>
-        /// <seealso cref="mpz_bin_ui"/>
+        /// <seealso cref="mpz_bin_ui">mpz_bin_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2645,20 +3194,21 @@ namespace Math.Gmp.Native
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <seealso cref="mpz_cdiv_r"/>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_cdiv_q_ui"/>
-        /// <seealso cref="mpz_cdiv_r_ui"/>
-        /// <seealso cref="mpz_cdiv_qr_ui"/>
-        /// <seealso cref="mpz_cdiv_ui"/>
-        /// <seealso cref="mpz_cdiv_q_2exp"/>
-        /// <seealso cref="mpz_cdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_r">mpz_cdiv_r</seealso>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_cdiv_q_ui">mpz_cdiv_q_ui</seealso>
+        /// <seealso cref="mpz_cdiv_r_ui">mpz_cdiv_r_ui</seealso>
+        /// <seealso cref="mpz_cdiv_qr_ui">mpz_cdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_cdiv_ui">mpz_cdiv_ui</seealso>
+        /// <seealso cref="mpz_cdiv_q_2exp">mpz_cdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_cdiv_r_2exp">mpz_cdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2720,20 +3270,21 @@ namespace Math.Gmp.Native
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="b">The exponent of the power of two denominator.</param>
-        /// <seealso cref="mpz_cdiv_q"/>
-        /// <seealso cref="mpz_cdiv_r"/>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_cdiv_q_ui"/>
-        /// <seealso cref="mpz_cdiv_r_ui"/>
-        /// <seealso cref="mpz_cdiv_qr_ui"/>
-        /// <seealso cref="mpz_cdiv_ui"/>
-        /// <seealso cref="mpz_cdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_q">mpz_cdiv_q</seealso>
+        /// <seealso cref="mpz_cdiv_r">mpz_cdiv_r</seealso>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_cdiv_q_ui">mpz_cdiv_q_ui</seealso>
+        /// <seealso cref="mpz_cdiv_r_ui">mpz_cdiv_r_ui</seealso>
+        /// <seealso cref="mpz_cdiv_qr_ui">mpz_cdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_cdiv_ui">mpz_cdiv_ui</seealso>
+        /// <seealso cref="mpz_cdiv_r_2exp">mpz_cdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2787,20 +3338,21 @@ namespace Math.Gmp.Native
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
         /// <returns>Return the remainder r = | <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/> |.</returns>
-        /// <seealso cref="mpz_cdiv_q"/>
-        /// <seealso cref="mpz_cdiv_r"/>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_cdiv_r_ui"/>
-        /// <seealso cref="mpz_cdiv_qr_ui"/>
-        /// <seealso cref="mpz_cdiv_ui"/>
-        /// <seealso cref="mpz_cdiv_q_2exp"/>
-        /// <seealso cref="mpz_cdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_q">mpz_cdiv_q</seealso>
+        /// <seealso cref="mpz_cdiv_r">mpz_cdiv_r</seealso>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_cdiv_r_ui">mpz_cdiv_r_ui</seealso>
+        /// <seealso cref="mpz_cdiv_qr_ui">mpz_cdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_cdiv_ui">mpz_cdiv_ui</seealso>
+        /// <seealso cref="mpz_cdiv_q_2exp">mpz_cdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_cdiv_r_2exp">mpz_cdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2852,20 +3404,21 @@ namespace Math.Gmp.Native
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <seealso cref="mpz_cdiv_q"/>
-        /// <seealso cref="mpz_cdiv_r"/>
-        /// <seealso cref="mpz_cdiv_q_ui"/>
-        /// <seealso cref="mpz_cdiv_r_ui"/>
-        /// <seealso cref="mpz_cdiv_qr_ui"/>
-        /// <seealso cref="mpz_cdiv_ui"/>
-        /// <seealso cref="mpz_cdiv_q_2exp"/>
-        /// <seealso cref="mpz_cdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_q">mpz_cdiv_q</seealso>
+        /// <seealso cref="mpz_cdiv_r">mpz_cdiv_r</seealso>
+        /// <seealso cref="mpz_cdiv_q_ui">mpz_cdiv_q_ui</seealso>
+        /// <seealso cref="mpz_cdiv_r_ui">mpz_cdiv_r_ui</seealso>
+        /// <seealso cref="mpz_cdiv_qr_ui">mpz_cdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_cdiv_ui">mpz_cdiv_ui</seealso>
+        /// <seealso cref="mpz_cdiv_q_2exp">mpz_cdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_cdiv_r_2exp">mpz_cdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2934,20 +3487,21 @@ namespace Math.Gmp.Native
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
         /// <returns>Return | <paramref name="r"/> |.</returns>
-        /// <seealso cref="mpz_cdiv_q"/>
-        /// <seealso cref="mpz_cdiv_r"/>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_cdiv_q_ui"/>
-        /// <seealso cref="mpz_cdiv_r_ui"/>
-        /// <seealso cref="mpz_cdiv_ui"/>
-        /// <seealso cref="mpz_cdiv_q_2exp"/>
-        /// <seealso cref="mpz_cdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_q">mpz_cdiv_q</seealso>
+        /// <seealso cref="mpz_cdiv_r">mpz_cdiv_r</seealso>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_cdiv_q_ui">mpz_cdiv_q_ui</seealso>
+        /// <seealso cref="mpz_cdiv_r_ui">mpz_cdiv_r_ui</seealso>
+        /// <seealso cref="mpz_cdiv_ui">mpz_cdiv_ui</seealso>
+        /// <seealso cref="mpz_cdiv_q_2exp">mpz_cdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_cdiv_r_2exp">mpz_cdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3005,20 +3559,21 @@ namespace Math.Gmp.Native
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <seealso cref="mpz_cdiv_q"/>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_cdiv_q_ui"/>
-        /// <seealso cref="mpz_cdiv_r_ui"/>
-        /// <seealso cref="mpz_cdiv_qr_ui"/>
-        /// <seealso cref="mpz_cdiv_ui"/>
-        /// <seealso cref="mpz_cdiv_q_2exp"/>
-        /// <seealso cref="mpz_cdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_q">mpz_cdiv_q</seealso>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_cdiv_q_ui">mpz_cdiv_q_ui</seealso>
+        /// <seealso cref="mpz_cdiv_r_ui">mpz_cdiv_r_ui</seealso>
+        /// <seealso cref="mpz_cdiv_qr_ui">mpz_cdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_cdiv_ui">mpz_cdiv_ui</seealso>
+        /// <seealso cref="mpz_cdiv_q_2exp">mpz_cdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_cdiv_r_2exp">mpz_cdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3080,20 +3635,21 @@ namespace Math.Gmp.Native
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="b">The exponent of the power of two denominator.</param>
-        /// <seealso cref="mpz_cdiv_q"/>
-        /// <seealso cref="mpz_cdiv_r"/>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_cdiv_q_ui"/>
-        /// <seealso cref="mpz_cdiv_r_ui"/>
-        /// <seealso cref="mpz_cdiv_qr_ui"/>
-        /// <seealso cref="mpz_cdiv_ui"/>
-        /// <seealso cref="mpz_cdiv_q_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_q">mpz_cdiv_q</seealso>
+        /// <seealso cref="mpz_cdiv_r">mpz_cdiv_r</seealso>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_cdiv_q_ui">mpz_cdiv_q_ui</seealso>
+        /// <seealso cref="mpz_cdiv_r_ui">mpz_cdiv_r_ui</seealso>
+        /// <seealso cref="mpz_cdiv_qr_ui">mpz_cdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_cdiv_ui">mpz_cdiv_ui</seealso>
+        /// <seealso cref="mpz_cdiv_q_2exp">mpz_cdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3146,20 +3702,21 @@ namespace Math.Gmp.Native
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
         /// <returns>Return | <paramref name="r"/> |.</returns>
-        /// <seealso cref="mpz_cdiv_q"/>
-        /// <seealso cref="mpz_cdiv_r"/>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_cdiv_q_ui"/>
-        /// <seealso cref="mpz_cdiv_qr_ui"/>
-        /// <seealso cref="mpz_cdiv_ui"/>
-        /// <seealso cref="mpz_cdiv_q_2exp"/>
-        /// <seealso cref="mpz_cdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_q">mpz_cdiv_q</seealso>
+        /// <seealso cref="mpz_cdiv_r">mpz_cdiv_r</seealso>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_cdiv_q_ui">mpz_cdiv_q_ui</seealso>
+        /// <seealso cref="mpz_cdiv_qr_ui">mpz_cdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_cdiv_ui">mpz_cdiv_ui</seealso>
+        /// <seealso cref="mpz_cdiv_q_2exp">mpz_cdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_cdiv_r_2exp">mpz_cdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3212,20 +3769,21 @@ namespace Math.Gmp.Native
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
         /// <returns>The remainder | r | where r = <paramref name="n"/> - q * <paramref name="d"/>, and where q = ceiling(<paramref name="n"/> / <paramref name="d"/>).</returns>
-        /// <seealso cref="mpz_cdiv_q"/>
-        /// <seealso cref="mpz_cdiv_r"/>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_cdiv_q_ui"/>
-        /// <seealso cref="mpz_cdiv_r_ui"/>
-        /// <seealso cref="mpz_cdiv_qr_ui"/>
-        /// <seealso cref="mpz_cdiv_q_2exp"/>
-        /// <seealso cref="mpz_cdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_q">mpz_cdiv_q</seealso>
+        /// <seealso cref="mpz_cdiv_r">mpz_cdiv_r</seealso>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_cdiv_q_ui">mpz_cdiv_q_ui</seealso>
+        /// <seealso cref="mpz_cdiv_r_ui">mpz_cdiv_r_ui</seealso>
+        /// <seealso cref="mpz_cdiv_qr_ui">mpz_cdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_cdiv_q_2exp">mpz_cdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_cdiv_r_2exp">mpz_cdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3263,14 +3821,15 @@ namespace Math.Gmp.Native
         /// <param name="x">The integer.</param>
         /// <remarks>
         /// <para>
-        /// Call this function for all <see cref="mpz_t"/> variables when you are done with them.
+        /// Call this function for all <see cref="mpz_t">mpz_t</see> variables when you are done with them.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_clears"/>
-        /// <seealso cref="mpz_init"/>
-        /// <seealso cref="mpz_inits"/>
-        /// <seealso cref="mpz_init2"/>
-        /// <seealso cref="mpz_realloc2"/>
+        /// <seealso cref="mpz_clears">mpz_clears</seealso>
+        /// <seealso cref="mpz_init">mpz_init</seealso>
+        /// <seealso cref="mpz_inits">mpz_inits</seealso>
+        /// <seealso cref="mpz_init2">mpz_init2</seealso>
+        /// <seealso cref="mpz_realloc2">mpz_realloc2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers">GNU MP - Initializing Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3304,14 +3863,15 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Free the space occupied by a NULL-terminated list of <see cref="mpz_t"/> variables.
+        /// Free the space occupied by a NULL-terminated list of <see cref="mpz_t">mpz_t</see> variables.
         /// </summary>
-        /// <param name="x">A NULL-terminated list of <see cref="mpz_t"/> variables.</param>
-        /// <seealso cref="mpz_clear"/>
-        /// <seealso cref="mpz_init"/>
-        /// <seealso cref="mpz_inits"/>
-        /// <seealso cref="mpz_init2"/>
-        /// <seealso cref="mpz_realloc2"/>
+        /// <param name="x">A NULL-terminated list of <see cref="mpz_t">mpz_t</see> variables.</param>
+        /// <seealso cref="mpz_clear">mpz_clear</seealso>
+        /// <seealso cref="mpz_init">mpz_init</seealso>
+        /// <seealso cref="mpz_inits">mpz_inits</seealso>
+        /// <seealso cref="mpz_init2">mpz_init2</seealso>
+        /// <seealso cref="mpz_realloc2">mpz_realloc2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers">GNU MP - Initializing Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3366,17 +3926,18 @@ namespace Math.Gmp.Native
         /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_and"/>
-        /// <seealso cref="mpz_ior"/>
-        /// <seealso cref="mpz_xor"/>
-        /// <seealso cref="mpz_com"/>
-        /// <seealso cref="mpz_popcount"/>
-        /// <seealso cref="mpz_hamdist"/>
-        /// <seealso cref="mpz_scan0"/>
-        /// <seealso cref="mpz_scan1"/>
-        /// <seealso cref="mpz_setbit"/>
-        /// <seealso cref="mpz_combit"/>
-        /// <seealso cref="mpz_tstbit"/>
+        /// <seealso cref="mpz_and">mpz_and</seealso>
+        /// <seealso cref="mpz_ior">mpz_ior</seealso>
+        /// <seealso cref="mpz_xor">mpz_xor</seealso>
+        /// <seealso cref="mpz_com">mpz_com</seealso>
+        /// <seealso cref="mpz_popcount">mpz_popcount</seealso>
+        /// <seealso cref="mpz_hamdist">mpz_hamdist</seealso>
+        /// <seealso cref="mpz_scan0">mpz_scan0</seealso>
+        /// <seealso cref="mpz_scan1">mpz_scan1</seealso>
+        /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
+        /// <seealso cref="mpz_combit">mpz_combit</seealso>
+        /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3420,13 +3981,14 @@ namespace Math.Gmp.Native
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
         /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, or a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
-        /// <seealso cref="mpz_cmp_d"/>
-        /// <seealso cref="mpz_cmp_si"/>
-        /// <seealso cref="mpz_cmp_ui"/>
-        /// <seealso cref="mpz_cmpabs"/>
-        /// <seealso cref="mpz_cmpabs_d"/>
-        /// <seealso cref="mpz_cmpabs_ui"/>
-        /// <seealso cref="mpz_sgn"/>
+        /// <seealso cref="mpz_cmp_d">mpz_cmp_d</seealso>
+        /// <seealso cref="mpz_cmp_si">mpz_cmp_si</seealso>
+        /// <seealso cref="mpz_cmp_ui">mpz_cmp_ui</seealso>
+        /// <seealso cref="mpz_cmpabs">mpz_cmpabs</seealso>
+        /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
+        /// <seealso cref="mpz_cmpabs_ui">mpz_cmpabs_ui</seealso>
+        /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3475,17 +4037,18 @@ namespace Math.Gmp.Native
         /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, or a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
         /// <remarks>
         /// <para>
-        /// <see cref="mpz_cmp_d"/> can be called with an infinity (see <see cref="double.PositiveInfinity"/> or <see cref="double.NegativeInfinity"/>),
-        /// but results are undefined for a <see cref="double.NaN"/>.
+        /// <see cref="mpz_cmp_d">mpz_cmp_d</see> can be called with an infinity (see <see cref="double.PositiveInfinity">double.PositiveInfinity</see> or <see cref="double.NegativeInfinity">double.NegativeInfinity</see>),
+        /// but results are undefined for a <see cref="double.NaN">double.NaN</see>.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_cmp"/>
-        /// <seealso cref="mpz_cmp_si"/>
-        /// <seealso cref="mpz_cmp_ui"/>
-        /// <seealso cref="mpz_cmpabs"/>
-        /// <seealso cref="mpz_cmpabs_d"/>
-        /// <seealso cref="mpz_cmpabs_ui"/>
-        /// <seealso cref="mpz_sgn"/>
+        /// <seealso cref="mpz_cmp">mpz_cmp</seealso>
+        /// <seealso cref="mpz_cmp_si">mpz_cmp_si</seealso>
+        /// <seealso cref="mpz_cmp_ui">mpz_cmp_ui</seealso>
+        /// <seealso cref="mpz_cmpabs">mpz_cmpabs</seealso>
+        /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
+        /// <seealso cref="mpz_cmpabs_ui">mpz_cmpabs_ui</seealso>
+        /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3523,13 +4086,14 @@ namespace Math.Gmp.Native
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
         /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, or a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
-        /// <seealso cref="mpz_cmp"/>
-        /// <seealso cref="mpz_cmp_d"/>
-        /// <seealso cref="mpz_cmp_ui"/>
-        /// <seealso cref="mpz_cmpabs"/>
-        /// <seealso cref="mpz_cmpabs_d"/>
-        /// <seealso cref="mpz_cmpabs_ui"/>
-        /// <seealso cref="mpz_sgn"/>
+        /// <seealso cref="mpz_cmp">mpz_cmp</seealso>
+        /// <seealso cref="mpz_cmp_d">mpz_cmp_d</seealso>
+        /// <seealso cref="mpz_cmp_ui">mpz_cmp_ui</seealso>
+        /// <seealso cref="mpz_cmpabs">mpz_cmpabs</seealso>
+        /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
+        /// <seealso cref="mpz_cmpabs_ui">mpz_cmpabs_ui</seealso>
+        /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3567,12 +4131,13 @@ namespace Math.Gmp.Native
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
         /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, or a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
-        /// <seealso cref="mpz_cmp"/>
-        /// <seealso cref="mpz_cmp_d"/>
-        /// <seealso cref="mpz_cmp_si"/>
-        /// <seealso cref="mpz_cmpabs"/>
-        /// <seealso cref="mpz_cmpabs_d"/>
-        /// <seealso cref="mpz_sgn"/>
+        /// <seealso cref="mpz_cmp">mpz_cmp</seealso>
+        /// <seealso cref="mpz_cmp_d">mpz_cmp_d</seealso>
+        /// <seealso cref="mpz_cmp_si">mpz_cmp_si</seealso>
+        /// <seealso cref="mpz_cmpabs">mpz_cmpabs</seealso>
+        /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
+        /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3610,13 +4175,14 @@ namespace Math.Gmp.Native
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
         /// <returns>Return a positive value if | <paramref name="op1"/> | &gt; | <paramref name="op2"/> |, zero if | <paramref name="op1"/> | = | <paramref name="op2"/> |, or a negative value if | <paramref name="op1"/> | &lt; | <paramref name="op2"/> |.</returns>
-        /// <seealso cref="mpz_cmp"/>
-        /// <seealso cref="mpz_cmp_d"/>
-        /// <seealso cref="mpz_cmp_si"/>
-        /// <seealso cref="mpz_cmp_ui"/>
-        /// <seealso cref="mpz_cmpabs_d"/>
-        /// <seealso cref="mpz_cmpabs_ui"/>
-        /// <seealso cref="mpz_sgn"/>
+        /// <seealso cref="mpz_cmp">mpz_cmp</seealso>
+        /// <seealso cref="mpz_cmp_d">mpz_cmp_d</seealso>
+        /// <seealso cref="mpz_cmp_si">mpz_cmp_si</seealso>
+        /// <seealso cref="mpz_cmp_ui">mpz_cmp_ui</seealso>
+        /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
+        /// <seealso cref="mpz_cmpabs_ui">mpz_cmpabs_ui</seealso>
+        /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3665,17 +4231,18 @@ namespace Math.Gmp.Native
         /// <returns>Return a positive value if | <paramref name="op1"/> | &gt; | <paramref name="op2"/> |, zero if | <paramref name="op1"/> | = | <paramref name="op2"/> |, or a negative value if | <paramref name="op1"/> | &lt; | <paramref name="op2"/> |.</returns>
         /// <remarks>
         /// <para>
-        /// <see cref="mpz_cmpabs_d"/> can be called with an infinity (see <see cref="double.PositiveInfinity"/> or <see cref="double.NegativeInfinity"/>),
-        /// but results are undefined for a <see cref="double.NaN"/>.
+        /// <see cref="mpz_cmpabs_d">mpz_cmpabs_d</see> can be called with an infinity (see <see cref="double.PositiveInfinity">double.PositiveInfinity</see> or <see cref="double.NegativeInfinity">double.NegativeInfinity</see>),
+        /// but results are undefined for a <see cref="double.NaN">double.NaN</see>.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_cmp"/>
-        /// <seealso cref="mpz_cmp_d"/>
-        /// <seealso cref="mpz_cmp_si"/>
-        /// <seealso cref="mpz_cmp_ui"/>
-        /// <seealso cref="mpz_cmpabs"/>
-        /// <seealso cref="mpz_cmpabs_ui"/>
-        /// <seealso cref="mpz_sgn"/>
+        /// <seealso cref="mpz_cmp">mpz_cmp</seealso>
+        /// <seealso cref="mpz_cmp_d">mpz_cmp_d</seealso>
+        /// <seealso cref="mpz_cmp_si">mpz_cmp_si</seealso>
+        /// <seealso cref="mpz_cmp_ui">mpz_cmp_ui</seealso>
+        /// <seealso cref="mpz_cmpabs">mpz_cmpabs</seealso>
+        /// <seealso cref="mpz_cmpabs_ui">mpz_cmpabs_ui</seealso>
+        /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3713,13 +4280,14 @@ namespace Math.Gmp.Native
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
         /// <returns>Return a positive value if | <paramref name="op1"/> | &gt; | <paramref name="op2"/> |, zero if | <paramref name="op1"/> | = | <paramref name="op2"/> |, or a negative value if | <paramref name="op1"/> | &lt; | <paramref name="op2"/> |.</returns>
-        /// <seealso cref="mpz_cmp"/>
-        /// <seealso cref="mpz_cmp_d"/>
-        /// <seealso cref="mpz_cmp_si"/>
-        /// <seealso cref="mpz_cmp_ui"/>
-        /// <seealso cref="mpz_cmpabs"/>
-        /// <seealso cref="mpz_cmpabs_d"/>
-        /// <seealso cref="mpz_sgn"/>
+        /// <seealso cref="mpz_cmp">mpz_cmp</seealso>
+        /// <seealso cref="mpz_cmp_d">mpz_cmp_d</seealso>
+        /// <seealso cref="mpz_cmp_si">mpz_cmp_si</seealso>
+        /// <seealso cref="mpz_cmp_ui">mpz_cmp_ui</seealso>
+        /// <seealso cref="mpz_cmpabs">mpz_cmpabs</seealso>
+        /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
+        /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3753,17 +4321,18 @@ namespace Math.Gmp.Native
         /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_and"/>
-        /// <seealso cref="mpz_ior"/>
-        /// <seealso cref="mpz_xor"/>
-        /// <seealso cref="mpz_popcount"/>
-        /// <seealso cref="mpz_hamdist"/>
-        /// <seealso cref="mpz_scan0"/>
-        /// <seealso cref="mpz_scan1"/>
-        /// <seealso cref="mpz_setbit"/>
-        /// <seealso cref="mpz_clrbit"/>
-        /// <seealso cref="mpz_combit"/>
-        /// <seealso cref="mpz_tstbit"/>
+        /// <seealso cref="mpz_and">mpz_and</seealso>
+        /// <seealso cref="mpz_ior">mpz_ior</seealso>
+        /// <seealso cref="mpz_xor">mpz_xor</seealso>
+        /// <seealso cref="mpz_popcount">mpz_popcount</seealso>
+        /// <seealso cref="mpz_hamdist">mpz_hamdist</seealso>
+        /// <seealso cref="mpz_scan0">mpz_scan0</seealso>
+        /// <seealso cref="mpz_scan1">mpz_scan1</seealso>
+        /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
+        /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
+        /// <seealso cref="mpz_combit">mpz_combit</seealso>
+        /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3822,17 +4391,18 @@ namespace Math.Gmp.Native
         /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_and"/>
-        /// <seealso cref="mpz_ior"/>
-        /// <seealso cref="mpz_xor"/>
-        /// <seealso cref="mpz_com"/>
-        /// <seealso cref="mpz_popcount"/>
-        /// <seealso cref="mpz_hamdist"/>
-        /// <seealso cref="mpz_scan0"/>
-        /// <seealso cref="mpz_scan1"/>
-        /// <seealso cref="mpz_setbit"/>
-        /// <seealso cref="mpz_clrbit"/>
-        /// <seealso cref="mpz_tstbit"/>
+        /// <seealso cref="mpz_and">mpz_and</seealso>
+        /// <seealso cref="mpz_ior">mpz_ior</seealso>
+        /// <seealso cref="mpz_xor">mpz_xor</seealso>
+        /// <seealso cref="mpz_com">mpz_com</seealso>
+        /// <seealso cref="mpz_popcount">mpz_popcount</seealso>
+        /// <seealso cref="mpz_hamdist">mpz_hamdist</seealso>
+        /// <seealso cref="mpz_scan0">mpz_scan0</seealso>
+        /// <seealso cref="mpz_scan1">mpz_scan1</seealso>
+        /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
+        /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
+        /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3884,14 +4454,15 @@ namespace Math.Gmp.Native
         /// that <paramref name="n"/> and <paramref name="c"/> are considered congruent mod 0 only when exactly equal.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_2exp_p"/>
-        /// <seealso cref="mpz_congruent_ui_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_2exp_p">mpz_congruent_2exp_p</seealso>
+        /// <seealso cref="mpz_congruent_ui_p">mpz_congruent_ui_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3954,14 +4525,15 @@ namespace Math.Gmp.Native
         /// satisfying <paramref name="n"/> = <paramref name="c"/> + q * 2^<paramref name="b"/>.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_congruent_ui_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_congruent_ui_p">mpz_congruent_ui_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4017,14 +4589,15 @@ namespace Math.Gmp.Native
         /// that <paramref name="n"/> and <paramref name="c"/> are considered congruent mod 0 only when exactly equal.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_2exp_p"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_2exp_p">mpz_congruent_2exp_p</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4062,13 +4635,14 @@ namespace Math.Gmp.Native
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact_ui"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact_ui">mpz_divexact_ui</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4130,13 +4704,14 @@ namespace Math.Gmp.Native
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4197,14 +4772,15 @@ namespace Math.Gmp.Native
         /// considered divisible by 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_2exp_p"/>
-        /// <seealso cref="mpz_divisible_ui_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_2exp_p">mpz_divisible_2exp_p</seealso>
+        /// <seealso cref="mpz_divisible_ui_p">mpz_divisible_ui_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4259,14 +4835,15 @@ namespace Math.Gmp.Native
         /// considered divisible by 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_2exp_p"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_2exp_p">mpz_divisible_2exp_p</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4310,14 +4887,15 @@ namespace Math.Gmp.Native
         /// satisfying <paramref name="n"/> = q * 2^<paramref name="b"/>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_divisible_ui_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_divisible_ui_p">mpz_divisible_ui_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4352,14 +4930,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand integer.</param>
         /// <returns>Return non-zero if even, zero if odd.</returns>
-        /// <seealso cref="mpz_fits_ulong_p"/>
-        /// <seealso cref="mpz_fits_slong_p"/>
-        /// <seealso cref="mpz_fits_uint_p"/>
-        /// <seealso cref="mpz_fits_sint_p"/>
-        /// <seealso cref="mpz_fits_ushort_p"/>
-        /// <seealso cref="mpz_fits_sshort_p"/>
-        /// <seealso cref="mpz_odd_p"/>
-        /// <seealso cref="mpz_sizeinbase"/>
+        /// <seealso cref="mpz_fits_ulong_p">mpz_fits_ulong_p</seealso>
+        /// <seealso cref="mpz_fits_slong_p">mpz_fits_slong_p</seealso>
+        /// <seealso cref="mpz_fits_uint_p">mpz_fits_uint_p</seealso>
+        /// <seealso cref="mpz_fits_sint_p">mpz_fits_sint_p</seealso>
+        /// <seealso cref="mpz_fits_ushort_p">mpz_fits_ushort_p</seealso>
+        /// <seealso cref="mpz_fits_sshort_p">mpz_fits_sshort_p</seealso>
+        /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
+        /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4428,7 +5007,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// The sign of <paramref name="op"/> is ignored, just the absolute value is exported.
-        /// An application can use <see cref="mpz_sgn"/> to get the sign and handle it as desired.
+        /// An application can use <see cref="mpz_sgn">mpz_sgn</see> to get the sign and handle it as desired.
         /// (see <a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a>) 
         /// </para>
         /// <para>
@@ -4436,7 +5015,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// When an application is allocating space itself the required size can be determined with a calculation like the following.
-        /// Since <see cref="mpz_sizeinbase"/> always returns at least 1, count here will be at least one, which avoids any portability
+        /// Since <see cref="mpz_sizeinbase">mpz_sizeinbase</see> always returns at least 1, count here will be at least one, which avoids any portability
         /// problems with malloc(0), though if z is zero no space at all is actually needed (or written). 
         /// </para> 
         /// <code language="C++">
@@ -4445,7 +5024,8 @@ namespace Math.Gmp.Native
         /// p = malloc(count * size);
         /// </code> 
         /// </remarks>
-        /// <seealso cref="mpz_import"/>
+        /// <seealso cref="mpz_import">mpz_import</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Import_and_Export">Integer Import and Export</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Import-and-Export.html#Integer-Import-and-Export">GNU MP - Integer Import and Export</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4567,7 +5147,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// The sign of <paramref name="op"/> is ignored, just the absolute value is exported.
-        /// An application can use <see cref="mpz_sgn"/> to get the sign and handle it as desired.
+        /// An application can use <see cref="mpz_sgn">mpz_sgn</see> to get the sign and handle it as desired.
         /// (see <a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a>) 
         /// </para>
         /// <para>
@@ -4575,7 +5155,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// When an application is allocating space itself the required size can be determined with a calculation like the following.
-        /// Since <see cref="mpz_sizeinbase"/> always returns at least 1, count here will be at least one, which avoids any portability
+        /// Since <see cref="mpz_sizeinbase">mpz_sizeinbase</see> always returns at least 1, count here will be at least one, which avoids any portability
         /// problems with malloc(0), though if z is zero no space at all is actually needed (or written). 
         /// </para> 
         /// <code language="C++">
@@ -4584,7 +5164,8 @@ namespace Math.Gmp.Native
         /// p = malloc(count * size);
         /// </code> 
         /// </remarks>
-        /// <seealso cref="mpz_import"/>
+        /// <seealso cref="mpz_import">mpz_import</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Import_and_Export">Integer Import and Export</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Import-and-Export.html#Integer-Import-and-Export">GNU MP - Integer Import and Export</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4677,8 +5258,9 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="n">The operand integer.</param>
-        /// <seealso cref="mpz_2fac_ui"/>
-        /// <seealso cref="mpz_mfac_uiui"/>
+        /// <seealso cref="mpz_2fac_ui">mpz_2fac_ui</seealso>
+        /// <seealso cref="mpz_mfac_uiui">mpz_mfac_uiui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4721,8 +5303,9 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="n">The operand integer.</param>
-        /// <seealso cref="mpz_fac_ui"/>
-        /// <seealso cref="mpz_mfac_uiui"/>
+        /// <seealso cref="mpz_fac_ui">mpz_fac_ui</seealso>
+        /// <seealso cref="mpz_mfac_uiui">mpz_mfac_uiui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4766,8 +5349,9 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="n">The first operand integer.</param>
         /// <param name="m">The second operand integer.</param>
-        /// <seealso cref="mpz_fac_ui"/>
-        /// <seealso cref="mpz_2fac_ui"/>
+        /// <seealso cref="mpz_fac_ui">mpz_fac_ui</seealso>
+        /// <seealso cref="mpz_2fac_ui">mpz_2fac_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4810,6 +5394,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="n">The operand integer.</param>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4853,20 +5438,21 @@ namespace Math.Gmp.Native
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_r"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q_ui"/>
-        /// <seealso cref="mpz_fdiv_r_ui"/>
-        /// <seealso cref="mpz_fdiv_qr_ui"/>
-        /// <seealso cref="mpz_fdiv_ui"/>
-        /// <seealso cref="mpz_fdiv_q_2exp"/>
-        /// <seealso cref="mpz_fdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_r">mpz_fdiv_r</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q_ui">mpz_fdiv_q_ui</seealso>
+        /// <seealso cref="mpz_fdiv_r_ui">mpz_fdiv_r_ui</seealso>
+        /// <seealso cref="mpz_fdiv_qr_ui">mpz_fdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_fdiv_ui">mpz_fdiv_ui</seealso>
+        /// <seealso cref="mpz_fdiv_q_2exp">mpz_fdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_fdiv_r_2exp">mpz_fdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4928,20 +5514,21 @@ namespace Math.Gmp.Native
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="b">The exponent of the power of two denominator.</param>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q"/>
-        /// <seealso cref="mpz_fdiv_r"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q_ui"/>
-        /// <seealso cref="mpz_fdiv_r_ui"/>
-        /// <seealso cref="mpz_fdiv_qr_ui"/>
-        /// <seealso cref="mpz_fdiv_ui"/>
-        /// <seealso cref="mpz_fdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q">mpz_fdiv_q</seealso>
+        /// <seealso cref="mpz_fdiv_r">mpz_fdiv_r</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q_ui">mpz_fdiv_q_ui</seealso>
+        /// <seealso cref="mpz_fdiv_r_ui">mpz_fdiv_r_ui</seealso>
+        /// <seealso cref="mpz_fdiv_qr_ui">mpz_fdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_fdiv_ui">mpz_fdiv_ui</seealso>
+        /// <seealso cref="mpz_fdiv_r_2exp">mpz_fdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4995,19 +5582,20 @@ namespace Math.Gmp.Native
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
         /// <returns>Return the remainder r = | <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/> |.</returns>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_r"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_r_ui"/>
-        /// <seealso cref="mpz_fdiv_qr_ui"/>
-        /// <seealso cref="mpz_fdiv_ui"/>
-        /// <seealso cref="mpz_fdiv_q_2exp"/>
-        /// <seealso cref="mpz_fdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_r">mpz_fdiv_r</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_r_ui">mpz_fdiv_r_ui</seealso>
+        /// <seealso cref="mpz_fdiv_qr_ui">mpz_fdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_fdiv_ui">mpz_fdiv_ui</seealso>
+        /// <seealso cref="mpz_fdiv_q_2exp">mpz_fdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_fdiv_r_2exp">mpz_fdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5059,20 +5647,21 @@ namespace Math.Gmp.Native
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q"/>
-        /// <seealso cref="mpz_fdiv_r"/>
-        /// <seealso cref="mpz_fdiv_q_ui"/>
-        /// <seealso cref="mpz_fdiv_r_ui"/>
-        /// <seealso cref="mpz_fdiv_qr_ui"/>
-        /// <seealso cref="mpz_fdiv_ui"/>
-        /// <seealso cref="mpz_fdiv_q_2exp"/>
-        /// <seealso cref="mpz_fdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q">mpz_fdiv_q</seealso>
+        /// <seealso cref="mpz_fdiv_r">mpz_fdiv_r</seealso>
+        /// <seealso cref="mpz_fdiv_q_ui">mpz_fdiv_q_ui</seealso>
+        /// <seealso cref="mpz_fdiv_r_ui">mpz_fdiv_r_ui</seealso>
+        /// <seealso cref="mpz_fdiv_qr_ui">mpz_fdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_fdiv_ui">mpz_fdiv_ui</seealso>
+        /// <seealso cref="mpz_fdiv_q_2exp">mpz_fdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_fdiv_r_2exp">mpz_fdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5141,20 +5730,21 @@ namespace Math.Gmp.Native
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
         /// <returns>Return | <paramref name="r"/> |.</returns>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q"/>
-        /// <seealso cref="mpz_fdiv_r"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q_ui"/>
-        /// <seealso cref="mpz_fdiv_r_ui"/>
-        /// <seealso cref="mpz_fdiv_ui"/>
-        /// <seealso cref="mpz_fdiv_q_2exp"/>
-        /// <seealso cref="mpz_fdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q">mpz_fdiv_q</seealso>
+        /// <seealso cref="mpz_fdiv_r">mpz_fdiv_r</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q_ui">mpz_fdiv_q_ui</seealso>
+        /// <seealso cref="mpz_fdiv_r_ui">mpz_fdiv_r_ui</seealso>
+        /// <seealso cref="mpz_fdiv_ui">mpz_fdiv_ui</seealso>
+        /// <seealso cref="mpz_fdiv_q_2exp">mpz_fdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_fdiv_r_2exp">mpz_fdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5212,20 +5802,21 @@ namespace Math.Gmp.Native
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q_ui"/>
-        /// <seealso cref="mpz_fdiv_r_ui"/>
-        /// <seealso cref="mpz_fdiv_qr_ui"/>
-        /// <seealso cref="mpz_fdiv_ui"/>
-        /// <seealso cref="mpz_fdiv_q_2exp"/>
-        /// <seealso cref="mpz_fdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q">mpz_fdiv_q</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q_ui">mpz_fdiv_q_ui</seealso>
+        /// <seealso cref="mpz_fdiv_r_ui">mpz_fdiv_r_ui</seealso>
+        /// <seealso cref="mpz_fdiv_qr_ui">mpz_fdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_fdiv_ui">mpz_fdiv_ui</seealso>
+        /// <seealso cref="mpz_fdiv_q_2exp">mpz_fdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_fdiv_r_2exp">mpz_fdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5286,20 +5877,21 @@ namespace Math.Gmp.Native
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="b">The exponent of the power of two denominator.</param>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q"/>
-        /// <seealso cref="mpz_fdiv_r"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q_ui"/>
-        /// <seealso cref="mpz_fdiv_r_ui"/>
-        /// <seealso cref="mpz_fdiv_qr_ui"/>
-        /// <seealso cref="mpz_fdiv_ui"/>
-        /// <seealso cref="mpz_fdiv_q_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q">mpz_fdiv_q</seealso>
+        /// <seealso cref="mpz_fdiv_r">mpz_fdiv_r</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q_ui">mpz_fdiv_q_ui</seealso>
+        /// <seealso cref="mpz_fdiv_r_ui">mpz_fdiv_r_ui</seealso>
+        /// <seealso cref="mpz_fdiv_qr_ui">mpz_fdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_fdiv_ui">mpz_fdiv_ui</seealso>
+        /// <seealso cref="mpz_fdiv_q_2exp">mpz_fdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5353,20 +5945,21 @@ namespace Math.Gmp.Native
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
         /// <returns>Return | <paramref name="r"/> |.</returns>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q"/>
-        /// <seealso cref="mpz_fdiv_r"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q_ui"/>
-        /// <seealso cref="mpz_fdiv_qr_ui"/>
-        /// <seealso cref="mpz_fdiv_ui"/>
-        /// <seealso cref="mpz_fdiv_q_2exp"/>
-        /// <seealso cref="mpz_fdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q">mpz_fdiv_q</seealso>
+        /// <seealso cref="mpz_fdiv_r">mpz_fdiv_r</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q_ui">mpz_fdiv_q_ui</seealso>
+        /// <seealso cref="mpz_fdiv_qr_ui">mpz_fdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_fdiv_ui">mpz_fdiv_ui</seealso>
+        /// <seealso cref="mpz_fdiv_q_2exp">mpz_fdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_fdiv_r_2exp">mpz_fdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5420,20 +6013,21 @@ namespace Math.Gmp.Native
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
         /// <returns>The remainder | r | where r = <paramref name="n"/> - q * <paramref name="d"/>, and where q = floor(<paramref name="n"/> / <paramref name="d"/>).</returns>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q"/>
-        /// <seealso cref="mpz_fdiv_r"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_fdiv_q_ui"/>
-        /// <seealso cref="mpz_fdiv_r_ui"/>
-        /// <seealso cref="mpz_fdiv_qr_ui"/>
-        /// <seealso cref="mpz_fdiv_q_2exp"/>
-        /// <seealso cref="mpz_fdiv_r_2exp"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q">mpz_fdiv_q</seealso>
+        /// <seealso cref="mpz_fdiv_r">mpz_fdiv_r</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_fdiv_q_ui">mpz_fdiv_q_ui</seealso>
+        /// <seealso cref="mpz_fdiv_r_ui">mpz_fdiv_r_ui</seealso>
+        /// <seealso cref="mpz_fdiv_qr_ui">mpz_fdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_fdiv_q_2exp">mpz_fdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_fdiv_r_2exp">mpz_fdiv_r_2exp</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5473,13 +6067,14 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The Fibonacci numbers and Lucas numbers are related sequences, so it’s never necessary to call both
-        /// <see cref="mpz_fib2_ui"/> and <see cref="mpz_lucnum2_ui"/>. 
+        /// <see cref="mpz_fib2_ui">mpz_fib2_ui</see> and <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>. 
         /// The formulas for going from Fibonacci to Lucas can be found in
         /// <a href="https://gmplib.org/manual/Lucas-Numbers-Algorithm.html#Lucas-Numbers-Algorithm">GNU MP - Lucas Numbers Algorithm</a>,
         /// the reverse is straightforward too.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_fib2_ui"/>
+        /// <seealso cref="mpz_fib2_ui">mpz_fib2_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5526,18 +6121,19 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// This function is designed for calculating isolated Fibonacci numbers. 
-        /// When a sequence of values is wanted it’s best to start with <see cref="mpz_fib2_ui"/> 
+        /// When a sequence of values is wanted it’s best to start with <see cref="mpz_fib2_ui">mpz_fib2_ui</see> 
         /// and iterate the defining F[n + 1] = F[n] + F[n - 1] or similar.
         /// </para>
         /// <para>
         /// The Fibonacci numbers and Lucas numbers are related sequences, so it’s never necessary to call both
-        /// <see cref="mpz_fib2_ui"/> and <see cref="mpz_lucnum2_ui"/>. 
+        /// <see cref="mpz_fib2_ui">mpz_fib2_ui</see> and <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>. 
         /// The formulas for going from Fibonacci to Lucas can be found in
         /// <a href="https://gmplib.org/manual/Lucas-Numbers-Algorithm.html#Lucas-Numbers-Algorithm">GNU MP - Lucas Numbers Algorithm</a>,
         /// the reverse is straightforward too.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_fib_ui"/>
+        /// <seealso cref="mpz_fib_ui">mpz_fib_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5585,14 +6181,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand integer.</param>
         /// <returns>Return non-zero iff the value of <paramref name="op"/> fits in a signed 32-bit integer. Otherwise, return zero.</returns>
-        /// <seealso cref="mpz_fits_ulong_p"/>
-        /// <seealso cref="mpz_fits_slong_p"/>
-        /// <seealso cref="mpz_fits_uint_p"/>
-        /// <seealso cref="mpz_fits_ushort_p"/>
-        /// <seealso cref="mpz_fits_sshort_p"/>
-        /// <seealso cref="mpz_odd_p"/>
-        /// <seealso cref="mpz_even_p"/>
-        /// <seealso cref="mpz_sizeinbase"/>
+        /// <seealso cref="mpz_fits_ulong_p">mpz_fits_ulong_p</seealso>
+        /// <seealso cref="mpz_fits_slong_p">mpz_fits_slong_p</seealso>
+        /// <seealso cref="mpz_fits_uint_p">mpz_fits_uint_p</seealso>
+        /// <seealso cref="mpz_fits_ushort_p">mpz_fits_ushort_p</seealso>
+        /// <seealso cref="mpz_fits_sshort_p">mpz_fits_sshort_p</seealso>
+        /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
+        /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
+        /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5629,14 +6226,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand integer.</param>
         /// <returns>Return non-zero iff the value of <paramref name="op"/> fits in a signed 32-bit integer. Otherwise, return zero.</returns>
-        /// <seealso cref="mpz_fits_ulong_p"/>
-        /// <seealso cref="mpz_fits_uint_p"/>
-        /// <seealso cref="mpz_fits_sint_p"/>
-        /// <seealso cref="mpz_fits_ushort_p"/>
-        /// <seealso cref="mpz_fits_sshort_p"/>
-        /// <seealso cref="mpz_odd_p"/>
-        /// <seealso cref="mpz_even_p"/>
-        /// <seealso cref="mpz_sizeinbase"/>
+        /// <seealso cref="mpz_fits_ulong_p">mpz_fits_ulong_p</seealso>
+        /// <seealso cref="mpz_fits_uint_p">mpz_fits_uint_p</seealso>
+        /// <seealso cref="mpz_fits_sint_p">mpz_fits_sint_p</seealso>
+        /// <seealso cref="mpz_fits_ushort_p">mpz_fits_ushort_p</seealso>
+        /// <seealso cref="mpz_fits_sshort_p">mpz_fits_sshort_p</seealso>
+        /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
+        /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
+        /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5673,14 +6271,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand integer.</param>
         /// <returns>Return non-zero iff the value of <paramref name="op"/> fits in a signed 16-bit integer. Otherwise, return zero.</returns>
-        /// <seealso cref="mpz_fits_ulong_p"/>
-        /// <seealso cref="mpz_fits_slong_p"/>
-        /// <seealso cref="mpz_fits_uint_p"/>
-        /// <seealso cref="mpz_fits_sint_p"/>
-        /// <seealso cref="mpz_fits_ushort_p"/>
-        /// <seealso cref="mpz_odd_p"/>
-        /// <seealso cref="mpz_even_p"/>
-        /// <seealso cref="mpz_sizeinbase"/>
+        /// <seealso cref="mpz_fits_ulong_p">mpz_fits_ulong_p</seealso>
+        /// <seealso cref="mpz_fits_slong_p">mpz_fits_slong_p</seealso>
+        /// <seealso cref="mpz_fits_uint_p">mpz_fits_uint_p</seealso>
+        /// <seealso cref="mpz_fits_sint_p">mpz_fits_sint_p</seealso>
+        /// <seealso cref="mpz_fits_ushort_p">mpz_fits_ushort_p</seealso>
+        /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
+        /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
+        /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5717,14 +6316,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand integer.</param>
         /// <returns>Return non-zero iff the value of <paramref name="op"/> fits in an unsigned 32-bit integer. Otherwise, return zero.</returns>
-        /// <seealso cref="mpz_fits_ulong_p"/>
-        /// <seealso cref="mpz_fits_slong_p"/>
-        /// <seealso cref="mpz_fits_sint_p"/>
-        /// <seealso cref="mpz_fits_ushort_p"/>
-        /// <seealso cref="mpz_fits_sshort_p"/>
-        /// <seealso cref="mpz_odd_p"/>
-        /// <seealso cref="mpz_even_p"/>
-        /// <seealso cref="mpz_sizeinbase"/>
+        /// <seealso cref="mpz_fits_ulong_p">mpz_fits_ulong_p</seealso>
+        /// <seealso cref="mpz_fits_slong_p">mpz_fits_slong_p</seealso>
+        /// <seealso cref="mpz_fits_sint_p">mpz_fits_sint_p</seealso>
+        /// <seealso cref="mpz_fits_ushort_p">mpz_fits_ushort_p</seealso>
+        /// <seealso cref="mpz_fits_sshort_p">mpz_fits_sshort_p</seealso>
+        /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
+        /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
+        /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5761,14 +6361,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand integer.</param>
         /// <returns>Return non-zero iff the value of <paramref name="op"/> fits in a signed 32-bit integer. Otherwise, return zero.</returns>
-        /// <seealso cref="mpz_fits_slong_p"/>
-        /// <seealso cref="mpz_fits_uint_p"/>
-        /// <seealso cref="mpz_fits_sint_p"/>
-        /// <seealso cref="mpz_fits_ushort_p"/>
-        /// <seealso cref="mpz_fits_sshort_p"/>
-        /// <seealso cref="mpz_odd_p"/>
-        /// <seealso cref="mpz_even_p"/>
-        /// <seealso cref="mpz_sizeinbase"/>
+        /// <seealso cref="mpz_fits_slong_p">mpz_fits_slong_p</seealso>
+        /// <seealso cref="mpz_fits_uint_p">mpz_fits_uint_p</seealso>
+        /// <seealso cref="mpz_fits_sint_p">mpz_fits_sint_p</seealso>
+        /// <seealso cref="mpz_fits_ushort_p">mpz_fits_ushort_p</seealso>
+        /// <seealso cref="mpz_fits_sshort_p">mpz_fits_sshort_p</seealso>
+        /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
+        /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
+        /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5805,14 +6406,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand integer.</param>
         /// <returns>Return non-zero iff the value of <paramref name="op"/> fits in an unsigned 16-bit integer. Otherwise, return zero.</returns>
-        /// <seealso cref="mpz_fits_ulong_p"/>
-        /// <seealso cref="mpz_fits_slong_p"/>
-        /// <seealso cref="mpz_fits_uint_p"/>
-        /// <seealso cref="mpz_fits_sint_p"/>
-        /// <seealso cref="mpz_fits_sshort_p"/>
-        /// <seealso cref="mpz_odd_p"/>
-        /// <seealso cref="mpz_even_p"/>
-        /// <seealso cref="mpz_sizeinbase"/>
+        /// <seealso cref="mpz_fits_ulong_p">mpz_fits_ulong_p</seealso>
+        /// <seealso cref="mpz_fits_slong_p">mpz_fits_slong_p</seealso>
+        /// <seealso cref="mpz_fits_uint_p">mpz_fits_uint_p</seealso>
+        /// <seealso cref="mpz_fits_sint_p">mpz_fits_sint_p</seealso>
+        /// <seealso cref="mpz_fits_sshort_p">mpz_fits_sshort_p</seealso>
+        /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
+        /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
+        /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5856,8 +6458,9 @@ namespace Math.Gmp.Native
         /// Except if both inputs are zero; then this function defines gcd(0,0) = 0.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_gcd_ui"/>
-        /// <seealso cref="mpz_gcdext"/>
+        /// <seealso cref="mpz_gcd_ui">mpz_gcd_ui</seealso>
+        /// <seealso cref="mpz_gcdext">mpz_gcdext</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5925,8 +6528,9 @@ namespace Math.Gmp.Native
         /// Note that the result will always fit if <paramref name="op2"/> is non-zero.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_gcd"/>
-        /// <seealso cref="mpz_gcdext"/>
+        /// <seealso cref="mpz_gcd">mpz_gcd</seealso>
+        /// <seealso cref="mpz_gcdext">mpz_gcdext</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5992,8 +6596,9 @@ namespace Math.Gmp.Native
         /// If <paramref name="t"/> is null then that value is not computed. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_gcd"/>
-        /// <seealso cref="mpz_gcd_ui"/>
+        /// <seealso cref="mpz_gcd">mpz_gcd</seealso>
+        /// <seealso cref="mpz_gcd_ui">mpz_gcd_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6069,10 +6674,11 @@ namespace Math.Gmp.Native
         /// where available. A hardware overflow trap may or may not occur.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_get_d_2exp"/>
-        /// <seealso cref="mpz_get_si"/>
-        /// <seealso cref="mpz_get_str"/>
-        /// <seealso cref="mpz_get_ui"/>
+        /// <seealso cref="mpz_get_d_2exp">mpz_get_d_2exp</seealso>
+        /// <seealso cref="mpz_get_si">mpz_get_si</seealso>
+        /// <seealso cref="mpz_get_str">mpz_get_str</seealso>
+        /// <seealso cref="mpz_get_ui">mpz_get_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Integers.html#Converting-Integers">GNU MP - Converting Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6120,10 +6726,11 @@ namespace Math.Gmp.Native
         /// This is similar to the standard C <c>frexp</c> function.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_get_d"/>
-        /// <seealso cref="mpz_get_si"/>
-        /// <seealso cref="mpz_get_str"/>
-        /// <seealso cref="mpz_get_ui"/>
+        /// <seealso cref="mpz_get_d">mpz_get_d</seealso>
+        /// <seealso cref="mpz_get_si">mpz_get_si</seealso>
+        /// <seealso cref="mpz_get_str">mpz_get_str</seealso>
+        /// <seealso cref="mpz_get_ui">mpz_get_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Integers.html#Converting-Integers">GNU MP - Converting Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6175,13 +6782,14 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// If <paramref name="op"/> is too big to fit in a signed long int, the returned result is probably not very useful.
-        /// To find out if the value will fit, use the function <see cref="mpz_fits_slong_p"/>.
+        /// To find out if the value will fit, use the function <see cref="mpz_fits_slong_p">mpz_fits_slong_p</see>.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_get_d"/>
-        /// <seealso cref="mpz_get_d_2exp"/>
-        /// <seealso cref="mpz_get_str"/>
-        /// <seealso cref="mpz_get_ui"/>
+        /// <seealso cref="mpz_get_d">mpz_get_d</seealso>
+        /// <seealso cref="mpz_get_d_2exp">mpz_get_d_2exp</seealso>
+        /// <seealso cref="mpz_get_str">mpz_get_str</seealso>
+        /// <seealso cref="mpz_get_ui">mpz_get_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Integers.html#Converting-Integers">GNU MP - Converting Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6230,20 +6838,21 @@ namespace Math.Gmp.Native
         /// significance order) are used.
         /// </para>
         /// <para>
-        /// If <paramref name="str"/> is <see cref="char_ptr.Zero"/>, the result string is allocated using the current
+        /// If <paramref name="str"/> is <see cref="char_ptr.Zero">char_ptr.Zero</see>, the result string is allocated using the current
         /// allocation function. The block will be strlen(str)+1 bytes, that being exactly enough for the string and
         /// null-terminator.
         /// </para>
         /// <para>
-        /// If <paramref name="str"/> is not <see cref="char_ptr.Zero"/>, it should point to a block of storage large
-        /// enough for the result, that being <see cref="mpz_sizeinbase"/>(op, base) + 2.
+        /// If <paramref name="str"/> is not <see cref="char_ptr.Zero">char_ptr.Zero</see>, it should point to a block of storage large
+        /// enough for the result, that being <see cref="mpz_sizeinbase">mpz_sizeinbase</see>(op, base) + 2.
         /// The two extra bytes are for a possible minus sign, and the null-terminator.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_get_d"/>
-        /// <seealso cref="mpz_get_d_2exp"/>
-        /// <seealso cref="mpz_get_si"/>
-        /// <seealso cref="mpz_get_ui"/>
+        /// <seealso cref="mpz_get_d">mpz_get_d</seealso>
+        /// <seealso cref="mpz_get_d_2exp">mpz_get_d_2exp</seealso>
+        /// <seealso cref="mpz_get_si">mpz_get_si</seealso>
+        /// <seealso cref="mpz_get_ui">mpz_get_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Integers.html#Converting-Integers">GNU MP - Converting Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6291,10 +6900,11 @@ namespace Math.Gmp.Native
         /// value is used.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_get_d"/>
-        /// <seealso cref="mpz_get_d_2exp"/>
-        /// <seealso cref="mpz_get_si"/>
-        /// <seealso cref="mpz_get_str"/>
+        /// <seealso cref="mpz_get_d">mpz_get_d</seealso>
+        /// <seealso cref="mpz_get_d_2exp">mpz_get_d_2exp</seealso>
+        /// <seealso cref="mpz_get_si">mpz_get_si</seealso>
+        /// <seealso cref="mpz_get_str">mpz_get_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Integers.html#Converting-Integers">GNU MP - Converting Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6338,18 +6948,19 @@ namespace Math.Gmp.Native
         /// The least significant limb is number 0.
         /// </para>
         /// <para>
-        /// <see cref="mpz_size"/> can be used to find how many limbs make up <paramref name="op"/>.
-        /// <see cref="mpz_getlimbn"/> returns zero if <paramref name="n"/> is outside the range 0
+        /// <see cref="mpz_size">mpz_size</see> can be used to find how many limbs make up <paramref name="op"/>.
+        /// <see cref="mpz_getlimbn">mpz_getlimbn</see> returns zero if <paramref name="n"/> is outside the range 0
         /// to mpz_size(<paramref name="op"/>) - 1.
         /// </para>
         /// </remarks>
-        /// <seealso cref="_mpz_realloc"/>
-        /// <seealso cref="mpz_size"/>
-        /// <seealso cref="mpz_limbs_read"/>
-        /// <seealso cref="mpz_limbs_write"/>
-        /// <seealso cref="mpz_limbs_modify"/>
-        /// <seealso cref="mpz_limbs_finish"/>
-        /// <seealso cref="mpz_roinit_n"/>
+        /// <seealso cref="_mpz_realloc">_mpz_realloc</seealso>
+        /// <seealso cref="mpz_size">mpz_size</seealso>
+        /// <seealso cref="mpz_limbs_read">mpz_limbs_read</seealso>
+        /// <seealso cref="mpz_limbs_write">mpz_limbs_write</seealso>
+        /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
+        /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
+        /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6417,24 +7028,25 @@ namespace Math.Gmp.Native
         /// return the hamming distance between the two operands, which is the number of bit positions where
         /// <paramref name="op1"/> and <paramref name="op2"/> have different bit values. If one operand is
         /// &#8805; 0 and the other &lt; 0 then the number of bits different is infinite, and the
-        /// return value is the largest possible <see cref="mp_bitcnt_t"/>. 
+        /// return value is the largest possible <see cref="mp_bitcnt_t">mp_bitcnt_t</see>. 
         /// </para>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
         /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_and"/>
-        /// <seealso cref="mpz_ior"/>
-        /// <seealso cref="mpz_xor"/>
-        /// <seealso cref="mpz_com"/>
-        /// <seealso cref="mpz_popcount"/>
-        /// <seealso cref="mpz_scan0"/>
-        /// <seealso cref="mpz_scan1"/>
-        /// <seealso cref="mpz_setbit"/>
-        /// <seealso cref="mpz_clrbit"/>
-        /// <seealso cref="mpz_combit"/>
-        /// <seealso cref="mpz_tstbit"/>
+        /// <seealso cref="mpz_and">mpz_and</seealso>
+        /// <seealso cref="mpz_ior">mpz_ior</seealso>
+        /// <seealso cref="mpz_xor">mpz_xor</seealso>
+        /// <seealso cref="mpz_com">mpz_com</seealso>
+        /// <seealso cref="mpz_popcount">mpz_popcount</seealso>
+        /// <seealso cref="mpz_scan0">mpz_scan0</seealso>
+        /// <seealso cref="mpz_scan1">mpz_scan1</seealso>
+        /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
+        /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
+        /// <seealso cref="mpz_combit">mpz_combit</seealso>
+        /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6495,7 +7107,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// There is no sign taken from the data, <paramref name="rop"/> will simply be a positive integer.
-        /// An application can handle any sign itself, and apply it for instance with <see cref="mpz_neg"/>.
+        /// An application can handle any sign itself, and apply it for instance with <see cref="mpz_neg">mpz_neg</see>.
         /// </para>
         /// <para>
         /// There are no data alignment restrictions on <paramref name="op"/>, any address is allowed. 
@@ -6515,7 +7127,8 @@ namespace Math.Gmp.Native
         /// The <paramref name="nails"/> feature can account for this, by passing for instance 8 * sizeof(int) - INT_BIT. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpz_export"/>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpz_export">O:Math.Gmp.Native.gmp_lib.mpz_export</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Import_and_Export">Integer Import and Export</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Import-and-Export.html#Integer-Import-and-Export">GNU MP - Integer Import and Export</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6574,11 +7187,12 @@ namespace Math.Gmp.Native
         /// Initialize <paramref name="x"/>, and set its value to 0.
         /// </summary>
         /// <param name="x">The integer.</param>
-        /// <seealso cref="mpz_clear"/>
-        /// <seealso cref="mpz_clears"/>
-        /// <seealso cref="mpz_inits"/>
-        /// <seealso cref="mpz_init2"/>
-        /// <seealso cref="mpz_realloc2"/>
+        /// <seealso cref="mpz_clear">mpz_clear</seealso>
+        /// <seealso cref="mpz_clears">mpz_clears</seealso>
+        /// <seealso cref="mpz_inits">mpz_inits</seealso>
+        /// <seealso cref="mpz_init2">mpz_init2</seealso>
+        /// <seealso cref="mpz_realloc2">mpz_realloc2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers">GNU MP - Initializing Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6622,25 +7236,26 @@ namespace Math.Gmp.Native
         /// <param name="n">The number of bits.</param>
         /// <remarks>
         /// <para>
-        /// Calling this function instead of <see cref="mpz_init"/> or <see cref="mpz_inits"/>
+        /// Calling this function instead of <see cref="mpz_init">mpz_init</see> or <see cref="mpz_inits">mpz_inits</see>
         /// is never necessary; reallocation is handled automatically by GMP when needed.
         /// </para>
         /// <para>
         /// While <paramref name="n"/> defines the initial space, <paramref name="x"/> will grow automatically in the normal way,
         /// if necessary, for subsequent values stored.
-        /// <see cref="mpz_init2"/> makes it possible to avoid such reallocations if a maximum size is known in advance.
+        /// <see cref="mpz_init2">mpz_init2</see> makes it possible to avoid such reallocations if a maximum size is known in advance.
         /// </para>
         /// <para>
         /// In preparation for an operation, GMP often allocates one limb more than ultimately needed.
         /// To make sure GMP will not perform reallocation for <paramref name="x"/>, you need to add the number of bits
-        /// in <see cref="mp_limb_t"/> to <paramref name="n"/>.
+        /// in <see cref="mp_limb_t">mp_limb_t</see> to <paramref name="n"/>.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_clear"/>
-        /// <seealso cref="mpz_clears"/>
-        /// <seealso cref="mpz_init"/>
-        /// <seealso cref="mpz_inits"/>
-        /// <seealso cref="mpz_realloc2"/>
+        /// <seealso cref="mpz_clear">mpz_clear</seealso>
+        /// <seealso cref="mpz_clears">mpz_clears</seealso>
+        /// <seealso cref="mpz_init">mpz_init</seealso>
+        /// <seealso cref="mpz_inits">mpz_inits</seealso>
+        /// <seealso cref="mpz_realloc2">mpz_realloc2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers">GNU MP - Initializing Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6674,14 +7289,15 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize a NULL-terminated list of <see cref="mpz_t"/> variables, and set their values to 0.
+        /// Initialize a NULL-terminated list of <see cref="mpz_t">mpz_t</see> variables, and set their values to 0.
         /// </summary>
-        /// <param name="x">A NULL-terminated list of <see cref="mpz_t"/> variables.</param>
-        /// <seealso cref="mpz_clear"/>
-        /// <seealso cref="mpz_clears"/>
-        /// <seealso cref="mpz_init"/>
-        /// <seealso cref="mpz_init2"/>
-        /// <seealso cref="mpz_realloc2"/>
+        /// <param name="x">A NULL-terminated list of <see cref="mpz_t">mpz_t</see> variables.</param>
+        /// <seealso cref="mpz_clear">mpz_clear</seealso>
+        /// <seealso cref="mpz_clears">mpz_clears</seealso>
+        /// <seealso cref="mpz_init">mpz_init</seealso>
+        /// <seealso cref="mpz_init2">mpz_init2</seealso>
+        /// <seealso cref="mpz_realloc2">mpz_realloc2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers">GNU MP - Initializing Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6730,10 +7346,11 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The destination integer.</param>
         /// <param name="op">The source integer.</param>
-        /// <seealso cref="mpz_init_set_ui"/>
-        /// <seealso cref="mpz_init_set_si"/>
-        /// <seealso cref="mpz_init_set_d"/>
-        /// <seealso cref="mpz_init_set_str"/>
+        /// <seealso cref="mpz_init_set_ui">mpz_init_set_ui</seealso>
+        /// <seealso cref="mpz_init_set_si">mpz_init_set_si</seealso>
+        /// <seealso cref="mpz_init_set_d">mpz_init_set_d</seealso>
+        /// <seealso cref="mpz_init_set_str">mpz_init_set_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Integer-Init-_0026-Assign.html#Simultaneous-Integer-Init-_0026-Assign">GNU MP - Combined Integer Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6785,13 +7402,14 @@ namespace Math.Gmp.Native
         /// <param name="op">The source integer.</param>
         /// <remarks>
         /// <para>
-        /// <see cref="mpz_init_set_d"/> truncate <paramref name="op"/> to make it an integer.
+        /// <see cref="mpz_init_set_d">mpz_init_set_d</see> truncate <paramref name="op"/> to make it an integer.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_init_set"/>
-        /// <seealso cref="mpz_init_set_ui"/>
-        /// <seealso cref="mpz_init_set_si"/>
-        /// <seealso cref="mpz_init_set_str"/>
+        /// <seealso cref="mpz_init_set">mpz_init_set</seealso>
+        /// <seealso cref="mpz_init_set_ui">mpz_init_set_ui</seealso>
+        /// <seealso cref="mpz_init_set_si">mpz_init_set_si</seealso>
+        /// <seealso cref="mpz_init_set_str">mpz_init_set_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Integer-Init-_0026-Assign.html#Simultaneous-Integer-Init-_0026-Assign">GNU MP - Combined Integer Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6830,10 +7448,11 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The destination integer.</param>
         /// <param name="op">The source integer.</param>
-        /// <seealso cref="mpz_init_set"/>
-        /// <seealso cref="mpz_init_set_ui"/>
-        /// <seealso cref="mpz_init_set_d"/>
-        /// <seealso cref="mpz_init_set_str"/>
+        /// <seealso cref="mpz_init_set">mpz_init_set</seealso>
+        /// <seealso cref="mpz_init_set_ui">mpz_init_set_ui</seealso>
+        /// <seealso cref="mpz_init_set_d">mpz_init_set_d</seealso>
+        /// <seealso cref="mpz_init_set_str">mpz_init_set_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Integer-Init-_0026-Assign.html#Simultaneous-Integer-Init-_0026-Assign">GNU MP - Combined Integer Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6868,7 +7487,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize <paramref name="rop"/> and set its value like <see cref="mpz_set_str"/>.
+        /// Initialize <paramref name="rop"/> and set its value like <see cref="mpz_set_str">mpz_set_str</see>.
         /// </summary>
         /// <param name="rop">The destination integer.</param>
         /// <param name="str">The source integer.</param>
@@ -6876,13 +7495,14 @@ namespace Math.Gmp.Native
         /// <returns>If the string is a correct base <paramref name="base"/> number, the function returns 0; if an error occurs it returns −1. <paramref name="rop"/> is initialized even if an error occurs.</returns>
         /// <remarks>
         /// <para>
-        /// See <see cref="mpz_set_str"/> for details.
+        /// See <see cref="mpz_set_str">mpz_set_str</see> for details.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_init_set"/>
-        /// <seealso cref="mpz_init_set_ui"/>
-        /// <seealso cref="mpz_init_set_si"/>
-        /// <seealso cref="mpz_init_set_d"/>
+        /// <seealso cref="mpz_init_set">mpz_init_set</seealso>
+        /// <seealso cref="mpz_init_set_ui">mpz_init_set_ui</seealso>
+        /// <seealso cref="mpz_init_set_si">mpz_init_set_si</seealso>
+        /// <seealso cref="mpz_init_set_d">mpz_init_set_d</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Integer-Init-_0026-Assign.html#Simultaneous-Integer-Init-_0026-Assign">GNU MP - Combined Integer Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6928,10 +7548,11 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The destination integer.</param>
         /// <param name="op">The source integer.</param>
-        /// <seealso cref="mpz_init_set"/>
-        /// <seealso cref="mpz_init_set_si"/>
-        /// <seealso cref="mpz_init_set_d"/>
-        /// <seealso cref="mpz_init_set_str"/>
+        /// <seealso cref="mpz_init_set">mpz_init_set</seealso>
+        /// <seealso cref="mpz_init_set_si">mpz_init_set_si</seealso>
+        /// <seealso cref="mpz_init_set_d">mpz_init_set_d</seealso>
+        /// <seealso cref="mpz_init_set_str">mpz_init_set_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Integer-Init-_0026-Assign.html#Simultaneous-Integer-Init-_0026-Assign">GNU MP - Combined Integer Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6965,20 +7586,21 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Input from stdio stream <paramref name="stream"/> in the format written by <see cref="mpz_out_raw"/>, and put the result in <paramref name="rop"/>.
+        /// Input from stdio stream <paramref name="stream"/> in the format written by <see cref="mpz_out_raw">mpz_out_raw</see>, and put the result in <paramref name="rop"/>.
         /// </summary>
         /// <param name="rop">The result operand.</param>
         /// <param name="stream">Pointer to file stream.</param>
         /// <returns>Return the number of bytes read, or if an error occurred, return 0.</returns>
         /// <remarks>
         /// <para>
-        /// This routine can read the output from <see cref="mpz_out_raw"/> also from GMP 1,
+        /// This routine can read the output from <see cref="mpz_out_raw">mpz_out_raw</see> also from GMP 1,
         /// in spite of changes necessary for compatibility between 32-bit and 64-bit machines. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_out_str"/>
-        /// <seealso cref="mpz_inp_str"/>
-        /// <seealso cref="mpz_out_raw"/>
+        /// <seealso cref="mpz_out_str">mpz_out_str</seealso>
+        /// <seealso cref="mpz_inp_str">mpz_inp_str</seealso>
+        /// <seealso cref="mpz_out_raw">mpz_out_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Integers">I/O of Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Integers.html#I_002fO-of-Integers">GNU MP - I/O of Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7063,9 +7685,10 @@ namespace Math.Gmp.Native
         /// lower-case letter represent 36..61. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_out_str"/>
-        /// <seealso cref="mpz_out_raw"/>
-        /// <seealso cref="mpz_inp_raw"/>
+        /// <seealso cref="mpz_out_str">mpz_out_str</seealso>
+        /// <seealso cref="mpz_out_raw">mpz_out_raw</seealso>
+        /// <seealso cref="mpz_inp_raw">mpz_inp_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Integers">I/O of Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Integers.html#I_002fO-of-Integers">GNU MP - I/O of Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7143,6 +7766,7 @@ namespace Math.Gmp.Native
         /// The behaviour of this function is undefined when <paramref name="op2"/> is zero.
         /// </para>
         /// </remarks>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7210,17 +7834,18 @@ namespace Math.Gmp.Native
         /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_and"/>
-        /// <seealso cref="mpz_xor"/>
-        /// <seealso cref="mpz_com"/>
-        /// <seealso cref="mpz_popcount"/>
-        /// <seealso cref="mpz_hamdist"/>
-        /// <seealso cref="mpz_scan0"/>
-        /// <seealso cref="mpz_scan1"/>
-        /// <seealso cref="mpz_setbit"/>
-        /// <seealso cref="mpz_clrbit"/>
-        /// <seealso cref="mpz_combit"/>
-        /// <seealso cref="mpz_tstbit"/>
+        /// <seealso cref="mpz_and">mpz_and</seealso>
+        /// <seealso cref="mpz_xor">mpz_xor</seealso>
+        /// <seealso cref="mpz_com">mpz_com</seealso>
+        /// <seealso cref="mpz_popcount">mpz_popcount</seealso>
+        /// <seealso cref="mpz_hamdist">mpz_hamdist</seealso>
+        /// <seealso cref="mpz_scan0">mpz_scan0</seealso>
+        /// <seealso cref="mpz_scan1">mpz_scan1</seealso>
+        /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
+        /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
+        /// <seealso cref="mpz_combit">mpz_combit</seealso>
+        /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7287,7 +7912,8 @@ namespace Math.Gmp.Native
         /// This is defined only for <paramref name="b"/> odd. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_legendre"/>
+        /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7337,14 +7963,15 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
-        /// so <see cref="mpz_kronecker_ui"/>, etc. can be used for mixed precision Jacobi symbols too. 
+        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_kronecker_si"/>
-        /// <seealso cref="mpz_kronecker_ui"/>
-        /// <seealso cref="mpz_legendre"/>
-        /// <seealso cref="mpz_si_kronecker"/>
-        /// <seealso cref="mpz_ui_kronecker"/>
+        /// <seealso cref="mpz_kronecker_si">mpz_kronecker_si</seealso>
+        /// <seealso cref="mpz_kronecker_ui">mpz_kronecker_ui</seealso>
+        /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
+        /// <seealso cref="mpz_si_kronecker">mpz_si_kronecker</seealso>
+        /// <seealso cref="mpz_ui_kronecker">mpz_ui_kronecker</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7394,14 +8021,15 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
-        /// so <see cref="mpz_kronecker_ui"/>, etc. can be used for mixed precision Jacobi symbols too. 
+        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_kronecker"/>
-        /// <seealso cref="mpz_kronecker_ui"/>
-        /// <seealso cref="mpz_legendre"/>
-        /// <seealso cref="mpz_si_kronecker"/>
-        /// <seealso cref="mpz_ui_kronecker"/>
+        /// <seealso cref="mpz_kronecker">mpz_kronecker</seealso>
+        /// <seealso cref="mpz_kronecker_ui">mpz_kronecker_ui</seealso>
+        /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
+        /// <seealso cref="mpz_si_kronecker">mpz_si_kronecker</seealso>
+        /// <seealso cref="mpz_ui_kronecker">mpz_ui_kronecker</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7442,14 +8070,15 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
-        /// so <see cref="mpz_kronecker_ui"/>, etc. can be used for mixed precision Jacobi symbols too. 
+        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_kronecker"/>
-        /// <seealso cref="mpz_kronecker_si"/>
-        /// <seealso cref="mpz_legendre"/>
-        /// <seealso cref="mpz_si_kronecker"/>
-        /// <seealso cref="mpz_ui_kronecker"/>
+        /// <seealso cref="mpz_kronecker">mpz_kronecker</seealso>
+        /// <seealso cref="mpz_kronecker_si">mpz_kronecker_si</seealso>
+        /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
+        /// <seealso cref="mpz_si_kronecker">mpz_si_kronecker</seealso>
+        /// <seealso cref="mpz_ui_kronecker">mpz_ui_kronecker</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7490,14 +8119,15 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
-        /// so <see cref="mpz_kronecker_ui"/>, etc. can be used for mixed precision Jacobi symbols too. 
+        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_kronecker"/>
-        /// <seealso cref="mpz_kronecker_si"/>
-        /// <seealso cref="mpz_kronecker_ui"/>
-        /// <seealso cref="mpz_legendre"/>
-        /// <seealso cref="mpz_ui_kronecker"/>
+        /// <seealso cref="mpz_kronecker">mpz_kronecker</seealso>
+        /// <seealso cref="mpz_kronecker_si">mpz_kronecker_si</seealso>
+        /// <seealso cref="mpz_kronecker_ui">mpz_kronecker_ui</seealso>
+        /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
+        /// <seealso cref="mpz_ui_kronecker">mpz_ui_kronecker</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7538,14 +8168,15 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
-        /// so <see cref="mpz_kronecker_ui"/>, etc. can be used for mixed precision Jacobi symbols too. 
+        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_kronecker"/>
-        /// <seealso cref="mpz_kronecker_si"/>
-        /// <seealso cref="mpz_kronecker_ui"/>
-        /// <seealso cref="mpz_legendre"/>
-        /// <seealso cref="mpz_si_kronecker"/>
+        /// <seealso cref="mpz_kronecker">mpz_kronecker</seealso>
+        /// <seealso cref="mpz_kronecker_si">mpz_kronecker_si</seealso>
+        /// <seealso cref="mpz_kronecker_ui">mpz_kronecker_ui</seealso>
+        /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
+        /// <seealso cref="mpz_si_kronecker">mpz_si_kronecker</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7589,7 +8220,8 @@ namespace Math.Gmp.Native
         /// <paramref name="rop"/> will be zero if either <paramref name="op1"/> or <paramref name="op2"/> is zero. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_lcm_ui"/>
+        /// <seealso cref="mpz_lcm_ui">mpz_lcm_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7657,7 +8289,8 @@ namespace Math.Gmp.Native
         /// <paramref name="rop"/> will be zero if either <paramref name="op1"/> or <paramref name="op2"/> is zero. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_lcm"/>
+        /// <seealso cref="mpz_lcm">mpz_lcm</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7684,7 +8317,8 @@ namespace Math.Gmp.Native
         /// and for such <paramref name="p"/> it’s identical to the Jacobi symbol. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_jacobi"/>
+        /// <seealso cref="mpz_jacobi">mpz_jacobi</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7733,13 +8367,14 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The Fibonacci numbers and Lucas numbers are related sequences, so it’s never necessary to call both
-        /// <see cref="mpz_fib2_ui"/> and <see cref="mpz_lucnum2_ui"/>. 
+        /// <see cref="mpz_fib2_ui">mpz_fib2_ui</see> and <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>. 
         /// The formulas for going from Fibonacci to Lucas can be found in
         /// <a href="https://gmplib.org/manual/Lucas-Numbers-Algorithm.html#Lucas-Numbers-Algorithm">GNU MP - Lucas Numbers Algorithm</a>,
         /// the reverse is straightforward too.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_lucnum2_ui"/>
+        /// <seealso cref="mpz_lucnum2_ui">mpz_lucnum2_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7786,18 +8421,19 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// This function is designed for calculating isolated Lucas numbers. 
-        /// When a sequence of values is wanted it’s best to start with <see cref="mpz_lucnum2_ui"/> 
+        /// When a sequence of values is wanted it’s best to start with <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see> 
         /// and iterate the defining L[n + 1] = L[n] + L[n - 1] or similar.
         /// </para>
         /// <para>
         /// The Fibonacci numbers and Lucas numbers are related sequences, so it’s never necessary to call both
-        /// <see cref="mpz_fib2_ui"/> and <see cref="mpz_lucnum2_ui"/>. 
+        /// <see cref="mpz_fib2_ui">mpz_fib2_ui</see> and <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>. 
         /// The formulas for going from Fibonacci to Lucas can be found in
         /// <a href="https://gmplib.org/manual/Lucas-Numbers-Algorithm.html#Lucas-Numbers-Algorithm">GNU MP - Lucas Numbers Algorithm</a>,
         /// the reverse is straightforward too.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_lucnum_ui"/>
+        /// <seealso cref="mpz_lucnum_ui">mpz_lucnum_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7845,7 +8481,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="n">The operand integer.</param>
         /// <param name="reps">The number of internal passes of the probabilistic algorithm.</param>
-        /// <returns>If the function <see cref="mpz_millerrabin"/> returns 0 then <paramref name="n"/> is not prime. If it returns 1, then <paramref name="n"/> is 'probably' prime.</returns>
+        /// <returns>If the function <see cref="mpz_millerrabin">mpz_millerrabin</see> returns 0 then <paramref name="n"/> is not prime. If it returns 1, then <paramref name="n"/> is 'probably' prime.</returns>
         /// <remarks>
         /// <para>
         /// The probability of a false positive is (1/4)^<paramref name="reps"/>, where <paramref name="reps"/>
@@ -7853,7 +8489,8 @@ namespace Math.Gmp.Native
         /// Knuth indicates that 25 passes are reasonable.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_probab_prime_p"/>
+        /// <seealso cref="mpz_probab_prime_p">mpz_probab_prime_p</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7896,13 +8533,14 @@ namespace Math.Gmp.Native
         /// The sign of the divisor is ignored; the result is always non-negative.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod_ui"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod_ui">mpz_mod_ui</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7970,17 +8608,18 @@ namespace Math.Gmp.Native
         /// The sign of the divisor is ignored; the result is always non-negative.
         /// </para>
         /// <para>
-        /// <see cref="mpz_mod_ui"/> is identical to <see cref="mpz_fdiv_r_ui"/>, returning the remainder as well as setting <paramref name="r"/>.
-        /// See <see cref="mpz_fdiv_ui"/> if only the return value is wanted. 
+        /// <see cref="mpz_mod_ui">mpz_mod_ui</see> is identical to <see cref="mpz_fdiv_r_ui">mpz_fdiv_r_ui</see>, returning the remainder as well as setting <paramref name="r"/>.
+        /// See <see cref="mpz_fdiv_ui">mpz_fdiv_ui</see> if only the return value is wanted. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8033,15 +8672,16 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul_2exp"/>
-        /// <seealso cref="mpz_mul_si"/>
-        /// <seealso cref="mpz_mul_ui"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul_2exp">mpz_mul_2exp</seealso>
+        /// <seealso cref="mpz_mul_si">mpz_mul_si</seealso>
+        /// <seealso cref="mpz_mul_ui">mpz_mul_ui</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8108,15 +8748,16 @@ namespace Math.Gmp.Native
         /// This operation can also be defined as a left shift by <paramref name="op2"/> bits.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_mul_si"/>
-        /// <seealso cref="mpz_mul_ui"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_mul_si">mpz_mul_si</seealso>
+        /// <seealso cref="mpz_mul_ui">mpz_mul_ui</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8169,15 +8810,16 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_mul_2exp"/>
-        /// <seealso cref="mpz_mul_ui"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_mul_2exp">mpz_mul_2exp</seealso>
+        /// <seealso cref="mpz_mul_ui">mpz_mul_ui</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8230,15 +8872,16 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_mul_2exp"/>
-        /// <seealso cref="mpz_mul_si"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_mul_2exp">mpz_mul_2exp</seealso>
+        /// <seealso cref="mpz_mul_si">mpz_mul_si</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8290,13 +8933,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op">The operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8354,7 +8998,8 @@ namespace Math.Gmp.Native
         /// For practical purposes it’s adequate, the chance of a composite passing will be extremely small.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_probab_prime_p"/>
+        /// <seealso cref="mpz_probab_prime_p">mpz_probab_prime_p</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8406,14 +9051,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand integer.</param>
         /// <returns>Return non-zero if odd, zero if even.</returns>
-        /// <seealso cref="mpz_fits_ulong_p"/>
-        /// <seealso cref="mpz_fits_slong_p"/>
-        /// <seealso cref="mpz_fits_uint_p"/>
-        /// <seealso cref="mpz_fits_sint_p"/>
-        /// <seealso cref="mpz_fits_ushort_p"/>
-        /// <seealso cref="mpz_fits_sshort_p"/>
-        /// <seealso cref="mpz_even_p"/>
-        /// <seealso cref="mpz_sizeinbase"/>
+        /// <seealso cref="mpz_fits_ulong_p">mpz_fits_ulong_p</seealso>
+        /// <seealso cref="mpz_fits_slong_p">mpz_fits_slong_p</seealso>
+        /// <seealso cref="mpz_fits_uint_p">mpz_fits_uint_p</seealso>
+        /// <seealso cref="mpz_fits_sint_p">mpz_fits_sint_p</seealso>
+        /// <seealso cref="mpz_fits_ushort_p">mpz_fits_ushort_p</seealso>
+        /// <seealso cref="mpz_fits_sshort_p">mpz_fits_sshort_p</seealso>
+        /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
+        /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8459,16 +9105,17 @@ namespace Math.Gmp.Native
         /// Both the size and the limbs are written in decreasing significance order (i.e., in big-endian).
         /// </para>
         /// <para>
-        /// The output can be read with <see cref="mpz_inp_raw"/>. 
+        /// The output can be read with <see cref="mpz_inp_raw">mpz_inp_raw</see>. 
         /// </para>
         /// <para>
         /// The output of this can not be read by <c>mpz_inp_raw</c> from GMP 1,
         /// because of changes necessary for compatibility between 32-bit and 64-bit machines. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_out_str"/>
-        /// <seealso cref="mpz_inp_str"/>
-        /// <seealso cref="mpz_inp_raw"/>
+        /// <seealso cref="mpz_out_str">mpz_out_str</seealso>
+        /// <seealso cref="mpz_inp_str">mpz_inp_str</seealso>
+        /// <seealso cref="mpz_inp_raw">mpz_inp_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Integers">I/O of Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Integers.html#I_002fO-of-Integers">GNU MP - I/O of Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8555,9 +9202,10 @@ namespace Math.Gmp.Native
         /// and lower-case letters (in that significance order) are used. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_inp_str"/>
-        /// <seealso cref="mpz_out_raw"/>
-        /// <seealso cref="mpz_inp_raw"/>
+        /// <seealso cref="mpz_inp_str">mpz_inp_str</seealso>
+        /// <seealso cref="mpz_out_raw">mpz_out_raw</seealso>
+        /// <seealso cref="mpz_inp_raw">mpz_inp_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Integers">I/O of Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Integers.html#I_002fO-of-Integers">GNU MP - I/O of Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8637,11 +9285,12 @@ namespace Math.Gmp.Native
         /// Under this definition both 0 and 1 are considered to be perfect powers. Negative values of <paramref name="op"/> are accepted, but of course can only be odd perfect powers. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_perfect_square_p"/>
-        /// <seealso cref="mpz_root"/>
-        /// <seealso cref="mpz_rootrem"/>
-        /// <seealso cref="mpz_sqrt"/>
-        /// <seealso cref="mpz_sqrtrem"/>
+        /// <seealso cref="mpz_perfect_square_p">mpz_perfect_square_p</seealso>
+        /// <seealso cref="mpz_root">mpz_root</seealso>
+        /// <seealso cref="mpz_rootrem">mpz_rootrem</seealso>
+        /// <seealso cref="mpz_sqrt">mpz_sqrt</seealso>
+        /// <seealso cref="mpz_sqrtrem">mpz_sqrtrem</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Roots.html#Integer-Roots">GNU MP - Integer Roots</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8683,11 +9332,12 @@ namespace Math.Gmp.Native
         /// Under this definition both 0 and 1 are considered to be perfect squares. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_perfect_power_p"/>
-        /// <seealso cref="mpz_root"/>
-        /// <seealso cref="mpz_rootrem"/>
-        /// <seealso cref="mpz_sqrt"/>
-        /// <seealso cref="mpz_sqrtrem"/>
+        /// <seealso cref="mpz_perfect_power_p">mpz_perfect_power_p</seealso>
+        /// <seealso cref="mpz_root">mpz_root</seealso>
+        /// <seealso cref="mpz_rootrem">mpz_rootrem</seealso>
+        /// <seealso cref="mpz_sqrt">mpz_sqrt</seealso>
+        /// <seealso cref="mpz_sqrtrem">mpz_sqrtrem</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Roots.html#Integer-Roots">GNU MP - Integer Roots</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8723,24 +9373,25 @@ namespace Math.Gmp.Native
         /// Return the population count of <paramref name="op"/>.
         /// </summary>
         /// <param name="op">The operand integer.</param>
-        /// <returns>If <paramref name="op"/> &#8805; 0, return the population count of <paramref name="op"/>, which is the number of 1 bits in the binary representation. If <paramref name="op"/> &lt; 0, the number of 1s is infinite, and the return value is the largest possible <see cref="mp_bitcnt_t"/>.</returns>
+        /// <returns>If <paramref name="op"/> &#8805; 0, return the population count of <paramref name="op"/>, which is the number of 1 bits in the binary representation. If <paramref name="op"/> &lt; 0, the number of 1s is infinite, and the return value is the largest possible <see cref="mp_bitcnt_t">mp_bitcnt_t</see>.</returns>
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
         /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_and"/>
-        /// <seealso cref="mpz_ior"/>
-        /// <seealso cref="mpz_xor"/>
-        /// <seealso cref="mpz_com"/>
-        /// <seealso cref="mpz_hamdist"/>
-        /// <seealso cref="mpz_scan0"/>
-        /// <seealso cref="mpz_scan1"/>
-        /// <seealso cref="mpz_setbit"/>
-        /// <seealso cref="mpz_clrbit"/>
-        /// <seealso cref="mpz_combit"/>
-        /// <seealso cref="mpz_tstbit"/>
+        /// <seealso cref="mpz_and">mpz_and</seealso>
+        /// <seealso cref="mpz_ior">mpz_ior</seealso>
+        /// <seealso cref="mpz_xor">mpz_xor</seealso>
+        /// <seealso cref="mpz_com">mpz_com</seealso>
+        /// <seealso cref="mpz_hamdist">mpz_hamdist</seealso>
+        /// <seealso cref="mpz_scan0">mpz_scan0</seealso>
+        /// <seealso cref="mpz_scan1">mpz_scan1</seealso>
+        /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
+        /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
+        /// <seealso cref="mpz_combit">mpz_combit</seealso>
+        /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8777,10 +9428,11 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="base">The base integer.</param>
         /// <param name="exp">The exponent integer.</param>
-        /// <seealso cref="mpz_powm"/>
-        /// <seealso cref="mpz_powm_ui"/>
-        /// <seealso cref="mpz_powm_sec"/>
-        /// <seealso cref="mpz_ui_pow_ui"/>
+        /// <seealso cref="mpz_powm">mpz_powm</seealso>
+        /// <seealso cref="mpz_powm_ui">mpz_powm_ui</seealso>
+        /// <seealso cref="mpz_powm_sec">mpz_powm_sec</seealso>
+        /// <seealso cref="mpz_ui_pow_ui">mpz_ui_pow_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Exponentiation.html#Integer-Exponentiation">GNU MP - Integer Exponentiation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8836,14 +9488,15 @@ namespace Math.Gmp.Native
         /// <param name="mod">The modulo integer.</param>
         /// <remarks>
         /// <para>
-        /// Negative <paramref name="exp"/> is supported if an inverse <paramref name="base"/>^-1 modulo <paramref name="mod"/> exists (see <see cref="mpz_invert"/>).
+        /// Negative <paramref name="exp"/> is supported if an inverse <paramref name="base"/>^-1 modulo <paramref name="mod"/> exists (see <see cref="mpz_invert">mpz_invert</see>).
         /// If an inverse doesn’t exist then a divide by zero is raised.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_powm_ui"/>
-        /// <seealso cref="mpz_powm_sec"/>
-        /// <seealso cref="mpz_pow_ui"/>
-        /// <seealso cref="mpz_ui_pow_ui"/>
+        /// <seealso cref="mpz_powm_ui">mpz_powm_ui</seealso>
+        /// <seealso cref="mpz_powm_sec">mpz_powm_sec</seealso>
+        /// <seealso cref="mpz_pow_ui">mpz_pow_ui</seealso>
+        /// <seealso cref="mpz_ui_pow_ui">mpz_ui_pow_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Exponentiation.html#Integer-Exponentiation">GNU MP - Integer Exponentiation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8925,10 +9578,11 @@ namespace Math.Gmp.Native
         /// This function is intended for cryptographic purposes, where resilience to side-channel attacks is desired. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_powm"/>
-        /// <seealso cref="mpz_powm_ui"/>
-        /// <seealso cref="mpz_pow_ui"/>
-        /// <seealso cref="mpz_ui_pow_ui"/>
+        /// <seealso cref="mpz_powm">mpz_powm</seealso>
+        /// <seealso cref="mpz_powm_ui">mpz_powm_ui</seealso>
+        /// <seealso cref="mpz_pow_ui">mpz_pow_ui</seealso>
+        /// <seealso cref="mpz_ui_pow_ui">mpz_ui_pow_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Exponentiation.html#Integer-Exponentiation">GNU MP - Integer Exponentiation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9002,14 +9656,15 @@ namespace Math.Gmp.Native
         /// <param name="mod">The modulo integer.</param>
         /// <remarks>
         /// <para>
-        /// Negative <paramref name="exp"/> is supported if an inverse <paramref name="base"/>^-1 modulo <paramref name="mod"/> exists (see <see cref="mpz_invert"/>).
+        /// Negative <paramref name="exp"/> is supported if an inverse <paramref name="base"/>^-1 modulo <paramref name="mod"/> exists (see <see cref="mpz_invert">mpz_invert</see>).
         /// If an inverse doesn’t exist then a divide by zero is raised.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_powm"/>
-        /// <seealso cref="mpz_powm_sec"/>
-        /// <seealso cref="mpz_pow_ui"/>
-        /// <seealso cref="mpz_ui_pow_ui"/>
+        /// <seealso cref="mpz_powm">mpz_powm</seealso>
+        /// <seealso cref="mpz_powm_sec">mpz_powm_sec</seealso>
+        /// <seealso cref="mpz_pow_ui">mpz_pow_ui</seealso>
+        /// <seealso cref="mpz_ui_pow_ui">mpz_ui_pow_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Exponentiation.html#Integer-Exponentiation">GNU MP - Integer Exponentiation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9076,8 +9731,9 @@ namespace Math.Gmp.Native
         /// Reasonable values of <paramref name="reps"/> are between 15 and 50.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_millerrabin"/>
-        /// <seealso cref="mpz_nextprime"/>
+        /// <seealso cref="mpz_millerrabin">mpz_millerrabin</seealso>
+        /// <seealso cref="mpz_nextprime">mpz_nextprime</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9120,7 +9776,7 @@ namespace Math.Gmp.Native
         /// Negative random numbers are generated when <paramref name="max_size"/> is negative.
         /// </para>
         /// <para>
-        /// This function is obsolete. Use <see cref="mpz_urandomb"/> or <see cref="mpz_urandomm"/> instead.
+        /// This function is obsolete. Use <see cref="mpz_urandomb">mpz_urandomb</see> or <see cref="mpz_urandomm">mpz_urandomm</see> instead.
         /// </para>
         /// <para>
         /// The random number functions of GMP come in two groups; older function that rely on a global state, 
@@ -9129,10 +9785,11 @@ namespace Math.Gmp.Native
         /// for more information on how to use and not to use random number functions.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_urandomb"/>
-        /// <seealso cref="mpz_urandomm"/>
-        /// <seealso cref="mpz_rrandomb"/>
-        /// <seealso cref="mpz_random2"/>
+        /// <seealso cref="mpz_urandomb">mpz_urandomb</seealso>
+        /// <seealso cref="mpz_urandomm">mpz_urandomm</seealso>
+        /// <seealso cref="mpz_rrandomb">mpz_rrandomb</seealso>
+        /// <seealso cref="mpz_random2">mpz_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Random-Numbers.html#Integer-Random-Numbers">GNU MP - Integer Random Numbers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9175,7 +9832,7 @@ namespace Math.Gmp.Native
         /// Negative random numbers are generated when <paramref name="max_size"/> is negative. 
         /// </para>
         /// <para>
-        /// This function is obsolete. Use <see cref="mpz_rrandomb"/> instead.
+        /// This function is obsolete. Use <see cref="mpz_rrandomb">mpz_rrandomb</see> instead.
         /// </para>
         /// <para>
         /// The random number functions of GMP come in two groups; older function that rely on a global state, 
@@ -9184,10 +9841,11 @@ namespace Math.Gmp.Native
         /// for more information on how to use and not to use random number functions.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_urandomb"/>
-        /// <seealso cref="mpz_urandomm"/>
-        /// <seealso cref="mpz_rrandomb"/>
-        /// <seealso cref="mpz_random"/>
+        /// <seealso cref="mpz_urandomb">mpz_urandomb</seealso>
+        /// <seealso cref="mpz_urandomm">mpz_urandomm</seealso>
+        /// <seealso cref="mpz_rrandomb">mpz_rrandomb</seealso>
+        /// <seealso cref="mpz_random">mpz_random</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Random-Numbers.html#Integer-Random-Numbers">GNU MP - Integer Random Numbers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9234,11 +9892,12 @@ namespace Math.Gmp.Native
         /// repeated automatic reallocations, or to decrease it to give memory back to the heap.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_clear"/>
-        /// <seealso cref="mpz_clears"/>
-        /// <seealso cref="mpz_init"/>
-        /// <seealso cref="mpz_inits"/>
-        /// <seealso cref="mpz_init2"/>
+        /// <seealso cref="mpz_clear">mpz_clear</seealso>
+        /// <seealso cref="mpz_clears">mpz_clears</seealso>
+        /// <seealso cref="mpz_init">mpz_init</seealso>
+        /// <seealso cref="mpz_inits">mpz_inits</seealso>
+        /// <seealso cref="mpz_init2">mpz_init2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers">GNU MP - Initializing Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9301,6 +9960,7 @@ namespace Math.Gmp.Native
         /// <param name="op">The operand integer.</param>
         /// <param name="f">The factor operand integer.</param>
         /// <returns>The return value is how many such occurrences were removed.</returns>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9363,11 +10023,12 @@ namespace Math.Gmp.Native
         /// <param name="op">The first operand integer.</param>
         /// <param name="n">The second operand integer.</param>
         /// <returns>Return non-zero if the computation was exact, i.e., if <paramref name="op"/> is <paramref name="rop"/> to the <paramref name="n"/>th power.</returns>
-        /// <seealso cref="mpz_perfect_power_p"/>
-        /// <seealso cref="mpz_perfect_square_p"/>
-        /// <seealso cref="mpz_rootrem"/>
-        /// <seealso cref="mpz_sqrt"/>
-        /// <seealso cref="mpz_sqrtrem"/>
+        /// <seealso cref="mpz_perfect_power_p">mpz_perfect_power_p</seealso>
+        /// <seealso cref="mpz_perfect_square_p">mpz_perfect_square_p</seealso>
+        /// <seealso cref="mpz_rootrem">mpz_rootrem</seealso>
+        /// <seealso cref="mpz_sqrt">mpz_sqrt</seealso>
+        /// <seealso cref="mpz_sqrtrem">mpz_sqrtrem</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Roots.html#Integer-Roots">GNU MP - Integer Roots</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9421,11 +10082,12 @@ namespace Math.Gmp.Native
         /// <param name="rem">The result remainder integer.</param>
         /// <param name="u">The first operand integer.</param>
         /// <param name="n">The second operand integer.</param>
-        /// <seealso cref="mpz_perfect_power_p"/>
-        /// <seealso cref="mpz_perfect_square_p"/>
-        /// <seealso cref="mpz_root"/>
-        /// <seealso cref="mpz_sqrt"/>
-        /// <seealso cref="mpz_sqrtrem"/>
+        /// <seealso cref="mpz_perfect_power_p">mpz_perfect_power_p</seealso>
+        /// <seealso cref="mpz_perfect_square_p">mpz_perfect_square_p</seealso>
+        /// <seealso cref="mpz_root">mpz_root</seealso>
+        /// <seealso cref="mpz_sqrt">mpz_sqrt</seealso>
+        /// <seealso cref="mpz_sqrtrem">mpz_sqrtrem</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Roots.html#Integer-Roots">GNU MP - Integer Roots</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9500,10 +10162,11 @@ namespace Math.Gmp.Native
         /// for more information on how to use and not to use random number functions.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_urandomb"/>
-        /// <seealso cref="mpz_urandomm"/>
-        /// <seealso cref="mpz_random"/>
-        /// <seealso cref="mpz_random2"/>
+        /// <seealso cref="mpz_urandomb">mpz_urandomb</seealso>
+        /// <seealso cref="mpz_urandomm">mpz_urandomm</seealso>
+        /// <seealso cref="mpz_random">mpz_random</seealso>
+        /// <seealso cref="mpz_random2">mpz_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Random-Numbers.html#Integer-Random-Numbers">GNU MP - Integer Random Numbers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9564,26 +10227,27 @@ namespace Math.Gmp.Native
         /// then <paramref name="starting_bit"/> is returned. 
         /// </para>
         /// <para>
-        /// If there’s no bit found, then the largest possible <see cref="mp_bitcnt_t"/> is returned.
-        /// This will happen in <see cref="mpz_scan0"/> past the end of a negative number,
-        /// or <see cref="mpz_scan1"/> past the end of a nonnegative number. 
+        /// If there’s no bit found, then the largest possible <see cref="mp_bitcnt_t">mp_bitcnt_t</see> is returned.
+        /// This will happen in <see cref="mpz_scan0">mpz_scan0</see> past the end of a negative number,
+        /// or <see cref="mpz_scan1">mpz_scan1</see> past the end of a nonnegative number. 
         /// </para>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
         /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_and"/>
-        /// <seealso cref="mpz_ior"/>
-        /// <seealso cref="mpz_xor"/>
-        /// <seealso cref="mpz_com"/>
-        /// <seealso cref="mpz_popcount"/>
-        /// <seealso cref="mpz_hamdist"/>
-        /// <seealso cref="mpz_scan1"/>
-        /// <seealso cref="mpz_setbit"/>
-        /// <seealso cref="mpz_clrbit"/>
-        /// <seealso cref="mpz_combit"/>
-        /// <seealso cref="mpz_tstbit"/>
+        /// <seealso cref="mpz_and">mpz_and</seealso>
+        /// <seealso cref="mpz_ior">mpz_ior</seealso>
+        /// <seealso cref="mpz_xor">mpz_xor</seealso>
+        /// <seealso cref="mpz_com">mpz_com</seealso>
+        /// <seealso cref="mpz_popcount">mpz_popcount</seealso>
+        /// <seealso cref="mpz_hamdist">mpz_hamdist</seealso>
+        /// <seealso cref="mpz_scan1">mpz_scan1</seealso>
+        /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
+        /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
+        /// <seealso cref="mpz_combit">mpz_combit</seealso>
+        /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9631,26 +10295,27 @@ namespace Math.Gmp.Native
         /// then <paramref name="starting_bit"/> is returned. 
         /// </para>
         /// <para>
-        /// If there’s no bit found, then the largest possible <see cref="mp_bitcnt_t"/> is returned.
-        /// This will happen in <see cref="mpz_scan0"/> past the end of a negative number,
-        /// or <see cref="mpz_scan1"/> past the end of a nonnegative number. 
+        /// If there’s no bit found, then the largest possible <see cref="mp_bitcnt_t">mp_bitcnt_t</see> is returned.
+        /// This will happen in <see cref="mpz_scan0">mpz_scan0</see> past the end of a negative number,
+        /// or <see cref="mpz_scan1">mpz_scan1</see> past the end of a nonnegative number. 
         /// </para>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
         /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_and"/>
-        /// <seealso cref="mpz_ior"/>
-        /// <seealso cref="mpz_xor"/>
-        /// <seealso cref="mpz_com"/>
-        /// <seealso cref="mpz_popcount"/>
-        /// <seealso cref="mpz_hamdist"/>
-        /// <seealso cref="mpz_scan0"/>
-        /// <seealso cref="mpz_setbit"/>
-        /// <seealso cref="mpz_clrbit"/>
-        /// <seealso cref="mpz_combit"/>
-        /// <seealso cref="mpz_tstbit"/>
+        /// <seealso cref="mpz_and">mpz_and</seealso>
+        /// <seealso cref="mpz_ior">mpz_ior</seealso>
+        /// <seealso cref="mpz_xor">mpz_xor</seealso>
+        /// <seealso cref="mpz_com">mpz_com</seealso>
+        /// <seealso cref="mpz_popcount">mpz_popcount</seealso>
+        /// <seealso cref="mpz_hamdist">mpz_hamdist</seealso>
+        /// <seealso cref="mpz_scan0">mpz_scan0</seealso>
+        /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
+        /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
+        /// <seealso cref="mpz_combit">mpz_combit</seealso>
+        /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9687,13 +10352,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The destination integer.</param>
         /// <param name="op">The source integer.</param>
-        /// <seealso cref="mpz_set_ui"/>
-        /// <seealso cref="mpz_set_si"/>
-        /// <seealso cref="mpz_set_d"/>
-        /// <seealso cref="mpz_set_q"/>
-        /// <seealso cref="mpz_set_f"/>
-        /// <seealso cref="mpz_set_str"/>
-        /// <seealso cref="mpz_swap"/>
+        /// <seealso cref="mpz_set_ui">mpz_set_ui</seealso>
+        /// <seealso cref="mpz_set_si">mpz_set_si</seealso>
+        /// <seealso cref="mpz_set_d">mpz_set_d</seealso>
+        /// <seealso cref="mpz_set_q">mpz_set_q</seealso>
+        /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
+        /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
+        /// <seealso cref="mpz_swap">mpz_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9752,16 +10418,17 @@ namespace Math.Gmp.Native
         /// <param name="op">The source integer.</param>
         /// <remarks>
         /// <para>
-        /// <see cref="mpz_set_d"/> truncate <paramref name="op"/> to make it an integer.
+        /// <see cref="mpz_set_d">mpz_set_d</see> truncate <paramref name="op"/> to make it an integer.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_set"/>
-        /// <seealso cref="mpz_set_ui"/>
-        /// <seealso cref="mpz_set_si"/>
-        /// <seealso cref="mpz_set_q"/>
-        /// <seealso cref="mpz_set_f"/>
-        /// <seealso cref="mpz_set_str"/>
-        /// <seealso cref="mpz_swap"/>
+        /// <seealso cref="mpz_set">mpz_set</seealso>
+        /// <seealso cref="mpz_set_ui">mpz_set_ui</seealso>
+        /// <seealso cref="mpz_set_si">mpz_set_si</seealso>
+        /// <seealso cref="mpz_set_q">mpz_set_q</seealso>
+        /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
+        /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
+        /// <seealso cref="mpz_swap">mpz_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9806,16 +10473,17 @@ namespace Math.Gmp.Native
         /// <param name="op">The source integer.</param>
         /// <remarks>
         /// <para>
-        /// <see cref="mpz_set_f"/> truncate <paramref name="op"/> to make it an integer.
+        /// <see cref="mpz_set_f">mpz_set_f</see> truncate <paramref name="op"/> to make it an integer.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_set"/>
-        /// <seealso cref="mpz_set_ui"/>
-        /// <seealso cref="mpz_set_si"/>
-        /// <seealso cref="mpz_set_d"/>
-        /// <seealso cref="mpz_set_q"/>
-        /// <seealso cref="mpz_set_str"/>
-        /// <seealso cref="mpz_swap"/>
+        /// <seealso cref="mpz_set">mpz_set</seealso>
+        /// <seealso cref="mpz_set_ui">mpz_set_ui</seealso>
+        /// <seealso cref="mpz_set_si">mpz_set_si</seealso>
+        /// <seealso cref="mpz_set_d">mpz_set_d</seealso>
+        /// <seealso cref="mpz_set_q">mpz_set_q</seealso>
+        /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
+        /// <seealso cref="mpz_swap">mpz_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9865,16 +10533,17 @@ namespace Math.Gmp.Native
         /// <param name="op">The source integer.</param>
         /// <remarks>
         /// <para>
-        /// <see cref="mpz_set_q"/> truncate <paramref name="op"/> to make it an integer.
+        /// <see cref="mpz_set_q">mpz_set_q</see> truncate <paramref name="op"/> to make it an integer.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_set"/>
-        /// <seealso cref="mpz_set_ui"/>
-        /// <seealso cref="mpz_set_si"/>
-        /// <seealso cref="mpz_set_d"/>
-        /// <seealso cref="mpz_set_f"/>
-        /// <seealso cref="mpz_set_str"/>
-        /// <seealso cref="mpz_swap"/>
+        /// <seealso cref="mpz_set">mpz_set</seealso>
+        /// <seealso cref="mpz_set_ui">mpz_set_ui</seealso>
+        /// <seealso cref="mpz_set_si">mpz_set_si</seealso>
+        /// <seealso cref="mpz_set_d">mpz_set_d</seealso>
+        /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
+        /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
+        /// <seealso cref="mpz_swap">mpz_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9922,13 +10591,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The destination integer.</param>
         /// <param name="op">The source integer.</param>
-        /// <seealso cref="mpz_set"/>
-        /// <seealso cref="mpz_set_ui"/>
-        /// <seealso cref="mpz_set_d"/>
-        /// <seealso cref="mpz_set_q"/>
-        /// <seealso cref="mpz_set_f"/>
-        /// <seealso cref="mpz_set_str"/>
-        /// <seealso cref="mpz_swap"/>
+        /// <seealso cref="mpz_set">mpz_set</seealso>
+        /// <seealso cref="mpz_set_ui">mpz_set_ui</seealso>
+        /// <seealso cref="mpz_set_d">mpz_set_d</seealso>
+        /// <seealso cref="mpz_set_q">mpz_set_q</seealso>
+        /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
+        /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
+        /// <seealso cref="mpz_swap">mpz_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9988,13 +10658,14 @@ namespace Math.Gmp.Native
         /// letter represent 36..61.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_set"/>
-        /// <seealso cref="mpz_set_ui"/>
-        /// <seealso cref="mpz_set_si"/>
-        /// <seealso cref="mpz_set_d"/>
-        /// <seealso cref="mpz_set_q"/>
-        /// <seealso cref="mpz_set_f"/>
-        /// <seealso cref="mpz_swap"/>
+        /// <seealso cref="mpz_set">mpz_set</seealso>
+        /// <seealso cref="mpz_set_ui">mpz_set_ui</seealso>
+        /// <seealso cref="mpz_set_si">mpz_set_si</seealso>
+        /// <seealso cref="mpz_set_d">mpz_set_d</seealso>
+        /// <seealso cref="mpz_set_q">mpz_set_q</seealso>
+        /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
+        /// <seealso cref="mpz_swap">mpz_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10045,13 +10716,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The destination integer.</param>
         /// <param name="op">The source integer.</param>
-        /// <seealso cref="mpz_set"/>
-        /// <seealso cref="mpz_set_si"/>
-        /// <seealso cref="mpz_set_d"/>
-        /// <seealso cref="mpz_set_q"/>
-        /// <seealso cref="mpz_set_f"/>
-        /// <seealso cref="mpz_set_str"/>
-        /// <seealso cref="mpz_swap"/>
+        /// <seealso cref="mpz_set">mpz_set</seealso>
+        /// <seealso cref="mpz_set_si">mpz_set_si</seealso>
+        /// <seealso cref="mpz_set_d">mpz_set_d</seealso>
+        /// <seealso cref="mpz_set_q">mpz_set_q</seealso>
+        /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
+        /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
+        /// <seealso cref="mpz_swap">mpz_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10101,17 +10773,18 @@ namespace Math.Gmp.Native
         /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_and"/>
-        /// <seealso cref="mpz_ior"/>
-        /// <seealso cref="mpz_xor"/>
-        /// <seealso cref="mpz_com"/>
-        /// <seealso cref="mpz_popcount"/>
-        /// <seealso cref="mpz_hamdist"/>
-        /// <seealso cref="mpz_scan0"/>
-        /// <seealso cref="mpz_scan1"/>
-        /// <seealso cref="mpz_clrbit"/>
-        /// <seealso cref="mpz_combit"/>
-        /// <seealso cref="mpz_tstbit"/>
+        /// <seealso cref="mpz_and">mpz_and</seealso>
+        /// <seealso cref="mpz_ior">mpz_ior</seealso>
+        /// <seealso cref="mpz_xor">mpz_xor</seealso>
+        /// <seealso cref="mpz_com">mpz_com</seealso>
+        /// <seealso cref="mpz_popcount">mpz_popcount</seealso>
+        /// <seealso cref="mpz_hamdist">mpz_hamdist</seealso>
+        /// <seealso cref="mpz_scan0">mpz_scan0</seealso>
+        /// <seealso cref="mpz_scan1">mpz_scan1</seealso>
+        /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
+        /// <seealso cref="mpz_combit">mpz_combit</seealso>
+        /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10154,13 +10827,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand integer.</param>
         /// <returns>Return +1 if <paramref name="op"/> &gt; 0, 0 if <paramref name="op"/> = 0, and -1 if <paramref name="op"/> &lt; 0.</returns>
-        /// <seealso cref="mpz_cmp"/>
-        /// <seealso cref="mpz_cmp_d"/>
-        /// <seealso cref="mpz_cmp_si"/>
-        /// <seealso cref="mpz_cmp_ui"/>
-        /// <seealso cref="mpz_cmpabs"/>
-        /// <seealso cref="mpz_cmpabs_d"/>
-        /// <seealso cref="mpz_cmpabs_ui"/>
+        /// <seealso cref="mpz_cmp">mpz_cmp</seealso>
+        /// <seealso cref="mpz_cmp_d">mpz_cmp_d</seealso>
+        /// <seealso cref="mpz_cmp_si">mpz_cmp_si</seealso>
+        /// <seealso cref="mpz_cmp_ui">mpz_cmp_ui</seealso>
+        /// <seealso cref="mpz_cmpabs">mpz_cmpabs</seealso>
+        /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
+        /// <seealso cref="mpz_cmpabs_ui">mpz_cmpabs_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10202,13 +10876,14 @@ namespace Math.Gmp.Native
         /// If <paramref name="op"/> is zero, the returned value will be zero.
         /// </para>
         /// </remarks>
-        /// <seealso cref="_mpz_realloc"/>
-        /// <seealso cref="mpz_getlimbn"/>
-        /// <seealso cref="mpz_limbs_read"/>
-        /// <seealso cref="mpz_limbs_write"/>
-        /// <seealso cref="mpz_limbs_modify"/>
-        /// <seealso cref="mpz_limbs_finish"/>
-        /// <seealso cref="mpz_roinit_n"/>
+        /// <seealso cref="_mpz_realloc">_mpz_realloc</seealso>
+        /// <seealso cref="mpz_getlimbn">mpz_getlimbn</seealso>
+        /// <seealso cref="mpz_limbs_read">mpz_limbs_read</seealso>
+        /// <seealso cref="mpz_limbs_write">mpz_limbs_write</seealso>
+        /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
+        /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
+        /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10267,7 +10942,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// This function can be used to determine the space required when converting <paramref name="op"/> to a string.
-        /// The right amount of allocation is normally two more than the value returned by <see cref="mpz_sizeinbase"/>,
+        /// The right amount of allocation is normally two more than the value returned by <see cref="mpz_sizeinbase">mpz_sizeinbase</see>,
         /// one extra for a minus sign and one for the null-terminator. 
         /// </para>
         /// <para>
@@ -10277,14 +10952,15 @@ namespace Math.Gmp.Native
         /// see <a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Logical and Bit Manipulation Functions</a>.)
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_fits_ulong_p"/>
-        /// <seealso cref="mpz_fits_slong_p"/>
-        /// <seealso cref="mpz_fits_uint_p"/>
-        /// <seealso cref="mpz_fits_sint_p"/>
-        /// <seealso cref="mpz_fits_ushort_p"/>
-        /// <seealso cref="mpz_fits_sshort_p"/>
-        /// <seealso cref="mpz_odd_p"/>
-        /// <seealso cref="mpz_even_p"/>
+        /// <seealso cref="mpz_fits_ulong_p">mpz_fits_ulong_p</seealso>
+        /// <seealso cref="mpz_fits_slong_p">mpz_fits_slong_p</seealso>
+        /// <seealso cref="mpz_fits_uint_p">mpz_fits_uint_p</seealso>
+        /// <seealso cref="mpz_fits_sint_p">mpz_fits_sint_p</seealso>
+        /// <seealso cref="mpz_fits_ushort_p">mpz_fits_ushort_p</seealso>
+        /// <seealso cref="mpz_fits_sshort_p">mpz_fits_sshort_p</seealso>
+        /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
+        /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10330,11 +11006,12 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result square root integer.</param>
         /// <param name="op">The operand integer.</param>
-        /// <seealso cref="mpz_perfect_power_p"/>
-        /// <seealso cref="mpz_perfect_square_p"/>
-        /// <seealso cref="mpz_root"/>
-        /// <seealso cref="mpz_rootrem"/>
-        /// <seealso cref="mpz_sqrtrem"/>
+        /// <seealso cref="mpz_perfect_power_p">mpz_perfect_power_p</seealso>
+        /// <seealso cref="mpz_perfect_square_p">mpz_perfect_square_p</seealso>
+        /// <seealso cref="mpz_root">mpz_root</seealso>
+        /// <seealso cref="mpz_rootrem">mpz_rootrem</seealso>
+        /// <seealso cref="mpz_sqrtrem">mpz_sqrtrem</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Roots.html#Integer-Roots">GNU MP - Integer Roots</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10382,16 +11059,17 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop1"/> to the truncated integer part of the square root of <paramref name="op"/>, like <see cref="mpz_sqrt"/>. Set <paramref name="rop2"/> to the remainder <paramref name="op"/> - <paramref name="rop1"/> * <paramref name="rop1"/>, which will be zero if <paramref name="op"/> is a perfect square.
+        /// Set <paramref name="rop1"/> to the truncated integer part of the square root of <paramref name="op"/>, like <see cref="mpz_sqrt">mpz_sqrt</see>. Set <paramref name="rop2"/> to the remainder <paramref name="op"/> - <paramref name="rop1"/> * <paramref name="rop1"/>, which will be zero if <paramref name="op"/> is a perfect square.
         /// </summary>
         /// <param name="rop1">The result square root integer.</param>
         /// <param name="rop2">The result remainder integer.</param>
         /// <param name="op">The operand integer.</param>
-        /// <seealso cref="mpz_perfect_power_p"/>
-        /// <seealso cref="mpz_perfect_square_p"/>
-        /// <seealso cref="mpz_root"/>
-        /// <seealso cref="mpz_rootrem"/>
-        /// <seealso cref="mpz_sqrt"/>
+        /// <seealso cref="mpz_perfect_power_p">mpz_perfect_power_p</seealso>
+        /// <seealso cref="mpz_perfect_square_p">mpz_perfect_square_p</seealso>
+        /// <seealso cref="mpz_root">mpz_root</seealso>
+        /// <seealso cref="mpz_rootrem">mpz_rootrem</seealso>
+        /// <seealso cref="mpz_sqrt">mpz_sqrt</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Roots.html#Integer-Roots">GNU MP - Integer Roots</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10449,14 +11127,15 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub_ui"/>
-        /// <seealso cref="mpz_submul"/>
-        /// <seealso cref="mpz_ui_sub"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub_ui">mpz_sub_ui</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="mpz_ui_sub">mpz_ui_sub</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10518,14 +11197,15 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul"/>
-        /// <seealso cref="mpz_ui_sub"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="mpz_ui_sub">mpz_ui_sub</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10578,14 +11258,15 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_sub_ui"/>
-        /// <seealso cref="mpz_submul"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_sub_ui">mpz_sub_ui</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10638,13 +11319,14 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul_ui"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul_ui">mpz_submul_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10706,13 +11388,14 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
         /// <param name="op2">The second operand integer.</param>
-        /// <seealso cref="mpz_abs"/>
-        /// <seealso cref="mpz_add"/>
-        /// <seealso cref="mpz_addmul"/>
-        /// <seealso cref="mpz_mul"/>
-        /// <seealso cref="mpz_neg"/>
-        /// <seealso cref="mpz_sub"/>
-        /// <seealso cref="mpz_submul"/>
+        /// <seealso cref="mpz_abs">mpz_abs</seealso>
+        /// <seealso cref="mpz_add">mpz_add</seealso>
+        /// <seealso cref="mpz_addmul">mpz_addmul</seealso>
+        /// <seealso cref="mpz_mul">mpz_mul</seealso>
+        /// <seealso cref="mpz_neg">mpz_neg</seealso>
+        /// <seealso cref="mpz_sub">mpz_sub</seealso>
+        /// <seealso cref="mpz_submul">mpz_submul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10764,13 +11447,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop1">The first integer.</param>
         /// <param name="rop2">The second integer.</param>
-        /// <seealso cref="mpz_set"/>
-        /// <seealso cref="mpz_set_ui"/>
-        /// <seealso cref="mpz_set_si"/>
-        /// <seealso cref="mpz_set_d"/>
-        /// <seealso cref="mpz_set_q"/>
-        /// <seealso cref="mpz_set_f"/>
-        /// <seealso cref="mpz_set_str"/>
+        /// <seealso cref="mpz_set">mpz_set</seealso>
+        /// <seealso cref="mpz_set_ui">mpz_set_ui</seealso>
+        /// <seealso cref="mpz_set_si">mpz_set_si</seealso>
+        /// <seealso cref="mpz_set_d">mpz_set_d</seealso>
+        /// <seealso cref="mpz_set_q">mpz_set_q</seealso>
+        /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
+        /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10825,20 +11509,21 @@ namespace Math.Gmp.Native
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
         /// <returns>The remainder | r | where r = <paramref name="n"/> - q * <paramref name="d"/>, and where q = trunc(<paramref name="n"/> / <paramref name="d"/>).</returns>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_q"/>
-        /// <seealso cref="mpz_tdiv_r"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
-        /// <seealso cref="mpz_tdiv_q_ui"/>
-        /// <seealso cref="mpz_tdiv_r_ui"/>
-        /// <seealso cref="mpz_tdiv_qr_ui"/>
-        /// <seealso cref="mpz_tdiv_q_2exp"/>
-        /// <seealso cref="mpz_tdiv_r_2exp"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_q">mpz_tdiv_q</seealso>
+        /// <seealso cref="mpz_tdiv_r">mpz_tdiv_r</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="mpz_tdiv_q_ui">mpz_tdiv_q_ui</seealso>
+        /// <seealso cref="mpz_tdiv_r_ui">mpz_tdiv_r_ui</seealso>
+        /// <seealso cref="mpz_tdiv_qr_ui">mpz_tdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10876,20 +11561,21 @@ namespace Math.Gmp.Native
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_r"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
-        /// <seealso cref="mpz_tdiv_q_ui"/>
-        /// <seealso cref="mpz_tdiv_r_ui"/>
-        /// <seealso cref="mpz_tdiv_qr_ui"/>
-        /// <seealso cref="mpz_tdiv_ui"/>
-        /// <seealso cref="mpz_tdiv_q_2exp"/>
-        /// <seealso cref="mpz_tdiv_r_2exp"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_r">mpz_tdiv_r</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="mpz_tdiv_q_ui">mpz_tdiv_q_ui</seealso>
+        /// <seealso cref="mpz_tdiv_r_ui">mpz_tdiv_r_ui</seealso>
+        /// <seealso cref="mpz_tdiv_qr_ui">mpz_tdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
+        /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10951,20 +11637,21 @@ namespace Math.Gmp.Native
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="b">The exponent of the power of two denominator.</param>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_q"/>
-        /// <seealso cref="mpz_tdiv_r"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
-        /// <seealso cref="mpz_tdiv_q_ui"/>
-        /// <seealso cref="mpz_tdiv_r_ui"/>
-        /// <seealso cref="mpz_tdiv_qr_ui"/>
-        /// <seealso cref="mpz_tdiv_ui"/>
-        /// <seealso cref="mpz_tdiv_r_2exp"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_q">mpz_tdiv_q</seealso>
+        /// <seealso cref="mpz_tdiv_r">mpz_tdiv_r</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="mpz_tdiv_q_ui">mpz_tdiv_q_ui</seealso>
+        /// <seealso cref="mpz_tdiv_r_ui">mpz_tdiv_r_ui</seealso>
+        /// <seealso cref="mpz_tdiv_qr_ui">mpz_tdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
+        /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11018,20 +11705,21 @@ namespace Math.Gmp.Native
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
         /// <returns>Return the remainder r = | <paramref name="n"/> - <paramref name="q"/> * <paramref name="d"/> |.</returns>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_q"/>
-        /// <seealso cref="mpz_tdiv_r"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
-        /// <seealso cref="mpz_tdiv_r_ui"/>
-        /// <seealso cref="mpz_tdiv_qr_ui"/>
-        /// <seealso cref="mpz_tdiv_ui"/>
-        /// <seealso cref="mpz_tdiv_q_2exp"/>
-        /// <seealso cref="mpz_tdiv_r_2exp"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_q">mpz_tdiv_q</seealso>
+        /// <seealso cref="mpz_tdiv_r">mpz_tdiv_r</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="mpz_tdiv_r_ui">mpz_tdiv_r_ui</seealso>
+        /// <seealso cref="mpz_tdiv_qr_ui">mpz_tdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
+        /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11083,20 +11771,21 @@ namespace Math.Gmp.Native
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_q"/>
-        /// <seealso cref="mpz_tdiv_r"/>
-        /// <seealso cref="mpz_tdiv_q_ui"/>
-        /// <seealso cref="mpz_tdiv_r_ui"/>
-        /// <seealso cref="mpz_tdiv_qr_ui"/>
-        /// <seealso cref="mpz_tdiv_ui"/>
-        /// <seealso cref="mpz_tdiv_q_2exp"/>
-        /// <seealso cref="mpz_tdiv_r_2exp"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_q">mpz_tdiv_q</seealso>
+        /// <seealso cref="mpz_tdiv_r">mpz_tdiv_r</seealso>
+        /// <seealso cref="mpz_tdiv_q_ui">mpz_tdiv_q_ui</seealso>
+        /// <seealso cref="mpz_tdiv_r_ui">mpz_tdiv_r_ui</seealso>
+        /// <seealso cref="mpz_tdiv_qr_ui">mpz_tdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
+        /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11165,20 +11854,21 @@ namespace Math.Gmp.Native
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
         /// <returns>Return | <paramref name="r"/> |.</returns>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_q"/>
-        /// <seealso cref="mpz_tdiv_r"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
-        /// <seealso cref="mpz_tdiv_q_ui"/>
-        /// <seealso cref="mpz_tdiv_r_ui"/>
-        /// <seealso cref="mpz_tdiv_ui"/>
-        /// <seealso cref="mpz_tdiv_q_2exp"/>
-        /// <seealso cref="mpz_tdiv_r_2exp"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_q">mpz_tdiv_q</seealso>
+        /// <seealso cref="mpz_tdiv_r">mpz_tdiv_r</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="mpz_tdiv_q_ui">mpz_tdiv_q_ui</seealso>
+        /// <seealso cref="mpz_tdiv_r_ui">mpz_tdiv_r_ui</seealso>
+        /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
+        /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11236,20 +11926,21 @@ namespace Math.Gmp.Native
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_q"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
-        /// <seealso cref="mpz_tdiv_q_ui"/>
-        /// <seealso cref="mpz_tdiv_r_ui"/>
-        /// <seealso cref="mpz_tdiv_qr_ui"/>
-        /// <seealso cref="mpz_tdiv_ui"/>
-        /// <seealso cref="mpz_tdiv_q_2exp"/>
-        /// <seealso cref="mpz_tdiv_r_2exp"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_q">mpz_tdiv_q</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="mpz_tdiv_q_ui">mpz_tdiv_q_ui</seealso>
+        /// <seealso cref="mpz_tdiv_r_ui">mpz_tdiv_r_ui</seealso>
+        /// <seealso cref="mpz_tdiv_qr_ui">mpz_tdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
+        /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11311,20 +12002,21 @@ namespace Math.Gmp.Native
         /// <param name="r">The result remainder integer.</param>
         /// <param name="n">The numerator integer.</param>
         /// <param name="b">The exponent of the power of two denominator.</param>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_q"/>
-        /// <seealso cref="mpz_tdiv_r"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
-        /// <seealso cref="mpz_tdiv_q_ui"/>
-        /// <seealso cref="mpz_tdiv_r_ui"/>
-        /// <seealso cref="mpz_tdiv_qr_ui"/>
-        /// <seealso cref="mpz_tdiv_ui"/>
-        /// <seealso cref="mpz_tdiv_q_2exp"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_q">mpz_tdiv_q</seealso>
+        /// <seealso cref="mpz_tdiv_r">mpz_tdiv_r</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="mpz_tdiv_q_ui">mpz_tdiv_q_ui</seealso>
+        /// <seealso cref="mpz_tdiv_r_ui">mpz_tdiv_r_ui</seealso>
+        /// <seealso cref="mpz_tdiv_qr_ui">mpz_tdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
+        /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11378,20 +12070,21 @@ namespace Math.Gmp.Native
         /// <param name="n">The numerator integer.</param>
         /// <param name="d">The denominator integer.</param>
         /// <returns>Return | <paramref name="r"/> |.</returns>
-        /// <seealso cref="mpz_cdiv_qr"/>
-        /// <seealso cref="mpz_congruent_p"/>
-        /// <seealso cref="mpz_divexact"/>
-        /// <seealso cref="mpz_divisible_p"/>
-        /// <seealso cref="mpz_fdiv_qr"/>
-        /// <seealso cref="mpz_mod"/>
-        /// <seealso cref="mpz_tdiv_q"/>
-        /// <seealso cref="mpz_tdiv_r"/>
-        /// <seealso cref="mpz_tdiv_qr"/>
-        /// <seealso cref="mpz_tdiv_q_ui"/>
-        /// <seealso cref="mpz_tdiv_qr_ui"/>
-        /// <seealso cref="mpz_tdiv_ui"/>
-        /// <seealso cref="mpz_tdiv_q_2exp"/>
-        /// <seealso cref="mpz_tdiv_r_2exp"/>
+        /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
+        /// <seealso cref="mpz_congruent_p">mpz_congruent_p</seealso>
+        /// <seealso cref="mpz_divexact">mpz_divexact</seealso>
+        /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
+        /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
+        /// <seealso cref="mpz_mod">mpz_mod</seealso>
+        /// <seealso cref="mpz_tdiv_q">mpz_tdiv_q</seealso>
+        /// <seealso cref="mpz_tdiv_r">mpz_tdiv_r</seealso>
+        /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
+        /// <seealso cref="mpz_tdiv_q_ui">mpz_tdiv_q_ui</seealso>
+        /// <seealso cref="mpz_tdiv_qr_ui">mpz_tdiv_qr_ui</seealso>
+        /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
+        /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
+        /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11450,17 +12143,18 @@ namespace Math.Gmp.Native
         /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_and"/>
-        /// <seealso cref="mpz_ior"/>
-        /// <seealso cref="mpz_xor"/>
-        /// <seealso cref="mpz_com"/>
-        /// <seealso cref="mpz_popcount"/>
-        /// <seealso cref="mpz_hamdist"/>
-        /// <seealso cref="mpz_scan0"/>
-        /// <seealso cref="mpz_scan1"/>
-        /// <seealso cref="mpz_setbit"/>
-        /// <seealso cref="mpz_clrbit"/>
-        /// <seealso cref="mpz_combit"/>
+        /// <seealso cref="mpz_and">mpz_and</seealso>
+        /// <seealso cref="mpz_ior">mpz_ior</seealso>
+        /// <seealso cref="mpz_xor">mpz_xor</seealso>
+        /// <seealso cref="mpz_com">mpz_com</seealso>
+        /// <seealso cref="mpz_popcount">mpz_popcount</seealso>
+        /// <seealso cref="mpz_hamdist">mpz_hamdist</seealso>
+        /// <seealso cref="mpz_scan0">mpz_scan0</seealso>
+        /// <seealso cref="mpz_scan1">mpz_scan1</seealso>
+        /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
+        /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
+        /// <seealso cref="mpz_combit">mpz_combit</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11498,10 +12192,11 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result integer.</param>
         /// <param name="base">The base integer.</param>
         /// <param name="exp">The exponent integer.</param>
-        /// <seealso cref="mpz_powm"/>
-        /// <seealso cref="mpz_powm_ui"/>
-        /// <seealso cref="mpz_powm_sec"/>
-        /// <seealso cref="mpz_pow_ui"/>
+        /// <seealso cref="mpz_powm">mpz_powm</seealso>
+        /// <seealso cref="mpz_powm_ui">mpz_powm_ui</seealso>
+        /// <seealso cref="mpz_powm_sec">mpz_powm_sec</seealso>
+        /// <seealso cref="mpz_pow_ui">mpz_pow_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Exponentiation.html#Integer-Exponentiation">GNU MP - Integer Exponentiation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11557,10 +12252,11 @@ namespace Math.Gmp.Native
         /// for more information on how to use and not to use random number functions.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_urandomm"/>
-        /// <seealso cref="mpz_rrandomb"/>
-        /// <seealso cref="mpz_random"/>
-        /// <seealso cref="mpz_random2"/>
+        /// <seealso cref="mpz_urandomm">mpz_urandomm</seealso>
+        /// <seealso cref="mpz_rrandomb">mpz_rrandomb</seealso>
+        /// <seealso cref="mpz_random">mpz_random</seealso>
+        /// <seealso cref="mpz_random2">mpz_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Random-Numbers.html#Integer-Random-Numbers">GNU MP - Integer Random Numbers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11623,10 +12319,11 @@ namespace Math.Gmp.Native
         /// for more information on how to use and not to use random number functions.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_urandomb"/>
-        /// <seealso cref="mpz_rrandomb"/>
-        /// <seealso cref="mpz_random"/>
-        /// <seealso cref="mpz_random2"/>
+        /// <seealso cref="mpz_urandomb">mpz_urandomb</seealso>
+        /// <seealso cref="mpz_rrandomb">mpz_rrandomb</seealso>
+        /// <seealso cref="mpz_random">mpz_random</seealso>
+        /// <seealso cref="mpz_random2">mpz_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Random-Numbers.html#Integer-Random-Numbers">GNU MP - Integer Random Numbers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11694,17 +12391,18 @@ namespace Math.Gmp.Native
         /// The least significant bit is number 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpz_and"/>
-        /// <seealso cref="mpz_ior"/>
-        /// <seealso cref="mpz_com"/>
-        /// <seealso cref="mpz_popcount"/>
-        /// <seealso cref="mpz_hamdist"/>
-        /// <seealso cref="mpz_scan0"/>
-        /// <seealso cref="mpz_scan1"/>
-        /// <seealso cref="mpz_setbit"/>
-        /// <seealso cref="mpz_clrbit"/>
-        /// <seealso cref="mpz_combit"/>
-        /// <seealso cref="mpz_tstbit"/>
+        /// <seealso cref="mpz_and">mpz_and</seealso>
+        /// <seealso cref="mpz_ior">mpz_ior</seealso>
+        /// <seealso cref="mpz_com">mpz_com</seealso>
+        /// <seealso cref="mpz_popcount">mpz_popcount</seealso>
+        /// <seealso cref="mpz_hamdist">mpz_hamdist</seealso>
+        /// <seealso cref="mpz_scan0">mpz_scan0</seealso>
+        /// <seealso cref="mpz_scan1">mpz_scan1</seealso>
+        /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
+        /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
+        /// <seealso cref="mpz_combit">mpz_combit</seealso>
+        /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11767,16 +12465,17 @@ namespace Math.Gmp.Native
         /// <returns>A pointer to the limb array representing the absolute value of <paramref name="x"/>.</returns>
         /// <remarks>
         /// <para>
-        /// The size of the array is <see cref="mpz_size"/>(x). Intended for read access only.
+        /// The size of the array is <see cref="mpz_size">mpz_size</see>(x). Intended for read access only.
         /// </para>
         /// </remarks>
-        /// <seealso cref="_mpz_realloc"/>
-        /// <seealso cref="mpz_getlimbn"/>
-        /// <seealso cref="mpz_size"/>
-        /// <seealso cref="mpz_limbs_write"/>
-        /// <seealso cref="mpz_limbs_modify"/>
-        /// <seealso cref="mpz_limbs_finish"/>
-        /// <seealso cref="mpz_roinit_n"/>
+        /// <seealso cref="_mpz_realloc">_mpz_realloc</seealso>
+        /// <seealso cref="mpz_getlimbn">mpz_getlimbn</seealso>
+        /// <seealso cref="mpz_size">mpz_size</seealso>
+        /// <seealso cref="mpz_limbs_write">mpz_limbs_write</seealso>
+        /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
+        /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
+        /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11837,17 +12536,18 @@ namespace Math.Gmp.Native
         /// <para>
         /// The array is reallocated as needed, to make room for <paramref name="n"/> limbs.
         /// Requires <paramref name="n"/> &gt; 0.
-        /// The <see cref="mpz_limbs_write"/> function may destroy the old value and
+        /// The <see cref="mpz_limbs_write">mpz_limbs_write</see> function may destroy the old value and
         /// return an array with unspecified contents.
         /// </para>
         /// </remarks>
-        /// <seealso cref="_mpz_realloc"/>
-        /// <seealso cref="mpz_getlimbn"/>
-        /// <seealso cref="mpz_size"/>
-        /// <seealso cref="mpz_limbs_read"/>
-        /// <seealso cref="mpz_limbs_modify"/>
-        /// <seealso cref="mpz_limbs_finish"/>
-        /// <seealso cref="mpz_roinit_n"/>
+        /// <seealso cref="_mpz_realloc">_mpz_realloc</seealso>
+        /// <seealso cref="mpz_getlimbn">mpz_getlimbn</seealso>
+        /// <seealso cref="mpz_size">mpz_size</seealso>
+        /// <seealso cref="mpz_limbs_read">mpz_limbs_read</seealso>
+        /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
+        /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
+        /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11914,17 +12614,18 @@ namespace Math.Gmp.Native
         /// <para>
         /// The array is reallocated as needed, to make room for <paramref name="n"/> limbs.
         /// Requires <paramref name="n"/> &gt; 0.
-        /// The <see cref="mpz_limbs_modify"/> function returns an array that holds the old absolute
+        /// The <see cref="mpz_limbs_modify">mpz_limbs_modify</see> function returns an array that holds the old absolute
         /// value of <paramref name="x"/>
         /// </para>
         /// </remarks>
-        /// <seealso cref="_mpz_realloc"/>
-        /// <seealso cref="mpz_getlimbn"/>
-        /// <seealso cref="mpz_size"/>
-        /// <seealso cref="mpz_limbs_read"/>
-        /// <seealso cref="mpz_limbs_write"/>
-        /// <seealso cref="mpz_limbs_finish"/>
-        /// <seealso cref="mpz_roinit_n"/>
+        /// <seealso cref="_mpz_realloc">_mpz_realloc</seealso>
+        /// <seealso cref="mpz_getlimbn">mpz_getlimbn</seealso>
+        /// <seealso cref="mpz_size">mpz_size</seealso>
+        /// <seealso cref="mpz_limbs_read">mpz_limbs_read</seealso>
+        /// <seealso cref="mpz_limbs_write">mpz_limbs_write</seealso>
+        /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
+        /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11986,8 +12687,8 @@ namespace Math.Gmp.Native
         /// <param name="s">The number of limbs and the sign of <paramref name="x"/>.</param>
         /// <remarks>
         /// <para>
-        /// Used after writing to the limb array pointer returned by <see cref="mpz_limbs_write"/>
-        /// or <see cref="mpz_limbs_modify"/> is completed. The array should contain | <paramref name="s"/> |
+        /// Used after writing to the limb array pointer returned by <see cref="mpz_limbs_write">mpz_limbs_write</see>
+        /// or <see cref="mpz_limbs_modify">mpz_limbs_modify</see> is completed. The array should contain | <paramref name="s"/> |
         /// valid limbs, representing the new absolute value for <paramref name="x"/>, and the sign of <paramref name="x"/>
         /// is taken from the sign of <paramref name="s"/>.
         /// This function never reallocates <paramref name="x"/>, so the limb pointer remains valid.
@@ -12006,13 +12707,14 @@ namespace Math.Gmp.Native
         /// }
         /// </code> 
         /// </remarks>
-        /// <seealso cref="_mpz_realloc"/>
-        /// <seealso cref="mpz_getlimbn"/>
-        /// <seealso cref="mpz_size"/>
-        /// <seealso cref="mpz_limbs_read"/>
-        /// <seealso cref="mpz_limbs_write"/>
-        /// <seealso cref="mpz_limbs_modify"/>
-        /// <seealso cref="mpz_roinit_n"/>
+        /// <seealso cref="_mpz_realloc">_mpz_realloc</seealso>
+        /// <seealso cref="mpz_getlimbn">mpz_getlimbn</seealso>
+        /// <seealso cref="mpz_size">mpz_size</seealso>
+        /// <seealso cref="mpz_limbs_read">mpz_limbs_read</seealso>
+        /// <seealso cref="mpz_limbs_write">mpz_limbs_write</seealso>
+        /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
+        /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         public static void mpz_limbs_finish(/*const*/ mpz_t x, mp_size_t s)
         {
@@ -12042,13 +12744,14 @@ namespace Math.Gmp.Native
         /// }
         /// </code> 
         /// </remarks>
-        /// <seealso cref="_mpz_realloc"/>
-        /// <seealso cref="mpz_getlimbn"/>
-        /// <seealso cref="mpz_size"/>
-        /// <seealso cref="mpz_limbs_read"/>
-        /// <seealso cref="mpz_limbs_write"/>
-        /// <seealso cref="mpz_limbs_modify"/>
-        /// <seealso cref="mpz_limbs_finish"/>
+        /// <seealso cref="_mpz_realloc">_mpz_realloc</seealso>
+        /// <seealso cref="mpz_getlimbn">mpz_getlimbn</seealso>
+        /// <seealso cref="mpz_size">mpz_size</seealso>
+        /// <seealso cref="mpz_limbs_read">mpz_limbs_read</seealso>
+        /// <seealso cref="mpz_limbs_write">mpz_limbs_write</seealso>
+        /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
+        /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12116,14 +12819,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result rational.</param>
         /// <param name="op">The operand rational.</param>
-        /// <seealso cref="mpq_add"/>
-        /// <seealso cref="mpq_sub"/>
-        /// <seealso cref="mpq_mul"/>
-        /// <seealso cref="mpq_mul_2exp"/>
-        /// <seealso cref="mpq_div"/>
-        /// <seealso cref="mpq_div_2exp"/>
-        /// <seealso cref="mpq_neg"/>
-        /// <seealso cref="mpq_inv"/>
+        /// <seealso cref="mpq_add">mpq_add</seealso>
+        /// <seealso cref="mpq_sub">mpq_sub</seealso>
+        /// <seealso cref="mpq_mul">mpq_mul</seealso>
+        /// <seealso cref="mpq_mul_2exp">mpq_mul_2exp</seealso>
+        /// <seealso cref="mpq_div">mpq_div</seealso>
+        /// <seealso cref="mpq_div_2exp">mpq_div_2exp</seealso>
+        /// <seealso cref="mpq_neg">mpq_neg</seealso>
+        /// <seealso cref="mpq_inv">mpq_inv</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12144,14 +12848,15 @@ namespace Math.Gmp.Native
         /// <param name="sum">The result rational.</param>
         /// <param name="addend1">The first operand rational.</param>
         /// <param name="addend2">The second operand rational.</param>
-        /// <seealso cref="mpq_sub"/>
-        /// <seealso cref="mpq_mul"/>
-        /// <seealso cref="mpq_mul_2exp"/>
-        /// <seealso cref="mpq_div"/>
-        /// <seealso cref="mpq_div_2exp"/>
-        /// <seealso cref="mpq_neg"/>
-        /// <seealso cref="mpq_abs"/>
-        /// <seealso cref="mpq_inv"/>
+        /// <seealso cref="mpq_sub">mpq_sub</seealso>
+        /// <seealso cref="mpq_mul">mpq_mul</seealso>
+        /// <seealso cref="mpq_mul_2exp">mpq_mul_2exp</seealso>
+        /// <seealso cref="mpq_div">mpq_div</seealso>
+        /// <seealso cref="mpq_div_2exp">mpq_div_2exp</seealso>
+        /// <seealso cref="mpq_neg">mpq_neg</seealso>
+        /// <seealso cref="mpq_abs">mpq_abs</seealso>
+        /// <seealso cref="mpq_inv">mpq_inv</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12171,15 +12876,16 @@ namespace Math.Gmp.Native
         /// Remove any factors that are common to the numerator and denominator of <paramref name="op"/>, and make the denominator positive.
         /// </summary>
         /// <param name="op">The operand rational.</param>
-        /// <seealso cref="mpq_init"/>
-        /// <seealso cref="mpq_inits"/>
-        /// <seealso cref="mpq_clears"/>
-        /// <seealso cref="mpq_set"/>
-        /// <seealso cref="mpq_set_z"/>
-        /// <seealso cref="mpq_set_ui"/>
-        /// <seealso cref="mpq_set_si"/>
-        /// <seealso cref="mpq_set_str"/>
-        /// <seealso cref="mpq_swap"/>
+        /// <seealso cref="mpq_init">mpq_init</seealso>
+        /// <seealso cref="mpq_inits">mpq_inits</seealso>
+        /// <seealso cref="mpq_clears">mpq_clears</seealso>
+        /// <seealso cref="mpq_set">mpq_set</seealso>
+        /// <seealso cref="mpq_set_z">mpq_set_z</seealso>
+        /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
+        /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
+        /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
+        /// <seealso cref="mpq_swap">mpq_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12199,19 +12905,20 @@ namespace Math.Gmp.Native
         /// <param name="x">The operand rational.</param>
         /// <remarks>
         /// <para>
-        /// Make sure to call this function for all <see cref="mpq_t"/> variables when you are done with them. 
+        /// Make sure to call this function for all <see cref="mpq_t">mpq_t</see> variables when you are done with them. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_canonicalize"/>
-        /// <seealso cref="mpq_init"/>
-        /// <seealso cref="mpq_inits"/>
-        /// <seealso cref="mpq_clears"/>
-        /// <seealso cref="mpq_set"/>
-        /// <seealso cref="mpq_set_z"/>
-        /// <seealso cref="mpq_set_ui"/>
-        /// <seealso cref="mpq_set_si"/>
-        /// <seealso cref="mpq_set_str"/>
-        /// <seealso cref="mpq_swap"/>
+        /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
+        /// <seealso cref="mpq_init">mpq_init</seealso>
+        /// <seealso cref="mpq_inits">mpq_inits</seealso>
+        /// <seealso cref="mpq_clears">mpq_clears</seealso>
+        /// <seealso cref="mpq_set">mpq_set</seealso>
+        /// <seealso cref="mpq_set_z">mpq_set_z</seealso>
+        /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
+        /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
+        /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
+        /// <seealso cref="mpq_swap">mpq_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12245,19 +12952,20 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Free the space occupied by a NULL-terminated list of <see cref="mpq_t"/> variables. 
+        /// Free the space occupied by a NULL-terminated list of <see cref="mpq_t">mpq_t</see> variables. 
         /// </summary>
         /// <param name="x">The operand rational.</param>
-        /// <seealso cref="mpq_canonicalize"/>
-        /// <seealso cref="mpq_init"/>
-        /// <seealso cref="mpq_inits"/>
-        /// <seealso cref="mpq_clear"/>
-        /// <seealso cref="mpq_set"/>
-        /// <seealso cref="mpq_set_z"/>
-        /// <seealso cref="mpq_set_ui"/>
-        /// <seealso cref="mpq_set_si"/>
-        /// <seealso cref="mpq_set_str"/>
-        /// <seealso cref="mpq_swap"/>
+        /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
+        /// <seealso cref="mpq_init">mpq_init</seealso>
+        /// <seealso cref="mpq_inits">mpq_inits</seealso>
+        /// <seealso cref="mpq_clear">mpq_clear</seealso>
+        /// <seealso cref="mpq_set">mpq_set</seealso>
+        /// <seealso cref="mpq_set_z">mpq_set_z</seealso>
+        /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
+        /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
+        /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
+        /// <seealso cref="mpq_swap">mpq_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12309,14 +13017,15 @@ namespace Math.Gmp.Native
         /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, and a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
         /// <remarks>
         /// <para>
-        /// To determine if two rationals are equal, <see cref="mpq_equal"/> is faster than <see cref="mpq_cmp"/>. 
+        /// To determine if two rationals are equal, <see cref="mpq_equal">mpq_equal</see> is faster than <see cref="mpq_cmp">mpq_cmp</see>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_cmp_z"/>
-        /// <seealso cref="mpq_cmp_ui"/>
-        /// <seealso cref="mpq_cmp_si"/>
-        /// <seealso cref="mpq_sgn"/>
-        /// <seealso cref="mpq_equal"/>
+        /// <seealso cref="mpq_cmp_z">mpq_cmp_z</seealso>
+        /// <seealso cref="mpq_cmp_ui">mpq_cmp_ui</seealso>
+        /// <seealso cref="mpq_cmp_si">mpq_cmp_si</seealso>
+        /// <seealso cref="mpq_sgn">mpq_sgn</seealso>
+        /// <seealso cref="mpq_equal">mpq_equal</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Comparing-Rationals.html#Comparing-Rationals">GNU MP - Comparing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12373,11 +13082,12 @@ namespace Math.Gmp.Native
         /// <paramref name="num2"/> and <paramref name="den2"/> are allowed to have common factors. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_cmp"/>
-        /// <seealso cref="mpq_cmp_z"/>
-        /// <seealso cref="mpq_cmp_ui"/>
-        /// <seealso cref="mpq_sgn"/>
-        /// <seealso cref="mpq_equal"/>
+        /// <seealso cref="mpq_cmp">mpq_cmp</seealso>
+        /// <seealso cref="mpq_cmp_z">mpq_cmp_z</seealso>
+        /// <seealso cref="mpq_cmp_ui">mpq_cmp_ui</seealso>
+        /// <seealso cref="mpq_sgn">mpq_sgn</seealso>
+        /// <seealso cref="mpq_equal">mpq_equal</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Comparing-Rationals.html#Comparing-Rationals">GNU MP - Comparing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12423,11 +13133,12 @@ namespace Math.Gmp.Native
         /// <paramref name="num2"/> and <paramref name="den2"/> are allowed to have common factors. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_cmp"/>
-        /// <seealso cref="mpq_cmp_z"/>
-        /// <seealso cref="mpq_cmp_si"/>
-        /// <seealso cref="mpq_sgn"/>
-        /// <seealso cref="mpq_equal"/>
+        /// <seealso cref="mpq_cmp">mpq_cmp</seealso>
+        /// <seealso cref="mpq_cmp_z">mpq_cmp_z</seealso>
+        /// <seealso cref="mpq_cmp_si">mpq_cmp_si</seealso>
+        /// <seealso cref="mpq_sgn">mpq_sgn</seealso>
+        /// <seealso cref="mpq_equal">mpq_equal</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Comparing-Rationals.html#Comparing-Rationals">GNU MP - Comparing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12469,14 +13180,15 @@ namespace Math.Gmp.Native
         /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, and a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
         /// <remarks>
         /// <para>
-        /// To determine if two rationals are equal, <see cref="mpq_equal"/> is faster than <see cref="mpq_cmp"/>. 
+        /// To determine if two rationals are equal, <see cref="mpq_equal">mpq_equal</see> is faster than <see cref="mpq_cmp">mpq_cmp</see>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_cmp"/>
-        /// <seealso cref="mpq_cmp_ui"/>
-        /// <seealso cref="mpq_cmp_si"/>
-        /// <seealso cref="mpq_sgn"/>
-        /// <seealso cref="mpq_equal"/>
+        /// <seealso cref="mpq_cmp">mpq_cmp</seealso>
+        /// <seealso cref="mpq_cmp_ui">mpq_cmp_ui</seealso>
+        /// <seealso cref="mpq_cmp_si">mpq_cmp_si</seealso>
+        /// <seealso cref="mpq_sgn">mpq_sgn</seealso>
+        /// <seealso cref="mpq_equal">mpq_equal</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Comparing-Rationals.html#Comparing-Rationals">GNU MP - Comparing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12533,11 +13245,12 @@ namespace Math.Gmp.Native
         /// The <c>mpz</c> functions can be used on the returned reference. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_numref"/>
-        /// <seealso cref="mpq_get_num"/>
-        /// <seealso cref="mpq_get_den "/>
-        /// <seealso cref="mpq_set_num"/>
-        /// <seealso cref="mpq_set_den"/>
+        /// <seealso cref="mpq_numref">mpq_numref</seealso>
+        /// <seealso cref="mpq_get_num">mpq_get_num</seealso>
+        /// <seealso cref="mpq_get_den ">mpq_get_den </seealso>
+        /// <seealso cref="mpq_set_num">mpq_set_num</seealso>
+        /// <seealso cref="mpq_set_den">mpq_set_den</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Applying-Integer-Functions.html#Applying-Integer-Functions">GNU MP - Applying Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12585,14 +13298,15 @@ namespace Math.Gmp.Native
         /// <param name="quotient">The result rational.</param>
         /// <param name="dividend">The first operand rational.</param>
         /// <param name="divisor">The second operand rational.</param>
-        /// <seealso cref="mpq_add"/>
-        /// <seealso cref="mpq_sub"/>
-        /// <seealso cref="mpq_mul"/>
-        /// <seealso cref="mpq_mul_2exp"/>
-        /// <seealso cref="mpq_div_2exp"/>
-        /// <seealso cref="mpq_neg"/>
-        /// <seealso cref="mpq_abs"/>
-        /// <seealso cref="mpq_inv"/>
+        /// <seealso cref="mpq_add">mpq_add</seealso>
+        /// <seealso cref="mpq_sub">mpq_sub</seealso>
+        /// <seealso cref="mpq_mul">mpq_mul</seealso>
+        /// <seealso cref="mpq_mul_2exp">mpq_mul_2exp</seealso>
+        /// <seealso cref="mpq_div_2exp">mpq_div_2exp</seealso>
+        /// <seealso cref="mpq_neg">mpq_neg</seealso>
+        /// <seealso cref="mpq_abs">mpq_abs</seealso>
+        /// <seealso cref="mpq_inv">mpq_inv</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12614,14 +13328,15 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result rational.</param>
         /// <param name="op1">The first operand rational.</param>
         /// <param name="op2">The second operand rational.</param>
-        /// <seealso cref="mpq_add"/>
-        /// <seealso cref="mpq_sub"/>
-        /// <seealso cref="mpq_mul"/>
-        /// <seealso cref="mpq_mul_2exp"/>
-        /// <seealso cref="mpq_div"/>
-        /// <seealso cref="mpq_neg"/>
-        /// <seealso cref="mpq_abs"/>
-        /// <seealso cref="mpq_inv"/>
+        /// <seealso cref="mpq_add">mpq_add</seealso>
+        /// <seealso cref="mpq_sub">mpq_sub</seealso>
+        /// <seealso cref="mpq_mul">mpq_mul</seealso>
+        /// <seealso cref="mpq_mul_2exp">mpq_mul_2exp</seealso>
+        /// <seealso cref="mpq_div">mpq_div</seealso>
+        /// <seealso cref="mpq_neg">mpq_neg</seealso>
+        /// <seealso cref="mpq_abs">mpq_abs</seealso>
+        /// <seealso cref="mpq_inv">mpq_inv</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12644,14 +13359,15 @@ namespace Math.Gmp.Native
         /// <returns>Return non-zero if <paramref name="op1"/> and <paramref name="op2"/> are equal, zero if they are non-equal.</returns>
         /// <remarks>
         /// <para>
-        /// Although <see cref="mpq_cmp"/> can be used for the same purpose, this function is much faster. 
+        /// Although <see cref="mpq_cmp">mpq_cmp</see> can be used for the same purpose, this function is much faster. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_cmp"/>
-        /// <seealso cref="mpq_cmp_z"/>
-        /// <seealso cref="mpq_cmp_ui"/>
-        /// <seealso cref="mpq_cmp_si"/>
-        /// <seealso cref="mpq_sgn"/>
+        /// <seealso cref="mpq_cmp">mpq_cmp</seealso>
+        /// <seealso cref="mpq_cmp_z">mpq_cmp_z</seealso>
+        /// <seealso cref="mpq_cmp_ui">mpq_cmp_ui</seealso>
+        /// <seealso cref="mpq_cmp_si">mpq_cmp_si</seealso>
+        /// <seealso cref="mpq_sgn">mpq_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Comparing-Rationals.html#Comparing-Rationals">GNU MP - Comparing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12703,15 +13419,16 @@ namespace Math.Gmp.Native
         /// <param name="rational">The operand rational.</param>
         /// <remarks>
         /// <para>
-        /// The function is equivalent to calling <see cref="mpz_set"/> with <see cref="mpq_numref"/>.
-        /// Direct use of <see cref="mpq_numref"/> is recommended instead of this functions. 
+        /// The function is equivalent to calling <see cref="mpz_set">mpz_set</see> with <see cref="mpq_numref">mpq_numref</see>.
+        /// Direct use of <see cref="mpq_numref">mpq_numref</see> is recommended instead of this functions. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_numref"/>
-        /// <seealso cref="mpq_denref"/>
-        /// <seealso cref="mpq_get_den "/>
-        /// <seealso cref="mpq_set_num"/>
-        /// <seealso cref="mpq_set_den"/>
+        /// <seealso cref="mpq_numref">mpq_numref</seealso>
+        /// <seealso cref="mpq_denref">mpq_denref</seealso>
+        /// <seealso cref="mpq_get_den ">mpq_get_den </seealso>
+        /// <seealso cref="mpq_set_num">mpq_set_num</seealso>
+        /// <seealso cref="mpq_set_den">mpq_set_den</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Applying-Integer-Functions.html#Applying-Integer-Functions">GNU MP - Applying Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12773,16 +13490,17 @@ namespace Math.Gmp.Native
         /// <param name="rational">The operand rational.</param>
         /// <remarks>
         /// <para>
-        /// The function is equivalent to calling <see cref="mpz_set"/> with <see cref="mpq_denref"/>.
-        /// Direct use of <see cref="mpq_denref"/> is recommended instead of this functions. 
+        /// The function is equivalent to calling <see cref="mpz_set">mpz_set</see> with <see cref="mpq_denref">mpq_denref</see>.
+        /// Direct use of <see cref="mpq_denref">mpq_denref</see> is recommended instead of this functions. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_numref"/>
-        /// <seealso cref="mpq_denref"/>
-        /// <seealso cref="mpq_get_num"/>
-        /// <seealso cref="mpq_get_den "/>
-        /// <seealso cref="mpq_set_num"/>
-        /// <seealso cref="mpq_set_den"/>
+        /// <seealso cref="mpq_numref">mpq_numref</seealso>
+        /// <seealso cref="mpq_denref">mpq_denref</seealso>
+        /// <seealso cref="mpq_get_num">mpq_get_num</seealso>
+        /// <seealso cref="mpq_get_den ">mpq_get_den </seealso>
+        /// <seealso cref="mpq_set_num">mpq_set_num</seealso>
+        /// <seealso cref="mpq_set_den">mpq_set_den</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Applying-Integer-Functions.html#Applying-Integer-Functions">GNU MP - Applying Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12838,21 +13556,22 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Convert <paramref name="op"/> to a <see cref="double"/>, truncating if necessary (i.e. rounding towards zero). 
+        /// Convert <paramref name="op"/> to a <see cref="double">double</see>, truncating if necessary (i.e. rounding towards zero). 
         /// </summary>
         /// <param name="op">The operand rational.</param>
-        /// <returns>The converted <see cref="double"/>.</returns>
+        /// <returns>The converted <see cref="double">double</see>.</returns>
         /// <remarks>
         /// <para>
-        /// If the exponent from the conversion is too big or too small to fit a <see cref="double"/> then the result is system dependent.
+        /// If the exponent from the conversion is too big or too small to fit a <see cref="double">double</see> then the result is system dependent.
         /// For too big an infinity is returned when available.
         /// For too small 0.0 is normally returned.
         /// Hardware overflow, underflow and denorm traps may or may not occur. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_set_d"/>
-        /// <seealso cref="mpq_set_f"/>
-        /// <seealso cref="mpq_get_str"/>
+        /// <seealso cref="mpq_set_d">mpq_set_d</seealso>
+        /// <seealso cref="mpq_set_f">mpq_set_f</seealso>
+        /// <seealso cref="mpq_get_str">mpq_get_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Conversions">Rational Conversions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Conversions.html#Rational-Conversions">GNU MP - Rational Conversions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12912,9 +13631,10 @@ namespace Math.Gmp.Native
         /// The three extra bytes are for a possible minus sign, possible slash, and the null-terminator.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_get_d"/>
-        /// <seealso cref="mpq_set_d"/>
-        /// <seealso cref="mpq_set_f"/>
+        /// <seealso cref="mpq_get_d">mpq_get_d</seealso>
+        /// <seealso cref="mpq_set_d">mpq_set_d</seealso>
+        /// <seealso cref="mpq_set_f">mpq_set_f</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Conversions">Rational Conversions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Conversions.html#Rational-Conversions">GNU MP - Rational Conversions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12959,19 +13679,20 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         ///  Each variable should normally only be initialized once, or at least cleared out
-        ///  (using the function <see cref="mpq_clear"/>) between each initialization. 
+        ///  (using the function <see cref="mpq_clear">mpq_clear</see>) between each initialization. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_canonicalize"/>
-        /// <seealso cref="mpq_inits"/>
-        /// <seealso cref="mpq_clear"/>
-        /// <seealso cref="mpq_clears"/>
-        /// <seealso cref="mpq_set"/>
-        /// <seealso cref="mpq_set_z"/>
-        /// <seealso cref="mpq_set_ui"/>
-        /// <seealso cref="mpq_set_si"/>
-        /// <seealso cref="mpq_set_str"/>
-        /// <seealso cref="mpq_swap"/>
+        /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
+        /// <seealso cref="mpq_inits">mpq_inits</seealso>
+        /// <seealso cref="mpq_clear">mpq_clear</seealso>
+        /// <seealso cref="mpq_clears">mpq_clears</seealso>
+        /// <seealso cref="mpq_set">mpq_set</seealso>
+        /// <seealso cref="mpq_set_z">mpq_set_z</seealso>
+        /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
+        /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
+        /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
+        /// <seealso cref="mpq_swap">mpq_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13009,19 +13730,20 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize a NULL-terminated list of <see cref="mpq_t"/> variables, and set their values to 0/1. 
+        /// Initialize a NULL-terminated list of <see cref="mpq_t">mpq_t</see> variables, and set their values to 0/1. 
         /// </summary>
         /// <param name="x">The operand rational.</param>
-        /// <seealso cref="mpq_canonicalize"/>
-        /// <seealso cref="mpq_init"/>
-        /// <seealso cref="mpq_clear"/>
-        /// <seealso cref="mpq_clears"/>
-        /// <seealso cref="mpq_set"/>
-        /// <seealso cref="mpq_set_z"/>
-        /// <seealso cref="mpq_set_ui"/>
-        /// <seealso cref="mpq_set_si"/>
-        /// <seealso cref="mpq_set_str"/>
-        /// <seealso cref="mpq_swap"/>
+        /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
+        /// <seealso cref="mpq_init">mpq_init</seealso>
+        /// <seealso cref="mpq_clear">mpq_clear</seealso>
+        /// <seealso cref="mpq_clears">mpq_clears</seealso>
+        /// <seealso cref="mpq_set">mpq_set</seealso>
+        /// <seealso cref="mpq_set_z">mpq_set_z</seealso>
+        /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
+        /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
+        /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
+        /// <seealso cref="mpq_swap">mpq_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13079,7 +13801,7 @@ namespace Math.Gmp.Native
         /// <para>
         /// The input can be a fraction like "17/63" or just an integer like "123".
         /// Reading stops at the first character not in this form, and white space is not permitted within the string.
-        /// If the input might not be in canonical form, then <see cref="mpq_canonicalize"/> must be called
+        /// If the input might not be in canonical form, then <see cref="mpq_canonicalize">mpq_canonicalize</see> must be called
         /// (see <a href="https://gmplib.org/manual/Rational-Number-Functions.html#Rational-Number-Functions">GNU MP - Rational Number Functions</a>). 
         /// </para>
         /// <para>
@@ -13089,7 +13811,8 @@ namespace Math.Gmp.Native
         /// "0x10/11" is 16/11, whereas "0x10/0x11" is 16/17. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_out_str"/>
+        /// <seealso cref="mpq_out_str">mpq_out_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Rationals">I/O of Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Rationals.html#I_002fO-of-Rationals">GNU MP - I/O of Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13161,14 +13884,15 @@ namespace Math.Gmp.Native
         /// If the new denominator is zero, this routine will divide by zero.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_add"/>
-        /// <seealso cref="mpq_sub"/>
-        /// <seealso cref="mpq_mul"/>
-        /// <seealso cref="mpq_mul_2exp"/>
-        /// <seealso cref="mpq_div"/>
-        /// <seealso cref="mpq_div_2exp"/>
-        /// <seealso cref="mpq_neg"/>
-        /// <seealso cref="mpq_abs"/>
+        /// <seealso cref="mpq_add">mpq_add</seealso>
+        /// <seealso cref="mpq_sub">mpq_sub</seealso>
+        /// <seealso cref="mpq_mul">mpq_mul</seealso>
+        /// <seealso cref="mpq_mul_2exp">mpq_mul_2exp</seealso>
+        /// <seealso cref="mpq_div">mpq_div</seealso>
+        /// <seealso cref="mpq_div_2exp">mpq_div_2exp</seealso>
+        /// <seealso cref="mpq_neg">mpq_neg</seealso>
+        /// <seealso cref="mpq_abs">mpq_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13189,14 +13913,15 @@ namespace Math.Gmp.Native
         /// <param name="product">The result rational.</param>
         /// <param name="multiplier">The first operand rational.</param>
         /// <param name="multiplicand">The second operand rational.</param>
-        /// <seealso cref="mpq_add"/>
-        /// <seealso cref="mpq_sub"/>
-        /// <seealso cref="mpq_mul_2exp"/>
-        /// <seealso cref="mpq_div"/>
-        /// <seealso cref="mpq_div_2exp"/>
-        /// <seealso cref="mpq_neg"/>
-        /// <seealso cref="mpq_abs"/>
-        /// <seealso cref="mpq_inv"/>
+        /// <seealso cref="mpq_add">mpq_add</seealso>
+        /// <seealso cref="mpq_sub">mpq_sub</seealso>
+        /// <seealso cref="mpq_mul_2exp">mpq_mul_2exp</seealso>
+        /// <seealso cref="mpq_div">mpq_div</seealso>
+        /// <seealso cref="mpq_div_2exp">mpq_div_2exp</seealso>
+        /// <seealso cref="mpq_neg">mpq_neg</seealso>
+        /// <seealso cref="mpq_abs">mpq_abs</seealso>
+        /// <seealso cref="mpq_inv">mpq_inv</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13218,14 +13943,15 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result rational.</param>
         /// <param name="op1">The first operand rational.</param>
         /// <param name="op2">The second operand rational.</param>
-        /// <seealso cref="mpq_add"/>
-        /// <seealso cref="mpq_sub"/>
-        /// <seealso cref="mpq_mul"/>
-        /// <seealso cref="mpq_div"/>
-        /// <seealso cref="mpq_div_2exp"/>
-        /// <seealso cref="mpq_neg"/>
-        /// <seealso cref="mpq_abs"/>
-        /// <seealso cref="mpq_inv"/>
+        /// <seealso cref="mpq_add">mpq_add</seealso>
+        /// <seealso cref="mpq_sub">mpq_sub</seealso>
+        /// <seealso cref="mpq_mul">mpq_mul</seealso>
+        /// <seealso cref="mpq_div">mpq_div</seealso>
+        /// <seealso cref="mpq_div_2exp">mpq_div_2exp</seealso>
+        /// <seealso cref="mpq_neg">mpq_neg</seealso>
+        /// <seealso cref="mpq_abs">mpq_abs</seealso>
+        /// <seealso cref="mpq_inv">mpq_inv</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13245,14 +13971,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="negated_operand">The result rational.</param>
         /// <param name="operand">The operand rational.</param>
-        /// <seealso cref="mpq_add"/>
-        /// <seealso cref="mpq_sub"/>
-        /// <seealso cref="mpq_mul"/>
-        /// <seealso cref="mpq_mul_2exp"/>
-        /// <seealso cref="mpq_div"/>
-        /// <seealso cref="mpq_div_2exp"/>
-        /// <seealso cref="mpq_abs"/>
-        /// <seealso cref="mpq_inv"/>
+        /// <seealso cref="mpq_add">mpq_add</seealso>
+        /// <seealso cref="mpq_sub">mpq_sub</seealso>
+        /// <seealso cref="mpq_mul">mpq_mul</seealso>
+        /// <seealso cref="mpq_mul_2exp">mpq_mul_2exp</seealso>
+        /// <seealso cref="mpq_div">mpq_div</seealso>
+        /// <seealso cref="mpq_div_2exp">mpq_div_2exp</seealso>
+        /// <seealso cref="mpq_abs">mpq_abs</seealso>
+        /// <seealso cref="mpq_inv">mpq_inv</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13277,11 +14004,12 @@ namespace Math.Gmp.Native
         /// The <c>mpz</c> functions can be used on the returned reference. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_denref"/>
-        /// <seealso cref="mpq_get_num"/>
-        /// <seealso cref="mpq_get_den "/>
-        /// <seealso cref="mpq_set_num"/>
-        /// <seealso cref="mpq_set_den"/>
+        /// <seealso cref="mpq_denref">mpq_denref</seealso>
+        /// <seealso cref="mpq_get_num">mpq_get_num</seealso>
+        /// <seealso cref="mpq_get_den ">mpq_get_den </seealso>
+        /// <seealso cref="mpq_set_num">mpq_set_num</seealso>
+        /// <seealso cref="mpq_set_den">mpq_set_den</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Applying-Integer-Functions.html#Applying-Integer-Functions">GNU MP - Applying Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13336,7 +14064,8 @@ namespace Math.Gmp.Native
         /// Output is in the form "num/den" or if the denominator is 1 then just "num". 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_inp_str"/>
+        /// <seealso cref="mpq_inp_str">mpq_inp_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Rationals">I/O of Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Rationals.html#I_002fO-of-Rationals">GNU MP - I/O of Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13414,16 +14143,17 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result rational.</param>
         /// <param name="op">The operand rational.</param>
-        /// <seealso cref="mpq_canonicalize"/>
-        /// <seealso cref="mpq_init"/>
-        /// <seealso cref="mpq_inits"/>
-        /// <seealso cref="mpq_clear"/>
-        /// <seealso cref="mpq_clears"/>
-        /// <seealso cref="mpq_set_z"/>
-        /// <seealso cref="mpq_set_ui"/>
-        /// <seealso cref="mpq_set_si"/>
-        /// <seealso cref="mpq_set_str"/>
-        /// <seealso cref="mpq_swap"/>
+        /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
+        /// <seealso cref="mpq_init">mpq_init</seealso>
+        /// <seealso cref="mpq_inits">mpq_inits</seealso>
+        /// <seealso cref="mpq_clear">mpq_clear</seealso>
+        /// <seealso cref="mpq_clears">mpq_clears</seealso>
+        /// <seealso cref="mpq_set_z">mpq_set_z</seealso>
+        /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
+        /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
+        /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
+        /// <seealso cref="mpq_swap">mpq_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13478,11 +14208,12 @@ namespace Math.Gmp.Native
         /// Set <paramref name="rop"/> to the value of <paramref name="op"/>. There is no rounding, this conversion is exact. 
         /// </summary>
         /// <param name="rop">The result rational.</param>
-        /// <param name="op">The operand <see cref="double"/>.</param>
-        /// <seealso cref="mpq_canonicalize"/>
-        /// <seealso cref="mpq_get_d"/>
-        /// <seealso cref="mpq_set_f"/>
-        /// <seealso cref="mpq_get_str"/>
+        /// <param name="op">The operand <see cref="double">double</see>.</param>
+        /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
+        /// <seealso cref="mpq_get_d">mpq_get_d</seealso>
+        /// <seealso cref="mpq_set_f">mpq_set_f</seealso>
+        /// <seealso cref="mpq_get_str">mpq_get_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Conversions">Rational Conversions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Conversions.html#Rational-Conversions">GNU MP - Rational Conversions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13526,14 +14257,15 @@ namespace Math.Gmp.Native
         /// <param name="rational">The result rational.</param>
         /// <param name="denominator">The operand integer.</param>
         /// <remarks>
-        /// The function is equivalent to calling <see cref="mpz_set"/> with <see cref="mpq_denref"/>.
-        /// Direct use of <see cref="mpq_denref"/> is recommended instead of this functions. 
+        /// The function is equivalent to calling <see cref="mpz_set">mpz_set</see> with <see cref="mpq_denref">mpq_denref</see>.
+        /// Direct use of <see cref="mpq_denref">mpq_denref</see> is recommended instead of this functions. 
         /// </remarks>
-        /// <seealso cref="mpq_numref"/>
-        /// <seealso cref="mpq_denref"/>
-        /// <seealso cref="mpq_get_num"/>
-        /// <seealso cref="mpq_get_den "/>
-        /// <seealso cref="mpq_set_num"/>
+        /// <seealso cref="mpq_numref">mpq_numref</seealso>
+        /// <seealso cref="mpq_denref">mpq_denref</seealso>
+        /// <seealso cref="mpq_get_num">mpq_get_num</seealso>
+        /// <seealso cref="mpq_get_den ">mpq_get_den </seealso>
+        /// <seealso cref="mpq_set_num">mpq_set_num</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Applying-Integer-Functions.html#Applying-Integer-Functions">GNU MP - Applying Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13588,10 +14320,11 @@ namespace Math.Gmp.Native
         /// Set <paramref name="rop"/> to the value of <paramref name="op"/>. There is no rounding, this conversion is exact. 
         /// </summary>
         /// <param name="rop">The result rational.</param>
-        /// <param name="op">The operand <see cref="float"/>.</param>
-        /// <seealso cref="mpq_get_d"/>
-        /// <seealso cref="mpq_set_d"/>
-        /// <seealso cref="mpq_get_str"/>
+        /// <param name="op">The operand <see cref="float">float</see>.</param>
+        /// <seealso cref="mpq_get_d">mpq_get_d</seealso>
+        /// <seealso cref="mpq_set_d">mpq_set_d</seealso>
+        /// <seealso cref="mpq_get_str">mpq_get_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Conversions">Rational Conversions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Conversions.html#Rational-Conversions">GNU MP - Rational Conversions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13651,15 +14384,16 @@ namespace Math.Gmp.Native
         /// <param name="numerator">The operand integer.</param>
         /// <remarks>
         /// <para>
-        /// The function is equivalent to calling <see cref="mpz_set"/> with <see cref="mpq_numref"/>.
-        /// Direct use of <see cref="mpq_numref"/> is recommended instead of this functions. 
+        /// The function is equivalent to calling <see cref="mpz_set">mpz_set</see> with <see cref="mpq_numref">mpq_numref</see>.
+        /// Direct use of <see cref="mpq_numref">mpq_numref</see> is recommended instead of this functions. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_numref"/>
-        /// <seealso cref="mpq_denref"/>
-        /// <seealso cref="mpq_get_num"/>
-        /// <seealso cref="mpq_get_den "/>
-        /// <seealso cref="mpq_set_den"/>
+        /// <seealso cref="mpq_numref">mpq_numref</seealso>
+        /// <seealso cref="mpq_denref">mpq_denref</seealso>
+        /// <seealso cref="mpq_get_num">mpq_get_num</seealso>
+        /// <seealso cref="mpq_get_den ">mpq_get_den </seealso>
+        /// <seealso cref="mpq_set_den">mpq_set_den</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Applying-Integer-Functions.html#Applying-Integer-Functions">GNU MP - Applying Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13719,20 +14453,21 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// Note that if <paramref name="op1"/> and <paramref name="op2"/> have common factors,
-        /// <paramref name="rop"/> has to be passed to <see cref="mpq_canonicalize"/> before any
+        /// <paramref name="rop"/> has to be passed to <see cref="mpq_canonicalize">mpq_canonicalize</see> before any
         /// operations are performed on <paramref name="rop"/>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_canonicalize"/>
-        /// <seealso cref="mpq_init"/>
-        /// <seealso cref="mpq_inits"/>
-        /// <seealso cref="mpq_clear"/>
-        /// <seealso cref="mpq_clears"/>
-        /// <seealso cref="mpq_set"/>
-        /// <seealso cref="mpq_set_z"/>
-        /// <seealso cref="mpq_set_ui"/>
-        /// <seealso cref="mpq_set_str"/>
-        /// <seealso cref="mpq_swap"/>
+        /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
+        /// <seealso cref="mpq_init">mpq_init</seealso>
+        /// <seealso cref="mpq_inits">mpq_inits</seealso>
+        /// <seealso cref="mpq_clear">mpq_clear</seealso>
+        /// <seealso cref="mpq_clears">mpq_clears</seealso>
+        /// <seealso cref="mpq_set">mpq_set</seealso>
+        /// <seealso cref="mpq_set_z">mpq_set_z</seealso>
+        /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
+        /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
+        /// <seealso cref="mpq_swap">mpq_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13782,10 +14517,10 @@ namespace Math.Gmp.Native
         /// The string can be an integer like "41" or a fraction like "41/152".
         /// The fraction must be in canonical form
         /// (see <a href="https://gmplib.org/manual/Rational-Number-Functions.html#Rational-Number-Functions">GNU MP - Rational Number Functions</a>),
-        /// or if not then <see cref="mpq_canonicalize"/> must be called.
+        /// or if not then <see cref="mpq_canonicalize">mpq_canonicalize</see> must be called.
         /// </para>
         /// <para>
-        /// The numerator and optional denominator are parsed the same as in <see cref="mpz_set_str"/>
+        /// The numerator and optional denominator are parsed the same as in <see cref="mpz_set_str">mpz_set_str</see>
         /// (see <a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a>).
         /// White space is allowed in the string, and is simply ignored.
         /// The base can vary from 2 to 62, or if <paramref name="base"/> is 0 then the leading characters are used:
@@ -13794,16 +14529,17 @@ namespace Math.Gmp.Native
         /// whereas 0xEF/0x100 is 239/256.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_canonicalize"/>
-        /// <seealso cref="mpq_init"/>
-        /// <seealso cref="mpq_inits"/>
-        /// <seealso cref="mpq_clear"/>
-        /// <seealso cref="mpq_clears"/>
-        /// <seealso cref="mpq_set"/>
-        /// <seealso cref="mpq_set_z"/>
-        /// <seealso cref="mpq_set_ui"/>
-        /// <seealso cref="mpq_set_si"/>
-        /// <seealso cref="mpq_swap"/>
+        /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
+        /// <seealso cref="mpq_init">mpq_init</seealso>
+        /// <seealso cref="mpq_inits">mpq_inits</seealso>
+        /// <seealso cref="mpq_clear">mpq_clear</seealso>
+        /// <seealso cref="mpq_clears">mpq_clears</seealso>
+        /// <seealso cref="mpq_set">mpq_set</seealso>
+        /// <seealso cref="mpq_set_z">mpq_set_z</seealso>
+        /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
+        /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
+        /// <seealso cref="mpq_swap">mpq_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13842,20 +14578,21 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// Note that if <paramref name="op1"/> and <paramref name="op2"/> have common factors,
-        /// <paramref name="rop"/> has to be passed to <see cref="mpq_canonicalize"/> before any
+        /// <paramref name="rop"/> has to be passed to <see cref="mpq_canonicalize">mpq_canonicalize</see> before any
         /// operations are performed on <paramref name="rop"/>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpq_canonicalize"/>
-        /// <seealso cref="mpq_init"/>
-        /// <seealso cref="mpq_inits"/>
-        /// <seealso cref="mpq_clear"/>
-        /// <seealso cref="mpq_clears"/>
-        /// <seealso cref="mpq_set"/>
-        /// <seealso cref="mpq_set_z"/>
-        /// <seealso cref="mpq_set_si"/>
-        /// <seealso cref="mpq_set_str"/>
-        /// <seealso cref="mpq_swap"/>
+        /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
+        /// <seealso cref="mpq_init">mpq_init</seealso>
+        /// <seealso cref="mpq_inits">mpq_inits</seealso>
+        /// <seealso cref="mpq_clear">mpq_clear</seealso>
+        /// <seealso cref="mpq_clears">mpq_clears</seealso>
+        /// <seealso cref="mpq_set">mpq_set</seealso>
+        /// <seealso cref="mpq_set_z">mpq_set_z</seealso>
+        /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
+        /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
+        /// <seealso cref="mpq_swap">mpq_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13898,16 +14635,17 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result rational.</param>
         /// <param name="op">The operand integer.</param>
-        /// <seealso cref="mpq_canonicalize"/>
-        /// <seealso cref="mpq_init"/>
-        /// <seealso cref="mpq_inits"/>
-        /// <seealso cref="mpq_clear"/>
-        /// <seealso cref="mpq_clears"/>
-        /// <seealso cref="mpq_set"/>
-        /// <seealso cref="mpq_set_ui"/>
-        /// <seealso cref="mpq_set_si"/>
-        /// <seealso cref="mpq_set_str"/>
-        /// <seealso cref="mpq_swap"/>
+        /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
+        /// <seealso cref="mpq_init">mpq_init</seealso>
+        /// <seealso cref="mpq_inits">mpq_inits</seealso>
+        /// <seealso cref="mpq_clear">mpq_clear</seealso>
+        /// <seealso cref="mpq_clears">mpq_clears</seealso>
+        /// <seealso cref="mpq_set">mpq_set</seealso>
+        /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
+        /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
+        /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
+        /// <seealso cref="mpq_swap">mpq_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13965,11 +14703,12 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand rational.</param>
         /// <returns>Return +1 if <paramref name="op"/> &gt; 0, 0 if <paramref name="op"/> = 0, and -1 if <paramref name="op"/> &lt; 0.</returns>
-        /// <seealso cref="mpq_cmp"/>
-        /// <seealso cref="mpq_cmp_z"/>
-        /// <seealso cref="mpq_cmp_ui"/>
-        /// <seealso cref="mpq_cmp_si"/>
-        /// <seealso cref="mpq_equal"/>
+        /// <seealso cref="mpq_cmp">mpq_cmp</seealso>
+        /// <seealso cref="mpq_cmp_z">mpq_cmp_z</seealso>
+        /// <seealso cref="mpq_cmp_ui">mpq_cmp_ui</seealso>
+        /// <seealso cref="mpq_cmp_si">mpq_cmp_si</seealso>
+        /// <seealso cref="mpq_equal">mpq_equal</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Comparing-Rationals.html#Comparing-Rationals">GNU MP - Comparing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14009,14 +14748,15 @@ namespace Math.Gmp.Native
         /// <param name="difference">The result rational.</param>
         /// <param name="minuend">The first operand rational.</param>
         /// <param name="subtrahend">The second operand rational.</param>
-        /// <seealso cref="mpq_add"/>
-        /// <seealso cref="mpq_mul"/>
-        /// <seealso cref="mpq_mul_2exp"/>
-        /// <seealso cref="mpq_div"/>
-        /// <seealso cref="mpq_div_2exp"/>
-        /// <seealso cref="mpq_neg"/>
-        /// <seealso cref="mpq_abs"/>
-        /// <seealso cref="mpq_inv"/>
+        /// <seealso cref="mpq_add">mpq_add</seealso>
+        /// <seealso cref="mpq_mul">mpq_mul</seealso>
+        /// <seealso cref="mpq_mul_2exp">mpq_mul_2exp</seealso>
+        /// <seealso cref="mpq_div">mpq_div</seealso>
+        /// <seealso cref="mpq_div_2exp">mpq_div_2exp</seealso>
+        /// <seealso cref="mpq_neg">mpq_neg</seealso>
+        /// <seealso cref="mpq_abs">mpq_abs</seealso>
+        /// <seealso cref="mpq_inv">mpq_inv</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14037,16 +14777,17 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop1">The first rational.</param>
         /// <param name="rop2">The second rational.</param>
-        /// <seealso cref="mpq_canonicalize"/>
-        /// <seealso cref="mpq_init"/>
-        /// <seealso cref="mpq_inits"/>
-        /// <seealso cref="mpq_clear"/>
-        /// <seealso cref="mpq_clears"/>
-        /// <seealso cref="mpq_set"/>
-        /// <seealso cref="mpq_set_z"/>
-        /// <seealso cref="mpq_set_ui"/>
-        /// <seealso cref="mpq_set_si"/>
-        /// <seealso cref="mpq_set_str"/>
+        /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
+        /// <seealso cref="mpq_init">mpq_init</seealso>
+        /// <seealso cref="mpq_inits">mpq_inits</seealso>
+        /// <seealso cref="mpq_clear">mpq_clear</seealso>
+        /// <seealso cref="mpq_clears">mpq_clears</seealso>
+        /// <seealso cref="mpq_set">mpq_set</seealso>
+        /// <seealso cref="mpq_set_z">mpq_set_z</seealso>
+        /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
+        /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
+        /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14108,14 +14849,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14174,14 +14916,15 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
         /// <param name="op2">The second operand.</param>
-        /// <seealso cref="mpf_add_ui"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
+        /// <seealso cref="mpf_add_ui">mpf_add_ui</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14249,14 +14992,15 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
         /// <param name="op2">The second operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14314,17 +15058,18 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand float.</param>
-        /// <seealso cref="mpf_floor"/>
-        /// <seealso cref="mpf_trunc"/>
-        /// <seealso cref="mpf_integer_p"/>
-        /// <seealso cref="mpf_fits_ulong_p"/>
-        /// <seealso cref="mpf_fits_slong_p"/>
-        /// <seealso cref="mpf_fits_uint_p"/>
-        /// <seealso cref="mpf_fits_sint_p"/>
-        /// <seealso cref="mpf_fits_ushort_p"/>
-        /// <seealso cref="mpf_fits_sshort_p"/>
-        /// <seealso cref="mpf_urandomb"/>
-        /// <seealso cref="mpf_random2"/>
+        /// <seealso cref="mpf_floor">mpf_floor</seealso>
+        /// <seealso cref="mpf_trunc">mpf_trunc</seealso>
+        /// <seealso cref="mpf_integer_p">mpf_integer_p</seealso>
+        /// <seealso cref="mpf_fits_ulong_p">mpf_fits_ulong_p</seealso>
+        /// <seealso cref="mpf_fits_slong_p">mpf_fits_slong_p</seealso>
+        /// <seealso cref="mpf_fits_uint_p">mpf_fits_uint_p</seealso>
+        /// <seealso cref="mpf_fits_sint_p">mpf_fits_sint_p</seealso>
+        /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
+        /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
+        /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
+        /// <seealso cref="mpf_random2">mpf_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14383,18 +15128,19 @@ namespace Math.Gmp.Native
         /// <param name="x">The operand float.</param>
         /// <remarks>
         /// <para>
-        /// Make sure to call this function for all <see cref="mpf_t"/> variables when you are done with them. 
+        /// Make sure to call this function for all <see cref="mpf_t">mpf_t</see> variables when you are done with them. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_set_default_prec"/>
-        /// <seealso cref="mpf_get_default_prec"/>
-        /// <seealso cref="mpf_init"/>
-        /// <seealso cref="mpf_init2"/>
-        /// <seealso cref="mpf_inits"/>
-        /// <seealso cref="mpf_clears"/>
-        /// <seealso cref="mpf_get_prec"/>
-        /// <seealso cref="mpf_set_prec"/>
-        /// <seealso cref="mpf_set_prec_raw"/>
+        /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
+        /// <seealso cref="mpf_get_default_prec">mpf_get_default_prec</seealso>
+        /// <seealso cref="mpf_init">mpf_init</seealso>
+        /// <seealso cref="mpf_init2">mpf_init2</seealso>
+        /// <seealso cref="mpf_inits">mpf_inits</seealso>
+        /// <seealso cref="mpf_clears">mpf_clears</seealso>
+        /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
+        /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
+        /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14434,18 +15180,19 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Free the space occupied by a NULL-terminated list of <see cref="mpf_t"/> variables. 
+        /// Free the space occupied by a NULL-terminated list of <see cref="mpf_t">mpf_t</see> variables. 
         /// </summary>
         /// <param name="x">The operand float.</param>
-        /// <seealso cref="mpf_set_default_prec"/>
-        /// <seealso cref="mpf_get_default_prec"/>
-        /// <seealso cref="mpf_init"/>
-        /// <seealso cref="mpf_init2"/>
-        /// <seealso cref="mpf_inits"/>
-        /// <seealso cref="mpf_clear"/>
-        /// <seealso cref="mpf_get_prec"/>
-        /// <seealso cref="mpf_set_prec"/>
-        /// <seealso cref="mpf_set_prec_raw"/>
+        /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
+        /// <seealso cref="mpf_get_default_prec">mpf_get_default_prec</seealso>
+        /// <seealso cref="mpf_init">mpf_init</seealso>
+        /// <seealso cref="mpf_init2">mpf_init2</seealso>
+        /// <seealso cref="mpf_inits">mpf_inits</seealso>
+        /// <seealso cref="mpf_clear">mpf_clear</seealso>
+        /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
+        /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
+        /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14495,13 +15242,13 @@ namespace Math.Gmp.Native
         /// <param name="op1">The first operand float.</param>
         /// <param name="op2">The second operand float.</param>
         /// <returns>Return a positive value if op1 &gt; op2, zero if op1 = op2, and a negative value if op1 &lt; op2.</returns>
-        /// <seealso cref="mpf_cmp"/>
-        /// <seealso cref="mpf_cmp_z"/>
-        /// <seealso cref="mpf_cmp_d"/>
-        /// <seealso cref="mpf_cmp_ui"/>
-        /// <seealso cref="mpf_cmp_si"/>
-        /// <seealso cref="mpf_reldiff"/>
-        /// <seealso cref="mpf_sgn"/>
+        /// <seealso cref="mpf_cmp_z">mpf_cmp_z</seealso>
+        /// <seealso cref="mpf_cmp_d">mpf_cmp_d</seealso>
+        /// <seealso cref="mpf_cmp_ui">mpf_cmp_ui</seealso>
+        /// <seealso cref="mpf_cmp_si">mpf_cmp_si</seealso>
+        /// <seealso cref="mpf_reldiff">mpf_reldiff</seealso>
+        /// <seealso cref="mpf_sgn">mpf_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14554,12 +15301,14 @@ namespace Math.Gmp.Native
         /// <param name="op1">The first operand float.</param>
         /// <param name="op2">The second operand float.</param>
         /// <returns>Return a positive value if op1 &gt; op2, zero if op1 = op2, and a negative value if op1 &lt; op2.</returns>
-        /// <seealso cref="mpf_cmp"/>
-        /// <seealso cref="mpf_cmp_d"/>
-        /// <seealso cref="mpf_cmp_ui"/>
-        /// <seealso cref="mpf_cmp_si"/>
-        /// <seealso cref="mpf_reldiff"/>
-        /// <seealso cref="mpf_sgn"/>
+        /// <seealso cref="mpf_cmp">mpf_cmp</seealso>
+        /// <seealso cref="mpf_cmp_d">mpf_cmp_d</seealso>
+        /// <seealso cref="mpf_cmp_ui">mpf_cmp_ui</seealso>
+        /// <seealso cref="mpf_cmp_si">mpf_cmp_si</seealso>
+        /// <seealso cref="mpf_reldiff">mpf_reldiff</seealso>
+        /// <seealso cref="mpf_sgn">mpf_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
         /// // Set default precision to 64 bits.
@@ -14615,15 +15364,17 @@ namespace Math.Gmp.Native
         /// <returns>Return a positive value if op1 &gt; op2, zero if op1 = op2, and a negative value if op1 &lt; op2.</returns>
         /// <remarks>
         /// <para>
-        /// <see cref="mpf_cmp_d"/> can be called with an infinity, but results are undefined for a NaN. 
+        /// <see cref="mpf_cmp_d">mpf_cmp_d</see> can be called with an infinity, but results are undefined for a NaN. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_cmp"/>
-        /// <seealso cref="mpf_cmp_z"/>
-        /// <seealso cref="mpf_cmp_ui"/>
-        /// <seealso cref="mpf_cmp_si"/>
-        /// <seealso cref="mpf_reldiff"/>
-        /// <seealso cref="mpf_sgn"/>
+        /// <seealso cref="mpf_cmp">mpf_cmp</seealso>
+        /// <seealso cref="mpf_cmp_z">mpf_cmp_z</seealso>
+        /// <seealso cref="mpf_cmp_ui">mpf_cmp_ui</seealso>
+        /// <seealso cref="mpf_cmp_si">mpf_cmp_si</seealso>
+        /// <seealso cref="mpf_reldiff">mpf_reldiff</seealso>
+        /// <seealso cref="mpf_sgn">mpf_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
         /// // Set default precision to 64 bits.
@@ -14666,12 +15417,14 @@ namespace Math.Gmp.Native
         /// <param name="op1">The first operand float.</param>
         /// <param name="op2">The second operand float.</param>
         /// <returns>Return a positive value if op1 &gt; op2, zero if op1 = op2, and a negative value if op1 &lt; op2.</returns>
-        /// <seealso cref="mpf_cmp"/>
-        /// <seealso cref="mpf_cmp_z"/>
-        /// <seealso cref="mpf_cmp_d"/>
-        /// <seealso cref="mpf_cmp_ui"/>
-        /// <seealso cref="mpf_reldiff"/>
-        /// <seealso cref="mpf_sgn"/>
+        /// <seealso cref="mpf_cmp">mpf_cmp</seealso>
+        /// <seealso cref="mpf_cmp_z">mpf_cmp_z</seealso>
+        /// <seealso cref="mpf_cmp_d">mpf_cmp_d</seealso>
+        /// <seealso cref="mpf_cmp_ui">mpf_cmp_ui</seealso>
+        /// <seealso cref="mpf_reldiff">mpf_reldiff</seealso>
+        /// <seealso cref="mpf_sgn">mpf_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
         /// // Set default precision to 64 bits.
@@ -14715,12 +15468,14 @@ namespace Math.Gmp.Native
         /// <param name="op1">The first operand float.</param>
         /// <param name="op2">The second operand float.</param>
         /// <returns>Return a positive value if op1 &gt; op2, zero if op1 = op2, and a negative value if op1 &lt; op2.</returns>
-        /// <seealso cref="mpf_cmp"/>
-        /// <seealso cref="mpf_cmp_z"/>
-        /// <seealso cref="mpf_cmp_d"/>
-        /// <seealso cref="mpf_cmp_si"/>
-        /// <seealso cref="mpf_reldiff"/>
-        /// <seealso cref="mpf_sgn"/>
+        /// <seealso cref="mpf_cmp">mpf_cmp</seealso>
+        /// <seealso cref="mpf_cmp_z">mpf_cmp_z</seealso>
+        /// <seealso cref="mpf_cmp_d">mpf_cmp_d</seealso>
+        /// <seealso cref="mpf_cmp_si">mpf_cmp_si</seealso>
+        /// <seealso cref="mpf_reldiff">mpf_reldiff</seealso>
+        /// <seealso cref="mpf_sgn">mpf_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
         /// // Set default precision to 64 bits.
@@ -14771,16 +15526,17 @@ namespace Math.Gmp.Native
         /// as other arithmetic exceptions. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_ui_div"/>
-        /// <seealso cref="mpf_div_ui"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
-        /// <seealso cref="mpf_div_2exp"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_ui_div">mpf_ui_div</seealso>
+        /// <seealso cref="mpf_div_ui">mpf_div_ui</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="mpf_div_2exp">mpf_div_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14848,16 +15604,17 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The fisrt operand.</param>
         /// <param name="op2">The second operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_ui_div"/>
-        /// <seealso cref="mpf_div_ui"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_ui_div">mpf_ui_div</seealso>
+        /// <seealso cref="mpf_div_ui">mpf_div_ui</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14924,16 +15681,17 @@ namespace Math.Gmp.Native
         /// as other arithmetic exceptions. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_ui_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
-        /// <seealso cref="mpf_div_2exp"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_ui_div">mpf_ui_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="mpf_div_2exp">mpf_div_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14972,17 +15730,18 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> fits in a 32-bit integer, when truncated to an integer.</returns>
-        /// <seealso cref="mpf_ceil"/>
-        /// <seealso cref="mpf_floor"/>
-        /// <seealso cref="mpf_trunc"/>
-        /// <seealso cref="mpf_integer_p"/>
-        /// <seealso cref="mpf_fits_ulong_p"/>
-        /// <seealso cref="mpf_fits_slong_p"/>
-        /// <seealso cref="mpf_fits_uint_p"/>
-        /// <seealso cref="mpf_fits_ushort_p"/>
-        /// <seealso cref="mpf_fits_sshort_p"/>
-        /// <seealso cref="mpf_urandomb"/>
-        /// <seealso cref="mpf_random2"/>
+        /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
+        /// <seealso cref="mpf_floor">mpf_floor</seealso>
+        /// <seealso cref="mpf_trunc">mpf_trunc</seealso>
+        /// <seealso cref="mpf_integer_p">mpf_integer_p</seealso>
+        /// <seealso cref="mpf_fits_ulong_p">mpf_fits_ulong_p</seealso>
+        /// <seealso cref="mpf_fits_slong_p">mpf_fits_slong_p</seealso>
+        /// <seealso cref="mpf_fits_uint_p">mpf_fits_uint_p</seealso>
+        /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
+        /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
+        /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
+        /// <seealso cref="mpf_random2">mpf_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15019,17 +15778,18 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> fits in a 32-bit integer, when truncated to an integer.</returns>
-        /// <seealso cref="mpf_ceil"/>
-        /// <seealso cref="mpf_floor"/>
-        /// <seealso cref="mpf_trunc"/>
-        /// <seealso cref="mpf_integer_p"/>
-        /// <seealso cref="mpf_fits_ulong_p"/>
-        /// <seealso cref="mpf_fits_uint_p"/>
-        /// <seealso cref="mpf_fits_sint_p"/>
-        /// <seealso cref="mpf_fits_ushort_p"/>
-        /// <seealso cref="mpf_fits_sshort_p"/>
-        /// <seealso cref="mpf_urandomb"/>
-        /// <seealso cref="mpf_random2"/>
+        /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
+        /// <seealso cref="mpf_floor">mpf_floor</seealso>
+        /// <seealso cref="mpf_trunc">mpf_trunc</seealso>
+        /// <seealso cref="mpf_integer_p">mpf_integer_p</seealso>
+        /// <seealso cref="mpf_fits_ulong_p">mpf_fits_ulong_p</seealso>
+        /// <seealso cref="mpf_fits_uint_p">mpf_fits_uint_p</seealso>
+        /// <seealso cref="mpf_fits_sint_p">mpf_fits_sint_p</seealso>
+        /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
+        /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
+        /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
+        /// <seealso cref="mpf_random2">mpf_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15066,17 +15826,18 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> fits in a 16-bit integer, when truncated to an integer.</returns>
-        /// <seealso cref="mpf_ceil"/>
-        /// <seealso cref="mpf_floor"/>
-        /// <seealso cref="mpf_trunc"/>
-        /// <seealso cref="mpf_integer_p"/>
-        /// <seealso cref="mpf_fits_ulong_p"/>
-        /// <seealso cref="mpf_fits_slong_p"/>
-        /// <seealso cref="mpf_fits_uint_p"/>
-        /// <seealso cref="mpf_fits_sint_p"/>
-        /// <seealso cref="mpf_fits_ushort_p"/>
-        /// <seealso cref="mpf_urandomb"/>
-        /// <seealso cref="mpf_random2"/>
+        /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
+        /// <seealso cref="mpf_floor">mpf_floor</seealso>
+        /// <seealso cref="mpf_trunc">mpf_trunc</seealso>
+        /// <seealso cref="mpf_integer_p">mpf_integer_p</seealso>
+        /// <seealso cref="mpf_fits_ulong_p">mpf_fits_ulong_p</seealso>
+        /// <seealso cref="mpf_fits_slong_p">mpf_fits_slong_p</seealso>
+        /// <seealso cref="mpf_fits_uint_p">mpf_fits_uint_p</seealso>
+        /// <seealso cref="mpf_fits_sint_p">mpf_fits_sint_p</seealso>
+        /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
+        /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
+        /// <seealso cref="mpf_random2">mpf_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15113,17 +15874,18 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> fits in an unsigned 32-bit integer, when truncated to an integer.</returns>
-        /// <seealso cref="mpf_ceil"/>
-        /// <seealso cref="mpf_floor"/>
-        /// <seealso cref="mpf_trunc"/>
-        /// <seealso cref="mpf_integer_p"/>
-        /// <seealso cref="mpf_fits_ulong_p"/>
-        /// <seealso cref="mpf_fits_slong_p"/>
-        /// <seealso cref="mpf_fits_sint_p"/>
-        /// <seealso cref="mpf_fits_ushort_p"/>
-        /// <seealso cref="mpf_fits_sshort_p"/>
-        /// <seealso cref="mpf_urandomb"/>
-        /// <seealso cref="mpf_random2"/>
+        /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
+        /// <seealso cref="mpf_floor">mpf_floor</seealso>
+        /// <seealso cref="mpf_trunc">mpf_trunc</seealso>
+        /// <seealso cref="mpf_integer_p">mpf_integer_p</seealso>
+        /// <seealso cref="mpf_fits_ulong_p">mpf_fits_ulong_p</seealso>
+        /// <seealso cref="mpf_fits_slong_p">mpf_fits_slong_p</seealso>
+        /// <seealso cref="mpf_fits_sint_p">mpf_fits_sint_p</seealso>
+        /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
+        /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
+        /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
+        /// <seealso cref="mpf_random2">mpf_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15160,17 +15922,18 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> fits in an unsigned 32-bit integer, when truncated to an integer.</returns>
-        /// <seealso cref="mpf_ceil"/>
-        /// <seealso cref="mpf_floor"/>
-        /// <seealso cref="mpf_trunc"/>
-        /// <seealso cref="mpf_integer_p"/>
-        /// <seealso cref="mpf_fits_slong_p"/>
-        /// <seealso cref="mpf_fits_uint_p"/>
-        /// <seealso cref="mpf_fits_sint_p"/>
-        /// <seealso cref="mpf_fits_ushort_p"/>
-        /// <seealso cref="mpf_fits_sshort_p"/>
-        /// <seealso cref="mpf_urandomb"/>
-        /// <seealso cref="mpf_random2"/>
+        /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
+        /// <seealso cref="mpf_floor">mpf_floor</seealso>
+        /// <seealso cref="mpf_trunc">mpf_trunc</seealso>
+        /// <seealso cref="mpf_integer_p">mpf_integer_p</seealso>
+        /// <seealso cref="mpf_fits_slong_p">mpf_fits_slong_p</seealso>
+        /// <seealso cref="mpf_fits_uint_p">mpf_fits_uint_p</seealso>
+        /// <seealso cref="mpf_fits_sint_p">mpf_fits_sint_p</seealso>
+        /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
+        /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
+        /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
+        /// <seealso cref="mpf_random2">mpf_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15207,17 +15970,18 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> fits in an unsigned 16-bit integer, when truncated to an integer.</returns>
-        /// <seealso cref="mpf_ceil"/>
-        /// <seealso cref="mpf_floor"/>
-        /// <seealso cref="mpf_trunc"/>
-        /// <seealso cref="mpf_integer_p"/>
-        /// <seealso cref="mpf_fits_ulong_p"/>
-        /// <seealso cref="mpf_fits_slong_p"/>
-        /// <seealso cref="mpf_fits_uint_p"/>
-        /// <seealso cref="mpf_fits_sint_p"/>
-        /// <seealso cref="mpf_fits_sshort_p"/>
-        /// <seealso cref="mpf_urandomb"/>
-        /// <seealso cref="mpf_random2"/>
+        /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
+        /// <seealso cref="mpf_floor">mpf_floor</seealso>
+        /// <seealso cref="mpf_trunc">mpf_trunc</seealso>
+        /// <seealso cref="mpf_integer_p">mpf_integer_p</seealso>
+        /// <seealso cref="mpf_fits_ulong_p">mpf_fits_ulong_p</seealso>
+        /// <seealso cref="mpf_fits_slong_p">mpf_fits_slong_p</seealso>
+        /// <seealso cref="mpf_fits_uint_p">mpf_fits_uint_p</seealso>
+        /// <seealso cref="mpf_fits_sint_p">mpf_fits_sint_p</seealso>
+        /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
+        /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
+        /// <seealso cref="mpf_random2">mpf_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15254,17 +16018,18 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand float.</param>
-        /// <seealso cref="mpf_ceil"/>
-        /// <seealso cref="mpf_trunc"/>
-        /// <seealso cref="mpf_integer_p"/>
-        /// <seealso cref="mpf_fits_ulong_p"/>
-        /// <seealso cref="mpf_fits_slong_p"/>
-        /// <seealso cref="mpf_fits_uint_p"/>
-        /// <seealso cref="mpf_fits_sint_p"/>
-        /// <seealso cref="mpf_fits_ushort_p"/>
-        /// <seealso cref="mpf_fits_sshort_p"/>
-        /// <seealso cref="mpf_urandomb"/>
-        /// <seealso cref="mpf_random2"/>
+        /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
+        /// <seealso cref="mpf_trunc">mpf_trunc</seealso>
+        /// <seealso cref="mpf_integer_p">mpf_integer_p</seealso>
+        /// <seealso cref="mpf_fits_ulong_p">mpf_fits_ulong_p</seealso>
+        /// <seealso cref="mpf_fits_slong_p">mpf_fits_slong_p</seealso>
+        /// <seealso cref="mpf_fits_uint_p">mpf_fits_uint_p</seealso>
+        /// <seealso cref="mpf_fits_sint_p">mpf_fits_sint_p</seealso>
+        /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
+        /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
+        /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
+        /// <seealso cref="mpf_random2">mpf_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15318,22 +16083,23 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Convert <paramref name="op"/> to a <see cref="double"/>, truncating if necessary (i.e. rounding towards zero). 
+        /// Convert <paramref name="op"/> to a <see cref="double">double</see>, truncating if necessary (i.e. rounding towards zero). 
         /// </summary>
         /// <param name="op">The operand float.</param>
-        /// <returns>The cpnverted <see cref="double"/>.</returns>
+        /// <returns>The cpnverted <see cref="double">double</see>.</returns>
         /// <remarks>
         /// <para>
-        /// If the exponent in <paramref name="op"/> is too big or too small to fit a <see cref="double"/> then the result is system dependent.
+        /// If the exponent in <paramref name="op"/> is too big or too small to fit a <see cref="double">double</see> then the result is system dependent.
         /// For too big an infinity is returned when available.
         /// For too small 0.0 is normally returned.
         /// Hardware overflow, underflow and denorm traps may or may not occur. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_get_d_2exp"/>
-        /// <seealso cref="mpf_get_si"/>
-        /// <seealso cref="mpf_get_ui"/>
-        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str"/>
+        /// <seealso cref="mpf_get_d_2exp">mpf_get_d_2exp</seealso>
+        /// <seealso cref="mpf_get_si">mpf_get_si</seealso>
+        /// <seealso cref="mpf_get_ui">mpf_get_ui</seealso>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str">O:Math.Gmp.Native.gmp_lib.mpf_get_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15383,10 +16149,11 @@ namespace Math.Gmp.Native
         /// (see <a href="https://www.gnu.org/software/libc/manual/html_node/Normalization-Functions.html#Normalization-Functions">GNU C - Normalization Functions</a> in The GNU C Library Reference Manual). 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_get_d"/>
-        /// <seealso cref="mpf_get_si"/>
-        /// <seealso cref="mpf_get_ui"/>
-        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str"/>
+        /// <seealso cref="mpf_get_d">mpf_get_d</seealso>
+        /// <seealso cref="mpf_get_si">mpf_get_si</seealso>
+        /// <seealso cref="mpf_get_ui">mpf_get_ui</seealso>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str">O:Math.Gmp.Native.gmp_lib.mpf_get_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15435,19 +16202,20 @@ namespace Math.Gmp.Native
         /// <returns>The default precision actually used.</returns>
         /// <remarks>
         /// <para>
-        /// An <see cref="mpf_t"/> object must be initialized before storing the first value in it.
-        /// The functions <see cref="mpf_init"/> and <see cref="mpf_init2"/> are used for that purpose. 
+        /// An <see cref="mpf_t">mpf_t</see> object must be initialized before storing the first value in it.
+        /// The functions <see cref="mpf_init">mpf_init</see> and <see cref="mpf_init2">mpf_init2</see> are used for that purpose. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_set_default_prec"/>
-        /// <seealso cref="mpf_init"/>
-        /// <seealso cref="mpf_init2"/>
-        /// <seealso cref="mpf_inits"/>
-        /// <seealso cref="mpf_clear"/>
-        /// <seealso cref="mpf_clears"/>
-        /// <seealso cref="mpf_get_prec"/>
-        /// <seealso cref="mpf_set_prec"/>
-        /// <seealso cref="mpf_set_prec_raw"/>
+        /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
+        /// <seealso cref="mpf_init">mpf_init</seealso>
+        /// <seealso cref="mpf_init2">mpf_init2</seealso>
+        /// <seealso cref="mpf_inits">mpf_inits</seealso>
+        /// <seealso cref="mpf_clear">mpf_clear</seealso>
+        /// <seealso cref="mpf_clears">mpf_clears</seealso>
+        /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
+        /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
+        /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15475,15 +16243,16 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>The current precision of <paramref name="op"/>, in bits.</returns>
-        /// <seealso cref="mpf_set_default_prec"/>
-        /// <seealso cref="mpf_get_default_prec"/>
-        /// <seealso cref="mpf_init"/>
-        /// <seealso cref="mpf_init2"/>
-        /// <seealso cref="mpf_inits"/>
-        /// <seealso cref="mpf_clear"/>
-        /// <seealso cref="mpf_clears"/>
-        /// <seealso cref="mpf_set_prec"/>
-        /// <seealso cref="mpf_set_prec_raw"/>
+        /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
+        /// <seealso cref="mpf_get_default_prec">mpf_get_default_prec</seealso>
+        /// <seealso cref="mpf_init">mpf_init</seealso>
+        /// <seealso cref="mpf_init2">mpf_init2</seealso>
+        /// <seealso cref="mpf_inits">mpf_inits</seealso>
+        /// <seealso cref="mpf_clear">mpf_clear</seealso>
+        /// <seealso cref="mpf_clears">mpf_clears</seealso>
+        /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
+        /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15527,14 +16296,15 @@ namespace Math.Gmp.Native
         /// If <paramref name="op"/> is too big for the return type, the result is undefined. 
         /// </para>
         /// <para>
-        /// See also <see cref="mpf_fits_slong_p"/> and <see cref="mpf_fits_ulong_p"/>
+        /// See also <see cref="mpf_fits_slong_p">mpf_fits_slong_p</see> and <see cref="mpf_fits_ulong_p">mpf_fits_ulong_p</see>
         /// (see <a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a>). 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_get_d"/>
-        /// <seealso cref="mpf_get_d_2exp"/>
-        /// <seealso cref="mpf_get_ui"/>
-        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str"/>
+        /// <seealso cref="mpf_get_d">mpf_get_d</seealso>
+        /// <seealso cref="mpf_get_d_2exp">mpf_get_d_2exp</seealso>
+        /// <seealso cref="mpf_get_ui">mpf_get_ui</seealso>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str">O:Math.Gmp.Native.gmp_lib.mpf_get_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15614,10 +16384,11 @@ namespace Math.Gmp.Native
         /// When <paramref name="op"/> is zero, an empty string is produced and the exponent returned is 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_get_d"/>
-        /// <seealso cref="mpf_get_d_2exp"/>
-        /// <seealso cref="mpf_get_si"/>
-        /// <seealso cref="mpf_get_ui"/>
+        /// <seealso cref="mpf_get_d">mpf_get_d</seealso>
+        /// <seealso cref="mpf_get_d_2exp">mpf_get_d_2exp</seealso>
+        /// <seealso cref="mpf_get_si">mpf_get_si</seealso>
+        /// <seealso cref="mpf_get_ui">mpf_get_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15708,10 +16479,11 @@ namespace Math.Gmp.Native
         /// When <paramref name="op"/> is zero, an empty string is produced and the exponent returned is 0. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_get_d"/>
-        /// <seealso cref="mpf_get_d_2exp"/>
-        /// <seealso cref="mpf_get_si"/>
-        /// <seealso cref="mpf_get_ui"/>
+        /// <seealso cref="mpf_get_d">mpf_get_d</seealso>
+        /// <seealso cref="mpf_get_d_2exp">mpf_get_d_2exp</seealso>
+        /// <seealso cref="mpf_get_si">mpf_get_si</seealso>
+        /// <seealso cref="mpf_get_ui">mpf_get_ui</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15771,14 +16543,15 @@ namespace Math.Gmp.Native
         /// If <paramref name="op"/> is too big for the return type, the result is undefined. 
         /// </para>
         /// <para>
-        /// See also <see cref="mpf_fits_slong_p"/> and <see cref="mpf_fits_ulong_p"/>
+        /// See also <see cref="mpf_fits_slong_p">mpf_fits_slong_p</see> and <see cref="mpf_fits_ulong_p">mpf_fits_ulong_p</see>
         /// (see <a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a>). 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_get_d"/>
-        /// <seealso cref="mpf_get_d_2exp"/>
-        /// <seealso cref="mpf_get_si"/>
-        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str"/>
+        /// <seealso cref="mpf_get_d">mpf_get_d</seealso>
+        /// <seealso cref="mpf_get_d_2exp">mpf_get_d_2exp</seealso>
+        /// <seealso cref="mpf_get_si">mpf_get_si</seealso>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str">O:Math.Gmp.Native.gmp_lib.mpf_get_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15798,20 +16571,21 @@ namespace Math.Gmp.Native
         /// <param name="x">The operand float.</param>
         /// <remarks>
         /// <para>
-        /// Normally, a variable should be initialized once only or at least be cleared, using <see cref="mpf_clear"/>,
+        /// Normally, a variable should be initialized once only or at least be cleared, using <see cref="mpf_clear">mpf_clear</see>,
         /// between initializations. The precision of <paramref name="x"/> is undefined unless a default precision has
-        /// already been established by a call to <see cref="mpf_set_default_prec"/>. 
+        /// already been established by a call to <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_set_default_prec"/>
-        /// <seealso cref="mpf_get_default_prec"/>
-        /// <seealso cref="mpf_init2"/>
-        /// <seealso cref="mpf_inits"/>
-        /// <seealso cref="mpf_clear"/>
-        /// <seealso cref="mpf_clears"/>
-        /// <seealso cref="mpf_get_prec"/>
-        /// <seealso cref="mpf_set_prec"/>
-        /// <seealso cref="mpf_set_prec_raw"/>
+        /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
+        /// <seealso cref="mpf_get_default_prec">mpf_get_default_prec</seealso>
+        /// <seealso cref="mpf_init2">mpf_init2</seealso>
+        /// <seealso cref="mpf_inits">mpf_inits</seealso>
+        /// <seealso cref="mpf_clear">mpf_clear</seealso>
+        /// <seealso cref="mpf_clears">mpf_clears</seealso>
+        /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
+        /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
+        /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15859,18 +16633,19 @@ namespace Math.Gmp.Native
         /// <param name="prec">The minimum precision in bits.</param>
         /// <remarks>
         /// <para>
-        /// Normally, a variable should be initialized once only or at least be cleared, using <see cref="mpf_clear"/>, between initializations. 
+        /// Normally, a variable should be initialized once only or at least be cleared, using <see cref="mpf_clear">mpf_clear</see>, between initializations. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_set_default_prec"/>
-        /// <seealso cref="mpf_get_default_prec"/>
-        /// <seealso cref="mpf_init"/>
-        /// <seealso cref="mpf_inits"/>
-        /// <seealso cref="mpf_clear"/>
-        /// <seealso cref="mpf_clears"/>
-        /// <seealso cref="mpf_get_prec"/>
-        /// <seealso cref="mpf_set_prec"/>
-        /// <seealso cref="mpf_set_prec_raw"/>
+        /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
+        /// <seealso cref="mpf_get_default_prec">mpf_get_default_prec</seealso>
+        /// <seealso cref="mpf_init">mpf_init</seealso>
+        /// <seealso cref="mpf_inits">mpf_inits</seealso>
+        /// <seealso cref="mpf_clear">mpf_clear</seealso>
+        /// <seealso cref="mpf_clears">mpf_clears</seealso>
+        /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
+        /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
+        /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15909,24 +16684,25 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Initialize a NULL-terminated list of <see cref="mpf_t"/> variables, and set their values to 0.
+        /// Initialize a NULL-terminated list of <see cref="mpf_t">mpf_t</see> variables, and set their values to 0.
         /// </summary>
         /// <param name="x">The operand float.</param>
         /// <remarks>
         /// <para>
         /// The precision of the initialized variables is undefined unless a default precision has already
-        /// been established by a call to <see cref="mpf_set_default_prec"/>. 
+        /// been established by a call to <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_set_default_prec"/>
-        /// <seealso cref="mpf_get_default_prec"/>
-        /// <seealso cref="mpf_init"/>
-        /// <seealso cref="mpf_init2"/>
-        /// <seealso cref="mpf_clear"/>
-        /// <seealso cref="mpf_clears"/>
-        /// <seealso cref="mpf_get_prec"/>
-        /// <seealso cref="mpf_set_prec"/>
-        /// <seealso cref="mpf_set_prec_raw"/>
+        /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
+        /// <seealso cref="mpf_get_default_prec">mpf_get_default_prec</seealso>
+        /// <seealso cref="mpf_init">mpf_init</seealso>
+        /// <seealso cref="mpf_init2">mpf_init2</seealso>
+        /// <seealso cref="mpf_clear">mpf_clear</seealso>
+        /// <seealso cref="mpf_clears">mpf_clears</seealso>
+        /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
+        /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
+        /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15962,13 +16738,14 @@ namespace Math.Gmp.Native
         /// <param name="op">The operand.</param>
         /// <remarks>
         /// <para>
-        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec"/>. 
+        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_init_set_ui"/>
-        /// <seealso cref="mpf_init_set_si"/>
-        /// <seealso cref="mpf_init_set_d"/>
-        /// <seealso cref="mpf_init_set_str"/>
+        /// <seealso cref="mpf_init_set_ui">mpf_init_set_ui</seealso>
+        /// <seealso cref="mpf_init_set_si">mpf_init_set_si</seealso>
+        /// <seealso cref="mpf_init_set_d">mpf_init_set_d</seealso>
+        /// <seealso cref="mpf_init_set_str">mpf_init_set_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Float-Init-_0026-Assign.html#Simultaneous-Float-Init-_0026-Assign">GNU MP - Combined Float Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16024,13 +16801,14 @@ namespace Math.Gmp.Native
         /// <param name="op">The operand.</param>
         /// <remarks>
         /// <para>
-        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec"/>. 
+        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_init_set"/>
-        /// <seealso cref="mpf_init_set_ui"/>
-        /// <seealso cref="mpf_init_set_si"/>
-        /// <seealso cref="mpf_init_set_str"/>
+        /// <seealso cref="mpf_init_set">mpf_init_set</seealso>
+        /// <seealso cref="mpf_init_set_ui">mpf_init_set_ui</seealso>
+        /// <seealso cref="mpf_init_set_si">mpf_init_set_si</seealso>
+        /// <seealso cref="mpf_init_set_str">mpf_init_set_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Float-Init-_0026-Assign.html#Simultaneous-Float-Init-_0026-Assign">GNU MP - Combined Float Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16077,13 +16855,14 @@ namespace Math.Gmp.Native
         /// <param name="op">The operand.</param>
         /// <remarks>
         /// <para>
-        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec"/>. 
+        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_init_set"/>
-        /// <seealso cref="mpf_init_set_ui"/>
-        /// <seealso cref="mpf_init_set_d"/>
-        /// <seealso cref="mpf_init_set_str"/>
+        /// <seealso cref="mpf_init_set">mpf_init_set</seealso>
+        /// <seealso cref="mpf_init_set_ui">mpf_init_set_ui</seealso>
+        /// <seealso cref="mpf_init_set_d">mpf_init_set_d</seealso>
+        /// <seealso cref="mpf_init_set_str">mpf_init_set_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Float-Init-_0026-Assign.html#Simultaneous-Float-Init-_0026-Assign">GNU MP - Combined Float Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16132,19 +16911,20 @@ namespace Math.Gmp.Native
         /// <returns>This function returns 0 if the entire string is a valid number in base <paramref name="base"/>. Otherwise it returns -1.</returns>
         /// <remarks>
         /// <para>
-        /// See <see cref="mpf_set_str"/> for details on the assignment operation. 
+        /// See <see cref="mpf_set_str">mpf_set_str</see> for details on the assignment operation. 
         /// </para>
         /// <para>
-        /// Note that <paramref name="rop"/> is initialized even if an error occurs. (I.e., you have to call <see cref="mpf_clear"/> for it.) 
+        /// Note that <paramref name="rop"/> is initialized even if an error occurs. (I.e., you have to call <see cref="mpf_clear">mpf_clear</see> for it.) 
         /// </para>
         /// <para>
-        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec"/>. 
+        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_init_set"/>
-        /// <seealso cref="mpf_init_set_ui"/>
-        /// <seealso cref="mpf_init_set_si"/>
-        /// <seealso cref="mpf_init_set_d"/>
+        /// <seealso cref="mpf_init_set">mpf_init_set</seealso>
+        /// <seealso cref="mpf_init_set_ui">mpf_init_set_ui</seealso>
+        /// <seealso cref="mpf_init_set_si">mpf_init_set_si</seealso>
+        /// <seealso cref="mpf_init_set_d">mpf_init_set_d</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Float-Init-_0026-Assign.html#Simultaneous-Float-Init-_0026-Assign">GNU MP - Combined Float Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16196,13 +16976,14 @@ namespace Math.Gmp.Native
         /// <param name="op">The operand.</param>
         /// <remarks>
         /// <para>
-        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec"/>. 
+        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_init_set"/>
-        /// <seealso cref="mpf_init_set_si"/>
-        /// <seealso cref="mpf_init_set_d"/>
-        /// <seealso cref="mpf_init_set_str"/>
+        /// <seealso cref="mpf_init_set">mpf_init_set</seealso>
+        /// <seealso cref="mpf_init_set_si">mpf_init_set_si</seealso>
+        /// <seealso cref="mpf_init_set_d">mpf_init_set_d</seealso>
+        /// <seealso cref="mpf_init_set_str">mpf_init_set_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Float-Init-_0026-Assign.html#Simultaneous-Float-Init-_0026-Assign">GNU MP - Combined Float Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16267,7 +17048,8 @@ namespace Math.Gmp.Native
         /// This is so that numbers like "0.23" are not interpreted as octal.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_out_str"/>
+        /// <seealso cref="mpf_out_str">mpf_out_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Floats">I/O of Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Floats.html#I_002fO-of-Floats">GNU MP - I/O of Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16334,17 +17116,18 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> is an integer.</returns>
-        /// <seealso cref="mpf_ceil"/>
-        /// <seealso cref="mpf_floor"/>
-        /// <seealso cref="mpf_trunc"/>
-        /// <seealso cref="mpf_fits_ulong_p"/>
-        /// <seealso cref="mpf_fits_slong_p"/>
-        /// <seealso cref="mpf_fits_uint_p"/>
-        /// <seealso cref="mpf_fits_sint_p"/>
-        /// <seealso cref="mpf_fits_ushort_p"/>
-        /// <seealso cref="mpf_fits_sshort_p"/>
-        /// <seealso cref="mpf_urandomb"/>
-        /// <seealso cref="mpf_random2"/>
+        /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
+        /// <seealso cref="mpf_floor">mpf_floor</seealso>
+        /// <seealso cref="mpf_trunc">mpf_trunc</seealso>
+        /// <seealso cref="mpf_fits_ulong_p">mpf_fits_ulong_p</seealso>
+        /// <seealso cref="mpf_fits_slong_p">mpf_fits_slong_p</seealso>
+        /// <seealso cref="mpf_fits_uint_p">mpf_fits_uint_p</seealso>
+        /// <seealso cref="mpf_fits_sint_p">mpf_fits_sint_p</seealso>
+        /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
+        /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
+        /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
+        /// <seealso cref="mpf_random2">mpf_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16387,15 +17170,16 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
         /// <param name="op2">The second operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul_ui"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
-        /// <seealso cref="mpf_mul_2exp"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul_ui">mpf_mul_ui</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="mpf_mul_2exp">mpf_mul_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16463,15 +17247,16 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
         /// <param name="op2">The second operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_mul_ui"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_mul_ui">mpf_mul_ui</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16530,15 +17315,16 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
         /// <param name="op2">The second operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
-        /// <seealso cref="mpf_mul_2exp"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="mpf_mul_2exp">mpf_mul_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16596,13 +17382,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_abs"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16683,7 +17470,8 @@ namespace Math.Gmp.Native
         /// <paramref name="n_digits"/> can be 0 to select that accurate maximum. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_inp_str"/>
+        /// <seealso cref="mpf_inp_str">mpf_inp_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Floats">I/O of Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Floats.html#I_002fO-of-Floats">GNU MP - I/O of Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16733,13 +17521,14 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
         /// <param name="op2">The second operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16806,17 +17595,18 @@ namespace Math.Gmp.Native
         /// Negative random numbers are generated when <paramref name="max_size"/> is negative. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_ceil"/>
-        /// <seealso cref="mpf_floor"/>
-        /// <seealso cref="mpf_trunc"/>
-        /// <seealso cref="mpf_integer_p"/>
-        /// <seealso cref="mpf_fits_ulong_p"/>
-        /// <seealso cref="mpf_fits_slong_p"/>
-        /// <seealso cref="mpf_fits_uint_p"/>
-        /// <seealso cref="mpf_fits_sint_p"/>
-        /// <seealso cref="mpf_fits_ushort_p"/>
-        /// <seealso cref="mpf_fits_sshort_p"/>
-        /// <seealso cref="mpf_urandomb"/>
+        /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
+        /// <seealso cref="mpf_floor">mpf_floor</seealso>
+        /// <seealso cref="mpf_trunc">mpf_trunc</seealso>
+        /// <seealso cref="mpf_integer_p">mpf_integer_p</seealso>
+        /// <seealso cref="mpf_fits_ulong_p">mpf_fits_ulong_p</seealso>
+        /// <seealso cref="mpf_fits_slong_p">mpf_fits_slong_p</seealso>
+        /// <seealso cref="mpf_fits_uint_p">mpf_fits_uint_p</seealso>
+        /// <seealso cref="mpf_fits_sint_p">mpf_fits_sint_p</seealso>
+        /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
+        /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
+        /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16854,12 +17644,14 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand float.</param>
         /// <param name="op2">The second operand float.</param>
-        /// <seealso cref="mpf_cmp"/>
-        /// <seealso cref="mpf_cmp_z"/>
-        /// <seealso cref="mpf_cmp_d"/>
-        /// <seealso cref="mpf_cmp_ui"/>
-        /// <seealso cref="mpf_cmp_si"/>
-        /// <seealso cref="mpf_sgn"/>
+        /// <seealso cref="mpf_cmp">mpf_cmp</seealso>
+        /// <seealso cref="mpf_cmp_z">mpf_cmp_z</seealso>
+        /// <seealso cref="mpf_cmp_d">mpf_cmp_d</seealso>
+        /// <seealso cref="mpf_cmp_ui">mpf_cmp_ui</seealso>
+        /// <seealso cref="mpf_cmp_si">mpf_cmp_si</seealso>
+        /// <seealso cref="mpf_sgn">mpf_sgn</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
         /// // Set default precision to 64 bits.
@@ -16925,13 +17717,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
-        /// <seealso cref="mpf_set_ui"/>
-        /// <seealso cref="mpf_set_si"/>
-        /// <seealso cref="mpf_set_d"/>
-        /// <seealso cref="mpf_set_z"/>
-        /// <seealso cref="mpf_set_q"/>
-        /// <seealso cref="mpf_set_str"/>
-        /// <seealso cref="mpf_swap"/>
+        /// <seealso cref="mpf_set_ui">mpf_set_ui</seealso>
+        /// <seealso cref="mpf_set_si">mpf_set_si</seealso>
+        /// <seealso cref="mpf_set_d">mpf_set_d</seealso>
+        /// <seealso cref="mpf_set_z">mpf_set_z</seealso>
+        /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
+        /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
+        /// <seealso cref="mpf_swap">mpf_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16987,13 +17780,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
-        /// <seealso cref="mpf_set"/>
-        /// <seealso cref="mpf_set_ui"/>
-        /// <seealso cref="mpf_set_si"/>
-        /// <seealso cref="mpf_set_z"/>
-        /// <seealso cref="mpf_set_q"/>
-        /// <seealso cref="mpf_set_str"/>
-        /// <seealso cref="mpf_swap"/>
+        /// <seealso cref="mpf_set">mpf_set</seealso>
+        /// <seealso cref="mpf_set_ui">mpf_set_ui</seealso>
+        /// <seealso cref="mpf_set_si">mpf_set_si</seealso>
+        /// <seealso cref="mpf_set_z">mpf_set_z</seealso>
+        /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
+        /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
+        /// <seealso cref="mpf_swap">mpf_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17037,18 +17831,19 @@ namespace Math.Gmp.Native
         /// <param name="prec">The minimum precision in bits.</param>
         /// <remarks>
         /// <para>
-        /// All subsequent calls to <see cref="mpf_init"/> will use this precision, but previously initialized variables are unaffected. 
+        /// All subsequent calls to <see cref="mpf_init">mpf_init</see> will use this precision, but previously initialized variables are unaffected. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_get_default_prec"/>
-        /// <seealso cref="mpf_init"/>
-        /// <seealso cref="mpf_init2"/>
-        /// <seealso cref="mpf_inits"/>
-        /// <seealso cref="mpf_clear"/>
-        /// <seealso cref="mpf_clears"/>
-        /// <seealso cref="mpf_get_prec"/>
-        /// <seealso cref="mpf_set_prec"/>
-        /// <seealso cref="mpf_set_prec_raw"/>
+        /// <seealso cref="mpf_get_default_prec">mpf_get_default_prec</seealso>
+        /// <seealso cref="mpf_init">mpf_init</seealso>
+        /// <seealso cref="mpf_init2">mpf_init2</seealso>
+        /// <seealso cref="mpf_inits">mpf_inits</seealso>
+        /// <seealso cref="mpf_clear">mpf_clear</seealso>
+        /// <seealso cref="mpf_clears">mpf_clears</seealso>
+        /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
+        /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
+        /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17084,15 +17879,16 @@ namespace Math.Gmp.Native
         /// This function requires a call to <c>realloc</c>, and so should not be used in a tight loop. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_set_default_prec"/>
-        /// <seealso cref="mpf_get_default_prec"/>
-        /// <seealso cref="mpf_init"/>
-        /// <seealso cref="mpf_init2"/>
-        /// <seealso cref="mpf_inits"/>
-        /// <seealso cref="mpf_clear"/>
-        /// <seealso cref="mpf_clears"/>
-        /// <seealso cref="mpf_get_prec"/>
-        /// <seealso cref="mpf_set_prec_raw"/>
+        /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
+        /// <seealso cref="mpf_get_default_prec">mpf_get_default_prec</seealso>
+        /// <seealso cref="mpf_init">mpf_init</seealso>
+        /// <seealso cref="mpf_init2">mpf_init2</seealso>
+        /// <seealso cref="mpf_inits">mpf_inits</seealso>
+        /// <seealso cref="mpf_clear">mpf_clear</seealso>
+        /// <seealso cref="mpf_clears">mpf_clears</seealso>
+        /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
+        /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17140,34 +17936,35 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// <paramref name="prec"/> must be no more than the allocated precision for <paramref name="rop"/>,
-        /// that being the precision when <paramref name="rop"/> was initialized, or in the most recent <see cref="mpf_set_prec"/>. 
+        /// that being the precision when <paramref name="rop"/> was initialized, or in the most recent <see cref="mpf_set_prec">mpf_set_prec</see>. 
         /// </para>
         /// <para>
         /// The value in <paramref name="rop"/> is unchanged, and in particular if it had a higher precision than <paramref name="prec"/>
         /// it will retain that higher precision. New values written to <paramref name="rop"/> will use the new <paramref name="prec"/>. 
         /// </para>
         /// <para>
-        /// Before calling <see cref="mpf_clear"/> or the full <see cref="mpf_set_prec"/>, another <see cref="mpf_set_prec_raw"/> call
+        /// Before calling <see cref="mpf_clear">mpf_clear</see> or the full <see cref="mpf_set_prec">mpf_set_prec</see>, another <see cref="mpf_set_prec_raw">mpf_set_prec_raw</see> call
         /// must be made to restore <paramref name="rop"/> to its original allocated precision. Failing to do so will have unpredictable results.
         /// </para>
         /// <para>
-        /// <see cref="mpf_get_prec"/> can be used before <see cref="mpf_set_prec_raw"/> to get the original allocated precision.
-        /// After <see cref="mpf_set_prec_raw"/> it reflects the prec value set. 
+        /// <see cref="mpf_get_prec">mpf_get_prec</see> can be used before <see cref="mpf_set_prec_raw">mpf_set_prec_raw</see> to get the original allocated precision.
+        /// After <see cref="mpf_set_prec_raw">mpf_set_prec_raw</see> it reflects the prec value set. 
         /// </para>
         /// <para>
-        /// <see cref="mpf_set_prec_raw"/> is an efficient way to use an <see cref="mpf_t"/> variable at different precisions during a calculation,
+        /// <see cref="mpf_set_prec_raw">mpf_set_prec_raw</see> is an efficient way to use an <see cref="mpf_t">mpf_t</see> variable at different precisions during a calculation,
         /// perhaps to gradually increase precision in an iteration, or just to use various different precisions for different purposes during a calculation. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_set_default_prec"/>
-        /// <seealso cref="mpf_get_default_prec"/>
-        /// <seealso cref="mpf_init"/>
-        /// <seealso cref="mpf_init2"/>
-        /// <seealso cref="mpf_inits"/>
-        /// <seealso cref="mpf_clear"/>
-        /// <seealso cref="mpf_clears"/>
-        /// <seealso cref="mpf_get_prec"/>
-        /// <seealso cref="mpf_set_prec"/>
+        /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
+        /// <seealso cref="mpf_get_default_prec">mpf_get_default_prec</seealso>
+        /// <seealso cref="mpf_init">mpf_init</seealso>
+        /// <seealso cref="mpf_init2">mpf_init2</seealso>
+        /// <seealso cref="mpf_inits">mpf_inits</seealso>
+        /// <seealso cref="mpf_clear">mpf_clear</seealso>
+        /// <seealso cref="mpf_clears">mpf_clears</seealso>
+        /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
+        /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17240,13 +18037,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
-        /// <seealso cref="mpf_set"/>
-        /// <seealso cref="mpf_set_ui"/>
-        /// <seealso cref="mpf_set_si"/>
-        /// <seealso cref="mpf_set_d"/>
-        /// <seealso cref="mpf_set_z"/>
-        /// <seealso cref="mpf_set_str"/>
-        /// <seealso cref="mpf_swap"/>
+        /// <seealso cref="mpf_set">mpf_set</seealso>
+        /// <seealso cref="mpf_set_ui">mpf_set_ui</seealso>
+        /// <seealso cref="mpf_set_si">mpf_set_si</seealso>
+        /// <seealso cref="mpf_set_d">mpf_set_d</seealso>
+        /// <seealso cref="mpf_set_z">mpf_set_z</seealso>
+        /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
+        /// <seealso cref="mpf_swap">mpf_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17298,13 +18096,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
-        /// <seealso cref="mpf_set"/>
-        /// <seealso cref="mpf_set_ui"/>
-        /// <seealso cref="mpf_set_d"/>
-        /// <seealso cref="mpf_set_z"/>
-        /// <seealso cref="mpf_set_q"/>
-        /// <seealso cref="mpf_set_str"/>
-        /// <seealso cref="mpf_swap"/>
+        /// <seealso cref="mpf_set">mpf_set</seealso>
+        /// <seealso cref="mpf_set_ui">mpf_set_ui</seealso>
+        /// <seealso cref="mpf_set_d">mpf_set_d</seealso>
+        /// <seealso cref="mpf_set_z">mpf_set_z</seealso>
+        /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
+        /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
+        /// <seealso cref="mpf_swap">mpf_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17381,13 +18180,14 @@ namespace Math.Gmp.Native
         /// Do you really want it to accept "3 14" as meaning 314 as it does now?] 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_set"/>
-        /// <seealso cref="mpf_set_ui"/>
-        /// <seealso cref="mpf_set_si"/>
-        /// <seealso cref="mpf_set_d"/>
-        /// <seealso cref="mpf_set_z"/>
-        /// <seealso cref="mpf_set_q"/>
-        /// <seealso cref="mpf_swap"/>
+        /// <seealso cref="mpf_set">mpf_set</seealso>
+        /// <seealso cref="mpf_set_ui">mpf_set_ui</seealso>
+        /// <seealso cref="mpf_set_si">mpf_set_si</seealso>
+        /// <seealso cref="mpf_set_d">mpf_set_d</seealso>
+        /// <seealso cref="mpf_set_z">mpf_set_z</seealso>
+        /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
+        /// <seealso cref="mpf_swap">mpf_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17430,13 +18230,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
-        /// <seealso cref="mpf_set"/>
-        /// <seealso cref="mpf_set_si"/>
-        /// <seealso cref="mpf_set_d"/>
-        /// <seealso cref="mpf_set_z"/>
-        /// <seealso cref="mpf_set_q"/>
-        /// <seealso cref="mpf_set_str"/>
-        /// <seealso cref="mpf_swap"/>
+        /// <seealso cref="mpf_set">mpf_set</seealso>
+        /// <seealso cref="mpf_set_si">mpf_set_si</seealso>
+        /// <seealso cref="mpf_set_d">mpf_set_d</seealso>
+        /// <seealso cref="mpf_set_z">mpf_set_z</seealso>
+        /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
+        /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
+        /// <seealso cref="mpf_swap">mpf_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17479,13 +18280,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
-        /// <seealso cref="mpf_set"/>
-        /// <seealso cref="mpf_set_ui"/>
-        /// <seealso cref="mpf_set_si"/>
-        /// <seealso cref="mpf_set_d"/>
-        /// <seealso cref="mpf_set_q"/>
-        /// <seealso cref="mpf_set_str"/>
-        /// <seealso cref="mpf_swap"/>
+        /// <seealso cref="mpf_set">mpf_set</seealso>
+        /// <seealso cref="mpf_set_ui">mpf_set_ui</seealso>
+        /// <seealso cref="mpf_set_si">mpf_set_si</seealso>
+        /// <seealso cref="mpf_set_d">mpf_set_d</seealso>
+        /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
+        /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
+        /// <seealso cref="mpf_swap">mpf_swap</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17537,12 +18339,14 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return +1 if op &gt; 0, 0 if op = 0, and -1 if op &lt; 0.</returns>
-        /// <seealso cref="mpf_cmp"/>
-        /// <seealso cref="mpf_cmp_z"/>
-        /// <seealso cref="mpf_cmp_d"/>
-        /// <seealso cref="mpf_cmp_ui"/>
-        /// <seealso cref="mpf_cmp_si"/>
-        /// <seealso cref="mpf_reldiff"/>
+        /// <seealso cref="mpf_cmp">mpf_cmp</seealso>
+        /// <seealso cref="mpf_cmp_z">mpf_cmp_z</seealso>
+        /// <seealso cref="mpf_cmp_d">mpf_cmp_d</seealso>
+        /// <seealso cref="mpf_cmp_ui">mpf_cmp_ui</seealso>
+        /// <seealso cref="mpf_cmp_si">mpf_cmp_si</seealso>
+        /// <seealso cref="mpf_reldiff">mpf_reldiff</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
         /// // Create, initialize, and set the value of op to -10.
@@ -17578,7 +18382,8 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>The number of limbs currently in use.</returns>
-        /// <seealso cref="mpf_t"/>
+        /// <seealso cref="mpf_t">mpf_t</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17622,14 +18427,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt_ui"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt_ui">mpf_sqrt_ui</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17687,14 +18493,15 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17744,15 +18551,16 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
         /// <param name="op2">The second operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_ui_sub"/>
-        /// <seealso cref="mpf_sub_ui"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_ui_sub">mpf_ui_sub</seealso>
+        /// <seealso cref="mpf_sub_ui">mpf_sub_ui</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17821,15 +18629,16 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
         /// <param name="op2">The second operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_ui_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_ui_sub">mpf_ui_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17892,13 +18701,14 @@ namespace Math.Gmp.Native
         /// Both the values and the precisions of the two variables are swapped.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_set"/>
-        /// <seealso cref="mpf_set_ui"/>
-        /// <seealso cref="mpf_set_si"/>
-        /// <seealso cref="mpf_set_d"/>
-        /// <seealso cref="mpf_set_z"/>
-        /// <seealso cref="mpf_set_q"/>
-        /// <seealso cref="mpf_set_str"/>
+        /// <seealso cref="mpf_set">mpf_set</seealso>
+        /// <seealso cref="mpf_set_ui">mpf_set_ui</seealso>
+        /// <seealso cref="mpf_set_si">mpf_set_si</seealso>
+        /// <seealso cref="mpf_set_d">mpf_set_d</seealso>
+        /// <seealso cref="mpf_set_z">mpf_set_z</seealso>
+        /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
+        /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17960,17 +18770,18 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand float.</param>
-        /// <seealso cref="mpf_ceil"/>
-        /// <seealso cref="mpf_floor"/>
-        /// <seealso cref="mpf_integer_p"/>
-        /// <seealso cref="mpf_fits_ulong_p"/>
-        /// <seealso cref="mpf_fits_slong_p"/>
-        /// <seealso cref="mpf_fits_uint_p"/>
-        /// <seealso cref="mpf_fits_sint_p"/>
-        /// <seealso cref="mpf_fits_ushort_p"/>
-        /// <seealso cref="mpf_fits_sshort_p"/>
-        /// <seealso cref="mpf_urandomb"/>
-        /// <seealso cref="mpf_random2"/>
+        /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
+        /// <seealso cref="mpf_floor">mpf_floor</seealso>
+        /// <seealso cref="mpf_integer_p">mpf_integer_p</seealso>
+        /// <seealso cref="mpf_fits_ulong_p">mpf_fits_ulong_p</seealso>
+        /// <seealso cref="mpf_fits_slong_p">mpf_fits_slong_p</seealso>
+        /// <seealso cref="mpf_fits_uint_p">mpf_fits_uint_p</seealso>
+        /// <seealso cref="mpf_fits_sint_p">mpf_fits_sint_p</seealso>
+        /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
+        /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
+        /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
+        /// <seealso cref="mpf_random2">mpf_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18037,16 +18848,17 @@ namespace Math.Gmp.Native
         /// as other arithmetic exceptions. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_div_ui"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
-        /// <seealso cref="mpf_div_2exp"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_div_ui">mpf_div_ui</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="mpf_div_2exp">mpf_div_2exp</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18105,15 +18917,16 @@ namespace Math.Gmp.Native
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
         /// <param name="op2">The second operand.</param>
-        /// <seealso cref="mpf_add"/>
-        /// <seealso cref="mpf_sub"/>
-        /// <seealso cref="mpf_sub_ui"/>
-        /// <seealso cref="mpf_mul"/>
-        /// <seealso cref="mpf_div"/>
-        /// <seealso cref="mpf_sqrt"/>
-        /// <seealso cref="mpf_pow_ui"/>
-        /// <seealso cref="mpf_neg"/>
-        /// <seealso cref="mpf_abs"/>
+        /// <seealso cref="mpf_add">mpf_add</seealso>
+        /// <seealso cref="mpf_sub">mpf_sub</seealso>
+        /// <seealso cref="mpf_sub_ui">mpf_sub_ui</seealso>
+        /// <seealso cref="mpf_mul">mpf_mul</seealso>
+        /// <seealso cref="mpf_div">mpf_div</seealso>
+        /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
+        /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
+        /// <seealso cref="mpf_neg">mpf_neg</seealso>
+        /// <seealso cref="mpf_abs">mpf_abs</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18175,20 +18988,22 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The variable state must be initialized by calling one of the <c>gmp_randinit</c> functions
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// (<a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a>) before invoking this function. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpf_ceil"/>
-        /// <seealso cref="mpf_floor"/>
-        /// <seealso cref="mpf_trunc"/>
-        /// <seealso cref="mpf_integer_p"/>
-        /// <seealso cref="mpf_fits_ulong_p"/>
-        /// <seealso cref="mpf_fits_slong_p"/>
-        /// <seealso cref="mpf_fits_uint_p"/>
-        /// <seealso cref="mpf_fits_sint_p"/>
-        /// <seealso cref="mpf_fits_ushort_p"/>
-        /// <seealso cref="mpf_fits_sshort_p"/>
-        /// <seealso cref="mpf_random2"/>
+        /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
+        /// <seealso cref="mpf_floor">mpf_floor</seealso>
+        /// <seealso cref="mpf_trunc">mpf_trunc</seealso>
+        /// <seealso cref="mpf_integer_p">mpf_integer_p</seealso>
+        /// <seealso cref="mpf_fits_ulong_p">mpf_fits_ulong_p</seealso>
+        /// <seealso cref="mpf_fits_slong_p">mpf_fits_slong_p</seealso>
+        /// <seealso cref="mpf_fits_uint_p">mpf_fits_uint_p</seealso>
+        /// <seealso cref="mpf_fits_sint_p">mpf_fits_sint_p</seealso>
+        /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
+        /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
+        /// <seealso cref="mpf_random2">mpf_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18251,25 +19066,26 @@ namespace Math.Gmp.Native
         /// This function requires that <paramref name="s1n"/> is greater than or equal to <paramref name="s2n"/>.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18326,25 +19142,26 @@ namespace Math.Gmp.Native
         /// <param name="n">The number of limbs in <paramref name="s1p"/>.</param>
         /// <param name="s2limb">The second operand integer.</param>
         /// <returns>Return carry, either 0 or 1.</returns>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18403,28 +19220,29 @@ namespace Math.Gmp.Native
         /// This is the lowest-level function for addition.
         /// It is the preferred function for addition, since it is written in assembly for most CPUs.
         /// For addition of a variable to itself (i.e., <paramref name="s1p"/> equals <paramref name="s2p"/>)
-        /// use <see cref="mpn_lshift"/> with a count of 1 for optimal speed.
+        /// use <see cref="mpn_lshift">mpn_lshift</see> with a count of 1 for optimal speed.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18492,26 +19310,27 @@ namespace Math.Gmp.Native
         /// It is written in assembly for most CPUs. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18564,9 +19383,10 @@ namespace Math.Gmp.Native
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs in <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
         /// <returns>Return a positive value if s1 &gt; s2, 0 if they are equal, or a negative value if s1 &lt; s2. </returns>
-        /// <seealso cref="mpn_perfect_power_p"/>
-        /// <seealso cref="mpn_perfect_square_p"/>
-        /// <seealso cref="mpn_zero_p"/>
+        /// <seealso cref="mpn_perfect_power_p">mpn_perfect_power_p</seealso>
+        /// <seealso cref="mpn_perfect_square_p">mpn_perfect_square_p</seealso>
+        /// <seealso cref="mpn_zero_p">mpn_zero_p</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18605,9 +19425,10 @@ namespace Math.Gmp.Native
         /// <param name="sp">The operand integer.</param>
         /// <param name="n">The number of limbs in <paramref name="sp"/>.</param>
         /// <returns>Return 1 if the operand is zero, 0 otherwise.</returns>
-        /// <seealso cref="mpn_cmp"/>
-        /// <seealso cref="mpn_perfect_power_p"/>
-        /// <seealso cref="mpn_perfect_square_p"/>
+        /// <seealso cref="mpn_cmp">mpn_cmp</seealso>
+        /// <seealso cref="mpn_perfect_power_p">mpn_perfect_power_p</seealso>
+        /// <seealso cref="mpn_perfect_square_p">mpn_perfect_square_p</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18650,26 +19471,27 @@ namespace Math.Gmp.Native
         /// The areas at <paramref name="rp"/> and <paramref name="sp"/> have to be identical or completely separate, not partially overlapping.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18722,43 +19544,44 @@ namespace Math.Gmp.Native
         /// <returns>If 3 divides exactly, the return value is zero and the result is the quotient. If not, the return value is non-zero and the result won’t be anything useful.</returns>
         /// <remarks>
         /// <para>
-        /// <see cref="mpn_divexact_by3c"/> takes an initial carry parameter, which can be the return value from a previous call,
+        /// <see cref="mpn_divexact_by3c">mpn_divexact_by3c</see> takes an initial carry parameter, which can be the return value from a previous call,
         /// so a large calculation can be done piece by piece from low to high.
-        /// <see cref="mpn_divexact_by3"/> is simply a macro calling <see cref="mpn_divexact_by3c"/> with a 0 carry parameter.
+        /// <see cref="mpn_divexact_by3">mpn_divexact_by3</see> is simply a macro calling <see cref="mpn_divexact_by3c">mpn_divexact_by3c</see> with a 0 carry parameter.
         /// </para>
         /// <para>
-        /// These routines use a multiply-by-inverse and will be faster than <see cref="mpn_divrem_1"/> on CPUs with
+        /// These routines use a multiply-by-inverse and will be faster than <see cref="mpn_divrem_1">mpn_divrem_1</see> on CPUs with
         /// fast multiplication but slow division. 
         /// </para>
         /// <para>
         /// The source a, result q, size n, initial carry i, and return value c satisfy
-        /// c * b^n + a - i = 3 * q, where b = 2^<see cref="mp_bits_per_limb"/>.
+        /// c * b^n + a - i = 3 * q, where b = 2^<see cref="mp_bits_per_limb">mp_bits_per_limb</see>.
         /// The return c is always 0, 1 or 2, and the initial carry i must also be 0,
         /// 1 or 2 (these are both borrows really). When c = 0 clearly q = (a - i) / 3.
         /// When c != 0, the remainder (a - i) mod 3 is given by 3 - c, because
-        /// b ≡ 1 mod 3 (when <see cref="mp_bits_per_limb"/> is even, which is always so currently). 
+        /// b ≡ 1 mod 3 (when <see cref="mp_bits_per_limb">mp_bits_per_limb</see> is even, which is always so currently). 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18815,43 +19638,44 @@ namespace Math.Gmp.Native
         /// <returns>If 3 divides exactly, the return value is zero and the result is the quotient. If not, the return value is non-zero and the result won’t be anything useful.</returns>
         /// <remarks>
         /// <para>
-        /// <see cref="mpn_divexact_by3c"/> takes an initial carry parameter, which can be the return value from a previous call,
+        /// <see cref="mpn_divexact_by3c">mpn_divexact_by3c</see> takes an initial carry parameter, which can be the return value from a previous call,
         /// so a large calculation can be done piece by piece from low to high.
-        /// <see cref="mpn_divexact_by3"/> is simply a macro calling <see cref="mpn_divexact_by3c"/> with a 0 carry parameter.
+        /// <see cref="mpn_divexact_by3">mpn_divexact_by3</see> is simply a macro calling <see cref="mpn_divexact_by3c">mpn_divexact_by3c</see> with a 0 carry parameter.
         /// </para>
         /// <para>
-        /// These routines use a multiply-by-inverse and will be faster than <see cref="mpn_divrem_1"/> on CPUs with
+        /// These routines use a multiply-by-inverse and will be faster than <see cref="mpn_divrem_1">mpn_divrem_1</see> on CPUs with
         /// fast multiplication but slow division. 
         /// </para>
         /// <para>
         /// The source a, result q, size n, initial carry i, and return value c satisfy
-        /// c * b^n + a - i = 3 * q, where b = 2^<see cref="mp_bits_per_limb"/>.
+        /// c * b^n + a - i = 3 * q, where b = 2^<see cref="mp_bits_per_limb">mp_bits_per_limb</see>.
         /// The return c is always 0, 1 or 2, and the initial carry i must also be 0,
         /// 1 or 2 (these are both borrows really). When c = 0 clearly q = (a - i) / 3.
         /// When c != 0, the remainder (a - i) mod 3 is given by 3 - c, because
-        /// b ≡ 1 mod 3 (when <see cref="mp_bits_per_limb"/> is even, which is always so currently). 
+        /// b ≡ 1 mod 3 (when <see cref="mp_bits_per_limb">mp_bits_per_limb</see> is even, which is always so currently). 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18914,34 +19738,35 @@ namespace Math.Gmp.Native
         /// For most usages, <paramref name="qxn"/> will be zero. 
         /// </para>
         /// <para>
-        /// <see cref="mpn_divmod_1"/> exists for upward source compatibility and is simply a macro
-        /// calling <see cref="mpn_divrem_1"/> with a <paramref name="qxn"/> of 0. 
+        /// <see cref="mpn_divmod_1">mpn_divmod_1</see> exists for upward source compatibility and is simply a macro
+        /// calling <see cref="mpn_divrem_1">mpn_divrem_1</see> with a <paramref name="qxn"/> of 0. 
         /// </para>
         /// <para>
         /// The areas at <paramref name="r1p"/> and <paramref name="s2p"/> have to be identical or
         /// completely separate, not partially overlapping. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19001,34 +19826,35 @@ namespace Math.Gmp.Native
         /// <paramref name="s2n"/> can be zero.
         /// </para>
         /// <para>
-        /// <see cref="mpn_divmod_1"/> exists for upward source compatibility and is simply a macro
-        /// calling <see cref="mpn_divrem_1"/> with a qxn of 0. 
+        /// <see cref="mpn_divmod_1">mpn_divmod_1</see> exists for upward source compatibility and is simply a macro
+        /// calling <see cref="mpn_divrem_1">mpn_divrem_1</see> with a qxn of 0. 
         /// </para>
         /// <para>
         /// The areas at <paramref name="r1p"/> and <paramref name="s2p"/> have to be identical or
         /// completely separate, not partially overlapping. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19126,8 +19952,9 @@ namespace Math.Gmp.Native
         /// No overlap is permitted between {<paramref name="xp"/>, <paramref name="xn"/>} and {<paramref name="yp"/>, <paramref name="yn"/>}. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_gcd_1"/>
-        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpn_gcdext"/>
+        /// <seealso cref="mpn_gcd_1">mpn_gcd_1</seealso>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpn_gcdext">O:Math.Gmp.Native.gmp_lib.mpn_gcdext</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19185,8 +20012,9 @@ namespace Math.Gmp.Native
         /// Both operands must be non-zero. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_gcd"/>
-        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpn_gcdext"/>
+        /// <seealso cref="mpn_gcd">mpn_gcd</seealso>
+        /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpn_gcdext">O:Math.Gmp.Native.gmp_lib.mpn_gcdext</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19266,8 +20094,9 @@ namespace Math.Gmp.Native
         /// and <paramref name="sp"/> should each have room for <paramref name="un"/> + 1 limbs.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_gcd"/>
-        /// <seealso cref="mpn_gcd_1"/>
+        /// <seealso cref="mpn_gcd">mpn_gcd</seealso>
+        /// <seealso cref="mpn_gcd_1">mpn_gcd_1</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19365,8 +20194,9 @@ namespace Math.Gmp.Native
         /// and <paramref name="sp"/> should each have room for <paramref name="un"/> + 1 limbs.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_gcd"/>
-        /// <seealso cref="mpn_gcd_1"/>
+        /// <seealso cref="mpn_gcd">mpn_gcd</seealso>
+        /// <seealso cref="mpn_gcd_1">mpn_gcd_1</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19448,8 +20278,9 @@ namespace Math.Gmp.Native
         /// represented by a <paramref name="s1n"/> long limb array, plus one extra character. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_set_str"/>
-        /// <seealso cref="mpn_sizeinbase"/>
+        /// <seealso cref="mpn_set_str">mpn_set_str</seealso>
+        /// <seealso cref="mpn_sizeinbase">mpn_sizeinbase</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19507,11 +20338,12 @@ namespace Math.Gmp.Native
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
         /// <returns>The hamming distance between {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>.</returns>
-        /// <seealso cref="mpn_lshift"/>
-        /// <seealso cref="mpn_popcount"/>
-        /// <seealso cref="mpn_rshift"/>
-        /// <seealso cref="mpn_scan0"/>
-        /// <seealso cref="mpn_scan1"/>
+        /// <seealso cref="mpn_lshift">mpn_lshift</seealso>
+        /// <seealso cref="mpn_popcount">mpn_popcount</seealso>
+        /// <seealso cref="mpn_rshift">mpn_rshift</seealso>
+        /// <seealso cref="mpn_scan0">mpn_scan0</seealso>
+        /// <seealso cref="mpn_scan1">mpn_scan1</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19554,7 +20386,7 @@ namespace Math.Gmp.Native
         /// <returns>The bits shifted out at the left are returned in the least significant count bits of the return value (the rest of the return value is zero).</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="count"/> must be in the range 1 to <see cref="mp_bits_per_limb"/> - 1.
+        /// <paramref name="count"/> must be in the range 1 to <see cref="mp_bits_per_limb">mp_bits_per_limb</see> - 1.
         /// The regions {<paramref name="sp"/>, <paramref name="n"/>} and {<paramref name="rp"/>, <paramref name="n"/>} may overlap,
         /// provided <paramref name="rp"/> &#8805; <paramref name="sp"/>. 
         /// </para>
@@ -19562,11 +20394,12 @@ namespace Math.Gmp.Native
         /// This function is written in assembly for most CPUs. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_hamdist"/>
-        /// <seealso cref="mpn_popcount"/>
-        /// <seealso cref="mpn_rshift"/>
-        /// <seealso cref="mpn_scan0"/>
-        /// <seealso cref="mpn_scan1"/>
+        /// <seealso cref="mpn_hamdist">mpn_hamdist</seealso>
+        /// <seealso cref="mpn_popcount">mpn_popcount</seealso>
+        /// <seealso cref="mpn_rshift">mpn_rshift</seealso>
+        /// <seealso cref="mpn_scan0">mpn_scan0</seealso>
+        /// <seealso cref="mpn_scan1">mpn_scan1</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19624,26 +20457,27 @@ namespace Math.Gmp.Native
         /// <paramref name="s1n"/> can be zero.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19695,26 +20529,27 @@ namespace Math.Gmp.Native
         /// This function requires that <paramref name="s1n"/> is greater than or equal to <paramref name="s2n"/>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19780,30 +20615,31 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// Don’t call this function if <paramref name="s2limb"/> is a power of 2;
-        /// use <see cref="mpn_lshift"/> with a count equal to the logarithm of
+        /// use <see cref="mpn_lshift">mpn_lshift</see> with a count equal to the logarithm of
         /// <paramref name="s2limb"/> instead, for optimal speed. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19862,29 +20698,30 @@ namespace Math.Gmp.Native
         /// most significant limb is zero. No overlap is permitted between the destination and either source. 
         /// </para>
         /// <para>
-        /// If the two input operands are the same, use <see cref="mpn_sqr"/>. 
+        /// If the two input operands are the same, use <see cref="mpn_sqr">mpn_sqr</see>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19940,26 +20777,27 @@ namespace Math.Gmp.Native
         /// most significant limb is zero. No overlap is permitted between the destination and the source. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20009,30 +20847,31 @@ namespace Math.Gmp.Native
         /// <returns>Return borrow, either 0 or 1.</returns>
         /// <remarks>
         /// <para>
-        /// This is equivalent to calling <see cref="mpn_sub_n"/> with a <paramref name="n"/>-limb
+        /// This is equivalent to calling <see cref="mpn_sub_n">mpn_sub_n</see> with a <paramref name="n"/>-limb
         /// zero minuend and passing {<paramref name="sp"/>, <paramref name="n"/>} as subtrahend.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20084,15 +20923,16 @@ namespace Math.Gmp.Native
         /// <param name="rp">The result integer.</param>
         /// <param name="sp">The operand integer.</param>
         /// <param name="n">The numbe rof limbs of <paramref name="rp>"/> and <paramref name="sp"/>.</param>
-        /// <seealso cref="mpn_and_n"/>
-        /// <seealso cref="mpn_andn_n"/>
-        /// <seealso cref="mpn_com"/>
-        /// <seealso cref="mpn_ior_n"/>
-        /// <seealso cref="mpn_iorn_n"/>
-        /// <seealso cref="mpn_nand_n"/>
-        /// <seealso cref="mpn_nior_n"/>
-        /// <seealso cref="mpn_xor_n"/>
-        /// <seealso cref="mpn_xnor_n"/>
+        /// <seealso cref="mpn_and_n">mpn_and_n</seealso>
+        /// <seealso cref="mpn_andn_n">mpn_andn_n</seealso>
+        /// <seealso cref="mpn_com">mpn_com</seealso>
+        /// <seealso cref="mpn_ior_n">mpn_ior_n</seealso>
+        /// <seealso cref="mpn_iorn_n">mpn_iorn_n</seealso>
+        /// <seealso cref="mpn_nand_n">mpn_nand_n</seealso>
+        /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
+        /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
+        /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20144,9 +20984,10 @@ namespace Math.Gmp.Native
         /// The most significant limb of the input {<paramref name="s1p"/>, <paramref name="n"/>} must be non-zero.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cmp"/>
-        /// <seealso cref="mpn_perfect_power_p"/>
-        /// <seealso cref="mpn_zero_p"/>
+        /// <seealso cref="mpn_cmp">mpn_cmp</seealso>
+        /// <seealso cref="mpn_perfect_power_p">mpn_perfect_power_p</seealso>
+        /// <seealso cref="mpn_zero_p">mpn_zero_p</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20182,9 +21023,10 @@ namespace Math.Gmp.Native
         /// <param name="sp">The operand integer.</param>
         /// <param name="n">The numbe rof limbs of <paramref name="sp"/>.</param>
         /// <returns>Non-zero iff {<paramref name="sp"/>, <paramref name="n"/>} is a perfect power.</returns>
-        /// <seealso cref="mpn_cmp"/>
-        /// <seealso cref="mpn_perfect_square_p"/>
-        /// <seealso cref="mpn_zero_p"/>
+        /// <seealso cref="mpn_cmp">mpn_cmp</seealso>
+        /// <seealso cref="mpn_perfect_square_p">mpn_perfect_square_p</seealso>
+        /// <seealso cref="mpn_zero_p">mpn_zero_p</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20220,11 +21062,12 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/>.</param>
         /// <returns>The number of set bits in {<paramref name="s1p"/>, <paramref name="n"/>}.</returns>
-        /// <seealso cref="mpn_hamdist"/>
-        /// <seealso cref="mpn_lshift"/>
-        /// <seealso cref="mpn_rshift"/>
-        /// <seealso cref="mpn_scan0"/>
-        /// <seealso cref="mpn_scan1"/>
+        /// <seealso cref="mpn_hamdist">mpn_hamdist</seealso>
+        /// <seealso cref="mpn_lshift">mpn_lshift</seealso>
+        /// <seealso cref="mpn_rshift">mpn_rshift</seealso>
+        /// <seealso cref="mpn_scan0">mpn_scan0</seealso>
+        /// <seealso cref="mpn_scan1">mpn_scan1</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20275,14 +21118,15 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The most significant limb is always non-zero.
-        /// <see cref="mpn_random"/> generates uniformly distributed limb data,
-        /// <see cref="mpn_random2"/> generates long strings of zeros and ones in the binary representation. 
+        /// <see cref="mpn_random">mpn_random</see> generates uniformly distributed limb data,
+        /// <see cref="mpn_random2">mpn_random2</see> generates long strings of zeros and ones in the binary representation. 
         /// </para>
         /// <para>
-        /// <see cref="mpn_random2"/> is intended for testing the correctness of the <c>mpn</c> routines. 
+        /// <see cref="mpn_random2">mpn_random2</see> is intended for testing the correctness of the <c>mpn</c> routines. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_random2"/>
+        /// <seealso cref="mpn_random2">mpn_random2</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20320,14 +21164,15 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The most significant limb is always non-zero.
-        /// <see cref="mpn_random"/> generates uniformly distributed limb data,
-        /// <see cref="mpn_random2"/> generates long strings of zeros and ones in the binary representation. 
+        /// <see cref="mpn_random">mpn_random</see> generates uniformly distributed limb data,
+        /// <see cref="mpn_random2">mpn_random2</see> generates long strings of zeros and ones in the binary representation. 
         /// </para>
         /// <para>
-        /// <see cref="mpn_random2"/> is intended for testing the correctness of the <c>mpn</c> routines. 
+        /// <see cref="mpn_random2">mpn_random2</see> is intended for testing the correctness of the <c>mpn</c> routines. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_random"/>
+        /// <seealso cref="mpn_random">mpn_random</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20367,7 +21212,7 @@ namespace Math.Gmp.Native
         /// <returns>The bits shifted out at the right are returned in the most significant <paramref name="count"/> bits of the return value (the rest of the return value is zero).</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="count"/> must be in the range 1 to <see cref="mp_bits_per_limb"/> - 1.
+        /// <paramref name="count"/> must be in the range 1 to <see cref="mp_bits_per_limb">mp_bits_per_limb</see> - 1.
         /// The regions {<paramref name="sp"/>, <paramref name="n"/>} and {<paramref name="rp"/>, <paramref name="n"/>}
         /// may overlap, provided <paramref name="rp"/> &#8804; <paramref name="sp"/>. 
         /// </para>
@@ -20375,11 +21220,12 @@ namespace Math.Gmp.Native
         /// This function is written in assembly for most CPUs. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_hamdist"/>
-        /// <seealso cref="mpn_lshift"/>
-        /// <seealso cref="mpn_popcount"/>
-        /// <seealso cref="mpn_scan0"/>
-        /// <seealso cref="mpn_scan1"/>
+        /// <seealso cref="mpn_hamdist">mpn_hamdist</seealso>
+        /// <seealso cref="mpn_lshift">mpn_lshift</seealso>
+        /// <seealso cref="mpn_popcount">mpn_popcount</seealso>
+        /// <seealso cref="mpn_scan0">mpn_scan0</seealso>
+        /// <seealso cref="mpn_scan1">mpn_scan1</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20437,11 +21283,12 @@ namespace Math.Gmp.Native
         /// at or beyond bit position <paramref name="bit"/>, so that the function has something to return. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_hamdist"/>
-        /// <seealso cref="mpn_lshift"/>
-        /// <seealso cref="mpn_popcount"/>
-        /// <seealso cref="mpn_rshift"/>
-        /// <seealso cref="mpn_scan1"/>
+        /// <seealso cref="mpn_hamdist">mpn_hamdist</seealso>
+        /// <seealso cref="mpn_lshift">mpn_lshift</seealso>
+        /// <seealso cref="mpn_popcount">mpn_popcount</seealso>
+        /// <seealso cref="mpn_rshift">mpn_rshift</seealso>
+        /// <seealso cref="mpn_scan1">mpn_scan1</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20483,11 +21330,12 @@ namespace Math.Gmp.Native
         /// at or beyond bit position <paramref name="bit"/>, so that the function has something to return. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_hamdist"/>
-        /// <seealso cref="mpn_lshift"/>
-        /// <seealso cref="mpn_popcount"/>
-        /// <seealso cref="mpn_rshift"/>
-        /// <seealso cref="mpn_scan0"/>
+        /// <seealso cref="mpn_hamdist">mpn_hamdist</seealso>
+        /// <seealso cref="mpn_lshift">mpn_lshift</seealso>
+        /// <seealso cref="mpn_popcount">mpn_popcount</seealso>
+        /// <seealso cref="mpn_rshift">mpn_rshift</seealso>
+        /// <seealso cref="mpn_scan0">mpn_scan0</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20547,8 +21395,9 @@ namespace Math.Gmp.Native
         /// between {<paramref name="str"/>, <paramref name="strsize"/>} and the result at <paramref name="rp"/>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_get_str"/>
-        /// <seealso cref="mpn_sizeinbase"/>
+        /// <seealso cref="mpn_get_str">mpn_get_str</seealso>
+        /// <seealso cref="mpn_sizeinbase">mpn_sizeinbase</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20614,8 +21463,9 @@ namespace Math.Gmp.Native
         /// If base is a power of 2, the result is always exact. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_get_str"/>
-        /// <seealso cref="mpn_set_str"/>
+        /// <seealso cref="mpn_get_str">mpn_get_str</seealso>
+        /// <seealso cref="mpn_set_str">mpn_set_str</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20673,29 +21523,30 @@ namespace Math.Gmp.Native
         /// is zero or non-zero according to whether the remainder would have been zero or non-zero.
         /// </para>
         /// <para>
-        /// A return value of zero indicates a perfect square. See also <see cref="mpn_perfect_square_p"/>.
+        /// A return value of zero indicates a perfect square. See also <see cref="mpn_perfect_square_p">mpn_perfect_square_p</see>.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20759,26 +21610,27 @@ namespace Math.Gmp.Native
         /// This is the lowest-level function for subtraction. It is the preferred function for subtraction, since it is written in assembly for most CPUs.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20835,26 +21687,27 @@ namespace Math.Gmp.Native
         /// <param name="n">The numbe rof limbs of <paramref name="s1p"/>.</param>
         /// <param name="s2limb">The second operand integer.</param>
         /// <returns>Return borrow, either 0 or 1.</returns>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20908,26 +21761,27 @@ namespace Math.Gmp.Native
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The numbe rof limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
         /// <returns>Return borrow, either 0 or 1.</returns>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20994,26 +21848,27 @@ namespace Math.Gmp.Native
         /// as well as other operations in GMP. It is written in assembly for most CPUs. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
-        /// <seealso cref="mpn_tdiv_qr"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21082,26 +21937,27 @@ namespace Math.Gmp.Native
         /// The <paramref name="qxn"/> operand must be zero. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_add"/>
-        /// <seealso cref="mpn_add_1"/>
-        /// <seealso cref="mpn_add_n"/>
-        /// <seealso cref="mpn_addmul_1"/>
-        /// <seealso cref="mpn_divexact_1"/>
-        /// <seealso cref="mpn_divexact_by3"/>
-        /// <seealso cref="mpn_divexact_by3c"/>
-        /// <seealso cref="mpn_divmod_1"/>
-        /// <seealso cref="mpn_divrem_1"/>
-        /// <seealso cref="mpn_mod_1"/>
-        /// <seealso cref="mpn_mul"/>
-        /// <seealso cref="mpn_mul_1"/>
-        /// <seealso cref="mpn_mul_n"/>
-        /// <seealso cref="mpn_neg"/>
-        /// <seealso cref="mpn_sub"/>
-        /// <seealso cref="mpn_sub_1"/>
-        /// <seealso cref="mpn_sub_n"/>
-        /// <seealso cref="mpn_submul_1"/>
-        /// <seealso cref="mpn_sqr"/>
-        /// <seealso cref="mpn_sqrtrem"/>
+        /// <seealso cref="mpn_add">mpn_add</seealso>
+        /// <seealso cref="mpn_add_1">mpn_add_1</seealso>
+        /// <seealso cref="mpn_add_n">mpn_add_n</seealso>
+        /// <seealso cref="mpn_addmul_1">mpn_addmul_1</seealso>
+        /// <seealso cref="mpn_divexact_1">mpn_divexact_1</seealso>
+        /// <seealso cref="mpn_divexact_by3">mpn_divexact_by3</seealso>
+        /// <seealso cref="mpn_divexact_by3c">mpn_divexact_by3c</seealso>
+        /// <seealso cref="mpn_divmod_1">mpn_divmod_1</seealso>
+        /// <seealso cref="mpn_divrem_1">mpn_divrem_1</seealso>
+        /// <seealso cref="mpn_mod_1">mpn_mod_1</seealso>
+        /// <seealso cref="mpn_mul">mpn_mul</seealso>
+        /// <seealso cref="mpn_mul_1">mpn_mul_1</seealso>
+        /// <seealso cref="mpn_mul_n">mpn_mul_n</seealso>
+        /// <seealso cref="mpn_neg">mpn_neg</seealso>
+        /// <seealso cref="mpn_sub">mpn_sub</seealso>
+        /// <seealso cref="mpn_sub_1">mpn_sub_1</seealso>
+        /// <seealso cref="mpn_sub_n">mpn_sub_n</seealso>
+        /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
+        /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
+        /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21159,14 +22015,15 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
-        /// <seealso cref="mpn_andn_n"/>
-        /// <seealso cref="mpn_com"/>
-        /// <seealso cref="mpn_ior_n"/>
-        /// <seealso cref="mpn_iorn_n"/>
-        /// <seealso cref="mpn_nand_n"/>
-        /// <seealso cref="mpn_nior_n"/>
-        /// <seealso cref="mpn_xor_n"/>
-        /// <seealso cref="mpn_xnor_n"/>
+        /// <seealso cref="mpn_andn_n">mpn_andn_n</seealso>
+        /// <seealso cref="mpn_com">mpn_com</seealso>
+        /// <seealso cref="mpn_ior_n">mpn_ior_n</seealso>
+        /// <seealso cref="mpn_iorn_n">mpn_iorn_n</seealso>
+        /// <seealso cref="mpn_nand_n">mpn_nand_n</seealso>
+        /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
+        /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
+        /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21217,14 +22074,15 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
-        /// <seealso cref="mpn_and_n"/>
-        /// <seealso cref="mpn_com"/>
-        /// <seealso cref="mpn_ior_n"/>
-        /// <seealso cref="mpn_iorn_n"/>
-        /// <seealso cref="mpn_nand_n"/>
-        /// <seealso cref="mpn_nior_n"/>
-        /// <seealso cref="mpn_xor_n"/>
-        /// <seealso cref="mpn_xnor_n"/>
+        /// <seealso cref="mpn_and_n">mpn_and_n</seealso>
+        /// <seealso cref="mpn_com">mpn_com</seealso>
+        /// <seealso cref="mpn_ior_n">mpn_ior_n</seealso>
+        /// <seealso cref="mpn_iorn_n">mpn_iorn_n</seealso>
+        /// <seealso cref="mpn_nand_n">mpn_nand_n</seealso>
+        /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
+        /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
+        /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21275,14 +22133,15 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
-        /// <seealso cref="mpn_and_n"/>
-        /// <seealso cref="mpn_andn_n"/>
-        /// <seealso cref="mpn_com"/>
-        /// <seealso cref="mpn_ior_n"/>
-        /// <seealso cref="mpn_iorn_n"/>
-        /// <seealso cref="mpn_nior_n"/>
-        /// <seealso cref="mpn_xor_n"/>
-        /// <seealso cref="mpn_xnor_n"/>
+        /// <seealso cref="mpn_and_n">mpn_and_n</seealso>
+        /// <seealso cref="mpn_andn_n">mpn_andn_n</seealso>
+        /// <seealso cref="mpn_com">mpn_com</seealso>
+        /// <seealso cref="mpn_ior_n">mpn_ior_n</seealso>
+        /// <seealso cref="mpn_iorn_n">mpn_iorn_n</seealso>
+        /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
+        /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
+        /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21333,14 +22192,15 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
-        /// <seealso cref="mpn_and_n"/>
-        /// <seealso cref="mpn_andn_n"/>
-        /// <seealso cref="mpn_com"/>
-        /// <seealso cref="mpn_iorn_n"/>
-        /// <seealso cref="mpn_nand_n"/>
-        /// <seealso cref="mpn_nior_n"/>
-        /// <seealso cref="mpn_xor_n"/>
-        /// <seealso cref="mpn_xnor_n"/>
+        /// <seealso cref="mpn_and_n">mpn_and_n</seealso>
+        /// <seealso cref="mpn_andn_n">mpn_andn_n</seealso>
+        /// <seealso cref="mpn_com">mpn_com</seealso>
+        /// <seealso cref="mpn_iorn_n">mpn_iorn_n</seealso>
+        /// <seealso cref="mpn_nand_n">mpn_nand_n</seealso>
+        /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
+        /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
+        /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21391,14 +22251,15 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
-        /// <seealso cref="mpn_and_n"/>
-        /// <seealso cref="mpn_andn_n"/>
-        /// <seealso cref="mpn_com"/>
-        /// <seealso cref="mpn_ior_n"/>
-        /// <seealso cref="mpn_nand_n"/>
-        /// <seealso cref="mpn_nior_n"/>
-        /// <seealso cref="mpn_xor_n"/>
-        /// <seealso cref="mpn_xnor_n"/>
+        /// <seealso cref="mpn_and_n">mpn_and_n</seealso>
+        /// <seealso cref="mpn_andn_n">mpn_andn_n</seealso>
+        /// <seealso cref="mpn_com">mpn_com</seealso>
+        /// <seealso cref="mpn_ior_n">mpn_ior_n</seealso>
+        /// <seealso cref="mpn_nand_n">mpn_nand_n</seealso>
+        /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
+        /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
+        /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21449,14 +22310,15 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
-        /// <seealso cref="mpn_and_n"/>
-        /// <seealso cref="mpn_andn_n"/>
-        /// <seealso cref="mpn_com"/>
-        /// <seealso cref="mpn_ior_n"/>
-        /// <seealso cref="mpn_iorn_n"/>
-        /// <seealso cref="mpn_nand_n"/>
-        /// <seealso cref="mpn_xor_n"/>
-        /// <seealso cref="mpn_xnor_n"/>
+        /// <seealso cref="mpn_and_n">mpn_and_n</seealso>
+        /// <seealso cref="mpn_andn_n">mpn_andn_n</seealso>
+        /// <seealso cref="mpn_com">mpn_com</seealso>
+        /// <seealso cref="mpn_ior_n">mpn_ior_n</seealso>
+        /// <seealso cref="mpn_iorn_n">mpn_iorn_n</seealso>
+        /// <seealso cref="mpn_nand_n">mpn_nand_n</seealso>
+        /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
+        /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21507,14 +22369,15 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
-        /// <seealso cref="mpn_and_n"/>
-        /// <seealso cref="mpn_andn_n"/>
-        /// <seealso cref="mpn_com"/>
-        /// <seealso cref="mpn_ior_n"/>
-        /// <seealso cref="mpn_iorn_n"/>
-        /// <seealso cref="mpn_nand_n"/>
-        /// <seealso cref="mpn_nior_n"/>
-        /// <seealso cref="mpn_xnor_n"/>
+        /// <seealso cref="mpn_and_n">mpn_and_n</seealso>
+        /// <seealso cref="mpn_andn_n">mpn_andn_n</seealso>
+        /// <seealso cref="mpn_com">mpn_com</seealso>
+        /// <seealso cref="mpn_ior_n">mpn_ior_n</seealso>
+        /// <seealso cref="mpn_iorn_n">mpn_iorn_n</seealso>
+        /// <seealso cref="mpn_nand_n">mpn_nand_n</seealso>
+        /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
+        /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21565,14 +22428,15 @@ namespace Math.Gmp.Native
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/> and <paramref name="s2p"/>.</param>
-        /// <seealso cref="mpn_and_n"/>
-        /// <seealso cref="mpn_andn_n"/>
-        /// <seealso cref="mpn_com"/>
-        /// <seealso cref="mpn_ior_n"/>
-        /// <seealso cref="mpn_iorn_n"/>
-        /// <seealso cref="mpn_nand_n"/>
-        /// <seealso cref="mpn_nior_n"/>
-        /// <seealso cref="mpn_xor_n"/>
+        /// <seealso cref="mpn_and_n">mpn_and_n</seealso>
+        /// <seealso cref="mpn_andn_n">mpn_andn_n</seealso>
+        /// <seealso cref="mpn_com">mpn_com</seealso>
+        /// <seealso cref="mpn_ior_n">mpn_ior_n</seealso>
+        /// <seealso cref="mpn_iorn_n">mpn_iorn_n</seealso>
+        /// <seealso cref="mpn_nand_n">mpn_nand_n</seealso>
+        /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
+        /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21622,8 +22486,9 @@ namespace Math.Gmp.Native
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/>.</param>
-        /// <seealso cref="mpn_copyd"/>
-        /// <seealso cref="mpn_zero"/>
+        /// <seealso cref="mpn_copyd">mpn_copyd</seealso>
+        /// <seealso cref="mpn_zero">mpn_zero</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21670,8 +22535,9 @@ namespace Math.Gmp.Native
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/>.</param>
-        /// <seealso cref="mpn_copyi"/>
-        /// <seealso cref="mpn_zero"/>
+        /// <seealso cref="mpn_copyi">mpn_copyi</seealso>
+        /// <seealso cref="mpn_zero">mpn_zero</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21717,8 +22583,9 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="n">The number of limbs of <paramref name="rp"/>.</param>
-        /// <seealso cref="mpn_copyd"/>
-        /// <seealso cref="mpn_copyi"/>
+        /// <seealso cref="mpn_copyd">mpn_copyd</seealso>
+        /// <seealso cref="mpn_copyi">mpn_copyi</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21757,7 +22624,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// If <paramref name="cnd"/> is non-zero, it produces the same result as a regular <see cref="mpn_add_n"/>, and if <paramref name="cnd"/> is zero, it copies {<paramref name="s1p"/>, <paramref name="n"/>} to the result area and returns zero.
+        /// If <paramref name="cnd"/> is non-zero, it produces the same result as a regular <see cref="mpn_add_n">mpn_add_n</see>, and if <paramref name="cnd"/> is zero, it copies {<paramref name="s1p"/>, <paramref name="n"/>} to the result area and returns zero.
         /// </summary>
         /// <param name="cnd">Conditonal value: non-zero for true, zero for false.</param>
         /// <param name="rp">The result integer.</param>
@@ -21768,25 +22635,26 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// This function does conditional addition.
-        /// If <paramref name="cnd"/> is non-zero, it produces the same result as a regular <see cref="mpn_add_n"/>,
+        /// If <paramref name="cnd"/> is non-zero, it produces the same result as a regular <see cref="mpn_add_n">mpn_add_n</see>,
         /// and if <paramref name="cnd"/> is zero, it copies {<paramref name="s1p"/>, <paramref name="n"/>} to the result area and returns zero.
         /// The functions is designed to have timing and memory access patterns depending only
         /// on size and location of the data areas, but independent of the condition <paramref name="cnd"/>.
-        /// Like for <see cref="mpn_add_n"/>, on most machines, the timing will also be independent
+        /// Like for <see cref="mpn_add_n">mpn_add_n</see>, on most machines, the timing will also be independent
         /// of the actual limb values. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cnd_sub_n"/>
-        /// <seealso cref="mpn_sec_add_1"/>
-        /// <seealso cref="mpn_sec_sub_1"/>
-        /// <seealso cref="mpn_cnd_swap"/>
-        /// <seealso cref="mpn_sec_mul"/>
-        /// <seealso cref="mpn_sec_sqr"/>
-        /// <seealso cref="mpn_sec_powm"/>
-        /// <seealso cref="mpn_sec_tabselect"/>
-        /// <seealso cref="mpn_sec_div_qr"/>
-        /// <seealso cref="mpn_sec_div_r"/>
-        /// <seealso cref="mpn_sec_invert"/>
+        /// <seealso cref="mpn_cnd_sub_n">mpn_cnd_sub_n</seealso>
+        /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
+        /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
+        /// <seealso cref="mpn_cnd_swap">mpn_cnd_swap</seealso>
+        /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
+        /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
+        /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
+        /// <seealso cref="mpn_sec_tabselect">mpn_sec_tabselect</seealso>
+        /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
+        /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
+        /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21837,7 +22705,7 @@ namespace Math.Gmp.Native
 
 
         /// <summary>
-        /// If <paramref name="cnd"/> is non-zero, it produces the same result as a regular <see cref="mpn_sub_n"/>, and if <paramref name="cnd"/> is zero, it copies {<paramref name="s1p"/>, <paramref name="n"/>} to the result area and returns zero.
+        /// If <paramref name="cnd"/> is non-zero, it produces the same result as a regular <see cref="mpn_sub_n">mpn_sub_n</see>, and if <paramref name="cnd"/> is zero, it copies {<paramref name="s1p"/>, <paramref name="n"/>} to the result area and returns zero.
         /// </summary>
         /// <param name="cnd">Conditonal value: non-zero for true, zero for false.</param>
         /// <param name="rp">The result integer.</param>
@@ -21848,25 +22716,26 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// This function does conditional addition.
-        /// If <paramref name="cnd"/> is non-zero, it produces the same result as a regular <see cref="mpn_sub_n"/>,
+        /// If <paramref name="cnd"/> is non-zero, it produces the same result as a regular <see cref="mpn_sub_n">mpn_sub_n</see>,
         /// and if <paramref name="cnd"/> is zero, it copies {<paramref name="s1p"/>, <paramref name="n"/>} to the result area and returns zero.
         /// The functions is designed to have timing and memory access patterns depending only
         /// on size and location of the data areas, but independent of the condition <paramref name="cnd"/>.
-        /// Like for <see cref="mpn_sub_n"/>, on most machines, the timing will also be independent
+        /// Like for <see cref="mpn_sub_n">mpn_sub_n</see>, on most machines, the timing will also be independent
         /// of the actual limb values. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cnd_add_n"/>
-        /// <seealso cref="mpn_sec_add_1"/>
-        /// <seealso cref="mpn_sec_sub_1"/>
-        /// <seealso cref="mpn_cnd_swap"/>
-        /// <seealso cref="mpn_sec_mul"/>
-        /// <seealso cref="mpn_sec_sqr"/>
-        /// <seealso cref="mpn_sec_powm"/>
-        /// <seealso cref="mpn_sec_tabselect"/>
-        /// <seealso cref="mpn_sec_div_qr"/>
-        /// <seealso cref="mpn_sec_div_r"/>
-        /// <seealso cref="mpn_sec_invert"/>
+        /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
+        /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
+        /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
+        /// <seealso cref="mpn_cnd_swap">mpn_cnd_swap</seealso>
+        /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
+        /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
+        /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
+        /// <seealso cref="mpn_sec_tabselect">mpn_sec_tabselect</seealso>
+        /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
+        /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
+        /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21926,23 +22795,24 @@ namespace Math.Gmp.Native
         /// <returns>Returns carry, either 0 or 1.</returns>
         /// <remarks>
         /// <para>
-        /// This function takes O(N) time, unlike the leaky functions <see cref="mpn_add_1"/> which is O(1) on average.
-        /// It requires scratch space of <see cref="mpn_sec_add_1_itch"/>(n) limbs, to be passed in the <paramref name="tp"/> parameter.
+        /// This function takes O(N) time, unlike the leaky functions <see cref="mpn_add_1">mpn_add_1</see> which is O(1) on average.
+        /// It requires scratch space of <see cref="mpn_sec_add_1_itch">mpn_sec_add_1_itch</see>(n) limbs, to be passed in the <paramref name="tp"/> parameter.
         /// The scratch space requirements are guaranteed to be at most <paramref name="n"/> limbs, and increase monotonously in the operand size.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cnd_add_n"/>
-        /// <seealso cref="mpn_cnd_sub_n"/>
-        /// <seealso cref="mpn_sec_add_1_itch"/>
-        /// <seealso cref="mpn_sec_sub_1"/>
-        /// <seealso cref="mpn_cnd_swap"/>
-        /// <seealso cref="mpn_sec_mul"/>
-        /// <seealso cref="mpn_sec_sqr"/>
-        /// <seealso cref="mpn_sec_powm"/>
-        /// <seealso cref="mpn_sec_tabselect"/>
-        /// <seealso cref="mpn_sec_div_qr"/>
-        /// <seealso cref="mpn_sec_div_r"/>
-        /// <seealso cref="mpn_sec_invert"/>
+        /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
+        /// <seealso cref="mpn_cnd_sub_n">mpn_cnd_sub_n</seealso>
+        /// <seealso cref="mpn_sec_add_1_itch">mpn_sec_add_1_itch</seealso>
+        /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
+        /// <seealso cref="mpn_cnd_swap">mpn_cnd_swap</seealso>
+        /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
+        /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
+        /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
+        /// <seealso cref="mpn_sec_tabselect">mpn_sec_tabselect</seealso>
+        /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
+        /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
+        /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21998,11 +22868,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_add_1"/>.
+        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_add_1">mpn_sec_add_1</see>.
         /// </summary>
-        /// <param name="n">The number of limbs of the <see cref="mpn_sec_add_1"/> operand.</param>
-        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_add_1"/>.</returns>
-        /// <seealso cref="mpn_sec_add_1"/>
+        /// <param name="n">The number of limbs of the <see cref="mpn_sec_add_1">mpn_sec_add_1</see> operand.</param>
+        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_add_1">mpn_sec_add_1</see>.</returns>
+        /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_add_1_itch(mp_size_t n)
         {
@@ -22020,23 +22891,24 @@ namespace Math.Gmp.Native
         /// <returns>Returns borrow, either 0 or 1.</returns>
         /// <remarks>
         /// <para>
-        /// This function takes O(N) time, unlike the leaky functions <see cref="mpn_sub_1"/> which is O(1) on average.
-        /// It requires scratch space of <see cref="mpn_sec_sub_1_itch"/>(n) limbs, to be passed in the <paramref name="tp"/> parameter.
+        /// This function takes O(N) time, unlike the leaky functions <see cref="mpn_sub_1">mpn_sub_1</see> which is O(1) on average.
+        /// It requires scratch space of <see cref="mpn_sec_sub_1_itch">mpn_sec_sub_1_itch</see>(n) limbs, to be passed in the <paramref name="tp"/> parameter.
         /// The scratch space requirements are guaranteed to be at most <paramref name="n"/> limbs, and increase monotonously in the operand size.
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cnd_add_n"/>
-        /// <seealso cref="mpn_cnd_sub_n"/>
-        /// <seealso cref="mpn_sec_add_1"/>
-        /// <seealso cref="mpn_sec_sub_1_itch"/>
-        /// <seealso cref="mpn_cnd_swap"/>
-        /// <seealso cref="mpn_sec_mul"/>
-        /// <seealso cref="mpn_sec_sqr"/>
-        /// <seealso cref="mpn_sec_powm"/>
-        /// <seealso cref="mpn_sec_tabselect"/>
-        /// <seealso cref="mpn_sec_div_qr"/>
-        /// <seealso cref="mpn_sec_div_r"/>
-        /// <seealso cref="mpn_sec_invert"/>
+        /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
+        /// <seealso cref="mpn_cnd_sub_n">mpn_cnd_sub_n</seealso>
+        /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
+        /// <seealso cref="mpn_sec_sub_1_itch">mpn_sec_sub_1_itch</seealso>
+        /// <seealso cref="mpn_cnd_swap">mpn_cnd_swap</seealso>
+        /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
+        /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
+        /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
+        /// <seealso cref="mpn_sec_tabselect">mpn_sec_tabselect</seealso>
+        /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
+        /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
+        /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22092,11 +22964,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_sub_1"/>.
+        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_sub_1">mpn_sec_sub_1</see>.
         /// </summary>
-        /// <param name="n">The number of limbs of the <see cref="mpn_sec_sub_1"/> operand.</param>
-        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_sub_1"/>.</returns>
-        /// <seealso cref="mpn_sec_sub_1"/>
+        /// <param name="n">The number of limbs of the <see cref="mpn_sec_sub_1">mpn_sec_sub_1</see> operand.</param>
+        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_sub_1">mpn_sec_sub_1</see>.</returns>
+        /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_sub_1_itch(mp_size_t n)
         {
@@ -22115,17 +22988,18 @@ namespace Math.Gmp.Native
         /// Implemented using logical operations on the limbs, with the same memory accesses independent of the value of <paramref name="cnd"/>. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cnd_add_n"/>
-        /// <seealso cref="mpn_cnd_sub_n"/>
-        /// <seealso cref="mpn_sec_add_1"/>
-        /// <seealso cref="mpn_sec_sub_1"/>
-        /// <seealso cref="mpn_sec_mul"/>
-        /// <seealso cref="mpn_sec_sqr"/>
-        /// <seealso cref="mpn_sec_powm"/>
-        /// <seealso cref="mpn_sec_tabselect"/>
-        /// <seealso cref="mpn_sec_div_qr"/>
-        /// <seealso cref="mpn_sec_div_r"/>
-        /// <seealso cref="mpn_sec_invert"/>
+        /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
+        /// <seealso cref="mpn_cnd_sub_n">mpn_cnd_sub_n</seealso>
+        /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
+        /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
+        /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
+        /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
+        /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
+        /// <seealso cref="mpn_sec_tabselect">mpn_sec_tabselect</seealso>
+        /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
+        /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
+        /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22188,25 +23062,26 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// No overlapping between R and the input operands is allowed.
-        /// For A = B, use <see cref="mpn_sec_sqr"/> for optimal performance. 
+        /// For A = B, use <see cref="mpn_sec_sqr">mpn_sec_sqr</see> for optimal performance. 
         /// </para>
         /// <para>
-        /// This function requires scratch space of <see cref="mpn_sec_mul_itch"/>(<paramref name="an"/>, <paramref name="bn"/>)
+        /// This function requires scratch space of <see cref="mpn_sec_mul_itch">mpn_sec_mul_itch</see>(<paramref name="an"/>, <paramref name="bn"/>)
         /// limbs to be passed in the tp parameter. The scratch space requirements are guaranteed to increase monotonously in the operand sizes. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cnd_add_n"/>
-        /// <seealso cref="mpn_cnd_sub_n"/>
-        /// <seealso cref="mpn_sec_add_1"/>
-        /// <seealso cref="mpn_sec_sub_1"/>
-        /// <seealso cref="mpn_cnd_swap"/>
-        /// <seealso cref="mpn_sec_mul_itch"/>
-        /// <seealso cref="mpn_sec_sqr"/>
-        /// <seealso cref="mpn_sec_powm"/>
-        /// <seealso cref="mpn_sec_tabselect"/>
-        /// <seealso cref="mpn_sec_div_qr"/>
-        /// <seealso cref="mpn_sec_div_r"/>
-        /// <seealso cref="mpn_sec_invert"/>
+        /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
+        /// <seealso cref="mpn_cnd_sub_n">mpn_cnd_sub_n</seealso>
+        /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
+        /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
+        /// <seealso cref="mpn_cnd_swap">mpn_cnd_swap</seealso>
+        /// <seealso cref="mpn_sec_mul_itch">mpn_sec_mul_itch</seealso>
+        /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
+        /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
+        /// <seealso cref="mpn_sec_tabselect">mpn_sec_tabselect</seealso>
+        /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
+        /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
+        /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22260,12 +23135,13 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_mul"/>.
+        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_mul">mpn_sec_mul</see>.
         /// </summary>
-        /// <param name="an">The number of limbs of the <see cref="mpn_sec_mul"/> first operand.</param>
-        /// <param name="bn">The number of limbs of the <see cref="mpn_sec_mul"/> second operand.</param>
-        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_mul"/>.</returns>
-        /// <seealso cref="mpn_sec_mul"/>
+        /// <param name="an">The number of limbs of the <see cref="mpn_sec_mul">mpn_sec_mul</see> first operand.</param>
+        /// <param name="bn">The number of limbs of the <see cref="mpn_sec_mul">mpn_sec_mul</see> second operand.</param>
+        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_mul">mpn_sec_mul</see>.</returns>
+        /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_mul_itch(mp_size_t an, mp_size_t bn)
         {
@@ -22287,23 +23163,24 @@ namespace Math.Gmp.Native
         /// No overlapping between R and the input operands is allowed. 
         /// </para>
         /// <para>
-        /// This function requires scratch space of <see cref="mpn_sec_sqr_itch"/>(<paramref name="an"/>)
+        /// This function requires scratch space of <see cref="mpn_sec_sqr_itch">mpn_sec_sqr_itch</see>(<paramref name="an"/>)
         /// limbs to be passed in the <paramref name="tp"/> parameter.
         /// The scratch space requirements are guaranteed to increase monotonously in the operand size. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cnd_add_n"/>
-        /// <seealso cref="mpn_cnd_sub_n"/>
-        /// <seealso cref="mpn_sec_add_1"/>
-        /// <seealso cref="mpn_sec_sub_1"/>
-        /// <seealso cref="mpn_cnd_swap"/>
-        /// <seealso cref="mpn_sec_mul"/>
-        /// <seealso cref="mpn_sec_sqr_itch"/>
-        /// <seealso cref="mpn_sec_powm"/>
-        /// <seealso cref="mpn_sec_tabselect"/>
-        /// <seealso cref="mpn_sec_div_qr"/>
-        /// <seealso cref="mpn_sec_div_r"/>
-        /// <seealso cref="mpn_sec_invert"/>
+        /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
+        /// <seealso cref="mpn_cnd_sub_n">mpn_cnd_sub_n</seealso>
+        /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
+        /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
+        /// <seealso cref="mpn_cnd_swap">mpn_cnd_swap</seealso>
+        /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
+        /// <seealso cref="mpn_sec_sqr_itch">mpn_sec_sqr_itch</seealso>
+        /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
+        /// <seealso cref="mpn_sec_tabselect">mpn_sec_tabselect</seealso>
+        /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
+        /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
+        /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22354,11 +23231,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_sqr"/>.
+        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_sqr">mpn_sec_sqr</see>.
         /// </summary>
-        /// <param name="an">The number of limbs of the <see cref="mpn_sec_sqr"/> operand.</param>
-        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_sqr"/>.</returns>
-        /// <seealso cref="mpn_sec_sqr"/>
+        /// <param name="an">The number of limbs of the <see cref="mpn_sec_sqr">mpn_sec_sqr</see> operand.</param>
+        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_sqr">mpn_sec_sqr</see>.</returns>
+        /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_sqr_itch(mp_size_t an)
         {
@@ -22366,7 +23244,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Set R to (B^E) modulo M, where R = {<paramref name="rp"/>, <paramref name="n"/>}, M = {<paramref name="mp"/>, <paramref name="n"/>}, and E = {<paramref name="ep"/>, ceil(<paramref name="enb"/> / <see cref="mp_bits_per_limb"/>)}. 
+        /// Set R to (B^E) modulo M, where R = {<paramref name="rp"/>, <paramref name="n"/>}, M = {<paramref name="mp"/>, <paramref name="n"/>}, and E = {<paramref name="ep"/>, ceil(<paramref name="enb"/> / <see cref="mp_bits_per_limb">mp_bits_per_limb</see>)}. 
         /// </summary>
         /// <param name="rp">The result operand.</param>
         /// <param name="bp">The first operand integer.</param>
@@ -22384,23 +23262,24 @@ namespace Math.Gmp.Native
         /// No overlapping between R and the input operands is allowed. 
         /// </para>
         /// <para>
-        /// This function requires scratch space of <see cref="mpn_sec_powm_itch"/>(<paramref name="bn"/>, <paramref name="enb"/>, <paramref name="n"/>)
+        /// This function requires scratch space of <see cref="mpn_sec_powm_itch">mpn_sec_powm_itch</see>(<paramref name="bn"/>, <paramref name="enb"/>, <paramref name="n"/>)
         /// limbs to be passed in the <paramref name="tp"/> parameter.
         /// The scratch space requirements are guaranteed to increase monotonously in the operand sizes. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cnd_add_n"/>
-        /// <seealso cref="mpn_cnd_sub_n"/>
-        /// <seealso cref="mpn_sec_add_1"/>
-        /// <seealso cref="mpn_sec_sub_1"/>
-        /// <seealso cref="mpn_cnd_swap"/>
-        /// <seealso cref="mpn_sec_mul"/>
-        /// <seealso cref="mpn_sec_sqr"/>
-        /// <seealso cref="mpn_sec_powm_itch"/>
-        /// <seealso cref="mpn_sec_tabselect"/>
-        /// <seealso cref="mpn_sec_div_qr"/>
-        /// <seealso cref="mpn_sec_div_r"/>
-        /// <seealso cref="mpn_sec_invert"/>
+        /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
+        /// <seealso cref="mpn_cnd_sub_n">mpn_cnd_sub_n</seealso>
+        /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
+        /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
+        /// <seealso cref="mpn_cnd_swap">mpn_cnd_swap</seealso>
+        /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
+        /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
+        /// <seealso cref="mpn_sec_powm_itch">mpn_sec_powm_itch</seealso>
+        /// <seealso cref="mpn_sec_tabselect">mpn_sec_tabselect</seealso>
+        /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
+        /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
+        /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22457,13 +23336,14 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_powm"/>.
+        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_powm">mpn_sec_powm</see>.
         /// </summary>
-        /// <param name="bn">The number of limbs of the <see cref="mpn_sec_powm"/> first operand.</param>
-        /// <param name="enb">The number of limbs of the <see cref="mpn_sec_powm"/> second operand.</param>
-        /// <param name="n">The number of limbs of the <see cref="mpn_sec_powm"/> third operand.</param>
-        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_powm"/>.</returns>
-        /// <seealso cref="mpn_sec_powm"/>
+        /// <param name="bn">The number of limbs of the <see cref="mpn_sec_powm">mpn_sec_powm</see> first operand.</param>
+        /// <param name="enb">The number of limbs of the <see cref="mpn_sec_powm">mpn_sec_powm</see> second operand.</param>
+        /// <param name="n">The number of limbs of the <see cref="mpn_sec_powm">mpn_sec_powm</see> third operand.</param>
+        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_powm">mpn_sec_powm</see>.</returns>
+        /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_powm_itch(mp_size_t bn, mp_bitcnt_t enb, mp_size_t n)
         {
@@ -22483,18 +23363,19 @@ namespace Math.Gmp.Native
         /// This function reads the entire table to avoid side-channel information leaks. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cnd_add_n"/>
-        /// <seealso cref="mpn_cnd_sub_n"/>
-        /// <seealso cref="mpn_sec_add_1"/>
-        /// <seealso cref="mpn_sec_sub_1"/>
-        /// <seealso cref="mpn_cnd_swap"/>
-        /// <seealso cref="mpn_sec_mul"/>
-        /// <seealso cref="mpn_sec_sqr"/>
-        /// <seealso cref="mpn_sec_powm"/>
-        /// <seealso cref="mpn_sec_powm_itch"/>
-        /// <seealso cref="mpn_sec_div_qr"/>
-        /// <seealso cref="mpn_sec_div_r"/>
-        /// <seealso cref="mpn_sec_invert"/>
+        /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
+        /// <seealso cref="mpn_cnd_sub_n">mpn_cnd_sub_n</seealso>
+        /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
+        /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
+        /// <seealso cref="mpn_cnd_swap">mpn_cnd_swap</seealso>
+        /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
+        /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
+        /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
+        /// <seealso cref="mpn_sec_powm_itch">mpn_sec_powm_itch</seealso>
+        /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
+        /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
+        /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22556,22 +23437,23 @@ namespace Math.Gmp.Native
         /// The entire space occupied by N is overwritten. 
         /// </para>
         /// <para>
-        /// This function requires scratch space of <see cref="mpn_sec_div_qr_itch"/>(<paramref name="nn"/>, <paramref name="dn"/>)
+        /// This function requires scratch space of <see cref="mpn_sec_div_qr_itch">mpn_sec_div_qr_itch</see>(<paramref name="nn"/>, <paramref name="dn"/>)
         /// limbs to be passed in the <paramref name="tp"/> parameter. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cnd_add_n"/>
-        /// <seealso cref="mpn_cnd_sub_n"/>
-        /// <seealso cref="mpn_sec_add_1"/>
-        /// <seealso cref="mpn_sec_sub_1"/>
-        /// <seealso cref="mpn_cnd_swap"/>
-        /// <seealso cref="mpn_sec_mul"/>
-        /// <seealso cref="mpn_sec_sqr"/>
-        /// <seealso cref="mpn_sec_powm"/>
-        /// <seealso cref="mpn_sec_tabselect"/>
-        /// <seealso cref="mpn_sec_div_qr_itch"/>
-        /// <seealso cref="mpn_sec_div_r"/>
-        /// <seealso cref="mpn_sec_invert"/>
+        /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
+        /// <seealso cref="mpn_cnd_sub_n">mpn_cnd_sub_n</seealso>
+        /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
+        /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
+        /// <seealso cref="mpn_cnd_swap">mpn_cnd_swap</seealso>
+        /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
+        /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
+        /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
+        /// <seealso cref="mpn_sec_tabselect">mpn_sec_tabselect</seealso>
+        /// <seealso cref="mpn_sec_div_qr_itch">mpn_sec_div_qr_itch</seealso>
+        /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
+        /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22632,12 +23514,13 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_div_qr"/>.
+        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_div_qr">mpn_sec_div_qr</see>.
         /// </summary>
-        /// <param name="nn">The number of limbs of the <see cref="mpn_sec_div_qr"/> first operand.</param>
-        /// <param name="dn">The number of limbs of the <see cref="mpn_sec_div_qr"/> second operand.</param>
-        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_div_qr"/>.</returns>
-        /// <seealso cref="mpn_sec_div_qr"/>
+        /// <param name="nn">The number of limbs of the <see cref="mpn_sec_div_qr">mpn_sec_div_qr</see> first operand.</param>
+        /// <param name="dn">The number of limbs of the <see cref="mpn_sec_div_qr">mpn_sec_div_qr</see> second operand.</param>
+        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_div_qr">mpn_sec_div_qr</see>.</returns>
+        /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_div_qr_itch(mp_size_t nn, mp_size_t dn)
         {
@@ -22664,22 +23547,23 @@ namespace Math.Gmp.Native
         /// The entire space occupied by N is overwritten. 
         /// </para>
         /// <para>
-        /// This function requires scratch space of <see cref="mpn_sec_div_r_itch"/>(<paramref name="nn"/>, <paramref name="dn"/>)
+        /// This function requires scratch space of <see cref="mpn_sec_div_r_itch">mpn_sec_div_r_itch</see>(<paramref name="nn"/>, <paramref name="dn"/>)
         /// limbs to be passed in the <paramref name="tp"/> parameter. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cnd_add_n"/>
-        /// <seealso cref="mpn_cnd_sub_n"/>
-        /// <seealso cref="mpn_sec_add_1"/>
-        /// <seealso cref="mpn_sec_sub_1"/>
-        /// <seealso cref="mpn_cnd_swap"/>
-        /// <seealso cref="mpn_sec_mul"/>
-        /// <seealso cref="mpn_sec_sqr"/>
-        /// <seealso cref="mpn_sec_powm"/>
-        /// <seealso cref="mpn_sec_tabselect"/>
-        /// <seealso cref="mpn_sec_div_qr"/>
-        /// <seealso cref="mpn_sec_div_r_itch"/>
-        /// <seealso cref="mpn_sec_invert"/>
+        /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
+        /// <seealso cref="mpn_cnd_sub_n">mpn_cnd_sub_n</seealso>
+        /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
+        /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
+        /// <seealso cref="mpn_cnd_swap">mpn_cnd_swap</seealso>
+        /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
+        /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
+        /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
+        /// <seealso cref="mpn_sec_tabselect">mpn_sec_tabselect</seealso>
+        /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
+        /// <seealso cref="mpn_sec_div_r_itch">mpn_sec_div_r_itch</seealso>
+        /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22728,12 +23612,13 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_div_r"/>.
+        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_div_r">mpn_sec_div_r</see>.
         /// </summary>
-        /// <param name="nn">The number of limbs of the <see cref="mpn_sec_div_r"/> first operand.</param>
-        /// <param name="dn">The number of limbs of the <see cref="mpn_sec_div_r"/> second operand.</param>
-        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_div_r"/>.</returns>
-        /// <seealso cref="mpn_sec_div_r"/>
+        /// <param name="nn">The number of limbs of the <see cref="mpn_sec_div_r">mpn_sec_div_r</see> first operand.</param>
+        /// <param name="dn">The number of limbs of the <see cref="mpn_sec_div_r">mpn_sec_div_r</see> second operand.</param>
+        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_div_r">mpn_sec_div_r</see>.</returns>
+        /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_div_r_itch(mp_size_t nn, mp_size_t dn)
         {
@@ -22757,26 +23642,27 @@ namespace Math.Gmp.Native
         /// </para>
         /// <para>
         /// It is required that M is odd, and that <paramref name="nbcnt"/> &#8805; ceil(log(A + 1)) + ceil(log(M + 1)).
-        /// A safe choice is <paramref name="nbcnt"/> = 2 * <paramref name="n"/> * <see cref="mp_bits_per_limb"/>,
+        /// A safe choice is <paramref name="nbcnt"/> = 2 * <paramref name="n"/> * <see cref="mp_bits_per_limb">mp_bits_per_limb</see>,
         /// but a smaller value might improve performance if M or A are known to have leading zero bits. 
         /// </para>
         /// <para>
-        /// This function requires scratch space of <see cref="mpn_sec_invert_itch"/>(<paramref name="n"/>)
+        /// This function requires scratch space of <see cref="mpn_sec_invert_itch">mpn_sec_invert_itch</see>(<paramref name="n"/>)
         /// limbs to be passed in the <paramref name="tp"/> parameter. 
         /// </para>
         /// </remarks>
-        /// <seealso cref="mpn_cnd_add_n"/>
-        /// <seealso cref="mpn_cnd_sub_n"/>
-        /// <seealso cref="mpn_sec_add_1"/>
-        /// <seealso cref="mpn_sec_sub_1"/>
-        /// <seealso cref="mpn_cnd_swap"/>
-        /// <seealso cref="mpn_sec_mul"/>
-        /// <seealso cref="mpn_sec_sqr"/>
-        /// <seealso cref="mpn_sec_powm"/>
-        /// <seealso cref="mpn_sec_tabselect"/>
-        /// <seealso cref="mpn_sec_div_qr"/>
-        /// <seealso cref="mpn_sec_div_r"/>
-        /// <seealso cref="mpn_sec_invert_itch"/>
+        /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
+        /// <seealso cref="mpn_cnd_sub_n">mpn_cnd_sub_n</seealso>
+        /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
+        /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
+        /// <seealso cref="mpn_cnd_swap">mpn_cnd_swap</seealso>
+        /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
+        /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
+        /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
+        /// <seealso cref="mpn_sec_tabselect">mpn_sec_tabselect</seealso>
+        /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
+        /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
+        /// <seealso cref="mpn_sec_invert_itch">mpn_sec_invert_itch</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22812,11 +23698,12 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_invert"/>.
+        /// Return the scratch space in number of limbs required by the function <see cref="mpn_sec_invert">mpn_sec_invert</see>.
         /// </summary>
-        /// <param name="n">The number of limbs of the <see cref="mpn_sec_invert"/> first operand.</param>
-        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_invert"/>.</returns>
-        /// <seealso cref="mpn_sec_invert"/>
+        /// <param name="n">The number of limbs of the <see cref="mpn_sec_invert">mpn_sec_invert</see> first operand.</param>
+        /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_invert">mpn_sec_invert</see>.</returns>
+        /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
+        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_invert_itch(mp_size_t n)
         {
@@ -22848,7 +23735,7 @@ namespace Math.Gmp.Native
             [DllImport("kernel32.dll")]
             public static extern void RtlZeroMemory(IntPtr dst, int length);
 
-#endregion
+            #endregion
 
             #region "Memory allocation functions."
 
@@ -22945,7 +23832,7 @@ namespace Math.Gmp.Native
             [DllImport(@"libgmp-10.dll", CallingConvention = CallingConvention.Cdecl)]
             public static extern int __gmp_vsprintf(IntPtr /*char **/ buf, /*const*/ IntPtr /*char **/ fmt, IntPtr /*va_list*/ args);
 
-#endregion
+            #endregion
 
             #region "Formatted input routines."
 
@@ -22969,7 +23856,7 @@ namespace Math.Gmp.Native
             [DllImport(@"libgmp-10.dll", CallingConvention = CallingConvention.Cdecl)]
             public static extern int __gmp_vsscanf(/*const*/ IntPtr /*char **/ s, /*const*/ IntPtr /*char **/ fmt, IntPtr /*va_list*/ ap);
 
-#endregion
+            #endregion
 
             #region "Integer (i.e. Z) routines."
 
@@ -23478,7 +24365,7 @@ namespace Math.Gmp.Native
             [DllImport(@"libgmp-10.dll", CallingConvention = CallingConvention.Cdecl)]
             public static extern /*const*/ IntPtr /*mpz_t*/ __gmpz_roinit_n(IntPtr /*mpz_t*/ x, /*const*/ IntPtr /*mp_limb_t*/ xp, int /*mp_size_t*/ xs);
 
-#endregion
+            #endregion
 
             #region "Rational (i.e. Q) routines."
 
@@ -23593,7 +24480,7 @@ namespace Math.Gmp.Native
             [DllImport(@"libgmp-10.dll", CallingConvention = CallingConvention.Cdecl)]
             public static extern void __gmpq_swap(IntPtr /*mpq_t*/ rop1, IntPtr /*mpq_t*/ rop2);
 
-#endregion
+            #endregion
 
             #region "Float (i.e. F) routines."
 
@@ -23813,7 +24700,7 @@ namespace Math.Gmp.Native
             [DllImport(@"libgmp-10.dll", CallingConvention = CallingConvention.Cdecl)]
             public static extern void __gmpf_urandomb(IntPtr /*mpf_t*/ rop, IntPtr /*gmp_randstate_t*/ state, uint /*mp_bitcnt_t*/ nbits);
 
-#endregion
+            #endregion
 
             #region "Low level positive-integer (i.e. N) routines."
 
@@ -24135,7 +25022,7 @@ namespace Math.Gmp.Native
             [DllImport(@"libgmp-10.dll", CallingConvention = CallingConvention.Cdecl)]
             public static extern int /*mp_size_t*/ __gmpn_sec_invert_itch(int /*mp_size_t*/ n);
 
-#endregion
+            #endregion
 
         }
 

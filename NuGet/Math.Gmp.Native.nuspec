@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Math.Gmp.Native.NET</id>
-        <version>1.6.5</version>
+        <version>2.0.0-pre14</version>
         <title>GMP Native Interface for .NET</title>
         <authors>Robert Baron (Machine Cognitis)</authors>
         <owners>Robert Baron (Machine Cognitis)</owners>
@@ -13,29 +13,30 @@
 
 Documentation with sample usage is given at the Project URL. GNU MP is at https://gmplib.org/.
 
-Supported Platform: .NET Framework 2.0+</description>
+Supported Platform: .NET Framework 4.0+</description>
         <summary>GMP Native Interface for .NET</summary>
-        <releaseNotes>Initial release for GNU MP v6.1.2.</releaseNotes>
+        <releaseNotes>Updated release for GNU MP v6.1.2. Improved and fixed some of the documentation. Exposed types and members needed by the "parent" project Math.Mpfr.Native (https://github.com/MachineCognitis/Math.Mpfr.Native).</releaseNotes>
         <copyright>Copyright (c) 2017 Robert Baron, Machine Cognitis</copyright>
         <tags>GNU MP GMP multi-precision arithmetic integer float rational bigint biginteger bigfloat bignum</tags>
         <frameworkAssemblies>
-            <frameworkAssembly assemblyName="System" targetFramework=".NETFramework2.0" />
+            <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.0" />
         </frameworkAssemblies>
       <references>
         <reference file="Math.Gmp.Native.dll" />
       </references>
       <dependencies>
-        <dependency id="Baseclass.Contrib.Nuget.Output" version="2.4.0" />
-      </dependencies>    </metadata>
+        <dependency id="Baseclass.Contrib.Nuget.Output" version="2.4.1" />
+      </dependencies>
+    </metadata>
     <files>
-        <file src="..\Math.Gmp.Native\bin\Release\Math.Gmp.Native.dll" target="lib\net20\Math.Gmp.Native.dll" />
-        <file src="..\Math.Gmp.Native\bin\Release\Math.Gmp.Native.pdb" target="lib\net20\Math.Gmp.Native.pdb" />
-        <file src="..\Math.Gmp.Native\bin\Release\Math.Gmp.Native.xml" target="lib\net20\Math.Gmp.Native.xml" />
-        <file src="..\Math.Gmp.Native\bin\Release\GMP_COPYING" target="output\x86\GMP_COPYING" />
-        <file src="..\Math.Gmp.Native\bin\Release\GMP_README" target="output\x86\GMP_README" />
-        <file src="..\Math.Gmp.Native\bin\Release\GMP_COPYING" target="output\x64\GMP_COPYING" />
-        <file src="..\Math.Gmp.Native\bin\Release\GMP_README" target="output\x64\GMP_README" />
+        <file src="..\Math.Gmp.Native\bin\Release\Math.Gmp.Native.dll" target="lib\net40\Math.Gmp.Native.dll" />
+        <file src="..\Math.Gmp.Native\bin\Release\Math.Gmp.Native.pdb" target="lib\net40\Math.Gmp.Native.pdb" />
+        <file src="..\Math.Gmp.Native\bin\Release\Math.Gmp.Native.xml" target="lib\net40\Math.Gmp.Native.xml" />
+        <file src="..\Math.Gmp.Native\bin\Release\x86\GMP_COPYING" target="output\x86\GMP_COPYING" />
+        <file src="..\Math.Gmp.Native\bin\Release\x86\GMP_README" target="output\x86\GMP_README" />
         <file src="..\Math.Gmp.Native\bin\Release\x86\libgmp-10.dll" target="output\x86\libgmp-10.dll" />
+        <file src="..\Math.Gmp.Native\bin\Release\x64\GMP_COPYING" target="output\x64\GMP_COPYING" />
+        <file src="..\Math.Gmp.Native\bin\Release\x64\GMP_README" target="output\x64\GMP_README" />
         <file src="..\Math.Gmp.Native\bin\Release\x64\libgmp-10.dll" target="output\x64\libgmp-10.dll" />
     </files>
 </package>

@@ -18,8 +18,8 @@
             is the most significant.
             Whenever <a href="178d8d44-2485-2972-fe2f-eb9848059e6f.htm">_mp_size</a> is non-zero, the most significant limb is non-zero.
             </p><p>
-            Currently there’s always at least one limb allocated, so for instance <a href="7daadb71-9f36-2848-86c4-ba1fba25fcfd.htm">mpz_set_ui(mpz_t, UInt32)</a>
-            never needs to reallocate, and <a href="3a92eddc-59f3-b42f-9921-4e1cc5700d60.htm">mpz_get_ui(mpz_t)</a> can fetch <span class="code"><span class="selflink">_mp_d</span>[0]</span>
+            Currently there’s always at least one limb allocated, so for instance <a href="7daadb71-9f36-2848-86c4-ba1fba25fcfd.htm">gmp_lib.mpz_set_ui</a>
+            never needs to reallocate, and <a href="3a92eddc-59f3-b42f-9921-4e1cc5700d60.htm">gmp_lib.mpz_get_ui</a> can fetch <span class="code"><span class="selflink">_mp_d</span>[0]</span>
             unconditionally (though its value is then only wanted if <a href="178d8d44-2485-2972-fe2f-eb9848059e6f.htm">_mp_size</a> is non-zero).
             </p><p>
             In <a href="8beda7fb-bbc4-b56f-fd1f-1459377ecb3b.htm">mpz_t</a>:
@@ -30,7 +30,7 @@
             </p><p>
             The most significant limb is always non-zero, but there are no other restrictions on its value,
             in particular the highest <span class="code">1</span> bit can be anywhere within the limb. 
-            </p><p><span class="code">_mp_prec + 1</span> limbs are allocated to <span class="selflink">_mp_d</span>, the extra limb being for
+            </p><p><span class="code">_mp_prec + 1</span> limbs are allocated to <span class="selflink">mp_base._mp_d</span>, the extra limb being for
             convenience (see below).
-            There are no reallocations during a calculation, only in a change of precision with <a href="438e6843-fc7b-4e6f-9ac0-d97a2773b032.htm">mpf_set_prec(mpf_t, mp_bitcnt_t)</a>. 
+            There are no reallocations during a calculation, only in a change of precision with <a href="438e6843-fc7b-4e6f-9ac0-d97a2773b032.htm">gmp_lib.mpf_set_prec</a>. 
             </p></div><div class="collapsibleAreaRegion" id="seeAlsoSection"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('ID3RB')" onkeypress="SectionExpandCollapse_CheckKey('ID3RB', event)" tabindex="0"><img id="ID3RBToggle" class="collapseToggle" src="../icons/SectionExpanded.png" />See Also</span></div><div id="ID3RBSection" class="collapsibleSection"><h4 class="subHeading">Reference</h4><div class="seeAlsoStyle"><a href="8f3c572b-8133-bccc-b838-9d22e3467898.htm">mp_base Class</a></div><div class="seeAlsoStyle"><a href="d9c51b9f-0c54-770b-28ea-6eebd8fef368.htm">Math.Gmp.Native Namespace</a></div></div></div></div><div id="pageFooter" class="pageFooter"> </div></body></html>

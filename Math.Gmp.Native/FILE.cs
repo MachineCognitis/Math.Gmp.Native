@@ -23,7 +23,7 @@ namespace Math.Gmp.Native
         /// Returns a value indicating whether this instance is equal to a specified object.
         /// </summary>
         /// <param name="obj">An object to compare with this instance.</param>
-        /// <returns><c>True</c> if <paramref name="obj"/> is an instance of <see cref="FILE"/> and equals the value of this instance; otherwise, <c>False</c>.</returns>
+        /// <returns><c>True</c> if <paramref name="obj"/> is an instance of <see cref="FILE">FILE</see> and equals the value of this instance; otherwise, <c>False</c>.</returns>
         public override bool Equals(object obj)
         {
             if (!(obj is FILE))
@@ -33,9 +33,9 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Returns a value indicating whether this instance is equal to a specified <see cref="FILE"/> value.
+        /// Returns a value indicating whether this instance is equal to a specified <see cref="FILE">FILE</see> value.
         /// </summary>
-        /// <param name="other">A <see cref="FILE"/> value to compare to this instance.</param>
+        /// <param name="other">A <see cref="FILE">FILE</see> value to compare to this instance.</param>
         /// <returns><c>True</c> if <paramref name="other"/> has the same value as this instance; otherwise, <c>False</c>.</returns>
         public bool Equals(FILE other)
         {
@@ -54,8 +54,8 @@ namespace Math.Gmp.Native
         /// <summary>
         /// Gets a value that indicates whether the two argument values are equal.
         /// </summary>
-        /// <param name="value1">A <see cref="FILE"/> value.</param>
-        /// <param name="value2">A <see cref="FILE"/> value.</param>
+        /// <param name="value1">A <see cref="FILE">FILE</see> value.</param>
+        /// <param name="value2">A <see cref="FILE">FILE</see> value.</param>
         /// <returns><c>True</c> if the two values are equal, and <c>False</c> otherwise.</returns>
         public static bool operator ==(FILE value1, FILE value2)
         {
@@ -65,8 +65,8 @@ namespace Math.Gmp.Native
         /// <summary>
         /// Gets a value that indicates whether the two argument values are different.
         /// </summary>
-        /// <param name="value1">A <see cref="FILE"/> value.</param>
-        /// <param name="value2">A <see cref="FILE"/> value.</param>
+        /// <param name="value1">A <see cref="FILE">FILE</see> value.</param>
+        /// <param name="value2">A <see cref="FILE">FILE</see> value.</param>
         /// <returns><c>True</c> if the two FILE are different, and <c>False</c> otherwise.</returns>
         public static bool operator !=(FILE value1, FILE value2)
         {

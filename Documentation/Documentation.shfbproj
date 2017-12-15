@@ -14,7 +14,7 @@
     <RootNamespace>Documentation</RootNamespace>
     <Name>Documentation</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>.NET Framework 2.0</FrameworkVersion>
+    <FrameworkVersion>.NET Framework 4.0</FrameworkVersion>
     <OutputPath>..\docs\</OutputPath>
     <HtmlHelpName>Gmp.Native</HtmlHelpName>
     <Language>en-US</Language>
@@ -43,7 +43,8 @@
     <CleanIntermediates>True</CleanIntermediates>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="False" />
-<NamespaceSummaryItem name="Math.Gmp.Native" isDocumented="True">The Math.Gmp.Native namespace contains types defined to expose all of the GNU GMP functionality to .NET.</NamespaceSummaryItem></NamespaceSummaries>
+      <NamespaceSummaryItem name="Math.Gmp.Native" isDocumented="True">The Math.Gmp.Native namespace contains types defined to expose all of the GNU GMP functionality to .NET.</NamespaceSummaryItem>
+    </NamespaceSummaries>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
     <MaximumGroupParts>2</MaximumGroupParts>

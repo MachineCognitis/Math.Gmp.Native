@@ -11,17 +11,17 @@ namespace Math.Gmp.Native
     /// </summary>
     /// <remarks>
     /// <para>
-    /// The floating point functions accept and return exponents in the C type <see cref="mp_exp_t"/>.
+    /// The floating point functions accept and return exponents in the C type <see cref="mp_exp_t">mp_exp_t</see>.
     /// Currently this is usually a long, but on some systems it’s an int for efficiency.
     /// </para>
     /// <para>
     /// In .NET, this is a 32-bit integer.
     /// </para>
     /// </remarks>
-    /// <seealso cref="mp_exp_t"/>
-    /// <seealso cref="mp_limb_t"/>
-    /// <seealso cref="mpq_t"/>
-    /// <seealso cref="mpz_t"/>
+    /// <seealso cref="mp_exp_t">mp_exp_t</seealso>
+    /// <seealso cref="mp_limb_t">mp_limb_t</seealso>
+    /// <seealso cref="mpq_t">mpq_t</seealso>
+    /// <seealso cref="mpz_t">mpz_t</seealso>
     public class mpf_t : mp_base
     {
 
@@ -53,9 +53,9 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <remarks>
         /// <para>
-        /// Zero is represented by <see cref="_mp_size"/> and <see cref="_mp_exp"/> both set to zero,
-        /// and in that case the <see cref="mp_base._mp_d"/> data is unused.
-        /// (In the future <see cref="_mp_exp"/> might be undefined when representing zero.) 
+        /// Zero is represented by <see cref="_mp_size">_mp_size</see> and <see cref="_mp_exp">_mp_exp</see> both set to zero,
+        /// and in that case the <see cref="mp_base._mp_d">mp_base._mp_d</see> data is unused.
+        /// (In the future <see cref="_mp_exp">_mp_exp</see> might be undefined when representing zero.) 
         /// </para>
         /// </remarks>
         public override mp_size_t _mp_size
@@ -71,7 +71,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <remarks>
         /// <para>
-        ///  In any calculation the aim is to produce <see cref="_mp_prec"/> limbs of result (the most significant being non-zero). 
+        ///  In any calculation the aim is to produce <see cref="_mp_prec">_mp_prec</see> limbs of result (the most significant being non-zero). 
         /// </para>
         /// </remarks>
         public int _mp_prec
@@ -94,7 +94,7 @@ namespace Math.Gmp.Native
         /// <para>
         /// Naturally the exponent can be any value, it doesn’t have to fall within the limbs as the diagram shows,
         /// it can be a long way above or a long way below.
-        /// Limbs other than those included in the {<see cref="mp_base._mp_d"/>, <see cref="_mp_size"/>} data are treated as zero.
+        /// Limbs other than those included in the {<see cref="mp_base._mp_d">mp_base._mp_d</see>, <see cref="_mp_size">_mp_size</see>} data are treated as zero.
         /// </para>
         /// </remarks>
         public int _mp_exp
@@ -131,10 +131,10 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Converts a <see cref="string"/> value to an <see cref="mpf_t"/> value.
+        /// Converts a <see cref="string">string</see> value to an <see cref="mpf_t">mpf_t</see> value.
         /// </summary>
-        /// <param name="value">A <see cref="string"/> value.</param>
-        /// <returns>An <see cref="mpf_t"/> value.</returns>
+        /// <param name="value">A <see cref="string">string</see> value.</param>
+        /// <returns>An <see cref="mpf_t">mpf_t</see> value.</returns>
         /// <remarks>
         /// <para>
         /// Base is assumed to be 10 unless the first character of the string is <c>B</c>

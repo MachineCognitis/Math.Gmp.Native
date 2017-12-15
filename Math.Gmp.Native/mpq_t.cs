@@ -10,8 +10,8 @@ namespace Math.Gmp.Native
     /// Represents a multiple precision rational number.
     /// </summary>
     /// <remarks></remarks>
-    /// <seealso cref="mpf_t"/>
-    /// <seealso cref="mpz_t"/>
+    /// <seealso cref="mpf_t">mpf_t</seealso>
+    /// <seealso cref="mpz_t">mpz_t</seealso>
     public class mpq_t
     {
 
@@ -72,10 +72,10 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Converts a <see cref="string"/> value to an <see cref="mpq_t"/> value.
+        /// Converts a <see cref="string">string</see> value to an <see cref="mpq_t">mpq_t</see> value.
         /// </summary>
-        /// <param name="value">A <see cref="string"/> value.</param>
-        /// <returns>An <see cref="mpq_t"/> value.</returns>
+        /// <param name="value">A <see cref="string">string</see> value.</param>
+        /// <returns>An <see cref="mpq_t">mpq_t</see> value.</returns>
         /// <remarks>
         /// <para>
         /// The leading characters are used: <c>0x</c> and <c>0X</c> for hexadecimal,

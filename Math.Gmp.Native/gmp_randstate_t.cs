@@ -20,7 +20,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <remarks>
         /// <para>
-        /// When done with the random number generator state, unmanaged memory must be released with <see cref="gmp_lib.free(gmp_randstate_t)"/> .
+        /// When done with the random number generator state, unmanaged memory must be released with <see cref="gmp_lib.free(gmp_randstate_t)">free</see>.
         /// </para>
         /// </remarks>
         public gmp_randstate_t()

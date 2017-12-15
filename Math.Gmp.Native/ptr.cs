@@ -36,7 +36,7 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Creates a new pointer with <see cref="Value"/> set to <paramref name="value"/>.
+        /// Creates a new pointer with <see cref="Value">Value</see> set to <paramref name="value"/>.
         /// </summary>
         /// <param name="value">The initial value.</param>
         public ptr(T value)

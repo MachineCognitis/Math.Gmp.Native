@@ -9,7 +9,7 @@ namespace Math.Gmp.Native
 {
 
     /// <summary>
-    /// Represents a pointer to an array of <see cref="mp_limb_t"/> values in unmanaged memory,
+    /// Represents a pointer to an array of <see cref="mp_limb_t">mp_limb_t</see> values in unmanaged memory,
     /// </summary>
     /// <remarks>
     /// <para>
@@ -27,7 +27,7 @@ namespace Math.Gmp.Native
         /// <param name="size">The number of limbs.</param>
         /// <remarks>
         /// <para>
-        /// When done with the array, you must release the unmanaged memory by calling <see cref="gmp_lib.free(mp_ptr[])"/>. 
+        /// When done with the array, you must release the unmanaged memory by calling <see cref="gmp_lib.free(mp_ptr[])">free</see>. 
         /// </para>
         /// </remarks>
         public mp_ptr(mp_size_t size) : this(new uint[size * gmp_lib.mp_uint_per_limb])
@@ -43,7 +43,7 @@ namespace Math.Gmp.Native
         /// If there is not enough bytes to fill out the most significant limb, it is padded with zeroes.
         /// </para>
         /// <para>
-        /// When done with the array, you must release the unmanaged memory by calling <see cref="gmp_lib.free(mp_ptr[])"/>. 
+        /// When done with the array, you must release the unmanaged memory by calling <see cref="gmp_lib.free(mp_ptr[])">free</see>. 
         /// </para>
         /// </remarks>
         public mp_ptr(byte[] values)
@@ -73,7 +73,7 @@ namespace Math.Gmp.Native
         /// If there is not enough 16-bit words to fill out the most significant limb, it is padded with zeroes.
         /// </para>
         /// <para>
-        /// When done with the array, you must release the unmanaged memory by calling <see cref="gmp_lib.free(mp_ptr[])"/>. 
+        /// When done with the array, you must release the unmanaged memory by calling <see cref="gmp_lib.free(mp_ptr[])">free</see>. 
         /// </para>
         /// </remarks>
         public mp_ptr(ushort[] values)
@@ -95,7 +95,7 @@ namespace Math.Gmp.Native
         /// If there is not enough 32-bit words to fill out the most significant limb, it is padded with zeroes.
         /// </para>
         /// <para>
-        /// When done with the array, you must release the unmanaged memory by calling <see cref="gmp_lib.free(mp_ptr[])"/>. 
+        /// When done with the array, you must release the unmanaged memory by calling <see cref="gmp_lib.free(mp_ptr[])">free</see>. 
         /// </para>
         /// </remarks>
         public mp_ptr(uint[] values)
@@ -117,7 +117,7 @@ namespace Math.Gmp.Native
         /// If limbs size is 32 bits, the 64-bit values are split into 32-bit limbs.
         /// </para>
         /// <para>
-        /// When done with the array, you must release the unmanaged memory by calling <see cref="gmp_lib.free(mp_ptr[])"/>. 
+        /// When done with the array, you must release the unmanaged memory by calling <see cref="gmp_lib.free(mp_ptr[])">free</see>. 
         /// </para>
         /// </remarks>
         public mp_ptr(ulong[] values)

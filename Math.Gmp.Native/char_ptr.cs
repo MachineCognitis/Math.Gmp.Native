@@ -27,7 +27,7 @@ namespace Math.Gmp.Native
         /// <param name="str">The value of the new string.</param>
         /// <remarks>
         /// <para>
-        /// When done with the string, unmanaged memory must be released with <see cref="gmp_lib.free(char_ptr)"/> .
+        /// When done with the string, unmanaged memory must be released with <see cref="gmp_lib.free(char_ptr)">free</see>.
         /// </para>
         /// </remarks>
         public char_ptr(string str)
@@ -57,14 +57,14 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Gets a null <see cref="char_ptr"/>.
+        /// Gets a null <see cref="char_ptr">char_ptr</see>.
         /// </summary>
         public static readonly char_ptr Zero = new char_ptr(IntPtr.Zero);
 
         /// <summary>
-        /// Gets the .NET <see cref="string"/> equivalent of the unmanaged string.
+        /// Gets the .NET <see cref="string">string</see> equivalent of the unmanaged string.
         /// </summary>
-        /// <returns>The .NET <see cref="string"/> equivalent of the unmanaged string.</returns>
+        /// <returns>The .NET <see cref="string">string</see> equivalent of the unmanaged string.</returns>
         public override string ToString()
         {
             return Marshal.PtrToStringAnsi(Pointer);
@@ -74,7 +74,7 @@ namespace Math.Gmp.Native
         /// Returns a value indicating whether this instance is equal to a specified object.
         /// </summary>
         /// <param name="obj">An object to compare with this instance.</param>
-        /// <returns><c>True</c> if <paramref name="obj"/> is an instance of <see cref="char_ptr"/> and equals the value of this instance; otherwise, <c>False</c>.</returns>
+        /// <returns><c>True</c> if <paramref name="obj"/> is an instance of <see cref="char_ptr">char_ptr</see> and equals the value of this instance; otherwise, <c>False</c>.</returns>
         public override bool Equals(object obj)
         {
             if (!(obj is char_ptr))
@@ -84,9 +84,9 @@ namespace Math.Gmp.Native
         }
 
         /// <summary>
-        /// Returns a value indicating whether this instance is equal to a specified <see cref="char_ptr"/> value.
+        /// Returns a value indicating whether this instance is equal to a specified <see cref="char_ptr">char_ptr</see> value.
         /// </summary>
-        /// <param name="other">A <see cref="char_ptr"/> value to compare to this instance.</param>
+        /// <param name="other">A <see cref="char_ptr">char_ptr</see> value to compare to this instance.</param>
         /// <returns><c>True</c> if <paramref name="other"/> has the same value as this instance; otherwise, <c>False</c>.</returns>
         public bool Equals(char_ptr other)
         {
@@ -105,8 +105,8 @@ namespace Math.Gmp.Native
         /// <summary>
         /// Gets a value that indicates whether the two argument values are equal.
         /// </summary>
-        /// <param name="value1">A <see cref="char_ptr"/> value.</param>
-        /// <param name="value2">A <see cref="char_ptr"/> value.</param>
+        /// <param name="value1">A <see cref="char_ptr">char_ptr</see> value.</param>
+        /// <param name="value2">A <see cref="char_ptr">char_ptr</see> value.</param>
         /// <returns><c>True</c> if the two values are equal, and <c>False</c> otherwise.</returns>
         public static bool operator ==(char_ptr value1, char_ptr value2)
         {
@@ -116,8 +116,8 @@ namespace Math.Gmp.Native
         /// <summary>
         /// Gets a value that indicates whether the two argument values are different.
         /// </summary>
-        /// <param name="value1">A <see cref="char_ptr"/> value.</param>
-        /// <param name="value2">A <see cref="char_ptr"/> value.</param>
+        /// <param name="value1">A <see cref="char_ptr">char_ptr</see> value.</param>
+        /// <param name="value2">A <see cref="char_ptr">char_ptr</see> value.</param>
         /// <returns><c>True</c> if the two values are different, and <c>False</c> otherwise.</returns>
         public static bool operator !=(char_ptr value1, char_ptr value2)
         {
