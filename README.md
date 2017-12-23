@@ -20,7 +20,7 @@ with this [NuGet package](https://www.nuget.org/packages/Math.Gmp.Native.NET/).
 
 The build file includes the compiled library and the help file (.chm) ready to be included in your project.
 The x86 and x64 folders contain the compiled GNU MP Library and must be copied to the same folder as the
-Math.Gmp.Native.dll library. The library targets the .NET Framework 2.0, so it can be used with all newer
+Math.Gmp.Native.dll library. The library targets the .NET Framework 4.0, so it can be used with all newer
 versions of the .NET Framework.
 For other builds, see the [Releases](https://github.com/MachineCognitis/Math.Gmp.Native/releases) page.
 
