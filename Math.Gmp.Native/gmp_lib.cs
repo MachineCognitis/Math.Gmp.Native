@@ -1686,7 +1686,7 @@ namespace Math.Gmp.Native
         /// No more than <paramref name="size"/> bytes will be written. To get the full output, <paramref name="size"/> must be enough for the string and null-terminator. 
         /// </para>
         /// <para>
-        /// No overlap is permitted between the regiom {<paramref name="buf"/>,<paramref name="size"/>} and the <paramref name="fmt"/> string.
+        /// No overlap is permitted between the region {<paramref name="buf"/>,<paramref name="size"/>} and the <paramref name="fmt"/> string.
         /// </para>
         /// <para>
         /// Notice the return value is in ISO C99 snprintf style. This is so even if the C library vsnprintf is the older GLIBC 2.0.x style.

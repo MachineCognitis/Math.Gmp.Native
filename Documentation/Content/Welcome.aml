@@ -253,7 +253,11 @@
           The <userInput>--enable-fat</userInput> build option above creates a library where optimized low level subroutines are chosen at runtime according to the CPU detected.
           By using instead the <userInput>--host</userInput> option, you can build a library for a specific CPU type.
           You will end up with a library that runs only on that CPU type, but the library will be samller.
-          See the <externalLink><linkText>Build Options</linkText><linkUri>https://gmplib.org/manual/Build-Options.html#Build-Options/</linkUri><linkTarget>_self</linkTarget></externalLink> from the GNU MP Manual for the supported CPU types.
+          See the <externalLink>
+            <linkText>Build Options</linkText>
+            <linkUri>https://mpfrlib.org/manual/Build-Options.html#Build-Options/</linkUri>
+            <linkTarget>_self</linkTarget>
+          </externalLink> from the GNU MPFR Manual for the supported CPU types.
         </para>
       </content>
     </section>        
