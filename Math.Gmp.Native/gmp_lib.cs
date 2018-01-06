@@ -551,7 +551,7 @@ namespace Math.Gmp.Native
         /// <summary>
         /// Gets or sets the global GMP error number.
         /// </summary>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Useful-Macros-and-Constants.html#Useful-Macros-and-Constants">GNU MP - Useful Macros and Constants</a></seealso>
         public static int gmp_errno
         {
@@ -568,7 +568,7 @@ namespace Math.Gmp.Native
         /// <summary>
         /// The GMP version number in the form “i.j.k”. This release is "6.1.2".
         /// </summary>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Useful-Macros-and-Constants.html#Useful-Macros-and-Constants">GNU MP - Useful Macros and Constants</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -587,7 +587,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <seealso cref="mp_bytes_per_limb">mp_bytes_per_limb</seealso>
         /// <seealso cref="mp_uint_per_limb">mp_uint_per_limb</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Useful-Macros-and-Constants.html#Useful-Macros-and-Constants">GNU MP - Useful Macros and Constants</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -606,7 +606,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <seealso cref="mp_bits_per_limb">mp_bits_per_limb</seealso>
         /// <seealso cref="mp_uint_per_limb">mp_uint_per_limb</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
         /// <example>
         /// <code language="C#">
         /// mp_size_t bytesPerLimb = gmp_lib.mp_bytes_per_limb;
@@ -624,7 +624,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <seealso cref="mp_bits_per_limb">mp_bits_per_limb</seealso>
         /// <seealso cref="mp_bytes_per_limb">mp_bytes_per_limb</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Global_Variable_and_Constants">Global Variable and Constants</a></seealso>
         /// <example>
         /// <code language="C#">
         /// mp_size_t uintsPerLimb = gmp_lib.mp_uint_per_limb;
@@ -649,7 +649,7 @@ namespace Math.Gmp.Native
         /// <remarks></remarks>
         /// <seealso cref="O:Math.Gmp.Native.gmp_lib.free">free</seealso>
         /// <seealso cref="reallocate">reallocate</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a></seealso>
         public static void_ptr allocate(size_t alloc_size)
         {
@@ -680,7 +680,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="allocate">allocate</seealso>
         /// <seealso cref="O:Math.Gmp.Native.gmp_lib.free">free</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a></seealso>
         public static void_ptr reallocate(void_ptr ptr, size_t old_size, size_t new_size)
         {
@@ -757,7 +757,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="allocate">allocate</seealso>
         /// <seealso cref="reallocate">reallocate</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a></seealso>
         public static void free(void_ptr ptr, size_t size)
         {
@@ -771,7 +771,7 @@ namespace Math.Gmp.Native
         /// <param name="realloc_func_ptr">The memory reallocation function.</param>
         /// <param name="free_func_ptr">The memory de-allocation function.</param>
         /// <seealso cref="mp_set_memory_functions">mp_set_memory_functions</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -827,7 +827,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mp_get_memory_functions">mp_get_memory_functions</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Custom_Allocation">Custom Allocation</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -1026,7 +1026,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_randinit_lc_2exp_size">gmp_randinit_lc_2exp_size</seealso>
         /// <seealso cref="gmp_randinit_mt">gmp_randinit_mt</seealso>
         /// <seealso cref="gmp_randinit_set">gmp_randinit_set</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -1079,7 +1079,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_randinit_lc_2exp_size">gmp_randinit_lc_2exp_size</seealso>
         /// <seealso cref="gmp_randinit_mt">gmp_randinit_mt</seealso>
         /// <seealso cref="gmp_randinit_set">gmp_randinit_set</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -1134,7 +1134,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_randinit_lc_2exp">gmp_randinit_lc_2exp</seealso>
         /// <seealso cref="gmp_randinit_mt">gmp_randinit_mt</seealso>
         /// <seealso cref="gmp_randinit_set">gmp_randinit_set</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -1178,7 +1178,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_randinit_lc_2exp">gmp_randinit_lc_2exp</seealso>
         /// <seealso cref="gmp_randinit_lc_2exp_size">gmp_randinit_lc_2exp_size</seealso>
         /// <seealso cref="gmp_randinit_set">gmp_randinit_set</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -1218,7 +1218,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_randinit_lc_2exp">gmp_randinit_lc_2exp</seealso>
         /// <seealso cref="gmp_randinit_lc_2exp_size">gmp_randinit_lc_2exp_size</seealso>
         /// <seealso cref="gmp_randinit_mt">gmp_randinit_mt</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -1279,7 +1279,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="gmp_randseed_ui">gmp_randseed_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Seeding">Random State Seeding</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Seeding">Random State Seeding</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Seeding.html#Random-State-Seeding">GNU MP - Random State Seeding</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -1342,7 +1342,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="gmp_randseed">gmp_randseed</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Seeding">Random State Seeding</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Seeding">Random State Seeding</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Seeding.html#Random-State-Seeding">GNU MP - Random State Seeding</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -1383,7 +1383,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_randinit_lc_2exp_size">gmp_randinit_lc_2exp_size</seealso>
         /// <seealso cref="gmp_randinit_mt">gmp_randinit_mt</seealso>
         /// <seealso cref="gmp_randinit_set">gmp_randinit_set</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a></seealso>
         public static void gmp_randclear(gmp_randstate_t state)
         {
@@ -1407,7 +1407,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="gmp_urandomm_ui">gmp_urandomm_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Miscellaneous">Random State Miscellaneous</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Miscellaneous">Random State Miscellaneous</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Miscellaneous.html#Random-State-Miscellaneous">GNU MP - Random State Miscellaneous</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -1448,7 +1448,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The upper bound of the range.</param>
         /// <returns>The generated random number.</returns>
         /// <seealso cref="gmp_urandomb_ui">gmp_urandomb_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Miscellaneous">Random State Miscellaneous</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Miscellaneous">Random State Miscellaneous</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Random-State-Miscellaneous.html#Random-State-Miscellaneous">GNU MP - Random State Miscellaneous</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -1506,7 +1506,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_snprintf">gmp_snprintf</seealso>
         /// <seealso cref="gmp_sprintf">gmp_sprintf</seealso>
         /// <seealso cref="gmp_vasprintf">gmp_vasprintf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1564,7 +1564,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_printf">gmp_printf</seealso>
         /// <seealso cref="gmp_sprintf">gmp_sprintf</seealso>
         /// <seealso cref="gmp_vfprintf">gmp_vfprintf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1635,7 +1635,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_fprintf">gmp_fprintf</seealso>
         /// <seealso cref="gmp_sprintf">gmp_sprintf</seealso>
         /// <seealso cref="gmp_vprintf">gmp_vprintf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1695,7 +1695,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_asprintf">gmp_asprintf</seealso>
         /// <seealso cref="gmp_sprintf">gmp_sprintf</seealso>
         /// <seealso cref="gmp_vsnprintf">gmp_vsnprintf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1763,7 +1763,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_fprintf">gmp_fprintf</seealso>
         /// <seealso cref="gmp_snprintf">gmp_snprintf</seealso>
         /// <seealso cref="gmp_vsprintf">gmp_vsprintf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1828,7 +1828,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="gmp_asprintf">gmp_asprintf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1892,7 +1892,7 @@ namespace Math.Gmp.Native
         /// <param name="ap">Arguments.</param>
         /// <returns>Return the number of characters written, or -1 if an error occurred.</returns>
         /// <seealso cref="gmp_fprintf">gmp_fprintf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -1958,7 +1958,7 @@ namespace Math.Gmp.Native
         /// <param name="ap">Arguments.</param>
         /// <returns>Return the number of characters written, or -1 if an error occurred.</returns>
         /// <seealso cref="gmp_printf">gmp_printf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -2023,7 +2023,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="gmp_snprintf">gmp_snprintf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -2099,7 +2099,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="gmp_sprintf">gmp_sprintf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Output_Functions">Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Functions.html#Formatted-Output-Functions">GNU MP - Formatted Output Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Output-Strings.html#Formatted-Output-Strings">GNU MP - Formatted Output Strings</a></seealso>
         /// <example>
@@ -2169,7 +2169,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_scanf">gmp_scanf</seealso>
         /// <seealso cref="gmp_sscanf">gmp_sscanf</seealso>
         /// <seealso cref="gmp_vfscanf">gmp_vfscanf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Functions.html#Formatted-Input-Functions">GNU MP - Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">GNU MP - Formatted Input Strings</a></seealso>
         /// <example>
@@ -2250,7 +2250,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_fscanf">gmp_fscanf</seealso>
         /// <seealso cref="gmp_sscanf">gmp_sscanf</seealso>
         /// <seealso cref="gmp_vscanf">gmp_vscanf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Functions.html#Formatted-Input-Functions">GNU MP - Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">GNU MP - Formatted Input Strings</a></seealso>
         /// <example>
@@ -2318,7 +2318,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_fscanf">gmp_fscanf</seealso>
         /// <seealso cref="gmp_scanf">gmp_scanf</seealso>
         /// <seealso cref="gmp_vsscanf">gmp_vsscanf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Functions.html#Formatted-Input-Functions">GNU MP - Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">GNU MP - Formatted Input Strings</a></seealso>
         /// <example>
@@ -2382,7 +2382,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_fscanf">gmp_fscanf</seealso>
         /// <seealso cref="gmp_vscanf">gmp_vscanf</seealso>
         /// <seealso cref="gmp_vsscanf">gmp_vsscanf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Functions.html#Formatted-Input-Functions">GNU MP - Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">GNU MP - Formatted Input Strings</a></seealso>
         /// <example>
@@ -2471,7 +2471,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_scanf">gmp_scanf</seealso>
         /// <seealso cref="gmp_vfscanf">gmp_vfscanf</seealso>
         /// <seealso cref="gmp_vsscanf">gmp_vsscanf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Functions.html#Formatted-Input-Functions">GNU MP - Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">GNU MP - Formatted Input Strings</a></seealso>
         /// <example>
@@ -2546,7 +2546,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="gmp_sscanf">gmp_sscanf</seealso>
         /// <seealso cref="gmp_vfscanf">gmp_vfscanf</seealso>
         /// <seealso cref="gmp_vscanf">gmp_vscanf</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Formatted_Input_Functions">Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Functions.html#Formatted-Input-Functions">GNU MP - Formatted Input Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Formatted-Input-Strings.html#Formatted-Input-Strings">GNU MP - Formatted Input Strings</a></seealso>
         /// <example>
@@ -2637,7 +2637,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
         /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
         /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2704,7 +2704,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_neg">mpz_neg</seealso>
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2764,7 +2764,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_neg">mpz_neg</seealso>
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2833,7 +2833,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_neg">mpz_neg</seealso>
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2887,7 +2887,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_neg">mpz_neg</seealso>
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -2956,7 +2956,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_neg">mpz_neg</seealso>
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3026,7 +3026,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
         /// <seealso cref="mpz_combit">mpz_combit</seealso>
         /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3096,7 +3096,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_bin_uiui">mpz_bin_uiui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3150,7 +3150,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The first operand integer.</param>
         /// <param name="k">The second operand integer.</param>
         /// <seealso cref="mpz_bin_ui">mpz_bin_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3208,7 +3208,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3284,7 +3284,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3352,7 +3352,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3418,7 +3418,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3501,7 +3501,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3573,7 +3573,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3649,7 +3649,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3716,7 +3716,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3783,7 +3783,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3829,7 +3829,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_inits">mpz_inits</seealso>
         /// <seealso cref="mpz_init2">mpz_init2</seealso>
         /// <seealso cref="mpz_realloc2">mpz_realloc2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers">GNU MP - Initializing Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3871,7 +3871,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_inits">mpz_inits</seealso>
         /// <seealso cref="mpz_init2">mpz_init2</seealso>
         /// <seealso cref="mpz_realloc2">mpz_realloc2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers">GNU MP - Initializing Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3937,7 +3937,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
         /// <seealso cref="mpz_combit">mpz_combit</seealso>
         /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -3988,7 +3988,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
         /// <seealso cref="mpz_cmpabs_ui">mpz_cmpabs_ui</seealso>
         /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4048,7 +4048,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
         /// <seealso cref="mpz_cmpabs_ui">mpz_cmpabs_ui</seealso>
         /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4093,7 +4093,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
         /// <seealso cref="mpz_cmpabs_ui">mpz_cmpabs_ui</seealso>
         /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4137,7 +4137,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_cmpabs">mpz_cmpabs</seealso>
         /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
         /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4182,7 +4182,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
         /// <seealso cref="mpz_cmpabs_ui">mpz_cmpabs_ui</seealso>
         /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4242,7 +4242,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_cmpabs">mpz_cmpabs</seealso>
         /// <seealso cref="mpz_cmpabs_ui">mpz_cmpabs_ui</seealso>
         /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4287,7 +4287,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_cmpabs">mpz_cmpabs</seealso>
         /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
         /// <seealso cref="mpz_sgn">mpz_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4332,7 +4332,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
         /// <seealso cref="mpz_combit">mpz_combit</seealso>
         /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4402,7 +4402,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
         /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
         /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4462,7 +4462,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4533,7 +4533,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4597,7 +4597,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4642,7 +4642,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4711,7 +4711,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4780,7 +4780,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4843,7 +4843,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4895,7 +4895,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -4938,7 +4938,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fits_sshort_p">mpz_fits_sshort_p</seealso>
         /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
         /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5025,7 +5025,7 @@ namespace Math.Gmp.Native
         /// </code> 
         /// </remarks>
         /// <seealso cref="mpz_import">mpz_import</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Import_and_Export">Integer Import and Export</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Import_and_Export">Integer Import and Export</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Import-and-Export.html#Integer-Import-and-Export">GNU MP - Integer Import and Export</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5165,7 +5165,7 @@ namespace Math.Gmp.Native
         /// </code> 
         /// </remarks>
         /// <seealso cref="mpz_import">mpz_import</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Import_and_Export">Integer Import and Export</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Import_and_Export">Integer Import and Export</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Import-and-Export.html#Integer-Import-and-Export">GNU MP - Integer Import and Export</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5260,7 +5260,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The operand integer.</param>
         /// <seealso cref="mpz_2fac_ui">mpz_2fac_ui</seealso>
         /// <seealso cref="mpz_mfac_uiui">mpz_mfac_uiui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5305,7 +5305,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The operand integer.</param>
         /// <seealso cref="mpz_fac_ui">mpz_fac_ui</seealso>
         /// <seealso cref="mpz_mfac_uiui">mpz_mfac_uiui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5351,7 +5351,7 @@ namespace Math.Gmp.Native
         /// <param name="m">The second operand integer.</param>
         /// <seealso cref="mpz_fac_ui">mpz_fac_ui</seealso>
         /// <seealso cref="mpz_2fac_ui">mpz_2fac_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5394,7 +5394,7 @@ namespace Math.Gmp.Native
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="n">The operand integer.</param>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5452,7 +5452,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5528,7 +5528,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5595,7 +5595,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5661,7 +5661,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5744,7 +5744,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5816,7 +5816,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5891,7 +5891,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -5959,7 +5959,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6027,7 +6027,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_divisible_p">mpz_divisible_p</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6074,7 +6074,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_fib2_ui">mpz_fib2_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6133,7 +6133,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_fib_ui">mpz_fib_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6189,7 +6189,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
         /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
         /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6234,7 +6234,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
         /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
         /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6279,7 +6279,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
         /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
         /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6324,7 +6324,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
         /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
         /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6369,7 +6369,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
         /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
         /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6414,7 +6414,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
         /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
         /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6460,7 +6460,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="mpz_gcd_ui">mpz_gcd_ui</seealso>
         /// <seealso cref="mpz_gcdext">mpz_gcdext</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6530,7 +6530,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="mpz_gcd">mpz_gcd</seealso>
         /// <seealso cref="mpz_gcdext">mpz_gcdext</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6598,7 +6598,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="mpz_gcd">mpz_gcd</seealso>
         /// <seealso cref="mpz_gcd_ui">mpz_gcd_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6678,7 +6678,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_get_si">mpz_get_si</seealso>
         /// <seealso cref="mpz_get_str">mpz_get_str</seealso>
         /// <seealso cref="mpz_get_ui">mpz_get_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Integers.html#Converting-Integers">GNU MP - Converting Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6730,7 +6730,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_get_si">mpz_get_si</seealso>
         /// <seealso cref="mpz_get_str">mpz_get_str</seealso>
         /// <seealso cref="mpz_get_ui">mpz_get_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Integers.html#Converting-Integers">GNU MP - Converting Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6789,7 +6789,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_get_d_2exp">mpz_get_d_2exp</seealso>
         /// <seealso cref="mpz_get_str">mpz_get_str</seealso>
         /// <seealso cref="mpz_get_ui">mpz_get_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Integers.html#Converting-Integers">GNU MP - Converting Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6852,7 +6852,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_get_d_2exp">mpz_get_d_2exp</seealso>
         /// <seealso cref="mpz_get_si">mpz_get_si</seealso>
         /// <seealso cref="mpz_get_ui">mpz_get_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Integers.html#Converting-Integers">GNU MP - Converting Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6904,7 +6904,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_get_d_2exp">mpz_get_d_2exp</seealso>
         /// <seealso cref="mpz_get_si">mpz_get_si</seealso>
         /// <seealso cref="mpz_get_str">mpz_get_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Integers">Converting Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Integers.html#Converting-Integers">GNU MP - Converting Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -6960,7 +6960,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
         /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
         /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7046,7 +7046,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
         /// <seealso cref="mpz_combit">mpz_combit</seealso>
         /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7128,7 +7128,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpz_export">O:Math.Gmp.Native.gmp_lib.mpz_export</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Import_and_Export">Integer Import and Export</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Import_and_Export">Integer Import and Export</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Import-and-Export.html#Integer-Import-and-Export">GNU MP - Integer Import and Export</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7192,7 +7192,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_inits">mpz_inits</seealso>
         /// <seealso cref="mpz_init2">mpz_init2</seealso>
         /// <seealso cref="mpz_realloc2">mpz_realloc2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers">GNU MP - Initializing Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7255,7 +7255,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_init">mpz_init</seealso>
         /// <seealso cref="mpz_inits">mpz_inits</seealso>
         /// <seealso cref="mpz_realloc2">mpz_realloc2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers">GNU MP - Initializing Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7297,7 +7297,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_init">mpz_init</seealso>
         /// <seealso cref="mpz_init2">mpz_init2</seealso>
         /// <seealso cref="mpz_realloc2">mpz_realloc2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers">GNU MP - Initializing Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7350,7 +7350,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_init_set_si">mpz_init_set_si</seealso>
         /// <seealso cref="mpz_init_set_d">mpz_init_set_d</seealso>
         /// <seealso cref="mpz_init_set_str">mpz_init_set_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Integer-Init-_0026-Assign.html#Simultaneous-Integer-Init-_0026-Assign">GNU MP - Combined Integer Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7409,7 +7409,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_init_set_ui">mpz_init_set_ui</seealso>
         /// <seealso cref="mpz_init_set_si">mpz_init_set_si</seealso>
         /// <seealso cref="mpz_init_set_str">mpz_init_set_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Integer-Init-_0026-Assign.html#Simultaneous-Integer-Init-_0026-Assign">GNU MP - Combined Integer Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7452,7 +7452,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_init_set_ui">mpz_init_set_ui</seealso>
         /// <seealso cref="mpz_init_set_d">mpz_init_set_d</seealso>
         /// <seealso cref="mpz_init_set_str">mpz_init_set_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Integer-Init-_0026-Assign.html#Simultaneous-Integer-Init-_0026-Assign">GNU MP - Combined Integer Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7502,7 +7502,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_init_set_ui">mpz_init_set_ui</seealso>
         /// <seealso cref="mpz_init_set_si">mpz_init_set_si</seealso>
         /// <seealso cref="mpz_init_set_d">mpz_init_set_d</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Integer-Init-_0026-Assign.html#Simultaneous-Integer-Init-_0026-Assign">GNU MP - Combined Integer Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7552,7 +7552,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_init_set_si">mpz_init_set_si</seealso>
         /// <seealso cref="mpz_init_set_d">mpz_init_set_d</seealso>
         /// <seealso cref="mpz_init_set_str">mpz_init_set_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Integer_Init_Assign">Simultaneous Integer Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Integer-Init-_0026-Assign.html#Simultaneous-Integer-Init-_0026-Assign">GNU MP - Combined Integer Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7600,7 +7600,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_out_str">mpz_out_str</seealso>
         /// <seealso cref="mpz_inp_str">mpz_inp_str</seealso>
         /// <seealso cref="mpz_out_raw">mpz_out_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Integers">I/O of Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Integers">I/O of Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Integers.html#I_002fO-of-Integers">GNU MP - I/O of Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7688,7 +7688,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_out_str">mpz_out_str</seealso>
         /// <seealso cref="mpz_out_raw">mpz_out_raw</seealso>
         /// <seealso cref="mpz_inp_raw">mpz_inp_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Integers">I/O of Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Integers">I/O of Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Integers.html#I_002fO-of-Integers">GNU MP - I/O of Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7766,7 +7766,7 @@ namespace Math.Gmp.Native
         /// The behaviour of this function is undefined when <paramref name="op2"/> is zero.
         /// </para>
         /// </remarks>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7845,7 +7845,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
         /// <seealso cref="mpz_combit">mpz_combit</seealso>
         /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7913,7 +7913,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -7971,7 +7971,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
         /// <seealso cref="mpz_si_kronecker">mpz_si_kronecker</seealso>
         /// <seealso cref="mpz_ui_kronecker">mpz_ui_kronecker</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8029,7 +8029,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
         /// <seealso cref="mpz_si_kronecker">mpz_si_kronecker</seealso>
         /// <seealso cref="mpz_ui_kronecker">mpz_ui_kronecker</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8078,7 +8078,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
         /// <seealso cref="mpz_si_kronecker">mpz_si_kronecker</seealso>
         /// <seealso cref="mpz_ui_kronecker">mpz_ui_kronecker</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8127,7 +8127,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_kronecker_ui">mpz_kronecker_ui</seealso>
         /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
         /// <seealso cref="mpz_ui_kronecker">mpz_ui_kronecker</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8176,7 +8176,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_kronecker_ui">mpz_kronecker_ui</seealso>
         /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
         /// <seealso cref="mpz_si_kronecker">mpz_si_kronecker</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8221,7 +8221,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_lcm_ui">mpz_lcm_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8290,7 +8290,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_lcm">mpz_lcm</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8318,7 +8318,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_jacobi">mpz_jacobi</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8374,7 +8374,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_lucnum2_ui">mpz_lucnum2_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8433,7 +8433,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_lucnum_ui">mpz_lucnum_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8490,7 +8490,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_probab_prime_p">mpz_probab_prime_p</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8540,7 +8540,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod_ui">mpz_mod_ui</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8619,7 +8619,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fdiv_qr">mpz_fdiv_qr</seealso>
         /// <seealso cref="mpz_mod">mpz_mod</seealso>
         /// <seealso cref="mpz_tdiv_qr">mpz_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8681,7 +8681,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_neg">mpz_neg</seealso>
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8757,7 +8757,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_neg">mpz_neg</seealso>
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8819,7 +8819,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_neg">mpz_neg</seealso>
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8881,7 +8881,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_neg">mpz_neg</seealso>
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8940,7 +8940,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_neg">mpz_neg</seealso>
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -8999,7 +8999,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_probab_prime_p">mpz_probab_prime_p</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9059,7 +9059,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fits_sshort_p">mpz_fits_sshort_p</seealso>
         /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
         /// <seealso cref="mpz_sizeinbase">mpz_sizeinbase</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9115,7 +9115,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_out_str">mpz_out_str</seealso>
         /// <seealso cref="mpz_inp_str">mpz_inp_str</seealso>
         /// <seealso cref="mpz_inp_raw">mpz_inp_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Integers">I/O of Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Integers">I/O of Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Integers.html#I_002fO-of-Integers">GNU MP - I/O of Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9205,7 +9205,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_inp_str">mpz_inp_str</seealso>
         /// <seealso cref="mpz_out_raw">mpz_out_raw</seealso>
         /// <seealso cref="mpz_inp_raw">mpz_inp_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Integers">I/O of Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Integers">I/O of Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Integers.html#I_002fO-of-Integers">GNU MP - I/O of Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9290,7 +9290,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_rootrem">mpz_rootrem</seealso>
         /// <seealso cref="mpz_sqrt">mpz_sqrt</seealso>
         /// <seealso cref="mpz_sqrtrem">mpz_sqrtrem</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Roots.html#Integer-Roots">GNU MP - Integer Roots</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9337,7 +9337,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_rootrem">mpz_rootrem</seealso>
         /// <seealso cref="mpz_sqrt">mpz_sqrt</seealso>
         /// <seealso cref="mpz_sqrtrem">mpz_sqrtrem</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Roots.html#Integer-Roots">GNU MP - Integer Roots</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9391,7 +9391,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
         /// <seealso cref="mpz_combit">mpz_combit</seealso>
         /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9432,7 +9432,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_powm_ui">mpz_powm_ui</seealso>
         /// <seealso cref="mpz_powm_sec">mpz_powm_sec</seealso>
         /// <seealso cref="mpz_ui_pow_ui">mpz_ui_pow_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Exponentiation.html#Integer-Exponentiation">GNU MP - Integer Exponentiation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9496,7 +9496,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_powm_sec">mpz_powm_sec</seealso>
         /// <seealso cref="mpz_pow_ui">mpz_pow_ui</seealso>
         /// <seealso cref="mpz_ui_pow_ui">mpz_ui_pow_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Exponentiation.html#Integer-Exponentiation">GNU MP - Integer Exponentiation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9582,7 +9582,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_powm_ui">mpz_powm_ui</seealso>
         /// <seealso cref="mpz_pow_ui">mpz_pow_ui</seealso>
         /// <seealso cref="mpz_ui_pow_ui">mpz_ui_pow_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Exponentiation.html#Integer-Exponentiation">GNU MP - Integer Exponentiation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9664,7 +9664,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_powm_sec">mpz_powm_sec</seealso>
         /// <seealso cref="mpz_pow_ui">mpz_pow_ui</seealso>
         /// <seealso cref="mpz_ui_pow_ui">mpz_ui_pow_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Exponentiation.html#Integer-Exponentiation">GNU MP - Integer Exponentiation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9733,7 +9733,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="mpz_millerrabin">mpz_millerrabin</seealso>
         /// <seealso cref="mpz_nextprime">mpz_nextprime</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9789,7 +9789,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_urandomm">mpz_urandomm</seealso>
         /// <seealso cref="mpz_rrandomb">mpz_rrandomb</seealso>
         /// <seealso cref="mpz_random2">mpz_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Random-Numbers.html#Integer-Random-Numbers">GNU MP - Integer Random Numbers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9845,7 +9845,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_urandomm">mpz_urandomm</seealso>
         /// <seealso cref="mpz_rrandomb">mpz_rrandomb</seealso>
         /// <seealso cref="mpz_random">mpz_random</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Random-Numbers.html#Integer-Random-Numbers">GNU MP - Integer Random Numbers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9897,7 +9897,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_init">mpz_init</seealso>
         /// <seealso cref="mpz_inits">mpz_inits</seealso>
         /// <seealso cref="mpz_init2">mpz_init2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Integers">Initializing Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers">GNU MP - Initializing Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -9960,7 +9960,7 @@ namespace Math.Gmp.Native
         /// <param name="op">The operand integer.</param>
         /// <param name="f">The factor operand integer.</param>
         /// <returns>The return value is how many such occurrences were removed.</returns>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Number_Theoretic_Functions">Number Theoretic Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10028,7 +10028,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_rootrem">mpz_rootrem</seealso>
         /// <seealso cref="mpz_sqrt">mpz_sqrt</seealso>
         /// <seealso cref="mpz_sqrtrem">mpz_sqrtrem</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Roots.html#Integer-Roots">GNU MP - Integer Roots</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10087,7 +10087,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_root">mpz_root</seealso>
         /// <seealso cref="mpz_sqrt">mpz_sqrt</seealso>
         /// <seealso cref="mpz_sqrtrem">mpz_sqrtrem</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Roots.html#Integer-Roots">GNU MP - Integer Roots</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10166,7 +10166,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_urandomm">mpz_urandomm</seealso>
         /// <seealso cref="mpz_random">mpz_random</seealso>
         /// <seealso cref="mpz_random2">mpz_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Random-Numbers.html#Integer-Random-Numbers">GNU MP - Integer Random Numbers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10247,7 +10247,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
         /// <seealso cref="mpz_combit">mpz_combit</seealso>
         /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10315,7 +10315,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
         /// <seealso cref="mpz_combit">mpz_combit</seealso>
         /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10359,7 +10359,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
         /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
         /// <seealso cref="mpz_swap">mpz_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10428,7 +10428,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
         /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
         /// <seealso cref="mpz_swap">mpz_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10483,7 +10483,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_set_q">mpz_set_q</seealso>
         /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
         /// <seealso cref="mpz_swap">mpz_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10543,7 +10543,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
         /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
         /// <seealso cref="mpz_swap">mpz_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10598,7 +10598,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
         /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
         /// <seealso cref="mpz_swap">mpz_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10665,7 +10665,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_set_q">mpz_set_q</seealso>
         /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
         /// <seealso cref="mpz_swap">mpz_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10723,7 +10723,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
         /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
         /// <seealso cref="mpz_swap">mpz_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10784,7 +10784,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
         /// <seealso cref="mpz_combit">mpz_combit</seealso>
         /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10834,7 +10834,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_cmpabs">mpz_cmpabs</seealso>
         /// <seealso cref="mpz_cmpabs_d">mpz_cmpabs_d</seealso>
         /// <seealso cref="mpz_cmpabs_ui">mpz_cmpabs_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Comparisons">Integer Comparisons</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10883,7 +10883,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
         /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
         /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -10960,7 +10960,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_fits_sshort_p">mpz_fits_sshort_p</seealso>
         /// <seealso cref="mpz_odd_p">mpz_odd_p</seealso>
         /// <seealso cref="mpz_even_p">mpz_even_p</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Integer_Functions">Miscellaneous Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Integer-Functions.html#Miscellaneous-Integer-Functions">GNU MP - Miscellaneous Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11011,7 +11011,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_root">mpz_root</seealso>
         /// <seealso cref="mpz_rootrem">mpz_rootrem</seealso>
         /// <seealso cref="mpz_sqrtrem">mpz_sqrtrem</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Roots.html#Integer-Roots">GNU MP - Integer Roots</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11069,7 +11069,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_root">mpz_root</seealso>
         /// <seealso cref="mpz_rootrem">mpz_rootrem</seealso>
         /// <seealso cref="mpz_sqrt">mpz_sqrt</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Roots">Integer Roots</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Roots.html#Integer-Roots">GNU MP - Integer Roots</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11135,7 +11135,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_sub_ui">mpz_sub_ui</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
         /// <seealso cref="mpz_ui_sub">mpz_ui_sub</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11205,7 +11205,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
         /// <seealso cref="mpz_ui_sub">mpz_ui_sub</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11266,7 +11266,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_sub_ui">mpz_sub_ui</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11326,7 +11326,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_neg">mpz_neg</seealso>
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul_ui">mpz_submul_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11395,7 +11395,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_neg">mpz_neg</seealso>
         /// <seealso cref="mpz_sub">mpz_sub</seealso>
         /// <seealso cref="mpz_submul">mpz_submul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Arithmetic">Integer Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Arithmetic.html#Integer-Arithmetic">GNU MP - Integer Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11454,7 +11454,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_set_q">mpz_set_q</seealso>
         /// <seealso cref="mpz_set_f">mpz_set_f</seealso>
         /// <seealso cref="mpz_set_str">mpz_set_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Integers">Assigning Integers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Integers.html#Assigning-Integers">GNU MP - Assigning Integers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11523,7 +11523,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_tdiv_qr_ui">mpz_tdiv_qr_ui</seealso>
         /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
         /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11575,7 +11575,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
         /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
         /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11651,7 +11651,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_tdiv_qr_ui">mpz_tdiv_qr_ui</seealso>
         /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
         /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11719,7 +11719,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
         /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
         /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11785,7 +11785,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
         /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
         /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11868,7 +11868,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
         /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
         /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -11940,7 +11940,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
         /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
         /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12016,7 +12016,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_tdiv_qr_ui">mpz_tdiv_qr_ui</seealso>
         /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
         /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12084,7 +12084,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_tdiv_ui">mpz_tdiv_ui</seealso>
         /// <seealso cref="mpz_tdiv_q_2exp">mpz_tdiv_q_2exp</seealso>
         /// <seealso cref="mpz_tdiv_r_2exp">mpz_tdiv_r_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Division">Integer Division</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Division.html#Integer-Division">GNU MP - Integer Division</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12154,7 +12154,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_setbit">mpz_setbit</seealso>
         /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
         /// <seealso cref="mpz_combit">mpz_combit</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12196,7 +12196,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_powm_ui">mpz_powm_ui</seealso>
         /// <seealso cref="mpz_powm_sec">mpz_powm_sec</seealso>
         /// <seealso cref="mpz_pow_ui">mpz_pow_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Exponentiation">Integer Exponentiations</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Exponentiation.html#Integer-Exponentiation">GNU MP - Integer Exponentiation</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12256,7 +12256,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_rrandomb">mpz_rrandomb</seealso>
         /// <seealso cref="mpz_random">mpz_random</seealso>
         /// <seealso cref="mpz_random2">mpz_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Random-Numbers.html#Integer-Random-Numbers">GNU MP - Integer Random Numbers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12323,7 +12323,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_rrandomb">mpz_rrandomb</seealso>
         /// <seealso cref="mpz_random">mpz_random</seealso>
         /// <seealso cref="mpz_random2">mpz_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Random_Numbers">Integer Random Numbers</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Random-Numbers.html#Integer-Random-Numbers">GNU MP - Integer Random Numbers</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12402,7 +12402,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_clrbit">mpz_clrbit</seealso>
         /// <seealso cref="mpz_combit">mpz_combit</seealso>
         /// <seealso cref="mpz_tstbit">mpz_tstbit</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Logic_and_Bit_Fiddling">Integer Logic and Bit Fiddling</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Logic-and-Bit-Fiddling.html#Integer-Logic-and-Bit-Fiddling">GNU MP - Integer Logic and Bit Fiddling</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12475,7 +12475,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
         /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
         /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12547,7 +12547,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
         /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
         /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12625,7 +12625,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_limbs_write">mpz_limbs_write</seealso>
         /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
         /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12714,7 +12714,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_limbs_write">mpz_limbs_write</seealso>
         /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
         /// <seealso cref="mpz_roinit_n">mpz_roinit_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         public static void mpz_limbs_finish(/*const*/ mpz_t x, mp_size_t s)
         {
@@ -12751,7 +12751,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpz_limbs_write">mpz_limbs_write</seealso>
         /// <seealso cref="mpz_limbs_modify">mpz_limbs_modify</seealso>
         /// <seealso cref="mpz_limbs_finish">mpz_limbs_finish</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Special_Functions">Integer Special Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions">GNU MP - Integer Special Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12827,7 +12827,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_div_2exp">mpq_div_2exp</seealso>
         /// <seealso cref="mpq_neg">mpq_neg</seealso>
         /// <seealso cref="mpq_inv">mpq_inv</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12856,7 +12856,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_neg">mpq_neg</seealso>
         /// <seealso cref="mpq_abs">mpq_abs</seealso>
         /// <seealso cref="mpq_inv">mpq_inv</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12885,7 +12885,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
         /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
         /// <seealso cref="mpq_swap">mpq_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12918,7 +12918,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
         /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
         /// <seealso cref="mpq_swap">mpq_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -12965,7 +12965,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
         /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
         /// <seealso cref="mpq_swap">mpq_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13025,7 +13025,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_cmp_si">mpq_cmp_si</seealso>
         /// <seealso cref="mpq_sgn">mpq_sgn</seealso>
         /// <seealso cref="mpq_equal">mpq_equal</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Comparing-Rationals.html#Comparing-Rationals">GNU MP - Comparing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13087,7 +13087,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_cmp_ui">mpq_cmp_ui</seealso>
         /// <seealso cref="mpq_sgn">mpq_sgn</seealso>
         /// <seealso cref="mpq_equal">mpq_equal</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Comparing-Rationals.html#Comparing-Rationals">GNU MP - Comparing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13138,7 +13138,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_cmp_si">mpq_cmp_si</seealso>
         /// <seealso cref="mpq_sgn">mpq_sgn</seealso>
         /// <seealso cref="mpq_equal">mpq_equal</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Comparing-Rationals.html#Comparing-Rationals">GNU MP - Comparing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13188,7 +13188,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_cmp_si">mpq_cmp_si</seealso>
         /// <seealso cref="mpq_sgn">mpq_sgn</seealso>
         /// <seealso cref="mpq_equal">mpq_equal</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Comparing-Rationals.html#Comparing-Rationals">GNU MP - Comparing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13250,7 +13250,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_get_den ">mpq_get_den </seealso>
         /// <seealso cref="mpq_set_num">mpq_set_num</seealso>
         /// <seealso cref="mpq_set_den">mpq_set_den</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Applying-Integer-Functions.html#Applying-Integer-Functions">GNU MP - Applying Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13306,7 +13306,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_neg">mpq_neg</seealso>
         /// <seealso cref="mpq_abs">mpq_abs</seealso>
         /// <seealso cref="mpq_inv">mpq_inv</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13336,7 +13336,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_neg">mpq_neg</seealso>
         /// <seealso cref="mpq_abs">mpq_abs</seealso>
         /// <seealso cref="mpq_inv">mpq_inv</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13367,7 +13367,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_cmp_ui">mpq_cmp_ui</seealso>
         /// <seealso cref="mpq_cmp_si">mpq_cmp_si</seealso>
         /// <seealso cref="mpq_sgn">mpq_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Comparing-Rationals.html#Comparing-Rationals">GNU MP - Comparing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13428,7 +13428,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_get_den ">mpq_get_den </seealso>
         /// <seealso cref="mpq_set_num">mpq_set_num</seealso>
         /// <seealso cref="mpq_set_den">mpq_set_den</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Applying-Integer-Functions.html#Applying-Integer-Functions">GNU MP - Applying Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13500,7 +13500,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_get_den ">mpq_get_den </seealso>
         /// <seealso cref="mpq_set_num">mpq_set_num</seealso>
         /// <seealso cref="mpq_set_den">mpq_set_den</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Applying-Integer-Functions.html#Applying-Integer-Functions">GNU MP - Applying Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13571,7 +13571,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_set_d">mpq_set_d</seealso>
         /// <seealso cref="mpq_set_f">mpq_set_f</seealso>
         /// <seealso cref="mpq_get_str">mpq_get_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Conversions">Rational Conversions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Conversions">Rational Conversions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Conversions.html#Rational-Conversions">GNU MP - Rational Conversions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13634,7 +13634,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_get_d">mpq_get_d</seealso>
         /// <seealso cref="mpq_set_d">mpq_set_d</seealso>
         /// <seealso cref="mpq_set_f">mpq_set_f</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Conversions">Rational Conversions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Conversions">Rational Conversions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Conversions.html#Rational-Conversions">GNU MP - Rational Conversions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13692,7 +13692,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
         /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
         /// <seealso cref="mpq_swap">mpq_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13743,7 +13743,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
         /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
         /// <seealso cref="mpq_swap">mpq_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13812,7 +13812,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_out_str">mpq_out_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Rationals">I/O of Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Rationals">I/O of Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Rationals.html#I_002fO-of-Rationals">GNU MP - I/O of Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13892,7 +13892,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_div_2exp">mpq_div_2exp</seealso>
         /// <seealso cref="mpq_neg">mpq_neg</seealso>
         /// <seealso cref="mpq_abs">mpq_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13921,7 +13921,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_neg">mpq_neg</seealso>
         /// <seealso cref="mpq_abs">mpq_abs</seealso>
         /// <seealso cref="mpq_inv">mpq_inv</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13951,7 +13951,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_neg">mpq_neg</seealso>
         /// <seealso cref="mpq_abs">mpq_abs</seealso>
         /// <seealso cref="mpq_inv">mpq_inv</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -13979,7 +13979,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_div_2exp">mpq_div_2exp</seealso>
         /// <seealso cref="mpq_abs">mpq_abs</seealso>
         /// <seealso cref="mpq_inv">mpq_inv</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14009,7 +14009,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_get_den ">mpq_get_den </seealso>
         /// <seealso cref="mpq_set_num">mpq_set_num</seealso>
         /// <seealso cref="mpq_set_den">mpq_set_den</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Applying-Integer-Functions.html#Applying-Integer-Functions">GNU MP - Applying Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14065,7 +14065,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_inp_str">mpq_inp_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Rationals">I/O of Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Rationals">I/O of Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Rationals.html#I_002fO-of-Rationals">GNU MP - I/O of Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14153,7 +14153,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
         /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
         /// <seealso cref="mpq_swap">mpq_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14213,7 +14213,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_get_d">mpq_get_d</seealso>
         /// <seealso cref="mpq_set_f">mpq_set_f</seealso>
         /// <seealso cref="mpq_get_str">mpq_get_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Conversions">Rational Conversions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Conversions">Rational Conversions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Conversions.html#Rational-Conversions">GNU MP - Rational Conversions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14265,7 +14265,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_get_num">mpq_get_num</seealso>
         /// <seealso cref="mpq_get_den ">mpq_get_den </seealso>
         /// <seealso cref="mpq_set_num">mpq_set_num</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Applying-Integer-Functions.html#Applying-Integer-Functions">GNU MP - Applying Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14324,7 +14324,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_get_d">mpq_get_d</seealso>
         /// <seealso cref="mpq_set_d">mpq_set_d</seealso>
         /// <seealso cref="mpq_get_str">mpq_get_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Conversions">Rational Conversions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Conversions">Rational Conversions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Conversions.html#Rational-Conversions">GNU MP - Rational Conversions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14393,7 +14393,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_get_num">mpq_get_num</seealso>
         /// <seealso cref="mpq_get_den ">mpq_get_den </seealso>
         /// <seealso cref="mpq_set_den">mpq_set_den</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Applying_Integer_Functions">Applying Integer Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Applying-Integer-Functions.html#Applying-Integer-Functions">GNU MP - Applying Integer Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14467,7 +14467,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
         /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
         /// <seealso cref="mpq_swap">mpq_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14539,7 +14539,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
         /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
         /// <seealso cref="mpq_swap">mpq_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14592,7 +14592,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
         /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
         /// <seealso cref="mpq_swap">mpq_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14645,7 +14645,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
         /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
         /// <seealso cref="mpq_swap">mpq_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14708,7 +14708,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_cmp_ui">mpq_cmp_ui</seealso>
         /// <seealso cref="mpq_cmp_si">mpq_cmp_si</seealso>
         /// <seealso cref="mpq_equal">mpq_equal</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Comparing_Rationals">Comparing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Comparing-Rationals.html#Comparing-Rationals">GNU MP - Comparing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14756,7 +14756,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_neg">mpq_neg</seealso>
         /// <seealso cref="mpq_abs">mpq_abs</seealso>
         /// <seealso cref="mpq_inv">mpq_inv</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Rational_Arithmetic">Rational Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14787,7 +14787,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpq_set_ui">mpq_set_ui</seealso>
         /// <seealso cref="mpq_set_si">mpq_set_si</seealso>
         /// <seealso cref="mpq_set_str">mpq_set_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Rationals">Initializing Rationals</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14857,7 +14857,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -14924,7 +14924,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15000,7 +15000,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15069,7 +15069,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
         /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
         /// <seealso cref="mpf_random2">mpf_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15140,7 +15140,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
         /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
         /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15192,7 +15192,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
         /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
         /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15248,7 +15248,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_cmp_si">mpf_cmp_si</seealso>
         /// <seealso cref="mpf_reldiff">mpf_reldiff</seealso>
         /// <seealso cref="mpf_sgn">mpf_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15307,7 +15307,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_cmp_si">mpf_cmp_si</seealso>
         /// <seealso cref="mpf_reldiff">mpf_reldiff</seealso>
         /// <seealso cref="mpf_sgn">mpf_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15373,7 +15373,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_cmp_si">mpf_cmp_si</seealso>
         /// <seealso cref="mpf_reldiff">mpf_reldiff</seealso>
         /// <seealso cref="mpf_sgn">mpf_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15423,7 +15423,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_cmp_ui">mpf_cmp_ui</seealso>
         /// <seealso cref="mpf_reldiff">mpf_reldiff</seealso>
         /// <seealso cref="mpf_sgn">mpf_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15474,7 +15474,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_cmp_si">mpf_cmp_si</seealso>
         /// <seealso cref="mpf_reldiff">mpf_reldiff</seealso>
         /// <seealso cref="mpf_sgn">mpf_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15536,7 +15536,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
         /// <seealso cref="mpf_div_2exp">mpf_div_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15614,7 +15614,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15691,7 +15691,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
         /// <seealso cref="mpf_div_2exp">mpf_div_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15741,7 +15741,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
         /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
         /// <seealso cref="mpf_random2">mpf_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15789,7 +15789,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
         /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
         /// <seealso cref="mpf_random2">mpf_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15837,7 +15837,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
         /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
         /// <seealso cref="mpf_random2">mpf_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15885,7 +15885,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
         /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
         /// <seealso cref="mpf_random2">mpf_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15933,7 +15933,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
         /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
         /// <seealso cref="mpf_random2">mpf_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -15981,7 +15981,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
         /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
         /// <seealso cref="mpf_random2">mpf_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16029,7 +16029,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
         /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
         /// <seealso cref="mpf_random2">mpf_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16099,7 +16099,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_si">mpf_get_si</seealso>
         /// <seealso cref="mpf_get_ui">mpf_get_ui</seealso>
         /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str">O:Math.Gmp.Native.gmp_lib.mpf_get_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16153,7 +16153,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_si">mpf_get_si</seealso>
         /// <seealso cref="mpf_get_ui">mpf_get_ui</seealso>
         /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str">O:Math.Gmp.Native.gmp_lib.mpf_get_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16215,7 +16215,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
         /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
         /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16252,7 +16252,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_clears">mpf_clears</seealso>
         /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
         /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16304,7 +16304,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_d_2exp">mpf_get_d_2exp</seealso>
         /// <seealso cref="mpf_get_ui">mpf_get_ui</seealso>
         /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str">O:Math.Gmp.Native.gmp_lib.mpf_get_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16388,7 +16388,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_d_2exp">mpf_get_d_2exp</seealso>
         /// <seealso cref="mpf_get_si">mpf_get_si</seealso>
         /// <seealso cref="mpf_get_ui">mpf_get_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16483,7 +16483,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_d_2exp">mpf_get_d_2exp</seealso>
         /// <seealso cref="mpf_get_si">mpf_get_si</seealso>
         /// <seealso cref="mpf_get_ui">mpf_get_ui</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16551,7 +16551,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_d_2exp">mpf_get_d_2exp</seealso>
         /// <seealso cref="mpf_get_si">mpf_get_si</seealso>
         /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpf_get_str">O:Math.Gmp.Native.gmp_lib.mpf_get_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Converting_Floats">Converting Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16585,7 +16585,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
         /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
         /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16645,7 +16645,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
         /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
         /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16702,7 +16702,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
         /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
         /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16745,7 +16745,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_init_set_si">mpf_init_set_si</seealso>
         /// <seealso cref="mpf_init_set_d">mpf_init_set_d</seealso>
         /// <seealso cref="mpf_init_set_str">mpf_init_set_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Float-Init-_0026-Assign.html#Simultaneous-Float-Init-_0026-Assign">GNU MP - Combined Float Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16808,7 +16808,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_init_set_ui">mpf_init_set_ui</seealso>
         /// <seealso cref="mpf_init_set_si">mpf_init_set_si</seealso>
         /// <seealso cref="mpf_init_set_str">mpf_init_set_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Float-Init-_0026-Assign.html#Simultaneous-Float-Init-_0026-Assign">GNU MP - Combined Float Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16862,7 +16862,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_init_set_ui">mpf_init_set_ui</seealso>
         /// <seealso cref="mpf_init_set_d">mpf_init_set_d</seealso>
         /// <seealso cref="mpf_init_set_str">mpf_init_set_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Float-Init-_0026-Assign.html#Simultaneous-Float-Init-_0026-Assign">GNU MP - Combined Float Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16924,7 +16924,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_init_set_ui">mpf_init_set_ui</seealso>
         /// <seealso cref="mpf_init_set_si">mpf_init_set_si</seealso>
         /// <seealso cref="mpf_init_set_d">mpf_init_set_d</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Float-Init-_0026-Assign.html#Simultaneous-Float-Init-_0026-Assign">GNU MP - Combined Float Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -16983,7 +16983,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_init_set_si">mpf_init_set_si</seealso>
         /// <seealso cref="mpf_init_set_d">mpf_init_set_d</seealso>
         /// <seealso cref="mpf_init_set_str">mpf_init_set_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Simultaneous_Float_Init_Assign">Simultaneous Float Init &amp; Assign</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Simultaneous-Float-Init-_0026-Assign.html#Simultaneous-Float-Init-_0026-Assign">GNU MP - Combined Float Initialization and Assignment</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17049,7 +17049,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_out_str">mpf_out_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Floats">I/O of Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Floats">I/O of Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Floats.html#I_002fO-of-Floats">GNU MP - I/O of Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17127,7 +17127,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
         /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
         /// <seealso cref="mpf_random2">mpf_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17179,7 +17179,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
         /// <seealso cref="mpf_mul_2exp">mpf_mul_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17256,7 +17256,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17324,7 +17324,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
         /// <seealso cref="mpf_mul_2exp">mpf_mul_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17389,7 +17389,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
         /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17471,7 +17471,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_inp_str">mpf_inp_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Floats">I/O of Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#IO_of_Floats">I/O of Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/I_002fO-of-Floats.html#I_002fO-of-Floats">GNU MP - I/O of Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17528,7 +17528,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_sqrt">mpf_sqrt</seealso>
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17606,7 +17606,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
         /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
         /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17650,7 +17650,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_cmp_ui">mpf_cmp_ui</seealso>
         /// <seealso cref="mpf_cmp_si">mpf_cmp_si</seealso>
         /// <seealso cref="mpf_sgn">mpf_sgn</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17724,7 +17724,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
         /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
         /// <seealso cref="mpf_swap">mpf_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17787,7 +17787,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
         /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
         /// <seealso cref="mpf_swap">mpf_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17843,7 +17843,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
         /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
         /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17888,7 +17888,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_clears">mpf_clears</seealso>
         /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
         /// <seealso cref="mpf_set_prec_raw">mpf_set_prec_raw</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -17964,7 +17964,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_clears">mpf_clears</seealso>
         /// <seealso cref="mpf_get_prec">mpf_get_prec</seealso>
         /// <seealso cref="mpf_set_prec">mpf_set_prec</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Initializing_Floats">Initializing Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Floats.html#Initializing-Floats">GNU MP - Initializing Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18044,7 +18044,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_set_z">mpf_set_z</seealso>
         /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
         /// <seealso cref="mpf_swap">mpf_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18103,7 +18103,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
         /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
         /// <seealso cref="mpf_swap">mpf_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18187,7 +18187,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_set_z">mpf_set_z</seealso>
         /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
         /// <seealso cref="mpf_swap">mpf_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18237,7 +18237,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
         /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
         /// <seealso cref="mpf_swap">mpf_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18287,7 +18287,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
         /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
         /// <seealso cref="mpf_swap">mpf_swap</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18345,7 +18345,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_cmp_ui">mpf_cmp_ui</seealso>
         /// <seealso cref="mpf_cmp_si">mpf_cmp_si</seealso>
         /// <seealso cref="mpf_reldiff">mpf_reldiff</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Comparison">Float Comparison</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Comparison.html#Float-Comparison">GNU MP - Float Comparison</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18383,7 +18383,7 @@ namespace Math.Gmp.Native
         /// <param name="op">The operand float.</param>
         /// <returns>The number of limbs currently in use.</returns>
         /// <seealso cref="mpf_t">mpf_t</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18435,7 +18435,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18501,7 +18501,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18560,7 +18560,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18638,7 +18638,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18708,7 +18708,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_set_z">mpf_set_z</seealso>
         /// <seealso cref="mpf_set_q">mpf_set_q</seealso>
         /// <seealso cref="mpf_set_str">mpf_set_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Assigning_Floats">Assigning Floats</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Assigning-Floats.html#Assigning-Floats">GNU MP - Assigning Floats</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18781,7 +18781,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
         /// <seealso cref="mpf_urandomb">mpf_urandomb</seealso>
         /// <seealso cref="mpf_random2">mpf_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18858,7 +18858,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
         /// <seealso cref="mpf_div_2exp">mpf_div_2exp</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18926,7 +18926,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_pow_ui">mpf_pow_ui</seealso>
         /// <seealso cref="mpf_neg">mpf_neg</seealso>
         /// <seealso cref="mpf_abs">mpf_abs</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Float_Arithmetic">Float Arithmetic</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Float-Arithmetic.html#Float-Arithmetic">GNU MP - Float Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -18988,7 +18988,7 @@ namespace Math.Gmp.Native
         /// <remarks>
         /// <para>
         /// The variable state must be initialized by calling one of the <c>gmp_randinit</c> functions
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
         /// (<a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a>) before invoking this function. 
         /// </para>
         /// </remarks>
@@ -19003,7 +19003,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpf_fits_ushort_p">mpf_fits_ushort_p</seealso>
         /// <seealso cref="mpf_fits_sshort_p">mpf_fits_sshort_p</seealso>
         /// <seealso cref="mpf_random2">mpf_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Miscellaneous_Float_Functions">Miscellaneous Float Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19085,7 +19085,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19161,7 +19161,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19242,7 +19242,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19330,7 +19330,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19386,7 +19386,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_perfect_power_p">mpn_perfect_power_p</seealso>
         /// <seealso cref="mpn_perfect_square_p">mpn_perfect_square_p</seealso>
         /// <seealso cref="mpn_zero_p">mpn_zero_p</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19428,7 +19428,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_cmp">mpn_cmp</seealso>
         /// <seealso cref="mpn_perfect_power_p">mpn_perfect_power_p</seealso>
         /// <seealso cref="mpn_perfect_square_p">mpn_perfect_square_p</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19491,7 +19491,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19581,7 +19581,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19675,7 +19675,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19766,7 +19766,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19854,7 +19854,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -19954,7 +19954,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="mpn_gcd_1">mpn_gcd_1</seealso>
         /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpn_gcdext">O:Math.Gmp.Native.gmp_lib.mpn_gcdext</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20014,7 +20014,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="mpn_gcd">mpn_gcd</seealso>
         /// <seealso cref="O:Math.Gmp.Native.gmp_lib.mpn_gcdext">O:Math.Gmp.Native.gmp_lib.mpn_gcdext</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20096,7 +20096,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="mpn_gcd">mpn_gcd</seealso>
         /// <seealso cref="mpn_gcd_1">mpn_gcd_1</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20196,7 +20196,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="mpn_gcd">mpn_gcd</seealso>
         /// <seealso cref="mpn_gcd_1">mpn_gcd_1</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20280,7 +20280,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="mpn_set_str">mpn_set_str</seealso>
         /// <seealso cref="mpn_sizeinbase">mpn_sizeinbase</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20343,7 +20343,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_rshift">mpn_rshift</seealso>
         /// <seealso cref="mpn_scan0">mpn_scan0</seealso>
         /// <seealso cref="mpn_scan1">mpn_scan1</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20399,7 +20399,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_rshift">mpn_rshift</seealso>
         /// <seealso cref="mpn_scan0">mpn_scan0</seealso>
         /// <seealso cref="mpn_scan1">mpn_scan1</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20477,7 +20477,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20549,7 +20549,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20639,7 +20639,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20721,7 +20721,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20797,7 +20797,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20871,7 +20871,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20932,7 +20932,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
         /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
         /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -20987,7 +20987,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_cmp">mpn_cmp</seealso>
         /// <seealso cref="mpn_perfect_power_p">mpn_perfect_power_p</seealso>
         /// <seealso cref="mpn_zero_p">mpn_zero_p</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21026,7 +21026,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_cmp">mpn_cmp</seealso>
         /// <seealso cref="mpn_perfect_square_p">mpn_perfect_square_p</seealso>
         /// <seealso cref="mpn_zero_p">mpn_zero_p</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21067,7 +21067,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_rshift">mpn_rshift</seealso>
         /// <seealso cref="mpn_scan0">mpn_scan0</seealso>
         /// <seealso cref="mpn_scan1">mpn_scan1</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21126,7 +21126,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_random2">mpn_random2</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21172,7 +21172,7 @@ namespace Math.Gmp.Native
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_random">mpn_random</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21225,7 +21225,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_popcount">mpn_popcount</seealso>
         /// <seealso cref="mpn_scan0">mpn_scan0</seealso>
         /// <seealso cref="mpn_scan1">mpn_scan1</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21288,7 +21288,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_popcount">mpn_popcount</seealso>
         /// <seealso cref="mpn_rshift">mpn_rshift</seealso>
         /// <seealso cref="mpn_scan1">mpn_scan1</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21335,7 +21335,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_popcount">mpn_popcount</seealso>
         /// <seealso cref="mpn_rshift">mpn_rshift</seealso>
         /// <seealso cref="mpn_scan0">mpn_scan0</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21397,7 +21397,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="mpn_get_str">mpn_get_str</seealso>
         /// <seealso cref="mpn_sizeinbase">mpn_sizeinbase</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21465,7 +21465,7 @@ namespace Math.Gmp.Native
         /// </remarks>
         /// <seealso cref="mpn_get_str">mpn_get_str</seealso>
         /// <seealso cref="mpn_set_str">mpn_set_str</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21546,7 +21546,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21630,7 +21630,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21707,7 +21707,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21781,7 +21781,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21868,7 +21868,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
         /// <seealso cref="mpn_tdiv_qr">mpn_tdiv_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -21957,7 +21957,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_submul_1">mpn_submul_1</seealso>
         /// <seealso cref="mpn_sqr">mpn_sqr</seealso>
         /// <seealso cref="mpn_sqrtrem">mpn_sqrtrem</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22023,7 +22023,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
         /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
         /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22082,7 +22082,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
         /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
         /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22141,7 +22141,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
         /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
         /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22200,7 +22200,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
         /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
         /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22259,7 +22259,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
         /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
         /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22318,7 +22318,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_nand_n">mpn_nand_n</seealso>
         /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
         /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22377,7 +22377,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_nand_n">mpn_nand_n</seealso>
         /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
         /// <seealso cref="mpn_xnor_n">mpn_xnor_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22436,7 +22436,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_nand_n">mpn_nand_n</seealso>
         /// <seealso cref="mpn_nior_n">mpn_nior_n</seealso>
         /// <seealso cref="mpn_xor_n">mpn_xor_n</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22488,7 +22488,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The number of limbs of <paramref name="s1p"/>.</param>
         /// <seealso cref="mpn_copyd">mpn_copyd</seealso>
         /// <seealso cref="mpn_zero">mpn_zero</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22537,7 +22537,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The number of limbs of <paramref name="s1p"/>.</param>
         /// <seealso cref="mpn_copyi">mpn_copyi</seealso>
         /// <seealso cref="mpn_zero">mpn_zero</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22585,7 +22585,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The number of limbs of <paramref name="rp"/>.</param>
         /// <seealso cref="mpn_copyd">mpn_copyd</seealso>
         /// <seealso cref="mpn_copyi">mpn_copyi</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_Functions">Low-level Functions</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22654,7 +22654,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
         /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
         /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22735,7 +22735,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
         /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
         /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22812,7 +22812,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
         /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
         /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22873,7 +22873,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The number of limbs of the <see cref="mpn_sec_add_1">mpn_sec_add_1</see> operand.</param>
         /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_add_1">mpn_sec_add_1</see>.</returns>
         /// <seealso cref="mpn_sec_add_1">mpn_sec_add_1</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_add_1_itch(mp_size_t n)
         {
@@ -22908,7 +22908,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
         /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
         /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -22969,7 +22969,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The number of limbs of the <see cref="mpn_sec_sub_1">mpn_sec_sub_1</see> operand.</param>
         /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_sub_1">mpn_sec_sub_1</see>.</returns>
         /// <seealso cref="mpn_sec_sub_1">mpn_sec_sub_1</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_sub_1_itch(mp_size_t n)
         {
@@ -22999,7 +22999,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
         /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
         /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -23081,7 +23081,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
         /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
         /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -23141,7 +23141,7 @@ namespace Math.Gmp.Native
         /// <param name="bn">The number of limbs of the <see cref="mpn_sec_mul">mpn_sec_mul</see> second operand.</param>
         /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_mul">mpn_sec_mul</see>.</returns>
         /// <seealso cref="mpn_sec_mul">mpn_sec_mul</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_mul_itch(mp_size_t an, mp_size_t bn)
         {
@@ -23180,7 +23180,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
         /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
         /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -23236,7 +23236,7 @@ namespace Math.Gmp.Native
         /// <param name="an">The number of limbs of the <see cref="mpn_sec_sqr">mpn_sec_sqr</see> operand.</param>
         /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_sqr">mpn_sec_sqr</see>.</returns>
         /// <seealso cref="mpn_sec_sqr">mpn_sec_sqr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_sqr_itch(mp_size_t an)
         {
@@ -23279,7 +23279,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
         /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
         /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -23343,7 +23343,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The number of limbs of the <see cref="mpn_sec_powm">mpn_sec_powm</see> third operand.</param>
         /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_powm">mpn_sec_powm</see>.</returns>
         /// <seealso cref="mpn_sec_powm">mpn_sec_powm</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_powm_itch(mp_size_t bn, mp_bitcnt_t enb, mp_size_t n)
         {
@@ -23375,7 +23375,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
         /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
         /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -23453,7 +23453,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sec_div_qr_itch">mpn_sec_div_qr_itch</seealso>
         /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
         /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -23520,7 +23520,7 @@ namespace Math.Gmp.Native
         /// <param name="dn">The number of limbs of the <see cref="mpn_sec_div_qr">mpn_sec_div_qr</see> second operand.</param>
         /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_div_qr">mpn_sec_div_qr</see>.</returns>
         /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_div_qr_itch(mp_size_t nn, mp_size_t dn)
         {
@@ -23563,7 +23563,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
         /// <seealso cref="mpn_sec_div_r_itch">mpn_sec_div_r_itch</seealso>
         /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -23618,7 +23618,7 @@ namespace Math.Gmp.Native
         /// <param name="dn">The number of limbs of the <see cref="mpn_sec_div_r">mpn_sec_div_r</see> second operand.</param>
         /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_div_r">mpn_sec_div_r</see>.</returns>
         /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_div_r_itch(mp_size_t nn, mp_size_t dn)
         {
@@ -23662,7 +23662,7 @@ namespace Math.Gmp.Native
         /// <seealso cref="mpn_sec_div_qr">mpn_sec_div_qr</seealso>
         /// <seealso cref="mpn_sec_div_r">mpn_sec_div_r</seealso>
         /// <seealso cref="mpn_sec_invert_itch">mpn_sec_invert_itch</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         /// <example>
         /// <code language="C#">
@@ -23703,7 +23703,7 @@ namespace Math.Gmp.Native
         /// <param name="n">The number of limbs of the <see cref="mpn_sec_invert">mpn_sec_invert</see> first operand.</param>
         /// <returns>The scratch space in number of limbs required by the function <see cref="mpn_sec_invert">mpn_sec_invert</see>.</returns>
         /// <seealso cref="mpn_sec_invert">mpn_sec_invert</seealso>
-        /// <seealso cref="gmp_lib"><a href="/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
+        /// <seealso cref="gmp_lib"><a href="/Math.Gmp.Native/html/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Low_level_functions_for_cryptography">Low-level functions for cryptography</a></seealso>
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Low_002dlevel-Functions.html#Low_002dlevel-Functions">GNU MP - Low-level Functions</a></seealso>
         public static mp_size_t mpn_sec_invert_itch(mp_size_t n)
         {
