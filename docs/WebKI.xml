@@ -10,12 +10,12 @@
   <HelpKINode Title="char_ptr structure">
     <HelpKINode Title="char_ptr Structure" Url="html/06249483-9daf-95f9-32c7-30195550bbcc.htm" />
     <HelpKINode Title="about char_ptr structure" Url="html/06249483-9daf-95f9-32c7-30195550bbcc.htm" />
-    <HelpKINode Title="constructor" Url="html/9006f054-e796-6460-45df-47d6ab808697.htm" />
+    <HelpKINode Title="constructor" Url="html/9006f054-e796-6460-45df-47d6ab808697 (conflict).htm" />
     <HelpKINode Title="fields" Url="html/b32f2955-fb82-d5d4-3b3d-7dcd95a5d305.htm" />
     <HelpKINode Title="methods" Url="html/73876566-4eec-b421-e4d6-3593e9641f0a.htm" />
     <HelpKINode Title="operators" Url="html/84b523e8-bc53-01e9-49af-f7996af73647.htm" />
   </HelpKINode>
-  <HelpKINode Title="char_ptr.char_ptr constructor" Url="html/9006f054-e796-6460-45df-47d6ab808697.htm" />
+  <HelpKINode Title="char_ptr.char_ptr constructor" Url="html/9006f054-e796-6460-45df-47d6ab808697 (conflict).htm" />
   <HelpKINode Title="char_ptr.Equality operator" Url="html/a4f47fa4-8285-638d-c094-bc9e249a49a0.htm" />
   <HelpKINode Title="char_ptr.Equals method" Url="html/2d2c429f-5828-694d-2ad7-9d13e5c412b3.htm" />
   <HelpKINode Title="char_ptr.GetHashCode method" Url="html/84492195-83e7-7738-6678-c299663dd02c.htm" />
@@ -36,7 +36,7 @@
   </HelpKINode>
   <HelpKINode Title="Equals method">
     <HelpKINode Title="char_ptr.Equals Method " Url="html/2d2c429f-5828-694d-2ad7-9d13e5c412b3.htm" />
-    <HelpKINode Title="FILE.Equals Method " Url="html/4e0b1b66-de5f-3451-d835-df0116b8c789.htm" />
+    <HelpKINode Title="FILE.Equals Method " Url="html/4e0b1b66-de5f-3451-d835-df0116b8c789 (conflict).htm" />
     <HelpKINode Title="mp_bitcnt_t.Equals Method " Url="html/cfedc4a1-b264-82a8-cf48-a6416e4afce7.htm" />
     <HelpKINode Title="mp_exp_t.Equals Method " Url="html/5a3c38b8-5205-bc81-58e8-60b155c0579c.htm" />
     <HelpKINode Title="mp_limb_t.Equals Method " Url="html/f3da8743-4110-ef69-3809-3261d9304977.htm" />
@@ -52,7 +52,7 @@
     <HelpKINode Title="operators" Url="html/4fe7aa66-0d05-7853-360a-72c4b55b69bd.htm" />
   </HelpKINode>
   <HelpKINode Title="FILE.Equality operator" Url="html/cdb5f955-23ce-e22d-5090-d137153e866f.htm" />
-  <HelpKINode Title="FILE.Equals method" Url="html/4e0b1b66-de5f-3451-d835-df0116b8c789.htm" />
+  <HelpKINode Title="FILE.Equals method" Url="html/4e0b1b66-de5f-3451-d835-df0116b8c789 (conflict).htm" />
   <HelpKINode Title="FILE.GetHashCode method" Url="html/b6911fef-883d-ec11-c2ad-1ff1ff565601.htm" />
   <HelpKINode Title="FILE.Inequality operator" Url="html/77413435-917b-2cdc-cfde-d0891b6ede82.htm" />
   <HelpKINode Title="FILE.Value field" Url="html/fb70a49d-b7b0-b8fc-83f5-0864f381cc76.htm" />
