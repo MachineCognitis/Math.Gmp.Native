@@ -3809,7 +3809,7 @@ namespace Math.Gmp.Native
         /// gmp_lib.mpz_clear(n)
         /// </code> 
         /// </example>
-        public static ulong mpz_cdiv_ui(/*const*/ mpz_t n, uint /*unsigned long int*/ d)
+        public static uint mpz_cdiv_ui(/*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
             if (n == null) throw new ArgumentNullException("n");
             return SafeNativeMethods.__gmpz_cdiv_ui(n.ToIntPtr(), d);

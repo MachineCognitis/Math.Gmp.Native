@@ -76,12 +76,16 @@ namespace Math.Gmp.Native
             {
                 return Marshal.ReadInt32(Pointer, sizeof(int));
             }
+            set
+            {
+                Marshal.WriteInt32(Pointer, sizeof(int), value);
+            }
         }
 
         /// <summary>
         /// Gets or sets the pointer to the array of limbs of the integer.
         /// </summary>
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        //[DebuggerBrowsable(DebuggerBrowsableState.Never)]
         public override IntPtr _mp_d_intptr
         {
             get

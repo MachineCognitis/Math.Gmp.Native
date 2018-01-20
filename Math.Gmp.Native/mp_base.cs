@@ -32,6 +32,10 @@ namespace Math.Gmp.Native
             {
                 return _size;
             }
+            set
+            {
+                _size = value;
+            }
         }
 
         /// <summary>
