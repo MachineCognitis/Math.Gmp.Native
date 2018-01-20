@@ -6000,7 +6000,7 @@ namespace Math.Gmp.Native
         /// gmp_lib.mpz_clears(n, r, Nothing)
         /// </code> 
         /// </example>
-        public static long mpz_fdiv_r_ui(mpz_t r, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
+        public static uint mpz_fdiv_r_ui(mpz_t r, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
             if (r == null) throw new ArgumentNullException("r");
             if (n == null) throw new ArgumentNullException("n");
@@ -12124,7 +12124,7 @@ namespace Math.Gmp.Native
         /// gmp_lib.mpz_clears(n, r, Nothing)
         /// </code> 
         /// </example>
-        public static ulong mpz_tdiv_r_ui(mpz_t r, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
+        public static uint mpz_tdiv_r_ui(mpz_t r, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
             if (r == null) throw new ArgumentNullException("r");
             if (n == null) throw new ArgumentNullException("n");
