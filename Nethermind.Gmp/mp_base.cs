@@ -2,7 +2,7 @@
 using System;
 using System.Diagnostics;
 
-namespace Math.Gmp.Native
+namespace Nethermind.Gmp
 {
 
     /// <summary>

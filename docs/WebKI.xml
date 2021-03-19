@@ -514,28 +514,28 @@
   <HelpKINode Title="Int64 to mp_size_t conversion" Url="html/fecd3260-6eb9-5e31-0266-9bb52bf9b038.htm" />
   <HelpKINode Title="Int64 to size_t conversion" Url="html/e9177dc9-2049-a649-3bf2-735ed6927aae.htm" />
   <HelpKINode Title="Item property" Url="html/a7661bd2-2bcb-01c5-9833-5ab6d6305daf.htm" />
-  <HelpKINode Title="Math.Gmp.Native namespace" Url="html/d9c51b9f-0c54-770b-28ea-6eebd8fef368.htm" />
-  <HelpKINode Title="Math.Gmp.Native.allocate_function delegate" Url="html/dfe3609d-cc50-e357-4254-e3a8e2847f07.htm" />
-  <HelpKINode Title="Math.Gmp.Native.char_ptr structure" Url="html/06249483-9daf-95f9-32c7-30195550bbcc.htm" />
-  <HelpKINode Title="Math.Gmp.Native.FILE structure" Url="html/1bcc07bd-8fee-1107-844c-a5ff10e7660c.htm" />
-  <HelpKINode Title="Math.Gmp.Native.free_function delegate" Url="html/2c9876e2-a0f5-14c6-5069-1a9d50b89185.htm" />
-  <HelpKINode Title="Math.Gmp.Native.gmp_lib class" Url="html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm" />
-  <HelpKINode Title="Math.Gmp.Native.gmp_randstate_t class" Url="html/f7e5846d-548d-3bf3-74ac-219fde42a041.htm" />
-  <HelpKINode Title="Math.Gmp.Native.mpf_t class" Url="html/37c88d6c-8d02-2330-ad77-f20fb73d1677.htm" />
-  <HelpKINode Title="Math.Gmp.Native.mpq_t class" Url="html/635f1879-5f85-881e-cca8-3222baf5045a.htm" />
-  <HelpKINode Title="Math.Gmp.Native.mpz_t class" Url="html/8beda7fb-bbc4-b56f-fd1f-1459377ecb3b.htm" />
-  <HelpKINode Title="Math.Gmp.Native.mp_base class" Url="html/8f3c572b-8133-bccc-b838-9d22e3467898.htm" />
-  <HelpKINode Title="Math.Gmp.Native.mp_bitcnt_t structure" Url="html/1b2b1d64-20c1-7a64-0278-d9ff58ee9cc3.htm" />
-  <HelpKINode Title="Math.Gmp.Native.mp_exp_t structure" Url="html/e6a17880-791f-37d4-4942-cf26ce7d4cbf.htm" />
-  <HelpKINode Title="Math.Gmp.Native.mp_limb_t structure" Url="html/bf1f694d-f9b2-6413-12e5-ebae603d5b49.htm" />
-  <HelpKINode Title="Math.Gmp.Native.mp_ptr class" Url="html/4609ac5e-5cf9-cd20-2fa9-8040101c165c.htm" />
-  <HelpKINode Title="Math.Gmp.Native.mp_size_t structure" Url="html/4b58a584-7a0e-b600-18fa-ebd493861eb3.htm" />
-  <HelpKINode Title="Math.Gmp.Native.ptr(Of T) class" Url="html/542faa00-d28a-72a2-2dd8-6c6021e683ce.htm" />
-  <HelpKINode Title="Math.Gmp.Native.ptr&lt;T&gt; class" Url="html/542faa00-d28a-72a2-2dd8-6c6021e683ce.htm" />
-  <HelpKINode Title="Math.Gmp.Native.reallocate_function delegate" Url="html/aa9d21b4-a929-d550-5a65-f9cbcfa7f638.htm" />
-  <HelpKINode Title="Math.Gmp.Native.size_t structure" Url="html/d9761bfb-1882-59d2-e89b-c6460141f9a6.htm" />
-  <HelpKINode Title="Math.Gmp.Native.va_list class" Url="html/4f2255b8-b87a-7b1b-286a-abb7293059d7.htm" />
-  <HelpKINode Title="Math.Gmp.Native.void_ptr structure" Url="html/e200d734-044d-4cc7-acc7-2333d7cf3c9a.htm" />
+  <HelpKINode Title="Nethermind.Gmp namespace" Url="html/d9c51b9f-0c54-770b-28ea-6eebd8fef368.htm" />
+  <HelpKINode Title="Nethermind.Gmp.allocate_function delegate" Url="html/dfe3609d-cc50-e357-4254-e3a8e2847f07.htm" />
+  <HelpKINode Title="Nethermind.Gmp.char_ptr structure" Url="html/06249483-9daf-95f9-32c7-30195550bbcc.htm" />
+  <HelpKINode Title="Nethermind.Gmp.FILE structure" Url="html/1bcc07bd-8fee-1107-844c-a5ff10e7660c.htm" />
+  <HelpKINode Title="Nethermind.Gmp.free_function delegate" Url="html/2c9876e2-a0f5-14c6-5069-1a9d50b89185.htm" />
+  <HelpKINode Title="Nethermind.Gmp.gmp_lib class" Url="html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm" />
+  <HelpKINode Title="Nethermind.Gmp.gmp_randstate_t class" Url="html/f7e5846d-548d-3bf3-74ac-219fde42a041.htm" />
+  <HelpKINode Title="Nethermind.Gmp.mpf_t class" Url="html/37c88d6c-8d02-2330-ad77-f20fb73d1677.htm" />
+  <HelpKINode Title="Nethermind.Gmp.mpq_t class" Url="html/635f1879-5f85-881e-cca8-3222baf5045a.htm" />
+  <HelpKINode Title="Nethermind.Gmp.mpz_t class" Url="html/8beda7fb-bbc4-b56f-fd1f-1459377ecb3b.htm" />
+  <HelpKINode Title="Nethermind.Gmp.mp_base class" Url="html/8f3c572b-8133-bccc-b838-9d22e3467898.htm" />
+  <HelpKINode Title="Nethermind.Gmp.mp_bitcnt_t structure" Url="html/1b2b1d64-20c1-7a64-0278-d9ff58ee9cc3.htm" />
+  <HelpKINode Title="Nethermind.Gmp.mp_exp_t structure" Url="html/e6a17880-791f-37d4-4942-cf26ce7d4cbf.htm" />
+  <HelpKINode Title="Nethermind.Gmp.mp_limb_t structure" Url="html/bf1f694d-f9b2-6413-12e5-ebae603d5b49.htm" />
+  <HelpKINode Title="Nethermind.Gmp.mp_ptr class" Url="html/4609ac5e-5cf9-cd20-2fa9-8040101c165c.htm" />
+  <HelpKINode Title="Nethermind.Gmp.mp_size_t structure" Url="html/4b58a584-7a0e-b600-18fa-ebd493861eb3.htm" />
+  <HelpKINode Title="Nethermind.Gmp.ptr(Of T) class" Url="html/542faa00-d28a-72a2-2dd8-6c6021e683ce.htm" />
+  <HelpKINode Title="Nethermind.Gmp.ptr&lt;T&gt; class" Url="html/542faa00-d28a-72a2-2dd8-6c6021e683ce.htm" />
+  <HelpKINode Title="Nethermind.Gmp.reallocate_function delegate" Url="html/aa9d21b4-a929-d550-5a65-f9cbcfa7f638.htm" />
+  <HelpKINode Title="Nethermind.Gmp.size_t structure" Url="html/d9761bfb-1882-59d2-e89b-c6460141f9a6.htm" />
+  <HelpKINode Title="Nethermind.Gmp.va_list class" Url="html/4f2255b8-b87a-7b1b-286a-abb7293059d7.htm" />
+  <HelpKINode Title="Nethermind.Gmp.void_ptr structure" Url="html/e200d734-044d-4cc7-acc7-2333d7cf3c9a.htm" />
   <HelpKINode Title="mpf_abs method" Url="html/17731ba4-bf91-6b9b-737a-a9cc306ba17d.htm" />
   <HelpKINode Title="mpf_add method" Url="html/c19999f1-01ee-a3fe-dc4d-2a459e73492d.htm" />
   <HelpKINode Title="mpf_add_ui method" Url="html/45a76d5c-c5bf-e7f8-906a-15d290e9a50d.htm" />
