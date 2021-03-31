@@ -19,11 +19,9 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "docs", "docs\docs.shproj", 
 EndProject
 Project("{E09DD79A-4488-4AB9-8D3F-A7EEE78BF432}") = "NuGet", "NuGet\NuGet.nuproj", "{B51A83D0-21F1-454A-A62C-8173DB309348}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "packages", "packages\packages.shproj", "{7C014AD2-2519-4B17-A89E-26A7C6D0BD50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathGmp.Native", "MathGmp.Native\MathGmp.Native.csproj", "{145D16A4-B3B6-49C6-B0DD-E4E0A2A00E4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math.Gmp.Native", "Math.Gmp.Native\Math.Gmp.Native.csproj", "{145D16A4-B3B6-49C6-B0DD-E4E0A2A00E4A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math.Gmp.Native.UnitTests", "Math.Gmp.Native.UnitTests\Math.Gmp.Native.UnitTests.csproj", "{8E987EBD-1611-488C-BC4D-639074C88CB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathGmp.Native.UnitTests", "MathGmp.Native.UnitTests\MathGmp.Native.UnitTests.csproj", "{8E987EBD-1611-488C-BC4D-639074C88CB1}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
