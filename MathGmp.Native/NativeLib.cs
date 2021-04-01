@@ -67,7 +67,6 @@ namespace MathGmp.Native
                 OsPlatform.Linux => $"runtimes/linux-x64/native/{libraryName}.so",
                 OsPlatform.Mac => $"runtimes/osx-x64/native/{libraryName}.dylib",
                 OsPlatform.Windows => $"runtimes\\win-x64\\native\\{libraryName}.dll",
-                OsPlatform.LinuxArm => $"runtimes/linux-arm/native/{libraryName}.so",
                 OsPlatform.LinuxArm64 => $"runtimes/linux-arm64/native/{libraryName}.so",
                 OsPlatform.MacArm64 => $"runtimes/osx-arm64/native/{libraryName}.dylib",
                 _ => throw new NotSupportedException($"Platform support missing: {platform}")
