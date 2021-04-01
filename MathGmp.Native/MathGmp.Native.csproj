@@ -14,9 +14,6 @@
     <Content Include="runtimes\linux-arm64\native\libgmp.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="runtimes\linux-arm\native\libgmp.so">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="runtimes\linux-x64\native\libgmp.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
