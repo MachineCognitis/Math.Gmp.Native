@@ -535,6 +535,7 @@ namespace MathGmp.Native
         private static IntPtr _load_gmp_lib()
         {
             // Load GMP library and create safe handle to it.
+            NativeLibrary.SetDllImportResolver(typeof(gmp_lib).Assembly, NativeLib.ImportResolver);
             IntPtr handle = NativeLib.ImportResolver(LibGmp, typeof(gmp_lib).Assembly, default);
             // Retrieve and cache GMP dynamic memory allocation functions.
             _get_memory_functions();
