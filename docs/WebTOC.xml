@@ -2,7 +2,7 @@
 <HelpTOC>
 
   <HelpTOCNode Title="Welcome to the GMP Native Interface for .NET Library" Url="html/846f5c8a-6cba-433e-9f18-cde2ff5695cd.htm" />
-  <HelpTOCNode Id="f9e8a094-a815-4953-9790-648c7bcb12ab" Title="Math.Gmp.Native" Url="html/d9c51b9f-0c54-770b-28ea-6eebd8fef368.htm">
+  <HelpTOCNode Id="f9e8a094-a815-4953-9790-648c7bcb12ab" Title="MathGmp.Native" Url="html/d9c51b9f-0c54-770b-28ea-6eebd8fef368.htm">
     <HelpTOCNode Title="allocate_function Delegate" Url="html/dfe3609d-cc50-e357-4254-e3a8e2847f07.htm" />
     <HelpTOCNode Id="280e9387-90fb-48b5-aa28-b1558beecb06" Title="char_ptr Structure" Url="html/06249483-9daf-95f9-32c7-30195550bbcc.htm">
       <HelpTOCNode Id="0287c071-0843-4322-a961-1a8eb73db532" Title="char_ptr Constructor " Url="html/9006f054-e796-6460-45df-47d6ab808697.htm">

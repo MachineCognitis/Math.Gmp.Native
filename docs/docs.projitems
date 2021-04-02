@@ -453,7 +453,6 @@
     <None Include="$(MSBuildThisFileDirectory)scripts\branding.js" />
     <None Include="$(MSBuildThisFileDirectory)scripts\clipboard.min.js" />
     <None Include="$(MSBuildThisFileDirectory)scripts\jquery-1.11.0.min.js" />
-    <None Include="$(MSBuildThisFileDirectory)SearchHelp.aspx" />
     <None Include="$(MSBuildThisFileDirectory)SearchHelp.inc.php" />
     <None Include="$(MSBuildThisFileDirectory)SearchHelp.php" />
     <None Include="$(MSBuildThisFileDirectory)Web.Config" />
