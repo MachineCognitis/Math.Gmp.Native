@@ -40,7 +40,7 @@ namespace MathGmp.Native
         
         public void Dispose()
         {
-            Clear();
+            gmp_lib.mpq_clear(this);
         }
 
         /// <summary>

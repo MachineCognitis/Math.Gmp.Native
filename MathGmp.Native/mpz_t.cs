@@ -43,7 +43,7 @@ namespace MathGmp.Native
         
         public void Dispose()
         {
-            Clear();
+            gmp_lib.mpz_clear(this);
         }
 
         /// <summary>

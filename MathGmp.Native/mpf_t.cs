@@ -50,7 +50,7 @@ namespace MathGmp.Native
         
         public void Dispose()
         {
-            Clear();
+            gmp_lib.mpf_clear(this);
         }
 
         /// <summary>
