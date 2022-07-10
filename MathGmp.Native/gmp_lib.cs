@@ -570,11 +570,11 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// string version = gmp_lib.gmp_version;
         /// Assert.AreEqual(version, "6.1.2");
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// Dim version As String = gmp_lib.gmp_version
         /// Assert.AreEqual(version, "6.1.2")
-        /// </code> 
+        /// </code>
         /// </example>
         public static readonly string gmp_version = Marshal.PtrToStringAnsi(Marshal.ReadIntPtr(NativeLibrary.GetExport(_gmp_lib.Handle, "__gmp_version")));
 
@@ -589,11 +589,11 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// int bitsPerLimb = gmp_lib.mp_bits_per_limb;
         /// Assert.AreEqual(bitsPerLimb, IntPtr.Size * 8);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// Dim bitsPerLimb As Integer = gmp_lib.mp_bits_per_limb
         /// Assert.AreEqual(bitsPerLimb, IntPtr.Size * 8)
-        /// </code> 
+        /// </code>
         /// </example>
         public static readonly int mp_bits_per_limb = Marshal.ReadInt32(NativeLibrary.GetExport(_gmp_lib.Handle, "__gmp_bits_per_limb"));
 
@@ -607,11 +607,11 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// mp_size_t bytesPerLimb = gmp_lib.mp_bytes_per_limb;
         /// Assert.AreEqual(bytesPerLimb, (mp_size_t)IntPtr.Size);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// Dim bytesPerLimb As mp_size_t = gmp_lib.mp_bytes_per_limb
-        /// Assert.AreEqual(bytesPerLimb, DirectCast(IntPtr.Size, mp_size_t)) 
-        /// </code> 
+        /// Assert.AreEqual(bytesPerLimb, DirectCast(IntPtr.Size, mp_size_t))
+        /// </code>
         /// </example>
         public static readonly mp_size_t mp_bytes_per_limb = mp_bits_per_limb / 8;
 
@@ -625,11 +625,11 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// mp_size_t uintsPerLimb = gmp_lib.mp_uint_per_limb;
         /// Assert.AreEqual(uintsPerLimb, (mp_size_t)(IntPtr.Size / 4));
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// Dim uintsPerLimb As mp_size_t = gmp_lib.mp_uint_per_limb
         /// Assert.AreEqual(uintsPerLimb, DirectCast(IntPtr.Size / 4, mp_size_t))
-        /// </code> 
+        /// </code>
         /// </example>
         public static readonly  mp_size_t mp_uint_per_limb = mp_bits_per_limb / 32;
 
@@ -666,7 +666,7 @@ namespace MathGmp.Native
         /// The return value is a pointer to the resized block, that being the new location if moved or just <paramref name="ptr"/> if not.
         /// </para>
         /// <para>
-        /// <paramref name="ptr"/> is never NULL, it’s always a previously allocated block. 
+        /// <paramref name="ptr"/> is never NULL, it’s always a previously allocated block.
         /// <paramref name="new_size"/> may be bigger or smaller than <paramref name="old_size"/>.
         /// </para>
         /// <para>
@@ -774,34 +774,34 @@ namespace MathGmp.Native
         /// allocate_function allocate;
         /// reallocate_function reallocate;
         /// free_function free;
-        /// 
+        ///
         /// // Retrieve the GMP memory allocation functions.
         /// allocate = null;
         /// reallocate = null;
         /// free = null;
         /// gmp_lib.mp_get_memory_functions(ref allocate, ref reallocate, ref free);
         /// Assert.IsTrue(allocate != null &amp;&amp; reallocate != null &amp;&amp; free != null);
-        /// 
+        ///
         /// // Allocate and free memory.
         /// void_ptr p = allocate(100);
         /// free(p, 100);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// Dim allocate As allocate_function
         /// Dim reallocate As reallocate_function
         /// Dim free As free_function
-        /// 
+        ///
         /// ' Retrieve the GMP memory allocation functions.
         /// allocate = Nothing
         /// reallocate = Nothing
         /// free = Nothing
         /// gmp_lib.mp_get_memory_functions(allocate, reallocate, free)
         /// Assert.IsTrue(allocate IsNot Nothing AndAlso reallocate IsNot Nothing AndAlso free IsNot Nothing)
-        /// 
+        ///
         /// ' Allocate and free memory.
         /// Dim p As void_ptr = allocate(100)
         /// free(p, 100)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mp_get_memory_functions(ref allocate_function alloc_func_ptr, ref reallocate_function realloc_func_ptr, ref free_function free_func_ptr)
         {
@@ -832,78 +832,78 @@ namespace MathGmp.Native
         /// reallocate_function default_reallocate = null;
         /// free_function default_free = null;
         /// gmp_lib.mp_get_memory_functions(ref default_allocate, ref default_reallocate, ref default_free);
-        /// 
+        ///
         /// // Create and set new memory allocation functions that count the number of times they are called.
         /// int counter = 0;
         /// allocate_function new_allocate = (size_t alloc_size) => { counter++; return default_allocate(alloc_size); };
         /// reallocate_function new_reallocate = (void_ptr ptr, size_t old_size, size_t new_size) => { counter++; return default_reallocate(ptr, old_size, new_size); };
         /// free_function new_free = (void_ptr ptr, size_t size) => { counter++; default_free(ptr, size); };
         /// gmp_lib.mp_set_memory_functions(new_allocate, new_reallocate, new_free);
-        /// 
+        ///
         /// // Retrieve GMP memory allocation functions.
         /// allocate_function allocate = null;
         /// reallocate_function reallocate = null;
         /// free_function free = null;
         /// gmp_lib.mp_get_memory_functions(ref allocate, ref reallocate, ref free);
-        /// 
+        ///
         /// // Call memory function and assert calls count.
         /// void_ptr p = allocate(10);
         /// Assert.IsTrue(counter == 1);
-        /// 
+        ///
         /// reallocate(p, 10, 20);
         /// Assert.IsTrue(counter == 2);
-        /// 
+        ///
         /// free(p, 20);
         /// Assert.IsTrue(counter == 3);
-        /// 
+        ///
         /// // Restore default memory allocation functions.
         /// gmp_lib.mp_set_memory_functions(null, null, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Retrieve GMP default memory allocation functions.
         /// Dim default_allocate As allocate_function = Nothing
         /// Dim default_reallocate As reallocate_function = Nothing
         /// Dim default_free As free_function = Nothing
         /// gmp_lib.gmp_get_memory_functions(default_allocate, default_reallocate, default_free)
-        /// 
+        ///
         /// ' Create and set new memory allocation functions that count the number of times they are called.
         /// Dim counter As Integer = 0
         /// Dim new_allocate As allocate_function =
-        ///     Function(alloc_size As size_t) 
+        ///     Function(alloc_size As size_t)
         ///         counter += 1
         ///         Return default_allocate(alloc_size)
         ///     End Function
         /// Dim new_reallocate As reallocate_function =
-        ///     Function(ptr As void_ptr, old_size As size_t, new_size As size_t) 
+        ///     Function(ptr As void_ptr, old_size As size_t, new_size As size_t)
         /// 	    counter += 1
         /// 	    Return default_reallocate(ptr, old_size, new_size)
         ///     End Function
         /// Dim new_free As free_function =
-        ///     Function(ptr As void_ptr, size As size_t) 
+        ///     Function(ptr As void_ptr, size As size_t)
         /// 	    counter += 1
         /// 	    default_free(ptr, size)
         ///     End Function
         /// gmp_lib.gmp_set_memory_functions(new_allocate, new_reallocate, new_free)
-        /// 
+        ///
         /// ' Retrieve GMP memory allocation functions.
         /// Dim allocate As allocate_function = Nothing
         /// Dim reallocate As reallocate_function = Nothing
         /// Dim free As free_function = Nothing
         /// gmp_lib.gmp_get_memory_functions(allocate, reallocate, free)
-        /// 
+        ///
         /// ' Call memory function and assert calls count.
         /// Dim p As void_ptr = allocate(10)
         /// Assert.IsTrue(counter = 1)
-        /// 
+        ///
         /// reallocate(p, 10, 20)
         /// Assert.IsTrue(counter = 2)
-        /// 
+        ///
         /// free(p, 20)
         /// Assert.IsTrue(counter = 3)
-        /// 
+        ///
         /// ' Restore default memory allocation functions.
         /// gmp_lib.gmp_set_memory_functions(Nothing, Nothing, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mp_set_memory_functions(allocate_function alloc_func_ptr, reallocate_function realloc_func_ptr, free_function free_func_ptr)
         {
@@ -1012,7 +1012,7 @@ namespace MathGmp.Native
         /// <param name="state">The state to initialize.</param>
         /// <remarks>
         /// <para>
-        /// This will be a compromise between speed and randomness, 
+        /// This will be a compromise between speed and randomness,
         /// and is recommended for applications with no special requirements.
         /// Currently this is <see cref="gmp_randinit_mt">gmp_randinit_mt</see>.
         /// </para>
@@ -1028,23 +1028,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create new random number generator state.
         /// gmp_randstate_t state = new gmp_randstate_t();
-        /// 
+        ///
         /// // Initialize state with default random number generator algorithm.
         /// gmp_lib.gmp_randinit_default(state);
-        /// 
+        ///
         /// // Free all memory occupied by state.
         /// gmp_lib.gmp_randclear(state);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create new random number generator state.
         /// Dim state As New gmp_randstate_t()
-        /// 
+        ///
         /// ' Initialize state with default random number generator algorithm.
         /// gmp_lib.gmp_randinit_default(state)
-        /// 
+        ///
         /// ' Free all memory occupied by state.
         /// gmp_lib.gmp_randclear(state)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void gmp_randinit_default(gmp_randstate_t state)
         {
@@ -1081,30 +1081,30 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create new random number generator state.
         /// gmp_randstate_t state = new gmp_randstate_t();
-        /// 
+        ///
         /// // Initialize state with a linear congruential random number generator algorithm.
         /// mpz_t a = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(a, 100000U);
         /// gmp_lib.gmp_randinit_lc_2exp(state, a, 13, 300);
-        /// 
+        ///
         /// // Free all memory occupied by state and a.
         /// gmp_lib.gmp_randclear(state);
         /// gmp_lib.mpz_clear(a);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create new random number generator state.
         /// Dim state As New gmp_randstate_t()
-        /// 
+        ///
         /// ' Initialize state with a linear congruential random number generator algorithm.
         /// Dim a As New mpz_t()
-        /// 
+        ///
         /// gmp_lib.mpz_init_set_ui(a, 100000UI)
         /// gmp_lib.gmp_randinit_lc_2exp(state, a, 13, 300)
-        /// 
+        ///
         /// ' Free all memory occupied by state and a.
         /// gmp_lib.gmp_randclear(state)
         /// gmp_lib.mpz_clear(a)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void gmp_randinit_lc_2exp(gmp_randstate_t state, /*const*/ mpz_t a, uint /*unsigned long int*/ c, mp_bitcnt_t m2exp)
         {
@@ -1136,23 +1136,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create new random number generator state.
         /// gmp_randstate_t state = new gmp_randstate_t();
-        /// 
+        ///
         /// // Initialize state with a linear congruential random number generator algorithm.
         /// gmp_lib.gmp_randinit_lc_2exp_size(state, 30);
-        /// 
+        ///
         /// // Free all memory occupied by state.
         /// gmp_lib.gmp_randclear(state);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create new random number generator state.
         /// Dim state As New gmp_randstate_t()
-        /// 
+        ///
         /// ' Initialize state with a linear congruential random number generator algorithm.
         /// gmp_lib.gmp_randinit_lc_2exp_size(state, 30)
-        /// 
+        ///
         /// ' Free all memory occupied by state.
         /// gmp_lib.gmp_randclear(state)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_randinit_lc_2exp_size(gmp_randstate_t state, mp_bitcnt_t size)
         {
@@ -1180,23 +1180,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create new random number generator state.
         /// gmp_randstate_t state = new gmp_randstate_t();
-        /// 
+        ///
         /// // Initialize state with Mersenne Twister random number generator algorithm.
         /// gmp_lib.gmp_randinit_mt(state);
-        /// 
+        ///
         /// // Free all memory occupied by state.
         /// gmp_lib.gmp_randclear(state);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create new random number generator state.
         /// Dim state As New gmp_randstate_t()
-        /// 
+        ///
         /// ' Initialize state with Mersenne Twister random number generator algorithm.
         /// gmp_lib.gmp_randinit_mt(state)
-        /// 
+        ///
         /// ' Free all memory occupied by state.
         /// gmp_lib.gmp_randclear(state)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void gmp_randinit_mt(gmp_randstate_t state)
         {
@@ -1221,30 +1221,30 @@ namespace MathGmp.Native
         /// // Create new random number generator state, and initialize state with the Mersenne Twister algorithm.
         /// gmp_randstate_t op = new gmp_randstate_t();
         /// gmp_lib.gmp_randinit_mt(op);
-        /// 
+        ///
         /// // Create new random number generator state, and initialize it with the state op.
         /// gmp_randstate_t rop = new gmp_randstate_t();
         /// gmp_lib.gmp_randinit_set(rop, op);
-        /// 
+        ///
         /// // Free all memory occupied by op and rop.
         /// gmp_lib.gmp_randclear(op);
         /// gmp_lib.gmp_randclear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create new random number generator state, and initialize state with the Mersenne Twister algorithm.
         /// Dim op As New gmp_randstate_t()
-        /// 
+        ///
         /// gmp_lib.gmp_randinit_mt(op)
-        /// 
+        ///
         /// ' Create new random number generator state, and initialize it with the state op.
         /// Dim rop As New gmp_randstate_t()
-        /// 
+        ///
         /// gmp_lib.gmp_randinit_set(rop, op)
-        /// 
+        ///
         /// ' Free all memory occupied by op and rop.
         /// gmp_lib.gmp_randclear(op)
         /// gmp_lib.gmp_randclear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void gmp_randinit_set(gmp_randstate_t rop, /*const*/ gmp_randstate_t /*__gmp_randstate_struct **/ op)
         {
@@ -1282,32 +1282,32 @@ namespace MathGmp.Native
         /// // Create new random number generator state, and initialize state with the Mersenne Twister algorithm.
         /// gmp_randstate_t state = new gmp_randstate_t();
         /// gmp_lib.gmp_randinit_mt(state);
-        /// 
+        ///
         /// // Seed random number generator.
         /// mpz_t seed = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(seed, 100000U);
         /// gmp_lib.gmp_randseed(state, seed);
-        /// 
+        ///
         /// // Free all memory occupied by state and seed.
         /// gmp_lib.gmp_randclear(state);
         /// gmp_lib.mpz_clear(seed);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create new random number generator state, and initialize state with the Mersenne Twister algorithm.
         /// Dim state As New gmp_randstate_t()
-        /// 
+        ///
         /// gmp_lib.gmp_randinit_mt(state)
-        /// 
+        ///
         /// ' Seed random number generator.
         /// Dim seed As New mpz_t()
-        /// 
+        ///
         /// gmp_lib.mpz_init_set_ui(seed, 100000UI)
         /// gmp_lib.gmp_randseed(state, seed)
-        /// 
+        ///
         /// ' Free all memory occupied by state and seed.
         /// gmp_lib.gmp_randclear(state)
         /// gmp_lib.mpz_clear(seed)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void gmp_randseed(gmp_randstate_t state, /*const*/ mpz_t seed)
         {
@@ -1345,24 +1345,24 @@ namespace MathGmp.Native
         /// // Create new random number generator state, and initialize state with the Mersenne Twister algorithm.
         /// gmp_randstate_t state = new gmp_randstate_t();
         /// gmp_lib.gmp_randinit_mt(state);
-        /// 
+        ///
         /// // Seed random number generator.
         /// gmp_lib.gmp_randseed_ui(state, 100000U);
-        /// 
+        ///
         /// // Free all memory occupied by state.
         /// gmp_lib.gmp_randclear(state);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create new random number generator state, and initialize state with the Mersenne Twister algorithm.
         /// Dim state As New gmp_randstate_t()
-        /// 
+        ///
         /// gmp_lib.gmp_randinit_mt(state)
-        /// 
+        ///
         /// ' Seed random number generator.
         /// gmp_lib.gmp_randseed_ui(state, 100000UI)
-        /// 
+        ///
         /// ' Free all memory occupied by state.
-        /// gmp_lib.gmp_randclear(state)        /// </code> 
+        /// gmp_lib.gmp_randclear(state)        /// </code>
         /// </example>
         public static void gmp_randseed_ui(gmp_randstate_t state, uint /*unsigned long int*/ seed)
         {
@@ -1411,25 +1411,25 @@ namespace MathGmp.Native
         /// gmp_randstate_t state = new gmp_randstate_t();
         /// gmp_lib.gmp_randinit_mt(state);
         /// gmp_lib.gmp_randseed_ui(state, 100000U);
-        /// 
+        ///
         /// // Generate a random integer in the range [0, 2^8-1].
         /// uint rand = gmp_lib.gmp_urandomb_ui(state, 8);
-        /// 
+        ///
         /// // Free all memory occupied by state.
         /// gmp_lib.gmp_randclear(state);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and seed a new random number generator.
         /// Dim state As New gmp_randstate_t()
         /// gmp_lib.gmp_randinit_mt(state)
         /// gmp_lib.gmp_randseed_ui(state, 100000UI)
-        /// 
+        ///
         /// ' Generate a random integer in the range [0, 2^8-1].
         /// Dim rand As UInteger = gmp_lib.gmp_urandomb_ui(state, 8)
-        /// 
+        ///
         /// ' Free all memory occupied by state.
         /// gmp_lib.gmp_randclear(state)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint /*unsigned long int*/ gmp_urandomb_ui(gmp_randstate_t state, uint /*unsigned long int*/ n)
         {
@@ -1452,26 +1452,26 @@ namespace MathGmp.Native
         /// gmp_randstate_t state = new gmp_randstate_t();
         /// gmp_lib.gmp_randinit_mt(state);
         /// gmp_lib.gmp_randseed_ui(state, 1000U);
-        /// 
+        ///
         /// // Generate a random integer in the range [0, 8-1].
         /// uint rand = gmp_lib.gmp_urandomm_ui(state, 8);
-        /// 
+        ///
         /// // Free all memory occupied by state.
         /// gmp_lib.gmp_randclear(state);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and seed a new random number generator.
         /// Dim state As New gmp_randstate_t()
-        /// 
+        ///
         /// gmp_lib.gmp_randinit_mt(state)
         /// gmp_lib.gmp_randseed_ui(state, 1000UI)
-        /// 
+        ///
         /// ' Generate a random integer in the range [0, 8-1].
         /// Dim rand As UInteger = gmp_lib.gmp_urandomm_ui(state, 8)
-        /// 
+        ///
         /// ' Free all memory occupied by state.
         /// gmp_lib.gmp_randclear(state)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint /*unsigned long int*/ gmp_urandomm_ui(gmp_randstate_t state, uint /*unsigned long int*/ n)
         {
@@ -1496,7 +1496,7 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// Unlike the C library asprintf, <see cref="gmp_asprintf">gmp_asprintf</see> doesn’t return -1 if there’s no more memory available,
-        /// it lets the current allocation function handle that. 
+        /// it lets the current allocation function handle that.
         /// </para>
         /// </remarks>
         /// <seealso cref="gmp_snprintf">gmp_snprintf</seealso>
@@ -1509,41 +1509,41 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create pointer to unmanaged character string pointer.
         /// ptr&lt;char_ptr&gt; str = new ptr&lt;char_ptr&gt;();
-        /// 
+        ///
         /// mpz_t z = "123456";
         /// mpq_t q = "123/456";
         /// mpf_t f = "12345e6";
         /// mp_limb_t m = 123456;
-        /// 
+        ///
         /// // Print to newly allocated unmanaged memory string.
         /// Assert.IsTrue(gmp_lib.gmp_asprintf(str, "%Zd - %QX - %Fa - %Mo", z, q, f, m) == 42);
         /// Assert.IsTrue(str.Value.ToString() == "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100");
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(str.Value);
         /// gmp_lib.mpz_clear(z);
         /// gmp_lib.mpq_clear(q);
         /// gmp_lib.mpf_clear(f);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create pointer to unmanaged character string pointer.
         /// Dim str As New ptr(Of char_ptr)()
-        /// 
+        ///
         /// Dim z As mpz_t = "123456"
         /// Dim q As mpq_t = "123/456"
         /// Dim f As mpf_t = "12345e6"
         /// Dim m As mp_limb_t = 123456
-        /// 
+        ///
         /// ' Print to newly allocated unmanaged memory string.
         /// Assert.IsTrue(gmp_lib.gmp_asprintf(str, "%Zd - %QX - %Fa - %Mo", z, q, f, m) = 42)
         /// Assert.IsTrue(str.Value.ToString() = "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100")
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(str.Value)
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_asprintf(ptr<char_ptr> /*char ***/ pp, /*const*/ string /*char **/ fmt, params object[] /*...*/ args)
         {
@@ -1568,44 +1568,44 @@ namespace MathGmp.Native
         /// // Create unique file pathname and a file pointer.
         /// string pathname = System.IO.Path.GetTempFileName();
         /// ptr&lt;FILE&gt; stream = new ptr&lt;FILE&gt;();
-        /// 
+        ///
         /// mpz_t z = "123456";
         /// mpq_t q = "123/456";
         /// mpf_t f = "12345e6";
         /// mp_limb_t m = 123456;
-        /// 
+        ///
         /// // Open file stream and print to it.
         /// _wfopen_s(out stream.Value.Value, pathname, "w");
         /// Assert.IsTrue(gmp_lib.gmp_fprintf(stream, "%Zd - %QX - %Fa - %Mo", z, q, f, m) == 42);
         /// fclose(stream.Value.Value);
         /// Assert.IsTrue(System.IO.File.ReadAllText(pathname) == "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100");
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create unique file pathname and a file pointer.
         /// Dim pathname As String = System.IO.Path.GetTempFileName()
         /// Dim stream As New ptr(Of FILE)()
-        /// 
+        ///
         /// Dim z As mpz_t = "123456"
         /// Dim q As mpq_t = "123/456"
         /// Dim f As mpf_t = "12345e6"
         /// Dim m As mp_limb_t = 123456
-        /// 
+        ///
         /// ' Open file stream and print to it.
         /// _wfopen_s(stream.Value.Value, pathname, "w")
         /// Assert.IsTrue(gmp_lib.gmp_fprintf(stream, "%Zd - %QX - %Fa - %Mo", z, q, f, m) = 42)
         /// fclose(stream.Value.Value)
         /// Assert.IsTrue(System.IO.File.ReadAllText(pathname) = "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100")
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_fprintf(ptr<FILE> /*FILE **/ fp, /*const*/ string /*char **/ fmt, params object[] /*...*/ args)
         {
@@ -1640,21 +1640,21 @@ namespace MathGmp.Native
         /// mpq_t q = "123/456";
         /// mpf_t f = "12345e6";
         /// mp_limb_t m = 123456;
-        /// 
+        ///
         /// // Print to standard output.
         /// Assert.IsTrue(gmp_lib.gmp_printf("%Zd - %QX - %Fa - %Mo", z, q, f, m) == 42);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// Dim z As mpz_t = "123456"
         /// Dim q As mpq_t = "123/456"
         /// Dim f As mpf_t = "12345e6"
         /// Dim m As mp_limb_t = 123456
-        /// 
+        ///
         /// ' Print to standard output.
         /// Assert.IsTrue(gmp_lib.gmp_printf("%Zd - %QX - %Fa - %Mo", z, q, f, m) = 42)
         ///
@@ -1662,7 +1662,7 @@ namespace MathGmp.Native
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_printf(/*const*/ string /*char **/ fmt, params object[] /*...*/ args)
         {
@@ -1679,7 +1679,7 @@ namespace MathGmp.Native
         /// <returns>The return value is the total number of characters which ought to have been produced, excluding the terminating null. If retval &#8805; <paramref name="size"/> then the actual output has been truncated to the first <paramref name="size"/> - 1 characters, and a null appended.</returns>
         /// <remarks>
         /// <para>
-        /// No more than <paramref name="size"/> bytes will be written. To get the full output, <paramref name="size"/> must be enough for the string and null-terminator. 
+        /// No more than <paramref name="size"/> bytes will be written. To get the full output, <paramref name="size"/> must be enough for the string and null-terminator.
         /// </para>
         /// <para>
         /// No overlap is permitted between the region {<paramref name="buf"/>,<paramref name="size"/>} and the <paramref name="fmt"/> string.
@@ -1698,41 +1698,41 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Allocate unmanaged string with 50 characters.
         /// char_ptr str = new char_ptr(".................................................");
-        /// 
+        ///
         /// mpz_t z = "123456";
         /// mpq_t q = "123/456";
         /// mpf_t f = "12345e6";
         /// mp_limb_t m = 123456;
-        /// 
+        ///
         /// // Print to string.
         /// Assert.IsTrue(gmp_lib.gmp_snprintf(str, 50, "%Zd - %QX - %Fa - %Mo", z, q, f, m) == 42);
         /// Assert.IsTrue(str.ToString() == "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100");
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(str);
         /// gmp_lib.mpz_clear(z);
         /// gmp_lib.mpq_clear(q);
         /// gmp_lib.mpf_clear(f);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Allocate unmanaged string with 50 characters.
         /// Dim str As New char_ptr(".................................................")
-        /// 
+        ///
         /// Dim z As mpz_t = "123456"
         /// Dim q As mpq_t = "123/456"
         /// Dim f As mpf_t = "12345e6"
         /// Dim m As mp_limb_t = 123456
-        /// 
+        ///
         /// ' Print to string.
         /// Assert.IsTrue(gmp_lib.gmp_snprintf(str, 50, "%Zd - %QX - %Fa - %Mo", z, q, f, m) = 42)
         /// Assert.IsTrue(str.ToString() = "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100")
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(str)
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_snprintf(char_ptr /*char **/ buf, size_t size, /*const*/ string /*char **/ fmt, params object[] /*...*/ args)
         {
@@ -1766,41 +1766,41 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Allocate unmanaged string with 50 characters.
         /// char_ptr str = new char_ptr(".................................................");
-        /// 
+        ///
         /// mpz_t z = "123456";
         /// mpq_t q = "123/456";
         /// mpf_t f = "12345e6";
         /// mp_limb_t m = 123456;
-        /// 
+        ///
         /// // Print to string.
         /// Assert.IsTrue(gmp_lib.gmp_sprintf(str, "%Zd - %QX - %Fa - %Mo", z, q, f, m) == 42);
         /// Assert.IsTrue(str.ToString() == "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100");
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(str);
         /// gmp_lib.mpz_clear(z);
         /// gmp_lib.mpq_clear(q);
         /// gmp_lib.mpf_clear(f);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Allocate unmanaged string with 50 characters.
         /// Dim str As New char_ptr(".................................................")
-        /// 
+        ///
         /// Dim z As mpz_t = "123456"
         /// Dim q As mpq_t = "123/456"
         /// Dim f As mpf_t = "12345e6"
         /// Dim m As mp_limb_t = 123456
-        /// 
+        ///
         /// ' Print to string.
         /// Assert.IsTrue(gmp_lib.gmp_sprintf(str, "%Zd - %QX - %Fa - %Mo", z, q, f, m) = 42)
         /// Assert.IsTrue(str.ToString() = "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100")
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(str)
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_sprintf(char_ptr /*char **/ buf, /*const*/ string /*char **/ fmt, params object[] /*...*/ args)
         {
@@ -1820,7 +1820,7 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// Unlike the C library vasprintf, <see cref="gmp_vasprintf">gmp_vasprintf</see> doesn’t return -1 if there’s no more memory available,
-        /// it lets the current allocation function handle that. 
+        /// it lets the current allocation function handle that.
         /// </para>
         /// </remarks>
         /// <seealso cref="gmp_asprintf">gmp_asprintf</seealso>
@@ -1831,41 +1831,41 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create pointer to unmanaged character string pointer.
         /// ptr&lt;char_ptr&gt; str = new ptr&lt;char_ptr&gt;();
-        /// 
+        ///
         /// mpz_t z = "123456";
         /// mpq_t q = "123/456";
         /// mpf_t f = "12345e6";
         /// mp_limb_t m = 123456;
-        /// 
+        ///
         /// // Print to newly allocated unmanaged memory string.
         /// Assert.IsTrue(gmp_lib.gmp_vasprintf(str, "%Zd - %QX - %Fa - %Mo", z, q, f, m) == 42);
         /// Assert.IsTrue(str.Value.ToString() == "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100");
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(str.Value);
         /// gmp_lib.mpz_clear(z);
         /// gmp_lib.mpq_clear(q);
         /// gmp_lib.mpf_clear(f);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create pointer to unmanaged character string pointer.
         /// Dim str As New ptr(Of char_ptr)()
-        /// 
+        ///
         /// Dim z As mpz_t = "123456"
         /// Dim q As mpq_t = "123/456"
         /// Dim f As mpf_t = "12345e6"
         /// Dim m As mp_limb_t = 123456
-        /// 
+        ///
         /// ' Print to newly allocated unmanaged memory string.
         /// Assert.IsTrue(gmp_lib.gmp_vasprintf(str, "%Zd - %QX - %Fa - %Mo", z, q, f, m) = 42)
         /// Assert.IsTrue(str.Value.ToString() = "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100")
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(str.Value)
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_vasprintf(ptr<char_ptr> /*char ***/ ptr, /*const*/ string /*char **/ fmt, params object[] /*va_list*/ ap)
         {
@@ -1896,33 +1896,33 @@ namespace MathGmp.Native
         /// // Create unique file pathname and a file pointer.
         /// string pathname = System.IO.Path.GetTempFileName();
         /// ptr&lt;FILE&gt; stream = new ptr&lt;FILE&gt;();
-        /// 
+        ///
         /// mpz_t z = "123456";
         /// mpq_t q = "123/456";
         /// mpf_t f = "12345e6";
         /// mp_limb_t m = 123456;
-        /// 
+        ///
         /// // Open file stream and print to it.
         /// _wfopen_s(out stream.Value.Value, pathname, "w");
         /// Assert.IsTrue(gmp_lib.gmp_vfprintf(stream, "%Zd - %QX - %Fa - %Mo", z, q, f, m) == 42);
         /// fclose(stream.Value.Value);
         /// Assert.IsTrue(System.IO.File.ReadAllText(pathname) == "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100");
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create unique file pathname and a file pointer.
         /// Dim pathname As String = System.IO.Path.GetTempFileName()
         /// Dim stream As New ptr(Of FILE)()
-        /// 
+        ///
         /// Dim z As mpz_t = "123456"
         /// Dim q As mpq_t = "123/456"
         /// Dim f As mpf_t = "12345e6"
         /// Dim m As mp_limb_t = 123456
-        /// 
+        ///
         /// ' Open file stream and print to it.
         /// _wfopen_s(stream.Value.Value, pathname, "w")
         /// Assert.IsTrue(gmp_lib.gmp_vfprintf(stream, "%Zd - %QX - %Fa - %Mo", z, q, f, m) = 42)
@@ -1932,7 +1932,7 @@ namespace MathGmp.Native
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_vfprintf(ptr<FILE> /*FILE **/ fp, /*const*/ string /*char **/ fmt, params object[] /*va_list*/ ap)
         {
@@ -1963,21 +1963,21 @@ namespace MathGmp.Native
         /// mpq_t q = "123/456";
         /// mpf_t f = "12345e6";
         /// mp_limb_t m = 123456;
-        /// 
+        ///
         /// // Print to standard output.
         /// Assert.IsTrue(gmp_lib.gmp_vprintf("%Zd - %QX - %Fa - %Mo", z, q, f, m) == 42);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// Dim z As mpz_t = "123456"
         /// Dim q As mpq_t = "123/456"
         /// Dim f As mpf_t = "12345e6"
         /// Dim m As mp_limb_t = 123456
-        /// 
+        ///
         /// ' Print to standard output.
         /// Assert.IsTrue(gmp_lib.gmp_vprintf("%Zd - %QX - %Fa - %Mo", z, q, f, m) = 42)
         ///
@@ -1985,7 +1985,7 @@ namespace MathGmp.Native
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_vprintf(/*const*/ string /*char **/ fmt, params object[] /*va_list*/ ap)
         {
@@ -2009,13 +2009,13 @@ namespace MathGmp.Native
         /// <returns>The return value is the total number of characters which ought to have been produced, excluding the terminating null. If retval &#8805; <paramref name="size"/> then the actual output has been truncated to the first <paramref name="size"/> - 1 characters, and a null appended.</returns>
         /// <remarks>
         /// <para>
-        /// No more than <paramref name="size"/> bytes will be written. To get the full output, <paramref name="size"/> must be enough for the string and null-terminator. 
+        /// No more than <paramref name="size"/> bytes will be written. To get the full output, <paramref name="size"/> must be enough for the string and null-terminator.
         /// </para>
         /// <para>
         /// No overlap is permitted between the regiom {<paramref name="buf"/>,<paramref name="size"/>} and the <paramref name="fmt"/> string.
         /// </para>
         /// <para>
-        /// Notice the return value is in ISO C99 snprintf style. This is so even if the C library vsnprintf is the older GLIBC 2.0.x style. 
+        /// Notice the return value is in ISO C99 snprintf style. This is so even if the C library vsnprintf is the older GLIBC 2.0.x style.
         /// </para>
         /// </remarks>
         /// <seealso cref="gmp_snprintf">gmp_snprintf</seealso>
@@ -2026,45 +2026,44 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Allocate unmanaged string with 50 characters.
         /// char_ptr str = new char_ptr(".................................................");
-        /// 
+        ///
         /// mpz_t z = "123456";
         /// mpq_t q = "123/456";
         /// mpf_t f = "12345e6";
         /// mp_limb_t m = 123456;
-        /// 
+        ///
         /// // Print to string.
         /// Assert.IsTrue(gmp_lib.gmp_vsnprintf(str, 50, "%Zd - %QX - %Fa - %Mo", z, q, f, m) == 42);
         /// Assert.IsTrue(str.ToString() == "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100");
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(str);
         /// gmp_lib.mpz_clear(z);
         /// gmp_lib.mpq_clear(q);
         /// gmp_lib.mpf_clear(f);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Allocate unmanaged string with 50 characters.
         /// Dim str As New char_ptr(".................................................")
-        /// 
+        ///
         /// Dim z As mpz_t = "123456"
         /// Dim q As mpq_t = "123/456"
         /// Dim f As mpf_t = "12345e6"
         /// Dim m As mp_limb_t = 123456
-        /// 
+        ///
         /// ' Print to string.
         /// Assert.IsTrue(gmp_lib.gmp_vsnprintf(str, 50, "%Zd - %QX - %Fa - %Mo", z, q, f, m) = 42)
         /// Assert.IsTrue(str.ToString() = "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100")
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(str)
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_vsnprintf(char_ptr /*char **/ buf, size_t size, /*const*/ string /*char **/ fmt, params object[] /*va_list*/ ap)
         {
-            if (buf == null) throw new ArgumentNullException("buf");
             if (fmt == null) throw new ArgumentNullException("fmt");
             if (ap == null) throw new ArgumentNullException("ap");
             va_list va_args = new va_list(ap);
@@ -2102,45 +2101,44 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Allocate unmanaged string with 50 characters.
         /// char_ptr str = new char_ptr(".................................................");
-        /// 
+        ///
         /// mpz_t z = "123456";
         /// mpq_t q = "123/456";
         /// mpf_t f = "12345e6";
         /// mp_limb_t m = 123456;
-        /// 
+        ///
         /// // Print to string.
         /// Assert.IsTrue(gmp_lib.gmp_vsprintf(str, "%Zd - %QX - %Fa - %Mo", z, q, f, m) == 42);
         /// Assert.IsTrue(str.ToString() == "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100");
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(str);
         /// gmp_lib.mpz_clear(z);
         /// gmp_lib.mpq_clear(q);
         /// gmp_lib.mpf_clear(f);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Allocate unmanaged string with 50 characters.
         /// Dim str As New char_ptr(".................................................")
-        /// 
+        ///
         /// Dim z As mpz_t = "123456"
         /// Dim q As mpq_t = "123/456"
         /// Dim f As mpf_t = "12345e6"
         /// Dim m As mp_limb_t = 123456
-        /// 
+        ///
         /// ' Print to string.
         /// Assert.IsTrue(gmp_lib.gmp_vsprintf(str, "%Zd - %QX - %Fa - %Mo", z, q, f, m) = 42)
         /// Assert.IsTrue(str.ToString() = "123456 - 7B/1C8 - 0x2.dfd1c04p+32 - 361100")
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(str)
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_vsprintf(char_ptr /*char **/ buf, /*const*/ string /*char **/ fmt, params object[] /*va_list*/ ap)
         {
-            if (buf == null) throw new ArgumentNullException("buf");
             if (fmt == null) throw new ArgumentNullException("fmt");
             if (ap == null) throw new ArgumentNullException("ap");
             va_list va_args = new va_list(ap);
@@ -2173,20 +2171,20 @@ namespace MathGmp.Native
         /// // Create unique filename and stream pointer.
         /// string pathname = System.IO.Path.GetTempFileName();
         /// ptr&lt;FILE&gt; stream = new ptr&lt;FILE&gt;();
-        /// 
+        ///
         /// mpz_t z = "0";
         /// mpq_t q = "0";
         /// mpf_t f = "0";
         /// ptr&lt;Char&gt; c = new ptr&lt;Char&gt;('0');
         /// ptr&lt;mp_size_t&gt; zt = new ptr&lt;mp_size_t&gt;(0);
         /// ptr&lt;Double&gt; dbl = new ptr&lt;Double&gt;(0);
-        /// 
+        ///
         /// // Write string to file, and then read values from it.
         /// System.IO.File.WriteAllText(pathname, "123456 7B/1C8 1.234500e+10 A 10 1.000000");
         /// _wfopen_s(out stream.Value.Value, pathname, "r");
         /// Assert.IsTrue(gmp_lib.gmp_fscanf(stream, "%Zd %QX %Fe %hhc %d %lf", z, q, f, c, zt, dbl) == 6);
         /// fclose(stream.Value.Value);
-        /// 
+        ///
         /// // Assert values read.
         /// Assert.IsTrue(z.ToString() == "123456");
         /// Assert.IsTrue(q.ToString() == "123/456");
@@ -2194,30 +2192,30 @@ namespace MathGmp.Native
         /// Assert.IsTrue(c.Value == 'A');
         /// Assert.IsTrue(zt.Value == 10);
         /// Assert.IsTrue(dbl.Value == 1.0);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.mpz_clear(z);
         /// gmp_lib.mpq_clear(q);
         /// gmp_lib.mpf_clear(f);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create unique filename and stream pointer.
         /// Dim pathname As String = System.IO.Path.GetTempFileName()
         /// Dim stream As New ptr(Of FILE)()
-        /// 
+        ///
         /// Dim z As mpz_t = "0"
         /// Dim q As mpq_t = "0"
         /// Dim f As mpf_t = "0"
         /// Dim c As New ptr(Of[Char])("0"C)
         /// Dim zt As New ptr(Of mp_size_t)(0)
         /// Dim dbl As New ptr(Of[Double])(0)
-        /// 
+        ///
         /// ' Write string to file, and then read values from it.
         /// System.IO.File.WriteAllText(pathname, "123456 7B/1C8 1.234500e+10 A 10 1.000000")
         /// _wfopen_s(stream.Value.Value, pathname, "r")
         /// Assert.IsTrue(gmp_lib.gmp_fscanf(stream, "%Zd %QX %Fe %hhc %d %lf", z, q, f, c, zt, dbl) = 6)
         /// fclose(stream.Value.Value)
-        /// 
+        ///
         /// ' Assert values read.
         /// Assert.IsTrue(z.ToString() = "123456")
         /// Assert.IsTrue(q.ToString() = "123/456")
@@ -2225,12 +2223,12 @@ namespace MathGmp.Native
         /// Assert.IsTrue(c.Value = "A"C)
         /// Assert.IsTrue(zt.Value = 10)
         /// Assert.IsTrue(dbl.Value = 1.0)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_fscanf(ptr<FILE> /*FILE **/ fp, /*const*/ string /*char **/ fmt, params object[] /*...*/ ap)
         {
@@ -2257,10 +2255,10 @@ namespace MathGmp.Native
         /// ptr&lt;Char&gt; c = new ptr&lt;Char&gt;('0');
         /// ptr&lt;mp_size_t&gt; zt = new ptr&lt;mp_size_t&gt;(0);
         /// ptr&lt;Double&gt; dbl = new ptr&lt;Double&gt;(0);
-        /// 
+        ///
         /// // Read values from standard input.
         /// Assert.IsTrue(gmp_lib.gmp_scanf(stream, "%Zd %QX %Fe %hhc %d %lf", z, q, f, c, zt, dbl) == 6);
-        /// 
+        ///
         /// // Assert values read.
         /// Assert.IsTrue(z.ToString() == "123456");
         /// Assert.IsTrue(q.ToString() == "123/456");
@@ -2268,12 +2266,12 @@ namespace MathGmp.Native
         /// Assert.IsTrue(c.Value == 'A');
         /// Assert.IsTrue(zt.Value == 10);
         /// Assert.IsTrue(dbl.Value == 1.0);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.mpz_clear(z);
         /// gmp_lib.mpq_clear(q);
         /// gmp_lib.mpf_clear(f);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// Dim z As mpz_t = "0"
         /// Dim q As mpq_t = "0"
@@ -2281,10 +2279,10 @@ namespace MathGmp.Native
         /// Dim c As New ptr(Of[Char])("0"C)
         /// Dim zt As New ptr(Of mp_size_t)(0)
         /// Dim dbl As New ptr(Of[Double])(0)
-        /// 
+        ///
         /// ' Read values from standard input.
         /// Assert.IsTrue(gmp_lib.gmp_scanf(stream, "%Zd %QX %Fe %hhc %d %lf", z, q, f, c, zt, dbl) = 6)
-        /// 
+        ///
         /// ' Assert values read.
         /// Assert.IsTrue(z.ToString() = "123456")
         /// Assert.IsTrue(q.ToString() = "123/456")
@@ -2292,12 +2290,12 @@ namespace MathGmp.Native
         /// Assert.IsTrue(c.Value = "A"C)
         /// Assert.IsTrue(zt.Value = 10)
         /// Assert.IsTrue(dbl.Value = 1.0)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_scanf(/*const*/ string /*char **/ fmt, params object[] /*...*/ ap)
         {
@@ -2325,21 +2323,21 @@ namespace MathGmp.Native
         /// ptr&lt;Char&gt; c = new ptr&lt;Char&gt;('0');
         /// ptr&lt;mp_size_t&gt; zt = new ptr&lt;mp_size_t&gt;(0);
         /// ptr&lt;Double&gt; dbl = new ptr&lt;Double&gt;(0);
-        /// 
+        ///
         /// Assert.IsTrue(gmp_lib.gmp_sscanf("123456 7B/1C8 1.234500e+10 A 10 1.000000", "%Zd %QX %Fe %hhc %d %lf", z, q, f, c, zt, dbl) == 6);
-        /// 
+        ///
         /// Assert.IsTrue(z.ToString() == "123456");
         /// Assert.IsTrue(q.ToString() == "123/456");
         /// Assert.IsTrue(f.ToString() == "0.12345e11");
         /// Assert.IsTrue(c.Value == 'A');
         /// Assert.IsTrue(zt.Value == 10);
         /// Assert.IsTrue(dbl.Value == 1.0);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.mpz_clear(z);
         /// gmp_lib.mpq_clear(q);
         /// gmp_lib.mpf_clear(f);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// Dim z As mpz_t = "0"
         /// Dim q As mpq_t = "0"
@@ -2347,21 +2345,21 @@ namespace MathGmp.Native
         /// Dim c As New ptr(Of[Char])("0"C)
         /// Dim zt As New ptr(Of mp_size_t)(0)
         /// Dim dbl As New ptr(Of[Double])(0)
-        /// 
+        ///
         /// Assert.IsTrue(gmp_lib.gmp_sscanf("123456 7B/1C8 1.234500e+10 A 10 1.000000", "%Zd %QX %Fe %hhc %d %lf", z, q, f, c, zt, dbl) = 6)
-        /// 
+        ///
         /// Assert.IsTrue(z.ToString() = "123456")
         /// Assert.IsTrue(q.ToString() = "123/456")
         /// Assert.IsTrue(f.ToString() = "0.12345e11")
         /// Assert.IsTrue(c.Value = "A"C)
         /// Assert.IsTrue(zt.Value = 10)
         /// Assert.IsTrue(dbl.Value = 1.0)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_sscanf(/*const*/ string /*char **/ s, /*const*/ string /*char **/ fmt, params object[] /*...*/ ap)
         {
@@ -2386,20 +2384,20 @@ namespace MathGmp.Native
         /// // Create unique filename and stream pointer.
         /// string pathname = System.IO.Path.GetTempFileName();
         /// ptr&lt;FILE&gt; stream = new ptr&lt;FILE&gt;();
-        /// 
+        ///
         /// mpz_t z = "0";
         /// mpq_t q = "0";
         /// mpf_t f = "0";
         /// ptr&lt;Char&gt; c = new ptr&lt;Char&gt;('0');
         /// ptr&lt;mp_size_t&gt; zt = new ptr&lt;mp_size_t&gt;(0);
         /// ptr&lt;Double&gt; dbl = new ptr&lt;Double&gt;(0);
-        /// 
+        ///
         /// // Write string to file, and then read values from it.
         /// System.IO.File.WriteAllText(pathname, "123456 7B/1C8 1.234500e+10 A 10 1.000000");
         /// _wfopen_s(out stream.Value.Value, pathname, "r");
         /// Assert.IsTrue(gmp_lib.gmp_vfscanf(stream, "%Zd %QX %Fe %hhc %d %lf", z, q, f, c, zt, dbl) == 6);
         /// fclose(stream.Value.Value);
-        /// 
+        ///
         /// // Assert values read.
         /// Assert.IsTrue(z.ToString() == "123456");
         /// Assert.IsTrue(q.ToString() == "123/456");
@@ -2407,30 +2405,30 @@ namespace MathGmp.Native
         /// Assert.IsTrue(c.Value == 'A');
         /// Assert.IsTrue(zt.Value == 10);
         /// Assert.IsTrue(dbl.Value == 1.0);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.mpz_clear(z);
         /// gmp_lib.mpq_clear(q);
         /// gmp_lib.mpf_clear(f);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create unique filename and stream pointer.
         /// Dim pathname As String = System.IO.Path.GetTempFileName()
         /// Dim stream As New ptr(Of FILE)()
-        /// 
+        ///
         /// Dim z As mpz_t = "0"
         /// Dim q As mpq_t = "0"
         /// Dim f As mpf_t = "0"
         /// Dim c As New ptr(Of[Char])("0"C)
         /// Dim zt As New ptr(Of mp_size_t)(0)
         /// Dim dbl As New ptr(Of[Double])(0)
-        /// 
+        ///
         /// ' Write string to file, and then read values from it.
         /// System.IO.File.WriteAllText(pathname, "123456 7B/1C8 1.234500e+10 A 10 1.000000")
         /// _wfopen_s(stream.Value.Value, pathname, "r")
         /// Assert.IsTrue(gmp_lib.gmp_vfscanf(stream, "%Zd %QX %Fe %hhc %d %lf", z, q, f, c, zt, dbl) = 6)
         /// fclose(stream.Value.Value)
-        /// 
+        ///
         /// ' Assert values read.
         /// Assert.IsTrue(z.ToString() = "123456")
         /// Assert.IsTrue(q.ToString() = "123/456")
@@ -2438,12 +2436,12 @@ namespace MathGmp.Native
         /// Assert.IsTrue(c.Value = "A"C)
         /// Assert.IsTrue(zt.Value = 10)
         /// Assert.IsTrue(dbl.Value = 1.0)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_vfscanf(ptr<FILE> /*FILE **/ fp, /*const*/ string /*char **/ fmt, params object[] /*va_list*/ ap)
         {
@@ -2478,10 +2476,10 @@ namespace MathGmp.Native
         /// ptr&lt;Char&gt; c = new ptr&lt;Char&gt;('0');
         /// ptr&lt;mp_size_t&gt; zt = new ptr&lt;mp_size_t&gt;(0);
         /// ptr&lt;Double&gt; dbl = new ptr&lt;Double&gt;(0);
-        /// 
+        ///
         /// // Read values from standard input.
         /// Assert.IsTrue(gmp_lib.gmp_vscanf(stream, "%Zd %QX %Fe %hhc %d %lf", z, q, f, c, zt, dbl) == 6);
-        /// 
+        ///
         /// // Assert values read.
         /// Assert.IsTrue(z.ToString() == "123456");
         /// Assert.IsTrue(q.ToString() == "123/456");
@@ -2489,12 +2487,12 @@ namespace MathGmp.Native
         /// Assert.IsTrue(c.Value == 'A');
         /// Assert.IsTrue(zt.Value == 10);
         /// Assert.IsTrue(dbl.Value == 1.0);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.mpz_clear(z);
         /// gmp_lib.mpq_clear(q);
         /// gmp_lib.mpf_clear(f);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// Dim z As mpz_t = "0"
         /// Dim q As mpq_t = "0"
@@ -2502,10 +2500,10 @@ namespace MathGmp.Native
         /// Dim c As New ptr(Of[Char])("0"C)
         /// Dim zt As New ptr(Of mp_size_t)(0)
         /// Dim dbl As New ptr(Of[Double])(0)
-        /// 
+        ///
         /// ' Read values from standard input.
         /// Assert.IsTrue(gmp_lib.gmp_vscanf(stream, "%Zd %QX %Fe %hhc %d %lf", z, q, f, c, zt, dbl) = 6)
-        /// 
+        ///
         /// ' Assert values read.
         /// Assert.IsTrue(z.ToString() = "123456")
         /// Assert.IsTrue(q.ToString() = "123/456")
@@ -2513,12 +2511,12 @@ namespace MathGmp.Native
         /// Assert.IsTrue(c.Value = "A"C)
         /// Assert.IsTrue(zt.Value = 10)
         /// Assert.IsTrue(dbl.Value = 1.0)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_vscanf(/*const*/ string /*char **/ fmt, params object[] /*va_list*/ ap)
         {
@@ -2553,21 +2551,21 @@ namespace MathGmp.Native
         /// ptr&lt;Char&gt; c = new ptr&lt;Char&gt;('0');
         /// ptr&lt;mp_size_t&gt; zt = new ptr&lt;mp_size_t&gt;(0);
         /// ptr&lt;Double&gt; dbl = new ptr&lt;Double&gt;(0);
-        /// 
+        ///
         /// Assert.IsTrue(gmp_lib.gmp_vsscanf("123456 7B/1C8 1.234500e+10 A 10 1.000000", "%Zd %QX %Fe %hhc %d %lf", z, q, f, c, zt, dbl) == 6);
-        /// 
+        ///
         /// Assert.IsTrue(z.ToString() == "123456");
         /// Assert.IsTrue(q.ToString() == "123/456");
         /// Assert.IsTrue(f.ToString() == "0.12345e11");
         /// Assert.IsTrue(c.Value == 'A');
         /// Assert.IsTrue(zt.Value == 10);
         /// Assert.IsTrue(dbl.Value == 1.0);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.mpz_clear(z);
         /// gmp_lib.mpq_clear(q);
         /// gmp_lib.mpf_clear(f);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// Dim z As mpz_t = "0"
         /// Dim q As mpq_t = "0"
@@ -2575,21 +2573,21 @@ namespace MathGmp.Native
         /// Dim c As New ptr(Of[Char])("0"C)
         /// Dim zt As New ptr(Of mp_size_t)(0)
         /// Dim dbl As New ptr(Of[Double])(0)
-        /// 
+        ///
         /// Assert.IsTrue(gmp_lib.gmp_vsscanf("123456 7B/1C8 1.234500e+10 A 10 1.000000", "%Zd %QX %Fe %hhc %d %lf", z, q, f, c, zt, dbl) = 6)
-        /// 
+        ///
         /// Assert.IsTrue(z.ToString() = "123456")
         /// Assert.IsTrue(q.ToString() = "123/456")
         /// Assert.IsTrue(f.ToString() = "0.12345e11")
         /// Assert.IsTrue(c.Value = "A"C)
         /// Assert.IsTrue(zt.Value = 10)
         /// Assert.IsTrue(dbl.Value = 1.0)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.mpz_clear(z)
         /// gmp_lib.mpq_clear(q)
         /// gmp_lib.mpf_clear(f)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int gmp_vsscanf(/*const*/ string /*char **/ s, /*const*/ string /*char **/ fmt, params object[] /*va_list*/ ap)
         {
@@ -2640,48 +2638,48 @@ namespace MathGmp.Native
         /// // Create and initialize new integer x.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
-        /// 
+        ///
         /// // Set the value of x to a 77-bit integer.
         /// char_ptr value = new char_ptr("1000 0000 0000 0000 0000");
         /// gmp_lib.mpz_set_str(x, value, 16);
-        /// 
+        ///
         /// // Resize x to 50 limbs, and assert that its value has not changed.
         /// gmp_lib._mpz_realloc(x, 50);
         /// char_ptr s = gmp_lib.mpz_get_str(char_ptr.Zero, 16, x);
         /// Assert.IsTrue(s.ToString() == "1000 0000 0000 0000 0000".Replace(" ", ""));
-        /// 
+        ///
         /// // Resize x to 1 limb, and assert that its value has changed to 0.
         /// gmp_lib._mpz_realloc(x, 1);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and string values.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.free(value);
         /// gmp_lib.free(s);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize new integer x.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
-        /// 
+        ///
         /// ' Set the value of x to a 77-bit integer.
         /// Dim value As New char_ptr("1000 0000 0000 0000 0000")
         /// gmp_lib.mpz_set_str(x, value, 16)
-        /// 
+        ///
         /// ' Resize x to 50 limbs, and assert that its value has not changed.
         /// gmp_lib._mpz_realloc(x, 50)
         /// Dim s As char_ptr = gmp_lib.mpz_get_str(char_ptr.Zero, 16, x)
         /// Assert.IsTrue(s.ToString() = "1000 0000 0000 0000 0000".Replace(" ", ""))
-        /// 
+        ///
         /// ' Resize x to 1 limb, and assert that its value has changed to 0.
         /// gmp_lib._mpz_realloc(x, 1)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and string values.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.free(value)
         /// gmp_lib.free(s)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void _mpz_realloc(mpz_t integer, mp_size_t new_alloc)
         {
@@ -2707,38 +2705,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to -10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_si(x, -10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = |x|.
         /// gmp_lib.mpz_abs(z, x);
-        /// 
+        ///
         /// // Assert that z is |x|.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == 10000);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to -10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_si(x, -10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = |x|.
         /// gmp_lib.mpz_abs(z, x)
-        /// 
+        ///
         /// ' Assert that z is |x|.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = 10000)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_abs(mpz_t rop, /*const*/ mpz_t op)
         {
@@ -2767,46 +2765,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of y to 12222.
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(y, 12222U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = x + y.
         /// gmp_lib.mpz_add(z, x, y);
-        /// 
+        ///
         /// // Assert that z is the sum of x and y.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(z) == 22222U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpz_clears(x, y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of y to 12222.
         /// Dim y As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(y, 12222UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = x + y.
         /// gmp_lib.mpz_add(z, x, y)
-        /// 
+        ///
         /// ' Assert that z is the sum of x and y.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(z) = 22222UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpz_clears(x, y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_add(mpz_t rop, /*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -2836,32 +2834,32 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 0.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
-        /// 
+        ///
         /// // Increment x twice by 101999.
         /// gmp_lib.mpz_add_ui(x, x, 101999U);
         /// gmp_lib.mpz_add_ui(x, x, 101999U);
-        /// 
+        ///
         /// // Assert that x is 203998.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(x) == 203998U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 0.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
-        /// 
+        ///
         /// ' Increment x twice by 101999.
         /// gmp_lib.mpz_add_ui(x, x, 101999UI)
         /// gmp_lib.mpz_add_ui(x, x, 101999UI)
-        /// 
+        ///
         /// ' Assert that x is 203998.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(x) = 203998UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_add_ui(mpz_t rop, /*const*/ mpz_t op1, uint /*unsigned long int*/ op2)
         {
@@ -2890,46 +2888,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of y to 12222.
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(y, 12222U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 20000.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(z, 20000U);
-        /// 
+        ///
         /// // Set z += x * y.
         /// gmp_lib.mpz_addmul(z, x, y);
-        /// 
+        ///
         /// // Assert that z has been incremented by 10000 * 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == 20000U + 10000 * 12222);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of y to 12222.
         /// Dim y As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(y, 12222UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 20000.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(z, 20000UI)
-        /// 
+        ///
         /// ' Set z += x * y.
         /// gmp_lib.mpz_addmul(z, x, y)
-        /// 
+        ///
         /// ' Assert that z has been incremented by 10000 * 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = 20000UI + 10000 * 12222)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_addmul(mpz_t rop, /*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -2959,38 +2957,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to -10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_si(x, -10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 20000.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init_set_si(z, 20000);
-        /// 
+        ///
         /// // Set z += x * 12222.
         /// gmp_lib.mpz_addmul_ui(z, x, 12222U);
-        /// 
+        ///
         /// // Assert that z has been incremented by -10000 * 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == 20000 + -10000 * 12222);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to -10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_si(x, -10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 20000.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init_set_si(z, 20000)
-        /// 
+        ///
         /// ' Set z += x * 12222.
         /// gmp_lib.mpz_addmul_ui(z, x, 12222UI)
-        /// 
+        ///
         /// ' Assert that z has been incremented by -10000 * 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = 20000 + -10000 * 12222)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_addmul_ui(mpz_t rop, /*const*/ mpz_t op1, uint /*unsigned long int*/ op2)
         {
@@ -3000,7 +2998,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="op1"/> bitwise-and <paramref name="op2"/>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> bitwise-and <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -3008,7 +3006,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number 0. 
+        /// The least significant bit is number 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_ior">mpz_ior</seealso>
@@ -3029,46 +3027,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op1, 63U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 70.
         /// mpz_t op2 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op2, 70U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop to the bitwise and of op1 and op2.
         /// gmp_lib.mpz_and(rop, op1, op2);
-        /// 
+        ///
         /// // Assert that rop is 6.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 6);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, op1, and op2.
         /// gmp_lib.mpz_clears(rop, op1, op2, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 63.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op1, 63UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 70.
         /// Dim op2 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op2, 70UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop to the bitwise and of op1 and op2.
         /// gmp_lib.mpz_and(rop, op1, op2)
-        /// 
+        ///
         /// ' Assert that rop is 6.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 6)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, op1, and op2.
         /// gmp_lib.mpz_clears(rop, op1, op2, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_and(mpz_t rop, /*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -3099,38 +3097,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 4.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 4);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop to the binomial coefficient (n:2).
         /// gmp_lib.mpz_bin_ui(rop, n, 2U);
-        /// 
+        ///
         /// // Assert that rop is 6.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 6);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and rop.
         /// gmp_lib.mpz_clears(n, rop, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 4.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 4)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop to the binomial coefficient (n:2).
         /// gmp_lib.mpz_bin_ui(rop, n, 2UI)
-        /// 
+        ///
         /// ' Assert that rop is 6.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 6)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and rop.
         /// gmp_lib.mpz_clears(n, rop, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_bin_ui(mpz_t rop, /*const*/ mpz_t n, uint /*unsigned long int*/ k)
         {
@@ -3153,30 +3151,30 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop to the binomial coefficient (4:2).
         /// gmp_lib.mpz_bin_uiui(rop, 4U, 2U);
-        /// 
+        ///
         /// // Assert that rop is 6.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 6);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop to the binomial coefficient (4:2).
         /// gmp_lib.mpz_bin_uiui(rop, 4UI, 2UI)
-        /// 
+        ///
         /// ' Assert that rop is 6.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 6)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_bin_uiui(mpz_t rop, uint /*unsigned long int*/ n, uint /*unsigned long int*/ k)
         {
@@ -3211,46 +3209,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of d to 3.
         /// mpz_t d = new mpz_t();
         /// gmp_lib.mpz_init_set_si(d, 3);
-        /// 
+        ///
         /// // Create, initialize, and set the value of q to 0.
         /// mpz_t q = new mpz_t();
         /// gmp_lib.mpz_init(q);
-        /// 
+        ///
         /// // Set q = ceiling(n / d).
         /// gmp_lib.mpz_cdiv_q(q, n, d);
-        /// 
+        ///
         /// // Assert that q is ceiling(10000 / 3).
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 3334);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, d, and q.
         /// gmp_lib.mpz_clears(n, d, q, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of d to 3.
         /// Dim d As New mpz_t()
         /// gmp_lib.mpz_init_set_si(d, 3)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of q to 0.
         /// Dim q As New mpz_t()
         /// gmp_lib.mpz_init(q)
-        /// 
+        ///
         /// ' Set q = ceiling(n / d).
         /// gmp_lib.mpz_cdiv_q(q, n, d)
-        /// 
+        ///
         /// ' Assert that q is ceiling(10000 / 3).
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 3334)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, d, and q.
         /// gmp_lib.mpz_clears(n, d, q, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_cdiv_q(mpz_t q, /*const*/ mpz_t n, /*const*/ mpz_t d)
         {
@@ -3287,38 +3285,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10001.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10001);
-        /// 
+        ///
         /// // Create, initialize, and set the value of q to 0.
         /// mpz_t q = new mpz_t();
         /// gmp_lib.mpz_init(q);
-        /// 
+        ///
         /// // Set q = ceiling(n / 2^2).
         /// gmp_lib.mpz_cdiv_q_2exp(q, n, 2U);
-        /// 
+        ///
         /// // Assert that q is ceiling(10001 / 4).
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 2501);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and q.
         /// gmp_lib.mpz_clears(n, q, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10001.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10001)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of q to 0.
         /// Dim q As New mpz_t()
         /// gmp_lib.mpz_init(q)
-        /// 
+        ///
         /// ' Set q = ceiling(n / 2^2).
         /// gmp_lib.mpz_cdiv_q_2exp(q, n, 2UI)
-        /// 
+        ///
         /// ' Assert that q is ceiling(10001 / 4).
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 2501)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and q.
         /// gmp_lib.mpz_clears(n, q, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_cdiv_q_2exp(mpz_t q, /*const*/ mpz_t n, mp_bitcnt_t b)
         {
@@ -3355,36 +3353,36 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of q to 0.
         /// mpz_t q = new mpz_t();
         /// gmp_lib.mpz_init(q);
-        /// 
+        ///
         /// // Set q = ceiling(n / 3) and return r = n - 3 * q.
         /// // Assert q and r values.
         /// Assert.IsTrue(gmp_lib.mpz_cdiv_q_ui(q, n, 3U) == 2U);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 3334);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and q.
         /// gmp_lib.mpz_clears(n, q, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of q to 0.
         /// Dim q As New mpz_t()
         /// gmp_lib.mpz_init(q)
-        /// 
+        ///
         /// ' Set q = ceiling(n / 3) and return r = n - 3 * q.
         /// ' Assert q and r values.
         /// Assert.IsTrue(gmp_lib.mpz_cdiv_q_ui(q, n, 3UI) = 2UI)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 3334)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and q.
         /// gmp_lib.mpz_clears(n, q, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint /*unsigned long int*/ mpz_cdiv_q_ui(mpz_t q, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -3421,50 +3419,50 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of d to 3.
         /// mpz_t d = new mpz_t();
         /// gmp_lib.mpz_init_set_si(d, 3);
-        /// 
+        ///
         /// // Create, initialize, and set the values of q and r to 0.
         /// mpz_t q = new mpz_t();
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_inits(q, r, null);
-        /// 
+        ///
         /// // Set q = ceiling(n / 3) and r = n - d * q.
         /// gmp_lib.mpz_cdiv_qr(q, r, n, d);
-        /// 
+        ///
         /// // Assert that q is 3334, and that r is -2.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 3334);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == -2);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, d, q, and r.
         /// gmp_lib.mpz_clears(n, d, q, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of d to 3.
         /// Dim d As New mpz_t()
         /// gmp_lib.mpz_init_set_si(d, 3)
-        /// 
+        ///
         /// ' Create, initialize, and set the values of q and r to 0.
         /// Dim q As New mpz_t()
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_inits(q, r, Nothing)
-        /// 
+        ///
         ///  Set q = ceiling(n / 3) and r = n - d * q.
         /// gmp_lib.mpz_cdiv_qr(q, r, n, d)
-        /// 
+        ///
         /// ' Assert that q is 3334, and that r is -2.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 3334)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = -2)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, d, q, and r.
         /// gmp_lib.mpz_clears(n, d, q, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_cdiv_qr(mpz_t q, mpz_t r, /*const*/ mpz_t n, /*const*/ mpz_t d)
         {
@@ -3504,42 +3502,42 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the values of q and r to 0.
         /// mpz_t q = new mpz_t();
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_inits(q, r, null);
-        /// 
+        ///
         /// // Set q = ceiling(n / 3), r = n - d * q, and return r.
         /// Assert.IsTrue(gmp_lib.mpz_cdiv_qr_ui(q, r, n, 3U) == 2U);
-        /// 
+        ///
         /// // Assert that q is 3334, and that r is -2.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 3334);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == -2);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, q, and r.
         /// gmp_lib.mpz_clears(n, q, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the values of q and r to 0.
         /// Dim q As New mpz_t()
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_inits(q, r, Nothing)
-        /// 
+        ///
         /// ' Set q = ceiling(n / 3), r = n - d * q, and return r.
         /// Assert.IsTrue(gmp_lib.mpz_cdiv_qr_ui(q, r, n, 3UI) = 2UI)
-        /// 
+        ///
         /// ' Assert that q is 3334, and that r is -2.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 3334)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = -2)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, q, and r.
         /// gmp_lib.mpz_clears(n, q, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint /*unsigned long int*/ mpz_cdiv_qr_ui(mpz_t q, mpz_t r, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -3576,46 +3574,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of d to 3.
         /// mpz_t d = new mpz_t();
         /// gmp_lib.mpz_init_set_si(d, 3);
-        /// 
+        ///
         /// // Create, initialize, and set the value of r to 0.
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_init(r);
-        /// 
+        ///
         /// // Set r = n - d * ceiling(n / d).
         /// gmp_lib.mpz_cdiv_r(r, n, d);
-        /// 
+        ///
         /// // Assert that r is -2.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == -2);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, d, and r.
         /// gmp_lib.mpz_clears(n, d, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of d to 3.
         /// Dim d As New mpz_t()
         /// gmp_lib.mpz_init_set_si(d, 3)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of r to 0.
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_init(r)
-        /// 
+        ///
         /// ' Set r = n - d * ceiling(n / d).
         /// gmp_lib.mpz_cdiv_r(r, n, d)
-        /// 
+        ///
         /// ' Assert that r is -2.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = -2)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, d, and r.
         /// gmp_lib.mpz_clears(n, d, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_cdiv_r(mpz_t r, /*const*/ mpz_t n, /*const*/ mpz_t d)
         {
@@ -3652,37 +3650,37 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10001.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10001);
-        /// 
+        ///
         /// // Create, initialize, and set the value of r to 0.
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_init(r);
-        /// 
+        ///
         /// // Set r = n - 2^2 * ceiling(n / 2^2)
         /// gmp_lib.mpz_cdiv_r_2exp(r, n, 2U);
-        /// 
+        ///
         /// // Assert that r is -3.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == -3);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and r.
         /// gmp_lib.mpz_clears(n, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10001.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10001)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of r to 0.
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_init(r)
         /// ' Set r = n - 2^2 * ceiling(n / 2^2)
         /// gmp_lib.mpz_cdiv_r_2exp(r, n, 2UI)
-        /// 
+        ///
         /// ' Assert that r is -3.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = -3)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and r.
         /// gmp_lib.mpz_clears(n, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_cdiv_r_2exp(mpz_t r, /*const*/ mpz_t n, mp_bitcnt_t b)
         {
@@ -3719,38 +3717,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of r to 0.
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_init(r);
-        /// 
+        ///
         /// // Set r = n - 3 * ceiling(n / 3), and return |r|.
         /// Assert.IsTrue(gmp_lib.mpz_cdiv_r_ui(r, n, 3U) == 2U);
-        /// 
+        ///
         /// // Assert that r is -2.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == -2);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and r.
         /// gmp_lib.mpz_clears(n, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of r to 0.
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_init(r)
-        /// 
+        ///
         /// ' Set r = n - 3 * ceiling(n / 3), and return |r|.
         /// Assert.IsTrue(gmp_lib.mpz_cdiv_r_ui(r, n, 3UI) = 2UI)
-        /// 
+        ///
         /// ' Assert that r is -2.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = -2)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and r.
         /// gmp_lib.mpz_clears(n, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint /*unsigned long int*/ mpz_cdiv_r_ui(mpz_t r, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -3786,24 +3784,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Assert that returned value is |n - 3 * ceiling(n / 3)|.
         /// Assert.IsTrue(gmp_lib.mpz_cdiv_ui(n, 3U) == 2U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n.
         /// gmp_lib.mpz_clear(n);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Assert that returned value is |n - 3 * ceiling(n / 3)|.
         /// Assert.IsTrue(gmp_lib.mpz_cdiv_ui(n, 3UI) = 2UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n.
         /// gmp_lib.mpz_clear(n)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint mpz_cdiv_ui(/*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -3832,24 +3830,24 @@ namespace MathGmp.Native
         /// // Create and initialize a new integer x.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
-        /// 
+        ///
         /// // Assert that the value of x is 0.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(x) == 0U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new integer x.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
-        /// 
+        ///
         /// ' Assert that the value of x is 0.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(x) = 0UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_clear(mpz_t x)
         {
@@ -3875,35 +3873,35 @@ namespace MathGmp.Native
         /// mpz_t x1 = new mpz_t();
         /// mpz_t x2 = new mpz_t();
         /// mpz_t x3 = new mpz_t();
-        /// 
+        ///
         /// // Initialize the integers.
         /// gmp_lib.mpz_inits(x1, x2, x3, null);
-        /// 
+        ///
         /// // Assert that their value is 0.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x1) == 0);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x2) == 0);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x3) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for the integers.
         /// gmp_lib.mpz_clears(x1, x2, x3, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create new integers x1, x2 and x3.
         /// Dim x1 As New mpz_t()
         /// Dim x2 As New mpz_t()
         /// Dim x3 As New mpz_t()
-        /// 
+        ///
         /// ' Initialize the integers.
         /// gmp_lib.mpz_inits(x1, x2, x3, Nothing)
-        /// 
+        ///
         /// ' Assert that their value is 0.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x1) = 0)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x2) = 0)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x3) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for the integers.
-        /// gmp_lib.mpz_clears(x1, x2, x3, Nothing) 
-        /// </code> 
+        /// gmp_lib.mpz_clears(x1, x2, x3, Nothing)
+        /// </code>
         /// </example>
         public static void mpz_clears(params mpz_t[] x)
         {
@@ -3919,7 +3917,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number 0. 
+        /// The least significant bit is number 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and">mpz_and</seealso>
@@ -3940,30 +3938,30 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 70.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init_set_si(rop, 70);
-        /// 
+        ///
         /// // Clear bit 3 of rop.
         /// gmp_lib.mpz_clrbit(rop, 3U);
-        /// 
+        ///
         /// // Assert that rop is 70.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 70);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 70.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init_set_si(rop, 70)
-        /// 
+        ///
         /// ' Clear bit 3 of rop.
         /// gmp_lib.mpz_clrbit(rop, 3UI)
-        /// 
+        ///
         /// ' Assert that rop is 70.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 70)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_clrbit(mpz_t rop, mp_bitcnt_t bit_index)
         {
@@ -3991,32 +3989,32 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op1, 63U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 70.
         /// mpz_t op2 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op2, 70U);
-        /// 
+        ///
         /// // Assert that op1 &lt; op2.
         /// Assert.IsTrue(gmp_lib.mpz_cmp(op1, op2) &lt; 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1 and op2.
         /// gmp_lib.mpz_clears(op1, op2, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 63.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op1, 63UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 70.
         /// Dim op2 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op2, 70UI)
-        /// 
+        ///
         /// ' Assert that op1 &lt; op2.
         /// Assert.IsTrue(gmp_lib.mpz_cmp(op1, op2) &lt; 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op1 and op2.
         /// gmp_lib.mpz_clears(op1, op2, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_cmp(/*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -4051,24 +4049,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op1, 63U);
-        /// 
+        ///
         /// // Assert that op1 &lt; 70.0.
         /// Assert.IsTrue(gmp_lib.mpz_cmp_d(op1, 70.0) &lt; 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1.
         /// gmp_lib.mpz_clear(op1);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 63.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op1, 63UI)
-        /// 
+        ///
         /// ' Assert that op1 &lt; 70.0.
         /// Assert.IsTrue(gmp_lib.mpz_cmp_d(op1, 70.0) &lt; 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op1.
         /// gmp_lib.mpz_clear(op1)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_cmp_d(/*const*/ mpz_t op1, double op2)
         {
@@ -4096,24 +4094,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op1, 63U);
-        /// 
+        ///
         /// // Assert that op1 &lt; 70.
         /// Assert.IsTrue(gmp_lib.mpz_cmp_si(op1, 70) &lt; 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1.
         /// gmp_lib.mpz_clear(op1);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 63.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op1, 63UI)
-        /// 
+        ///
         /// ' Assert that op1 &lt; 70.
         /// Assert.IsTrue(gmp_lib.mpz_cmp_si(op1, 70) &lt; 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op1.
         /// gmp_lib.mpz_clear(op1)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_cmp_si(/*const*/ mpz_t op1, int /*long int*/ op2)
         {
@@ -4140,24 +4138,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op1, 63U);
-        /// 
+        ///
         /// // Assert that op1 &lt; 70.
         /// Assert.IsTrue(gmp_lib.mpz_cmp_ui(op1, 70U) &lt; 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1.
         /// gmp_lib.mpz_clear(op1);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 63.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op1, 63UI)
-        /// 
+        ///
         /// ' Assert that op1 &lt; 70.
         /// Assert.IsTrue(gmp_lib.mpz_cmp_ui(op1, 70UI) &lt; 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op1.
         /// gmp_lib.mpz_clear(op1)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_cmp_ui(/*const*/ mpz_t op1, uint /*unsigned long int*/ op2)
         {
@@ -4185,32 +4183,32 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to -63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_si(op1, -63);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 70.
         /// mpz_t op2 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op2, 70U);
-        /// 
+        ///
         /// // Assert that |op1| &lt; |op2|.
         /// Assert.IsTrue(gmp_lib.mpz_cmp(op1, op2) &lt; 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1 and op2.
         /// gmp_lib.mpz_clears(op1, op2, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to -63.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_si(op1, -63)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 70.
         /// Dim op2 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op2, 70UI)
-        /// 
+        ///
         /// ' Assert that |op1| &lt; |op2|.
         /// Assert.IsTrue(gmp_lib.mpz_cmp(op1, op2) &lt; 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op1 and op2.
         /// gmp_lib.mpz_clears(op1, op2, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_cmpabs(/*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -4245,24 +4243,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to -63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_si(op1, -63);
-        /// 
+        ///
         /// // Assert that |op1| &lt; |-70.0|.
         /// Assert.IsTrue(gmp_lib.mpz_cmpabs_d(op1, -70.0) &lt; 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1.
         /// gmp_lib.mpz_clear(op1);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to -63.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_si(op1, -63)
-        /// 
+        ///
         /// ' Assert that |op1| &lt; |-70.0|.
         /// Assert.IsTrue(gmp_lib.mpz_cmpabs_d(op1, -70.0) &lt; 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op1.
         /// gmp_lib.mpz_clear(op1)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_cmpabs_d(/*const*/ mpz_t op1, double op2)
         {
@@ -4290,15 +4288,15 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to -63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_si(op1, -63);
-        /// 
+        ///
         /// // Assert that |op1| &lt; |70|.
         /// Assert.IsTrue(gmp_lib.mpz_cmpabs_ui(op1, 70U) &lt; 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1.
         /// gmp_lib.mpz_clear(op1);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_cmpabs_ui(/*const*/ mpz_t op1, uint /*unsigned long int*/ op2)
         {
@@ -4314,7 +4312,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number 0. 
+        /// The least significant bit is number 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and">mpz_and</seealso>
@@ -4335,38 +4333,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 63.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, 63U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop to the one's complement of op.
         /// gmp_lib.mpz_com(rop, op);
-        /// 
+        ///
         /// // Assert that rop is -64.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == -64);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop and op.
         /// gmp_lib.mpz_clears(rop, op, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 63.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, 63UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop to the one's complement of op.
         /// gmp_lib.mpz_com(rop, op)
-        /// 
+        ///
         /// ' Assert that rop is -64.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = -64)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop and op.
         /// gmp_lib.mpz_clears(rop, op, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_com(mpz_t rop, /*const*/ mpz_t op)
         {
@@ -4377,14 +4375,14 @@ namespace MathGmp.Native
 
 
         /// <summary>
-        /// Complement bit <paramref name="bit_index"/> in <paramref name="rop"/>. 
+        /// Complement bit <paramref name="bit_index"/> in <paramref name="rop"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="bit_index">The index of the bit to comlpement.</param>
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number 0. 
+        /// The least significant bit is number 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and">mpz_and</seealso>
@@ -4405,29 +4403,29 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 70.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init_set_si(rop, 70);
-        /// 
+        ///
         /// // Complement bit 3 of rop.
         /// gmp_lib.mpz_combit(rop, 3U);
-        /// 
+        ///
         /// // Assert that rop is 78.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 78);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 70.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init_set_si(rop, 70)
-        /// 
+        ///
         /// ' Complement bit 3 of rop.
         /// gmp_lib.mpz_combit(rop, 3UI)
-        /// 
+        ///
         /// ' Assert that rop is 78.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 78)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop.
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_combit(mpz_t rop, mp_bitcnt_t bit_index)
         {
@@ -4465,40 +4463,40 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(n, 10000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of d to 3.
         /// mpz_t d = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(d, 3U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of c to 1.
         /// mpz_t c = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(c, 1U);
-        /// 
+        ///
         /// // Assert that n is congruent to c mod d.
         /// Assert.IsTrue(gmp_lib.mpz_congruent_p(n, c, d) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, d, and c.
         /// gmp_lib.mpz_clears(n, d, c, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(n, 10000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of d to 3.
         /// Dim d As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(d, 3UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of c to 1.
         /// Dim c As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(c, 1UI)
-        /// 
+        ///
         /// ' Assert that n is congruent to c mod d.
         /// Assert.IsTrue(gmp_lib.mpz_congruent_p(n, c, d) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, d, and c.
         /// gmp_lib.mpz_clears(n, d, c, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_congruent_p(/*const*/ mpz_t n, /*const*/ mpz_t c, /*const*/ mpz_t d)
         {
@@ -4536,32 +4534,32 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10001.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(n, 10001U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of b to 1.
         /// mpz_t c = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(c, 1U);
-        /// 
+        ///
         /// // Assert that n is congruent to c mod 2^3.
         /// Assert.IsTrue(gmp_lib.mpz_congruent_2exp_p(n, c, 3U) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and c.
         /// gmp_lib.mpz_clears(n, c, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10001.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(n, 10001UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of b to 1.
         /// Dim c As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(c, 1UI)
-        /// 
+        ///
         /// ' Assert that n is congruent to c mod 2^3.
         /// Assert.IsTrue(gmp_lib.mpz_congruent_2exp_p(n, c, 3UI) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and c.
         /// gmp_lib.mpz_clears(n, c, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_congruent_2exp_p(/*const*/ mpz_t n, /*const*/ mpz_t c, mp_bitcnt_t b)
         {
@@ -4600,24 +4598,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(n, 10000U);
-        /// 
+        ///
         /// // Assert that n is congruent to 1 mod 3.
         /// Assert.IsTrue(gmp_lib.mpz_congruent_ui_p(n, 1U, 3U) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n.
         /// gmp_lib.mpz_clear(n);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(n, 10000UI)
-        /// 
+        ///
         /// ' Assert that n is congruent to 1 mod 3.
         /// Assert.IsTrue(gmp_lib.mpz_congruent_ui_p(n, 1UI, 3UI) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n.
         /// gmp_lib.mpz_clear(n)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_congruent_ui_p(/*const*/ mpz_t n, uint /*unsigned long int*/ c, uint /*unsigned long int*/ d)
         {
@@ -4626,7 +4624,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="q"/> to <paramref name="n"/> / <paramref name="d"/> when it is known in advance that <paramref name="d"/> divides <paramref name="n"/>. 
+        /// Set <paramref name="q"/> to <paramref name="n"/> / <paramref name="d"/> when it is known in advance that <paramref name="d"/> divides <paramref name="n"/>.
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -4645,46 +4643,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of y to 5.
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(y, 5U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = x / y.
         /// gmp_lib.mpz_divexact(z, x, y);
-        /// 
+        ///
         /// // Assert that z is 2000.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == 2000);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpz_clears(x, y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of y to 5.
         /// Dim y As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(y, 5UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = x / y.
         /// gmp_lib.mpz_divexact(z, x, y)
-        /// 
+        ///
         /// ' Assert that z is 2000.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = 2000)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpz_clears(x, y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_divexact(mpz_t q, /*const*/ mpz_t n, /*const*/ mpz_t d)
         {
@@ -4695,7 +4693,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="q"/> to <paramref name="n"/> / <paramref name="d"/> when it is known in advance that <paramref name="d"/> divides <paramref name="n"/>. 
+        /// Set <paramref name="q"/> to <paramref name="n"/> / <paramref name="d"/> when it is known in advance that <paramref name="d"/> divides <paramref name="n"/>.
         /// </summary>
         /// <param name="q">The result quotient integer.</param>
         /// <param name="n">The numerator integer.</param>
@@ -4714,38 +4712,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = x / 5.
         /// gmp_lib.mpz_divexact_ui(z, x, 5U);
-        /// 
+        ///
         /// // Assert that z is 2000.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == 2000);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = x / 5.
         /// gmp_lib.mpz_divexact_ui(z, x, 5UI)
-        /// 
+        ///
         /// ' Assert that z is 2000.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = 2000)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_divexact_ui(mpz_t q, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -4765,7 +4763,7 @@ namespace MathGmp.Native
         /// <paramref name="n"/> is divisible by <paramref name="d"/> if there exists an integer q
         /// satisfying <paramref name="n"/> = q * <paramref name="d"/>. Unlike the other division functions,
         /// <paramref name="d"/> = 0 is accepted and following the rule it can be seen that only 0 is
-        /// considered divisible by 0. 
+        /// considered divisible by 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
@@ -4783,32 +4781,32 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of y to 5.
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(y, 5U);
-        /// 
+        ///
         /// // Assert that x is divisible by y.
         /// Assert.IsTrue(gmp_lib.mpz_divisible_p(x, y) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpz_clears(x, y, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of y to 5.
         /// Dim y As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(y, 5UI)
-        /// 
+        ///
         /// ' Assert that x is divisible by y.
         /// Assert.IsTrue(gmp_lib.mpz_divisible_p(x, y) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpz_clears(x, y, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_divisible_p(/*const*/ mpz_t n, /*const*/ mpz_t d)
         {
@@ -4828,7 +4826,7 @@ namespace MathGmp.Native
         /// <paramref name="n"/> is divisible by <paramref name="d"/> if there exists an integer q
         /// satisfying <paramref name="n"/> = q * <paramref name="d"/>. Unlike the other division functions,
         /// <paramref name="d"/> = 0 is accepted and following the rule it can be seen that only 0 is
-        /// considered divisible by 0. 
+        /// considered divisible by 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
@@ -4846,24 +4844,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10000U);
-        /// 
+        ///
         /// // Assert that x is divisible by 5.
         /// Assert.IsTrue(gmp_lib.mpz_divisible_ui_p(x, 5U) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10000UI)
-        /// 
+        ///
         /// ' Assert that x is divisible by 5.
         /// Assert.IsTrue(gmp_lib.mpz_divisible_ui_p(x, 5UI) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_divisible_ui_p(/*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -4880,7 +4878,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// <paramref name="n"/> is divisible by 2^<paramref name="b"/> if there exists an integer q
-        /// satisfying <paramref name="n"/> = q * 2^<paramref name="b"/>. 
+        /// satisfying <paramref name="n"/> = q * 2^<paramref name="b"/>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
@@ -4898,22 +4896,22 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10000U);
-        /// 
+        ///
         /// Assert.IsTrue(gmp_lib.mpz_divisible_2exp_p(x, 2U) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10000UI)
-        /// 
+        ///
         /// Assert.IsTrue(gmp_lib.mpz_divisible_2exp_p(x, 2UI) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_divisible_2exp_p(/*const*/ mpz_t n, mp_bitcnt_t b)
         {
@@ -4941,26 +4939,26 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 427295.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, 427295);
-        /// 
+        ///
         /// // Assert that op is not even but odd.
         /// Assert.IsTrue(gmp_lib.mpz_even_p(op) == 0);
         /// Assert.IsTrue(gmp_lib.mpz_odd_p(op) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 427295.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, 427295)
-        /// 
+        ///
         /// ' Assert that op is not even but odd.
         /// Assert.IsTrue(gmp_lib.mpz_even_p(op) = 0)
         /// Assert.IsTrue(gmp_lib.mpz_odd_p(op) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_even_p(/*const*/ mpz_t op)
         {
@@ -4987,38 +4985,38 @@ namespace MathGmp.Native
         /// Within each word <paramref name="endian"/> can be 1 for most significant byte first,
         /// -1 for least significant first, or 0 for the native endianness of the host CPU.
         /// The most significant <paramref name="nails"/> bits of each word are unused and set to zero,
-        /// this can be 0 to produce full words. 
+        /// this can be 0 to produce full words.
         /// </para>
         /// <para>
         /// The number of words produced is written to <paramref name="countp"/>, or <paramref name="countp"/> can be NULL to discard the count.
         /// <paramref name="rop"/> must have enough space for the data, or if <paramref name="rop"/> is NULL then a result array of the necessary
-        /// size is allocated using the current GMP allocation function 
+        /// size is allocated using the current GMP allocation function
         /// (see <a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a>).
-        /// In either case the return value is the destination used, either <paramref name="rop"/> or the allocated block. 
+        /// In either case the return value is the destination used, either <paramref name="rop"/> or the allocated block.
         /// </para>
         /// <para>
         /// If <paramref name="op"/> is non-zero then the most significant word produced will be non-zero.
         /// If <paramref name="op"/> is zero then the count returned will be zero and nothing written to <paramref name="rop"/>.
-        /// If <paramref name="rop"/> is NULL in this case, no block is allocated, just NULL is returned. 
+        /// If <paramref name="rop"/> is NULL in this case, no block is allocated, just NULL is returned.
         /// </para>
         /// <para>
         /// The sign of <paramref name="op"/> is ignored, just the absolute value is exported.
         /// An application can use <see cref="mpz_sgn">mpz_sgn</see> to get the sign and handle it as desired.
-        /// (see <a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a>) 
+        /// (see <a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a>)
         /// </para>
         /// <para>
-        /// There are no data alignment restrictions on <paramref name="rop"/>, any address is allowed. 
+        /// There are no data alignment restrictions on <paramref name="rop"/>, any address is allowed.
         /// </para>
         /// <para>
         /// When an application is allocating space itself the required size can be determined with a calculation like the following.
         /// Since <see cref="mpz_sizeinbase">mpz_sizeinbase</see> always returns at least 1, count here will be at least one, which avoids any portability
-        /// problems with malloc(0), though if z is zero no space at all is actually needed (or written). 
-        /// </para> 
+        /// problems with malloc(0), though if z is zero no space at all is actually needed (or written).
+        /// </para>
         /// <code language="C++">
         /// numb = 8 * size - nail;
         /// count = (mpz_sizeinbase(z, 2) + numb - 1) / numb;
         /// p = malloc(count * size);
-        /// </code> 
+        /// </code>
         /// </remarks>
         /// <seealso cref="mpz_import">mpz_import</seealso>
         /// <seealso cref="gmp_lib"><a href="/MathGmp.Native/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Import_and_Export">Integer Import and Export</a></seealso>
@@ -5029,12 +5027,12 @@ namespace MathGmp.Native
         /// mpz_t op = new mpz_t();
         /// char_ptr value = new char_ptr("800000000000000000000001");
         /// gmp_lib.mpz_init_set_str(op, value, 16);
-        /// 
+        ///
         /// // Export op as 3 words of 4 bytes each, first word is lsb, and first byte in each word is msb.
         /// void_ptr data = gmp_lib.allocate(12);
         /// size_t countp = 0;
         /// gmp_lib.mpz_export(data, ref countp, -1, 4, 1, 0, op);
-        /// 
+        ///
         /// // Assert the result.
         /// byte[] result = new byte[12];
         /// Marshal.Copy(data.ToIntPtr(), result, 0, 12);
@@ -5050,23 +5048,23 @@ namespace MathGmp.Native
         /// Assert.IsTrue(result[9] == 0x00);
         /// Assert.IsTrue(result[10] == 0x00);
         /// Assert.IsTrue(result[11] == 0x00);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, data, and value.
         /// gmp_lib.mpz_clear(op);
         /// gmp_lib.free(data);
         /// gmp_lib.free(value);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 0x800000000000000000000001.
         /// Dim op As New mpz_t()
         /// Dim value As New char_ptr("800000000000000000000001")
         /// gmp_lib.mpz_init_set_str(op, value, 16)
-        /// 
+        ///
         /// ' Export op as 3 words of 4 bytes each, first word is lsb, and first byte in each word is msb.
         /// Dim data As void_ptr = gmp_lib.allocate(12)
         /// Dim countp As size_t = 0
         /// gmp_lib.mpz_export(data, countp, -1, 4, 1, 0, op)
-        /// 
+        ///
         /// ' Assert the result.
         /// Dim result As Byte() = New Byte(11) { }
         /// Marshal.Copy(data.ToIntPtr(), result, 0, 12)
@@ -5082,12 +5080,12 @@ namespace MathGmp.Native
         /// Assert.IsTrue(result(9) = &amp;H0)
         /// Assert.IsTrue(result(10) = &amp;H0)
         /// Assert.IsTrue(result(11) = &amp;H0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, data, and value.
         /// gmp_lib.mpz_clear(op)
         /// gmp_lib.free(data)
         /// gmp_lib.free(value)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void_ptr mpz_export(void_ptr rop, ref size_t countp, int order, size_t size, int endian, size_t nails, /*const*/ mpz_t op)
         {
@@ -5127,38 +5125,38 @@ namespace MathGmp.Native
         /// Within each word <paramref name="endian"/> can be 1 for most significant byte first,
         /// -1 for least significant first, or 0 for the native endianness of the host CPU.
         /// The most significant <paramref name="nails"/> bits of each word are unused and set to zero,
-        /// this can be 0 to produce full words. 
+        /// this can be 0 to produce full words.
         /// </para>
         /// <para>
         /// The number of words produced is written to <paramref name="countp"/>, or <paramref name="countp"/> can be NULL to discard the count.
         /// <paramref name="rop"/> must have enough space for the data, or if <paramref name="rop"/> is NULL then a result array of the necessary
-        /// size is allocated using the current GMP allocation function 
+        /// size is allocated using the current GMP allocation function
         /// (see <a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a>).
-        /// In either case the return value is the destination used, either <paramref name="rop"/> or the allocated block. 
+        /// In either case the return value is the destination used, either <paramref name="rop"/> or the allocated block.
         /// </para>
         /// <para>
         /// If <paramref name="op"/> is non-zero then the most significant word produced will be non-zero.
         /// If <paramref name="op"/> is zero then the count returned will be zero and nothing written to <paramref name="rop"/>.
-        /// If <paramref name="rop"/> is NULL in this case, no block is allocated, just NULL is returned. 
+        /// If <paramref name="rop"/> is NULL in this case, no block is allocated, just NULL is returned.
         /// </para>
         /// <para>
         /// The sign of <paramref name="op"/> is ignored, just the absolute value is exported.
         /// An application can use <see cref="mpz_sgn">mpz_sgn</see> to get the sign and handle it as desired.
-        /// (see <a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a>) 
+        /// (see <a href="https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons">GNU MP - Integer Comparisons</a>)
         /// </para>
         /// <para>
-        /// There are no data alignment restrictions on <paramref name="rop"/>, any address is allowed. 
+        /// There are no data alignment restrictions on <paramref name="rop"/>, any address is allowed.
         /// </para>
         /// <para>
         /// When an application is allocating space itself the required size can be determined with a calculation like the following.
         /// Since <see cref="mpz_sizeinbase">mpz_sizeinbase</see> always returns at least 1, count here will be at least one, which avoids any portability
-        /// problems with malloc(0), though if z is zero no space at all is actually needed (or written). 
-        /// </para> 
+        /// problems with malloc(0), though if z is zero no space at all is actually needed (or written).
+        /// </para>
         /// <code language="C++">
         /// numb = 8 * size - nail;
         /// count = (mpz_sizeinbase(z, 2) + numb - 1) / numb;
         /// p = malloc(count * size);
-        /// </code> 
+        /// </code>
         /// </remarks>
         /// <seealso cref="mpz_import">mpz_import</seealso>
         /// <seealso cref="gmp_lib"><a href="/MathGmp.Native/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Integer_Import_and_Export">Integer Import and Export</a></seealso>
@@ -5169,12 +5167,12 @@ namespace MathGmp.Native
         /// mpz_t op = new mpz_t();
         /// char_ptr value = new char_ptr("800000000000000000000001");
         /// gmp_lib.mpz_init_set_str(op, value, 16);
-        /// 
+        ///
         /// // Export op as 3 words of 4 bytes each, first word is lsb, and first byte in each word is msb.
         /// void_ptr data = gmp_lib.allocate(12);
         /// ptr&lt;size_t&gt; countp = new ptr&lt;size_t&gt;(0);
         /// gmp_lib.mpz_export(data, countp, -1, 4, 1, 0, op);
-        /// 
+        ///
         /// // Assert the result.
         /// byte[] result = new byte[12];
         /// Marshal.Copy(data.ToIntPtr(), result, 0, 12);
@@ -5190,23 +5188,23 @@ namespace MathGmp.Native
         /// Assert.IsTrue(result[9] == 0x00);
         /// Assert.IsTrue(result[10] == 0x00);
         /// Assert.IsTrue(result[11] == 0x00);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, data, and value.
         /// gmp_lib.mpz_clear(op);
         /// gmp_lib.free(data);
         /// gmp_lib.free(value);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 0x800000000000000000000001.
         /// Dim op As New mpz_t()
         /// Dim value As New char_ptr("800000000000000000000001")
         /// gmp_lib.mpz_init_set_str(op, value, 16)
-        /// 
+        ///
         /// ' Export op as 3 words of 4 bytes each, first word is lsb, and first byte in each word is msb.
         /// Dim data As void_ptr = gmp_lib.allocate(12)
         /// Dim countp As New ptr(Of size_t)(0)
         /// gmp_lib.mpz_export(data, countp, -1, 4, 1, 0, op)
-        /// 
+        ///
         /// ' Assert the result.
         /// Dim result As Byte() = New Byte(11) { }
         /// Marshal.Copy(data.ToIntPtr(), result, 0, 12)
@@ -5222,12 +5220,12 @@ namespace MathGmp.Native
         /// Assert.IsTrue(result(9) = &amp;H0)
         /// Assert.IsTrue(result(10) = &amp;H0)
         /// Assert.IsTrue(result(11) = &amp;H0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, data, and value.
         /// gmp_lib.mpz_clear(op)
         /// gmp_lib.free(data)
         /// gmp_lib.free(value)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void_ptr mpz_export(void_ptr rop, ptr<size_t> countp, int order, size_t size, int endian, size_t nails, /*const*/ mpz_t op)
         {
@@ -5263,30 +5261,30 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop = 3!.
         /// gmp_lib.mpz_fac_ui(rop, 3U);
-        /// 
+        ///
         /// // Assert that rop is 6.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 6);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop = 3!.
         /// gmp_lib.mpz_fac_ui(rop, 3UI)
-        /// 
+        ///
         /// ' Assert that rop is 6.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 6)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_fac_ui(mpz_t rop, uint /*unsigned long int*/ n)
         {
@@ -5308,30 +5306,30 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop = 9!!.
         /// gmp_lib.mpz_2fac_ui(rop, 9U);
-        /// 
+        ///
         /// // Assert that rop is 945.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 945);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop = 9!!.
         /// gmp_lib.mpz_2fac_ui(rop, 9UI)
-        /// 
+        ///
         /// ' Assert that rop is 945.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 945)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_2fac_ui(mpz_t rop, uint /*unsigned long int*/ n)
         {
@@ -5354,30 +5352,30 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop = 10!^(4).
         /// gmp_lib.mpz_mfac_uiui(rop, 10U, 4U);
-        /// 
+        ///
         /// // Assert that rop is 945.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 120);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop = 10!^(4).
         /// gmp_lib.mpz_mfac_uiui(rop, 10UI, 4UI)
-        /// 
+        ///
         /// ' Assert that rop is 945.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 120)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_mfac_uiui(mpz_t rop, uint /*unsigned long int*/ n, uint /*unsigned long int*/ m)
         {
@@ -5386,7 +5384,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to the primorial of <paramref name="n"/>, i.e. the product of all positive prime numbers &#8804; <paramref name="n"/>. 
+        /// Set <paramref name="rop"/> to the primorial of <paramref name="n"/>, i.e. the product of all positive prime numbers &#8804; <paramref name="n"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="n">The operand integer.</param>
@@ -5397,30 +5395,30 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop = 7 * 5 * 3 * 2 = 210.
         /// gmp_lib.mpz_primorial_ui(rop, 9U);
-        /// 
+        ///
         /// // Assert that rop is 210.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 210);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop = 7 * 5 * 3 * 2 = 210.
         /// gmp_lib.mpz_primorial_ui(rop, 9UI)
-        /// 
+        ///
         /// ' Assert that rop is 210.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 210)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_primorial_ui(mpz_t rop, uint /*unsigned long int*/ n)
         {
@@ -5455,46 +5453,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of d to 3.
         /// mpz_t d = new mpz_t();
         /// gmp_lib.mpz_init_set_si(d, 3);
-        /// 
+        ///
         /// // Create, initialize, and set the value of q to 0.
         /// mpz_t q = new mpz_t();
         /// gmp_lib.mpz_init(q);
-        /// 
+        ///
         /// // Set q = floor(n / d).
         /// gmp_lib.mpz_fdiv_q(q, n, d);
-        /// 
+        ///
         /// // Assert that q is floor(10000 / 3).
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 3333);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, d, and q.
         /// gmp_lib.mpz_clears(n, d, q, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of d to 3.
         /// Dim d As New mpz_t()
         /// gmp_lib.mpz_init_set_si(d, 3)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of q to 0.
         /// Dim q As New mpz_t()
         /// gmp_lib.mpz_init(q)
-        /// 
+        ///
         /// ' Set q = floor(n / d).
         /// gmp_lib.mpz_fdiv_q(q, n, d)
-        /// 
+        ///
         /// ' Assert that q is floor(10000 / 3).
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 3333)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, d, and q.
         /// gmp_lib.mpz_clears(n, d, q, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_fdiv_q(mpz_t q, /*const*/ mpz_t n, /*const*/ mpz_t d)
         {
@@ -5531,38 +5529,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10001.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10001);
-        /// 
+        ///
         /// // Create, initialize, and set the value of q to 0.
         /// mpz_t q = new mpz_t();
         /// gmp_lib.mpz_init(q);
-        /// 
+        ///
         /// // Set q = floor(n / 2^2).
         /// gmp_lib.mpz_fdiv_q_2exp(q, n, 2U);
-        /// 
+        ///
         /// // Assert that q is floor(10001 / 4).
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 2500);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and q.
         /// gmp_lib.mpz_clears(n, q, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10001.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10001)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of q to 0.
         /// Dim q As New mpz_t()
         /// gmp_lib.mpz_init(q)
-        /// 
+        ///
         /// ' Set q = floor(n / 2^2).
         /// gmp_lib.mpz_fdiv_q_2exp(q, n, 2UI)
-        /// 
+        ///
         /// ' Assert that q is floor(10001 / 4).
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 2500)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and q.
         /// gmp_lib.mpz_clears(n, q, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_fdiv_q_2exp(mpz_t q, /*const*/ mpz_t n, mp_bitcnt_t b)
         {
@@ -5598,36 +5596,36 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of q to 0.
         /// mpz_t q = new mpz_t();
         /// gmp_lib.mpz_init(q);
-        /// 
+        ///
         /// // Set q = floor(n / 3) and return r = n - 3 * q.
         /// // Assert q and r values.
         /// Assert.IsTrue(gmp_lib.mpz_fdiv_q_ui(q, n, 3U) == 1U);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 3333);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and q.
         /// gmp_lib.mpz_clears(n, q, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of q to 0.
         /// Dim q As New mpz_t()
         /// gmp_lib.mpz_init(q)
-        /// 
+        ///
         /// ' Set q = floor(n / 3) and return r = n - 3 * q.
         /// ' Assert q and r values.
         /// Assert.IsTrue(gmp_lib.mpz_fdiv_q_ui(q, n, 3UI) = 1UI)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 3333)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and q.
         /// gmp_lib.mpz_clears(n, q, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static long mpz_fdiv_q_ui(mpz_t q, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -5664,50 +5662,50 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of d to 3.
         /// mpz_t d = new mpz_t();
         /// gmp_lib.mpz_init_set_si(d, 3);
-        /// 
+        ///
         /// // Create, initialize, and set the values of q and r to 0.
         /// mpz_t q = new mpz_t();
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_inits(q, r, null);
-        /// 
+        ///
         /// // Set q = floor(n / 3) and r = n - d * q.
         /// gmp_lib.mpz_fdiv_qr(q, r, n, d);
-        /// 
+        ///
         /// // Assert that q is 3333, and that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 3333);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, d, q, and r.
         /// gmp_lib.mpz_clears(n, d, q, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of d to 3.
         /// Dim d As New mpz_t()
         /// gmp_lib.mpz_init_set_si(d, 3)
-        /// 
+        ///
         /// ' Create, initialize, and set the values of q and r to 0.
         /// Dim q As New mpz_t()
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_inits(q, r, Nothing)
-        /// 
+        ///
         /// ' Set q = floor(n / 3) and r = n - d * q.
         /// gmp_lib.mpz_fdiv_qr(q, r, n, d)
-        /// /// 
+        /// ///
         /// ' Assert that q is 3333, and that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 3333)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, d, q, and r.
         /// gmp_lib.mpz_clears(n, d, q, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_fdiv_qr(mpz_t q, mpz_t r, /*const*/ mpz_t n, /*const*/ mpz_t d)
         {
@@ -5747,42 +5745,42 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the values of q and r to 0.
         /// mpz_t q = new mpz_t();
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_inits(q, r, null);
-        /// 
+        ///
         /// // Set q = floor(n / 3), r = n - d * q, and return r.
         /// Assert.IsTrue(gmp_lib.mpz_fdiv_qr_ui(q, r, n, 3U) == 1U);
-        /// 
+        ///
         /// // Assert that q is 3333, and that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 3333);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, q, and r.
         /// gmp_lib.mpz_clears(n, q, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the values of q and r to 0.
         /// Dim q As New mpz_t()
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_inits(q, r, Nothing)
-        /// 
+        ///
         /// ' Set q = floor(n / 3), r = n - d * q, and return r.
         /// Assert.IsTrue(gmp_lib.mpz_fdiv_qr_ui(q, r, n, 3UI) = 1UI)
-        /// 
+        ///
         /// ' Assert that q is 3333, and that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 3333)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, q, and r.
         /// gmp_lib.mpz_clears(n, q, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint /*unsigned long int*/ mpz_fdiv_qr_ui(mpz_t q, mpz_t r, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -5819,45 +5817,45 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of d to 3.
         /// mpz_t d = new mpz_t();
         /// gmp_lib.mpz_init_set_si(d, 3);
-        /// 
+        ///
         /// // Create, initialize, and set the value of r to 0.
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_init(r);
-        /// 
+        ///
         /// // Set r = n - d * floor(n / d).
         /// gmp_lib.mpz_fdiv_r(r, n, d);
-        /// 
+        ///
         /// // Assert that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, d, and r.
         /// gmp_lib.mpz_clears(n, d, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of d to 3.
         /// Dim d As New mpz_t()
         /// gmp_lib.mpz_init_set_si(d, 3)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of r to 0.
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_init(r)
-        /// 
+        ///
         /// ' Set r = n - d * floor(n / d).
         /// gmp_lib.mpz_fdiv_r(r, n, d)
         /// ' Assert that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, d, and r.
         /// gmp_lib.mpz_clears(n, d, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_fdiv_r(mpz_t r, /*const*/ mpz_t n, /*const*/ mpz_t d)
         {
@@ -5894,38 +5892,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10001.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10001);
-        /// 
+        ///
         /// // Create, initialize, and set the value of r to 0.
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_init(r);
-        /// 
+        ///
         /// // Set r = n - 2^2 * floor(n / 2^2)
         /// gmp_lib.mpz_fdiv_r_2exp(r, n, 2U);
-        /// 
+        ///
         /// // Assert that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and r.
         /// gmp_lib.mpz_clears(n, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10001.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10001)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of r to 0.
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_init(r)
-        /// 
+        ///
         /// ' Set r = n - 2^2 * floor(n / 2^2)
         /// gmp_lib.mpz_fdiv_r_2exp(r, n, 2UI)
-        /// 
+        ///
         /// ' Assert that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and r.
         /// gmp_lib.mpz_clears(n, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_fdiv_r_2exp(mpz_t r, /*const*/ mpz_t n, mp_bitcnt_t b)
         {
@@ -5962,39 +5960,39 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of r to 0.
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_init(r);
-        /// 
+        ///
         /// // Set r = n - 3 * floor(n / 3), and return |r|.
         /// Assert.IsTrue(gmp_lib.mpz_fdiv_r_ui(r, n, 3U) == 1U);
-        /// 
+        ///
         /// // Assert that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and r.
         /// gmp_lib.mpz_clears(n, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of r to 0.
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_init(r)
-        /// 
+        ///
         /// ' Set r = n - 3 * floor(n / 3), and return |r|.
         /// Set r = n - 3 * floor(n / 3), and return |r|.
         /// Assert.IsTrue(gmp_lib.mpz_fdiv_r_ui(r, n, 3UI) = 1UI)
-        /// 
+        ///
         /// ' Assert that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and r.
         /// gmp_lib.mpz_clears(n, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint mpz_fdiv_r_ui(mpz_t r, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -6030,24 +6028,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Assert that returned value is |n - 3 * floor(n / 3)|.
         /// Assert.IsTrue(gmp_lib.mpz_fdiv_ui(n, 3U) == 1U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n.
         /// gmp_lib.mpz_clear(n);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Assert that returned value is |n - 3 * floor(n / 3)|.
         /// Assert.IsTrue(gmp_lib.mpz_fdiv_ui(n, 3UI) = 1UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n.
         /// gmp_lib.mpz_clear(n)
-        /// </code> 
+        /// </code>
         /// </example>
         public static long mpz_fdiv_ui(/*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -6056,14 +6054,14 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Sets <paramref name="fn"/> to to F[<paramref name="n"/>], the <paramref name="n"/>’th Fibonacci number. 
+        /// Sets <paramref name="fn"/> to to F[<paramref name="n"/>], the <paramref name="n"/>’th Fibonacci number.
         /// </summary>
         /// <param name="fn">The F[<paramref name="n"/>] result.</param>
         /// <param name="n">The operand integer.</param>
         /// <remarks>
         /// <para>
         /// The Fibonacci numbers and Lucas numbers are related sequences, so it’s never necessary to call both
-        /// <see cref="mpz_fib2_ui">mpz_fib2_ui</see> and <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>. 
+        /// <see cref="mpz_fib2_ui">mpz_fib2_ui</see> and <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>.
         /// The formulas for going from Fibonacci to Lucas can be found in
         /// <a href="https://gmplib.org/manual/Lucas-Numbers-Algorithm.html#Lucas-Numbers-Algorithm">GNU MP - Lucas Numbers Algorithm</a>,
         /// the reverse is straightforward too.
@@ -6077,27 +6075,27 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of fn to 0.
         /// mpz_t fn = new mpz_t();
         /// gmp_lib.mpz_init(fn);
-        /// 
+        ///
         /// // Set fn to the n'th Fibonacci number.
         /// gmp_lib.mpz_fib_ui(fn, 20U);
-        /// 
+        ///
         /// // Assert that fn is 6765.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(fn) == 6765);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for fn.
         /// gmp_lib.mpz_clear(fn);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of fn to 0.
         /// Dim fn As New mpz_t()
         /// gmp_lib.mpz_init(fn)
-        /// 
+        ///
         /// ' Set fn to the n'th Fibonacci number.
         /// gmp_lib.mpz_fib_ui(fn, 20UI)
-        /// 
+        ///
         /// ' Assert that fn is 6765.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(fn) = 6765)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for fn.
         /// gmp_lib.mpz_clear(fn)
         /// </code>
@@ -6109,20 +6107,20 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Sets <paramref name="fn"/> to F[<paramref name="n"/>], and <paramref name="fnsub1"/> to F[<paramref name="n"/> - 1]. 
+        /// Sets <paramref name="fn"/> to F[<paramref name="n"/>], and <paramref name="fnsub1"/> to F[<paramref name="n"/> - 1].
         /// </summary>
         /// <param name="fn">The F[<paramref name="n"/>] result.</param>
         /// <param name="fnsub1">The F[<paramref name="n"/> - 1] result.</param>
         /// <param name="n">The operand integer.</param>
         /// <remarks>
         /// <para>
-        /// This function is designed for calculating isolated Fibonacci numbers. 
-        /// When a sequence of values is wanted it’s best to start with <see cref="mpz_fib2_ui">mpz_fib2_ui</see> 
+        /// This function is designed for calculating isolated Fibonacci numbers.
+        /// When a sequence of values is wanted it’s best to start with <see cref="mpz_fib2_ui">mpz_fib2_ui</see>
         /// and iterate the defining F[n + 1] = F[n] + F[n - 1] or similar.
         /// </para>
         /// <para>
         /// The Fibonacci numbers and Lucas numbers are related sequences, so it’s never necessary to call both
-        /// <see cref="mpz_fib2_ui">mpz_fib2_ui</see> and <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>. 
+        /// <see cref="mpz_fib2_ui">mpz_fib2_ui</see> and <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>.
         /// The formulas for going from Fibonacci to Lucas can be found in
         /// <a href="https://gmplib.org/manual/Lucas-Numbers-Algorithm.html#Lucas-Numbers-Algorithm">GNU MP - Lucas Numbers Algorithm</a>,
         /// the reverse is straightforward too.
@@ -6137,33 +6135,33 @@ namespace MathGmp.Native
         /// mpz_t fn = new mpz_t();
         /// mpz_t fnsub1 = new mpz_t();
         /// gmp_lib.mpz_inits(fn, fnsub1, null);
-        /// 
+        ///
         /// // Set fnsub1 and fn to the 19'th and 20'th Fibonacci numbers respectively.
         /// gmp_lib.mpz_fib2_ui(fn, fnsub1, 20U);
-        /// 
+        ///
         /// // Assert that fnsub1 and fn are respectively 4181 and 6765.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(fnsub1) == 4181);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(fn) == 6765);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for fn and fnsub1.
         /// gmp_lib.mpz_clears(fn, fnsub1, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the values of fn and fnsub1 to 0.
         /// Dim fn As New mpz_t()
         /// Dim fnsub1 As New mpz_t()
         /// gmp_lib.mpz_inits(fn, fnsub1, Nothing)
-        /// 
+        ///
         /// ' Set fnsub1 and fn to the 19'th and 20'th Fibonacci numbers respectively.
         /// gmp_lib.mpz_fib2_ui(fn, fnsub1, 20UI)
-        /// 
+        ///
         /// ' Assert that fnsub1 and fn are respectively 4181 and 6765.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(fnsub1) = 4181)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(fn) = 6765)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for fn and fnsub1.
         /// gmp_lib.mpz_clears(fn, fnsub1, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_fib2_ui(mpz_t fn, mpz_t fnsub1, uint /*unsigned long int*/ n)
         {
@@ -6192,24 +6190,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op 4294967295.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, uint.MaxValue);
-        /// 
+        ///
         /// // Assert that op does not fit in int.
         /// Assert.IsTrue(gmp_lib.mpz_fits_sint_p(op) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op 4294967295.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, UInteger.MaxValue)
-        /// 
+        ///
         /// ' Assert that op does not fit in int.
         /// Assert.IsTrue(gmp_lib.mpz_fits_sint_p(op) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_fits_sint_p(/*const*/ mpz_t op)
         {
@@ -6237,24 +6235,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op 4294967295.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, uint.MaxValue);
-        /// 
+        ///
         /// // Assert that op does not fit in long.
         /// Assert.IsTrue(gmp_lib.mpz_fits_slong_p(op) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op 4294967295.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, UInteger.MaxValue)
-        /// 
+        ///
         /// ' Assert that op does not fit in long.
         /// Assert.IsTrue(gmp_lib.mpz_fits_slong_p(op) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_fits_slong_p(/*const*/ mpz_t op)
         {
@@ -6282,24 +6280,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op 4294967295.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, uint.MaxValue);
-        /// 
+        ///
         /// // Assert that op does not fit in short.
         /// Assert.IsTrue(gmp_lib.mpz_fits_sshort_p(op) ==  0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op 4294967295.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, UInteger.MaxValue)
-        /// 
+        ///
         /// ' Assert that op does not fit in short.
         /// Assert.IsTrue(gmp_lib.mpz_fits_sshort_p(op) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_fits_sshort_p(/*const*/ mpz_t op)
         {
@@ -6327,24 +6325,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op 4294967295.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, uint.MaxValue);
-        /// 
+        ///
         /// // Assert that op does not fit in uint.
         /// Assert.IsTrue(gmp_lib.mpz_fits_uint_p(op) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op 4294967295.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, UInteger.MaxValue)
-        /// 
+        ///
         /// ' Assert that op does not fit in uint.
         /// Assert.IsTrue(gmp_lib.mpz_fits_uint_p(op) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_fits_uint_p(/*const*/ mpz_t op)
         {
@@ -6372,24 +6370,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op 4294967295.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, uint.MaxValue);
-        /// 
+        ///
         /// // Assert that op fits in ulong.
         /// Assert.IsTrue(gmp_lib.mpz_fits_ulong_p(op) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op 4294967295.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, UInteger.MaxValue)
-        /// 
+        ///
         /// ' Assert that op fits in ulong.
         /// Assert.IsTrue(gmp_lib.mpz_fits_ulong_p(op) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_fits_ulong_p(/*const*/ mpz_t op)
         {
@@ -6417,24 +6415,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op 4294967295.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, uint.MaxValue);
-        /// 
+        ///
         /// // Assert that op does not fit in ushort.
         /// Assert.IsTrue(gmp_lib.mpz_fits_ushort_p(op) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op 4294967295.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, UInteger.MaxValue)
-        /// 
+        ///
         /// ' Assert that op does not fit in ushort.
         /// Assert.IsTrue(gmp_lib.mpz_fits_ushort_p(op) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_fits_ushort_p(/*const*/ mpz_t op)
         {
@@ -6463,46 +6461,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op1, 63U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 70.
         /// mpz_t op2 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op2, 70U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop to the greatest common divisor of op1 and op2.
         /// gmp_lib.mpz_gcd(rop, op1, op2);
-        /// 
+        ///
         /// // Assert that rop is 7.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 7);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, op1, and op2.
         /// gmp_lib.mpz_clears(rop, op1, op2, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 63.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op1, 63UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 70.
         /// Dim op2 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op2, 70UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop to the greatest common divisor of op1 and op2.
         /// gmp_lib.mpz_gcd(rop, op1, op2)
-        /// 
+        ///
         /// ' Assert that rop is 7.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 7)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, op1, and op2.
         /// gmp_lib.mpz_clears(rop, op1, op2, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_gcd(mpz_t rop, /*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -6513,7 +6511,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Compute the greatest common divisor of <paramref name="op1"/> and <paramref name="op2"/>. If <paramref name="rop"/> is not null, store the result there. 
+        /// Compute the greatest common divisor of <paramref name="op1"/> and <paramref name="op2"/>. If <paramref name="rop"/> is not null, store the result there.
         /// </summary>
         /// <param name="rop">The result operand integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -6533,23 +6531,23 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op1, 63U);
-        /// 
+        ///
         /// // Return the greatest common divisor of op1 and 70.
         /// Assert.IsTrue(gmp_lib.mpz_gcd_ui(null, op1, 70U) == 7);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1.
         /// gmp_lib.mpz_clear(op1);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 63.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op1, 63UI)
-        /// 
+        ///
         /// ' Return the greatest common divisor of op1 and 70.
         /// Assert.IsTrue(gmp_lib.mpz_gcd_ui(Nothing, op1, 70UI) = 7)
         /// ' Release unmanaged memory allocated for op1.
         /// gmp_lib.mpz_clear(op1)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint mpz_gcd_ui(mpz_t rop, /*const*/ mpz_t op1, uint /*unsigned long int*/ op2)
         {
@@ -6571,25 +6569,25 @@ namespace MathGmp.Native
         /// are negative (or zero if both inputs are zero). The values in <paramref name="s"/> and <paramref name="t"/> are chosen such
         /// that normally, | <paramref name="s"/> | &lt; | <paramref name="b"/> | / (2 <paramref name="g"/>)
         /// and | <paramref name="t"/> | &lt; | <paramref name="a"/> | / (2 <paramref name="g"/>), and these relations
-        /// define <paramref name="s"/> and <paramref name="t"/> uniquely. There are a few exceptional cases: 
+        /// define <paramref name="s"/> and <paramref name="t"/> uniquely. There are a few exceptional cases:
         /// </para>
         /// <para>
         /// If | <paramref name="a"/> | = | <paramref name="b"/> |, then <paramref name="s"/> = 0,
         /// <paramref name="t"/> = sgn(<paramref name="b"/>).
         /// </para>
         /// <para>
-        /// Otherwise, <paramref name="s"/> = sgn(<paramref name="a"/>) if <paramref name="b"/> = 0 
+        /// Otherwise, <paramref name="s"/> = sgn(<paramref name="a"/>) if <paramref name="b"/> = 0
         /// or | <paramref name="b"/> | = 2 <paramref name="g"/>, and <paramref name="t"/> = sgn(<paramref name="b"/>)
-        /// if <paramref name="a"/> = 0 or | <paramref name="a"/> | = 2 <paramref name="g"/>. 
+        /// if <paramref name="a"/> = 0 or | <paramref name="a"/> | = 2 <paramref name="g"/>.
         /// </para>
         /// <para>
         /// In all cases, <paramref name="s"/> = 0 if and only if
         /// <paramref name="g"/> = | <paramref name="b"/> |, i.e.,
         /// if <paramref name="b"/> divides <paramref name="a"/>
-        /// or <paramref name="a"/> = <paramref name="b"/> = 0. 
+        /// or <paramref name="a"/> = <paramref name="b"/> = 0.
         /// </para>
         /// <para>
-        /// If <paramref name="t"/> is null then that value is not computed. 
+        /// If <paramref name="t"/> is null then that value is not computed.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_gcd">mpz_gcd</seealso>
@@ -6601,54 +6599,54 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 63.
         /// mpz_t a = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(a, 63U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 70.
         /// mpz_t b = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(b, 70U);
-        /// 
+        ///
         /// // Create, initialize, and set the values of g, s, and t to 0.
         /// mpz_t g = new mpz_t();
         /// mpz_t s = new mpz_t();
         /// mpz_t t = new mpz_t();
         /// gmp_lib.mpz_inits(g, s, t, null);
-        /// 
+        ///
         /// // Set g to the the greatest common divisor of a and b, and set s and t such that a * s + b * t = g.
         /// gmp_lib.mpz_gcdext(g, s, t, a, b);
-        /// 
+        ///
         /// // Assert that g is 7, and that s and t are respectively -1 and 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(g) == 7);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(s) == -1);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(t) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for g, s, t, a, and b.
         /// gmp_lib.mpz_clears(g, s, t, a, b, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 63.
         /// Dim a As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(a, 63UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 70.
         /// Dim b As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(b, 70UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the values of g, s, and t to 0.
         /// Dim g As New mpz_t()
         /// Dim s As New mpz_t()
         /// Dim t As New mpz_t()
         /// gmp_lib.mpz_inits(g, s, t, Nothing)
-        /// 
+        ///
         /// ' Set g to the the greatest common divisor of a and b, and set s and t such that a * s + b * t = g.
         /// gmp_lib.mpz_gcdext(g, s, t, a, b)
-        /// 
+        ///
         /// ' Assert that g is 7, and that s and t are respectively -1 and 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(g) = 7)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(s) = -1)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(t) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for g, s, t, a, and b.
         /// gmp_lib.mpz_clears(g, s, t, a, b, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_gcdext(mpz_t g, mpz_t s, mpz_t t, /*const*/ mpz_t a, /*const*/ mpz_t b)
         {
@@ -6681,24 +6679,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_d(x, 10.7D);
-        /// 
+        ///
         /// // Assert that the value of x is 10.0.
         /// Assert.IsTrue(gmp_lib.mpz_get_d(x) == 10.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_d(x, 10.7)
-        /// 
+        ///
         /// ' Assert that the value of x is 10.0.
         /// Assert.IsTrue(gmp_lib.mpz_get_d(x) = 10.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static double mpz_get_d(/*const*/ mpz_t op)
         {
@@ -6734,31 +6732,31 @@ namespace MathGmp.Native
         /// mpz_t x = new mpz_t();
         /// char_ptr value = new char_ptr("100000000000000000000");
         /// gmp_lib.mpz_init_set_str(x, value, 2);
-        /// 
+        ///
         /// // Assert that x is equal to 0.5^21.
         /// int exp = 0;
         /// Assert.IsTrue(gmp_lib.mpz_get_d_2exp(ref exp, x) == 0.5D);
         /// Assert.IsTrue(exp == 21);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and the string value.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.free(value);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 2^20.
         /// Dim x As New mpz_t()
         /// Dim value As New char_ptr("100000000000000000000")
         /// gmp_lib.mpz_init_set_str(x, value, 2)
-        /// 
+        ///
         /// ' Assert that x is equal to 0.5^21.
         /// Dim exp As Integer = 0
         /// Assert.IsTrue(gmp_lib.mpz_get_d_2exp(exp, x) = 0.5)
         /// Assert.IsTrue(exp = 21)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and the string value.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.free(value)
-        /// </code> 
+        /// </code>
         /// </example>
         public static double mpz_get_d_2exp(ref int /*long int*/ exp, /*const*/ mpz_t op)
         {
@@ -6792,24 +6790,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to -10.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_si(x, -10);
-        /// 
+        ///
         /// // Retrieve the value of x, and assert that it is -10.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == -10);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to -10.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_si(x, -10)
-        /// 
+        ///
         /// ' Retrieve the value of x, and assert that it is -10.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = -10)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_get_si(/*const*/ mpz_t op)
         {
@@ -6855,28 +6853,28 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to -210.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_si(x, -210);
-        /// 
+        ///
         /// // Retrieve the string value of x, and assert that it is "-210".
         /// char_ptr s = gmp_lib.mpz_get_str(char_ptr.Zero, 10, x);
         /// Assert.IsTrue(s.ToString() == "-210");
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and the string value.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.free(s);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to -210.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_si(x, -210)
-        /// 
+        ///
         /// ' Retrieve the string value of x, and assert that it is "-210".
         /// Dim s As char_ptr = gmp_lib.mpz_get_str(char_ptr.Zero, 10, x)
         /// Assert.IsTrue(s.ToString() = "-210")
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and the string value.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.free(s)
-        /// </code> 
+        /// </code>
         /// </example>
         public static char_ptr mpz_get_str(char_ptr str, int @base, /*const*/ mpz_t op)
         {
@@ -6907,24 +6905,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10U);
-        /// 
+        ///
         /// // Retrieve the value of x, and assert that it is 10.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(x) == 10U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10UI)
-        /// 
+        ///
         /// ' Retrieve the value of x, and assert that it is 10.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(x) = 10UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint /*unsigned long int*/ mpz_get_ui(/*const*/ mpz_t op)
         {
@@ -6964,7 +6962,7 @@ namespace MathGmp.Native
         /// mpz_t op = new mpz_t();
         /// char_ptr value = new char_ptr("1000 ABCD 1234 7AB8 24FD");
         /// gmp_lib.mpz_init_set_str(op, value, 16);
-        /// 
+        ///
         /// // Assert the value of the limbs of op.
         /// if (gmp_lib.mp_bytes_per_limb == 4)
         /// {
@@ -6977,17 +6975,17 @@ namespace MathGmp.Native
         ///     Assert.IsTrue(gmp_lib.mpz_getlimbn(op, 0) == 0xABCD12347AB824FD);
         ///     Assert.IsTrue(gmp_lib.mpz_getlimbn(op, 1) == 0x0000000000001000);
         /// }
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op and value.
         /// gmp_lib.mpz_clear(op);
         /// gmp_lib.free(value);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize new integer x.
         /// Dim op As New mpz_t()
         /// Dim value As New char_ptr("1000 ABCD 1234 7AB8 24FD")
         /// gmp_lib.mpz_init_set_str(op, value, 16)
-        /// 
+        ///
         /// ' Assert the value of the limbs of op.
         /// If gmp_lib.mp_bytes_per_limb = 4 Then
         ///     Assert.IsTrue(gmp_lib.mpz_getlimbn(op, 0) = &amp;H7ab824fd)
@@ -6997,11 +6995,11 @@ namespace MathGmp.Native
         ///     Assert.IsTrue(gmp_lib.mpz_getlimbn(op, 0) = &amp;Habcd12347ab824fdUL)
         ///     Assert.IsTrue(gmp_lib.mpz_getlimbn(op, 1) = &amp;H1000)
         /// End If
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op and value.
         /// gmp_lib.mpz_clear(op)
         /// gmp_lib.free(value)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpz_getlimbn(/*const*/ mpz_t op, mp_size_t n)
         {
@@ -7024,11 +7022,11 @@ namespace MathGmp.Native
         /// return the hamming distance between the two operands, which is the number of bit positions where
         /// <paramref name="op1"/> and <paramref name="op2"/> have different bit values. If one operand is
         /// &#8805; 0 and the other &lt; 0 then the number of bits different is infinite, and the
-        /// return value is the largest possible <see cref="mp_bitcnt_t">mp_bitcnt_t</see>. 
+        /// return value is the largest possible <see cref="mp_bitcnt_t">mp_bitcnt_t</see>.
         /// </para>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number 0. 
+        /// The least significant bit is number 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and">mpz_and</seealso>
@@ -7049,32 +7047,32 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op1, 63U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 70.
         /// mpz_t op2 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op2, 70U);
-        /// 
+        ///
         /// // Assert that the Hamming distance between op1 and op2 is 5.
         /// Assert.IsTrue(gmp_lib.mpz_hamdist(op1, op2) == 5U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1 and op2.
         /// gmp_lib.mpz_clears(op1, op2, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 63.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op1, 63UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 70.
         /// Dim op2 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op2, 70UI)
-        /// 
+        ///
         /// ' Assert that the Hamming distance between op1 and op2 is 5.
         /// Assert.IsTrue(gmp_lib.mpz_hamdist(op1, op2) = 5UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op1 and op2.
         /// gmp_lib.mpz_clears(op1, op2, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_bitcnt_t mpz_hamdist(/*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -7099,28 +7097,28 @@ namespace MathGmp.Native
         /// <paramref name="count"/> many words are read, each <paramref name="size"/> bytes.
         /// <paramref name="order"/> can be 1 for most significant word first or -1 for least significant first.
         /// Within each word endian can be 1 for most significant byte first, -1 for least significant first, or 0 for the native endianness of the host CPU.
-        /// The most significant <paramref name="nails"/> bits of each word are skipped, this can be 0 to use the full words. 
+        /// The most significant <paramref name="nails"/> bits of each word are skipped, this can be 0 to use the full words.
         /// </para>
         /// <para>
         /// There is no sign taken from the data, <paramref name="rop"/> will simply be a positive integer.
         /// An application can handle any sign itself, and apply it for instance with <see cref="mpz_neg">mpz_neg</see>.
         /// </para>
         /// <para>
-        /// There are no data alignment restrictions on <paramref name="op"/>, any address is allowed. 
+        /// There are no data alignment restrictions on <paramref name="op"/>, any address is allowed.
         /// </para>
         /// <para>
-        /// Here’s an example converting an array of unsigned long data, most significant element first, and host byte order within each value. 
+        /// Here’s an example converting an array of unsigned long data, most significant element first, and host byte order within each value.
         /// </para>
         /// <code language="C++">
         /// unsigned long a[20];
         /// /* Initialize z and a */
         /// mpz_import(z, 20, 1, sizeof(a[0]), 0, 0, a);
-        /// </code> 
+        /// </code>
         /// <para>
         /// This example assumes the full sizeof bytes are used for data in the given type, which is usually true,
         /// and certainly true for unsigned long everywhere we know of. However on Cray vector systems it may be noted that <c>short</c>
         /// and <c>int</c> are always stored in 8 bytes (and with sizeof indicating that) but use only 32 or 46 bits.
-        /// The <paramref name="nails"/> feature can account for this, by passing for instance 8 * sizeof(int) - INT_BIT. 
+        /// The <paramref name="nails"/> feature can account for this, by passing for instance 8 * sizeof(int) - INT_BIT.
         /// </para>
         /// </remarks>
         /// <seealso cref="O:MathGmp.Native.gmp_lib.mpz_export">O:MathGmp.Native.gmp_lib.mpz_export</seealso>
@@ -7131,44 +7129,44 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Copy 0x800000000000000000000001, 3 words of 4 bytes each, first word is lsb, and first byte in each word is msb.
         /// void_ptr data = gmp_lib.allocate(12);
         /// Marshal.Copy(new byte[] { 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00 }, 0, data.ToIntPtr(), 12);
-        /// 
+        ///
         /// // Import value into rop.
         /// gmp_lib.mpz_import(rop, 3, -1, 4, 1, 0, data);
-        /// 
+        ///
         /// // Assert the value of rop.
         /// char_ptr value = gmp_lib.mpz_get_str(char_ptr.Zero, 16, rop);
         /// Assert.IsTrue(value.ToString() == "800000000000000000000001");
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, data, and value.
         /// gmp_lib.mpz_clear(rop);
         /// gmp_lib.free(data);
         /// gmp_lib.free(value);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Copy 0x800000000000000000000001, 3 words of 4 bytes each, first word is lsb, and first byte in each word is msb.
         /// Dim data As void_ptr = gmp_lib.allocate(12)
         /// Marshal.Copy(New Byte() { &amp;H0, &amp;H0, &amp;H0, &amp;H1, &amp;H0, &amp;H0, &amp;H0, &amp;H0, &amp;H80, &amp;H0, &amp;H0, &amp;H0}, 0, data.ToIntPtr(), 12)
-        /// 
+        ///
         /// ' Import value into rop.
         /// gmp_lib.mpz_import(rop, 3, -1, 4, 1, 0, data)
-        /// 
+        ///
         /// ' Assert the value of rop.
         /// Dim value As char_ptr = gmp_lib.mpz_get_str(char_ptr.Zero, 16, rop)
         /// Assert.IsTrue(value.ToString() = "800000000000000000000001")
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, data, and value.
         /// gmp_lib.mpz_clear(rop)
         /// gmp_lib.free(data)
         /// gmp_lib.free(value)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_import(mpz_t rop, size_t count, int order, size_t size, int endian, size_t nails, void_ptr op)
         {
@@ -7195,28 +7193,28 @@ namespace MathGmp.Native
         /// // Create and initialize a new integer x.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
-        /// 
+        ///
         /// // Assert that the value of x is 0.
         /// char_ptr s = gmp_lib.mpz_get_str(char_ptr.Zero, 10, x);
         /// Assert.IsTrue(s.ToString() == "0");
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and its string value.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.free(s);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new integer x.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
-        /// 
+        ///
         /// ' Assert that the value of x is 0.
         /// Dim s As char_ptr = gmp_lib.mpz_get_str(char_ptr.Zero, 10, x)
         /// Assert.IsTrue(s.ToString() = "0")
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and its string value.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.free(s)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_init(mpz_t x)
         {
@@ -7258,24 +7256,24 @@ namespace MathGmp.Native
         /// // Create a new integer x, and initialize its size to 300 bits.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init2(x, 300);
-        /// 
+        ///
         /// // Assert that the value of x is 0.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create a new integer x, and initialize its size to 300 bits.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init2(x, 300)
-        /// 
+        ///
         /// ' Assert that the value of x is 0.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_init2(mpz_t x, mp_bitcnt_t n)
         {
@@ -7301,35 +7299,35 @@ namespace MathGmp.Native
         /// mpz_t x1 = new mpz_t();
         /// mpz_t x2 = new mpz_t();
         /// mpz_t x3 = new mpz_t();
-        /// 
+        ///
         /// // Initialize the integers.
         /// gmp_lib.mpz_inits(x1, x2, x3, null);
-        /// 
+        ///
         /// // Assert that their value is 0.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x1) == 0);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x2) == 0);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x3) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for the integers.
         /// gmp_lib.mpz_clears(x1, x2, x3, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create new integers x1, x2 and x3.
         /// Dim x1 As New mpz_t()
         /// Dim x2 As New mpz_t()
         /// Dim x3 As New mpz_t()
-        /// 
+        ///
         /// ' Initialize the integers.
         /// gmp_lib.mpz_inits(x1, x2, x3, Nothing)
-        /// 
+        ///
         /// ' Assert that their value is 0.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x1) = 0)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x2) = 0)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x3) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for the integers.
         /// gmp_lib.mpz_clears(x1, x2, x3, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_inits(params mpz_t[] x)
         {
@@ -7354,34 +7352,34 @@ namespace MathGmp.Native
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init(y);
         /// gmp_lib.mpz_set_si(y, -210);
-        /// 
+        ///
         /// // Create, initialize, and set a new integer x to the value of y.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set(x, y);
-        /// 
+        ///
         /// // Assert that x is equal to the value of y.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == -210);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpz_clears(x, y, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new integer y to -210.
         /// Dim y As New mpz_t()
-        /// 
+        ///
         /// gmp_lib.mpz_init(y)
         /// gmp_lib.mpz_set_si(y, -210)
-        /// 
+        ///
         /// ' Create, initialize, and set a new integer x to the value of y.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set(x, y)
-        /// 
+        ///
         /// ' Assert that x is equal to the value of y.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = -210)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpz_clears(x, y, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_init_set(mpz_t rop, /*const*/ mpz_t op)
         {
@@ -7412,25 +7410,25 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to the truncation of 10.7.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_d(x, 10.7D);
-        /// 
+        ///
         /// // Assert that the value of x is 10.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == 10);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to the truncation of 10.7.
         /// Dim x As New mpz_t()
-        /// 
+        ///
         /// gmp_lib.mpz_init_set_d(x, 10.7)
-        /// 
+        ///
         /// ' Assert that the value of x is 10.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = 10)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_init_set_d(mpz_t rop, double op)
         {
@@ -7455,25 +7453,25 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_si(x, 10);
-        /// 
+        ///
         /// // Assert that the value of x is 10.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == 10);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10.
         /// Dim x As New mpz_t()
-        /// 
+        ///
         /// gmp_lib.mpz_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Assert that the value of x is 10.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = 10)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_init_set_si(mpz_t rop, int /*long int*/ op)
         {
@@ -7506,31 +7504,31 @@ namespace MathGmp.Native
         /// mpz_t x = new mpz_t();
         /// char_ptr value = new char_ptr("  1 234 567 890 876 543 211 234 567 890 987 654 321  ");
         /// gmp_lib.mpz_init_set_str(x, value, 10);
-        /// 
+        ///
         /// // Assert the value of x.
         /// char_ptr s = gmp_lib.mpz_get_str(char_ptr.Zero, 10, x);
         /// Assert.IsTrue(s.ToString() == value.ToString().Replace(" ", ""));
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and string values.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.free(value);
         /// gmp_lib.free(s);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x.
         /// Dim x As New mpz_t()
         /// Dim value As New char_ptr("  1 234 567 890 876 543 211 234 567 890 987 654 321  ")
         /// gmp_lib.mpz_init_set_str(x, value, 10)
-        /// 
+        ///
         /// ' Assert the value of x.
         /// Dim s As char_ptr = gmp_lib.mpz_get_str(char_ptr.Zero, 10, x)
-        /// 
+        ///
         /// Assert.IsTrue(s.ToString() = value.ToString().Replace(" ", ""))
         /// ' Release unmanaged memory allocated for x and string values.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.free(value)
         /// gmp_lib.free(s)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_init_set_str(mpz_t rop, /*const*/ char_ptr str, int @base)
         {
@@ -7555,24 +7553,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10U);
-        /// 
+        ///
         /// // Assert that the value of x is 10.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(x) == 10U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10UI)
-        /// 
+        ///
         /// ' Assert that the value of x is 10.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(x) = 10UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_init_set_ui(mpz_t rop, uint /*unsigned long int*/ op)
         {
@@ -7590,7 +7588,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// This routine can read the output from <see cref="mpz_out_raw">mpz_out_raw</see> also from GMP 1,
-        /// in spite of changes necessary for compatibility between 32-bit and 64-bit machines. 
+        /// in spite of changes necessary for compatibility between 32-bit and 64-bit machines.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_out_str">mpz_out_str</seealso>
@@ -7603,54 +7601,54 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 123456.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, 123456U);
-        /// 
+        ///
         /// // Write op to a temporary file.
         /// string pathname = System.IO.Path.GetTempFileName();
         /// ptr&lt;FILE&gt; stream = new ptr&lt;FILE&gt;();
         /// _wfopen_s(out stream.Value.Value, pathname, "w");
         /// Assert.IsTrue(gmp_lib.mpz_out_raw(stream, op) == 7);
         /// fclose(stream.Value.Value);
-        /// 
+        ///
         /// // Read op from the temporary file, and assert that the number of bytes read is 6.
         /// _wfopen_s(out stream.Value.Value, pathname, "r");
         /// Assert.IsTrue(gmp_lib.mpz_inp_raw(op, stream) == 7);
         /// fclose(stream.Value.Value);
-        /// 
+        ///
         /// // Assert that op is 123456.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(op) == 123456U);
-        /// 
+        ///
         /// // Delete temporary file.
         /// System.IO.File.Delete(pathname);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 123456.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, 123456UI)
-        /// 
+        ///
         /// ' Write op to a temporary file.
         /// Dim pathname As String = System.IO.Path.GetTempFileName()
         /// Dim stream As New ptr(Of FILE)()
         /// _wfopen_s(stream.Value.Value, pathname, "w")
         /// Assert.IsTrue(gmp_lib.mpz_out_raw(stream, op) = 7)
         /// fclose(stream.Value.Value)
-        /// 
+        ///
         /// ' Read op from the temporary file, and assert that the number of bytes read is 6.
         /// _wfopen_s(stream.Value.Value, pathname, "r")
         /// Assert.IsTrue(gmp_lib.mpz_inp_raw(op, stream) = 7)
         /// fclose(stream.Value.Value)
-        /// 
+        ///
         /// ' Assert that op is 123456.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(op) = 123456UI)
-        /// 
+        ///
         /// ' Delete temporary file.
         /// System.IO.File.Delete(pathname)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static size_t mpz_inp_raw(mpz_t rop, ptr<FILE> stream)
         {
@@ -7663,7 +7661,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Input a possibly white-space preceded string in base <paramref name="base"/> from stdio stream <paramref name="stream"/>, and put the read integer in <paramref name="rop"/>. 
+        /// Input a possibly white-space preceded string in base <paramref name="base"/> from stdio stream <paramref name="stream"/>, and put the read integer in <paramref name="rop"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="stream">Pointer to file stream.</param>
@@ -7673,12 +7671,12 @@ namespace MathGmp.Native
         /// <para>
         /// The <paramref name="base"/> may vary from 2 to 62, or if base is 0,
         /// then the leading characters are used: 0x and 0X for hexadecimal,
-        /// 0b and 0B for binary, 0 for octal, or decimal otherwise. 
+        /// 0b and 0B for binary, 0 for octal, or decimal otherwise.
         /// </para>
         /// <para>
         /// For bases up to 36, case is ignored; upper-case and lower-case letters have the same value.
         /// For bases 37 to 62, upper-case letter represent the usual 10..35 while
-        /// lower-case letter represent 36..61. 
+        /// lower-case letter represent 36..61.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_out_str">mpz_out_str</seealso>
@@ -7691,50 +7689,50 @@ namespace MathGmp.Native
         /// // Create and initialize op.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init(op);
-        /// 
+        ///
         /// // Write op to a temporary file.
         /// string pathname = System.IO.Path.GetTempFileName();
         /// System.IO.File.WriteAllText(pathname, "123456");
-        /// 
+        ///
         /// // Read op from the temporary file, and assert that the number of bytes read is 6.
         /// ptr&lt;FILE&gt; stream = new ptr&lt;FILE&gt;();
         /// _wfopen_s(out stream.Value.Value, pathname, "r");
         /// Assert.IsTrue(gmp_lib.mpz_inp_str(op, stream, 10) == 6);
         /// fclose(stream.Value.Value);
-        /// 
+        ///
         /// // Assert that op is 123456.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(op) == 123456U);
-        /// 
+        ///
         /// // Delete temporary file.
         /// System.IO.File.Delete(pathname);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize op.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init(op)
-        /// 
+        ///
         /// ' Write op to a temporary file.
         /// Dim pathname As String = System.IO.Path.GetTempFileName()
         /// System.IO.File.WriteAllText(pathname, "123456")
-        /// 
+        ///
         /// ' Read op from the temporary file, and assert that the number of bytes read is 6.
         /// Dim stream As New ptr(Of FILE)()
         /// _wfopen_s(stream.Value.Value, pathname, "r")
         /// Assert.IsTrue(gmp_lib.mpz_inp_str(op, stream, 10) = 6)
         /// fclose(stream.Value.Value)
-        /// 
+        ///
         /// ' Assert that op is 123456.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(op) = 123456UI)
-        /// 
+        ///
         /// ' Delete temporary file.
         /// System.IO.File.Delete(pathname)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static size_t mpz_inp_str(mpz_t rop, ptr<FILE> stream, int @base)
         {
@@ -7769,46 +7767,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 3.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op1, 3U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 11.
         /// mpz_t op2 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op2, 11U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop to the modular inverse of op1 mod op2, i.e. b, where op1 * b mod op1 = 1.
         /// gmp_lib.mpz_invert(rop, op1, op2);
-        /// 
+        ///
         /// // Assert that rop is 4,
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 4);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, op1, and op2.
         /// gmp_lib.mpz_clears(rop, op1, op2, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 3.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op1, 3UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 11.
         /// Dim op2 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op2, 11UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop to the modular inverse of op1 mod op2, i.e. b, where op1 * b mod op1 = 1.
         /// gmp_lib.mpz_invert(rop, op1, op2)
-        /// 
+        ///
         /// ' Assert that rop is 4,
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 4)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, op1, and op2.
         /// gmp_lib.mpz_clears(rop, op1, op2, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_invert(mpz_t rop, /*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -7819,7 +7817,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="op1"/> bitwise inclusive-or <paramref name="op2"/>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> bitwise inclusive-or <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -7827,7 +7825,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number 0. 
+        /// The least significant bit is number 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and">mpz_and</seealso>
@@ -7848,46 +7846,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op1, 63U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 70.
         /// mpz_t op2 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op2, 70U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop to the bitwise inclusive or of op1 and op2.
         /// gmp_lib.mpz_ior(rop, op1, op2);
-        /// 
+        ///
         /// // Assert that rop is 127.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 127);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, op1, and op2.
         /// gmp_lib.mpz_clears(rop, op1, op2, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 63.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op1, 63UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 70.
         /// Dim op2 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op2, 70UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop to the bitwise inclusive or of op1 and op2.
         /// gmp_lib.mpz_ior(rop, op1, op2)
-        /// 
+        ///
         /// ' Assert that rop is 127.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 127)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, op1, and op2.
         /// gmp_lib.mpz_clears(rop, op1, op2, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_ior(mpz_t rop, /*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -7905,7 +7903,7 @@ namespace MathGmp.Native
         /// <returns>The Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>).</returns>
         /// <remarks>
         /// <para>
-        /// This is defined only for <paramref name="b"/> odd. 
+        /// This is defined only for <paramref name="b"/> odd.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_legendre">mpz_legendre</seealso>
@@ -7916,32 +7914,32 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of a to 11.
         /// mpz_t a = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(a, 11U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of b to 9.
         /// mpz_t b = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(b, 9U);
-        /// 
+        ///
         /// // Assert that the Jacobi symbol of (a/b) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_jacobi(a, b) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for a and b.
         /// gmp_lib.mpz_clears(a, b, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of a to 11.
         /// Dim a As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(a, 11UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of b to 9.
         /// Dim b As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(b, 9UI)
-        /// 
+        ///
         /// ' Assert that the Jacobi symbol of (a/b) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_jacobi(a, b) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for a and b.
         /// gmp_lib.mpz_clears(a, b, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_jacobi(/*const*/ mpz_t a, /*const*/ mpz_t b)
         {
@@ -7951,15 +7949,15 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even. 
+        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.
         /// </summary>
         /// <param name="a">The first operand integer.</param>
         /// <param name="b">The second operand integer.</param>
         /// <returns>The Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.</returns>
         /// <remarks>
         /// <para>
-        /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
-        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too. 
+        /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical,
+        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_kronecker_si">mpz_kronecker_si</seealso>
@@ -7974,32 +7972,32 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of a to 15.
         /// mpz_t a = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(a, 15U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of b to 4.
         /// mpz_t b = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(b, 4U);
-        /// 
+        ///
         /// // Assert that the Kronecker symbol of (a/b) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_kronecker(a, b) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for a and b.
         /// gmp_lib.mpz_clears(a, b, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of a to 15.
         /// Dim a As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(a, 15UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of b to 4.
         /// Dim b As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(b, 4UI)
-        /// 
+        ///
         /// ' Assert that the Kronecker symbol of (a/b) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_kronecker(a, b) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for a and b.
         /// gmp_lib.mpz_clears(a, b, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_kronecker(/*const*/ mpz_t a, /*const*/ mpz_t b)
         {
@@ -8009,15 +8007,15 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even. 
+        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.
         /// </summary>
         /// <param name="a">The first operand integer.</param>
         /// <param name="b">The second operand integer.</param>
         /// <returns>The Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.</returns>
         /// <remarks>
         /// <para>
-        /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
-        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too. 
+        /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical,
+        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_kronecker">mpz_kronecker</seealso>
@@ -8032,24 +8030,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of a to 15.
         /// mpz_t a = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(a, 15U);
-        /// 
+        ///
         /// // Assert that the Kronecker symbol of (a/4) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_kronecker_si(a, 4) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for a.
         /// gmp_lib.mpz_clear(a);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of a to 15.
         /// Dim a As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(a, 15UI)
-        /// 
+        ///
         /// ' Assert that the Kronecker symbol of (a/4) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_kronecker_si(a, 4) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for a.
         /// gmp_lib.mpz_clear(a)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_kronecker_si(/*const*/ mpz_t a, int /*long int*/ b)
         {
@@ -8058,15 +8056,15 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even. 
+        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.
         /// </summary>
         /// <param name="a">The first operand integer.</param>
         /// <param name="b">The second operand integer.</param>
         /// <returns>The Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.</returns>
         /// <remarks>
         /// <para>
-        /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
-        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too. 
+        /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical,
+        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_kronecker">mpz_kronecker</seealso>
@@ -8081,24 +8079,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of a to 15.
         /// mpz_t a = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(a, 15U);
-        /// 
+        ///
         /// // Assert that the Kronecker symbol of (a/4) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_kronecker_ui(a, 4U) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for a.
         /// gmp_lib.mpz_clear(a);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of a to 15.
         /// Dim a As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(a, 15UI)
-        /// 
+        ///
         /// ' Assert that the Kronecker symbol of (a/4) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_kronecker_ui(a, 4UI) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for a.
         /// gmp_lib.mpz_clear(a)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_kronecker_ui(/*const*/ mpz_t a, uint /*unsigned long int*/ b)
         {
@@ -8107,15 +8105,15 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even. 
+        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.
         /// </summary>
         /// <param name="a">The first operand integer.</param>
         /// <param name="b">The second operand integer.</param>
         /// <returns>The Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.</returns>
         /// <remarks>
         /// <para>
-        /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
-        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too. 
+        /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical,
+        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_kronecker">mpz_kronecker</seealso>
@@ -8130,24 +8128,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of b to 4.
         /// mpz_t b = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(b, 4U);
-        /// 
+        ///
         /// // Assert that the Kronecker symbol of (15/b) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_si_kronecker(15, b) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for b.
         /// gmp_lib.mpz_clear(b);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of b to 4.
         /// Dim b As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(b, 4UI)
-        /// 
+        ///
         /// ' Assert that the Kronecker symbol of (15/b) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_si_kronecker(15, b) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for b.
         /// gmp_lib.mpz_clear(b)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_si_kronecker(int /*long int*/ a, /*const*/ mpz_t b)
         {
@@ -8156,15 +8154,15 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even. 
+        /// Calculate the Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.
         /// </summary>
         /// <param name="a">The first operand integer.</param>
         /// <param name="b">The second operand integer.</param>
         /// <returns>The Jacobi symbol (<paramref name="a"/>/<paramref name="b"/>) with the Kronecker extension (<paramref name="a"/>/2) = (2/<paramref name="a"/>) when <paramref name="a"/> odd, or (<paramref name="a"/>/2) = 0 when <paramref name="a"/> even.</returns>
         /// <remarks>
         /// <para>
-        /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical, 
-        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too. 
+        /// When <paramref name="b"/> is odd the Jacobi symbol and Kronecker symbol are identical,
+        /// so <see cref="mpz_kronecker_ui">mpz_kronecker_ui</see>, etc. can be used for mixed precision Jacobi symbols too.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_kronecker">mpz_kronecker</seealso>
@@ -8179,24 +8177,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of b to 4.
         /// mpz_t b = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(b, 4U);
-        /// 
+        ///
         /// // Assert that the Kronecker symbol of (15/b) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_ui_kronecker(15U, b) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for b.
         /// gmp_lib.mpz_clear(b);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of b to 4.
         /// Dim b As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(b, 4UI)
-        /// 
+        ///
         /// ' Assert that the Kronecker symbol of (15/b) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_ui_kronecker(15UI, b) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for b.
         /// gmp_lib.mpz_clear(b)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_ui_kronecker(uint /*unsigned long int*/ a, /*const*/ mpz_t b)
         {
@@ -8213,7 +8211,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// <paramref name="rop"/> is always positive, irrespective of the signs of <paramref name="op1"/> and <paramref name="op2"/>.
-        /// <paramref name="rop"/> will be zero if either <paramref name="op1"/> or <paramref name="op2"/> is zero. 
+        /// <paramref name="rop"/> will be zero if either <paramref name="op1"/> or <paramref name="op2"/> is zero.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_lcm_ui">mpz_lcm_ui</seealso>
@@ -8224,46 +8222,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 2.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op1, 2U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 3.
         /// mpz_t op2 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op2, 3U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop to the least common multiple of op1 and op2.
         /// gmp_lib.mpz_lcm(rop, op1, op2);
-        /// 
+        ///
         /// // Assert that rop is 6.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 6);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, op1, and op2.
         /// gmp_lib.mpz_clears(rop, op1, op2, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 2.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op1, 2UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 3.
         /// Dim op2 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op2, 3UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop to the least common multiple of op1 and op2.
         /// gmp_lib.mpz_lcm(rop, op1, op2)
-        /// 
+        ///
         /// ' Assert that rop is 6.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 6)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, op1, and op2.
         /// gmp_lib.mpz_clears(rop, op1, op2, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_lcm(mpz_t rop, /*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -8282,7 +8280,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// <paramref name="rop"/> is always positive, irrespective of the signs of <paramref name="op1"/> and <paramref name="op2"/>.
-        /// <paramref name="rop"/> will be zero if either <paramref name="op1"/> or <paramref name="op2"/> is zero. 
+        /// <paramref name="rop"/> will be zero if either <paramref name="op1"/> or <paramref name="op2"/> is zero.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_lcm">mpz_lcm</seealso>
@@ -8290,9 +8288,9 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions">GNU MP - Number Theoretic Functions</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_lcm_ui(mpz_t rop, /*const*/ mpz_t op1, uint /*unsigned long int*/ op2)
         {
@@ -8310,7 +8308,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// This is defined only for <paramref name="p"/> an odd positive prime,
-        /// and for such <paramref name="p"/> it’s identical to the Jacobi symbol. 
+        /// and for such <paramref name="p"/> it’s identical to the Jacobi symbol.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_jacobi">mpz_jacobi</seealso>
@@ -8321,32 +8319,32 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of a to 20.
         /// mpz_t a = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(a, 20U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of p to 11.
         /// mpz_t p = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(p, 11U);
-        /// 
+        ///
         /// // Assert that the Legendre symbol of (a/p) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_legendre(a, p) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for a and p.
         /// gmp_lib.mpz_clears(a, p, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of a to 20.
         /// Dim a As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(a, 20UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of p to 11.
         /// Dim p As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(p, 11UI)
-        /// 
+        ///
         /// ' Assert that the Legendre symbol of (a/p) is 1.
         /// Assert.IsTrue(gmp_lib.mpz_legendre(a, p) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for a and p.
         /// gmp_lib.mpz_clears(a, p, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_legendre(/*const*/ mpz_t a, /*const*/ mpz_t p)
         {
@@ -8356,14 +8354,14 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Sets <paramref name="ln"/> to to L[<paramref name="n"/>], the <paramref name="n"/>’th Lucas number. 
+        /// Sets <paramref name="ln"/> to to L[<paramref name="n"/>], the <paramref name="n"/>’th Lucas number.
         /// </summary>
         /// <param name="ln">The L[<paramref name="n"/>] result.</param>
         /// <param name="n">The operand integer.</param>
         /// <remarks>
         /// <para>
         /// The Fibonacci numbers and Lucas numbers are related sequences, so it’s never necessary to call both
-        /// <see cref="mpz_fib2_ui">mpz_fib2_ui</see> and <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>. 
+        /// <see cref="mpz_fib2_ui">mpz_fib2_ui</see> and <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>.
         /// The formulas for going from Fibonacci to Lucas can be found in
         /// <a href="https://gmplib.org/manual/Lucas-Numbers-Algorithm.html#Lucas-Numbers-Algorithm">GNU MP - Lucas Numbers Algorithm</a>,
         /// the reverse is straightforward too.
@@ -8377,30 +8375,30 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of ln to 0.
         /// mpz_t ln = new mpz_t();
         /// gmp_lib.mpz_init(ln);
-        /// 
+        ///
         /// // Set ln to the 9'th Lucas number.
         /// gmp_lib.mpz_lucnum_ui(ln, 9U);
-        /// 
+        ///
         /// // Assert that ln is 76.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(ln) == 76);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for ln.
         /// gmp_lib.mpz_clear(ln);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of ln to 0.
         /// Dim ln As New mpz_t()
         /// gmp_lib.mpz_init(ln)
-        /// 
+        ///
         /// ' Set ln to the 9'th Lucas number.
         /// gmp_lib.mpz_lucnum_ui(ln, 9UI)
-        /// 
+        ///
         /// ' Assert that ln is 76.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(ln) = 76)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for ln.
         /// gmp_lib.mpz_clear(ln)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_lucnum_ui(mpz_t ln, uint /*unsigned long int*/ n)
         {
@@ -8409,20 +8407,20 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Sets <paramref name="ln"/> to L[<paramref name="n"/>], and <paramref name="lnsub1"/> to L[<paramref name="n"/> - 1]. 
+        /// Sets <paramref name="ln"/> to L[<paramref name="n"/>], and <paramref name="lnsub1"/> to L[<paramref name="n"/> - 1].
         /// </summary>
         /// <param name="ln">The L[<paramref name="n"/>] result.</param>
         /// <param name="lnsub1">The L[<paramref name="n"/> - 1] result.</param>
         /// <param name="n">The operand integer.</param>
         /// <remarks>
         /// <para>
-        /// This function is designed for calculating isolated Lucas numbers. 
-        /// When a sequence of values is wanted it’s best to start with <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see> 
+        /// This function is designed for calculating isolated Lucas numbers.
+        /// When a sequence of values is wanted it’s best to start with <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>
         /// and iterate the defining L[n + 1] = L[n] + L[n - 1] or similar.
         /// </para>
         /// <para>
         /// The Fibonacci numbers and Lucas numbers are related sequences, so it’s never necessary to call both
-        /// <see cref="mpz_fib2_ui">mpz_fib2_ui</see> and <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>. 
+        /// <see cref="mpz_fib2_ui">mpz_fib2_ui</see> and <see cref="mpz_lucnum2_ui">mpz_lucnum2_ui</see>.
         /// The formulas for going from Fibonacci to Lucas can be found in
         /// <a href="https://gmplib.org/manual/Lucas-Numbers-Algorithm.html#Lucas-Numbers-Algorithm">GNU MP - Lucas Numbers Algorithm</a>,
         /// the reverse is straightforward too.
@@ -8437,33 +8435,33 @@ namespace MathGmp.Native
         /// mpz_t ln = new mpz_t();
         /// mpz_t lnsub1 = new mpz_t();
         /// gmp_lib.mpz_inits(ln, lnsub1, null);
-        /// 
+        ///
         /// // Set lnsub1 and ln to the 8'th and 9'th Lucas nunbers respectively.
         /// gmp_lib.mpz_lucnum2_ui(ln, lnsub1, 9U);
-        /// 
+        ///
         /// // Assert that lnsub1 and ln are respectively 47 and 76.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(lnsub1) == 47);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(ln) == 76);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for ln and lnsub1.
         /// gmp_lib.mpz_clears(ln, lnsub1, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the values of lnsub1 and ln to 0.
         /// Dim ln As New mpz_t()
         /// Dim lnsub1 As New mpz_t()
         /// gmp_lib.mpz_inits(ln, lnsub1, Nothing)
-        /// 
+        ///
         /// ' Set lnsub1 and ln to the 8'th and 9'th Lucas nunbers respectively.
         /// gmp_lib.mpz_lucnum2_ui(ln, lnsub1, 9UI)
-        /// 
+        ///
         /// ' Assert that lnsub1 and ln are respectively 47 and 76.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(lnsub1) = 47)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(ln) = 76)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for ln and lnsub1.
         /// gmp_lib.mpz_clears(ln, lnsub1, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_lucnum2_ui(mpz_t ln, mpz_t lnsub1, uint /*unsigned long int*/ n)
         {
@@ -8493,24 +8491,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 12.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(n, 12U);
-        /// 
+        ///
         /// // Assert that n is a composite number.
         /// Assert.IsTrue(gmp_lib.mpz_millerrabin(n, 25) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n.
         /// gmp_lib.mpz_clear(n);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 12.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(n, 12UI)
-        /// 
+        ///
         /// ' Assert that n is a composite number.
         /// Assert.IsTrue(gmp_lib.mpz_millerrabin(n, 25) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n.
         /// gmp_lib.mpz_clear(n)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_millerrabin(/*const*/ mpz_t n, int reps)
         {
@@ -8543,46 +8541,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 12222.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 12222U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of y to 10000.
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(y, 10000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = x mod y.
         /// gmp_lib.mpz_mod(z, x, y);
-        /// 
+        ///
         /// // Assert that z is 12222 mod 10000.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == 12222 % 10000);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpz_clears(x, y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 12222.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 12222UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of y to 10000.
         /// Dim y As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(y, 10000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = x mod y.
         /// gmp_lib.mpz_mod(z, x, y)
-        /// 
+        ///
         /// ' Assert that z is 12222 mod 10000.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = 12222 Mod 10000)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpz_clears(x, y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_mod(mpz_t r, /*const*/ mpz_t n, /*const*/ mpz_t d)
         {
@@ -8605,7 +8603,7 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// <see cref="mpz_mod_ui">mpz_mod_ui</see> is identical to <see cref="mpz_fdiv_r_ui">mpz_fdiv_r_ui</see>, returning the remainder as well as setting <paramref name="r"/>.
-        /// See <see cref="mpz_fdiv_ui">mpz_fdiv_ui</see> if only the return value is wanted. 
+        /// See <see cref="mpz_fdiv_ui">mpz_fdiv_ui</see> if only the return value is wanted.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_cdiv_qr">mpz_cdiv_qr</seealso>
@@ -8622,38 +8620,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 12222.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 12222U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = x mod y, and return z.
         /// Assert.IsTrue(gmp_lib.mpz_mod_ui(z, x, 10000U) == 12222 % 10000);
-        /// 
+        ///
         /// // Assert that z is 12222 mod 10000.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == 12222 % 10000);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 12222.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 12222UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = x mod y, and return z.
         /// Assert.IsTrue(gmp_lib.mpz_mod_ui(z, x, 10000UI) = 12222 Mod 10000)
-        /// 
+        ///
         /// ' Assert that z is 12222 mod 10000.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = 12222 Mod 10000)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint /*unsigned long int*/ mpz_mod_ui(mpz_t r, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -8684,46 +8682,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of y to 12222.
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(y, 12222U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = x * y.
         /// gmp_lib.mpz_mul(z, x, y);
-        /// 
+        ///
         /// // Assert that z is the product of x and y.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == 10000 * 12222);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpz_clears(x, y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of y to 12222.
         /// Dim y As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(y, 12222UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = x * y.
         /// gmp_lib.mpz_mul(z, x, y)
-        /// 
+        ///
         /// ' Assert that z is the product of x and y.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = 10000 * 12222)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpz_clears(x, y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_mul(mpz_t rop, /*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -8760,38 +8758,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to -10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_si(x, -10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of x to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = -10000 * 2^2.
         /// gmp_lib.mpz_mul_2exp(z, x, 2U);
-        /// 
+        ///
         /// // Assert that z is -40000.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == -10000 * 4);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to -10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_si(x, -10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of x to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = -10000 * 2^2.
         /// gmp_lib.mpz_mul_2exp(z, x, 2UI)
-        /// 
+        ///
         /// ' Assert that z is -40000.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = -10000 * 4)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_mul_2exp(mpz_t rop, /*const*/ mpz_t op1, mp_bitcnt_t op2)
         {
@@ -8822,38 +8820,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to -10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_si(x, -10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = x * 12222.
         /// gmp_lib.mpz_mul_si(z, x, 12222);
-        /// 
+        ///
         /// // Assert that z is the product of x and 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == -10000 * 12222);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to -10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_si(x, -10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = x * 12222.
         /// gmp_lib.mpz_mul_si(z, x, 12222)
-        /// 
+        ///
         /// ' Assert that z is the product of x and 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = -10000 * 12222)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_mul_si(mpz_t rop, /*const*/ mpz_t op1, int /*long int*/ op2)
         {
@@ -8884,38 +8882,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to -10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_si(x, -10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = x * 12222.
         /// gmp_lib.mpz_mul_ui(z, x, 12222);
-        /// 
+        ///
         /// // Assert that z is the product of x and 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == -10000 * 12222);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to -10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_si(x, -10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = x * 12222.
         /// gmp_lib.mpz_mul_ui(z, x, 12222)
-        /// 
+        ///
         /// ' Assert that z is the product of x and 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = -10000 * 12222)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_mul_ui(mpz_t rop, /*const*/ mpz_t op1, uint /*unsigned long int*/ op2)
         {
@@ -8943,38 +8941,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to -10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_si(x, -10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = -x.
         /// gmp_lib.mpz_neg(z, x);
-        /// 
+        ///
         /// // Assert that z is -x.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == 10000);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to -10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_si(x, -10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = -x.
         /// gmp_lib.mpz_neg(z, x)
-        /// 
+        ///
         /// ' Assert that z is -x.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = 10000)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_neg(mpz_t rop, /*const*/ mpz_t op)
         {
@@ -9002,38 +9000,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 12.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, 12U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop to the next following op.
         /// gmp_lib.mpz_nextprime(rop, op);
-        /// 
+        ///
         /// // Assert that rop is 13.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 13);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop and op.
         /// gmp_lib.mpz_clears(rop, op, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 12.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, 12UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop to the next following op.
         /// gmp_lib.mpz_nextprime(rop, op)
-        /// 
+        ///
         /// ' Assert that rop is 13.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 13)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop and op.
         /// gmp_lib.mpz_clears(rop, op, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_nextprime(mpz_t rop, /*const*/ mpz_t op)
         {
@@ -9062,26 +9060,26 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 427294.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, 427294);
-        /// 
+        ///
         /// // Assert that op is not odd but even.
         /// Assert.IsTrue(gmp_lib.mpz_even_p(op) > 0);
         /// Assert.IsTrue(gmp_lib.mpz_odd_p(op) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 427294.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, 427294)
-        /// 
+        ///
         /// ' Assert that op is not odd but even.
         /// Assert.IsTrue(gmp_lib.mpz_even_p(op) > 0)
         /// Assert.IsTrue(gmp_lib.mpz_odd_p(op) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_odd_p(/*const*/ mpz_t op)
         {
@@ -9101,11 +9099,11 @@ namespace MathGmp.Native
         /// Both the size and the limbs are written in decreasing significance order (i.e., in big-endian).
         /// </para>
         /// <para>
-        /// The output can be read with <see cref="mpz_inp_raw">mpz_inp_raw</see>. 
+        /// The output can be read with <see cref="mpz_inp_raw">mpz_inp_raw</see>.
         /// </para>
         /// <para>
         /// The output of this can not be read by <c>mpz_inp_raw</c> from GMP 1,
-        /// because of changes necessary for compatibility between 32-bit and 64-bit machines. 
+        /// because of changes necessary for compatibility between 32-bit and 64-bit machines.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_out_str">mpz_out_str</seealso>
@@ -9118,58 +9116,58 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 123456 (0x1E240).
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, 0x1E240);
-        /// 
+        ///
         /// // Get a temporary file.
         /// string pathname = System.IO.Path.GetTempFileName();
-        /// 
+        ///
         /// // Open temporary file for writing.
         /// ptr&lt;FILE&gt; stream = new ptr&lt;FILE&gt;();
         /// _wfopen_s(out stream.Value.Value, pathname, "w");
-        /// 
+        ///
         /// // Write op to temporary file, and assert that the number of bytes written is 7.
         /// Assert.IsTrue(gmp_lib.mpz_out_raw(stream, op) == 7);
-        /// 
+        ///
         /// // Close temporary file.
         /// fclose(stream.Value.Value);
-        /// 
+        ///
         /// // Assert that the content of the temporary file.
         /// byte[] r = System.IO.File.ReadAllBytes(pathname);
         /// Assert.IsTrue(r[0] == 0 &amp;&amp; r[1] == 0 &amp;&amp; r[2] == 0 &amp;&amp; r[3] == 3 &amp;&amp; r[4] == 0x01 &amp;&amp; r[5] == 0xE2 &amp;&amp; r[6] == 0x40);
-        /// 
+        ///
         /// // Delete temporary file.
         /// System.IO.File.Delete(pathname);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 123456 (0x1E240).
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, &amp;H1e240)
-        /// 
+        ///
         /// ' Get a temporary file.
         /// Dim pathname As String = System.IO.Path.GetTempFileName()
-        /// 
+        ///
         /// ' Open temporary file for writing.
         /// Dim stream As New ptr(Of FILE)()
         /// _wfopen_s(stream.Value.Value, pathname, "w")
-        /// 
+        ///
         /// ' Write op to temporary file, and assert that the number of bytes written is 7.
         /// Assert.IsTrue(gmp_lib.mpz_out_raw(stream, op) = 7)
-        /// 
+        ///
         /// ' Close temporary file.
         /// fclose(stream.Value.Value)
-        /// 
+        ///
         /// ' Assert that the content of the temporary file.
         /// Dim r As Byte() = System.IO.File.ReadAllBytes(pathname)
         /// Assert.IsTrue(r(0) = 0 AndAlso r(1) = 0 AndAlso r(2) = 0 AndAlso r(3) = 3 AndAlso r(4) = &amp;H1 AndAlso r(5) = &amp;He2 AndAlso r(6) = &amp;H40)
-        /// 
+        ///
         /// ' Delete temporary file.
         /// System.IO.File.Delete(pathname)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static size_t mpz_out_raw(ptr<FILE> stream, /*const*/ mpz_t op)
         {
@@ -9190,12 +9188,12 @@ namespace MathGmp.Native
         /// <returns>Return the number of bytes written, or if an error occurred, return 0. </returns>
         /// <remarks>
         /// <para>
-        /// The <paramref name="base"/> argument may vary from 2 to 62 or from -2 to -36. 
+        /// The <paramref name="base"/> argument may vary from 2 to 62 or from -2 to -36.
         /// </para>
         /// <para>
         /// For <paramref name="base"/> in the range 2..36, digits and lower-case letters are used;
         /// for -2..-36, digits and upper-case letters are used; for 37..62, digits, upper-case letters,
-        /// and lower-case letters (in that significance order) are used. 
+        /// and lower-case letters (in that significance order) are used.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_inp_str">mpz_inp_str</seealso>
@@ -9208,58 +9206,58 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 123456.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, 123456U);
-        /// 
+        ///
         /// // Get a temporary file.
         /// string pathname = System.IO.Path.GetTempFileName();
-        /// 
+        ///
         /// // Open temporary file for writing.
         /// ptr&lt;FILE&gt; stream = new ptr&lt;FILE&gt;();
         /// _wfopen_s(out stream.Value.Value, pathname, "w");
-        /// 
+        ///
         /// // Write op to temporary file, and assert that the number of bytes written is 6.
         /// Assert.IsTrue(gmp_lib.mpz_out_str(stream, 10, op) == 6);
-        /// 
+        ///
         /// // Close temporary file.
         /// fclose(stream.Value.Value);
-        /// 
+        ///
         /// // Assert that the content of the temporary file is "123456".
         /// string result = System.IO.File.ReadAllText(pathname);
         /// Assert.IsTrue(result == "123456");
-        /// 
+        ///
         /// // Delete temporary file.
         /// System.IO.File.Delete(pathname);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 123456.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, 123456UI)
-        /// 
+        ///
         /// ' Get a temporary file.
         /// Dim pathname As String = System.IO.Path.GetTempFileName()
-        /// 
+        ///
         /// ' Open temporary file for writing.
         /// Dim stream As New ptr(Of FILE)()
         /// _wfopen_s(stream.Value.Value, pathname, "w")
-        /// 
+        ///
         /// ' Write op to temporary file, and assert that the number of bytes written is 6.
         /// Assert.IsTrue(gmp_lib.mpz_out_str(stream, 10, op) = 6)
-        /// 
+        ///
         /// ' Close temporary file.
         /// fclose(stream.Value.Value)
-        /// 
+        ///
         /// ' Assert that the content of the temporary file is "123456".
         /// Dim result As String = System.IO.File.ReadAllText(pathname)
         /// Assert.IsTrue(result = "123456")
-        /// 
+        ///
         /// ' Delete temporary file.
         /// System.IO.File.Delete(pathname)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static size_t mpz_out_str(ptr<FILE> stream, int @base, /*const*/ mpz_t op)
         {
@@ -9272,13 +9270,13 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Return non-zero if <paramref name="op"/> is a perfect power, i.e., if there exist integers a and b, with b &gt; 1, such that <paramref name="op"/> = a^b. 
+        /// Return non-zero if <paramref name="op"/> is a perfect power, i.e., if there exist integers a and b, with b &gt; 1, such that <paramref name="op"/> = a^b.
         /// </summary>
         /// <param name="op">The operand integer.</param>
         /// <returns>Non-zero if <paramref name="op"/> is a perfect power, i.e., if there exist integers a and b, with b &gt; 1, such that <paramref name="op"/> = a^b.</returns>
         /// <remarks>
         /// <para>
-        /// Under this definition both 0 and 1 are considered to be perfect powers. Negative values of <paramref name="op"/> are accepted, but of course can only be odd perfect powers. 
+        /// Under this definition both 0 and 1 are considered to be perfect powers. Negative values of <paramref name="op"/> are accepted, but of course can only be odd perfect powers.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_perfect_square_p">mpz_perfect_square_p</seealso>
@@ -9293,24 +9291,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_si(op, 10000);
-        /// 
+        ///
         /// // Assert that op is a perfect power.
         /// Assert.IsTrue(gmp_lib.mpz_perfect_power_p(op) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_si(op, 10000)
-        /// 
+        ///
         /// ' Assert that op is a perfect power.
         /// Assert.IsTrue(gmp_lib.mpz_perfect_power_p(op) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_perfect_power_p(/*const*/ mpz_t op)
         {
@@ -9325,7 +9323,7 @@ namespace MathGmp.Native
         /// <returns>Non-zero if <paramref name="op"/> is a perfect square, i.e., if the square root of <paramref name="op"/> is an integer.</returns>
         /// <remarks>
         /// <para>
-        /// Under this definition both 0 and 1 are considered to be perfect squares. 
+        /// Under this definition both 0 and 1 are considered to be perfect squares.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_perfect_power_p">mpz_perfect_power_p</seealso>
@@ -9340,24 +9338,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_si(op, 10000);
-        /// 
+        ///
         /// // Assert that op is a perfect square.
         /// Assert.IsTrue(gmp_lib.mpz_perfect_square_p(op) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_si(op, 10000)
-        /// 
+        ///
         /// ' Assert that op is a perfect square.
         /// Assert.IsTrue(gmp_lib.mpz_perfect_square_p(op) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_perfect_square_p(/*const*/ mpz_t op)
         {
@@ -9373,7 +9371,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number 0. 
+        /// The least significant bit is number 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and">mpz_and</seealso>
@@ -9394,23 +9392,23 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 63.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, 63U);
-        /// 
+        ///
         /// // Assert that op has 6 one bits.
         /// Assert.IsTrue(gmp_lib.mpz_popcount(op) == 6U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clears(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 63.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, 63UI)
-        /// 
+        ///
         /// ' Assert that op has 6 one bits.
         /// Assert.IsTrue(gmp_lib.mpz_popcount(op) = 6UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_bitcnt_t mpz_popcount(/*const*/ mpz_t op)
         {
@@ -9419,7 +9417,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="base"/>^<paramref name="exp"/>. The case 0^0 yields 1. 
+        /// Set <paramref name="rop"/> to <paramref name="base"/>^<paramref name="exp"/>. The case 0^0 yields 1.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="base">The base integer.</param>
@@ -9435,38 +9433,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of base to 2.
         /// mpz_t @base = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(@base, 2U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop = base^4.
         /// gmp_lib.mpz_pow_ui(rop, @base, 4U);
-        /// 
+        ///
         /// // Assert that rop is 16.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 16);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop and base.
         /// gmp_lib.mpz_clears(rop, @base, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of base to 2.
         /// Dim base As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(base, 2UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop = base^4.
         /// gmp_lib.mpz_pow_ui(rop, base, 4UI)
-        /// 
+        ///
         /// ' Assert that rop is 16.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 16)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop and base.
         /// gmp_lib.mpz_clears(rop, base, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_pow_ui(mpz_t rop, /*const*/ mpz_t @base, uint /*unsigned long int*/ exp)
         {
@@ -9476,7 +9474,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to (<paramref name="base"/>^<paramref name="exp"/>) modulo <paramref name="mod"/>. 
+        /// Set <paramref name="rop"/> to (<paramref name="base"/>^<paramref name="exp"/>) modulo <paramref name="mod"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="base">The base integer.</param>
@@ -9499,54 +9497,54 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of base to 2.
         /// mpz_t @base = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(@base, 2U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of exp to 4.
         /// mpz_t exp = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(exp, 4U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of mod to 3.
         /// mpz_t mod = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(mod, 3U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop = base^exp mod mod.
         /// gmp_lib.mpz_powm(rop, @base, exp, mod);
-        /// 
+        ///
         /// // Assert that rop is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, base, exp, and mod.
         /// gmp_lib.mpz_clears(rop, @base, exp, mod, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of base to 2.
         /// Dim base As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(base, 2UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of exp to 4.
         /// Dim exp As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(exp, 4UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of mod to 3.
         /// Dim[mod] As New mpz_t()
         /// gmp_lib.mpz_init_set_ui([mod], 3UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop = base^exp mod mod.
         /// gmp_lib.mpz_powm(rop, base, exp, [mod])
-        /// 
+        ///
         /// ' Assert that rop is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, base, exp, and mod.
         /// gmp_lib.mpz_clears(rop, base, exp, [mod], Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_powm(mpz_t rop, /*const*/ mpz_t @base, /*const*/ mpz_t exp, /*const*/ mpz_t mod)
         {
@@ -9571,7 +9569,7 @@ namespace MathGmp.Native
         /// <para>
         /// This function is designed to take the same time and have the same cache access patterns for any two same-size arguments,
         /// assuming that function arguments are placed at the same position and that the machine state is identical upon function entry.
-        /// This function is intended for cryptographic purposes, where resilience to side-channel attacks is desired. 
+        /// This function is intended for cryptographic purposes, where resilience to side-channel attacks is desired.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_powm">mpz_powm</seealso>
@@ -9585,54 +9583,54 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of base to 2.
         /// mpz_t @base = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(@base, 2U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of exp to 4.
         /// mpz_t exp = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(exp, 4U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of mod to 3.
         /// mpz_t mod = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(mod, 3U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop = base^exp mod mod.
         /// gmp_lib.mpz_powm_sec(rop, @base, exp, mod);
-        /// 
+        ///
         /// // Assert that rop is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, base, exp, and mod.
         /// gmp_lib.mpz_clears(rop, @base, exp, mod, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of base to 2.
         /// Dim base As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(base, 2UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of exp to 4.
         /// Dim exp As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(exp, 4UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of mod to 3.
         /// Dim[mod] As New mpz_t()
         /// gmp_lib.mpz_init_set_ui([mod], 3UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop = base^exp mod mod.
         /// gmp_lib.mpz_powm_sec(rop, base, exp, [mod])
-        /// 
+        ///
         /// ' Assert that rop is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, base, exp, and mod.
         /// gmp_lib.mpz_clears(rop, base, exp, [mod], Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_powm_sec(mpz_t rop, /*const*/ mpz_t @base, /*const*/ mpz_t exp, /*const*/ mpz_t mod)
         {
@@ -9644,7 +9642,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to (<paramref name="base"/>^<paramref name="exp"/>) modulo <paramref name="mod"/>. 
+        /// Set <paramref name="rop"/> to (<paramref name="base"/>^<paramref name="exp"/>) modulo <paramref name="mod"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="base">The base integer.</param>
@@ -9667,43 +9665,43 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of base to 2.
         /// mpz_t @base = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(@base, 2U);
-        /// 
+        ///
         /// mpz_t mod = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(mod, 3U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop = base^4 mod mod.
         /// gmp_lib.mpz_powm_ui(rop, @base, 4U, mod);
-        /// 
+        ///
         /// // Assert that rop is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, base, and mod.
         /// gmp_lib.mpz_clears(rop, @base, mod, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of base to 2.
         /// Dim base As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(base, 2UI)
         /// Dim[mod] As New mpz_t()
         /// gmp_lib.mpz_init_set_ui([mod], 3UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop = base^4 mod mod.
         /// gmp_lib.mpz_powm_ui(rop, base, 4UI, [mod])
-        /// 
+        ///
         /// ' Assert that rop is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, base, and mod.
         /// gmp_lib.mpz_clears(rop, base, [mod], Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_powm_ui(mpz_t rop, /*const*/ mpz_t @base, uint /*unsigned long int*/ exp, /*const*/ mpz_t mod)
         {
@@ -9736,24 +9734,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 12.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(n, 12U);
-        /// 
+        ///
         /// // Assert that n is a composite number.
         /// Assert.IsTrue(gmp_lib.mpz_probab_prime_p(n, 25) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n.
         /// gmp_lib.mpz_clear(n);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 12.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(n, 12UI)
-        /// 
+        ///
         /// ' Assert that n is a composite number.
         /// Assert.IsTrue(gmp_lib.mpz_probab_prime_p(n, 25) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n.
         /// gmp_lib.mpz_clear(n)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_probab_prime_p(/*const*/ mpz_t n, int reps)
         {
@@ -9775,7 +9773,7 @@ namespace MathGmp.Native
         /// This function is obsolete. Use <see cref="mpz_urandomb">mpz_urandomb</see> or <see cref="mpz_urandomm">mpz_urandomm</see> instead.
         /// </para>
         /// <para>
-        /// The random number functions of GMP come in two groups; older function that rely on a global state, 
+        /// The random number functions of GMP come in two groups; older function that rely on a global state,
         /// and newer functions that accept a state parameter that is read and modified.
         /// Please see the <a href="https://gmplib.org/manual/Random-Number-Functions.html#Random-Number-Functions">GNU MP - Random Number Functions</a>
         /// for more information on how to use and not to use random number functions.
@@ -9792,24 +9790,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Generate a random integer.
         /// gmp_lib.mpz_random(rop, 500);
-        /// 
+        ///
         /// // Free all memory occupied by state and rop.
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Generate a random integer.
         /// gmp_lib.mpz_random(rop, 500)
-        /// 
+        ///
         /// ' Free all memory occupied by state and rop.
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_random(mpz_t rop, mp_size_t max_size)
         {
@@ -9825,13 +9823,13 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// Useful for testing functions and algorithms, since this kind of random numbers have proven to be more likely to trigger corner-case bugs.
-        /// Negative random numbers are generated when <paramref name="max_size"/> is negative. 
+        /// Negative random numbers are generated when <paramref name="max_size"/> is negative.
         /// </para>
         /// <para>
         /// This function is obsolete. Use <see cref="mpz_rrandomb">mpz_rrandomb</see> instead.
         /// </para>
         /// <para>
-        /// The random number functions of GMP come in two groups; older function that rely on a global state, 
+        /// The random number functions of GMP come in two groups; older function that rely on a global state,
         /// and newer functions that accept a state parameter that is read and modified.
         /// Please see the <a href="https://gmplib.org/manual/Random-Number-Functions.html#Random-Number-Functions">GNU MP - Random Number Functions</a>
         /// for more information on how to use and not to use random number functions.
@@ -9848,24 +9846,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Generate a random integer.
         /// gmp_lib.mpz_random(rop, 100);
-        /// 
+        ///
         /// // Free all memory occupied by rop.
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Generate a random integer.
         /// gmp_lib.mpz_random(rop, 100)
-        /// 
+        ///
         /// ' Free all memory occupied by rop.
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_random2(mpz_t rop, mp_size_t max_size)
         {
@@ -9900,48 +9898,48 @@ namespace MathGmp.Native
         /// // Create and initialize new integer x.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
-        /// 
+        ///
         /// // Set the value of x to a 77-bit integer.
         /// char_ptr value = new char_ptr("1000 0000 0000 0000 0000");
         /// gmp_lib.mpz_set_str(x, value, 16);
-        /// 
+        ///
         /// // Resize x to 512 bits, and assert that its value has not changed.
         /// gmp_lib.mpz_realloc2(x, 512U);
         /// char_ptr s = gmp_lib.mpz_get_str(char_ptr.Zero, 16, x);
         /// Assert.IsTrue(s.ToString() == "1000 0000 0000 0000 0000".Replace(" ", ""));
-        /// 
+        ///
         /// // Resize x to 2 bits, and assert that its value has changed to 0.
         /// gmp_lib.mpz_realloc2(x, 2U);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and string values.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.free(value);
         /// gmp_lib.free(s);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize new integer x.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
-        /// 
+        ///
         /// ' Set the value of x to a 77-bit integer.
         /// Dim value As New char_ptr("1000 0000 0000 0000 0000")
         /// gmp_lib.mpz_set_str(x, value, 16)
-        /// 
+        ///
         /// ' Resize x to 512 bits, and assert that its value has not changed.
         /// gmp_lib.mpz_realloc2(x, 512UI)
         /// Dim s As char_ptr = gmp_lib.mpz_get_str(char_ptr.Zero, 16, x)
         /// Assert.IsTrue(s.ToString() = "1000 0000 0000 0000 0000".Replace(" ", ""))
-        /// 
+        ///
         /// ' Resize x to 2 bits, and assert that its value has changed to 0.
         /// gmp_lib.mpz_realloc2(x, 2UI)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and string values.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.free(value)
         /// gmp_lib.free(s)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_realloc2(mpz_t x, mp_bitcnt_t n)
         {
@@ -9963,46 +9961,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 45.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, 45U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of f to 3.
         /// mpz_t f = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(f, 3U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop = op / f^n, and return n, the largest integer greater than or equal to 0, such that f^n divides op.
         /// Assert.IsTrue(gmp_lib.mpz_remove(rop, op, f) == 2);
-        /// 
+        ///
         /// // Assert that rop is 5.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 5);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, op, and f.
         /// gmp_lib.mpz_clears(rop, op, f, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 45.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, 45UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of f to 3.
         /// Dim f As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(f, 3UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop = op / f^n, and return n, the largest integer greater than or equal to 0, such that f^n divides op.
         /// Assert.IsTrue(gmp_lib.mpz_remove(rop, op, f) = 2)
-        /// 
+        ///
         /// ' Assert that rop is 5.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 5)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, op, and f.
         /// gmp_lib.mpz_clears(rop, op, f, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_bitcnt_t mpz_remove(mpz_t rop, /*const*/ mpz_t op, /*const*/ mpz_t f)
         {
@@ -10031,38 +10029,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 10000.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_si(op, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop = trunc(cbrt(10000)).
         /// gmp_lib.mpz_root(rop, op, 3U);
-        /// 
+        ///
         /// // Assert that rop is 21.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 21);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clears(rop, op, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 10000.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_si(op, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop = trunc(cbrt(10000)).
         /// gmp_lib.mpz_root(rop, op, 3UI)
-        /// 
+        ///
         /// ' Assert that rop is 21.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 21)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clears(rop, op, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_root(mpz_t rop, /*const*/ mpz_t op, uint /*unsigned long int*/ n)
         {
@@ -10072,7 +10070,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="root"/> to the truncated integer part of the <paramref name="n"/>th root of <paramref name="u"/>. Set <paramref name="rem"/> to the remainder, <paramref name="u"/> - <paramref name="root"/>^<paramref name="n"/>. 
+        /// Set <paramref name="root"/> to the truncated integer part of the <paramref name="n"/>th root of <paramref name="u"/>. Set <paramref name="rem"/> to the remainder, <paramref name="u"/> - <paramref name="root"/>^<paramref name="n"/>.
         /// </summary>
         /// <param name="root">The result root integer.</param>
         /// <param name="rem">The result remainder integer.</param>
@@ -10090,42 +10088,42 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of u to 10000.
         /// mpz_t u = new mpz_t();
         /// gmp_lib.mpz_init_set_si(u, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the values of root and rem to 0.
         /// mpz_t root = new mpz_t();
         /// mpz_t rem = new mpz_t();
         /// gmp_lib.mpz_inits(root, rem, null);
-        /// 
+        ///
         /// // Set root = trunc(cbrt(10000)) and rem = u - root.
         /// gmp_lib.mpz_rootrem(root, rem, u, 3U);
-        /// 
+        ///
         /// // Assert that root is 21, and rem is 739.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(root) == 21);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rem) == 739);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for root, rem, and u.
         /// gmp_lib.mpz_clears(root, rem, u, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of u to 10000.
         /// Dim u As New mpz_t()
         /// gmp_lib.mpz_init_set_si(u, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the values of root and rem to 0.
         /// Dim root As New mpz_t()
         /// Dim[rem] As New mpz_t()
         /// gmp_lib.mpz_inits(root, [rem], Nothing)
-        /// 
+        ///
         /// ' Set root = trunc(cbrt(10000)) and rem = u - root.
         /// gmp_lib.mpz_rootrem(root, [rem], u, 3UI)
-        /// 
+        ///
         /// ' Assert that root is 21, and rem is 739.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(root) = 21)
         /// Assert.IsTrue(gmp_lib.mpz_get_si([rem]) = 739)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for root, rem, and u.
         /// gmp_lib.mpz_clears(root, [rem], u, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_rootrem(mpz_t root, mpz_t rem, /*const*/ mpz_t u, uint /*unsigned long int*/ n)
         {
@@ -10145,14 +10143,14 @@ namespace MathGmp.Native
         /// <para>
         /// Useful for testing functions and algorithms, since this kind of random numbers have proven to be more
         /// likely to trigger corner-case bugs. The random number will be in the
-        /// range 2^(<paramref name="n"/> - 1) to 2^<paramref name="n"/> - 1, inclusive. 
+        /// range 2^(<paramref name="n"/> - 1) to 2^<paramref name="n"/> - 1, inclusive.
         /// </para>
         /// <para>
         /// The variable <paramref name="state"/> must be initialized by calling one of the <c>gmp_randinit</c>
-        /// functions (<a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a>) before invoking this function. 
+        /// functions (<a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a>) before invoking this function.
         /// </para>
         /// <para>
-        /// The random number functions of GMP come in two groups; older function that rely on a global state, 
+        /// The random number functions of GMP come in two groups; older function that rely on a global state,
         /// and newer functions that accept a state parameter that is read and modified.
         /// Please see the <a href="https://gmplib.org/manual/Random-Number-Functions.html#Random-Number-Functions">GNU MP - Random Number Functions</a>
         /// for more information on how to use and not to use random number functions.
@@ -10170,35 +10168,35 @@ namespace MathGmp.Native
         /// gmp_randstate_t state = new gmp_randstate_t();
         /// gmp_lib.gmp_randinit_mt(state);
         /// gmp_lib.gmp_randseed_ui(state, 100000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Generate a random integer in the range [2^(50-1), (2^50)-1].
         /// gmp_lib.mpz_rrandomb(rop, state, 50);
-        /// 
+        ///
         /// // Free all memory occupied by state and rop.
         /// gmp_lib.gmp_randclear(state);
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and seed a new random number generator.
         /// Dim state As New gmp_randstate_t()
         /// gmp_lib.gmp_randinit_mt(state)
         /// gmp_lib.gmp_randseed_ui(state, 100000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Generate a random integer in the range [2^(50-1), (2^50)-1].
         /// gmp_lib.mpz_rrandomb(rop, state, 50)
-        /// 
+        ///
         /// ' Free all memory occupied by state and rop.
         /// gmp_lib.gmp_randclear(state)
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_rrandomb(mpz_t rop, gmp_randstate_t state, mp_bitcnt_t n)
         {
@@ -10220,16 +10218,16 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// If the bit at <paramref name="starting_bit"/> is already what’s sought,
-        /// then <paramref name="starting_bit"/> is returned. 
+        /// then <paramref name="starting_bit"/> is returned.
         /// </para>
         /// <para>
         /// If there’s no bit found, then the largest possible <see cref="mp_bitcnt_t">mp_bitcnt_t</see> is returned.
         /// This will happen in <see cref="mpz_scan0">mpz_scan0</see> past the end of a negative number,
-        /// or <see cref="mpz_scan1">mpz_scan1</see> past the end of a nonnegative number. 
+        /// or <see cref="mpz_scan1">mpz_scan1</see> past the end of a nonnegative number.
         /// </para>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number 0. 
+        /// The least significant bit is number 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and">mpz_and</seealso>
@@ -10250,24 +10248,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 70.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, 70U);
-        /// 
+        ///
         /// // Assert that the first 0 bit starting from bit 1 in op is bit 3.
         /// Assert.IsTrue(gmp_lib.mpz_scan0(op, 1U) == 3U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 70.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, 70UI)
-        /// 
+        ///
         /// ' Assert that the first 0 bit starting from bit 1 in op is bit 3.
         /// Assert.IsTrue(gmp_lib.mpz_scan0(op, 1UI) = 3UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_bitcnt_t mpz_scan0(/*const*/ mpz_t op, mp_bitcnt_t starting_bit)
         {
@@ -10288,16 +10286,16 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// If the bit at <paramref name="starting_bit"/> is already what’s sought,
-        /// then <paramref name="starting_bit"/> is returned. 
+        /// then <paramref name="starting_bit"/> is returned.
         /// </para>
         /// <para>
         /// If there’s no bit found, then the largest possible <see cref="mp_bitcnt_t">mp_bitcnt_t</see> is returned.
         /// This will happen in <see cref="mpz_scan0">mpz_scan0</see> past the end of a negative number,
-        /// or <see cref="mpz_scan1">mpz_scan1</see> past the end of a nonnegative number. 
+        /// or <see cref="mpz_scan1">mpz_scan1</see> past the end of a nonnegative number.
         /// </para>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number 0. 
+        /// The least significant bit is number 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and">mpz_and</seealso>
@@ -10318,24 +10316,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 70.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op, 70U);
-        /// 
+        ///
         /// // Assert that the first 1 bit starting from bit 3 in op is bit 6.
         /// Assert.IsTrue(gmp_lib.mpz_scan1(op, 3U) == 6U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 70.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op, 70UI)
-        /// 
+        ///
         /// ' Assert that the first 1 bit starting from bit 3 in op is bit 6.
         /// Assert.IsTrue(gmp_lib.mpz_scan1(op, 3UI) = 6UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_bitcnt_t mpz_scan1(/*const*/ mpz_t op, mp_bitcnt_t starting_bit)
         {
@@ -10363,42 +10361,42 @@ namespace MathGmp.Native
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
         /// gmp_lib.mpz_set_si(x, 10);
-        /// 
+        ///
         /// // Create, initialize, and set a new integer y to -210.
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init(y);
         /// gmp_lib.mpz_set_si(y, -210);
-        /// 
+        ///
         /// // Assign the value of y to x.
         /// gmp_lib.mpz_set(x, y);
-        /// 
+        ///
         /// // Assert that the value of x is -210.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == -210);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpz_clears(x, y, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new integer x to 10.
         /// Dim x As New mpz_t()
-        /// 
+        ///
         /// gmp_lib.mpz_init(x)
         /// gmp_lib.mpz_set_si(x, 10)
-        /// 
+        ///
         /// ' Create, initialize, and set a new integer y to -210.
         /// Dim y As New mpz_t()
         /// gmp_lib.mpz_init(y)
         /// gmp_lib.mpz_set_si(y, -210)
-        /// 
+        ///
         /// ' Assign the value of y to x.
         /// gmp_lib.mpz_set(x, y)
-        /// 
+        ///
         /// ' Assert that the value of x is -210.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = -210)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpz_clears(x, y, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_set(mpz_t rop, /*const*/ mpz_t op)
         {
@@ -10431,30 +10429,30 @@ namespace MathGmp.Native
         /// // Create and initialize a new integer x.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
-        /// 
+        ///
         /// // Set the value of x to the truncation of 10.7.
         /// gmp_lib.mpz_set_d(x, 10.7D);
-        /// 
+        ///
         /// // Assert that the value of x is 10.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == 10);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new integer x.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
-        /// 
+        ///
         /// ' Set the value of x to the truncation of 10.7.
         /// gmp_lib.mpz_set_d(x, 10.7)
-        /// 
+        ///
         /// ' Assert that the value of x is 10.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = 10)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_set_d(mpz_t rop, double op)
         {
@@ -10487,33 +10485,33 @@ namespace MathGmp.Native
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
         /// mpf_t y = "1.7007e3";
-        /// 
+        ///
         /// // Set the value of x to the truncation of 1700.7.
         /// gmp_lib.mpz_set_f(x, y);
-        /// 
+        ///
         /// // Assert that the value of x is 1700.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == 1700);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.mpf_clear(y);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize new integer x, and float y.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
         /// Dim y As mpf_t = "1.7007e3"
-        /// 
+        ///
         /// ' Set the value of x to the truncation of 1700.7.
         /// gmp_lib.mpz_set_f(x, y)
-        /// 
+        ///
         /// ' Assert that the value of x is 1700.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = 1700)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.mpf_clear(y)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_set_f(mpz_t rop, /*const*/ mpf_t op)
         {
@@ -10547,33 +10545,33 @@ namespace MathGmp.Native
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
         /// mpq_t y = "100/3";
-        /// 
+        ///
         /// // Set the value of x to the truncation of 100/3.
         /// gmp_lib.mpz_set_q(x, y);
-        /// 
+        ///
         /// // Assert that the value of x is 33.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == 33);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.mpq_clear(y);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize new integer x, and rational y.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
         /// Dim y As mpq_t = "100/3"
-        /// 
+        ///
         /// ' Set the value of x to the truncation of 100/3.
         /// gmp_lib.mpz_set_q(x, y)
-        /// 
+        ///
         /// ' Assert that the value of x is 33.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = 33)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.mpq_clear(y)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_set_q(mpz_t rop, /*const*/ mpq_t op)
         {
@@ -10601,30 +10599,30 @@ namespace MathGmp.Native
         /// // Create and initialize a new integer x.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
-        /// 
+        ///
         /// // Set the value of x to -10.
         /// gmp_lib.mpz_set_si(x, -10);
-        /// 
+        ///
         /// // Assert that the value of x is -10.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == -10);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new integer x.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
-        /// 
+        ///
         /// ' Set the value of x to -10.
         /// gmp_lib.mpz_set_si(x, -10)
-        /// 
+        ///
         /// ' Assert that the value of x is -10.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = -10)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_set_si(mpz_t rop, int /*long int*/ op)
         {
@@ -10668,38 +10666,38 @@ namespace MathGmp.Native
         /// // Create and initialize a new integer x.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
-        /// 
+        ///
         /// // Set the value of x.
         /// char_ptr value = new char_ptr("12 345 678 909 876 543 211 234 567 890 987 654 321");
         /// gmp_lib.mpz_set_str(x, value, 10);
-        /// 
+        ///
         /// // Assert the value of x.
         /// char_ptr s = gmp_lib.mpz_get_str(char_ptr.Zero, 10, x);
         /// Assert.IsTrue(s.ToString() == value.ToString().Replace(" ", ""));
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and string values.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.free(value);
         /// gmp_lib.free(s);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new integer x.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
-        /// 
+        ///
         /// ' Set the value of x.
         /// Dim value As New char_ptr("12 345 678 909 876 543 211 234 567 890 987 654 321")
         /// gmp_lib.mpz_set_str(x, value, 10)
-        /// 
+        ///
         /// ' Assert the value of x.
         /// Dim s As char_ptr = gmp_lib.mpz_get_str(char_ptr.Zero, 10, x)
         /// Assert.IsTrue(s.ToString() = value.ToString().Replace(" ", ""))
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and string values.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.free(value)
-        /// gmp_lib.free(s) 
-        /// </code> 
+        /// gmp_lib.free(s)
+        /// </code>
         /// </example>
         public static int mpz_set_str(mpz_t rop, /*const*/ char_ptr str, int @base)
         {
@@ -10726,31 +10724,31 @@ namespace MathGmp.Native
         /// // Create and initialize a new integer x.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
-        /// 
+        ///
         /// // Set the value of x to 10.
         /// gmp_lib.mpz_set_ui(x, 10U);
-        /// 
+        ///
         /// // Assert that the value of x is 10.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(x) == 10U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new integer x.
         /// Dim x As New mpz_t()
-        /// 
+        ///
         /// gmp_lib.mpz_init(x)
-        /// 
+        ///
         /// ' Set the value of x to 10.
         /// gmp_lib.mpz_set_ui(x, 10UI)
-        /// 
+        ///
         /// ' Assert that the value of x is 10.
         /// Assert.IsTrue(gmp_lib.mpz_get_ui(x) = 10UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpz_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_set_ui(mpz_t rop, uint /*unsigned long int*/ op)
         {
@@ -10766,7 +10764,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number 0. 
+        /// The least significant bit is number 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and">mpz_and</seealso>
@@ -10787,30 +10785,30 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 70.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init_set_si(rop, 70);
-        /// 
+        ///
         /// // Set bit 3 of rop.
         /// gmp_lib.mpz_setbit(rop, 3U);
-        /// 
+        ///
         /// // Assert that rop is 78.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 78);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 70.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init_set_si(rop, 70)
-        /// 
+        ///
         /// ' Set bit 3 of rop.
         /// gmp_lib.mpz_setbit(rop, 3UI)
-        /// 
+        ///
         /// ' Assert that rop is 78.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 78)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_setbit(mpz_t rop, mp_bitcnt_t bit_index)
         {
@@ -10837,24 +10835,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to -10.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_si(op, -10);
-        /// 
+        ///
         /// // Assert that the sign of op is -1.
         /// Assert.IsTrue(gmp_lib.mpz_sgn(op) == -1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to -10.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_si(op, -10)
-        /// 
+        ///
         /// ' Assert that the sign of op is -1.
         /// Assert.IsTrue(gmp_lib.mpz_sgn(op) = -1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_sgn(mpz_t op)
         {
@@ -10893,28 +10891,28 @@ namespace MathGmp.Native
         ///     Assert.IsTrue(gmp_lib.mpz_size(op) == 3);
         /// else // gmp_lib.mp_bytes_per_limb == 8
         ///     Assert.IsTrue(gmp_lib.mpz_size(op) == 2);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op and value.
         /// gmp_lib.mpz_clear(op);
         /// gmp_lib.free(value);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize new integer x.
         /// Dim op As New mpz_t()
         /// Dim value As New char_ptr("1000 ABCD 1234 7AB8 24FD")
         /// gmp_lib.mpz_init_set_str(op, value, 16)
-        /// 
+        ///
         /// ' Assert the value of the limbs of op.
         /// If gmp_lib.mp_bytes_per_limb = 4 Then
         ///     Assert.IsTrue(gmp_lib.mpz_size(op) = 3)
         /// Else ' gmp_lib.mp_bytes_per_limb == 8
         ///     Assert.IsTrue(gmp_lib.mpz_size(op) = 2)
         /// End If
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op and value.
         /// gmp_lib.mpz_clear(op)
         /// gmp_lib.free(value)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_size_t mpz_size(/*const*/ mpz_t op)
         {
@@ -10939,7 +10937,7 @@ namespace MathGmp.Native
         /// <para>
         /// This function can be used to determine the space required when converting <paramref name="op"/> to a string.
         /// The right amount of allocation is normally two more than the value returned by <see cref="mpz_sizeinbase">mpz_sizeinbase</see>,
-        /// one extra for a minus sign and one for the null-terminator. 
+        /// one extra for a minus sign and one for the null-terminator.
         /// </para>
         /// <para>
         /// It will be noted that mpz_sizeinbase(<paramref name="op"/>, 2) can be used to locate the most
@@ -10963,30 +10961,30 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 10000.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_si(op, 10000);
-        /// 
+        ///
         /// // Assert size in different bases.
         /// Assert.IsTrue(gmp_lib.mpz_sizeinbase(op, 2) == 14);
         /// Assert.IsTrue(gmp_lib.mpz_sizeinbase(op, 8) == 5);
         /// Assert.IsTrue(gmp_lib.mpz_sizeinbase(op, 10) == 5);
         /// Assert.IsTrue(gmp_lib.mpz_sizeinbase(op, 16) == 4);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 10000.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_si(op, 10000)
-        /// 
+        ///
         /// ' Assert size in different bases.
         /// Assert.IsTrue(gmp_lib.mpz_sizeinbase(op, 2) = 14)
         /// Assert.IsTrue(gmp_lib.mpz_sizeinbase(op, 8) = 5)
         /// Assert.IsTrue(gmp_lib.mpz_sizeinbase(op, 10) = 5)
         /// Assert.IsTrue(gmp_lib.mpz_sizeinbase(op, 16) = 4)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpz_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static size_t mpz_sizeinbase(/*const*/ mpz_t op, int @base)
         {
@@ -11014,38 +11012,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 10000.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_si(op, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop = trunc(sqrt(op)).
         /// gmp_lib.mpz_sqrt(rop, op);
-        /// 
+        ///
         /// // Assert that rop is 100.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 100);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop and op.
         /// gmp_lib.mpz_clears(rop, op, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 10000.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_si(op, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop = trunc(sqrt(op)).
         /// gmp_lib.mpz_sqrt(rop, op)
-        /// 
+        ///
         /// ' Assert that rop is 100.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 100)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop and op.
         /// gmp_lib.mpz_clears(rop, op, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_sqrt(mpz_t rop, /*const*/ mpz_t op)
         {
@@ -11072,42 +11070,42 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 10000.
         /// mpz_t op = new mpz_t();
         /// gmp_lib.mpz_init_set_si(op, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the values of root and rem to 0.
         /// mpz_t root = new mpz_t();
         /// mpz_t rem = new mpz_t();
         /// gmp_lib.mpz_inits(root, rem);
-        /// 
+        ///
         /// // Set root = trunc(sqrt(op)), and rem = op - root.
         /// gmp_lib.mpz_sqrtrem(root, rem, op);
-        /// 
+        ///
         /// // Assert that root is 100, and rem is 0.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(root) == 100);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rem) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for root, rem, and op.
         /// gmp_lib.mpz_clears(root, rem, op, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 10000.
         /// Dim op As New mpz_t()
         /// gmp_lib.mpz_init_set_si(op, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the values of root and rem to 0.
         /// Dim root As New mpz_t()
         /// Dim[rem] As New mpz_t()
         /// gmp_lib.mpz_inits(root, [rem])
-        /// 
+        ///
         /// ' Set root = trunc(sqrt(op)), and rem = op - root.
         /// gmp_lib.mpz_sqrtrem(root, [rem], op)
-        /// 
+        ///
         /// ' Assert that root is 100, and rem is 0.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(root) = 100)
         /// Assert.IsTrue(gmp_lib.mpz_get_si([rem]) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for root, rem, and op.
         /// gmp_lib.mpz_clears(root, [rem], op, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_sqrtrem(mpz_t rop1, mpz_t rop2, /*const*/ mpz_t op)
         {
@@ -11138,46 +11136,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of y to 12222.
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(y, 12222U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = x - y.
         /// gmp_lib.mpz_sub(z, x, y);
-        /// 
+        ///
         /// // Assert that z = x - y.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == -2222);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpz_clears(x, y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of y to 12222.
         /// Dim y As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(y, 12222UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = x - y.
         /// gmp_lib.mpz_sub(z, x, y)
-        /// 
+        ///
         /// ' Assert that z = x - y.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = -2222)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpz_clears(x, y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_sub(mpz_t rop, /*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -11208,38 +11206,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = x - 12222.
         /// gmp_lib.mpz_sub_ui(z, x, 12222U);
-        /// 
+        ///
         /// // Assert that z = x - 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == -2222);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = x - 12222.
         /// gmp_lib.mpz_sub_ui(z, x, 12222UI)
-        /// 
+        ///
         /// ' Assert that z = x - 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = -2222)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_sub_ui(mpz_t rop, /*const*/ mpz_t op1, uint /*unsigned long int*/ op2)
         {
@@ -11269,38 +11267,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 0.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init(z);
-        /// 
+        ///
         /// // Set z = 12222 - x.
         /// gmp_lib.mpz_ui_sub(z, 12222U, x);
-        /// 
+        ///
         /// // Assert that z = 12222 - x.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == 2222);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 0.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init(z)
-        /// 
+        ///
         /// ' Set z = 12222 - x.
         /// gmp_lib.mpz_ui_sub(z, 12222UI, x)
-        /// 
+        ///
         /// ' Assert that z = 12222 - x.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = 2222)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_ui_sub(mpz_t rop, uint /*unsigned long int*/ op1, /*const*/ mpz_t op2)
         {
@@ -11329,46 +11327,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 10000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of y to 12222.
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(y, 12222U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 20000.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init_set_si(z, 20000);
-        /// 
+        ///
         /// // Set z -= x * y.
         /// gmp_lib.mpz_submul(z, x, y);
-        /// 
+        ///
         /// // Assert that z has been decremented by 10000 * 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == 20000 - 10000 * 12222);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpz_clears(x, y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 10000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of y to 12222.
         /// Dim y As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(y, 12222UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 20000.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init_set_si(z, 20000)
-        /// 
+        ///
         /// ' Set z -= x * y.
         /// gmp_lib.mpz_submul(z, x, y)
-        /// 
+        ///
         /// ' Assert that z has been decremented by 10000 * 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = 20000 - 10000 * 12222)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpz_clears(x, y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_submul(mpz_t rop, /*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -11398,38 +11396,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to -10000.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_si(x, -10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of z to 20000.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init_set_si(z, 20000);
-        /// 
+        ///
         /// // Set z -= x * 12222U.
         /// gmp_lib.mpz_submul_ui(z, x, 12222U);
-        /// 
+        ///
         /// // Assert that z has been decremented by -10000 * 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) == 20000 - -10000 * 12222);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to -10000.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_si(x, -10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of z to 20000.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init_set_si(z, 20000)
-        /// 
+        ///
         /// ' Set z -= x * 12222U.
         /// gmp_lib.mpz_submul_ui(z, x, 12222UI)
-        /// 
+        ///
         /// ' Assert that z has been decremented by -10000 * 12222.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(z) = 20000 - -10000 * 12222)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpz_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_submul_ui(mpz_t rop, /*const*/ mpz_t op1, uint /*unsigned long int*/ op2)
         {
@@ -11457,40 +11455,40 @@ namespace MathGmp.Native
         /// // Create, initialize, and set a new integer x to 10.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create, initialize, and set a new integer x to -210.
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init_set_si(y, -210);
-        /// 
+        ///
         /// // Swap the values of x and y.
         /// gmp_lib.mpz_swap(x, y);
-        /// 
+        ///
         /// // Assert that the values have been swapped.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) == -210);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(y) == 10);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpz_clears(x, y, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new integer x to 10.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create, initialize, and set a new integer x to -210.
         /// Dim y As New mpz_t()
         /// gmp_lib.mpz_init_set_si(y, -210)
-        /// 
+        ///
         /// ' Swap the values of x and y.
         /// gmp_lib.mpz_swap(x, y)
-        /// 
+        ///
         /// ' Assert that the values have been swapped.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(x) = -210)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(y) = 10)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpz_clears(x, y, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_swap(mpz_t rop1, mpz_t rop2)
         {
@@ -11526,24 +11524,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Assert that returned value is |n - 3 * trunc(n / 3)|.
         /// Assert.IsTrue(gmp_lib.mpz_tdiv_ui(n, 3U) == 1U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n.
         /// gmp_lib.mpz_clear(n);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Assert that returned value is |n - 3 * trunc(n / 3)|.
         /// Assert.IsTrue(gmp_lib.mpz_tdiv_ui(n, 3UI) = 1UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n.
         /// gmp_lib.mpz_clear(n)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint /*unsigned long int*/ mpz_tdiv_ui(/*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -11578,46 +11576,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of d to 3.
         /// mpz_t d = new mpz_t();
         /// gmp_lib.mpz_init_set_si(d, 3);
-        /// 
+        ///
         /// // Create, initialize, and set the value of q to 0.
         /// mpz_t q = new mpz_t();
         /// gmp_lib.mpz_init(q);
-        /// 
+        ///
         /// // Set q = trunc(n / d).
         /// gmp_lib.mpz_tdiv_q(q, n, d);
-        /// 
+        ///
         /// // Assert that q is trunc(10000 / 3).
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 3333);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, d, and q.
         /// gmp_lib.mpz_clears(n, d, q, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of d to 3.
         /// Dim d As New mpz_t()
         /// gmp_lib.mpz_init_set_si(d, 3)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of q to 0.
         /// Dim q As New mpz_t()
         /// gmp_lib.mpz_init(q)
-        /// 
+        ///
         /// ' Set q = trunc(n / d).
         /// gmp_lib.mpz_tdiv_q(q, n, d)
-        /// 
+        ///
         /// ' Assert that q is trunc(10000 / 3).
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 3333)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, d, and q.
         /// gmp_lib.mpz_clears(n, d, q, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_tdiv_q(mpz_t q, /*const*/ mpz_t n, /*const*/ mpz_t d)
         {
@@ -11654,38 +11652,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10001.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10001);
-        /// 
+        ///
         /// // Create, initialize, and set the value of q to 0.
         /// mpz_t q = new mpz_t();
         /// gmp_lib.mpz_init(q);
-        /// 
+        ///
         /// // Set q = trunc(n / 2^2).
         /// gmp_lib.mpz_tdiv_q_2exp(q, n, 2U);
-        /// 
+        ///
         /// // Assert that q is trunc(10001 / 4).
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 2500);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and q.
         /// gmp_lib.mpz_clears(n, q, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10001.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10001)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of q to 0.
         /// Dim q As New mpz_t()
         /// gmp_lib.mpz_init(q)
-        /// 
+        ///
         /// ' Set q = trunc(n / 2^2).
         /// gmp_lib.mpz_tdiv_q_2exp(q, n, 2UI)
-        /// 
+        ///
         /// ' Assert that q is trunc(10001 / 4).
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 2500)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and q.
         /// gmp_lib.mpz_clears(n, q, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_tdiv_q_2exp(mpz_t q, /*const*/ mpz_t n, mp_bitcnt_t b)
         {
@@ -11722,36 +11720,36 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of q to 0.
         /// mpz_t q = new mpz_t();
         /// gmp_lib.mpz_init(q);
-        /// 
+        ///
         /// // Set q = trunc(n / 3) and return r = n - 3 * q.
         /// // Assert q and r values.
         /// Assert.IsTrue(gmp_lib.mpz_tdiv_q_ui(q, n, 3U) == 1U);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 3333);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and q.
         /// gmp_lib.mpz_clears(n, q, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of q to 0.
         /// Dim q As New mpz_t()
         /// gmp_lib.mpz_init(q)
-        /// 
+        ///
         /// ' Set q = trunc(n / 3) and return r = n - 3 * q.
         /// ' Assert q and r values.
         /// Assert.IsTrue(gmp_lib.mpz_tdiv_q_ui(q, n, 3UI) = 1UI)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 3333)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and q.
         /// gmp_lib.mpz_clears(n, q, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static ulong mpz_tdiv_q_ui(mpz_t q, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -11788,50 +11786,50 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of d to 3.
         /// mpz_t d = new mpz_t();
         /// gmp_lib.mpz_init_set_si(d, 3);
-        /// 
+        ///
         /// // Create, initialize, and set the values of q and r to 0.
         /// mpz_t q = new mpz_t();
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_inits(q, r, null);
-        /// 
+        ///
         /// // Set q = trunc(n / 3) and r = n - d * q.
         /// gmp_lib.mpz_tdiv_qr(q, r, n, d);
-        /// 
+        ///
         /// // Assert that q is 3333, and that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 3333);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, d, q, and r.
         /// gmp_lib.mpz_clears(n, d, q, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of d to 3.
         /// Dim d As New mpz_t()
         /// gmp_lib.mpz_init_set_si(d, 3)
-        /// 
+        ///
         /// ' Create, initialize, and set the values of q and r to 0.
         /// Dim q As New mpz_t()
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_inits(q, r, Nothing)
-        /// 
+        ///
         /// ' Set q = trunc(n / 3) and r = n - d * q.
         /// gmp_lib.mpz_tdiv_qr(q, r, n, d)
-        /// 
+        ///
         /// ' Assert that q is 3333, and that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 3333)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, d, q, and r.
         /// gmp_lib.mpz_clears(n, d, q, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_tdiv_qr(mpz_t q, mpz_t r, /*const*/ mpz_t n, /*const*/ mpz_t d)
         {
@@ -11871,42 +11869,42 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the values of q and r to 0.
         /// mpz_t q = new mpz_t();
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_inits(q, r, null);
-        /// 
+        ///
         /// // Set q = trunc(n / 3), r = n - d * q, and return r.
         /// Assert.IsTrue(gmp_lib.mpz_tdiv_qr_ui(q, r, n, 3U) == 1U);
-        /// 
+        ///
         /// // Assert that q is 3333, and that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) == 3333);
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, q, and r.
         /// gmp_lib.mpz_clears(n, q, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the values of q and r to 0.
         /// Dim q As New mpz_t()
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_inits(q, r, Nothing)
-        /// 
+        ///
         /// ' Set q = trunc(n / 3), r = n - d * q, and return r.
         /// Assert.IsTrue(gmp_lib.mpz_tdiv_qr_ui(q, r, n, 3UI) = 1UI)
-        /// 
+        ///
         /// ' Assert that q is 3333, and that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(q) = 3333)
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, q, and r.
         /// gmp_lib.mpz_clears(n, q, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint /*unsigned long int*/ mpz_tdiv_qr_ui(mpz_t q, mpz_t r, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -11943,46 +11941,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of d to 3.
         /// mpz_t d = new mpz_t();
         /// gmp_lib.mpz_init_set_si(d, 3);
-        /// 
+        ///
         /// // Create, initialize, and set the value of r to 0.
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_init(r);
-        /// 
+        ///
         /// // Set r = n - d * trunc(n / d).
         /// gmp_lib.mpz_tdiv_r(r, n, d);
-        /// 
+        ///
         /// // Assert that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n, d, and r.
         /// gmp_lib.mpz_clears(n, d, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of d to 3.
         /// Dim d As New mpz_t()
         /// gmp_lib.mpz_init_set_si(d, 3)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of r to 0.
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_init(r)
-        /// 
+        ///
         /// ' Set r = n - d * trunc(n / d).
         /// gmp_lib.mpz_tdiv_r(r, n, d)
-        /// 
+        ///
         /// ' Assert that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n, d, and r.
         /// gmp_lib.mpz_clears(n, d, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_tdiv_r(mpz_t r, /*const*/ mpz_t n, /*const*/ mpz_t d)
         {
@@ -12019,38 +12017,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10001.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10001);
-        /// 
+        ///
         /// // Create, initialize, and set the value of r to 0.
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_init(r);
-        /// 
+        ///
         /// // Set r = n - 2^2 * trunc(n / 2^2)
         /// gmp_lib.mpz_tdiv_r_2exp(r, n, 2U);
-        /// 
+        ///
         /// // Assert that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and r.
         /// gmp_lib.mpz_clears(n, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10001.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10001)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of r to 0.
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_init(r)
-        /// 
+        ///
         /// ' Set r = n - 2^2 * trunc(n / 2^2)
         /// gmp_lib.mpz_tdiv_r_2exp(r, n, 2UI)
-        /// 
+        ///
         /// ' Assert that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and r.
         /// gmp_lib.mpz_clears(n, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_tdiv_r_2exp(mpz_t r, /*const*/ mpz_t n, mp_bitcnt_t b)
         {
@@ -12087,38 +12085,38 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of n to 10000.
         /// mpz_t n = new mpz_t();
         /// gmp_lib.mpz_init_set_si(n, 10000);
-        /// 
+        ///
         /// // Create, initialize, and set the value of r to 0.
         /// mpz_t r = new mpz_t();
         /// gmp_lib.mpz_init(r);
-        /// 
+        ///
         /// // Set r = n - 3 * trunc(n / 3), and return |r|.
         /// Assert.IsTrue(gmp_lib.mpz_tdiv_r_ui(r, n, 3U) == 1U);
-        /// 
+        ///
         /// // Assert that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for n and r.
         /// gmp_lib.mpz_clears(n, r, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of n to 10000.
         /// Dim n As New mpz_t()
         /// gmp_lib.mpz_init_set_si(n, 10000)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of r to 0.
         /// Dim r As New mpz_t()
         /// gmp_lib.mpz_init(r)
-        /// 
+        ///
         /// ' Set r = n - 3 * trunc(n / 3), and return |r|.
         /// Assert.IsTrue(gmp_lib.mpz_tdiv_r_ui(r, n, 3UI) = 1UI)
-        /// 
+        ///
         /// ' Assert that r is 1.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(r) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for n and r.
         /// gmp_lib.mpz_clears(n, r, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint mpz_tdiv_r_ui(mpz_t r, /*const*/ mpz_t n, uint /*unsigned long int*/ d)
         {
@@ -12128,7 +12126,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Test bit <paramref name="bit_index"/> in <paramref name="op"/> and return 0 or 1 accordingly. 
+        /// Test bit <paramref name="bit_index"/> in <paramref name="op"/> and return 0 or 1 accordingly.
         /// </summary>
         /// <param name="op"></param>
         /// <param name="bit_index"></param>
@@ -12136,7 +12134,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number 0. 
+        /// The least significant bit is number 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and">mpz_and</seealso>
@@ -12157,24 +12155,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 70.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init_set_si(rop, 70);
-        /// 
+        ///
         /// // Assert that bit 3 of rop is 0.
         /// Assert.IsTrue(gmp_lib.mpz_tstbit(rop, 3U) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 70.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init_set_si(rop, 70)
-        /// 
+        ///
         /// ' Assert that bit 3 of rop is 0.
         /// Assert.IsTrue(gmp_lib.mpz_tstbit(rop, 3UI) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpz_tstbit(/*const*/ mpz_t op, mp_bitcnt_t bit_index)
         {
@@ -12199,30 +12197,30 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop = 2^4.
         /// gmp_lib.mpz_ui_pow_ui(rop, 2U, 4U);
-        /// 
+        ///
         /// // Assert that rop is 16.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 16);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop = 2^4.
         /// gmp_lib.mpz_ui_pow_ui(rop, 2UI, 4UI)
-        /// 
+        ///
         /// ' Assert that rop is 16.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 16)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop.
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_ui_pow_ui(mpz_t rop, uint /*unsigned long int*/ @base, uint /*unsigned long int*/ exp)
         {
@@ -12242,7 +12240,7 @@ namespace MathGmp.Native
         /// functions (<a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a>) before invoking this function.
         /// </para>
         /// <para>
-        /// The random number functions of GMP come in two groups; older function that rely on a global state, 
+        /// The random number functions of GMP come in two groups; older function that rely on a global state,
         /// and newer functions that accept a state parameter that is read and modified.
         /// Please see the <a href="https://gmplib.org/manual/Random-Number-Functions.html#Random-Number-Functions">GNU MP - Random Number Functions</a>
         /// for more information on how to use and not to use random number functions.
@@ -12260,35 +12258,35 @@ namespace MathGmp.Native
         /// gmp_randstate_t state = new gmp_randstate_t();
         /// gmp_lib.gmp_randinit_mt(state);
         /// gmp_lib.gmp_randseed_ui(state, 100000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Generate a random integer in the range [0, (2^50)-1].
         /// gmp_lib.mpz_urandomb(rop, state, 50);
-        /// 
+        ///
         /// // Free all memory occupied by state and rop.
         /// gmp_lib.gmp_randclear(state);
         /// gmp_lib.mpz_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and seed a new random number generator.
         /// Dim state As New gmp_randstate_t()
         /// gmp_lib.gmp_randinit_mt(state)
         /// gmp_lib.gmp_randseed_ui(state, 100000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Generate a random integer in the range [0, (2^50)-1].
         /// gmp_lib.mpz_urandomb(rop, state, 50)
-        /// 
+        ///
         /// ' Free all memory occupied by state and rop.
         /// gmp_lib.gmp_randclear(state)
         /// gmp_lib.mpz_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_urandomb(mpz_t rop, gmp_randstate_t state, mp_bitcnt_t n)
         {
@@ -12306,10 +12304,10 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The variable <paramref name="state"/> must be initialized by calling one of the <c>gmp_randinit</c>
-        /// functions (<a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a>) before invoking this function. 
+        /// functions (<a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a>) before invoking this function.
         /// </para>
         /// <para>
-        /// The random number functions of GMP come in two groups; older function that rely on a global state, 
+        /// The random number functions of GMP come in two groups; older function that rely on a global state,
         /// and newer functions that accept a state parameter that is read and modified.
         /// Please see the <a href="https://gmplib.org/manual/Random-Number-Functions.html#Random-Number-Functions">GNU MP - Random Number Functions</a>
         /// for more information on how to use and not to use random number functions.
@@ -12327,45 +12325,45 @@ namespace MathGmp.Native
         /// gmp_randstate_t state = new gmp_randstate_t();
         /// gmp_lib.gmp_randinit_mt(state);
         /// gmp_lib.gmp_randseed_ui(state, 100000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Create, initialize, and set a large integer.
         /// mpz_t n = new mpz_t();
         /// char_ptr value = new char_ptr("123 456 789 012 345 678 901");
         /// gmp_lib.mpz_init_set_str(n, value, 10);
-        /// 
+        ///
         /// // Generate a random integer in the range [0, n-1].
         /// gmp_lib.mpz_urandomm(rop, state, n);
-        /// 
+        ///
         /// // Free all memory occupied by state, rop, and n.
         /// gmp_lib.gmp_randclear(state);
         /// gmp_lib.mpz_clears(rop, n, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and seed a new random number generator.
         /// Dim state As New gmp_randstate_t()
         /// gmp_lib.gmp_randinit_mt(state)
         /// gmp_lib.gmp_randseed_ui(state, 100000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Create, initialize, and set a large integer.
         /// Dim n As New mpz_t()
         /// Dim value As New char_ptr("123 456 789 012 345 678 901")
         /// gmp_lib.mpz_init_set_str(n, value, 10)
-        /// 
+        ///
         /// ' Generate a random integer in the range [0, n-1].
         /// gmp_lib.mpz_urandomm(rop, state, n)
-        /// 
+        ///
         /// ' Free all memory occupied by state, rop, and n.
         /// gmp_lib.gmp_randclear(state)
         /// gmp_lib.mpz_clears(rop, n, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_urandomm(mpz_t rop, gmp_randstate_t state, /*const*/ mpz_t n)
         {
@@ -12376,7 +12374,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="op1"/> bitwise exclusive-or <paramref name="op2"/>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> bitwise exclusive-or <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result integer.</param>
         /// <param name="op1">The first operand integer.</param>
@@ -12384,7 +12382,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The function behaves as if twos complement arithmetic were used (although sign-magnitude is the actual implementation).
-        /// The least significant bit is number 0. 
+        /// The least significant bit is number 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpz_and">mpz_and</seealso>
@@ -12405,46 +12403,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op1 to 63.
         /// mpz_t op1 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op1, 63U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 70.
         /// mpz_t op2 = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(op2, 70U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpz_t rop = new mpz_t();
         /// gmp_lib.mpz_init(rop);
-        /// 
+        ///
         /// // Set rop to the bitwise exclusive or of op1 and op2.
         /// gmp_lib.mpz_xor(rop, op1, op2);
-        /// 
+        ///
         /// // Assert that rop is 121.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) == 121);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for rop, op1, and op2.
         /// gmp_lib.mpz_clears(rop, op1, op2, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 63.
         /// Dim op1 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op1, 63UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 70.
         /// Dim op2 As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(op2, 70UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpz_t()
         /// gmp_lib.mpz_init(rop)
-        /// 
+        ///
         /// ' Set rop to the bitwise exclusive or of op1 and op2.
         /// gmp_lib.mpz_xor(rop, op1, op2)
-        /// 
+        ///
         /// ' Assert that rop is 121.
         /// Assert.IsTrue(gmp_lib.mpz_get_si(rop) = 121)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for rop, op1, and op2.
         /// gmp_lib.mpz_clears(rop, op1, op2, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpz_xor(mpz_t rop, /*const*/ mpz_t op1, /*const*/ mpz_t op2)
         {
@@ -12478,42 +12476,42 @@ namespace MathGmp.Native
         /// // Create and initialize new integer x.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
-        /// 
+        ///
         /// // Set the value of x.
         /// char_ptr value = new char_ptr("10000 00000000000000000000000000000000");
         /// gmp_lib.mpz_set_str(x, value, gmp_lib.mp_bytes_per_limb == 4 ? 2 : 4);
-        /// 
+        ///
         /// // Get pointer to the limbs of x.
         /// mp_ptr limbs = gmp_lib.mpz_limbs_read(x);
-        /// 
+        ///
         /// // Assert the values of the limbs based on current architecture (x86 or x64).
         /// Assert.IsTrue(limbs[0] == 0);
         /// Assert.IsTrue(limbs[1] == (gmp_lib.mp_bytes_per_limb == 4 ? 16U : 256U));
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and value.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.free(value);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize new integer x.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
-        /// 
+        ///
         /// ' Set the value of x.
         /// Dim value As New char_ptr("10000 00000000000000000000000000000000")
         /// gmp_lib.mpz_set_str(x, value, If(gmp_lib.mp_bytes_per_limb = 4, 2, 4))
-        /// 
+        ///
         /// ' Get pointer to the limbs of x.
         /// Dim limbs As mp_ptr = gmp_lib.mpz_limbs_read(x)
-        /// 
+        ///
         /// ' Assert the values of the limbs based on current architecture (x86 or x64).
         /// Assert.IsTrue(limbs(0) = 0)
         /// Assert.IsTrue(limbs(1) = (If(gmp_lib.mp_bytes_per_limb = 4, 16UI, 256UI)))
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and value.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.free(value)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_ptr /*mp_limb_t**/ mpz_limbs_read(/*const*/ mpz_t x)
         {
@@ -12550,48 +12548,48 @@ namespace MathGmp.Native
         /// // Create and initialize new integer x.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
-        /// 
+        ///
         /// // Resize x to 3 limbs, and get pointer to the limbs.
         /// gmp_lib.mpz_set_ui(x, 2U);
         /// mp_ptr limbs = gmp_lib.mpz_limbs_write(x, 3);
-        /// 
+        ///
         /// // Set the values of the limbs.
         /// limbs[0] = 0U;
         /// limbs[1] = 0U;
         /// limbs[2] = (gmp_lib.mp_bytes_per_limb == 4 ? 2U : 4U);
         /// gmp_lib.mpz_limbs_finish(x, -3);
-        /// 
+        ///
         /// // Assert the value of x based on current architecture (x86 or x64).
         /// char_ptr s = gmp_lib.mpz_get_str(char_ptr.Zero, gmp_lib.mp_bytes_per_limb == 4 ? 2 : 4, x);
         /// Assert.IsTrue(s.ToString() == "-10 00000000000000000000000000000000 00000000000000000000000000000000".Replace(" ", ""));
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and s.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.free(s);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize new integer x.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
-        /// 
+        ///
         /// ' Resize x to 3 limbs, and get pointer to the limbs.
         /// gmp_lib.mpz_set_ui(x, 2UI)
         /// Dim limbs As mp_ptr = gmp_lib.mpz_limbs_write(x, 3)
-        /// 
+        ///
         /// ' Set the values of the limbs.
         /// limbs(0) = 0UI
         /// limbs(1) = 0UI
         /// limbs(2) = (If(gmp_lib.mp_bytes_per_limb = 4, 2UI, 4UI))
         /// gmp_lib.mpz_limbs_finish(x, -3)
-        /// 
+        ///
         /// ' Assert the value of x based on current architecture (x86 or x64).
         /// Dim s As char_ptr = gmp_lib.mpz_get_str(char_ptr.Zero, If(gmp_lib.mp_bytes_per_limb = 4, 2, 4), x)
         /// Assert.IsTrue(s.ToString() = "-10 00000000000000000000000000000000 00000000000000000000000000000000".Replace(" ", ""))
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and s.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.free(s)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_ptr /*mp_limb_t**/ mpz_limbs_write(/*const*/ mpz_t x, mp_size_t n)
         {
@@ -12628,46 +12626,46 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of x to 2.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(x, 2U);
-        /// 
+        ///
         /// // Resize x to 3 limbs, and get pointer to the limbs.
         /// mp_ptr limbs = gmp_lib.mpz_limbs_modify(x, 3);
-        /// 
+        ///
         /// // Set the value of x.
         /// limbs[0] = 0;
         /// limbs[1] = 0;
         /// limbs[2] = (IntPtr.Size == 4 ? 8U : 64U);
         /// gmp_lib.mpz_limbs_finish(x, -3);
-        /// 
+        ///
         /// // Assert the value of x based on current architecture (x86 or x64).
         /// char_ptr s = gmp_lib.mpz_get_str(char_ptr.Zero, gmp_lib.mp_bytes_per_limb == 4 ? 2 : 4, x);
         /// Assert.IsTrue(s.ToString() == "-1000 00000000000000000000000000000000 00000000000000000000000000000000".Replace(" ", ""));
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and s.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.free(s);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 2.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(x, 2UI)
-        /// 
+        ///
         /// ' Resize x to 3 limbs, and get pointer to the limbs.
         /// Dim limbs As mp_ptr = gmp_lib.mpz_limbs_modify(x, 3)
-        /// 
+        ///
         /// ' Set the value of x.
         /// limbs(0) = 0
         /// limbs(1) = 0
         /// limbs(2) = (If(IntPtr.Size = 4, 8UI, 64UI))
         /// gmp_lib.mpz_limbs_finish(x, -3)
-        /// 
+        ///
         /// ' Assert the value of x based on current architecture (x86 or x64).
         /// Dim s As char_ptr = gmp_lib.mpz_get_str(char_ptr.Zero, If(gmp_lib.mp_bytes_per_limb = 4, 2, 4), x)
         /// Assert.IsTrue(s.ToString() = "-1000 00000000000000000000000000000000 00000000000000000000000000000000".Replace(" ", ""))
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and s.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.free(s)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_ptr /*mp_limb_t**/ mpz_limbs_modify(/*const*/ mpz_t x, mp_size_t n)
         {
@@ -12694,14 +12692,14 @@ namespace MathGmp.Native
         /// {
         ///     mp_size_t n, i;
         ///     mp_limb_t* xp;
-        /// 
+        ///
         ///     n = mpz_size(x);
         ///     xp = mpz_limbs_modify(x, 2 * n);
         ///     for (i = 0; i &lt; n; i++)
         ///         xp[n + i] = xp[n - 1 - i];
         ///     mpz_limbs_finish(x, mpz_sgn(x) &lt; 0 ? - 2 * n : 2 * n);
         /// }
-        /// </code> 
+        /// </code>
         /// </remarks>
         /// <seealso cref="_mpz_realloc">_mpz_realloc</seealso>
         /// <seealso cref="mpz_getlimbn">mpz_getlimbn</seealso>
@@ -12738,7 +12736,7 @@ namespace MathGmp.Native
         ///     mpz_t tmp;
         ///     mpz_add(x, x, mpz_roinit_n(tmp, y, 3));
         /// }
-        /// </code> 
+        /// </code>
         /// </remarks>
         /// <seealso cref="_mpz_realloc">_mpz_realloc</seealso>
         /// <seealso cref="mpz_getlimbn">mpz_getlimbn</seealso>
@@ -12754,30 +12752,30 @@ namespace MathGmp.Native
         /// // Create and initialize new integer x.
         /// mpz_t x = new mpz_t();
         /// gmp_lib.mpz_init(x);
-        /// 
+        ///
         /// // Prepare new limbs for x.
         /// mp_ptr limbs;
         /// if (gmp_lib.mp_bytes_per_limb == 4)
         ///     limbs = new mp_ptr(new uint[] { 0U, 0U, 2U });
         /// else
         ///     limbs = new mp_ptr(new ulong[] { 0UL, 0UL, 4UL });
-        /// 
+        ///
         /// // Assign new limbs to x, and make x negative.
         /// x = gmp_lib.mpz_roinit_n(x, limbs, -3);
-        /// 
+        ///
         /// // Assert new value of x.
         /// char_ptr s = gmp_lib.mpz_get_str(char_ptr.Zero, gmp_lib.mp_bytes_per_limb == 4 ? 2 : 4, x);
         /// Assert.IsTrue(s.ToString() == "-10 00000000000000000000000000000000 00000000000000000000000000000000".Replace(" ", ""));
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and s.
         /// gmp_lib.mpz_clear(x);
         /// gmp_lib.free(s);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize new integer x.
         /// Dim x As New mpz_t()
         /// gmp_lib.mpz_init(x)
-        /// 
+        ///
         /// ' Prepare new limbs for x.
         /// Dim limbs As mp_ptr
         /// If gmp_lib.mp_bytes_per_limb = 4 Then
@@ -12785,18 +12783,18 @@ namespace MathGmp.Native
         /// Else
         ///     limbs = New mp_ptr(New ULong() { 0UL, 0UL, 4UL})
         /// End If
-        /// 
+        ///
         /// ' Assign new limbs to x, and make x negative.
         /// x = gmp_lib.mpz_roinit_n(x, limbs, -3)
-        /// 
+        ///
         /// ' Assert new value of x.
         /// Dim s As char_ptr = gmp_lib.mpz_get_str(char_ptr.Zero, If(gmp_lib.mp_bytes_per_limb = 4, 2, 4), x)
         /// Assert.IsTrue(s.ToString() = "-10 00000000000000000000000000000000 00000000000000000000000000000000".Replace(" ", ""))
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and s.
         /// gmp_lib.mpz_clear(x)
         /// gmp_lib.free(s)
-        /// </code> 
+        /// </code>
         /// </example>
         public static /*const*/ mpz_t mpz_roinit_n(mpz_t x, /*const*/ mp_ptr /*mp_limb_t **/ xp, mp_size_t xs)
         {
@@ -12827,9 +12825,9 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_abs(mpq_t rop, /*const*/ mpq_t op)
         {
@@ -12839,7 +12837,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="sum"/> to <paramref name="addend1"/> + <paramref name="addend2"/>. 
+        /// Set <paramref name="sum"/> to <paramref name="addend1"/> + <paramref name="addend2"/>.
         /// </summary>
         /// <param name="sum">The result rational.</param>
         /// <param name="addend1">The first operand rational.</param>
@@ -12856,9 +12854,9 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_add(mpq_t sum, /*const*/ mpq_t addend1, /*const*/ mpq_t addend2)
         {
@@ -12885,9 +12883,9 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Initializing-Rationals.html#Initializing-Rationals">GNU MP - Initializing Rationals</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_canonicalize(mpq_t op)
         {
@@ -12901,7 +12899,7 @@ namespace MathGmp.Native
         /// <param name="x">The operand rational.</param>
         /// <remarks>
         /// <para>
-        /// Make sure to call this function for all <see cref="mpq_t">mpq_t</see> variables when you are done with them. 
+        /// Make sure to call this function for all <see cref="mpq_t">mpq_t</see> variables when you are done with them.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
@@ -12921,24 +12919,24 @@ namespace MathGmp.Native
         /// // Create and initialize a new rational x.
         /// mpq_t x = new mpq_t();
         /// gmp_lib.mpq_init(x);
-        /// 
+        ///
         /// // Assert that the value of x is 0.0.
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x) == 0.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpq_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new rational x.
         /// Dim x As New mpq_t()
         /// gmp_lib.mpq_init(x)
-        /// 
+        ///
         /// ' Assert that the value of x is 0.0.
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x) = 0.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpq_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_clear(mpq_t x)
         {
@@ -12948,7 +12946,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Free the space occupied by a NULL-terminated list of <see cref="mpq_t">mpq_t</see> variables. 
+        /// Free the space occupied by a NULL-terminated list of <see cref="mpq_t">mpq_t</see> variables.
         /// </summary>
         /// <param name="x">The operand rational.</param>
         /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
@@ -12969,35 +12967,35 @@ namespace MathGmp.Native
         /// mpq_t x1 = new mpq_t();
         /// mpq_t x2 = new mpq_t();
         /// mpq_t x3 = new mpq_t();
-        /// 
+        ///
         /// // Initialize the rationals.
         /// gmp_lib.mpq_inits(x1, x2, x3, null);
-        /// 
+        ///
         /// // Assert that their value is 0.0.
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x1) == 0.0);
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x2) == 0.0);
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x3) == 0.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for the rationals.
         /// gmp_lib.mpq_clears(x1, x2, x3, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create new rationals x1, x2 and x3.
         /// Dim x1 As New mpq_t()
         /// Dim x2 As New mpq_t()
         /// Dim x3 As New mpq_t()
-        /// 
+        ///
         /// ' Initialize the rationals.
         /// gmp_lib.mpq_inits(x1, x2, x3, Nothing)
-        /// 
+        ///
         /// ' Assert that their value is 0.0.
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x1) = 0.0)
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x2) = 0.0)
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x3) = 0.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for the rationals.
         /// gmp_lib.mpq_clears(x1, x2, x3, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_clears(params mpq_t[] x)
         {
@@ -13013,7 +13011,7 @@ namespace MathGmp.Native
         /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, and a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
         /// <remarks>
         /// <para>
-        /// To determine if two rationals are equal, <see cref="mpq_equal">mpq_equal</see> is faster than <see cref="mpq_cmp">mpq_cmp</see>. 
+        /// To determine if two rationals are equal, <see cref="mpq_equal">mpq_equal</see> is faster than <see cref="mpq_cmp">mpq_cmp</see>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_cmp_z">mpq_cmp_z</seealso>
@@ -13029,35 +13027,35 @@ namespace MathGmp.Native
         /// mpq_t op1 = new mpq_t();
         /// gmp_lib.mpq_init(op1);
         /// gmp_lib.mpq_set_si(op1, 1, 2U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 1 / 3.
         /// mpq_t op2 = new mpq_t();
         /// gmp_lib.mpq_init(op2);
         /// gmp_lib.mpq_set_si(op2, 1, 3U);
-        /// 
+        ///
         /// // Assert that op1 > op2.
         /// Assert.IsTrue(gmp_lib.mpq_cmp(op1, op2) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1 and op2.
         /// gmp_lib.mpq_clears(op1, op2, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 1 / 2.
         /// Dim op1 As New mpq_t()
         /// gmp_lib.mpq_init(op1)
         /// gmp_lib.mpq_set_si(op1, 1, 2UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 1 / 3.
         /// Dim op2 As New mpq_t()
         /// gmp_lib.mpq_init(op2)
         /// gmp_lib.mpq_set_si(op2, 1, 3UI)
-        /// 
+        ///
         /// ' Assert that op1 > op2.
         /// Assert.IsTrue(gmp_lib.mpq_cmp(op1, op2) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op1 and op2.
         /// gmp_lib.mpq_clears(op1, op2, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpq_cmp(/*const*/ mpq_t op1, /*const*/ mpq_t op2)
         {
@@ -13075,7 +13073,7 @@ namespace MathGmp.Native
         /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="num2"/> / <paramref name="den2"/>, zero if <paramref name="op1"/> = <paramref name="num2"/> / <paramref name="den2"/>, and a negative value if <paramref name="op1"/> &lt; <paramref name="num2"/> / <paramref name="den2"/>.</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="num2"/> and <paramref name="den2"/> are allowed to have common factors. 
+        /// <paramref name="num2"/> and <paramref name="den2"/> are allowed to have common factors.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_cmp">mpq_cmp</seealso>
@@ -13091,25 +13089,25 @@ namespace MathGmp.Native
         /// mpq_t op1 = new mpq_t();
         /// gmp_lib.mpq_init(op1);
         /// gmp_lib.mpq_set_si(op1, 1, 2U);
-        /// 
+        ///
         /// // Assert that op1 &lt; 5/6.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op1, 5, 6U) &lt; 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1.
         /// gmp_lib.mpq_clear(op1);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 1 / 2.
         /// Dim op1 As New mpq_t()
         /// gmp_lib.mpq_init(op1)
         /// gmp_lib.mpq_set_si(op1, 1, 2UI)
-        /// 
+        ///
         /// ' Assert that op1 &lt; 5/6.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op1, 5, 6UI) &lt; 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op1.
         /// gmp_lib.mpq_clear(op1)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpq_cmp_si(/*const*/ mpq_t op1, int /*long int*/ num2, uint /*unsigned long int*/ den2)
         {
@@ -13126,7 +13124,7 @@ namespace MathGmp.Native
         /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="num2"/> / <paramref name="den2"/>, zero if <paramref name="op1"/> = <paramref name="num2"/> / <paramref name="den2"/>, and a negative value if <paramref name="op1"/> &lt; <paramref name="num2"/> / <paramref name="den2"/>.</returns>
         /// <remarks>
         /// <para>
-        /// <paramref name="num2"/> and <paramref name="den2"/> are allowed to have common factors. 
+        /// <paramref name="num2"/> and <paramref name="den2"/> are allowed to have common factors.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_cmp">mpq_cmp</seealso>
@@ -13142,25 +13140,25 @@ namespace MathGmp.Native
         /// mpq_t op1 = new mpq_t();
         /// gmp_lib.mpq_init(op1);
         /// gmp_lib.mpq_set_si(op1, 1, 2U);
-        /// 
+        ///
         /// // Assert that op1 == 3/6.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_ui(op1, 3, 6U) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1.
         /// gmp_lib.mpq_clear(op1);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 1 / 2.
         /// Dim op1 As New mpq_t()
         /// gmp_lib.mpq_init(op1)
         /// gmp_lib.mpq_set_si(op1, 1, 2UI)
-        /// 
+        ///
         /// ' Assert that op1 == 3/6.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_ui(op1, 3, 6UI) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op1.
         /// gmp_lib.mpq_clear(op1)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpq_cmp_ui(/*const*/ mpq_t op1, uint /*unsigned long int*/ num2, uint /*unsigned long int*/ den2)
         {
@@ -13176,7 +13174,7 @@ namespace MathGmp.Native
         /// <returns>Return a positive value if <paramref name="op1"/> &gt; <paramref name="op2"/>, zero if <paramref name="op1"/> = <paramref name="op2"/>, and a negative value if <paramref name="op1"/> &lt; <paramref name="op2"/>.</returns>
         /// <remarks>
         /// <para>
-        /// To determine if two rationals are equal, <see cref="mpq_equal">mpq_equal</see> is faster than <see cref="mpq_cmp">mpq_cmp</see>. 
+        /// To determine if two rationals are equal, <see cref="mpq_equal">mpq_equal</see> is faster than <see cref="mpq_cmp">mpq_cmp</see>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_cmp">mpq_cmp</seealso>
@@ -13192,37 +13190,37 @@ namespace MathGmp.Native
         /// mpq_t op1 = new mpq_t();
         /// gmp_lib.mpq_init(op1);
         /// gmp_lib.mpq_set_si(op1, 1, 2U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 3.
         /// mpz_t op2 = new mpz_t();
         /// gmp_lib.mpz_init(op2);
         /// gmp_lib.mpz_set_si(op2, 3);
-        /// 
+        ///
         /// // Assert that op1 &lt; op2.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_z(op1, op2) &lt; 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1 and op2.
         /// gmp_lib.mpq_clear(op1);
         /// gmp_lib.mpz_clear(op2);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 1 / 2.
         /// Dim op1 As New mpq_t()
         /// gmp_lib.mpq_init(op1)
         /// gmp_lib.mpq_set_si(op1, 1, 2UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 3.
         /// Dim op2 As New mpz_t()
         /// gmp_lib.mpz_init(op2)
         /// gmp_lib.mpz_set_si(op2, 3)
-        /// 
+        ///
         /// ' Assert that op1 &lt; op2.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_z(op1, op2) &lt; 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op1 and op2.
         /// gmp_lib.mpq_clear(op1)
         /// gmp_lib.mpz_clear(op2)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpq_cmp_z(/*const*/ mpq_t op1, /*const*/ mpz_t op2)
         {
@@ -13238,7 +13236,7 @@ namespace MathGmp.Native
         /// <returns>Return a reference to the denominator <paramref name="op"/>.</returns>
         /// <remarks>
         /// <para>
-        /// The <c>mpz</c> functions can be used on the returned reference. 
+        /// The <c>mpz</c> functions can be used on the returned reference.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_numref">mpq_numref</seealso>
@@ -13254,33 +13252,33 @@ namespace MathGmp.Native
         /// mpq_t op = new mpq_t();
         /// gmp_lib.mpq_init(op);
         /// gmp_lib.mpq_set_si(op, -1, 3U);
-        /// 
+        ///
         /// // Get reference to denominator, and increment it by 2.
         /// mpz_t num = gmp_lib.mpq_denref(op);
         /// gmp_lib.mpz_add_ui(num, num, 2U);
-        /// 
+        ///
         /// // Assert that op is -1 / 5.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op, -1, 5U) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpq_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to -1 / 3.
         /// Dim op As New mpq_t()
         /// gmp_lib.mpq_init(op)
         /// gmp_lib.mpq_set_si(op, -1, 3UI)
-        /// 
+        ///
         /// ' Get reference to denominator, and increment it by 2.
         /// Dim num As mpz_t = gmp_lib.mpq_denref(op)
         /// gmp_lib.mpz_add_ui(num, num, 2UI)
-        /// 
+        ///
         /// ' Assert that op is -1 / 5.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op, -1, 5UI) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpq_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mpz_t mpq_denref(/*const*/ mpq_t op)
         {
@@ -13289,7 +13287,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="quotient"/> to <paramref name="dividend"/> / <paramref name="divisor"/>. 
+        /// Set <paramref name="quotient"/> to <paramref name="dividend"/> / <paramref name="divisor"/>.
         /// </summary>
         /// <param name="quotient">The result rational.</param>
         /// <param name="dividend">The first operand rational.</param>
@@ -13306,9 +13304,9 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_div(mpq_t quotient, /*const*/ mpq_t dividend, /*const*/ mpq_t divisor)
         {
@@ -13336,9 +13334,9 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_div_2exp(mpq_t rop, /*const*/ mpq_t op1, uint /*mp_bitcnt_t*/ op2)
         {
@@ -13348,14 +13346,14 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Return non-zero if <paramref name="op1"/> and <paramref name="op2"/> are equal, zero if they are non-equal. 
+        /// Return non-zero if <paramref name="op1"/> and <paramref name="op2"/> are equal, zero if they are non-equal.
         /// </summary>
         /// <param name="op1">The first operand rational.</param>
         /// <param name="op2">The second operand rational.</param>
         /// <returns>Return non-zero if <paramref name="op1"/> and <paramref name="op2"/> are equal, zero if they are non-equal.</returns>
         /// <remarks>
         /// <para>
-        /// Although <see cref="mpq_cmp">mpq_cmp</see> can be used for the same purpose, this function is much faster. 
+        /// Although <see cref="mpq_cmp">mpq_cmp</see> can be used for the same purpose, this function is much faster.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_cmp">mpq_cmp</seealso>
@@ -13371,35 +13369,35 @@ namespace MathGmp.Native
         /// mpq_t op1 = new mpq_t();
         /// gmp_lib.mpq_init(op1);
         /// gmp_lib.mpq_set_si(op1, 1, 2U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of op2 to 1 / 3.
         /// mpq_t op2 = new mpq_t();
         /// gmp_lib.mpq_init(op2);
         /// gmp_lib.mpq_set_si(op2, 1, 3U);
-        /// 
+        ///
         /// // Assert that op1 != op2.
         /// Assert.IsTrue(gmp_lib.mpq_equal(op1, op2) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op1 and op2.
         /// gmp_lib.mpq_clears(op1, op2, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op1 to 1 / 2.
         /// Dim op1 As New mpq_t()
         /// gmp_lib.mpq_init(op1)
         /// gmp_lib.mpq_set_si(op1, 1, 2UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of op2 to 1 / 3.
         /// Dim op2 As New mpq_t()
         /// gmp_lib.mpq_init(op2)
         /// gmp_lib.mpq_set_si(op2, 1, 3UI)
-        /// 
+        ///
         /// ' Assert that op1 != op2.
         /// Assert.IsTrue(gmp_lib.mpq_equal(op1, op2) = 0)
-        ///  
+        ///
         /// ' Release unmanaged memory allocated for op1 and op2.
         /// gmp_lib.mpq_clears(op1, op2, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpq_equal(/*const*/ mpq_t op1, /*const*/ mpq_t op2)
         {
@@ -13416,7 +13414,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The function is equivalent to calling <see cref="mpz_set">mpz_set</see> with <see cref="mpq_numref">mpq_numref</see>.
-        /// Direct use of <see cref="mpq_numref">mpq_numref</see> is recommended instead of this functions. 
+        /// Direct use of <see cref="mpq_numref">mpq_numref</see> is recommended instead of this functions.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_numref">mpq_numref</seealso>
@@ -13432,45 +13430,45 @@ namespace MathGmp.Native
         /// mpq_t op = new mpq_t();
         /// gmp_lib.mpq_init(op);
         /// gmp_lib.mpq_set_si(op, -1, 3U);
-        /// 
+        ///
         /// // Create and initialize a new integer.
         /// mpz_t num = new mpz_t();
         /// gmp_lib.mpz_init(num);
-        /// 
+        ///
         /// // Set integer to numerator of rational, and increment integer by 2.
         /// gmp_lib.mpq_get_num(num, op);
         /// gmp_lib.mpz_add_ui(num, num, 2U);
-        /// 
+        ///
         /// // Assert that num is 1, and op is -1 / 3.
         /// Assert.IsTrue(gmp_lib.mpz_cmp_si(num, 1) == 0);
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op, -1, 3U) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op and num.
         /// gmp_lib.mpq_clear(op);
         /// gmp_lib.mpz_clear(num);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to -1 / 3.
         /// Dim op As New mpq_t()
         /// gmp_lib.mpq_init(op)
         /// gmp_lib.mpq_set_si(op, -1, 3UI)
-        /// 
+        ///
         /// ' Create and initialize a new integer.
         /// Dim num As New mpz_t()
         /// gmp_lib.mpz_init(num)
-        /// 
+        ///
         /// ' Set integer to numerator of rational, and increment integer by 2.
         /// gmp_lib.mpq_get_num(num, op)
         /// gmp_lib.mpz_add_ui(num, num, 2UI)
-        /// 
+        ///
         /// ' Assert that num is 1, and op is -1 / 3.
         /// Assert.IsTrue(gmp_lib.mpz_cmp_si(num, 1) = 0)
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op, -1, 3UI) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op and num.
         /// gmp_lib.mpq_clear(op)
         /// gmp_lib.mpz_clear(num)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_get_num(mpz_t numerator, /*const*/ mpq_t rational)
         {
@@ -13487,7 +13485,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The function is equivalent to calling <see cref="mpz_set">mpz_set</see> with <see cref="mpq_denref">mpq_denref</see>.
-        /// Direct use of <see cref="mpq_denref">mpq_denref</see> is recommended instead of this functions. 
+        /// Direct use of <see cref="mpq_denref">mpq_denref</see> is recommended instead of this functions.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_numref">mpq_numref</seealso>
@@ -13504,45 +13502,45 @@ namespace MathGmp.Native
         /// mpq_t op = new mpq_t();
         /// gmp_lib.mpq_init(op);
         /// gmp_lib.mpq_set_si(op, -1, 3U);
-        /// 
+        ///
         /// // Create and initialize a new integer.
         /// mpz_t den = new mpz_t();
         /// gmp_lib.mpz_init(den);
-        /// 
+        ///
         /// // Set integer to numerator of rational, and increment integer by 2..
         /// gmp_lib.mpq_get_den(den, op);
         /// gmp_lib.mpz_add_ui(den, den, 2U);
-        /// 
+        ///
         /// // Assert that num is 1, and op is -1 / 3.
         /// Assert.IsTrue(gmp_lib.mpz_cmp_si(den, 5) == 0);
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op, -1, 3U) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op and num.
         /// gmp_lib.mpq_clear(op);
         /// gmp_lib.mpz_clear(den);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to -1 / 3.
         /// Dim op As New mpq_t()
         /// gmp_lib.mpq_init(op)
         /// gmp_lib.mpq_set_si(op, -1, 3UI)
-        /// 
+        ///
         /// ' Create and initialize a new integer.
         /// Dim den As New mpz_t()
         /// gmp_lib.mpz_init(den)
-        /// 
+        ///
         /// ' Set integer to numerator of rational, and increment integer by 2..
         /// gmp_lib.mpq_get_den(den, op)
         /// gmp_lib.mpz_add_ui(den, den, 2UI)
-        /// 
+        ///
         /// ' Assert that num is 1, and op is -1 / 3.
         /// Assert.IsTrue(gmp_lib.mpz_cmp_si(den, 5) = 0)
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op, -1, 3UI) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op and num.
         /// gmp_lib.mpq_clear(op)
         /// gmp_lib.mpz_clear(den)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_get_den(mpz_t denominator, /*const*/ mpq_t rational)
         {
@@ -13552,7 +13550,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Convert <paramref name="op"/> to a <see cref="double">double</see>, truncating if necessary (i.e. rounding towards zero). 
+        /// Convert <paramref name="op"/> to a <see cref="double">double</see>, truncating if necessary (i.e. rounding towards zero).
         /// </summary>
         /// <param name="op">The operand rational.</param>
         /// <returns>The converted <see cref="double">double</see>.</returns>
@@ -13561,7 +13559,7 @@ namespace MathGmp.Native
         /// If the exponent from the conversion is too big or too small to fit a <see cref="double">double</see> then the result is system dependent.
         /// For too big an infinity is returned when available.
         /// For too small 0.0 is normally returned.
-        /// Hardware overflow, underflow and denorm traps may or may not occur. 
+        /// Hardware overflow, underflow and denorm traps may or may not occur.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_set_d">mpq_set_d</seealso>
@@ -13575,25 +13573,25 @@ namespace MathGmp.Native
         /// mpq_t x = new mpq_t();
         /// gmp_lib.mpq_init(x);
         /// gmp_lib.mpq_set_si(x, 10, 11U);
-        /// 
+        ///
         /// // Assert that the value of x is 10.0.
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x) == 10.0 / 11.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpq_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to 10 / 11.
         /// Dim x As New mpq_t()
         /// gmp_lib.mpq_init(x)
         /// gmp_lib.mpq_set_si(x, 10, 11UI)
-        /// 
+        ///
         /// ' Assert that the value of x is 10.0.
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x) = 10.0 / 11.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpq_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static double mpq_get_d(/*const*/ mpq_t op)
         {
@@ -13610,19 +13608,19 @@ namespace MathGmp.Native
         /// <returns>A pointer to the result string is returned, being either the allocated block, or the given <paramref name="str"/>.</returns>
         /// <remarks>
         /// <para>
-        /// The base may vary from 2 to 36. The string will be of the form "num/den", or if the denominator is 1 then just "num". 
+        /// The base may vary from 2 to 36. The string will be of the form "num/den", or if the denominator is 1 then just "num".
         /// </para>
         /// <para>
         /// If <paramref name="str"/> is NULL, the result string is allocated using the current allocation function
         /// (see <a href="https://gmplib.org/manual/Custom-Allocation.html#Custom-Allocation">GNU MP - Custom Allocation</a>).
-        /// The block will be strlen(<paramref name="str"/>) + 1 bytes, that being exactly enough for the string and null-terminator. 
+        /// The block will be strlen(<paramref name="str"/>) + 1 bytes, that being exactly enough for the string and null-terminator.
         /// </para>
         /// <para>
-        /// If <paramref name="str"/> is not NULL, it should point to a block of storage large enough for the result, that being 
+        /// If <paramref name="str"/> is not NULL, it should point to a block of storage large enough for the result, that being
         /// </para>
         /// <code language="C++">
         /// mpz_sizeinbase(mpq_numref(op), base) + mpz_sizeinbase(mpq_denref(op), base) + 3
-        /// </code> 
+        /// </code>
         /// <para>
         /// The three extra bytes are for a possible minus sign, possible slash, and the null-terminator.
         /// </para>
@@ -13638,29 +13636,29 @@ namespace MathGmp.Native
         /// mpq_t x = new mpq_t();
         /// gmp_lib.mpq_init(x);
         /// gmp_lib.mpq_set_si(x, -210, 13U);
-        /// 
+        ///
         /// // Retrieve the string value of x, and assert that it is "-210/13".
         /// char_ptr s = gmp_lib.mpq_get_str(char_ptr.Zero, 10, x);
         /// Assert.IsTrue(s.ToString() == "-210/13");
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and the string value.
         /// gmp_lib.mpq_clear(x);
         /// gmp_lib.free(s);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of x to -210 / 13.
         /// Dim x As New mpq_t()
         /// gmp_lib.mpq_init(x)
         /// gmp_lib.mpq_set_si(x, -210, 13UI)
-        /// 
+        ///
         /// ' Retrieve the string value of x, and assert that it is "-210/13".
         /// Dim s As char_ptr = gmp_lib.mpq_get_str(char_ptr.Zero, 10, x)
         /// Assert.IsTrue(s.ToString() = "-210/13")
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and the string value.
         /// gmp_lib.mpq_clear(x)
         /// gmp_lib.free(s)
-        /// </code> 
+        /// </code>
         /// </example>
         public static char_ptr mpq_get_str(char_ptr str, int @base, /*const*/ mpq_t op)
         {
@@ -13675,7 +13673,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         ///  Each variable should normally only be initialized once, or at least cleared out
-        ///  (using the function <see cref="mpq_clear">mpq_clear</see>) between each initialization. 
+        ///  (using the function <see cref="mpq_clear">mpq_clear</see>) between each initialization.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
@@ -13695,28 +13693,28 @@ namespace MathGmp.Native
         /// // Create and initialize a new rational x.
         /// mpq_t x = new mpq_t();
         /// gmp_lib.mpq_init(x);
-        /// 
+        ///
         /// // Assert that the value of x is 0.
         /// char_ptr s = gmp_lib.mpq_get_str(char_ptr.Zero, 10, x);
         /// Assert.IsTrue(s.ToString() == "0");
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and its string value.
         /// gmp_lib.mpq_clear(x);
         /// gmp_lib.free(s);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new rational x.
         /// Dim x As New mpq_t()
         /// gmp_lib.mpq_init(x)
-        /// 
+        ///
         /// ' Assert that the value of x is 0.
         /// Dim s As char_ptr = gmp_lib.mpq_get_str(char_ptr.Zero, 10, x)
         /// Assert.IsTrue(s.ToString() = "0")
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and its string value.
         /// gmp_lib.mpq_clear(x)
         /// gmp_lib.free(s)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_init(mpq_t x)
         {
@@ -13726,7 +13724,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Initialize a NULL-terminated list of <see cref="mpq_t">mpq_t</see> variables, and set their values to 0/1. 
+        /// Initialize a NULL-terminated list of <see cref="mpq_t">mpq_t</see> variables, and set their values to 0/1.
         /// </summary>
         /// <param name="x">The operand rational.</param>
         /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
@@ -13747,35 +13745,35 @@ namespace MathGmp.Native
         /// mpq_t x1 = new mpq_t();
         /// mpq_t x2 = new mpq_t();
         /// mpq_t x3 = new mpq_t();
-        /// 
+        ///
         /// // Initialize the rationals.
         /// gmp_lib.mpq_inits(x1, x2, x3);
-        /// 
+        ///
         /// // Assert that their value is 0.
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x1) == 0.0);
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x2) == 0.0);
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x3) == 0.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for the rationals.
         /// gmp_lib.mpq_clears(x1, x2, x3, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create new rationals x1, x2 and x3.
         /// Dim x1 As New mpq_t()
         /// Dim x2 As New mpq_t()
         /// Dim x3 As New mpq_t()
-        /// 
+        ///
         /// ' Initialize the rationals.
         /// gmp_lib.mpq_inits(x1, x2, x3)
-        /// 
+        ///
         /// ' Assert that their value is 0.
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x1) = 0.0)
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x2) = 0.0)
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x3) = 0.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for the rationals.
         /// gmp_lib.mpq_clears(x1, x2, x3, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_inits(params mpq_t[] x)
         {
@@ -13798,13 +13796,13 @@ namespace MathGmp.Native
         /// The input can be a fraction like "17/63" or just an integer like "123".
         /// Reading stops at the first character not in this form, and white space is not permitted within the string.
         /// If the input might not be in canonical form, then <see cref="mpq_canonicalize">mpq_canonicalize</see> must be called
-        /// (see <a href="https://gmplib.org/manual/Rational-Number-Functions.html#Rational-Number-Functions">GNU MP - Rational Number Functions</a>). 
+        /// (see <a href="https://gmplib.org/manual/Rational-Number-Functions.html#Rational-Number-Functions">GNU MP - Rational Number Functions</a>).
         /// </para>
         /// <para>
         /// The base can be between 2 and 36, or can be 0 in which case the leading characters
         /// of the string determine the base, "0x" or "0X" for hexadecimal, "0" for octal, or decimal otherwise.
         /// The leading characters are examined separately for the numerator and denominator of a fraction, so for instance
-        /// "0x10/11" is 16/11, whereas "0x10/0x11" is 16/17. 
+        /// "0x10/11" is 16/11, whereas "0x10/0x11" is 16/17.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_out_str">mpq_out_str</seealso>
@@ -13815,50 +13813,50 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 123/456.
         /// mpq_t op = new mpq_t();
         /// gmp_lib.mpq_init(op);
-        /// 
+        ///
         /// // Write rational to a temporary file.
         /// string pathname = System.IO.Path.GetTempFileName();
         /// System.IO.File.WriteAllText(pathname, "123/456");
-        /// 
+        ///
         /// // Read op from the temporary file, and assert that the number of bytes read is 7.
         /// ptr&lt;FILE&gt; stream = new ptr&lt;FILE&gt;();
         /// _wfopen_s(out stream.Value.Value, pathname, "r");
         /// Assert.IsTrue(gmp_lib.mpq_inp_str(op, stream, 10) == 7);
         /// fclose(stream.Value.Value);
-        /// 
+        ///
         /// // Assert that op is 123/456.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_ui(op, 123, 456U) == 0);
-        /// 
+        ///
         /// // Delete temporary file.
         /// System.IO.File.Delete(pathname);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpq_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 123/456.
         /// Dim op As New mpq_t()
         /// gmp_lib.mpq_init(op)
-        /// 
+        ///
         /// ' Write rational to a temporary file.
         /// Dim pathname As String = System.IO.Path.GetTempFileName()
         /// System.IO.File.WriteAllText(pathname, "123/456")
-        /// 
+        ///
         /// ' Read op from the temporary file, and assert that the number of bytes read is 7.
         /// Dim stream As New ptr(Of FILE)()
         /// _wfopen_s(stream.Value.Value, pathname, "r")
         /// Assert.IsTrue(gmp_lib.mpq_inp_str(op, stream, 10) = 7)
         /// fclose(stream.Value.Value)
-        /// 
+        ///
         /// ' Assert that op is 123/456.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_ui(op, 123, 456UI) = 0)
-        /// 
+        ///
         /// ' Delete temporary file.
         /// System.IO.File.Delete(pathname)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpq_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static size_t mpq_inp_str(mpq_t rop, ptr<FILE> stream, int @base)
         {
@@ -13892,9 +13890,9 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_inv(mpq_t inverted_number, /*const*/ mpq_t number)
         {
@@ -13904,7 +13902,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="product"/> to <paramref name="multiplier"/> * <paramref name="multiplicand"/>. 
+        /// Set <paramref name="product"/> to <paramref name="multiplier"/> * <paramref name="multiplicand"/>.
         /// </summary>
         /// <param name="product">The result rational.</param>
         /// <param name="multiplier">The first operand rational.</param>
@@ -13921,9 +13919,9 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_mul(mpq_t product, /*const*/ mpq_t multiplier, /*const*/ mpq_t multiplicand)
         {
@@ -13951,9 +13949,9 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_mul_2exp(mpq_t rop, /*const*/ mpq_t op1, uint /*mp_bitcnt_t*/ op2)
         {
@@ -13979,9 +13977,9 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_neg(mpq_t negated_operand, /*const*/ mpq_t operand)
         {
@@ -13997,7 +13995,7 @@ namespace MathGmp.Native
         /// <returns>Return a reference to the numerator <paramref name="op"/>.</returns>
         /// <remarks>
         /// <para>
-        /// The <c>mpz</c> functions can be used on the returned reference. 
+        /// The <c>mpz</c> functions can be used on the returned reference.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_denref">mpq_denref</seealso>
@@ -14013,33 +14011,33 @@ namespace MathGmp.Native
         /// mpq_t op = new mpq_t();
         /// gmp_lib.mpq_init(op);
         /// gmp_lib.mpq_set_si(op, -1, 3U);
-        /// 
+        ///
         /// // Get reference to numerator, and increment it by 2.
         /// mpz_t num = gmp_lib.mpq_numref(op);
         /// gmp_lib.mpz_add_ui(num, num, 2U);
-        /// 
+        ///
         /// // Assert that op is 1 / 3.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op, 1, 3U) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpq_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to -1 / 3.
         /// Dim op As New mpq_t()
         /// gmp_lib.mpq_init(op)
         /// gmp_lib.mpq_set_si(op, -1, 3UI)
-        /// 
+        ///
         /// ' Get reference to numerator, and increment it by 2.
         /// Dim num As mpz_t = gmp_lib.mpq_numref(op)
         /// gmp_lib.mpz_add_ui(num, num, 2UI)
-        /// 
+        ///
         /// ' Assert that op is 1 / 3.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op, 1, 3UI) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpq_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mpz_t mpq_numref(/*const*/ mpq_t op)
         {
@@ -14057,7 +14055,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The <paramref name="base"/> may vary from 2 to 36.
-        /// Output is in the form "num/den" or if the denominator is 1 then just "num". 
+        /// Output is in the form "num/den" or if the denominator is 1 then just "num".
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_inp_str">mpq_inp_str</seealso>
@@ -14069,60 +14067,60 @@ namespace MathGmp.Native
         /// mpq_t op = new mpq_t();
         /// gmp_lib.mpq_init(op);
         /// gmp_lib.mpq_set_ui(op, 123, 456U);
-        /// 
+        ///
         /// // Get a temporary file.
         /// string pathname = System.IO.Path.GetTempFileName();
-        /// 
+        ///
         /// // Open temporary file for writing.
         /// ptr&lt;FILE&gt; stream = new ptr&lt;FILE&gt;();
         /// _wfopen_s(out stream.Value.Value, pathname, "w");
-        /// 
+        ///
         /// // Write op to temporary file, and assert that the number of bytes written is 7.
         /// Assert.IsTrue(gmp_lib.mpq_out_str(stream, 10, op) == 7);
-        /// 
+        ///
         /// // Close temporary file.
         /// fclose(stream.Value.Value);
-        /// 
+        ///
         /// // Assert that the content of the temporary file is "123/456".
         /// string result = System.IO.File.ReadAllText(pathname);
         /// Assert.IsTrue(result == "123/456");
-        /// 
+        ///
         /// // Delete temporary file.
         /// System.IO.File.Delete(pathname);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpq_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to 123/456.
         /// Dim op As New mpq_t()
         /// gmp_lib.mpq_init(op)
         /// gmp_lib.mpq_set_ui(op, 123, 456UI)
-        /// 
+        ///
         /// ' Get a temporary file.
         /// Dim pathname As String = System.IO.Path.GetTempFileName()
-        /// 
+        ///
         /// ' Open temporary file for writing.
         /// Dim stream As New ptr(Of FILE)()
         /// _wfopen_s(stream.Value.Value, pathname, "w")
-        /// 
+        ///
         /// ' Write op to temporary file, and assert that the number of bytes written is 7.
         /// Assert.IsTrue(gmp_lib.mpq_out_str(stream, 10, op) = 7)
-        /// 
+        ///
         /// ' Close temporary file.
         /// fclose(stream.Value.Value)
-        /// 
+        ///
         /// ' Assert that the content of the temporary file is "123/456".
         /// Dim result As String = System.IO.File.ReadAllText(pathname)
-        /// 
+        ///
         /// Assert.IsTrue(result = "123/456")
-        /// 
+        ///
         /// ' Delete temporary file.
         /// System.IO.File.Delete(pathname)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpq_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static size_t mpq_out_str(ptr<FILE> stream, int @base, /*const*/ mpq_t op)
         {
@@ -14157,41 +14155,41 @@ namespace MathGmp.Native
         /// mpq_t x = new mpq_t();
         /// gmp_lib.mpq_init(x);
         /// gmp_lib.mpq_set_si(x, 10, 11);
-        /// 
+        ///
         /// // Create, initialize, and set a new rational y to -210 / 13.
         /// mpq_t y = new mpq_t();
         /// gmp_lib.mpq_init(y);
         /// gmp_lib.mpq_set_si(y, -210, 13);
-        /// 
+        ///
         /// // Assign the value of y to x.
         /// gmp_lib.mpq_set(x, y);
-        /// 
+        ///
         /// // Assert that the value of x is -210 / 13.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(x, -210, 13) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpq_clears(x, y, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new rational x to 10 / 11.
         /// Dim x As New mpq_t()
         /// gmp_lib.mpq_init(x)
         /// gmp_lib.mpq_set_si(x, 10, 11)
-        /// 
+        ///
         /// ' Create, initialize, and set a new rational y to -210 / 13.
         /// Dim y As New mpq_t()
         /// gmp_lib.mpq_init(y)
         /// gmp_lib.mpq_set_si(y, -210, 13)
-        /// 
+        ///
         /// ' Assign the value of y to x.
         /// gmp_lib.mpq_set(x, y)
-        /// 
+        ///
         /// ' Assert that the value of x is -210 / 13.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(x, -210, 13) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpq_clears(x, y, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_set(mpq_t rop, /*const*/ mpq_t op)
         {
@@ -14201,7 +14199,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to the value of <paramref name="op"/>. There is no rounding, this conversion is exact. 
+        /// Set <paramref name="rop"/> to the value of <paramref name="op"/>. There is no rounding, this conversion is exact.
         /// </summary>
         /// <param name="rop">The result rational.</param>
         /// <param name="op">The operand <see cref="double">double</see>.</param>
@@ -14216,30 +14214,30 @@ namespace MathGmp.Native
         /// // Create and initialize a new rational.
         /// mpq_t x = new mpq_t();
         /// gmp_lib.mpq_init(x);
-        /// 
+        ///
         /// // Set the value of x to 10.0 / 11.0.
         /// gmp_lib.mpq_set_d(x, 10.0D / 11.0);
-        /// 
+        ///
         /// // Assert that the value of x is 10.0 / 11.0.
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x) == 10.0D / 11.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpq_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new rational.
         /// Dim x As New mpq_t()
         /// gmp_lib.mpq_init(x)
-        /// 
+        ///
         /// ' Set the value of x to 10.0 / 11.0.
         /// gmp_lib.mpq_set_d(x, 10.0 / 11.0)
-        /// 
+        ///
         /// ' Assert that the value of x is 10.0 / 11.0.
         /// Assert.IsTrue(gmp_lib.mpq_get_d(x) = 10.0 / 11.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpq_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_set_d(mpq_t rop, double op)
         {
@@ -14254,7 +14252,7 @@ namespace MathGmp.Native
         /// <param name="denominator">The operand integer.</param>
         /// <remarks>
         /// The function is equivalent to calling <see cref="mpz_set">mpz_set</see> with <see cref="mpq_denref">mpq_denref</see>.
-        /// Direct use of <see cref="mpq_denref">mpq_denref</see> is recommended instead of this functions. 
+        /// Direct use of <see cref="mpq_denref">mpq_denref</see> is recommended instead of this functions.
         /// </remarks>
         /// <seealso cref="mpq_numref">mpq_numref</seealso>
         /// <seealso cref="mpq_denref">mpq_denref</seealso>
@@ -14269,41 +14267,41 @@ namespace MathGmp.Native
         /// mpq_t op = new mpq_t();
         /// gmp_lib.mpq_init(op);
         /// gmp_lib.mpq_set_si(op, -1, 3U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of a new integer to 5.
         /// mpz_t den = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(den, 5U);
-        /// 
+        ///
         /// // Set the denominator of op.
         /// gmp_lib.mpq_set_den(op, den);
-        /// 
+        ///
         /// // Assert that op is -1 / 5.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op, -1, 5U) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op and num.
         /// gmp_lib.mpq_clear(op);
         /// gmp_lib.mpz_clear(den);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to -1 / 3.
         /// Dim op As New mpq_t()
         /// gmp_lib.mpq_init(op)
         /// gmp_lib.mpq_set_si(op, -1, 3UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of a new integer to 5.
         /// Dim den As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(den, 5UI)
-        /// 
+        ///
         /// ' Set the denominator of op.
         /// gmp_lib.mpq_set_den(op, den)
-        /// 
+        ///
         /// ' Assert that op is -1 / 5.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op, -1, 5UI) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op and num.
         /// gmp_lib.mpq_clear(op)
         /// gmp_lib.mpz_clear(den)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_set_den(mpq_t rational, /*const*/ mpz_t denominator)
         {
@@ -14313,7 +14311,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to the value of <paramref name="op"/>. There is no rounding, this conversion is exact. 
+        /// Set <paramref name="rop"/> to the value of <paramref name="op"/>. There is no rounding, this conversion is exact.
         /// </summary>
         /// <param name="rop">The result rational.</param>
         /// <param name="op">The operand <see cref="float">float</see>.</param>
@@ -14328,43 +14326,43 @@ namespace MathGmp.Native
         /// mpq_t x = new mpq_t();
         /// gmp_lib.mpq_init(x);
         /// gmp_lib.mpq_set_si(x, 10, 11);
-        /// 
+        ///
         /// // Create, initialize, and set a new float y to -210.
         /// mpf_t y = new mpf_t();
         /// gmp_lib.mpf_init(y);
         /// gmp_lib.mpf_set_si(y, -210);
-        /// 
+        ///
         /// // Assign the value of y to x.
         /// gmp_lib.mpq_set_f(x, y);
-        /// 
+        ///
         /// // Assert that the value of x is -210 / 1.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(x, -210, 1) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpq_clear(x);
         /// gmp_lib.mpf_clear(y);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new rational x to 10 / 11.
         /// Dim x As New mpq_t()
         /// gmp_lib.mpq_init(x)
         /// gmp_lib.mpq_set_si(x, 10, 11)
-        /// 
+        ///
         /// ' Create, initialize, and set a new float y to -210.
         /// Dim y As New mpf_t()
         /// gmp_lib.mpf_init(y)
         /// gmp_lib.mpf_set_si(y, -210)
-        /// 
+        ///
         /// ' Assign the value of y to x.
         /// gmp_lib.mpq_set_f(x, y)
-        /// 
+        ///
         /// ' Assert that the value of x is -210 / 1.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(x, -210, 1) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpq_clear(x)
         /// gmp_lib.mpf_clear(y)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_set_f(mpq_t rop, /*const*/ mpf_t op)
         {
@@ -14381,7 +14379,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The function is equivalent to calling <see cref="mpz_set">mpz_set</see> with <see cref="mpq_numref">mpq_numref</see>.
-        /// Direct use of <see cref="mpq_numref">mpq_numref</see> is recommended instead of this functions. 
+        /// Direct use of <see cref="mpq_numref">mpq_numref</see> is recommended instead of this functions.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_numref">mpq_numref</seealso>
@@ -14397,41 +14395,41 @@ namespace MathGmp.Native
         /// mpq_t op = new mpq_t();
         /// gmp_lib.mpq_init(op);
         /// gmp_lib.mpq_set_si(op, -1, 3U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of a new integer to 5.
         /// mpz_t num = new mpz_t();
         /// gmp_lib.mpz_init_set_ui(num, 5U);
-        /// 
+        ///
         /// // Set the numerator of op.
         /// gmp_lib.mpq_set_num(op, num);
-        /// 
+        ///
         /// // Assert that op is 5 / 3.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op, 5, 3U) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op and num.
         /// gmp_lib.mpq_clear(op);
         /// gmp_lib.mpz_clear(num);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to -1 / 3.
         /// Dim op As New mpq_t()
         /// gmp_lib.mpq_init(op)
         /// gmp_lib.mpq_set_si(op, -1, 3UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of a new integer to 5.
         /// Dim num As New mpz_t()
         /// gmp_lib.mpz_init_set_ui(num, 5UI)
-        /// 
+        ///
         /// ' Set the numerator of op.
         /// gmp_lib.mpq_set_num(op, num)
-        /// 
+        ///
         /// ' Assert that op is 5 / 3.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(op, 5, 3UI) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op and num.
         /// gmp_lib.mpq_clear(op)
         /// gmp_lib.mpz_clear(num)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_set_num(mpq_t rational, /*const*/ mpz_t numerator)
         {
@@ -14450,7 +14448,7 @@ namespace MathGmp.Native
         /// <para>
         /// Note that if <paramref name="op1"/> and <paramref name="op2"/> have common factors,
         /// <paramref name="rop"/> has to be passed to <see cref="mpq_canonicalize">mpq_canonicalize</see> before any
-        /// operations are performed on <paramref name="rop"/>. 
+        /// operations are performed on <paramref name="rop"/>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
@@ -14470,30 +14468,30 @@ namespace MathGmp.Native
         /// // Create and initialize a new rational x.
         /// mpq_t x = new mpq_t();
         /// gmp_lib.mpq_init(x);
-        /// 
+        ///
         /// // Set the value of x to -10 / 11.
         /// gmp_lib.mpq_set_si(x, -10, 11);
-        /// 
+        ///
         /// // Assert that the value of x is -10 / 1.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(x, -10, 11U) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpq_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new rational x.
         /// Dim x As New mpq_t()
         /// gmp_lib.mpq_init(x)
-        /// 
+        ///
         /// ' Set the value of x to -10 / 11.
         /// gmp_lib.mpq_set_si(x, -10, 11)
-        /// 
+        ///
         /// ' Assert that the value of x is -10 / 1.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(x, -10, 11UI) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpq_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_set_si(mpq_t rop, int /*long int*/ op1, uint /*unsigned long int*/ op2)
         {
@@ -14542,22 +14540,22 @@ namespace MathGmp.Native
         /// // Create and initialize a new rational x.
         /// mpq_t x = new mpq_t();
         /// gmp_lib.mpq_init(x);
-        /// 
+        ///
         /// // Set the value of x.
         /// char_ptr value = new char_ptr("12 345 678 909 876 543 211 234 567 890 987 654 321 / 234 567 890");
         /// gmp_lib.mpq_set_str(x, value, 10);
-        /// 
+        ///
         /// // Assert the value of x.
         /// char_ptr s = gmp_lib.mpq_get_str(char_ptr.Zero, 10, x);
         /// Assert.IsTrue(s.ToString() == value.ToString().Replace(" ", ""));
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and string values.
         /// gmp_lib.mpq_clear(x);
         /// gmp_lib.free(value);
         /// gmp_lib.free(s);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpq_set_str(mpq_t rop, /*const*/ char_ptr str, int @base)
         {
@@ -14575,7 +14573,7 @@ namespace MathGmp.Native
         /// <para>
         /// Note that if <paramref name="op1"/> and <paramref name="op2"/> have common factors,
         /// <paramref name="rop"/> has to be passed to <see cref="mpq_canonicalize">mpq_canonicalize</see> before any
-        /// operations are performed on <paramref name="rop"/>. 
+        /// operations are performed on <paramref name="rop"/>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpq_canonicalize">mpq_canonicalize</seealso>
@@ -14595,30 +14593,30 @@ namespace MathGmp.Native
         /// // Create and initialize a new rational x.
         /// mpq_t x = new mpq_t();
         /// gmp_lib.mpq_init(x);
-        /// 
+        ///
         /// // Set the value of x to 10 / 11.
         /// gmp_lib.mpq_set_ui(x, 10U, 11U);
-        /// 
+        ///
         /// // Assert that the value of x is 10 / 11.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_ui(x, 10U, 11U) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpq_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new rational x.
         /// Dim x As New mpq_t()
         /// gmp_lib.mpq_init(x)
-        /// 
+        ///
         /// ' Set the value of x to 10 / 11.
         /// gmp_lib.mpq_set_ui(x, 10UI, 11UI)
-        /// 
+        ///
         /// ' Assert that the value of x is 10 / 11.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_ui(x, 10UI, 11UI) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpq_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_set_ui(mpq_t rop, uint /*unsigned long int*/ op1, uint /*unsigned long int*/ op2)
         {
@@ -14649,43 +14647,43 @@ namespace MathGmp.Native
         /// mpq_t x = new mpq_t();
         /// gmp_lib.mpq_init(x);
         /// gmp_lib.mpq_set_si(x, 10, 11);
-        /// 
+        ///
         /// // Create, initialize, and set a new integer y to -210.
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init(y);
         /// gmp_lib.mpz_set_si(y, -210);
-        /// 
+        ///
         /// // Assign the value of y to x.
         /// gmp_lib.mpq_set_z(x, y);
-        /// 
+        ///
         /// // Assert that the value of x is -210 / 1.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(x, -210, 1) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpq_clear(x);
         /// gmp_lib.mpz_clear(y);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new rational x to 10 / 11.
         /// Dim x As New mpq_t()
         /// gmp_lib.mpq_init(x)
         /// gmp_lib.mpq_set_si(x, 10, 11)
-        /// 
+        ///
         /// ' Create, initialize, and set a new integer y to -210.
         /// Dim y As New mpz_t()
         /// gmp_lib.mpz_init(y)
         /// gmp_lib.mpz_set_si(y, -210)
-        /// 
+        ///
         /// ' Assign the value of y to x.
         /// gmp_lib.mpq_set_z(x, y)
-        /// 
+        ///
         /// ' Assert that the value of x is -210 / 1.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(x, -210, 1) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpq_clear(x)
         /// gmp_lib.mpz_clear(y)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_set_z(mpq_t rop, /*const*/ mpz_t op)
         {
@@ -14695,7 +14693,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Return +1 if <paramref name="op"/> &gt; 0, 0 if <paramref name="op"/> = 0, and -1 if <paramref name="op"/> &lt; 0. 
+        /// Return +1 if <paramref name="op"/> &gt; 0, 0 if <paramref name="op"/> = 0, and -1 if <paramref name="op"/> &lt; 0.
         /// </summary>
         /// <param name="op">The operand rational.</param>
         /// <returns>Return +1 if <paramref name="op"/> &gt; 0, 0 if <paramref name="op"/> = 0, and -1 if <paramref name="op"/> &lt; 0.</returns>
@@ -14712,25 +14710,25 @@ namespace MathGmp.Native
         /// mpq_t op = new mpq_t();
         /// gmp_lib.mpq_init(op);
         /// gmp_lib.mpq_set_si(op, -10, 11);
-        /// 
+        ///
         /// // Assert that op is negative.
         /// Assert.IsTrue(gmp_lib.mpq_sgn(op) == -1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpq_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new rational x to -10 / 11.
         /// Dim op As New mpq_t()
         /// gmp_lib.mpq_init(op)
         /// gmp_lib.mpq_set_si(op, -10, 11)
-        /// 
+        ///
         /// ' Assert that op is negative.
         /// Assert.IsTrue(gmp_lib.mpq_sgn(op) = -1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpq_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpq_sgn(/*const*/ mpq_t op)
         {
@@ -14756,9 +14754,9 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Rational-Arithmetic.html#Rational-Arithmetic">GNU MP - Rational Arithmetic</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_sub(mpq_t difference, /*const*/ mpq_t minuend, /*const*/ mpq_t subtrahend)
         {
@@ -14769,7 +14767,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Swap the values <paramref name="rop1"/> and <paramref name="rop2"/> efficiently. 
+        /// Swap the values <paramref name="rop1"/> and <paramref name="rop2"/> efficiently.
         /// </summary>
         /// <param name="rop1">The first rational.</param>
         /// <param name="rop2">The second rational.</param>
@@ -14791,43 +14789,43 @@ namespace MathGmp.Native
         /// mpq_t x = new mpq_t();
         /// gmp_lib.mpq_init(x);
         /// gmp_lib.mpq_set_si(x, 10, 11U);
-        /// 
+        ///
         /// // Create, initialize, and set a new rational x to -210 / 13.
         /// mpq_t y = new mpq_t();
         /// gmp_lib.mpq_init(y);
         /// gmp_lib.mpq_set_si(y, -210, 13U);
-        /// 
+        ///
         /// // Swap the values of x and y.
         /// gmp_lib.mpq_swap(x, y);
-        /// 
+        ///
         /// // Assert that the values have been swapped.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(x, -210, 13U) == 0);
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(y, 10, 11U) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpq_clears(x, y, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new rational x to 10 / 11.
         /// Dim x As New mpq_t()
         /// gmp_lib.mpq_init(x)
         /// gmp_lib.mpq_set_si(x, 10, 11UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new rational x to -210 / 13.
         /// Dim y As New mpq_t()
         /// gmp_lib.mpq_init(y)
         /// gmp_lib.mpq_set_si(y, -210, 13UI)
-        /// 
+        ///
         /// ' Swap the values of x and y.
         /// gmp_lib.mpq_swap(x, y)
-        /// 
+        ///
         /// ' Assert that the values have been swapped.
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(x, -210, 13UI) = 0)
         /// Assert.IsTrue(gmp_lib.mpq_cmp_si(y, 10, 11UI) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpq_clears(x, y, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpq_swap(mpq_t rop1, mpq_t rop2)
         {
@@ -14841,7 +14839,7 @@ namespace MathGmp.Native
         #region "Float (i.e. F) routines."
 
         /// <summary>
-        /// Set <paramref name="rop"/> to | <paramref name="op"/> |. 
+        /// Set <paramref name="rop"/> to | <paramref name="op"/> |.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
@@ -14859,45 +14857,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to -10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, -10);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = |x|.
         /// gmp_lib.mpf_abs(z, x);
-        /// 
+        ///
         /// // Assert that the value of z is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 10.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to -10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, -10)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = |x|.
         /// gmp_lib.mpf_absg(z, x)
-        /// 
+        ///
         /// ' Assert that the value of z is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 10.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_abs(mpf_t rop, /*const*/ mpf_t op)
         {
@@ -14926,53 +14924,53 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number y to -210.
         /// mpf_t y = new mpf_t();
         /// gmp_lib.mpf_init_set_si(y, -210);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = x + y.
         /// gmp_lib.mpf_add(z, x, y);
-        /// 
+        ///
         /// // Assert that the value of z is -200.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == -200.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpf_clears(x, y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number y to -210.
         /// Dim y As New mpf_t()
         /// gmp_lib.mpf_init_set_si(y, -210)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = x + y.
         /// gmp_lib.mpf_add(z, x, y)
-        /// 
+        ///
         /// ' Assert that the value of z is -200.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = -200.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpf_clears(x, y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_add(mpf_t rop, /*const*/ mpf_t op1, /*const*/ mpf_t op2)
         {
@@ -15002,45 +15000,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = x + 210.
         /// gmp_lib.mpf_add_ui(z, x, 210U);
-        /// 
+        ///
         /// // Assert that the value of z is 220.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 220.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = x + 210.
         /// gmp_lib.mpf_add_ui(z, x, 210UI)
-        /// 
+        ///
         /// ' Assert that the value of z is 220.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 220.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_add_ui(mpf_t rop, /*const*/ mpf_t op1, uint /*unsigned long int*/ op2)
         {
@@ -15050,7 +15048,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="op"/> rounded to the next higher integer. 
+        /// Set <paramref name="rop"/> to <paramref name="op"/> rounded to the next higher integer.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand float.</param>
@@ -15071,45 +15069,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.4.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_d(x, 10.4);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = ceil(x).
         /// gmp_lib.mpf_ceil(z, x);
-        /// 
+        ///
         /// // Assert that the value of z is 11.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 11.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.4.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_d(x, 10.4)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = ceil(x).
         /// gmp_lib.mpf_ceil(z, x)
-        /// 
+        ///
         /// ' Assert that the value of z is 11.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 11.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_ceil(mpf_t rop, /*const*/ mpf_t op)
         {
@@ -15124,7 +15122,7 @@ namespace MathGmp.Native
         /// <param name="x">The operand float.</param>
         /// <remarks>
         /// <para>
-        /// Make sure to call this function for all <see cref="mpf_t">mpf_t</see> variables when you are done with them. 
+        /// Make sure to call this function for all <see cref="mpf_t">mpf_t</see> variables when you are done with them.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
@@ -15142,31 +15140,31 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number x.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init(x);
-        /// 
+        ///
         /// // Assert that the value of x is 0.0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == 0.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number x.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init(x)
-        /// 
+        ///
         /// ' Assert that the value of x is 0.0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = 0.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_clear(mpf_t x)
         {
@@ -15176,7 +15174,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Free the space occupied by a NULL-terminated list of <see cref="mpf_t">mpf_t</see> variables. 
+        /// Free the space occupied by a NULL-terminated list of <see cref="mpf_t">mpf_t</see> variables.
         /// </summary>
         /// <param name="x">The operand float.</param>
         /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
@@ -15196,35 +15194,35 @@ namespace MathGmp.Native
         /// mpf_t x1 = new mpf_t();
         /// mpf_t x2 = new mpf_t();
         /// mpf_t x3 = new mpf_t();
-        /// 
+        ///
         /// // Initialize the floating-point numbers.
         /// gmp_lib.mpf_inits(x1, x2, x3, null);
-        /// 
+        ///
         /// // Assert that their value is 0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x1) == 0.0);
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x2) == 0.0);
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x3) == 0.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for the floating-point numbers.
         /// gmp_lib.mpf_clears(x1, x2, x3, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create new floating-point numbers x1, x2 and x3.
         /// Dim x1 As New mpf_t()
         /// Dim x2 As New mpf_t()
         /// Dim x3 As New mpf_t()
-        /// 
+        ///
         /// ' Initialize the floating-point numbers.
         /// gmp_lib.mpf_inits(x1, x2, x3, Nothing)
-        /// 
+        ///
         /// ' Assert that their value is 0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x1) = 0.0)
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x2) = 0.0)
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x3) = 0.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for the floating-point numbers.
         /// gmp_lib.mpf_clears(x1, x2, x3, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_clears(params mpf_t[] x)
         {
@@ -15250,39 +15248,39 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 512.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 512);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init_set_si(z, 128);
-        /// 
+        ///
         /// // Assert that x > z.
         /// Assert.IsTrue(gmp_lib.mpf_cmp(x, z) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 512.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 512)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init_set_si(z, 128)
-        /// 
+        ///
         /// ' Assert that x > z.
         /// Assert.IsTrue(gmp_lib.mpf_cmp(x, z) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_cmp(/*const*/ mpf_t op1, /*const*/ mpf_t op2)
         {
@@ -15309,41 +15307,41 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 512.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 512);
-        /// 
+        ///
         /// // Create and initialize a new integer z.
         /// mpz_t z = new mpz_t();
         /// gmp_lib.mpz_init_set_si(z, 128);
-        /// 
+        ///
         /// // Assert that x > z.
         /// Assert.IsTrue(gmp_lib.mpf_cmp_z(x, z) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clear(x);
         /// gmp_lib.mpz_clear(z);
-        /// /// </code> 
+        /// /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 512.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 512)
-        /// 
+        ///
         /// ' Create and initialize a new integer z.
         /// Dim z As New mpz_t()
         /// gmp_lib.mpz_init_set_si(z, 128)
-        /// 
+        ///
         /// ' Assert that x > z.
         /// Assert.IsTrue(gmp_lib.mpf_cmp_z(x, z) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clear(x)
         /// gmp_lib.mpz_clear(z)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_cmp_z(/*const*/ mpf_t op1, /*const*/ mpz_t op2)
         {
@@ -15360,7 +15358,7 @@ namespace MathGmp.Native
         /// <returns>Return a positive value if op1 &gt; op2, zero if op1 = op2, and a negative value if op1 &lt; op2.</returns>
         /// <remarks>
         /// <para>
-        /// <see cref="mpf_cmp_d">mpf_cmp_d</see> can be called with an infinity, but results are undefined for a NaN. 
+        /// <see cref="mpf_cmp_d">mpf_cmp_d</see> can be called with an infinity, but results are undefined for a NaN.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_cmp">mpf_cmp</seealso>
@@ -15375,31 +15373,31 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 512.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 512);
-        /// 
+        ///
         /// // Assert that x > 128.0.
         /// Assert.IsTrue(gmp_lib.mpf_cmp_d(x, 128.0) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 512.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 512)
-        /// 
+        ///
         /// ' Assert that x > 128.0.
         /// Assert.IsTrue(gmp_lib.mpf_cmp_d(x, 128.0) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_cmp_d(/*const*/ mpf_t op1, double op2)
         {
@@ -15425,32 +15423,32 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 512.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 512);
-        /// 
+        ///
         /// // Assert that x > 128.
         /// Assert.IsTrue(gmp_lib.mpf_cmp_si(x, 128) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 512.
         /// Dim x As New mpf_t()
-        /// 
+        ///
         /// gmp_lib.mpf_init_set_si(x, 512)
-        /// 
+        ///
         /// ' Assert that x > 128.
         /// Assert.IsTrue(gmp_lib.mpf_cmp_si(x, 128) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_cmp_si(/*const*/ mpf_t op1, int /*long int*/ op2)
         {
@@ -15476,31 +15474,31 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 512.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 512);
-        /// 
+        ///
         /// // Assert that x > 128.
         /// Assert.IsTrue(gmp_lib.mpf_cmp_ui(x, 128) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 512.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 512)
-        /// 
+        ///
         /// ' Assert that x > 128.
         /// Assert.IsTrue(gmp_lib.mpf_cmp_ui(x, 128) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_cmp_ui(/*const*/ mpf_t op1, uint /*unsigned long int*/ op2)
         {
@@ -15509,7 +15507,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="op1"/> / <paramref name="op2"/>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> / <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -15519,7 +15517,7 @@ namespace MathGmp.Native
         /// Division is undefined if the divisor is zero, and passing a zero divisor to the divide
         /// functions will make it intentionally divide by zero.
         /// This lets the user handle arithmetic exceptions in division functions in the same manner
-        /// as other arithmetic exceptions. 
+        /// as other arithmetic exceptions.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_add">mpf_add</seealso>
@@ -15538,53 +15536,53 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number y to -210.
         /// mpf_t y = new mpf_t();
         /// gmp_lib.mpf_init_set_si(y, -210);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = y / x.
         /// gmp_lib.mpf_div(z, y, x);
-        /// 
+        ///
         /// // Assert that the value of z is -21.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == -21.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpf_clears(x, y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number y to -210.
         /// Dim y As New mpf_t()
         /// gmp_lib.mpf_init_set_si(y, -210)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = y / x.
         /// gmp_lib.mpf_div(z, y, x)
-        /// 
+        ///
         /// ' Assert that the value of z is -21.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = -21.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpf_clears(x, y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_div(mpf_t rop, /*const*/ mpf_t op1, /*const*/ mpf_t op2)
         {
@@ -15595,7 +15593,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="op1"/> / 2^<paramref name="op2"/>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> / 2^<paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The fisrt operand.</param>
@@ -15616,45 +15614,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 512.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 512);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = x / 2^8.
         /// gmp_lib.mpf_div_2exp(z, x, 8U);
-        /// 
+        ///
         /// // Assert that the value of z is 2.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 2.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 512.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 512)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = x / 2^8.
         /// gmp_lib.mpf_div_2exp(z, x, 8UI)
-        /// 
+        ///
         /// ' Assert that the value of z is 2.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 2.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_div_2exp(mpf_t rop, /*const*/ mpf_t op1, uint /*mp_bitcnt_t*/ op2)
         {
@@ -15664,7 +15662,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="op1"/> / <paramref name="op2"/>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> / <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -15674,7 +15672,7 @@ namespace MathGmp.Native
         /// Division is undefined if the divisor is zero, and passing a zero divisor to the divide
         /// functions will make it intentionally divide by zero.
         /// This lets the user handle arithmetic exceptions in division functions in the same manner
-        /// as other arithmetic exceptions. 
+        /// as other arithmetic exceptions.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_add">mpf_add</seealso>
@@ -15693,26 +15691,26 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number y to -210.
         /// mpf_t y = new mpf_t();
         /// gmp_lib.mpf_init_set_si(y, -210);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = y / 10.
         /// gmp_lib.mpf_div_ui(z, y, 10U);
-        /// 
+        ///
         /// // Assert that the value of z is -21.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == -21.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for y and z.
         /// gmp_lib.mpf_clears(y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_div_ui(mpf_t rop, /*const*/ mpf_t op1, uint /*unsigned long int*/ op2)
         {
@@ -15722,7 +15720,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Return non-zero if <paramref name="op"/> fits in a 32-bit integer, when truncated to an integer. 
+        /// Return non-zero if <paramref name="op"/> fits in a 32-bit integer, when truncated to an integer.
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> fits in a 32-bit integer, when truncated to an integer.</returns>
@@ -15744,24 +15742,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op 4294967295.
         /// mpf_t op = new mpf_t();
         /// gmp_lib.mpf_init_set_ui(op, uint.MaxValue);
-        /// 
+        ///
         /// // Assert that op does not fit in int.
         /// Assert.IsTrue(gmp_lib.mpf_fits_sint_p(op) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op 4294967295.
         /// Dim op As New mpf_t()
         /// gmp_lib.mpf_init_set_ui(op, UInteger.MaxValue)
-        /// 
+        ///
         /// ' Assert that op does not fit in int.
         /// Assert.IsTrue(gmp_lib.mpf_fits_sint_p(op) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_fits_sint_p(/*const*/ mpf_t op)
         {
@@ -15770,7 +15768,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Return non-zero if <paramref name="op"/> fits in a 32-bit integer, when truncated to an integer. 
+        /// Return non-zero if <paramref name="op"/> fits in a 32-bit integer, when truncated to an integer.
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> fits in a 32-bit integer, when truncated to an integer.</returns>
@@ -15792,24 +15790,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op 4294967295.
         /// mpf_t op = new mpf_t();
         /// gmp_lib.mpf_init_set_ui(op, uint.MaxValue);
-        /// 
+        ///
         /// // Assert that op does not fit in long.
         /// Assert.IsTrue(gmp_lib.mpf_fits_slong_p(op) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op 4294967295.
         /// Dim op As New mpf_t()
         /// gmp_lib.mpf_init_set_ui(op, UInteger.MaxValue)
-        /// 
+        ///
         /// ' Assert that op does not fit in long.
         /// Assert.IsTrue(gmp_lib.mpf_fits_slong_p(op) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_fits_slong_p(/*const*/ mpf_t op)
         {
@@ -15818,7 +15816,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Return non-zero if <paramref name="op"/> fits in a 16-bit integer, when truncated to an integer. 
+        /// Return non-zero if <paramref name="op"/> fits in a 16-bit integer, when truncated to an integer.
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> fits in a 16-bit integer, when truncated to an integer.</returns>
@@ -15840,24 +15838,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op 4294967295.
         /// mpf_t op = new mpf_t();
         /// gmp_lib.mpf_init_set_ui(op, uint.MaxValue);
-        /// 
+        ///
         /// // Assert that op does not fit in short.
         /// Assert.IsTrue(gmp_lib.mpf_fits_sshort_p(op) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op 4294967295.
         /// Dim op As New mpf_t()
         /// gmp_lib.mpf_init_set_ui(op, UInteger.MaxValue)
-        /// 
+        ///
         /// ' Assert that op does not fit in short.
         /// Assert.IsTrue(gmp_lib.mpf_fits_sshort_p(op) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_fits_sshort_p(/*const*/ mpf_t op)
         {
@@ -15866,7 +15864,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Return non-zero if <paramref name="op"/> fits in an unsigned 32-bit integer, when truncated to an integer. 
+        /// Return non-zero if <paramref name="op"/> fits in an unsigned 32-bit integer, when truncated to an integer.
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> fits in an unsigned 32-bit integer, when truncated to an integer.</returns>
@@ -15888,24 +15886,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op 4294967295.
         /// mpf_t op = new mpf_t();
         /// gmp_lib.mpf_init_set_ui(op, uint.MaxValue);
-        /// 
+        ///
         /// // Assert that op does not fit in uint.
         /// Assert.IsTrue(gmp_lib.mpf_fits_uint_p(op) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op 4294967295.
         /// Dim op As New mpf_t()
         /// gmp_lib.mpf_init_set_ui(op, UInteger.MaxValue)
-        /// 
+        ///
         /// ' Assert that op does not fit in uint.
         /// Assert.IsTrue(gmp_lib.mpf_fits_uint_p(op) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_fits_uint_p(/*const*/ mpf_t op)
         {
@@ -15914,7 +15912,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Return non-zero if <paramref name="op"/> fits in an unsigned 32-bit integer, when truncated to an integer. 
+        /// Return non-zero if <paramref name="op"/> fits in an unsigned 32-bit integer, when truncated to an integer.
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> fits in an unsigned 32-bit integer, when truncated to an integer.</returns>
@@ -15936,24 +15934,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op 4294967295.
         /// mpf_t op = new mpf_t();
         /// gmp_lib.mpf_init_set_ui(op, uint.MaxValue);
-        /// 
+        ///
         /// // Assert that op does not fit in int.
         /// Assert.IsTrue(gmp_lib.mpf_fits_sint_p(op) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op 4294967295.
         /// Dim op As New mpf_t()
         /// gmp_lib.mpf_init_set_ui(op, UInteger.MaxValue)
-        /// 
+        ///
         /// ' Assert that op does not fit in int.
         /// Assert.IsTrue(gmp_lib.mpf_fits_sint_p(op) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_fits_ulong_p(/*const*/ mpf_t op)
         {
@@ -15962,7 +15960,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Return non-zero if <paramref name="op"/> fits in an unsigned 16-bit integer, when truncated to an integer. 
+        /// Return non-zero if <paramref name="op"/> fits in an unsigned 16-bit integer, when truncated to an integer.
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return non-zero if <paramref name="op"/> fits in an unsigned 16-bit integer, when truncated to an integer.</returns>
@@ -15981,27 +15979,27 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// // Create, initialize, and set the value of op 4294967295.
         /// mpf_t op = new mpf_t();
         /// gmp_lib.mpf_init_set_ui(op, uint.MaxValue);
-        /// 
+        ///
         /// // Assert that op does not fit in ushort.
         /// Assert.IsTrue(gmp_lib.mpf_fits_ushort_p(op) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op);
         /// ' Create, initialize, and set the value of op 4294967295.
         /// Dim op As New mpf_t()
         /// gmp_lib.mpf_init_set_ui(op, UInteger.MaxValue)
-        /// 
+        ///
         /// ' Assert that op does not fit in ushort.
         /// Assert.IsTrue(gmp_lib.mpf_fits_ushort_p(op) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_fits_ushort_p(/*const*/ mpf_t op)
         {
@@ -16031,45 +16029,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// / Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.4.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_d(x, 10.4);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = floor(x).
         /// gmp_lib.mpf_floor(z, x);
-        /// 
+        ///
         /// // Assert that the value of z is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 10.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.4.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_d(x, 10.4)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = floor(x).
         /// gmp_lib.mpf_floor(z, x)
-        /// 
+        ///
         /// ' Assert that the value of z is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 10.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_floor(mpf_t rop, /*const*/ mpf_t op)
         {
@@ -16079,7 +16077,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Convert <paramref name="op"/> to a <see cref="double">double</see>, truncating if necessary (i.e. rounding towards zero). 
+        /// Convert <paramref name="op"/> to a <see cref="double">double</see>, truncating if necessary (i.e. rounding towards zero).
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>The cpnverted <see cref="double">double</see>.</returns>
@@ -16088,7 +16086,7 @@ namespace MathGmp.Native
         /// If the exponent in <paramref name="op"/> is too big or too small to fit a <see cref="double">double</see> then the result is system dependent.
         /// For too big an infinity is returned when available.
         /// For too small 0.0 is normally returned.
-        /// Hardware overflow, underflow and denorm traps may or may not occur. 
+        /// Hardware overflow, underflow and denorm traps may or may not occur.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_get_d_2exp">mpf_get_d_2exp</seealso>
@@ -16101,31 +16099,31 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number to -123.0
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_d(x, -123.0);
-        /// 
+        ///
         /// // Assert that the value of x is -123.0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == -123.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number to -123.0
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_d(x, -123.0)
-        /// 
+        ///
         /// ' Assert that the value of x is -123.0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = -123.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static double mpf_get_d(/*const*/ mpf_t op)
         {
@@ -16134,7 +16132,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Convert op to a double, truncating if necessary (i.e. rounding towards zero), and with an exponent returned separately. 
+        /// Convert op to a double, truncating if necessary (i.e. rounding towards zero), and with an exponent returned separately.
         /// </summary>
         /// <param name="exp">Pointer to 32-bit signed integer.</param>
         /// <param name="op">The operand float.</param>
@@ -16142,7 +16140,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// This is similar to the standard C <c>frexp</c> function
-        /// (see <a href="https://www.gnu.org/software/libc/manual/html_node/Normalization-Functions.html#Normalization-Functions">GNU C - Normalization Functions</a> in The GNU C Library Reference Manual). 
+        /// (see <a href="https://www.gnu.org/software/libc/manual/html_node/Normalization-Functions.html#Normalization-Functions">GNU C - Normalization Functions</a> in The GNU C Library Reference Manual).
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_get_d">mpf_get_d</seealso>
@@ -16155,35 +16153,35 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number to -8.0
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_d(x, -8.0);
-        /// 
+        ///
         /// // Assert that the absolute value of x is 0.5 x 2^4.
         /// ptr&lt;int&gt; exp = new ptr&lt;int&gt;(0);
         /// Assert.IsTrue(gmp_lib.mpf_get_d_2exp(exp, x) == 0.5);
         /// Assert.IsTrue(exp.Value == 4);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and exp.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number to -8.0
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_d(x, -8.0)
-        /// 
+        ///
         /// ' Assert that the absolute value of x is 0.5 x 2^4.
         /// Dim exp As New ptr(Of Integer)(0)
         /// Assert.IsTrue(gmp_lib.mpf_get_d_2exp(exp, x) = 0.5)
         /// Assert.IsTrue(exp.Value = 4)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and exp.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static double mpf_get_d_2exp(ptr<int> /*long int **/ exp, /*const*/ mpf_t op)
         {
@@ -16193,13 +16191,13 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Return the default precision actually used. 
+        /// Return the default precision actually used.
         /// </summary>
         /// <returns>The default precision actually used.</returns>
         /// <remarks>
         /// <para>
         /// An <see cref="mpf_t">mpf_t</see> object must be initialized before storing the first value in it.
-        /// The functions <see cref="mpf_init">mpf_init</see> and <see cref="mpf_init2">mpf_init2</see> are used for that purpose. 
+        /// The functions <see cref="mpf_init">mpf_init</see> and <see cref="mpf_init2">mpf_init2</see> are used for that purpose.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
@@ -16217,17 +16215,17 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 128 bits.
         /// gmp_lib.mpf_set_default_prec(128U);
-        /// 
+        ///
         /// // Assert that the value of x is 128 bits.
         /// Assert.IsTrue(gmp_lib.mpf_get_default_prec() == 128U);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 128 bits.
         /// gmp_lib.mpf_set_default_prec(128UI)
-        /// 
+        ///
         /// ' Assert that the value of x is 128 bits.
         /// Assert.IsTrue(gmp_lib.mpf_get_default_prec() = 128UI)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_bitcnt_t mpf_get_default_prec()
         {
@@ -16235,7 +16233,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Return the current precision of <paramref name="op"/>, in bits. 
+        /// Return the current precision of <paramref name="op"/>, in bits.
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>The current precision of <paramref name="op"/>, in bits.</returns>
@@ -16255,26 +16253,26 @@ namespace MathGmp.Native
         /// // Create and initialize a new floating-point number x with 64-bit precision.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init2(x, 64U);
-        /// 
+        ///
         /// // Assert that the value of x is 0.0, and that its precision is 64 bits.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == 0.0);
         /// Assert.IsTrue(gmp_lib.mpf_get_prec(x) == 64U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new floating-point number x with 64-bit precision.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init2(x, 64UI)
-        /// 
+        ///
         /// ' Assert that the value of x is 0.0, and that its precision is 64 bits.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = 0.0)
         /// Assert.IsTrue(gmp_lib.mpf_get_prec(x) = 64UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_bitcnt_t mpf_get_prec(/*const*/ mpf_t op)
         {
@@ -16289,11 +16287,11 @@ namespace MathGmp.Native
         /// <returns>The converted integer.</returns>
         /// <remarks>
         /// <para>
-        /// If <paramref name="op"/> is too big for the return type, the result is undefined. 
+        /// If <paramref name="op"/> is too big for the return type, the result is undefined.
         /// </para>
         /// <para>
         /// See also <see cref="mpf_fits_slong_p">mpf_fits_slong_p</see> and <see cref="mpf_fits_ulong_p">mpf_fits_ulong_p</see>
-        /// (see <a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a>). 
+        /// (see <a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a>).
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_get_d">mpf_get_d</seealso>
@@ -16306,31 +16304,31 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number to -8.0
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_d(x, -8.0);
-        /// 
+        ///
         /// // Assert that the value of x is -8.
         /// Assert.IsTrue(gmp_lib.mpf_get_si(x) == -8);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number to -8.0
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_d(x, -8.0)
-        /// 
+        ///
         /// ' Assert that the value of x is -8.
         /// Assert.IsTrue(gmp_lib.mpf_get_si(x) = -8)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int /*long int*/ mpf_get_si(/*const*/ mpf_t op)
         {
@@ -16353,12 +16351,12 @@ namespace MathGmp.Native
         /// Up to <paramref name="n_digits"/> digits will be generated.
         /// Trailing zeros are not returned.
         /// No more digits than can be accurately represented by <paramref name="op"/> are ever generated.
-        /// If <paramref name="n_digits"/> is 0 then that accurate maximum number of digits are generated. 
+        /// If <paramref name="n_digits"/> is 0 then that accurate maximum number of digits are generated.
         /// </para>
         /// <para>
         /// For <paramref name="base"/> in the range 2..36, digits and lower-case letters are used; for -2..-36,
         /// digits and upper-case letters are used; for 37..62, digits, upper-case letters, and lower-case letters
-        /// (in that significance order) are used. 
+        /// (in that significance order) are used.
         /// </para>
         /// <para>
         /// If <paramref name="str"/> is NULL, the result string is allocated using the current allocation function
@@ -16369,7 +16367,7 @@ namespace MathGmp.Native
         /// If <paramref name="str"/> is not NULL, it should point to a block of <paramref name="n_digits"/> + 2 bytes,
         /// that being enough for the mantissa, a possible minus sign, and a null-terminator.
         /// When <paramref name="n_digits"/> is 0 to get all significant digits, an application won’t be able to know
-        /// the space required, and <paramref name="str"/> should be NULL in that case. 
+        /// the space required, and <paramref name="str"/> should be NULL in that case.
         /// </para>
         /// <para>
         /// The generated string is a fraction, with an implicit radix point immediately to the left of the first digit.
@@ -16377,7 +16375,7 @@ namespace MathGmp.Native
         /// For example, the number 3.1416 would be returned as string "31416" and exponent 1.
         /// </para>
         /// <para>
-        /// When <paramref name="op"/> is zero, an empty string is produced and the exponent returned is 0. 
+        /// When <paramref name="op"/> is zero, an empty string is produced and the exponent returned is 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_get_d">mpf_get_d</seealso>
@@ -16390,39 +16388,39 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number to -8.0
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_d(x, -8.0);
-        /// 
+        ///
         /// // Assert that the value of x is -8.
         /// mp_exp_t exp = 0;
         /// char_ptr value = gmp_lib.mpf_get_str(char_ptr.Zero, ref exp, 10, 0, x);
         /// Assert.IsTrue(value.ToString() == "-8");
         /// Assert.IsTrue(exp == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
         /// gmp_lib.free(value);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number to -8.0
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_d(x, -8.0)
-        /// 
+        ///
         /// ' Assert that the value of x is -8.
         /// Dim exp As mp_exp_t = 0
         /// Dim value As char_ptr = gmp_lib.mpf_get_str(char_ptr.Zero, exp, 10, 0, x)
         /// Assert.IsTrue(value.ToString() = "-8")
         /// Assert.IsTrue(exp = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
         /// gmp_lib.free(value)
-        /// </code> 
+        /// </code>
         /// </example>
         public static char_ptr mpf_get_str(char_ptr str, ref mp_exp_t expptr, int @base, size_t n_digits, /*const*/ mpf_t op)
         {
@@ -16448,12 +16446,12 @@ namespace MathGmp.Native
         /// Up to <paramref name="n_digits"/> digits will be generated.
         /// Trailing zeros are not returned.
         /// No more digits than can be accurately represented by <paramref name="op"/> are ever generated.
-        /// If <paramref name="n_digits"/> is 0 then that accurate maximum number of digits are generated. 
+        /// If <paramref name="n_digits"/> is 0 then that accurate maximum number of digits are generated.
         /// </para>
         /// <para>
         /// For <paramref name="base"/> in the range 2..36, digits and lower-case letters are used; for -2..-36,
         /// digits and upper-case letters are used; for 37..62, digits, upper-case letters, and lower-case letters
-        /// (in that significance order) are used. 
+        /// (in that significance order) are used.
         /// </para>
         /// <para>
         /// If <paramref name="str"/> is NULL, the result string is allocated using the current allocation function
@@ -16464,7 +16462,7 @@ namespace MathGmp.Native
         /// If <paramref name="str"/> is not NULL, it should point to a block of <paramref name="n_digits"/> + 2 bytes,
         /// that being enough for the mantissa, a possible minus sign, and a null-terminator.
         /// When <paramref name="n_digits"/> is 0 to get all significant digits, an application won’t be able to know
-        /// the space required, and <paramref name="str"/> should be NULL in that case. 
+        /// the space required, and <paramref name="str"/> should be NULL in that case.
         /// </para>
         /// <para>
         /// The generated string is a fraction, with an implicit radix point immediately to the left of the first digit.
@@ -16472,7 +16470,7 @@ namespace MathGmp.Native
         /// For example, the number 3.1416 would be returned as string "31416" and exponent 1.
         /// </para>
         /// <para>
-        /// When <paramref name="op"/> is zero, an empty string is produced and the exponent returned is 0. 
+        /// When <paramref name="op"/> is zero, an empty string is produced and the exponent returned is 0.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_get_d">mpf_get_d</seealso>
@@ -16485,39 +16483,39 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number to -8.0
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_d(x, -8.0);
-        /// 
+        ///
         /// // Assert that the value of x is -8.
         /// ptr&lt;mp_exp_t&gt; exp = new ptr&lt;mp_exp_t&gt;(0);
         /// char_ptr value = gmp_lib.mpf_get_str(char_ptr.Zero, exp, 10, 0, x);
         /// Assert.IsTrue(value.ToString() == "-8");
         /// Assert.IsTrue(exp.Value == 1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
         /// gmp_lib.free(value);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number to -8.0
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_d(x, -8.0)
-        /// 
+        ///
         /// ' Assert that the value of x is -8.
         /// Dim exp As New ptr(Of mp_exp_t)(0)
         /// Dim value As char_ptr = gmp_lib.mpf_get_str(char_ptr.Zero, exp, 10, 0, x)
         /// Assert.IsTrue(value.ToString() = "-8")
         /// Assert.IsTrue(exp.Value = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
         /// gmp_lib.free(value)
-        /// </code> 
+        /// </code>
         /// </example>
         public static char_ptr mpf_get_str(char_ptr str, ptr<mp_exp_t> expptr, int @base, size_t n_digits, /*const*/ mpf_t op)
         {
@@ -16536,11 +16534,11 @@ namespace MathGmp.Native
         /// <returns>The converted integer.</returns>
         /// <remarks>
         /// <para>
-        /// If <paramref name="op"/> is too big for the return type, the result is undefined. 
+        /// If <paramref name="op"/> is too big for the return type, the result is undefined.
         /// </para>
         /// <para>
         /// See also <see cref="mpf_fits_slong_p">mpf_fits_slong_p</see> and <see cref="mpf_fits_ulong_p">mpf_fits_ulong_p</see>
-        /// (see <a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a>). 
+        /// (see <a href="https://gmplib.org/manual/Miscellaneous-Float-Functions.html#Miscellaneous-Float-Functions">GNU MP - Miscellaneous Float Functions</a>).
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_get_d">mpf_get_d</seealso>
@@ -16551,9 +16549,9 @@ namespace MathGmp.Native
         /// <seealso cref="gmp_lib"><a href="https://gmplib.org/manual/Converting-Floats.html#Converting-Floats">GNU MP - Converting Floats</a></seealso>
         /// <example>
         /// <code language="C#">
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static uint /*unsigned long int*/ mpf_get_ui(/*const*/ mpf_t op)
         {
@@ -16569,7 +16567,7 @@ namespace MathGmp.Native
         /// <para>
         /// Normally, a variable should be initialized once only or at least be cleared, using <see cref="mpf_clear">mpf_clear</see>,
         /// between initializations. The precision of <paramref name="x"/> is undefined unless a default precision has
-        /// already been established by a call to <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
+        /// already been established by a call to <see cref="mpf_set_default_prec">mpf_set_default_prec</see>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
@@ -16587,32 +16585,32 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number x.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init(x);
-        /// 
+        ///
         /// // Assert that the value of x is 0.0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == 0.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number x.
         /// Dim x As New mpf_t()
-        /// 
+        ///
         /// gmp_lib.mpf_init(x)
-        /// 
+        ///
         /// ' Assert that the value of x is 0.0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = 0.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_init(mpf_t x)
         {
@@ -16629,7 +16627,7 @@ namespace MathGmp.Native
         /// <param name="prec">The minimum precision in bits.</param>
         /// <remarks>
         /// <para>
-        /// Normally, a variable should be initialized once only or at least be cleared, using <see cref="mpf_clear">mpf_clear</see>, between initializations. 
+        /// Normally, a variable should be initialized once only or at least be cleared, using <see cref="mpf_clear">mpf_clear</see>, between initializations.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
@@ -16648,28 +16646,28 @@ namespace MathGmp.Native
         /// // Create and initialize a new floating-point number x with 64-bit precision.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init2(x, 64U);
-        /// 
+        ///
         /// // Assert that the value of x is 0.0, and that its precision is 64 bits.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == 0.0);
         /// uint p = gmp_lib.mpf_get_prec(x);
         /// Assert.IsTrue(gmp_lib.mpf_get_prec(x) == 64U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new floating-point number x with 64-bit precision.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init2(x, 64UI)
-        /// 
+        ///
         /// ' Assert that the value of x is 0.0, and that its precision is 64 bits.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = 0.0)
         /// Dim p As UInteger = gmp_lib.mpf_get_prec(x)
         /// Assert.IsTrue(gmp_lib.mpf_get_prec(x) = 64UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_init2(mpf_t x, mp_bitcnt_t prec)
         {
@@ -16686,7 +16684,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The precision of the initialized variables is undefined unless a default precision has already
-        /// been established by a call to <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
+        /// been established by a call to <see cref="mpf_set_default_prec">mpf_set_default_prec</see>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
@@ -16706,20 +16704,20 @@ namespace MathGmp.Native
         /// mpf_t x1 = new mpf_t();
         /// mpf_t x2 = new mpf_t();
         /// mpf_t x3 = new mpf_t();
-        /// 
+        ///
         /// // Initialize the floating-point numbers.
         /// gmp_lib.mpf_inits(x1, x2, x3, null);
-        /// 
+        ///
         /// // Assert that their value is 0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x1) == 0.0);
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x2) == 0.0);
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x3) == 0.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for the floating-point numbers.
         /// gmp_lib.mpf_clears(x1, x2, x3, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_inits(params mpf_t[] x)
         {
@@ -16734,7 +16732,7 @@ namespace MathGmp.Native
         /// <param name="op">The operand.</param>
         /// <remarks>
         /// <para>
-        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
+        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_init_set_ui">mpf_init_set_ui</seealso>
@@ -16747,39 +16745,39 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number y to x.
         /// mpf_t y = new mpf_t();
         /// gmp_lib.mpf_init_set(y, x);
-        /// 
+        ///
         /// // Assert that the value of y is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(y) == 10.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clears(x, y, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number y to x.
         /// Dim y As New mpf_t()
         /// gmp_lib.mpf_init_set(y, x)
-        /// 
+        ///
         /// ' Assert that the value of y is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(y) = 10.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clears(x, y, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_init_set(mpf_t rop, /*const*/ mpf_t op)
         {
@@ -16797,7 +16795,7 @@ namespace MathGmp.Native
         /// <param name="op">The operand.</param>
         /// <remarks>
         /// <para>
-        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
+        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_init_set">mpf_init_set</seealso>
@@ -16810,31 +16808,31 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number to -123.0
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_d(x, -123.0);
-        /// 
+        ///
         /// // Assert that the value of x is -123.0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == -123.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number to -123.0
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_d(x, -123.0)
-        /// 
+        ///
         /// ' Assert that the value of x is -123.0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = -123.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_init_set_d(mpf_t rop, double op)
         {
@@ -16851,7 +16849,7 @@ namespace MathGmp.Native
         /// <param name="op">The operand.</param>
         /// <remarks>
         /// <para>
-        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
+        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_init_set">mpf_init_set</seealso>
@@ -16864,31 +16862,31 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize and set a new floating-point number to -123.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, -123);
-        /// 
+        ///
         /// // Assert that the value of x is -123.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == -123.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize and set a new floating-point number to -123.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, -123)
-        /// 
+        ///
         /// ' Assert that the value of x is -123.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = -123.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_init_set_si(mpf_t rop, int /*long int*/ op)
         {
@@ -16907,13 +16905,13 @@ namespace MathGmp.Native
         /// <returns>This function returns 0 if the entire string is a valid number in base <paramref name="base"/>. Otherwise it returns -1.</returns>
         /// <remarks>
         /// <para>
-        /// See <see cref="mpf_set_str">mpf_set_str</see> for details on the assignment operation. 
+        /// See <see cref="mpf_set_str">mpf_set_str</see> for details on the assignment operation.
         /// </para>
         /// <para>
-        /// Note that <paramref name="rop"/> is initialized even if an error occurs. (I.e., you have to call <see cref="mpf_clear">mpf_clear</see> for it.) 
+        /// Note that <paramref name="rop"/> is initialized even if an error occurs. (I.e., you have to call <see cref="mpf_clear">mpf_clear</see> for it.)
         /// </para>
         /// <para>
-        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
+        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_init_set">mpf_init_set</seealso>
@@ -16926,35 +16924,35 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 0.0234.
         /// char_ptr value = new char_ptr("234e-4");
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_str(x, value, 10);
-        /// 
+        ///
         /// // Assert that x is 40.
         /// Assert.IsTrue(x.ToString() == "0.234e-1");
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clear(x);
         /// gmp_lib.free(value);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 0.0234.
         /// Dim value As New char_ptr("234e-4")
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_str(x, value, 10)
-        /// 
+        ///
         /// ' Assert that x is 40.
         /// Assert.IsTrue(x.ToString() = "0.234e-1")
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clear(x)
         /// gmp_lib.free(value)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_init_set_str(mpf_t rop, /*const*/ char_ptr str, int @base)
         {
@@ -16972,7 +16970,7 @@ namespace MathGmp.Native
         /// <param name="op">The operand.</param>
         /// <remarks>
         /// <para>
-        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>. 
+        /// The precision of <paramref name="rop"/> will be taken from the active default precision, as set by <see cref="mpf_set_default_prec">mpf_set_default_prec</see>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_init_set">mpf_init_set</seealso>
@@ -16985,31 +16983,31 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number to 100.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_ui(x, 100U);
-        /// 
+        ///
         /// // Assert that the value of x is 100.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == 100.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number to 100.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_ui(x, 100UI)
-        /// 
+        ///
         /// ' Assert that the value of x is 100.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = 100.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_init_set_ui(mpf_t rop, uint /*unsigned long int*/ op)
         {
@@ -17036,7 +17034,7 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// The argument <paramref name="base"/> may be in the ranges 2 to 36, or -36 to -2.
-        /// Negative values are used to specify that the exponent is in decimal. 
+        /// Negative values are used to specify that the exponent is in decimal.
         /// </para>
         /// <para>
         /// Unlike the corresponding <c>mpz</c> function, the <paramref name="base"/> will not be determined from the leading
@@ -17052,50 +17050,50 @@ namespace MathGmp.Native
         /// // Create and initialize op.
         /// mpf_t op = new mpf_t();
         /// gmp_lib.mpf_init(op);
-        /// 
+        ///
         /// // Write op to a temporary file.
         /// string pathname = System.IO.Path.GetTempFileName();
         /// System.IO.File.WriteAllText(pathname, "0.123456e6");
-        /// 
+        ///
         /// // Read op from the temporary file, and assert that the number of bytes read is 6.
         /// ptr&lt;FILE&gt; stream = new ptr&lt;FILE&gt;();
         /// _wfopen_s(out stream.Value.Value, pathname, "r");
         /// Assert.IsTrue(gmp_lib.mpf_inp_str(op, stream, 10) == 10);
         /// fclose(stream.Value.Value);
-        /// 
+        ///
         /// // Assert that op is 123456.
         /// Assert.IsTrue(gmp_lib.mpf_get_ui(op) == 123456U);
-        /// 
+        ///
         /// // Delete temporary file.
         /// System.IO.File.Delete(pathname);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize op.
         /// Dim op As New mpf_t()
         /// gmp_lib.mpf_init(op)
-        /// 
+        ///
         /// ' Write op to a temporary file.
         /// Dim pathname As String = System.IO.Path.GetTempFileName()
         /// System.IO.File.WriteAllText(pathname, "0.123456e6")
-        /// 
+        ///
         /// ' Read op from the temporary file, and assert that the number of bytes read is 6.
         /// Dim stream As New ptr(Of FILE)()
         /// _wfopen_s(stream.Value.Value, pathname, "r")
         /// Assert.IsTrue(gmp_lib.mpf_inp_str(op, stream, 10) = 10)
         /// fclose(stream.Value.Value)
-        /// 
+        ///
         /// ' Assert that op is 123456.
         /// Assert.IsTrue(gmp_lib.mpf_get_ui(op) = 123456UI)
-        /// 
+        ///
         /// ' Delete temporary file.
         /// System.IO.File.Delete(pathname)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static size_t mpf_inp_str(mpf_t rop, ptr<FILE> stream, int @base)
         {
@@ -17129,30 +17127,30 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_d(x, 10);
-        /// 
+        ///
         /// // Assert that s is an integer.
         /// Assert.IsTrue(gmp_lib.mpf_integer_p(x) != 0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_d(x, 10)
-        /// 
+        ///
         /// ' Assert that s is an integer.
         /// Assert.IsTrue(gmp_lib.mpf_integer_p(x) &lt;&gt; 0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_integer_p(/*const*/ mpf_t op)
         {
@@ -17161,7 +17159,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="op1"/> * <paramref name="op2"/>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> * <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -17181,53 +17179,53 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number y to -210.
         /// mpf_t y = new mpf_t();
         /// gmp_lib.mpf_init_set_si(y, -210);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = x * y.
         /// gmp_lib.mpf_mul(z, x, y);
-        /// 
+        ///
         /// // Assert that the value of z is -2100.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == -2100.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpf_clears(x, y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number y to -210.
         /// Dim y As New mpf_t()
         /// gmp_lib.mpf_init_set_si(y, -210)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = x * y.
         /// gmp_lib.mpf_mul(z, x, y)
-        /// 
+        ///
         /// ' Assert that the value of z is -2100.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = -2100.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpf_clears(x, y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_mul(mpf_t rop, /*const*/ mpf_t op1, /*const*/ mpf_t op2)
         {
@@ -17238,7 +17236,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="op1"/> * 2^<paramref name="op2"/>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> * 2^<paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -17258,45 +17256,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 100.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 100);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = x * 2^8.
         /// gmp_lib.mpf_mul_2exp(z, x, 8U);
-        /// 
+        ///
         /// // Assert that the value of z is 25600.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 25600.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 100.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 100)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = x * 2^8.
         /// gmp_lib.mpf_mul_2exp(z, x, 8UI)
-        /// 
+        ///
         /// ' Assert that the value of z is 25600.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 25600.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_mul_2exp(mpf_t rop, /*const*/ mpf_t op1, mp_bitcnt_t op2)
         {
@@ -17306,7 +17304,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="op1"/> * <paramref name="op2"/>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> * <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -17326,45 +17324,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = x * 210.
         /// gmp_lib.mpf_mul_ui(z, x, 210U);
-        /// 
+        ///
         /// // Assert that the value of z is 2100.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 2100.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = x * 210.
         /// gmp_lib.mpf_mul_ui(z, x, 210UI)
-        /// 
+        ///
         /// ' Assert that the value of z is 2100.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 2100.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_mul_ui(mpf_t rop, /*const*/ mpf_t op1, uint /*unsigned long int*/ op2)
         {
@@ -17374,7 +17372,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to -<paramref name="op"/>. 
+        /// Set <paramref name="rop"/> to -<paramref name="op"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
@@ -17391,45 +17389,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = -x.
         /// gmp_lib.mpf_neg(z, x);
-        /// 
+        ///
         /// // Assert that the value of z is -10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == -10.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = -x.
         /// gmp_lib.mpf_neg(z, x)
-        /// 
+        ///
         /// ' Assert that the value of z is -10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = -10.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_neg(mpf_t rop, /*const*/ mpf_t op)
         {
@@ -17453,17 +17451,17 @@ namespace MathGmp.Native
         /// An exponent is then printed, separated by an "e", or if the <paramref name="base"/>
         /// is greater than 10 then by an "@".
         /// The exponent is always in decimal.
-        /// The decimal point follows the current locale, on systems providing <c>localeconv</c>. 
+        /// The decimal point follows the current locale, on systems providing <c>localeconv</c>.
         /// </para>
         /// <para>
         /// For <paramref name="base"/> in the range 2..36, digits and lower-case letters are used;
         /// for -2..-36, digits and upper-case letters are used; for 37..62, digits,
-        /// upper-case letters, and lower-case letters (in that significance order) are used. 
+        /// upper-case letters, and lower-case letters (in that significance order) are used.
         /// </para>
         /// <para>
         /// Up to <paramref name="n_digits"/> will be printed from the mantissa, except that no more
         /// digits than are accurately representable by op will be printed.
-        /// <paramref name="n_digits"/> can be 0 to select that accurate maximum. 
+        /// <paramref name="n_digits"/> can be 0 to select that accurate maximum.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_inp_str">mpf_inp_str</seealso>
@@ -17474,32 +17472,32 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to 123456.
         /// mpf_t op = new mpf_t();
         /// gmp_lib.mpf_init_set_ui(op, 123456U);
-        /// 
+        ///
         /// // Get a temporary file.
         /// string pathname = System.IO.Path.GetTempFileName();
-        /// 
+        ///
         /// // Open temporary file for writing.
         /// ptr&lt;FILE&gt; stream = new ptr&lt;FILE&gt;();
         /// _wfopen_s(out stream.Value.Value, pathname, "w");
-        /// 
+        ///
         /// // Write op to temporary file, and assert that the number of bytes written is 10.
         /// Assert.IsTrue(gmp_lib.mpf_out_str(stream, 10, 0, op) == 10);
-        /// 
+        ///
         /// // Close temporary file.
         /// fclose(stream.Value.Value);
-        /// 
+        ///
         /// // Assert that the content of the temporary file is "123456".
         /// string result = System.IO.File.ReadAllText(pathname);
         /// Assert.IsTrue(result == "0.123456e6");
-        /// 
+        ///
         /// // Delete temporary file.
         /// System.IO.File.Delete(pathname);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static size_t mpf_out_str(ptr<FILE> stream, int @base, size_t n_digits, /*const*/ mpf_t op)
         {
@@ -17530,45 +17528,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = sqrt(x).
         /// gmp_lib.mpf_pow_ui(z, x, 3U);
-        /// 
+        ///
         /// // Assert that the value of z is 1000.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 1000.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = sqrt(x).
         /// gmp_lib.mpf_pow_ui(z, x, 3UI)
-        /// 
+        ///
         /// ' Assert that the value of z is 1000.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 1000.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_pow_ui(mpf_t rop, /*const*/ mpf_t op1, uint /*unsigned long int*/ op2)
         {
@@ -17588,7 +17586,7 @@ namespace MathGmp.Native
         /// The exponent of the number is in the interval -<paramref name="exp"/> to <paramref name="exp"/> (in limbs).
         /// This function is useful for testing functions and algorithms, since these kind of random numbers have proven to be more
         /// likely to trigger corner-case bugs.
-        /// Negative random numbers are generated when <paramref name="max_size"/> is negative. 
+        /// Negative random numbers are generated when <paramref name="max_size"/> is negative.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
@@ -17609,24 +17607,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of rop to 0.
         /// mpf_t rop = new mpf_t();
         /// gmp_lib.mpf_init(rop);
-        /// 
+        ///
         /// // Generate a random floating-point number with at most 10 limbs and its exponent in [-5 5].
         /// gmp_lib.mpf_random2(rop, 10, 5);
-        /// 
+        ///
         /// // Free all memory occupied by rop.
         /// gmp_lib.mpf_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpf_t()
         /// gmp_lib.mpf_init(rop)
-        /// 
+        ///
         /// ' Generate a random floating-point number with at most 10 limbs and its exponent in [-5 5].
         /// gmp_lib.mpf_random2(rop, 10, 5)
-        /// 
+        ///
         /// ' Free all memory occupied by rop.
         /// gmp_lib.mpf_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_random2(mpf_t rop, mp_size_t max_size, mp_exp_t exp)
         {
@@ -17635,7 +17633,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Compute the relative difference between <paramref name="op1"/> and <paramref name="op2"/> and store the result in <paramref name="rop"/>. This is | <paramref name="op1"/> - <paramref name="op2"/> | / <paramref name="op1"/>. 
+        /// Compute the relative difference between <paramref name="op1"/> and <paramref name="op2"/> and store the result in <paramref name="rop"/>. This is | <paramref name="op1"/> - <paramref name="op2"/> | / <paramref name="op1"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand float.</param>
@@ -17652,53 +17650,53 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number y to -210.
         /// mpf_t y = new mpf_t();
         /// gmp_lib.mpf_init_set_si(y, -210);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = |x - y| / x.
         /// gmp_lib.mpf_reldiff(z, x, y);
-        /// 
+        ///
         /// // Assert that the value of z is 22.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 22.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpf_clears(x, y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number y to -210.
         /// Dim y As New mpf_t()
         /// gmp_lib.mpf_init_set_si(y, -210)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = |x - y| / x.
         /// gmp_lib.mpf_reldiff(z, x, y)
-        /// 
+        ///
         /// ' Assert that the value of z is 22.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 22.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpf_clears(x, y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_reldiff(mpf_t rop, /*const*/ mpf_t op1, /*const*/ mpf_t op2)
         {
@@ -17709,7 +17707,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set the value of <paramref name="rop"/> from <paramref name="op"/>. 
+        /// Set the value of <paramref name="rop"/> from <paramref name="op"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
@@ -17728,41 +17726,41 @@ namespace MathGmp.Native
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init2(x, 128U);
         /// gmp_lib.mpf_set_si(x, 10);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number y to -210.
         /// mpf_t y = new mpf_t();
         /// gmp_lib.mpf_init2(y, 128U);
         /// gmp_lib.mpf_set_si(y, -210);
-        /// 
+        ///
         /// // Assign the value of y to x.
         /// gmp_lib.mpf_set(x, y);
-        /// 
+        ///
         /// // Assert that the value of x is -210.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == -210.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clears(x, y, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init2(x, 128UI)
         /// gmp_lib.mpf_set_si(x, 10)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number y to -210.
         /// Dim y As New mpf_t()
         /// gmp_lib.mpf_init2(y, 128UI)
         /// gmp_lib.mpf_set_si(y, -210)
-        /// 
+        ///
         /// ' Assign the value of y to x.
         /// gmp_lib.mpf_set(x, y)
-        /// 
+        ///
         /// ' Assert that the value of x is -210.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = -210.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clears(x, y, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_set(mpf_t rop, /*const*/ mpf_t op)
         {
@@ -17772,7 +17770,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set the value of <paramref name="rop"/> from <paramref name="op"/>. 
+        /// Set the value of <paramref name="rop"/> from <paramref name="op"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
@@ -17790,30 +17788,30 @@ namespace MathGmp.Native
         /// // Create and initialize a new floating-point number.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init2(x, 128U);
-        /// 
+        ///
         /// // Set x to -123.0.
         /// gmp_lib.mpf_set_d(x, -123.0);
-        /// 
+        ///
         /// // Assert that the value of x is -123.0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == -123.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new floating-point number.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init2(x, 128UI)
-        /// 
+        ///
         /// ' Set x to -123.0.
         /// gmp_lib.mpf_set_d(x, -123.0)
-        /// 
+        ///
         /// ' Assert that the value of x is -123.0.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = -123.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_set_d(mpf_t rop, double op)
         {
@@ -17827,7 +17825,7 @@ namespace MathGmp.Native
         /// <param name="prec">The minimum precision in bits.</param>
         /// <remarks>
         /// <para>
-        /// All subsequent calls to <see cref="mpf_init">mpf_init</see> will use this precision, but previously initialized variables are unaffected. 
+        /// All subsequent calls to <see cref="mpf_init">mpf_init</see> will use this precision, but previously initialized variables are unaffected.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_get_default_prec">mpf_get_default_prec</seealso>
@@ -17845,17 +17843,17 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 128 bits.
         /// gmp_lib.mpf_set_default_prec(128U);
-        /// 
+        ///
         /// // Assert that the value of x is 128 bits.
         /// Assert.IsTrue(gmp_lib.mpf_get_default_prec() == 128U);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 128 bits.
         /// gmp_lib.mpf_set_default_prec(128UI)
-        /// 
+        ///
         /// ' Assert that the value of x is 128 bits.
         /// Assert.IsTrue(gmp_lib.mpf_get_default_prec() = 128UI)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_set_default_prec(mp_bitcnt_t prec)
         {
@@ -17869,10 +17867,10 @@ namespace MathGmp.Native
         /// <param name="prec">The minimum precision in bits.</param>
         /// <remarks>
         /// <para>
-        /// The value in rop will be truncated to the new precision. 
+        /// The value in rop will be truncated to the new precision.
         /// </para>
         /// <para>
-        /// This function requires a call to <c>realloc</c>, and so should not be used in a tight loop. 
+        /// This function requires a call to <c>realloc</c>, and so should not be used in a tight loop.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
@@ -17891,32 +17889,32 @@ namespace MathGmp.Native
         /// // Create and initialize a new floating-point number x.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init(x);
-        /// 
+        ///
         /// // Set its precision to 64 bits.
         /// gmp_lib.mpf_set_prec(x, 64U);
-        /// 
+        ///
         /// // Assert that the value of x is 0.0, and that its precision is 64 bits.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == 0.0);
         /// Assert.IsTrue(gmp_lib.mpf_get_prec(x) == 64U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new floating-point number x.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init(x)
-        /// 
+        ///
         /// ' Set its precision to 64 bits.
         /// gmp_lib.mpf_set_prec(x, 64UI)
-        /// 
+        ///
         /// ' Assert that the value of x is 0.0, and that its precision is 64 bits.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = 0.0)
         /// Assert.IsTrue(gmp_lib.mpf_get_prec(x) = 64UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_set_prec(mpf_t rop, mp_bitcnt_t prec)
         {
@@ -17925,18 +17923,18 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set the precision of <paramref name="rop"/> to be at least <paramref name="prec"/> bits, without changing the memory allocated. 
+        /// Set the precision of <paramref name="rop"/> to be at least <paramref name="prec"/> bits, without changing the memory allocated.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="prec">The minimum precision in bits.</param>
         /// <remarks>
         /// <para>
         /// <paramref name="prec"/> must be no more than the allocated precision for <paramref name="rop"/>,
-        /// that being the precision when <paramref name="rop"/> was initialized, or in the most recent <see cref="mpf_set_prec">mpf_set_prec</see>. 
+        /// that being the precision when <paramref name="rop"/> was initialized, or in the most recent <see cref="mpf_set_prec">mpf_set_prec</see>.
         /// </para>
         /// <para>
         /// The value in <paramref name="rop"/> is unchanged, and in particular if it had a higher precision than <paramref name="prec"/>
-        /// it will retain that higher precision. New values written to <paramref name="rop"/> will use the new <paramref name="prec"/>. 
+        /// it will retain that higher precision. New values written to <paramref name="rop"/> will use the new <paramref name="prec"/>.
         /// </para>
         /// <para>
         /// Before calling <see cref="mpf_clear">mpf_clear</see> or the full <see cref="mpf_set_prec">mpf_set_prec</see>, another <see cref="mpf_set_prec_raw">mpf_set_prec_raw</see> call
@@ -17944,11 +17942,11 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// <see cref="mpf_get_prec">mpf_get_prec</see> can be used before <see cref="mpf_set_prec_raw">mpf_set_prec_raw</see> to get the original allocated precision.
-        /// After <see cref="mpf_set_prec_raw">mpf_set_prec_raw</see> it reflects the prec value set. 
+        /// After <see cref="mpf_set_prec_raw">mpf_set_prec_raw</see> it reflects the prec value set.
         /// </para>
         /// <para>
         /// <see cref="mpf_set_prec_raw">mpf_set_prec_raw</see> is an efficient way to use an <see cref="mpf_t">mpf_t</see> variable at different precisions during a calculation,
-        /// perhaps to gradually increase precision in an iteration, or just to use various different precisions for different purposes during a calculation. 
+        /// perhaps to gradually increase precision in an iteration, or just to use various different precisions for different purposes during a calculation.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_set_default_prec">mpf_set_default_prec</seealso>
@@ -17966,61 +17964,61 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 128 bits.
         /// gmp_lib.mpf_set_default_prec(128U);
-        /// 
+        ///
         /// // Create, initialize, and set a new rational y to 200 / 3.
         /// mpq_t y = new mpq_t();
         /// gmp_lib.mpq_init(y);
         /// gmp_lib.mpq_set_ui(y, 200, 3U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to y.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init(x);
         /// gmp_lib.mpf_set_q(x, y);
-        /// 
+        ///
         /// Assert.IsTrue(x.ToString() == "0.6666666666666666666666666666666666666667e2");
-        /// 
+        ///
         /// // Change precision of x, and set its value to 10000 / 3.
         /// gmp_lib.mpf_set_prec_raw(x, 8U);
         /// gmp_lib.mpq_set_ui(y, 10000, 3U);
         /// gmp_lib.mpf_set_q(x, y);
-        /// 
+        ///
         /// Assert.IsTrue(x.ToString() == "0.333333333333333333333e4");
-        /// 
+        ///
         /// // Restore precision of x.
         /// gmp_lib.mpf_set_prec_raw(x, 128U);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clear(x);
         /// gmp_lib.mpq_clear(y);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 128 bits.
         /// gmp_lib.mpf_set_default_prec(128UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new rational y to 200 / 3.
         /// Dim y As New mpq_t()
         /// gmp_lib.mpq_init(y)
         /// gmp_lib.mpq_set_ui(y, 200, 3UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to y.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init(x)
         /// gmp_lib.mpf_set_q(x, y)
         /// Assert.IsTrue(x.ToString() = "0.6666666666666666666666666666666666666667e2")
-        /// 
+        ///
         /// ' Change precision of x, and set its value to 10000 / 3.
         /// gmp_lib.mpf_set_prec_raw(x, 8UI)
         /// gmp_lib.mpq_set_ui(y, 10000, 3UI)
         /// gmp_lib.mpf_set_q(x, y)
         /// Assert.IsTrue(x.ToString() = "0.333333333333333333333e4")
-        /// 
+        ///
         /// ' Restore precision of x.
         /// gmp_lib.mpf_set_prec_raw(x, 128UI)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clear(x)
         /// gmp_lib.mpq_clear(y)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_set_prec_raw(mpf_t rop, mp_bitcnt_t prec)
         {
@@ -18029,7 +18027,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set the value of <paramref name="rop"/> from <paramref name="op"/>. 
+        /// Set the value of <paramref name="rop"/> from <paramref name="op"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
@@ -18048,37 +18046,37 @@ namespace MathGmp.Native
         /// mpq_t y = new mpq_t();
         /// gmp_lib.mpq_init(y);
         /// gmp_lib.mpq_set_ui(y, 200, 5U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to y.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init(x);
         /// gmp_lib.mpf_set_q(x, y);
-        /// 
+        ///
         /// // Assert that x is 40.
         /// Assert.IsTrue(x.ToString() == "0.4e2");
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clear(x);
         /// gmp_lib.mpq_clear(y);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new rational y to 200 / 5.
         /// Dim y As New mpq_t()
         /// gmp_lib.mpq_init(y)
         /// gmp_lib.mpq_set_ui(y, 200, 5UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to y.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init(x)
         /// gmp_lib.mpf_set_q(x, y)
-        /// 
+        ///
         /// ' Assert that x is 40.
         /// Assert.IsTrue(x.ToString() = "0.4e2")
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clear(x)
         /// gmp_lib.mpq_clear(y)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_set_q(mpf_t rop, /*const*/ mpq_t op)
         {
@@ -18088,7 +18086,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set the value of <paramref name="rop"/> from <paramref name="op"/>. 
+        /// Set the value of <paramref name="rop"/> from <paramref name="op"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
@@ -18106,30 +18104,30 @@ namespace MathGmp.Native
         /// // Create and initialize a new floating-point number.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init2(x, 128U);
-        /// 
+        ///
         /// // Set x to -123.
         /// gmp_lib.mpf_set_si(x, -123);
-        /// 
+        ///
         /// // Assert that the value of x is -123.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == -123.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new floating-point number.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init2(x, 128UI)
-        /// 
+        ///
         /// ' Set x to -123.
         /// gmp_lib.mpf_set_si(x, -123)
-        /// 
+        ///
         /// ' Assert that the value of x is -123.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = -123.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_set_si(mpf_t rop, int /*long int*/ op)
         {
@@ -18151,20 +18149,20 @@ namespace MathGmp.Native
         /// "M" is the mantissa and "N" is the exponent.
         /// The mantissa is always in the specified <paramref name="base"/>.
         /// The exponent is either in the specified <paramref name="base"/> or, if <paramref name="base"/> is negative, in decimal.
-        /// The decimal point expected is taken from the current locale, on systems providing <c>localeconv</c>. 
+        /// The decimal point expected is taken from the current locale, on systems providing <c>localeconv</c>.
         /// </para>
         /// <para>
         /// The argument <paramref name="base"/> may be in the ranges 2 to 62, or -62 to -2.
-        /// Negative values are used to specify that the exponent is in decimal. 
+        /// Negative values are used to specify that the exponent is in decimal.
         /// </para>
         /// <para>
         /// For bases up to 36, case is ignored; upper-case and lower-case letters have the same value;
         /// for bases 37 to 62, upper-case letter represent the usual 10..35 while lower-case
-        /// letter represent 36..61. 
+        /// letter represent 36..61.
         /// </para>
         /// <para>
         /// Unlike the corresponding <c>mpz</c> function, the <paramref name="base"/> will not be determined from the leading characters
-        /// of the string if base is 0. This is so that numbers like "0.23" are not interpreted as octal. 
+        /// of the string if base is 0. This is so that numbers like "0.23" are not interpreted as octal.
         /// </para>
         /// <para>
         /// White space is allowed in the string, and is simply ignored.
@@ -18173,7 +18171,7 @@ namespace MathGmp.Native
         /// We are considering changing the definition of this function, making it fail when there is any white-space
         /// in the input, since that makes a lot of sense.
         /// Please tell us your opinion about this change.
-        /// Do you really want it to accept "3 14" as meaning 314 as it does now?] 
+        /// Do you really want it to accept "3 14" as meaning 314 as it does now?]
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_set">mpf_set</seealso>
@@ -18192,28 +18190,28 @@ namespace MathGmp.Native
         /// gmp_lib.mpf_init(x);
         /// char_ptr value = new char_ptr("234e-4");
         /// gmp_lib.mpf_set_str(x, value, 10);
-        /// 
+        ///
         /// // Assert that x is 40.
         /// Assert.IsTrue(x.ToString() == "0.234e-1");
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clear(x);
         /// gmp_lib.free(value);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new floating-point number x to 0.0234.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init(x)
         /// Dim value As New char_ptr("234e-4")
         /// gmp_lib.mpf_set_str(x, value, 10)
-        /// 
+        ///
         /// ' Assert that x is 40.
         /// Assert.IsTrue(x.ToString() = "0.234e-1")
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clear(x)
         /// gmp_lib.free(value)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_set_str(mpf_t rop, /*const*/ char_ptr str, int @base)
         {
@@ -18222,7 +18220,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set the value of <paramref name="rop"/> from <paramref name="op"/>. 
+        /// Set the value of <paramref name="rop"/> from <paramref name="op"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
@@ -18240,30 +18238,30 @@ namespace MathGmp.Native
         /// // Create and initialize a new floating-point number.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init2(x, 128U);
-        /// 
+        ///
         /// // Set x to 100.
         /// gmp_lib.mpf_set_ui(x, 100U);
-        /// 
+        ///
         /// // Assert that the value of x is 100.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == 100.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create and initialize a new floating-point number.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init2(x, 128UI)
-        /// 
+        ///
         /// ' Set x to 100.
         /// gmp_lib.mpf_set_ui(x, 100UI)
-        /// 
+        ///
         /// ' Assert that the value of x is 100.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = 100.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_set_ui(mpf_t rop, uint /*unsigned long int*/ op)
         {
@@ -18272,7 +18270,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set the value of <paramref name="rop"/> from <paramref name="op"/>. 
+        /// Set the value of <paramref name="rop"/> from <paramref name="op"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
@@ -18291,37 +18289,37 @@ namespace MathGmp.Native
         /// mpz_t y = new mpz_t();
         /// gmp_lib.mpz_init(y);
         /// gmp_lib.mpz_set_ui(y, 200U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to y.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init(x);
         /// gmp_lib.mpf_set_z(x, y);
-        /// 
+        ///
         /// // Assert that x is 200.
         /// Assert.IsTrue(x.ToString() == "0.2e3");
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clear(x);
         /// gmp_lib.mpz_clear(y);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new integer y to 200.
         /// Dim y As New mpz_t()
         /// gmp_lib.mpz_init(y)
         /// gmp_lib.mpz_set_ui(y, 200UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to y.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init(x)
         /// gmp_lib.mpf_set_z(x, y)
-        /// 
+        ///
         /// ' Assert that x is 200.
         /// Assert.IsTrue(x.ToString() = "0.2e3")
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clear(x)
         /// gmp_lib.mpz_clear(y)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_set_z(mpf_t rop, /*const*/ mpz_t op)
         {
@@ -18331,7 +18329,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Return +1 if op &gt; 0, 0 if op = 0, and -1 if op &lt; 0. 
+        /// Return +1 if op &gt; 0, 0 if op = 0, and -1 if op &lt; 0.
         /// </summary>
         /// <param name="op">The operand float.</param>
         /// <returns>Return +1 if op &gt; 0, 0 if op = 0, and -1 if op &lt; 0.</returns>
@@ -18348,24 +18346,24 @@ namespace MathGmp.Native
         /// // Create, initialize, and set the value of op to -10.
         /// mpf_t op = new mpf_t();
         /// gmp_lib.mpf_init_set_si(op, -10);
-        /// 
+        ///
         /// // Assert that the sign of op is -1.
         /// Assert.IsTrue(gmp_lib.mpf_sgn(op) == -1);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set the value of op to -10.
         /// Dim op As New mpf_t()
         /// gmp_lib.mpf_init_set_si(op, -10)
-        /// 
+        ///
         /// ' Assert that the sign of op is -1.
         /// Assert.IsTrue(gmp_lib.mpf_sgn(op) = -1)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for op.
         /// gmp_lib.mpf_clear(op)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpf_sgn(mpf_t op)
         {
@@ -18385,29 +18383,29 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x.
         /// mpf_t x = "1.00000000000000000000001";
-        /// 
+        ///
         /// // Assert that the size of x is 1.
         /// Assert.IsTrue(gmp_lib.mpf_size(x) == 4);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x.
         /// Dim x As mpf_t = "1.00000000000000000000001"
-        /// 
+        ///
         /// ' Assert that the size of x is 1.
         /// Assert.IsTrue(gmp_lib.mpf_size(x) = 4)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x.
         /// gmp_lib.mpf_clear(x)
-        /// </code> 
+        /// </code>
         /// </example>
         public static size_t mpf_size(/*const*/ mpf_t op)
         {
@@ -18419,7 +18417,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to the square root of <paramref name="op"/>. 
+        /// Set <paramref name="rop"/> to the square root of <paramref name="op"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
@@ -18437,45 +18435,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 100.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 100);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = sqrt(x).
         /// gmp_lib.mpf_sqrt(z, x);
-        /// 
+        ///
         /// // Assert that the value of z is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 10.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 100.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 100)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = sqrt(x).
         /// gmp_lib.mpf_sqrt(z, x)
-        /// 
+        ///
         /// ' Assert that the value of z is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 10.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_sqrt(mpf_t rop, /*const*/ mpf_t op)
         {
@@ -18485,7 +18483,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to the square root of <paramref name="op"/>. 
+        /// Set <paramref name="rop"/> to the square root of <paramref name="op"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand.</param>
@@ -18503,37 +18501,37 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = sqrt(100).
         /// gmp_lib.mpf_sqrt_ui(z, 100U);
-        /// 
+        ///
         /// // Assert that the value of z is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 10.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clear(z);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = sqrt(100).
         /// gmp_lib.mpf_sqrt_ui(z, 100UI)
-        /// 
+        ///
         /// ' Assert that the value of z is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 10.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clear(z)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_sqrt_ui(mpf_t rop, uint /*unsigned long int*/ op)
         {
@@ -18562,54 +18560,54 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number y to -210.
         /// mpf_t y = new mpf_t();
         /// gmp_lib.mpf_init_set_si(y, -210);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = x - y.
         /// gmp_lib.mpf_sub(z, x, y);
-        /// 
+        ///
         /// // Assert that the value of z is 220.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 220.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpf_clears(x, y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
-        /// 
+        ///
         /// gmp_lib.mpf_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number y to -210.
         /// Dim y As New mpf_t()
         /// gmp_lib.mpf_init_set_si(y, -210)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = x - y.
         /// gmp_lib.mpf_sub(z, x, y)
-        /// /// 
+        /// ///
         /// ' Assert that the value of z is 220.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 220.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x, y, and z.
         /// gmp_lib.mpf_clears(x, y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_sub(mpf_t rop, /*const*/ mpf_t op1, /*const*/ mpf_t op2)
         {
@@ -18640,45 +18638,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = x - 200.
         /// gmp_lib.mpf_sub_ui(z, x, 200U);
-        /// 
+        ///
         /// // Assert that the value of z is -190.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == -190.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = x - 200.
         /// gmp_lib.mpf_sub_ui(z, x, 200UI)
-        /// 
+        ///
         /// ' Assert that the value of z is -190.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = -190.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_sub_ui(mpf_t rop, /*const*/ mpf_t op1, uint /*unsigned long int*/ op2)
         {
@@ -18688,7 +18686,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Swap <paramref name="rop1"/> and <paramref name="rop2"/> efficiently. 
+        /// Swap <paramref name="rop1"/> and <paramref name="rop2"/> efficiently.
         /// </summary>
         /// <param name="rop1">The first result float.</param>
         /// <param name="rop2">The second result float.</param>
@@ -18712,47 +18710,47 @@ namespace MathGmp.Native
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init2(x, 128U);
         /// gmp_lib.mpf_set_si(x, 10);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number y to -210.
         /// mpf_t y = new mpf_t();
         /// gmp_lib.mpf_init2(y, 128U);
         /// gmp_lib.mpf_set_si(y, -210);
-        /// 
+        ///
         /// // Swap the values of x and y.
         /// gmp_lib.mpf_swap(x, y);
-        /// 
+        ///
         /// // Assert that the value of x is -210.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) == -210.0);
-        /// 
+        ///
         /// // Assert that the value of y is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(y) == 10.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clears(x, y, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init2(x, 128UI)
         /// gmp_lib.mpf_set_si(x, 10)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number y to -210.
         /// Dim y As New mpf_t()
         /// gmp_lib.mpf_init2(y, 128UI)
         /// gmp_lib.mpf_set_si(y, -210)
-        /// 
+        ///
         /// ' Swap the values of x and y.
         /// gmp_lib.mpf_swap(x, y)
-        /// 
+        ///
         /// ' Assert that the value of x is -210.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(x) = -210.0)
-        /// 
+        ///
         /// ' Assert that the value of y is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(y) = 10.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and y.
         /// gmp_lib.mpf_clears(x, y, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_swap(mpf_t rop1, mpf_t rop2)
         {
@@ -18762,7 +18760,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="op"/> rounded to the integer towards zero. 
+        /// Set <paramref name="rop"/> to <paramref name="op"/> rounded to the integer towards zero.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op">The operand float.</param>
@@ -18783,45 +18781,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.4.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_d(x, 10.4);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = trunc(x).
         /// gmp_lib.mpf_trunc(z, x);
-        /// 
+        ///
         /// // Assert that the value of z is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 10.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.4.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_d(x, 10.4)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = trunc(x).
         /// gmp_lib.mpf_trunc(z, x)
-        /// 
+        ///
         /// ' Assert that the value of z is 10.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 10.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_trunc(mpf_t rop, /*const*/ mpf_t op)
         {
@@ -18831,7 +18829,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set <paramref name="rop"/> to <paramref name="op1"/> / <paramref name="op2"/>. 
+        /// Set <paramref name="rop"/> to <paramref name="op1"/> / <paramref name="op2"/>.
         /// </summary>
         /// <param name="rop">The result float.</param>
         /// <param name="op1">The first operand.</param>
@@ -18841,7 +18839,7 @@ namespace MathGmp.Native
         /// Division is undefined if the divisor is zero, and passing a zero divisor to the divide
         /// functions will make it intentionally divide by zero.
         /// This lets the user handle arithmetic exceptions in division functions in the same manner
-        /// as other arithmetic exceptions. 
+        /// as other arithmetic exceptions.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_add">mpf_add</seealso>
@@ -18860,45 +18858,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number x to 10.
         /// mpf_t x = new mpf_t();
         /// gmp_lib.mpf_init_set_si(x, 10);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = 210 / x.
         /// gmp_lib.mpf_ui_div(z, 210U, x);
-        /// 
+        ///
         /// // Assert that the value of z is 21.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 21.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number x to 10.
         /// Dim x As New mpf_t()
         /// gmp_lib.mpf_init_set_si(x, 10)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = 210 / x.
         /// gmp_lib.mpf_ui_div(z, 210UI, x)
-        /// 
+        ///
         /// ' Assert that the value of z is 21.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 21.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for x and z.
         /// gmp_lib.mpf_clears(x, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_ui_div(mpf_t rop, uint /*unsigned long int*/ op1, /*const*/ mpf_t op2)
         {
@@ -18928,45 +18926,45 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64U);
-        /// 
+        ///
         /// // Create, initialize, and set a new floating-point number y to -210.
         /// mpf_t y = new mpf_t();
         /// gmp_lib.mpf_init_set_si(y, -210);
-        /// 
+        ///
         /// // Create and initialize a new floating-point number z.
         /// mpf_t z = new mpf_t();
         /// gmp_lib.mpf_init(z);
-        /// 
+        ///
         /// // Set z = 10 - y.
         /// gmp_lib.mpf_ui_sub(z, 10U, y);
-        /// 
+        ///
         /// // Assert that the value of z is 220.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) == 220.0);
-        /// 
+        ///
         /// // Release unmanaged memory allocated for y, and z.
         /// gmp_lib.mpf_clears(y, z, null);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Set default precision to 64 bits.
         /// gmp_lib.mpf_set_default_prec(64UI)
-        /// 
+        ///
         /// ' Create, initialize, and set a new floating-point number y to -210.
         /// Dim y As New mpf_t()
         /// gmp_lib.mpf_init_set_si(y, -210)
-        /// 
+        ///
         /// ' Create and initialize a new floating-point number z.
         /// Dim z As New mpf_t()
         /// gmp_lib.mpf_init(z)
-        /// 
+        ///
         /// ' Set z = 10 - y.
         /// gmp_lib.mpf_ui_sub(z, 10UI, y)
-        /// 
+        ///
         /// ' Assert that the value of z is 220.
         /// Assert.IsTrue(gmp_lib.mpf_get_d(z) = 220.0)
-        /// 
+        ///
         /// ' Release unmanaged memory allocated for y, and z.
         /// gmp_lib.mpf_clears(y, z, Nothing)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_ui_sub(mpf_t rop, uint /*unsigned long int*/ op1, /*const*/ mpf_t op2)
         {
@@ -18985,7 +18983,7 @@ namespace MathGmp.Native
         /// <para>
         /// The variable state must be initialized by calling one of the <c>gmp_randinit</c> functions
         /// <seealso cref="gmp_lib"><a href="/MathGmp.Native/html/3af6b34c-3242-2b75-e7c7-ab79af8a4b0f.htm#Random_State_Initialization">Random State Initialization</a></seealso>
-        /// (<a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a>) before invoking this function. 
+        /// (<a href="https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization">GNU MP - Random State Initialization</a>) before invoking this function.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpf_ceil">mpf_ceil</seealso>
@@ -19007,35 +19005,35 @@ namespace MathGmp.Native
         /// gmp_randstate_t state = new gmp_randstate_t();
         /// gmp_lib.gmp_randinit_mt(state);
         /// gmp_lib.gmp_randseed_ui(state, 100000U);
-        /// 
+        ///
         /// // Create, initialize, and set the value of rop to 0.
         /// mpf_t rop = new mpf_t();
         /// gmp_lib.mpf_init(rop);
-        /// 
+        ///
         /// // Generate a random integer in the range [0, 1) with 50 bits precision.
         /// gmp_lib.mpf_urandomb(rop, state, 50);
-        /// 
+        ///
         /// // Free all memory occupied by state and rop.
         /// gmp_lib.gmp_randclear(state);
         /// gmp_lib.mpf_clear(rop);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create, initialize, and seed a new random number generator.
         /// Dim state As New gmp_randstate_t()
         /// gmp_lib.gmp_randinit_mt(state)
         /// gmp_lib.gmp_randseed_ui(state, 100000UI)
-        /// 
+        ///
         /// ' Create, initialize, and set the value of rop to 0.
         /// Dim rop As New mpf_t()
         /// gmp_lib.mpf_init(rop)
-        /// 
+        ///
         /// ' Generate a random integer in the range [0, 1) with 50 bits precision.
         /// gmp_lib.mpf_urandomb(rop, state, 50)
-        /// 
+        ///
         /// ' Free all memory occupied by state and rop.
         /// gmp_lib.gmp_randclear(state)
         /// gmp_lib.mpf_clear(rop)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpf_urandomb(mpf_t rop, gmp_randstate_t state, mp_bitcnt_t nbits)
         {
@@ -19049,7 +19047,7 @@ namespace MathGmp.Native
         #region "Low level positive-integer (i.e. N) routines."
 
         /// <summary>
-        /// Add {<paramref name="s1p"/>, <paramref name="s1n"/>} and {<paramref name="s2p"/>, <paramref name="s2n"/>}, and write the <paramref name="s1n"/> least significant limbs of the result to <paramref name="rp"/>. 
+        /// Add {<paramref name="s1p"/>, <paramref name="s1n"/>} and {<paramref name="s2p"/>, <paramref name="s2n"/>}, and write the <paramref name="s1n"/> least significant limbs of the result to <paramref name="rp"/>.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The first operand integer.</param>
@@ -19090,34 +19088,34 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000000, 0x00000000 });
-        /// 
+        ///
         /// // Set rp = s1 + s2.
         /// mp_limb_t carry = gmp_lib.mpn_add(rp, s1p, s1p.Size, s2p, s2p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(carry == 1);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H0, &amp;H0})
-        /// 
+        ///
         /// ' Set rp = s1 + s2.
         /// Dim carry As mp_limb_t = gmp_lib.mpn_add(rp, s1p, s1p.Size, s2p, s2p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(carry = 1)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_add(mp_ptr rp, /*const*/ mp_ptr s1p, mp_size_t s1n, /*const*/ mp_ptr s2p, mp_size_t s2n)
         {
@@ -19165,33 +19163,33 @@ namespace MathGmp.Native
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000000, 0x00000000 });
-        /// 
+        ///
         /// // Set rp = s1 + 1.
         /// mp_limb_t carry = gmp_lib.mpn_add_1(rp, s1p, s1p.Size, 1);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(carry == 1);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H0, &amp;H0})
-        /// 
+        ///
         /// ' Set rp = s1 + 1.
         ///  Dim carry As mp_limb_t = gmp_lib.mpn_add_1(rp, s1p, s1p.Size, 1)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(carry = 1)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_add_1(mp_ptr rp, /*const*/ mp_ptr s1p, mp_size_t n, mp_limb_t s2limb)
         {
@@ -19204,7 +19202,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Add {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the <paramref name="n"/> least significant limbs of the result to <paramref name="rp"/>. 
+        /// Add {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the <paramref name="n"/> least significant limbs of the result to <paramref name="rp"/>.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The first operand integer.</param>
@@ -19247,35 +19245,35 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x00000000 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000000, 0x00000000 });
-        /// 
+        ///
         /// // Set rp = s1 + s2.
         /// mp_limb_t carry = gmp_lib.mpn_add_n(rp, s1p, s2p, rp.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(carry == 1);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H0})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H0, &amp;H0})
-        /// 
+        ///
         /// ' Set rp = s1 + s2.
         /// Dim carry As mp_limb_t = gmp_lib.mpn_add_n(rp, s1p, s2p, rp.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
-        /// 
+        ///
         /// Assert.IsTrue(carry = 1)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_add_n(mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -19289,7 +19287,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Multiply {<paramref name="s1p"/>, <paramref name="n"/>} and <paramref name="s2limb"/>, and add the <paramref name="n"/> least significant limbs of the product to {<paramref name="rp"/>, <paramref name="n"/>} and write the result to <paramref name="rp"/>. 
+        /// Multiply {<paramref name="s1p"/>, <paramref name="n"/>} and <paramref name="s2limb"/>, and add the <paramref name="n"/> least significant limbs of the product to {<paramref name="rp"/>, <paramref name="n"/>} and write the result to <paramref name="rp"/>.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The first operand integer.</param>
@@ -19299,11 +19297,11 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="rp"/>, <paramref name="n"/>} are allowed
-        /// to overlap provided <paramref name="rp"/> &#8804; <paramref name="s1p"/>. 
+        /// to overlap provided <paramref name="rp"/> &#8804; <paramref name="s1p"/>.
         /// </para>
         /// <para>
         /// This is a low-level function that is a building block for general multiplication as well as other operations in GMP.
-        /// It is written in assembly for most CPUs. 
+        /// It is written in assembly for most CPUs.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add">mpn_add</seealso>
@@ -19334,33 +19332,33 @@ namespace MathGmp.Native
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr rp = new mp_ptr(new uint[] { 0x00000002, 0x00000000 });
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000000, 0x00000000 });
-        /// 
+        ///
         /// // Set rp += s1 * 2.
         /// mp_limb_t carry = gmp_lib.mpn_addmul_1(rp, s1p, s1p.Size, 2);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(carry == 0x02);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim rp As New mp_ptr(New UInteger() { &amp;H2, &amp;H0})
         /// Dim result As New mp_ptr(New UInteger() { &amp;H0, &amp;H0})
-        /// 
+        ///
         /// ' Set rp += s1 * 2.
         /// Dim carry As mp_limb_t = gmp_lib.mpn_addmul_1(rp, s1p, s1p.Size, 2)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(carry = &amp;H2)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_addmul_1(mp_ptr rp, /*const*/ mp_ptr s1p, mp_size_t n, mp_limb_t s2limb)
         {
@@ -19389,24 +19387,24 @@ namespace MathGmp.Native
         /// // Create multi-precision operands, and expected result.
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x00000000 });
-        /// 
+        ///
         /// // Assert s1p > s2p.
         /// Assert.IsTrue(gmp_lib.mpn_cmp(s1p, s2p, s1p.Size) > 0);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(s1p, s2p);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H0})
-        /// 
+        ///
         /// ' Assert s1p > s2p.
         /// Assert.IsTrue(gmp_lib.mpn_cmp(s1p, s2p, s1p.Size) > 0)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(s1p, s2p)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpn_cmp(/*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -19430,23 +19428,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create multi-precision operand.
         /// mp_ptr sp = new mp_ptr(new uint[] { 0x00000000, 0x00000000 });
-        /// 
+        ///
         /// // Assert sp == 0.
         /// Assert.IsTrue(gmp_lib.mpn_zero_p(sp, sp.Size) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(sp);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operand.
         /// Dim sp As New mp_ptr(New UInteger() { &amp;H0, &amp;H0})
-        /// 
+        ///
         /// ' Assert sp == 0.
         /// Assert.IsTrue(gmp_lib.mpn_zero_p(sp, sp.Size) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(sp)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpn_zero_p(/*const*/ mp_ptr sp, mp_size_t n)
         {
@@ -19495,31 +19493,31 @@ namespace MathGmp.Native
         /// mp_ptr sp = new mp_ptr(new uint[] { 0xffffffff, 0x0000ffff });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x55555555, 0x00005555 });
-        /// 
+        ///
         /// // Set rp = sp / 3.
         /// gmp_lib.mpn_divexact_1(rp, sp, sp.Size, 0x3);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim sp As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;Hffff})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H55555555, &amp;H5555})
-        /// 
+        ///
         /// ' Set rp = sp / 3.
         /// gmp_lib.mpn_divexact_1(rp, sp, sp.Size, &amp;H3)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_divexact_1(mp_ptr rp, /*const*/ mp_ptr sp, mp_size_t n, mp_limb_t d)
         {
@@ -19532,7 +19530,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Divide {<paramref name="sp"/>, <paramref name="n"/>} by 3, expecting it to divide exactly, and writing the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
+        /// Divide {<paramref name="sp"/>, <paramref name="n"/>} by 3, expecting it to divide exactly, and writing the result to {<paramref name="rp"/>, <paramref name="n"/>}.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="sp">The operand integer.</param>
@@ -19546,7 +19544,7 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// These routines use a multiply-by-inverse and will be faster than <see cref="mpn_divrem_1">mpn_divrem_1</see> on CPUs with
-        /// fast multiplication but slow division. 
+        /// fast multiplication but slow division.
         /// </para>
         /// <para>
         /// The source a, result q, size n, initial carry i, and return value c satisfy
@@ -19554,7 +19552,7 @@ namespace MathGmp.Native
         /// The return c is always 0, 1 or 2, and the initial carry i must also be 0,
         /// 1 or 2 (these are both borrows really). When c = 0 clearly q = (a - i) / 3.
         /// When c != 0, the remainder (a - i) mod 3 is given by 3 - c, because
-        /// b ≡ 1 mod 3 (when <see cref="mp_bits_per_limb">mp_bits_per_limb</see> is even, which is always so currently). 
+        /// b ≡ 1 mod 3 (when <see cref="mp_bits_per_limb">mp_bits_per_limb</see> is even, which is always so currently).
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add">mpn_add</seealso>
@@ -19585,34 +19583,34 @@ namespace MathGmp.Native
         /// mp_ptr sp = new mp_ptr(new uint[] { 0xffffffff, 0x0000ffff });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x55555555, 0x00005555 });
-        /// 
+        ///
         /// // Set rp = sp / 3.
         /// mp_limb_t remainder = gmp_lib.mpn_divexact_by3(rp, sp, sp.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(remainder == 0);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim sp As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;Hffff})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H55555555, &amp;H5555})
-        /// 
+        ///
         /// ' Set rp = sp / 3.
         /// Dim remainder As mp_limb_t = gmp_lib.mpn_divexact_by3(rp, sp, sp.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
-        /// 
+        ///
         /// Assert.IsTrue(remainder = 0)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_divexact_by3(mp_ptr rp, /*const*/ mp_ptr sp, mp_size_t n)
         {
@@ -19625,7 +19623,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Divide {<paramref name="sp"/>, <paramref name="n"/>} by 3, expecting it to divide exactly, and writing the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
+        /// Divide {<paramref name="sp"/>, <paramref name="n"/>} by 3, expecting it to divide exactly, and writing the result to {<paramref name="rp"/>, <paramref name="n"/>}.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="sp">The operand integer.</param>
@@ -19640,7 +19638,7 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// These routines use a multiply-by-inverse and will be faster than <see cref="mpn_divrem_1">mpn_divrem_1</see> on CPUs with
-        /// fast multiplication but slow division. 
+        /// fast multiplication but slow division.
         /// </para>
         /// <para>
         /// The source a, result q, size n, initial carry i, and return value c satisfy
@@ -19648,7 +19646,7 @@ namespace MathGmp.Native
         /// The return c is always 0, 1 or 2, and the initial carry i must also be 0,
         /// 1 or 2 (these are both borrows really). When c = 0 clearly q = (a - i) / 3.
         /// When c != 0, the remainder (a - i) mod 3 is given by 3 - c, because
-        /// b ≡ 1 mod 3 (when <see cref="mp_bits_per_limb">mp_bits_per_limb</see> is even, which is always so currently). 
+        /// b ≡ 1 mod 3 (when <see cref="mp_bits_per_limb">mp_bits_per_limb</see> is even, which is always so currently).
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add">mpn_add</seealso>
@@ -19679,33 +19677,33 @@ namespace MathGmp.Native
         /// mp_ptr sp = new mp_ptr(new uint[] { 0xffffffff, 0x0000ffff });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xaaaaaaaa, 0x5555aaaa });
-        /// 
+        ///
         /// // Set rp = sp / 3.
         /// mp_limb_t remainder = gmp_lib.mpn_divexact_by3c(rp, sp, sp.Size, 1);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(remainder == 1);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim sp As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;Hffff})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HaaaaaaaaUI, &amp;H5555aaaa})
-        /// 
+        ///
         /// ' Set rp = sp / 3.
         /// Dim remainder As mp_limb_t = gmp_lib.mpn_divexact_by3c(rp, sp, sp.Size, 1)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(remainder = 1)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_divexact_by3c(mp_ptr rp, /*const*/ mp_ptr sp, mp_size_t n, mp_limb_t carry)
         {
@@ -19731,15 +19729,15 @@ namespace MathGmp.Native
         /// The integer quotient is written to {<paramref name="r1p"/> + <paramref name="qxn"/>, <paramref name="s2n"/>}
         /// and in addition <paramref name="qxn"/> fraction limbs are developed and written to {<paramref name="r1p"/>, <paramref name="qxn"/>}.
         /// Either or both <paramref name="s2n"/> and <paramref name="qxn"/> can be zero.
-        /// For most usages, <paramref name="qxn"/> will be zero. 
+        /// For most usages, <paramref name="qxn"/> will be zero.
         /// </para>
         /// <para>
         /// <see cref="mpn_divmod_1">mpn_divmod_1</see> exists for upward source compatibility and is simply a macro
-        /// calling <see cref="mpn_divrem_1">mpn_divrem_1</see> with a <paramref name="qxn"/> of 0. 
+        /// calling <see cref="mpn_divrem_1">mpn_divrem_1</see> with a <paramref name="qxn"/> of 0.
         /// </para>
         /// <para>
         /// The areas at <paramref name="r1p"/> and <paramref name="s2p"/> have to be identical or
-        /// completely separate, not partially overlapping. 
+        /// completely separate, not partially overlapping.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add">mpn_add</seealso>
@@ -19770,33 +19768,33 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0xffffffff, 0x0000ffff });
         /// mp_ptr r1p = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x435e50d7, 0x00000d79 });
-        /// 
+        ///
         /// // Set r1p = s2p / 19.
         /// mp_limb_t remainder = gmp_lib.mpn_divrem_1(r1p, 0, s2p, s2p.Size, 0x13);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(remainder == 10);
         /// Assert.IsTrue(r1p.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(r1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;Hffff})
         /// Dim r1p As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H435e50d7, &amp;Hd79})
-        /// 
+        ///
         /// ' Set r1p = s2p / 19.
         /// Dim remainder As mp_limb_t = gmp_lib.mpn_divrem_1(r1p, 0, s2p, s2p.Size, &amp;H13)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(remainder = 10)
         /// Assert.IsTrue(r1p.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(r1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_divrem_1(mp_ptr r1p, mp_size_t qxn, /*const*/ mp_ptr s2p, mp_size_t s2n, mp_limb_t s3limb)
         {
@@ -19823,11 +19821,11 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// <see cref="mpn_divmod_1">mpn_divmod_1</see> exists for upward source compatibility and is simply a macro
-        /// calling <see cref="mpn_divrem_1">mpn_divrem_1</see> with a qxn of 0. 
+        /// calling <see cref="mpn_divrem_1">mpn_divrem_1</see> with a qxn of 0.
         /// </para>
         /// <para>
         /// The areas at <paramref name="r1p"/> and <paramref name="s2p"/> have to be identical or
-        /// completely separate, not partially overlapping. 
+        /// completely separate, not partially overlapping.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add">mpn_add</seealso>
@@ -19858,33 +19856,33 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0xffffffff, 0x0000ffff });
         /// mp_ptr r1p = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x435e50d7, 0x00000d79 });
-        /// 
+        ///
         /// // Set r1p = s2p / 19.
         /// mp_limb_t remainder = gmp_lib.mpn_divmod_1(r1p, s2p, s2p.Size, 0x13);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(remainder == 10);
         /// Assert.IsTrue(r1p.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(r1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;Hffff})
         /// Dim r1p As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H435e50d7, &amp;Hd79})
-        /// 
+        ///
         /// ' Set r1p = s2p / 19.
         /// Dim remainder As mp_limb_t = gmp_lib.mpn_divmod_1(r1p, s2p, s2p.Size, &amp;H13)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(remainder = 10)
         /// Assert.IsTrue(r1p.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(r1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_divmod_1(mp_ptr r1p, /*const*/ mp_ptr s2p, mp_size_t s2n, mp_limb_t s3limb)
         {
@@ -19940,12 +19938,12 @@ namespace MathGmp.Native
         /// <returns>The result can be up to <paramref name="yn"/> limbs, the return value is the actual number produced; i.e. the number of limbs of <paramref name="rp"/>.</returns>
         /// <remarks>
         /// <para>
-        /// Both source operands are destroyed. 
+        /// Both source operands are destroyed.
         /// </para>
         /// <para>
         /// It is required that <paramref name="xn"/> &#8805; <paramref name="yn"/> &gt; 0, and the most significant limb
         /// of {<paramref name="yp"/>, <paramref name="yn"/>} must be non-zero.
-        /// No overlap is permitted between {<paramref name="xp"/>, <paramref name="xn"/>} and {<paramref name="yp"/>, <paramref name="yn"/>}. 
+        /// No overlap is permitted between {<paramref name="xp"/>, <paramref name="xn"/>} and {<paramref name="yp"/>, <paramref name="yn"/>}.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_gcd_1">mpn_gcd_1</seealso>
@@ -19959,34 +19957,34 @@ namespace MathGmp.Native
         /// mp_ptr yp = new mp_ptr(new uint[] { 0xc2d24d55, 0x00000007 });
         /// mp_ptr rp = new mp_ptr(yp.Size);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x964619c7, 0x00000002 });
-        /// 
+        ///
         /// // Set rp = gcd(xp, yp).
         /// mp_size_t size = gmp_lib.mpn_gcd(rp, xp, xp.Size, yp, yp.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(size == result.Size);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, xp, yp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim xp As New mp_ptr(New UInteger() { &amp;H964619c7UI, &amp;H2})
         /// Dim yp As New mp_ptr(New UInteger() { &amp;Hc2d24d55UI, &amp;H7})
         /// Dim rp As New mp_ptr(yp.Size)
         /// Dim result As New mp_ptr(New UInteger() { &amp;H964619c7UI, &amp;H2})
-        /// 
+        ///
         /// ' Set rp = gcd(xp, yp).
         /// Dim size As mp_size_t = gmp_lib.mpn_gcd(rp, xp, xp.Size, yp, yp.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(size = result.Size)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, xp, yp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_size_t mpn_gcd(mp_ptr rp, mp_ptr xp, mp_size_t xn, mp_ptr yp, mp_size_t yn)
         {
@@ -20005,7 +20003,7 @@ namespace MathGmp.Native
         /// <returns>The greatest common divisor of {<paramref name="xp"/>, <paramref name="xn"/>} and <paramref name="ylimb"/>.</returns>
         /// <remarks>
         /// <para>
-        /// Both operands must be non-zero. 
+        /// Both operands must be non-zero.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_gcd">mpn_gcd</seealso>
@@ -20016,23 +20014,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create multi-precision operand.
         /// mp_ptr xp = new mp_ptr(new uint[] { 0x00000000, 0x00000001 });
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(gmp_lib.mpn_gcd_1(xp, xp.Size, 1073741824) == 1073741824);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(xp);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operand.
         /// Dim xp As New mp_ptr(New UInteger() { &amp;H0, &amp;H1})
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(gmp_lib.mpn_gcd_1(xp, xp.Size, 1073741824) = 1073741824)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(xp)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_gcd_1(/*const*/ mp_ptr xp, mp_size_t xn, mp_limb_t ylimb)
         {
@@ -20067,18 +20065,18 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// The second cofactor T is not computed but can easily be obtained from (G - U * S) / V (the division will be exact).
-        /// It is required that <paramref name="un"/> &#8805; <paramref name="vn"/> &gt; 0, 
-        /// and the most significant limb of {<paramref name="vp"/>, <paramref name="vn"/>} must be non-zero. 
+        /// It is required that <paramref name="un"/> &#8805; <paramref name="vn"/> &gt; 0,
+        /// and the most significant limb of {<paramref name="vp"/>, <paramref name="vn"/>} must be non-zero.
         /// </para>
         /// <para>
         /// Store G at <paramref name="gp"/> and let the return value define its limb count.
         /// Store S at <paramref name="sp"/> and let | <paramref name="sn"/>.Value | define its limb count.
         /// S can be negative; when this happens <paramref name="sn"/>.Value will be negative.
         /// The area at <paramref name="gp"/> should have room for <paramref name="vn"/> limbs
-        /// and the area at <paramref name="sp"/> should have room for <paramref name="vn"/> + 1 limbs. 
+        /// and the area at <paramref name="sp"/> should have room for <paramref name="vn"/> + 1 limbs.
         /// </para>
         /// <para>
-        /// Both source operands are destroyed. 
+        /// Both source operands are destroyed.
         /// </para>
         /// <para>
         /// Compatibility notes: GMP 4.3.0 and 4.3.1 defined S less strictly.
@@ -20103,20 +20101,20 @@ namespace MathGmp.Native
         /// mp_ptr sp = new mp_ptr(new uint[(vp.Size + 1) * (IntPtr.Size / 4)]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x40000000, 0x00000000 });
         /// mp_ptr cofactor = new mp_ptr(new uint[] { 0x00000001, 0x00000000, 0x00000000 });
-        /// 
+        ///
         /// // Set gp = gcd(up, vp).
         /// mp_size_t sn = 0;
         /// mp_size_t size = gmp_lib.mpn_gcdext(gp, sp, ref sn, up, up.Size, vp, vp.Size);
-        /// 
+        ///
         /// // Assert result.
         /// Assert.IsTrue(size == 1);
         /// Assert.IsTrue(gp.SequenceEqual(result));
         /// Assert.IsTrue(sn == 1);
         /// Assert.IsTrue(sp.SequenceEqual(cofactor));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(gp, up, vp, sp, result, cofactor);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim up As New mp_ptr(New UInteger() { &amp;H40000000, &amp;H0})
@@ -20125,20 +20123,20 @@ namespace MathGmp.Native
         /// Dim sp As New mp_ptr(New UInteger((vp.Size + 1) * (IntPtr.Size / 4) - 1) {})
         /// Dim result As New mp_ptr(New UInteger() { &amp;H40000000, &amp;H0})
         /// Dim cofactor As New mp_ptr(New UInteger() { &amp;H1, &amp;H0, &amp;H0})
-        /// 
+        ///
         /// ' Set gp = gcd(up, vp).
         /// Dim sn As mp_size_t = 0
         /// Dim size As mp_size_t = gmp_lib.mpn_gcdext(gp, sp, sn, up, up.Size, vp, vp.Size)
-        /// 
+        ///
         /// ' Assert result.
         /// Assert.IsTrue(size = 1)
         /// Assert.IsTrue(gp.SequenceEqual(result))
         /// Assert.IsTrue(sn = 1)
         /// Assert.IsTrue(sp.SequenceEqual(cofactor))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(gp, up, vp, sp, result, cofactor)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_size_t mpn_gcdext(mp_ptr gp, mp_ptr sp, ref mp_size_t sn, mp_ptr up, mp_size_t un, mp_ptr vp, mp_size_t vn)
         {
@@ -20167,18 +20165,18 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// The second cofactor T is not computed but can easily be obtained from (G - U * S) / V (the division will be exact).
-        /// It is required that <paramref name="un"/> &#8805; <paramref name="vn"/> &gt; 0, 
-        /// and the most significant limb of {<paramref name="vp"/>, <paramref name="vn"/>} must be non-zero. 
+        /// It is required that <paramref name="un"/> &#8805; <paramref name="vn"/> &gt; 0,
+        /// and the most significant limb of {<paramref name="vp"/>, <paramref name="vn"/>} must be non-zero.
         /// </para>
         /// <para>
         /// Store G at <paramref name="gp"/> and let the return value define its limb count.
         /// Store S at <paramref name="sp"/> and let | <paramref name="sn"/>.Value | define its limb count.
         /// S can be negative; when this happens <paramref name="sn"/>.Value will be negative.
         /// The area at <paramref name="gp"/> should have room for <paramref name="vn"/> limbs
-        /// and the area at <paramref name="sp"/> should have room for <paramref name="vn"/> + 1 limbs. 
+        /// and the area at <paramref name="sp"/> should have room for <paramref name="vn"/> + 1 limbs.
         /// </para>
         /// <para>
-        /// Both source operands are destroyed. 
+        /// Both source operands are destroyed.
         /// </para>
         /// <para>
         /// Compatibility notes: GMP 4.3.0 and 4.3.1 defined S less strictly.
@@ -20203,20 +20201,20 @@ namespace MathGmp.Native
         /// mp_ptr sp = new mp_ptr(new uint[(vp.Size + 1) * (IntPtr.Size / 4)]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x40000000, 0x00000000 });
         /// mp_ptr cofactor = new mp_ptr(new uint[] { 0x00000001, 0x00000000, 0x00000000 });
-        /// 
+        ///
         /// // Set gp = gcd(up, vp).
         /// ptr&lt;mp_size_t&gt; sn = new ptr&lt;mp_size_t&gt;(0);
         /// mp_size_t size = gmp_lib.mpn_gcdext(gp, sp, sn, up, up.Size, vp, vp.Size);
-        /// 
+        ///
         /// // Assert result.
         /// Assert.IsTrue(size == 1);
         /// Assert.IsTrue(gp.SequenceEqual(result));
         /// Assert.IsTrue(sn.Value == 1);
         /// Assert.IsTrue(sp.SequenceEqual(cofactor));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(gp, up, vp, sp, result, cofactor);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim up As New mp_ptr(New UInteger() { &amp;H40000000, &amp;H0})
@@ -20225,20 +20223,20 @@ namespace MathGmp.Native
         /// Dim sp As New mp_ptr(New UInteger((vp.Size + 1) * (IntPtr.Size / 4) - 1) {})
         /// Dim result As New mp_ptr(New UInteger() { &amp;H40000000, &amp;H0})
         /// Dim cofactor As New mp_ptr(New UInteger() { &amp;H1, &amp;H0, &amp;H0})
-        /// 
+        ///
         /// ' Set gp = gcd(up, vp).
         /// Dim sn As New ptr(Of mp_size_t)(0)
         /// Dim size As mp_size_t = gmp_lib.mpn_gcdext(gp, sp, sn, up, up.Size, vp, vp.Size)
-        /// 
+        ///
         /// ' Assert result.
         /// Assert.IsTrue(size = 1)
         /// Assert.IsTrue(gp.SequenceEqual(result))
         /// Assert.IsTrue(sn.Value = 1)
         /// Assert.IsTrue(sp.SequenceEqual(cofactor))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(gp, up, vp, sp, result, cofactor)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_size_t mpn_gcdext(mp_ptr gp, mp_ptr sp, ptr<mp_size_t> sn, mp_ptr up, mp_size_t un, mp_ptr vp, mp_size_t vn)
         {
@@ -20262,16 +20260,16 @@ namespace MathGmp.Native
         /// <para>
         /// There may be leading zeros in the string.
         /// The string is not in ASCII; to convert it to printable format, add the ASCII codes for "0" or "A",
-        /// depending on the base and range. <paramref name="base"/> can vary from 2 to 256. 
+        /// depending on the base and range. <paramref name="base"/> can vary from 2 to 256.
         /// </para>
         /// <para>
         /// The most significant limb of the input {<paramref name="s1p"/>, <paramref name="s1n"/>} must be non-zero.
         /// The input {<paramref name="s1p"/>, <paramref name="s1n"/>} is clobbered, except when base is a power of 2,
-        /// in which case it’s unchanged. 
+        /// in which case it’s unchanged.
         /// </para>
         /// <para>
         /// The area at <paramref name="str"/> has to have space for the largest possible number
-        /// represented by a <paramref name="s1n"/> long limb array, plus one extra character. 
+        /// represented by a <paramref name="s1n"/> long limb array, plus one extra character.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_set_str">mpn_set_str</seealso>
@@ -20283,40 +20281,40 @@ namespace MathGmp.Native
         /// // Create multi-precision operands.
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0x00000001, 0x00000001 });
         /// char_ptr str = new char_ptr("xxxxxxxxxxxxxxxxx");
-        /// 
+        ///
         /// // Convert s1p to hex string.
         /// size_t count = gmp_lib.mpn_get_str(str, 16, s1p, s1p.Size);
-        /// 
+        ///
         /// // Copy out str to bytes.
         /// byte[] s = new byte[count];
         /// Marshal.Copy(str.ToIntPtr(), s, 0, (int)count);
-        /// 
+        ///
         /// // Assert the non-ASCII, hex representation of s1p.
         /// Assert.IsTrue(s.SequenceEqual(new byte[] { 1, 0, 0, 0, 0, 0, 0, 0, 1 }));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(s1p);
         /// gmp_lib.free(str);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;H1, &amp;H1})
         /// Dim str As New char_ptr("xxxxxxxxxxxxxxxxx")
-        /// 
+        ///
         /// ' Convert s1p to hex string.
         /// Dim count As size_t = gmp_lib.mpn_get_str(str, 16, s1p, s1p.Size)
-        /// 
+        ///
         /// ' Copy out str to bytes.
         /// Dim s As Byte() = New Byte(count - 1) { }
         /// Marshal.Copy(str.ToIntPtr(), s, 0, CInt(count))
-        /// 
+        ///
         /// ' Assert the non-ASCII, hex representation of s1p.
         /// Assert.IsTrue(s.SequenceEqual(New Byte() { 1, 0, 0, 0, 0, 0, 0, 0, 1}))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(s1p)
         /// gmp_lib.free(str)
-        /// </code> 
+        /// </code>
         /// </example>
         public static size_t mpn_get_str(/*unsigned*/ char_ptr str, int @base, mp_ptr s1p, mp_size_t s1n)
         {
@@ -20328,7 +20326,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Compute the hamming distance between {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, which is the number of bit positions where the two operands have different bit values. 
+        /// Compute the hamming distance between {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, which is the number of bit positions where the two operands have different bit values.
         /// </summary>
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s2p">The second operand integer.</param>
@@ -20346,24 +20344,24 @@ namespace MathGmp.Native
         /// // Create multi-precision operands.
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0xffffffff });
-        /// 
+        ///
         /// // Assert hamming distance.
         /// Assert.IsTrue(gmp_lib.mpn_hamdist(s1p, s2p, s1p.Size) == 31);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(s1p, s2p);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;HffffffffUI})
-        /// 
+        ///
         /// ' Assert hamming distance.
         /// Assert.IsTrue(gmp_lib.mpn_hamdist(s1p, s2p, s1p.Size) = 31)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(s1p, s2p)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_bitcnt_t mpn_hamdist(/*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -20373,7 +20371,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Shift {<paramref name="sp"/>, <paramref name="n"/>} left by <paramref name="count"/> bits, and write the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
+        /// Shift {<paramref name="sp"/>, <paramref name="n"/>} left by <paramref name="count"/> bits, and write the result to {<paramref name="rp"/>, <paramref name="n"/>}.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="sp">The operand integer.</param>
@@ -20384,10 +20382,10 @@ namespace MathGmp.Native
         /// <para>
         /// <paramref name="count"/> must be in the range 1 to <see cref="mp_bits_per_limb">mp_bits_per_limb</see> - 1.
         /// The regions {<paramref name="sp"/>, <paramref name="n"/>} and {<paramref name="rp"/>, <paramref name="n"/>} may overlap,
-        /// provided <paramref name="rp"/> &#8805; <paramref name="sp"/>. 
+        /// provided <paramref name="rp"/> &#8805; <paramref name="sp"/>.
         /// </para>
         /// <para>
-        /// This function is written in assembly for most CPUs. 
+        /// This function is written in assembly for most CPUs.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_hamdist">mpn_hamdist</seealso>
@@ -20403,33 +20401,33 @@ namespace MathGmp.Native
         /// mp_ptr sp = new mp_ptr(new uint[] { 0xfffffffe, 0xffffffff });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xfffffffc, 0xffffffff });
-        /// 
+        ///
         /// // Set rp = sp &lt;&lt; 1.
         /// mp_limb_t bits = gmp_lib.mpn_lshift(rp, sp, sp.Size, 1);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(bits == 1);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim sp As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;HffffffffUI})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HfffffffcUI, &amp;HffffffffUI})
-        /// 
+        ///
         /// ' Set rp = sp &lt;&lt; 1.
         /// Dim bits As mp_limb_t = gmp_lib.mpn_lshift(rp, sp, sp.Size, 1)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(bits = 1)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_lshift(mp_ptr rp, /*const*/ mp_ptr sp, mp_size_t n, uint count)
         {
@@ -20442,7 +20440,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Divide {<paramref name="s1p"/>, <paramref name="s1n"/>} by <paramref name="s2limb"/>, and return the remainder. 
+        /// Divide {<paramref name="s1p"/>, <paramref name="s1n"/>} by <paramref name="s2limb"/>, and return the remainder.
         /// </summary>
         /// <param name="s1p">The first operand integer.</param>
         /// <param name="s1n">The number of limbs of <paramref name="s1p"/>.</param>
@@ -20479,23 +20477,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create multi-precision operand.
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0xfffffffe, 0x0000ffff });
-        /// 
+        ///
         /// // Assert s1p mod 3 is 2.
         /// Assert.IsTrue(gmp_lib.mpn_mod_1(s1p, s1p.Size, 3) == 2);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(s1p);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operand.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;Hffff})
-        /// 
+        ///
         /// ' Assert s1p mod 3 is 2.
         /// Assert.IsTrue(gmp_lib.mpn_mod_1(s1p, s1p.Size, 3) = 2)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(s1p)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_mod_1(/*const*/ mp_ptr s1p, mp_size_t s1n, mp_limb_t s2limb)
         {
@@ -20522,7 +20520,7 @@ namespace MathGmp.Native
         /// No overlap is permitted between the destination and either source.
         /// </para>
         /// <para>
-        /// This function requires that <paramref name="s1n"/> is greater than or equal to <paramref name="s2n"/>. 
+        /// This function requires that <paramref name="s1n"/> is greater than or equal to <paramref name="s2n"/>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add">mpn_add</seealso>
@@ -20554,32 +20552,32 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000002 });
         /// mp_ptr rp = new mp_ptr(new uint[3]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xfffffffe, 0xffffffff, 0x00000001 });
-        /// 
+        ///
         /// // Set rp = s1 * s2.
         /// gmp_lib.mpn_mul(rp, s1p, s1p.Size, s2p, s2p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H2})
         /// Dim rp As New mp_ptr(New UInteger(2) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;HffffffffUI, &amp;H1})
-        /// 
+        ///
         /// ' Set rp = s1 * s2.
         /// gmp_lib.mpn_mul(rp, s1p, s1p.Size, s2p, s2p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_mul(mp_ptr rp, /*const*/ mp_ptr s1p, mp_size_t s1n, /*const*/ mp_ptr s2p, mp_size_t s2n)
         {
@@ -20602,17 +20600,17 @@ namespace MathGmp.Native
         /// <returns>Return the most significant limb of the product.</returns>
         /// <remarks>
         /// <para>
-        /// {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="rp"/>, <paramref name="n"/>} 
+        /// {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="rp"/>, <paramref name="n"/>}
         /// are allowed to overlap provided <paramref name="rp"/> &#8804; <paramref name="s1p"/>.
         /// </para>
         /// <para>
-        /// This is a low-level function that is a building block for general multiplication as well as 
+        /// This is a low-level function that is a building block for general multiplication as well as
         /// other operations in GMP. It is written in assembly for most CPUs.
         /// </para>
         /// <para>
         /// Don’t call this function if <paramref name="s2limb"/> is a power of 2;
         /// use <see cref="mpn_lshift">mpn_lshift</see> with a count equal to the logarithm of
-        /// <paramref name="s2limb"/> instead, for optimal speed. 
+        /// <paramref name="s2limb"/> instead, for optimal speed.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add">mpn_add</seealso>
@@ -20643,33 +20641,33 @@ namespace MathGmp.Native
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xfffffffe, 0xffffffff });
-        /// 
+        ///
         /// // Set rp = s1 * 2.
         /// mp_limb_t carry = gmp_lib.mpn_mul_1(rp, s1p, s1p.Size, 2);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(carry == 1);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;HffffffffUI})
-        /// 
+        ///
         /// ' Set rp = s1 * 2.
         /// Dim carry As mp_limb_t = gmp_lib.mpn_mul_1(rp, s1p, s1p.Size, 2)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(carry = 1)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_mul_1(mp_ptr rp, /*const*/ mp_ptr s1p, mp_size_t n, mp_limb_t s2limb)
         {
@@ -20691,10 +20689,10 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The destination has to have space for 2 * <paramref name="n"/> limbs, even if the product’s
-        /// most significant limb is zero. No overlap is permitted between the destination and either source. 
+        /// most significant limb is zero. No overlap is permitted between the destination and either source.
         /// </para>
         /// <para>
-        /// If the two input operands are the same, use <see cref="mpn_sqr">mpn_sqr</see>. 
+        /// If the two input operands are the same, use <see cref="mpn_sqr">mpn_sqr</see>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add">mpn_add</seealso>
@@ -20726,32 +20724,32 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000002, 0x00000000 });
         /// mp_ptr rp = new mp_ptr(new uint[4]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xfffffffe, 0xffffffff, 0x00000001, 0x00000000 });
-        /// 
+        ///
         /// // Set rp = s1 * s2.
         /// gmp_lib.mpn_mul_n(rp, s1p, s2p, s1p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H2, &amp;H0})
         /// Dim rp As New mp_ptr(New UInteger(3) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;HffffffffUI, &amp;H1, &amp;H0})
-        /// 
+        ///
         /// ' Set rp = s1 * s2.
         /// gmp_lib.mpn_mul_n(rp, s1p, s2p, s1p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_mul_n(mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -20770,7 +20768,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// The destination has to have space for 2 * <paramref name="n"/> limbs, even if the result’s
-        /// most significant limb is zero. No overlap is permitted between the destination and the source. 
+        /// most significant limb is zero. No overlap is permitted between the destination and the source.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add">mpn_add</seealso>
@@ -20801,31 +20799,31 @@ namespace MathGmp.Native
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr rp = new mp_ptr(new uint[4]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000001, 0x00000000, 0xfffffffe, 0xffffffff });
-        /// 
+        ///
         /// // Set rp = s1^2.
         /// gmp_lib.mpn_sqr(rp, s1p, s1p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim rp As New mp_ptr(New UInteger(3) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H1, &amp;H0, &amp;HfffffffeUI, &amp;HffffffffUI})
-        /// 
+        ///
         /// ' Set rp = s1^2.
         /// gmp_lib.mpn_sqr(rp, s1p, s1p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_sqr(mp_ptr rp, /*const*/ mp_ptr s1p, mp_size_t n)
         {
@@ -20875,33 +20873,33 @@ namespace MathGmp.Native
         /// mp_ptr sp = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x0000001, 0x00000000 });
-        /// 
+        ///
         /// // Set rp = -sp.
         /// mp_limb_t borrow = gmp_lib.mpn_neg(rp, sp, sp.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(borrow == 1);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim sp As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H1, &amp;H0})
-        /// 
+        ///
         /// ' Set rp = -sp.
         /// Dim borrow As mp_limb_t = gmp_lib.mpn_neg(rp, sp, sp.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(borrow = 1)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_neg(mp_ptr rp, /*const*/ mp_ptr sp, mp_size_t n)
         {
@@ -20936,31 +20934,31 @@ namespace MathGmp.Native
         /// mp_ptr sp = new mp_ptr(new uint[] { 0xf0f0f0f0, 0xf0f0f0f0 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x0f0f0f0f, 0x0f0f0f0f });
-        /// 
+        ///
         /// // Set rp = not(sp).
         /// gmp_lib.mpn_com(rp, sp, sp.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim sp As New mp_ptr(New UInteger() { &amp;Hf0f0f0f0UI, &amp;Hf0f0f0f0UI})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;Hf0f0f0f, &amp;Hf0f0f0f})
-        /// 
+        ///
         /// ' Set rp = not(sp).
         /// gmp_lib.mpn_com(rp, sp, sp.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_com(mp_ptr rp, /*const*/ mp_ptr sp, mp_size_t n)
         {
@@ -20989,23 +20987,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create multi-precision operand.
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
-        /// 
+        ///
         /// // Assert s1p is not a perfect square.
         /// Assert.IsTrue(gmp_lib.mpn_perfect_square_p(s1p, s1p.Size) == 0);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(s1p);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operand.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
-        /// 
+        ///
         /// ' Assert s1p is not a perfect square.
         /// Assert.IsTrue(gmp_lib.mpn_perfect_square_p(s1p, s1p.Size) = 0)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(s1p)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpn_perfect_square_p(/*const*/ mp_ptr s1p, mp_size_t n)
         {
@@ -21028,23 +21026,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create multi-precision operand.
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0xd4a51000, 0x000000e8 });
-        /// 
+        ///
         /// // Assert s1p is a perfect power.
         /// Assert.IsTrue(gmp_lib.mpn_perfect_power_p(s1p, s1p.Size) != 0);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(s1p);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operand.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;Hd4a51000UI, &amp;He8})
-        /// 
+        ///
         /// ' Assert s1p is a perfect power.
         /// Assert.IsTrue(gmp_lib.mpn_perfect_power_p(s1p, s1p.Size) &lt;&gt; 0)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(s1p)
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpn_perfect_power_p(/*const*/ mp_ptr sp, mp_size_t n)
         {
@@ -21053,7 +21051,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Count the number of set bits in {<paramref name="s1p"/>, <paramref name="n"/>}. 
+        /// Count the number of set bits in {<paramref name="s1p"/>, <paramref name="n"/>}.
         /// </summary>
         /// <param name="s1p">The operand integer.</param>
         /// <param name="n">The number of limbs of <paramref name="s1p"/>.</param>
@@ -21069,23 +21067,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create multi-precision operand.
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0x0000001, 0x00000001 });
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(gmp_lib.mpn_popcount(s1p, s1p.Size) == 2);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(s1p);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operand.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;H1, &amp;H1})
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(gmp_lib.mpn_popcount(s1p, s1p.Size) = 2)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(s1p)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_bitcnt_t mpn_popcount(/*const*/ mp_ptr s1p, mp_size_t n)
         {
@@ -21115,10 +21113,10 @@ namespace MathGmp.Native
         /// <para>
         /// The most significant limb is always non-zero.
         /// <see cref="mpn_random">mpn_random</see> generates uniformly distributed limb data,
-        /// <see cref="mpn_random2">mpn_random2</see> generates long strings of zeros and ones in the binary representation. 
+        /// <see cref="mpn_random2">mpn_random2</see> generates long strings of zeros and ones in the binary representation.
         /// </para>
         /// <para>
-        /// <see cref="mpn_random2">mpn_random2</see> is intended for testing the correctness of the <c>mpn</c> routines. 
+        /// <see cref="mpn_random2">mpn_random2</see> is intended for testing the correctness of the <c>mpn</c> routines.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_random2">mpn_random2</seealso>
@@ -21128,23 +21126,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create multi-precision operand.
         /// mp_ptr r1p = new mp_ptr(new uint[2]);
-        /// 
+        ///
         /// // Generate random number.
         /// gmp_lib.mpn_random(r1p, gmp_lib.mp_bytes_per_limb == 4 ? 2 : 1);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(r1p);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operand.
         /// Dim r1p As New mp_ptr(New UInteger(1) { })
-        /// 
+        ///
         /// ' Generate random number.
         /// gmp_lib.mpn_random(r1p, If(gmp_lib.mp_bytes_per_limb = 4, 2, 1))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(r1p)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_random(mp_ptr r1p, mp_size_t r1n)
         {
@@ -21161,10 +21159,10 @@ namespace MathGmp.Native
         /// <para>
         /// The most significant limb is always non-zero.
         /// <see cref="mpn_random">mpn_random</see> generates uniformly distributed limb data,
-        /// <see cref="mpn_random2">mpn_random2</see> generates long strings of zeros and ones in the binary representation. 
+        /// <see cref="mpn_random2">mpn_random2</see> generates long strings of zeros and ones in the binary representation.
         /// </para>
         /// <para>
-        /// <see cref="mpn_random2">mpn_random2</see> is intended for testing the correctness of the <c>mpn</c> routines. 
+        /// <see cref="mpn_random2">mpn_random2</see> is intended for testing the correctness of the <c>mpn</c> routines.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_random">mpn_random</seealso>
@@ -21174,23 +21172,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create multi-precision operand.
         /// mp_ptr r1p = new mp_ptr(new uint[2]);
-        /// 
+        ///
         /// // Generate random number.
         /// gmp_lib.mpn_random2(r1p, gmp_lib.mp_bytes_per_limb == 4 ? 2 : 1);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(r1p);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operand.
         /// Dim r1p As New mp_ptr(New UInteger(1) { })
-        /// 
+        ///
         /// ' Generate random number.
         /// gmp_lib.mpn_random2(r1p, If(gmp_lib.mp_bytes_per_limb = 4, 2, 1))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(r1p)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_random2(mp_ptr r1p, mp_size_t r1n)
         {
@@ -21199,7 +21197,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Shift {<paramref name="sp"/>, <paramref name="n"/>} right by <paramref name="count"/> bits, and write the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
+        /// Shift {<paramref name="sp"/>, <paramref name="n"/>} right by <paramref name="count"/> bits, and write the result to {<paramref name="rp"/>, <paramref name="n"/>}.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="sp">The operand integer.</param>
@@ -21210,10 +21208,10 @@ namespace MathGmp.Native
         /// <para>
         /// <paramref name="count"/> must be in the range 1 to <see cref="mp_bits_per_limb">mp_bits_per_limb</see> - 1.
         /// The regions {<paramref name="sp"/>, <paramref name="n"/>} and {<paramref name="rp"/>, <paramref name="n"/>}
-        /// may overlap, provided <paramref name="rp"/> &#8804; <paramref name="sp"/>. 
+        /// may overlap, provided <paramref name="rp"/> &#8804; <paramref name="sp"/>.
         /// </para>
         /// <para>
-        /// This function is written in assembly for most CPUs. 
+        /// This function is written in assembly for most CPUs.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_hamdist">mpn_hamdist</seealso>
@@ -21229,33 +21227,33 @@ namespace MathGmp.Native
         /// mp_ptr sp = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xffffffff, 0x7fffffff });
-        /// 
+        ///
         /// // Set rp = sp &gt;&gt; 1.
         /// mp_limb_t bits = gmp_lib.mpn_rshift(rp, sp, sp.Size, 1);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(bits == (gmp_lib.mp_bytes_per_limb == 4 ? 0x80000000 : 0x8000000000000000));
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim sp As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;H7fffffff})
-        /// 
+        ///
         /// ' Set rp = sp &gt;&gt; 1.
         /// Dim bits As mp_limb_t = gmp_lib.mpn_rshift(rp, sp, sp.Size, 1)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(bits = (If(gmp_lib.mp_bytes_per_limb = 4, &amp;H80000000UI, &amp;H8000000000000000UL)))
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_rshift(mp_ptr rp, /*const*/ mp_ptr sp, mp_size_t n, uint count)
         {
@@ -21276,7 +21274,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// It is required that there be a clear bit within the area at <paramref name="s1p"/>
-        /// at or beyond bit position <paramref name="bit"/>, so that the function has something to return. 
+        /// at or beyond bit position <paramref name="bit"/>, so that the function has something to return.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_hamdist">mpn_hamdist</seealso>
@@ -21290,23 +21288,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create multi-precision operand.
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0x0000001, 0x00000001 });
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(gmp_lib.mpn_scan0(s1p, 0) == 1);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(s1p);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operand.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;H1, &amp;H1})
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(gmp_lib.mpn_scan0(s1p, 0) = 1)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(s1p)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_bitcnt_t mpn_scan0(/*const*/ mp_ptr s1p, mp_bitcnt_t bit)
         {
@@ -21323,7 +21321,7 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// It is required that there be a set bit within the area at <paramref name="s1p"/>
-        /// at or beyond bit position <paramref name="bit"/>, so that the function has something to return. 
+        /// at or beyond bit position <paramref name="bit"/>, so that the function has something to return.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_hamdist">mpn_hamdist</seealso>
@@ -21337,23 +21335,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create multi-precision operand.
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0x0000001, 0x00000001 });
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(gmp_lib.mpn_scan1(s1p, 1) == 32);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(s1p);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operand.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;H1, &amp;H1})
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(gmp_lib.mpn_scan1(s1p, 1) = 32)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(s1p)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_bitcnt_t mpn_scan1(/*const*/ mp_ptr s1p, mp_bitcnt_t bit)
         {
@@ -21362,7 +21360,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Convert bytes {<paramref name="str"/>, <paramref name="strsize"/>} in the given <paramref name="base"/> to limbs at <paramref name="rp"/>. 
+        /// Convert bytes {<paramref name="str"/>, <paramref name="strsize"/>} in the given <paramref name="base"/> to limbs at <paramref name="rp"/>.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="str">The operand string.</param>
@@ -21380,15 +21378,15 @@ namespace MathGmp.Native
         /// The converted value is {<paramref name="rp"/>, rn} where rn is the return value.
         /// If the most significant input byte <paramref name="str"/>[0] is non-zero,
         /// then <paramref name="rp"/>[rn - 1] will be non-zero,
-        /// else <paramref name="rp"/>[rn - 1] and some number of subsequent limbs may be zero. 
+        /// else <paramref name="rp"/>[rn - 1] and some number of subsequent limbs may be zero.
         /// </para>
         /// <para>
         /// The area at <paramref name="rp"/> has to have space for the largest possible number with
-        /// <paramref name="strsize"/> digits in the chosen <paramref name="base"/>, plus one extra limb. 
+        /// <paramref name="strsize"/> digits in the chosen <paramref name="base"/>, plus one extra limb.
         /// </para>
         /// <para>
         /// The input must have at least one byte, and no overlap is permitted
-        /// between {<paramref name="str"/>, <paramref name="strsize"/>} and the result at <paramref name="rp"/>. 
+        /// between {<paramref name="str"/>, <paramref name="strsize"/>} and the result at <paramref name="rp"/>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_get_str">mpn_get_str</seealso>
@@ -21403,18 +21401,18 @@ namespace MathGmp.Native
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000001, 0x00000001 });
         /// char_ptr str = new char_ptr("xxxxxxxxxxxxxxxxx");
         /// Marshal.Copy(s, 0, str.ToIntPtr(), 9);
-        /// 
+        ///
         /// // Convert rp from str in hex base.
         /// mp_size_t count = gmp_lib.mpn_set_str(rp, str, 9, 16);
-        /// 
+        ///
         /// // Assert the non-ASCII, hex representation of s1p.
         /// Assert.IsTrue(count == rp.Size);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp);
         /// gmp_lib.free(str);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands.
         /// Dim rp As New mp_ptr(New UInteger(1) { })
@@ -21422,18 +21420,18 @@ namespace MathGmp.Native
         /// Dim result As New mp_ptr(New UInteger() { &amp;H1, &amp;H1})
         /// Dim str As New char_ptr("xxxxxxxxxxxxxxxxx")
         /// Marshal.Copy(s, 0, str.ToIntPtr(), 9)
-        /// 
+        ///
         /// ' Convert rp from str in hex base.
         /// Dim count As mp_size_t = gmp_lib.mpn_set_str(rp, str, 9, 16)
-        /// 
+        ///
         /// ' Assert the non-ASCII, hex representation of s1p.
         /// Assert.IsTrue(count = rp.Size)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp)
         /// gmp_lib.free(str)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_size_t mpn_set_str(mp_ptr rp, /*const unsigned*/ char_ptr str, size_t strsize, int @base)
         {
@@ -21456,7 +21454,7 @@ namespace MathGmp.Native
         /// <paramref name="base"/> can vary from 2 to 62.
         /// Requires <paramref name="n"/> &gt; 0 and <paramref name="xp"/>[<paramref name="n"/> - 1] &gt; 0.
         /// The result will be either exact or 1 too big.
-        /// If base is a power of 2, the result is always exact. 
+        /// If base is a power of 2, the result is always exact.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_get_str">mpn_get_str</seealso>
@@ -21467,23 +21465,23 @@ namespace MathGmp.Native
         /// <code language="C#">
         /// // Create multi-precision operands, and expected result.
         /// mp_ptr xp = new mp_ptr(new uint[] { 0x00000001, 0x00000001 });
-        /// 
+        ///
         /// // Assert that the number of bits required is 33.
         /// Assert.IsTrue(gmp_lib.mpn_sizeinbase(xp, xp.Size, 2) == 33);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(xp);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim xp As New mp_ptr(New UInteger() { &amp;H1, &amp;H1})
-        /// 
+        ///
         /// ' Assert that the number of bits required is 33.
         /// Assert.IsTrue(gmp_lib.mpn_sizeinbase(xp, xp.Size, 2) = 33)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(xp)
-        /// </code> 
+        /// </code>
         /// </example>
         public static size_t mpn_sizeinbase(/*const*/ mp_ptr xp, mp_size_t n, int @base)
         {
@@ -21505,12 +21503,12 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// <paramref name="r2p"/> needs space for <paramref name="n"/> limbs,
-        /// but the return value indicates how many are produced. 
+        /// but the return value indicates how many are produced.
         /// </para>
         /// <para>
         /// The most significant limb of {<paramref name="sp"/>, <paramref name="n"/>} must be non-zero.
         /// The areas {<paramref name="r1p"/>, ceil(<paramref name="n"/> / 2)} and
-        /// {<paramref name="sp"/>, <paramref name="n"/>} must be completely separate. 
+        /// {<paramref name="sp"/>, <paramref name="n"/>} must be completely separate.
         /// The areas {<paramref name="r2p"/>, <paramref name="n"/>} and {<paramref name="sp"/>, <paramref name="n"/>}
         /// must be either identical or completely separate.
         /// </para>
@@ -21552,18 +21550,18 @@ namespace MathGmp.Native
         /// mp_ptr r2p = new mp_ptr(new uint[sp.Size * (gmp_lib.mp_bytes_per_limb / 4)]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00010000, 0x00000000 });
         /// mp_ptr remainder = new mp_ptr(new uint[] { 0x00000001, 0x00000000 });
-        /// 
+        ///
         /// // Set r1p = trunc(sqrt(sp)), r2p = sp - r1p^2
         /// mp_size_t r2n = gmp_lib.mpn_sqrtrem(r1p, r2p, sp, sp.Size);
-        /// 
+        ///
         /// // Assert result.
         /// Assert.IsTrue(r2n == 1);
         ///  Assert.IsTrue(r1p.SequenceEqual(result));
         /// Assert.IsTrue(r2p.SequenceEqual(remainder));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(sp, r1p, r2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim sp As New mp_ptr(New UInteger() { &amp;H1, &amp;H1})
@@ -21571,18 +21569,18 @@ namespace MathGmp.Native
         /// Dim r2p As New mp_ptr(New UInteger(sp.Size * (gmp_lib.mp_bytes_per_limb / 4) - 1) {})
         /// Dim result As New mp_ptr(New UInteger() { &amp;H10000, &amp;H0})
         /// Dim remainder As New mp_ptr(New UInteger() { &amp;H1, &amp;H0})
-        /// 
+        ///
         /// ' Set r1p = trunc(sqrt(sp)), r2p = sp - r1p^2
         /// Dim r2n As mp_size_t = gmp_lib.mpn_sqrtrem(r1p, r2p, sp, sp.Size)
-        /// 
+        ///
         /// ' Assert result.
         /// Assert.IsTrue(r2n = 1)
         /// Assert.IsTrue(r1p.SequenceEqual(result))
         /// Assert.IsTrue(r2p.SequenceEqual(remainder))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(sp, r1p, r2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_size_t mpn_sqrtrem(mp_ptr r1p, mp_ptr r2p, /*const*/ mp_ptr sp, mp_size_t n)
         {
@@ -21635,34 +21633,34 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xfffffffe, 0xffffffff });
-        /// 
+        ///
         /// // Set rp = s1 - s2.
         /// mp_limb_t borrow = gmp_lib.mpn_sub(rp, s1p, s1p.Size, s2p, s2p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(borrow == 0);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;HffffffffUI})
-        /// 
+        ///
         /// ' Set rp = s1 - s2.
         /// Dim borrow As mp_limb_t = gmp_lib.mpn_sub(rp, s1p, s1p.Size, s2p, s2p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(borrow = 0)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_sub(mp_ptr rp, /*const*/ mp_ptr s1p, mp_size_t s1n, /*const*/ mp_ptr s2p, mp_size_t s2n)
         {
@@ -21711,33 +21709,33 @@ namespace MathGmp.Native
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xfffffffe, 0xffffffff });
-        /// 
+        ///
         /// // Set rp = s1 - 1.
         /// mp_limb_t borrow = gmp_lib.mpn_sub_1(rp, s1p, s1p.Size, 1);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(borrow == 0);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;HffffffffUI})
-        /// 
+        ///
         /// ' Set rp = s1 - 1.
         /// Dim borrow As mp_limb_t = gmp_lib.mpn_sub_1(rp, s1p, s1p.Size, 1)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(borrow = 0)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_sub_1(mp_ptr rp, /*const*/ mp_ptr s1p, mp_size_t n, mp_limb_t s2limb)
         {
@@ -21786,34 +21784,34 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x00000000 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xfffffffe, 0xffffffff });
-        /// 
+        ///
         /// // Set rp = s1 - s2.
         /// mp_limb_t borrow = gmp_lib.mpn_sub_n(rp, s1p, s2p, rp.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(borrow == 0);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H0})
         ///  Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;HffffffffUI})
-        /// 
+        ///
         /// ' Set rp = s1 - s2.
         /// Dim borrow As mp_limb_t = gmp_lib.mpn_sub_n(rp, s1p, s2p, rp.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(borrow = 0)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_sub_n(mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -21841,7 +21839,7 @@ namespace MathGmp.Native
         /// </para>
         /// <para>
         /// This is a low-level function that is a building block for general multiplication and division
-        /// as well as other operations in GMP. It is written in assembly for most CPUs. 
+        /// as well as other operations in GMP. It is written in assembly for most CPUs.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add">mpn_add</seealso>
@@ -21872,33 +21870,33 @@ namespace MathGmp.Native
         /// mp_ptr s1p = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr rp = new mp_ptr(new uint[] { 0x00000002, 0x00000000 });
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000004, 0x00000000 });
-        /// 
+        ///
         /// // Set rp -= s1 * 2.
         /// mp_limb_t borrow = gmp_lib.mpn_submul_1(rp, s1p, s1p.Size, 2);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(borrow == 0x02);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim rp As New mp_ptr(New UInteger() { &amp;H2, &amp;H0})
         /// Dim result As New mp_ptr(New UInteger() { &amp;H4, &amp;H0})
-        /// 
+        ///
         /// ' Set rp -= s1 * 2.
         /// Dim borrow As mp_limb_t = gmp_lib.mpn_submul_1(rp, s1p, s1p.Size, 2)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(borrow = &amp;H2)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_submul_1(mp_ptr rp, /*const*/ mp_ptr s1p, mp_size_t n, mp_limb_t s2limb)
         {
@@ -21930,7 +21928,7 @@ namespace MathGmp.Native
         /// The dividend size <paramref name="nn"/> must be greater than or equal to divisor
         /// size <paramref name="dn"/>.
         /// The most significant limb of the divisor must be non-zero.
-        /// The <paramref name="qxn"/> operand must be zero. 
+        /// The <paramref name="qxn"/> operand must be zero.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_add">mpn_add</seealso>
@@ -21964,17 +21962,17 @@ namespace MathGmp.Native
         /// mp_ptr rp = new mp_ptr(new uint[dp.Size]);
         /// mp_ptr quotient = new mp_ptr(new uint[] { 0x435e50d7, 0x00000d79 });
         /// mp_ptr remainder = new mp_ptr(new uint[] { 0x0000000a });
-        /// 
+        ///
         /// // Set rp = np / dp.
         /// gmp_lib.mpn_tdiv_qr(qp, rp, 0, np, np.Size, dp, dp.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(qp.SequenceEqual(quotient));
         /// Assert.IsTrue(rp.SequenceEqual(remainder));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(qp, rp, np, dp, quotient, remainder);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim np As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;Hffff})
@@ -21983,17 +21981,17 @@ namespace MathGmp.Native
         /// Dim rp As New mp_ptr(New UInteger(dp.Size - 1) { })
         /// Dim quotient As New mp_ptr(New UInteger() { &amp;H435e50d7, &amp;Hd79})
         /// Dim remainder As New mp_ptr(New UInteger() { &amp;Ha})
-        /// 
+        ///
         /// ' Set rp = np / dp.
         /// gmp_lib.mpn_tdiv_qr(qp, rp, 0, np, np.Size, dp, dp.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(qp.SequenceEqual(quotient))
         /// Assert.IsTrue(rp.SequenceEqual(remainder))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(qp, rp, np, dp, quotient, remainder)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_tdiv_qr(mp_ptr qp, mp_ptr rp, mp_size_t qxn, /*const*/ mp_ptr np, mp_size_t nn, /*const*/ mp_ptr dp, mp_size_t dn)
         {
@@ -22005,7 +22003,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Perform the bitwise logical and of {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
+        /// Perform the bitwise logical and of {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the result to {<paramref name="rp"/>, <paramref name="n"/>}.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The first operand integer.</param>
@@ -22028,32 +22026,32 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x12345678 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000001, 0x12345678 });
-        /// 
+        ///
         /// // Set rp = s1 and s2.
         /// gmp_lib.mpn_and_n(rp, s1p, s2p, s1p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H12345678})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H1, &amp;H12345678})
-        /// 
+        ///
         /// ' Set rp = s1 and s2.
         /// gmp_lib.mpn_and_n(rp, s1p, s2p, s1p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_and_n(mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -22087,32 +22085,32 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x12345678 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xfffffffe, 0xedcba987 });
-        /// 
+        ///
         /// // Set rp = s1 and not s2.
         /// gmp_lib.mpn_andn_n(rp, s1p, s2p, s1p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H12345678})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;Hedcba987UI})
-        /// 
+        ///
         /// ' Set rp = s1 and not s2.
         /// gmp_lib.mpn_andn_n(rp, s1p, s2p, s1p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_andn_n(mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -22123,7 +22121,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Perform the bitwise logical and of {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the bitwise complement of the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
+        /// Perform the bitwise logical and of {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the bitwise complement of the result to {<paramref name="rp"/>, <paramref name="n"/>}.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The first operand integer.</param>
@@ -22146,32 +22144,32 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x12345678 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000001, 0x12345678 });
-        /// 
+        ///
         /// // Set rp = not(s1 and s2).
         /// gmp_lib.mpn_and_n(rp, s1p, s2p, s1p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H12345678})
         ///  rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H1, &amp;H12345678})
-        /// 
+        ///
         /// ' Set rp = not(s1 and s2).
         /// gmp_lib.mpn_and_n(rp, s1p, s2p, s1p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_nand_n(mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -22182,7 +22180,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Perform the bitwise logical inclusive or of {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
+        /// Perform the bitwise logical inclusive or of {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the result to {<paramref name="rp"/>, <paramref name="n"/>}.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The first operand integer.</param>
@@ -22205,32 +22203,32 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x12345678 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
-        /// 
+        ///
         /// // Set rp = s1 or s2.
         /// gmp_lib.mpn_ior_n(rp, s1p, s2p, s1p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H12345678})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
-        /// 
+        ///
         /// ' Set rp = s1 or s2.
         /// gmp_lib.mpn_ior_n(rp, s1p, s2p, s1p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_ior_n(mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -22241,7 +22239,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Perform the bitwise logical inclusive or of {<paramref name="s1p"/>, <paramref name="n"/>} and the bitwise complement of {<paramref name="s2p"/>, <paramref name="n"/>}, and write the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
+        /// Perform the bitwise logical inclusive or of {<paramref name="s1p"/>, <paramref name="n"/>} and the bitwise complement of {<paramref name="s2p"/>, <paramref name="n"/>}, and write the result to {<paramref name="rp"/>, <paramref name="n"/>}.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The first operand integer.</param>
@@ -22264,32 +22262,32 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x12345678 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
-        /// 
+        ///
         /// // Set rp = s1 or not s2.
         /// gmp_lib.mpn_iorn_n(rp, s1p, s2p, s1p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H12345678})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
-        /// 
+        ///
         /// ' Set rp = s1 or not s2.
         /// gmp_lib.mpn_iorn_n(rp, s1p, s2p, s1p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_iorn_n(mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -22323,32 +22321,32 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x12345678 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000000, 0x00000000 });
-        /// 
+        ///
         /// // Set rp = not (s1 or s2).
         /// gmp_lib.mpn_nior_n(rp, s1p, s2p, s1p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H12345678})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H0, &amp;H0})
-        /// 
+        ///
         /// ' Set rp = not (s1 or s2).
         /// gmp_lib.mpn_nior_n(rp, s1p, s2p, s1p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_nior_n(mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -22359,7 +22357,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Perform the bitwise logical exclusive or of {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
+        /// Perform the bitwise logical exclusive or of {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the result to {<paramref name="rp"/>, <paramref name="n"/>}.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The first operand integer.</param>
@@ -22382,32 +22380,32 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x12345678 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xfffffffe, 0xedcba987 });
-        /// 
+        ///
         /// // Set rp = s1 xor s2.
         /// gmp_lib.mpn_xor_n(rp, s1p, s2p, s1p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H12345678})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;Hedcba987UI})
-        /// 
+        ///
         /// ' Set rp = s1 xor s2.
         /// gmp_lib.mpn_xor_n(rp, s1p, s2p, s1p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_xor_n(mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -22418,7 +22416,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Perform the bitwise logical exclusive or of {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the bitwise complement of the result to {<paramref name="rp"/>, <paramref name="n"/>}. 
+        /// Perform the bitwise logical exclusive or of {<paramref name="s1p"/>, <paramref name="n"/>} and {<paramref name="s2p"/>, <paramref name="n"/>}, and write the bitwise complement of the result to {<paramref name="rp"/>, <paramref name="n"/>}.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The first operand integer.</param>
@@ -22441,32 +22439,32 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x12345678 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000001, 0x12345678 });
-        /// 
+        ///
         /// // Set rp = not(s1 xor s2).
         /// gmp_lib.mpn_xnor_n(rp, s1p, s2p, s1p.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H12345678})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H1, &amp;H12345678})
-        /// 
+        ///
         /// ' Set rp = not(s1 xor s2).
         /// gmp_lib.mpn_xnor_n(rp, s1p, s2p, s1p.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_xnor_n(mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -22477,7 +22475,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Copy from {<paramref name="s1p"/>, <paramref name="n"/>} to {<paramref name="rp"/>, <paramref name="n"/>}, increasingly. 
+        /// Copy from {<paramref name="s1p"/>, <paramref name="n"/>} to {<paramref name="rp"/>, <paramref name="n"/>}, increasingly.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The operand integer.</param>
@@ -22492,31 +22490,31 @@ namespace MathGmp.Native
         /// mp_ptr sp = new mp_ptr(new uint[] { 0xf0f0f0f0, 0xf0f0f0f0 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xf0f0f0f0, 0xf0f0f0f0 });
-        /// 
+        ///
         /// // Set rp = sp.
         /// gmp_lib.mpn_copyi(rp, sp, sp.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim sp As New mp_ptr(New UInteger() { &amp;Hf0f0f0f0UI, &amp;Hf0f0f0f0UI})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;Hf0f0f0f0UI, &amp;Hf0f0f0f0UI})
-        /// 
+        ///
         /// ' Set rp = sp.
         /// gmp_lib.mpn_copyi(rp, sp, sp.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_copyi(mp_ptr rp, /*const*/ mp_ptr s1p, mp_size_t n)
         {
@@ -22526,7 +22524,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Copy from {<paramref name="s1p"/>, <paramref name="n"/>} to {<paramref name="rp"/>, <paramref name="n"/>}, decreasingly. 
+        /// Copy from {<paramref name="s1p"/>, <paramref name="n"/>} to {<paramref name="rp"/>, <paramref name="n"/>}, decreasingly.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="s1p">The operand integer.</param>
@@ -22541,31 +22539,31 @@ namespace MathGmp.Native
         /// mp_ptr sp = new mp_ptr(new uint[] { 0xf0f0f0f0, 0xf0f0f0f0 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xf0f0f0f0, 0xf0f0f0f0 });
-        /// 
+        ///
         /// // Set rp = sp.
         /// gmp_lib.mpn_copyd(rp, sp, sp.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim sp As New mp_ptr(New UInteger() { &amp;Hf0f0f0f0UI, &amp;Hf0f0f0f0UI})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;Hf0f0f0f0UI, &amp;Hf0f0f0f0UI})
-        /// 
+        ///
         /// ' Set rp = sp.
         /// gmp_lib.mpn_copyd(rp, sp, sp.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, sp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_copyd(mp_ptr rp, /*const*/ mp_ptr s1p, mp_size_t n)
         {
@@ -22588,30 +22586,30 @@ namespace MathGmp.Native
         /// // Create multi-precision operand, and expected result.
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000000, 0x00000000 });
-        /// 
+        ///
         /// // Set rp = sp.
         /// gmp_lib.mpn_zero(rp, rp.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operand, and expected result.
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H0, &amp;H0})
-        /// 
+        ///
         /// ' Set rp = sp.
         /// gmp_lib.mpn_zero(rp, rp.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_zero(mp_ptr rp, mp_size_t n)
         {
@@ -22636,7 +22634,7 @@ namespace MathGmp.Native
         /// The functions is designed to have timing and memory access patterns depending only
         /// on size and location of the data areas, but independent of the condition <paramref name="cnd"/>.
         /// Like for <see cref="mpn_add_n">mpn_add_n</see>, on most machines, the timing will also be independent
-        /// of the actual limb values. 
+        /// of the actual limb values.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_cnd_sub_n">mpn_cnd_sub_n</seealso>
@@ -22659,34 +22657,34 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x00000000 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000000, 0x00000000 });
-        /// 
+        ///
         /// // Set rp = s1 + s2.
         /// mp_limb_t carry = gmp_lib.mpn_cnd_add_n(1, rp, s1p, s2p, rp.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(carry == 1);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H0})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;H0, &amp;H0})
-        /// 
+        ///
         /// ' Set rp = s1 + s2.
         /// Dim carry As mp_limb_t = gmp_lib.mpn_cnd_add_n(1, rp, s1p, s2p, rp.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(carry = 1)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_cnd_add_n(mp_limb_t cnd, mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -22717,7 +22715,7 @@ namespace MathGmp.Native
         /// The functions is designed to have timing and memory access patterns depending only
         /// on size and location of the data areas, but independent of the condition <paramref name="cnd"/>.
         /// Like for <see cref="mpn_sub_n">mpn_sub_n</see>, on most machines, the timing will also be independent
-        /// of the actual limb values. 
+        /// of the actual limb values.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
@@ -22740,34 +22738,34 @@ namespace MathGmp.Native
         /// mp_ptr s2p = new mp_ptr(new uint[] { 0x00000001, 0x00000000 });
         /// mp_ptr rp = new mp_ptr(new uint[2]);
         /// mp_ptr result = new mp_ptr(new uint[] { 0xfffffffe, 0xffffffff });
-        /// 
+        ///
         /// // Set rp = s1 - s2.
         /// mp_limb_t borrow = gmp_lib.mpn_cnd_sub_n(1, rp, s1p, s2p, rp.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(borrow == 0);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim s1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim s2p As New mp_ptr(New UInteger() { &amp;H1, &amp;H0})
         /// Dim rp As New mp_ptr(New UInteger(1) { })
         /// Dim result As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;HffffffffUI})
-        /// 
+        ///
         /// ' Set rp = s1 - s2.
         /// Dim borrow As mp_limb_t = gmp_lib.mpn_cnd_sub_n(1, rp, s1p, s2p, rp.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(borrow = 0)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, s1p, s2p, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_cnd_sub_n(mp_limb_t cnd, mp_ptr rp, /*const*/ mp_ptr s1p, /*const*/ mp_ptr s2p, mp_size_t n)
         {
@@ -22816,41 +22814,41 @@ namespace MathGmp.Native
         /// mp_ptr ap = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000000, 0x00000000 });
         /// mp_ptr rp = new mp_ptr(result.Size);
-        /// 
+        ///
         /// // Create scratch space.
         /// mp_size_t size = gmp_lib.mpn_sec_add_1_itch(ap.Size);
         /// mp_ptr tp = new mp_ptr(size);
-        /// 
+        ///
         /// // Set rp = ap + 1.
         /// mp_limb_t carry = gmp_lib.mpn_sec_add_1(rp, ap, ap.Size, 1, tp);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(carry == 1);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, ap, tp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim ap As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim result As New mp_ptr(New UInteger() { &amp;H0, &amp;H0})
         /// Dim rp As New mp_ptr(result.Size)
-        /// 
+        ///
         /// ' Create scratch space.
         /// Dim size As mp_size_t = gmp_lib.mpn_sec_add_1_itch(ap.Size)
         /// Dim tp As New mp_ptr(size)
-        /// 
+        ///
         /// ' Set rp = ap + 1.
         /// Dim carry As mp_limb_t = gmp_lib.mpn_sec_add_1(rp, ap, ap.Size, 1, tp)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(carry = 1)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, ap, tp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_sec_add_1(mp_ptr rp, /*const*/ mp_ptr ap, mp_size_t n, mp_limb_t b, mp_ptr tp)
         {
@@ -22912,41 +22910,41 @@ namespace MathGmp.Native
         /// mp_ptr ap = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr result = new mp_ptr(new uint[] { 0xfffffffe, 0xffffffff });
         /// mp_ptr rp = new mp_ptr(result.Size);
-        /// 
+        ///
         /// // Create scratch space.
         /// mp_size_t size = gmp_lib.mpn_sec_sub_1_itch(ap.Size);
         /// mp_ptr tp = new mp_ptr(size);
-        /// 
+        ///
         /// // Set rp = ap - 1.
         /// mp_limb_t borrow = gmp_lib.mpn_sec_sub_1(rp, ap, ap.Size, 1, tp);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(borrow == 0);
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, ap, tp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim ap As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim result As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;HffffffffUI})
         /// Dim rp As New mp_ptr(result.Size)
-        /// 
+        ///
         /// ' Create scratch space.
         /// Dim size As mp_size_t = gmp_lib.mpn_sec_sub_1_itch(ap.Size)
         /// Dim tp As New mp_ptr(size)
-        /// 
+        ///
         /// ' Set rp = ap - 1.
         /// Dim borrow As mp_limb_t = gmp_lib.mpn_sec_sub_1(rp, ap, ap.Size, 1, tp)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(borrow = 0)
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, ap, tp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_sec_sub_1(mp_ptr rp, /*const*/ mp_ptr ap, mp_size_t n, mp_limb_t b, mp_ptr tp)
         {
@@ -22981,7 +22979,7 @@ namespace MathGmp.Native
         /// <param name="n">The number of limbs of <paramref name="ap"/> and <paramref name="bp"/>.</param>
         /// <remarks>
         /// <para>
-        /// Implemented using logical operations on the limbs, with the same memory accesses independent of the value of <paramref name="cnd"/>. 
+        /// Implemented using logical operations on the limbs, with the same memory accesses independent of the value of <paramref name="cnd"/>.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
@@ -23004,34 +23002,34 @@ namespace MathGmp.Native
         /// mp_ptr bp = new mp_ptr(new uint[] { 0x00000001, 0x00000000 });
         /// mp_ptr a1p = new mp_ptr(new uint[] { 0x00000001, 0x00000000 });
         /// mp_ptr b1p = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
-        /// 
+        ///
         /// // Exchange ab and bp.
         /// gmp_lib.mpn_cnd_swap(1, ap, bp, ap.Size);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(ap.SequenceEqual(a1p));
         /// Assert.IsTrue(bp.SequenceEqual(b1p));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(ap, bp, a1p, b1p);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim ap As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim bp As New mp_ptr(New UInteger() { &amp;H1, &amp;H0})
         /// Dim a1p As New mp_ptr(New UInteger() { &amp;H1, &amp;H0})
         /// Dim b1p As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
-        /// 
+        ///
         /// ' Exchange ab and bp.
         /// gmp_lib.mpn_cnd_swap(1, ap, bp, ap.Size)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(ap.SequenceEqual(a1p))
         /// Assert.IsTrue(bp.SequenceEqual(b1p))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(ap, bp, a1p, b1p)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_cnd_swap(mp_limb_t cnd, /*volatile*/ mp_ptr /*mp_limb_t**/ ap, /*volatile*/ mp_ptr /*mp_limb_t**/ bp, mp_size_t n)
         {
@@ -23044,7 +23042,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set R to A * B, where A = {<paramref name="ap"/>, <paramref name="an"/>}, B = {<paramref name="bp"/>, <paramref name="bn"/>}, and R = {<paramref name="rp"/>, <paramref name="an"/> + <paramref name="bn"/>}. 
+        /// Set R to A * B, where A = {<paramref name="ap"/>, <paramref name="an"/>}, B = {<paramref name="bp"/>, <paramref name="bn"/>}, and R = {<paramref name="rp"/>, <paramref name="an"/> + <paramref name="bn"/>}.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="ap">The first operand integer.</param>
@@ -23054,15 +23052,15 @@ namespace MathGmp.Native
         /// <param name="tp">The scratch operand integer.</param>
         /// <remarks>
         /// <para>
-        /// It is required that <paramref name="an"/> &#8805; bn &gt; 0. 
+        /// It is required that <paramref name="an"/> &#8805; bn &gt; 0.
         /// </para>
         /// <para>
         /// No overlapping between R and the input operands is allowed.
-        /// For A = B, use <see cref="mpn_sec_sqr">mpn_sec_sqr</see> for optimal performance. 
+        /// For A = B, use <see cref="mpn_sec_sqr">mpn_sec_sqr</see> for optimal performance.
         /// </para>
         /// <para>
         /// This function requires scratch space of <see cref="mpn_sec_mul_itch">mpn_sec_mul_itch</see>(<paramref name="an"/>, <paramref name="bn"/>)
-        /// limbs to be passed in the tp parameter. The scratch space requirements are guaranteed to increase monotonously in the operand sizes. 
+        /// limbs to be passed in the tp parameter. The scratch space requirements are guaranteed to increase monotonously in the operand sizes.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
@@ -23086,40 +23084,40 @@ namespace MathGmp.Native
         /// mp_ptr bp = new mp_ptr(new uint[] { 0x00000002 });
         /// mp_ptr result = new mp_ptr(new uint[] { 0xfffffffe, 0xffffffff, 0x00000001 });
         /// mp_ptr rp = new mp_ptr(ap.Size + bp.Size);
-        /// 
+        ///
         /// // Create scratch space.
         /// mp_size_t size = gmp_lib.mpn_sec_mul_itch(ap.Size, bp.Size);
         /// mp_ptr tp = new mp_ptr(size);
-        /// 
+        ///
         /// // Set rp = ap * bp.
         /// gmp_lib.mpn_sec_mul(rp, ap, ap.Size, bp, bp.Size, tp);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, ap, bp, tp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim ap As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim bp As New mp_ptr(New UInteger() { &amp;H2})
         /// Dim result As New mp_ptr(New UInteger() { &amp;HfffffffeUI, &amp;HffffffffUI, &amp;H1})
         /// Dim rp As New mp_ptr(ap.Size + bp.Size)
-        /// 
+        ///
         /// ' Create scratch space.
         /// Dim size As mp_size_t = gmp_lib.mpn_sec_mul_itch(ap.Size, bp.Size)
         /// Dim tp As New mp_ptr(size)
-        /// 
+        ///
         /// ' Set rp = ap * bp.
         /// gmp_lib.mpn_sec_mul(rp, ap, ap.Size, bp, bp.Size, tp)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, ap, bp, tp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_sec_mul(mp_ptr rp, /*const*/ mp_ptr ap, mp_size_t an, /*const*/ mp_ptr bp, mp_size_t bn, mp_ptr tp)
         {
@@ -23145,7 +23143,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set R to A^2, where A = {<paramref name="ap"/>, <paramref name="an"/>}, and R = {<paramref name="rp"/>, 2 * <paramref name="an"/>}. 
+        /// Set R to A^2, where A = {<paramref name="ap"/>, <paramref name="an"/>}, and R = {<paramref name="rp"/>, 2 * <paramref name="an"/>}.
         /// </summary>
         /// <param name="rp">The result operand.</param>
         /// <param name="ap">The operand integer.</param>
@@ -23153,15 +23151,15 @@ namespace MathGmp.Native
         /// <param name="tp">The scratch operand integer.</param>
         /// <remarks>
         /// <para>
-        /// It is required that <paramref name="an"/> &gt; 0. 
+        /// It is required that <paramref name="an"/> &gt; 0.
         /// </para>
         /// <para>
-        /// No overlapping between R and the input operands is allowed. 
+        /// No overlapping between R and the input operands is allowed.
         /// </para>
         /// <para>
         /// This function requires scratch space of <see cref="mpn_sec_sqr_itch">mpn_sec_sqr_itch</see>(<paramref name="an"/>)
         /// limbs to be passed in the <paramref name="tp"/> parameter.
-        /// The scratch space requirements are guaranteed to increase monotonously in the operand size. 
+        /// The scratch space requirements are guaranteed to increase monotonously in the operand size.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
@@ -23184,39 +23182,39 @@ namespace MathGmp.Native
         /// mp_ptr ap = new mp_ptr(new uint[] { 0xffffffff, 0xffffffff });
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000001, 0x00000000, 0xfffffffe, 0xffffffff });
         /// mp_ptr rp = new mp_ptr(2 * ap.Size);
-        /// 
+        ///
         /// // Create scratch space.
         /// mp_size_t size = gmp_lib.mpn_sec_sqr_itch(ap.Size);
         /// mp_ptr tp = new mp_ptr(size);
-        /// 
+        ///
         /// // Set rp = s1^2.
         /// gmp_lib.mpn_sec_sqr(rp, ap, ap.Size, tp);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, ap, tp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim ap As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;HffffffffUI})
         /// Dim result As New mp_ptr(New UInteger() { &amp;H1, &amp;H0, &amp;HfffffffeUI, &amp;HffffffffUI})
         /// Dim rp As New mp_ptr(2 * ap.Size)
-        /// 
+        ///
         /// ' Create scratch space.
         /// Dim size As mp_size_t = gmp_lib.mpn_sec_sqr_itch(ap.Size)
         /// Dim tp As New mp_ptr(size)
-        /// 
+        ///
         /// ' Set rp = s1^2.
         /// gmp_lib.mpn_sec_sqr(rp, ap, ap.Size, tp)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, ap, tp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_sec_sqr(mp_ptr rp, /*const*/ mp_ptr ap, mp_size_t an, mp_ptr tp)
         {
@@ -23240,7 +23238,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set R to (B^E) modulo M, where R = {<paramref name="rp"/>, <paramref name="n"/>}, M = {<paramref name="mp"/>, <paramref name="n"/>}, and E = {<paramref name="ep"/>, ceil(<paramref name="enb"/> / <see cref="mp_bits_per_limb">mp_bits_per_limb</see>)}. 
+        /// Set R to (B^E) modulo M, where R = {<paramref name="rp"/>, <paramref name="n"/>}, M = {<paramref name="mp"/>, <paramref name="n"/>}, and E = {<paramref name="ep"/>, ceil(<paramref name="enb"/> / <see cref="mp_bits_per_limb">mp_bits_per_limb</see>)}.
         /// </summary>
         /// <param name="rp">The result operand.</param>
         /// <param name="bp">The first operand integer.</param>
@@ -23255,12 +23253,12 @@ namespace MathGmp.Native
         /// It is required that B &gt; 0, that M &gt; 0 is odd, and that E &lt; 2^<paramref name="enb"/>.
         /// </para>
         /// <para>
-        /// No overlapping between R and the input operands is allowed. 
+        /// No overlapping between R and the input operands is allowed.
         /// </para>
         /// <para>
         /// This function requires scratch space of <see cref="mpn_sec_powm_itch">mpn_sec_powm_itch</see>(<paramref name="bn"/>, <paramref name="enb"/>, <paramref name="n"/>)
         /// limbs to be passed in the <paramref name="tp"/> parameter.
-        /// The scratch space requirements are guaranteed to increase monotonously in the operand sizes. 
+        /// The scratch space requirements are guaranteed to increase monotonously in the operand sizes.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
@@ -23285,20 +23283,20 @@ namespace MathGmp.Native
         /// mp_ptr mp = new mp_ptr(new uint[] { 0x00000003 });
         /// mp_ptr result = new mp_ptr(new uint[] { 0x00000001 });
         /// mp_ptr rp = new mp_ptr(bp.Size);
-        /// 
+        ///
         /// // Create scratch space.
         /// mp_size_t size = gmp_lib.mpn_sec_powm_itch(bp.Size, 3, mp.Size);
         /// mp_ptr tp = new mp_ptr(size);
-        /// 
+        ///
         /// // Set rp = bp^ep mod mp.
         /// gmp_lib.mpn_sec_powm(rp, bp, bp.Size, ep, 3, mp, mp.Size, tp);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(rp, bp, ep, mp, tp, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim bp As New mp_ptr(New UInteger() { &amp;H2})
@@ -23306,20 +23304,20 @@ namespace MathGmp.Native
         /// Dim mp As New mp_ptr(New UInteger() { &amp;H3})
         /// Dim result As New mp_ptr(New UInteger() { &amp;H1})
         /// Dim rp As New mp_ptr(bp.Size)
-        /// 
+        ///
         /// ' Create scratch space.
         /// Dim size As mp_size_t = gmp_lib.mpn_sec_powm_itch(bp.Size, 3, mp.Size)
         /// Dim tp As New mp_ptr(size)
-        /// 
+        ///
         /// ' Set rp = bp^ep mod mp.
         /// gmp_lib.mpn_sec_powm(rp, bp, bp.Size, ep, 3, mp, mp.Size, tp)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(rp, bp, ep, mp, tp, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_sec_powm(mp_ptr rp, /*const*/ mp_ptr bp, mp_size_t bn, /*const*/ mp_ptr ep, mp_bitcnt_t enb, /*const*/ mp_ptr mp, mp_size_t n, mp_ptr tp)
         {
@@ -23356,7 +23354,7 @@ namespace MathGmp.Native
         /// <param name="which">The zero-based index of the entry to select.</param>
         /// <remarks>
         /// <para>
-        /// This function reads the entire table to avoid side-channel information leaks. 
+        /// This function reads the entire table to avoid side-channel information leaks.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
@@ -23379,31 +23377,31 @@ namespace MathGmp.Native
         /// mp_ptr tab = new mp_ptr(new uint[] { 0x11111111, 0x22222222, 0x33333333, 0x44444444, 0x33333333, 0x00000000 });
         /// mp_ptr result = new mp_ptr(new uint[] { 0x33333333 });
         /// mp_ptr rp = new mp_ptr(result.Size);
-        /// 
+        ///
         /// // Set rp to third entry in tab.
         /// gmp_lib.mpn_sec_tabselect(rp, tab, 1, tab.Size, 2);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result));
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(tab, result);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim tab As New mp_ptr(New UInteger() { &amp;H11111111, &amp;H22222222, &amp;H33333333, &amp;H44444444, &amp;H33333333, &amp;H0})
         /// Dim result As New mp_ptr(New UInteger() { &amp;H33333333})
         /// Dim rp As New mp_ptr(result.Size)
-        /// 
+        ///
         /// ' Set rp to third entry in tab.
         /// gmp_lib.mpn_sec_tabselect(rp, tab, 1, tab.Size, 2)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(rp.SequenceEqual(result))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(tab, result)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_sec_tabselect(/*volatile*/ mp_ptr /*mp_limb_t**/ rp, /*volatile const*/ mp_ptr /*mp_limb_t**/ tab, mp_size_t n, mp_size_t nents, mp_size_t which)
         {
@@ -23413,7 +23411,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set Q to the truncated quotient N / D and R to N modulo D, where N = {<paramref name="np"/>, <paramref name="nn"/>}, D = {<paramref name="dp"/>, <paramref name="dn"/>}, Q’s most significant limb is the function return value and the remaining limbs are {<paramref name="qp"/>, <paramref name="nn"/> - <paramref name="dn"/>}, and R = {<paramref name="np"/>, <paramref name="dn"/>}. 
+        /// Set Q to the truncated quotient N / D and R to N modulo D, where N = {<paramref name="np"/>, <paramref name="nn"/>}, D = {<paramref name="dp"/>, <paramref name="dn"/>}, Q’s most significant limb is the function return value and the remaining limbs are {<paramref name="qp"/>, <paramref name="nn"/> - <paramref name="dn"/>}, and R = {<paramref name="np"/>, <paramref name="dn"/>}.
         /// </summary>
         /// <param name="qp">The quotient result operand.</param>
         /// <param name="np">The first operand and remainder result integer.</param>
@@ -23425,16 +23423,16 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// It is required that <paramref name="nn"/> &#8805; <paramref name="dn"/> &#8805; 1, and that <paramref name="dp"/>[<paramref name="dn"/> - 1] &#8800; 0.
-        /// This does not imply that N &#8805; D since N might be zero-padded. 
+        /// This does not imply that N &#8805; D since N might be zero-padded.
         /// </para>
         /// <para>
         /// Note the overlapping between N and R.
         /// No other operand overlapping is allowed.
-        /// The entire space occupied by N is overwritten. 
+        /// The entire space occupied by N is overwritten.
         /// </para>
         /// <para>
         /// This function requires scratch space of <see cref="mpn_sec_div_qr_itch">mpn_sec_div_qr_itch</see>(<paramref name="nn"/>, <paramref name="dn"/>)
-        /// limbs to be passed in the <paramref name="tp"/> parameter. 
+        /// limbs to be passed in the <paramref name="tp"/> parameter.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
@@ -23458,44 +23456,44 @@ namespace MathGmp.Native
         /// mp_ptr dp = new mp_ptr(new uint[] { 0x00000003 });
         /// mp_ptr remainder = new mp_ptr(new uint[] { 0x00000000 });
         /// mp_ptr qp = new mp_ptr(new uint[np.Size]);
-        /// 
+        ///
         /// // Create scratch space.
         /// mp_size_t size = gmp_lib.mpn_sec_div_qr_itch(np.Size, dp.Size);
         /// mp_ptr tp = new mp_ptr(size);
-        /// 
+        ///
         /// // Set qp = floor(np / dp) and rp = np mod dp.
         /// mp_limb_t mslimb = gmp_lib.mpn_sec_div_qr(qp, np, np.Size, dp, dp.Size, tp);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(mslimb == (ulong)(gmp_lib.mp_bytes_per_limb == 4 ? 0x00005555 : 0x0000555555555555));
         /// Assert.IsTrue(qp[0] == (ulong)(gmp_lib.mp_bytes_per_limb == 4 ? 0x55555555 : 0x0000000000000000));
         /// Assert.IsTrue(np[0] == remainder[0]);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(qp, np, dp, remainder, tp);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim np As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;Hffff})
         /// Dim dp As New mp_ptr(New UInteger() { &amp;H3})
         /// Dim remainder As New mp_ptr(New UInteger() { &amp;H0})
         /// Dim qp As New mp_ptr(New UInteger(np.Size - 1) { })
-        /// 
+        ///
         /// ' Create scratch space.
         /// Dim size As mp_size_t = gmp_lib.mpn_sec_div_qr_itch(np.Size, dp.Size)
         /// Dim tp As New mp_ptr(size)
-        /// 
+        ///
         /// ' Set qp = floor(np / dp) and rp = np mod dp.
         /// Dim mslimb As mp_limb_t = gmp_lib.mpn_sec_div_qr(qp, np, np.Size, dp, dp.Size, tp)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(mslimb = CULng(If(gmp_lib.mp_bytes_per_limb = 4, &amp;H5555, &amp;H555555555555L)))
         /// Assert.IsTrue(qp(0) = CULng(If(gmp_lib.mp_bytes_per_limb = 4, &amp;H55555555, &amp;H0)))
         /// Assert.IsTrue(np(0) = remainder(0))
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(qp, np, dp, remainder, tp)
-        /// </code> 
+        /// </code>
         /// </example>
         public static mp_limb_t mpn_sec_div_qr(mp_ptr qp, mp_ptr np, mp_size_t nn, /*const*/ mp_ptr dp, mp_size_t dn, mp_ptr tp)
         {
@@ -23524,7 +23522,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set R to N modulo D, where N = {<paramref name="np"/>, <paramref name="nn"/>}, D = {<paramref name="dp"/>, <paramref name="dn"/>}, and R = {<paramref name="np"/>, <paramref name="dn"/>}. 
+        /// Set R to N modulo D, where N = {<paramref name="np"/>, <paramref name="nn"/>}, D = {<paramref name="dp"/>, <paramref name="dn"/>}, and R = {<paramref name="np"/>, <paramref name="dn"/>}.
         /// </summary>
         /// <param name="np">The first operand and result integer.</param>
         /// <param name="nn">The number of limbs of <paramref name="np"/>.</param>
@@ -23535,16 +23533,16 @@ namespace MathGmp.Native
         /// <para>
         /// It is required that <paramref name="nn"/> &#8805; <paramref name="dn"/> &#8805; 1,
         /// and that <paramref name="dp"/>[<paramref name="dn"/> - 1] &#8800; 0.
-        /// This does not imply that N &#8805; D since N might be zero-padded. 
+        /// This does not imply that N &#8805; D since N might be zero-padded.
         /// </para>
         /// <para>
         /// Note the overlapping between N and R.
         /// No other operand overlapping is allowed.
-        /// The entire space occupied by N is overwritten. 
+        /// The entire space occupied by N is overwritten.
         /// </para>
         /// <para>
         /// This function requires scratch space of <see cref="mpn_sec_div_r_itch">mpn_sec_div_r_itch</see>(<paramref name="nn"/>, <paramref name="dn"/>)
-        /// limbs to be passed in the <paramref name="tp"/> parameter. 
+        /// limbs to be passed in the <paramref name="tp"/> parameter.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
@@ -23566,38 +23564,38 @@ namespace MathGmp.Native
         /// // Create multi-precision operands, and expected result.
         /// mp_ptr np = new mp_ptr(new uint[] { 0xffffffff, 0x0000ffff });
         /// mp_ptr dp = new mp_ptr(new uint[] { 0x00000004 });
-        /// 
+        ///
         /// // Create scratch space.
         /// mp_size_t size = gmp_lib.mpn_sec_div_r_itch(np.Size, dp.Size);
         /// mp_ptr tp = new mp_ptr(size);
-        /// 
+        ///
         /// // Set np = np mod dp.
         /// gmp_lib.mpn_sec_div_r(np, np.Size, dp, dp.Size, tp);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(np[0] == 3);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(np, dp, tp);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
         /// ' Create multi-precision operands, and expected result.
         /// Dim np As New mp_ptr(New UInteger() { &amp;HffffffffUI, &amp;Hffff})
         /// Dim dp As New mp_ptr(New UInteger() { &amp;H4})
-        /// 
+        ///
         /// ' Create scratch space.
         /// Dim size As mp_size_t = gmp_lib.mpn_sec_div_r_itch(np.Size, dp.Size)
         /// Dim tp As New mp_ptr(size)
-        /// 
+        ///
         /// ' Set np = np mod dp.
         /// gmp_lib.mpn_sec_div_r(np, np.Size, dp, dp.Size, tp)
-        /// 
+        ///
         /// ' Assert result of operation.
         /// Assert.IsTrue(np(0) = 3)
-        /// 
+        ///
         /// ' Release unmanaged memory.
         /// gmp_lib.free(np, dp, tp)
-        /// </code> 
+        /// </code>
         /// </example>
         public static void mpn_sec_div_r(mp_ptr np, mp_size_t nn, /*const*/ mp_ptr dp, mp_size_t dn, mp_ptr tp)
         {
@@ -23622,7 +23620,7 @@ namespace MathGmp.Native
         }
 
         /// <summary>
-        /// Set R to the inverse of A modulo M, where R = {<paramref name="rp"/>, <paramref name="n"/>}, A = {<paramref name="ap"/>, <paramref name="n"/>}, and M = {<paramref name="mp"/>, <paramref name="n"/>}. This function’s interface is preliminary. 
+        /// Set R to the inverse of A modulo M, where R = {<paramref name="rp"/>, <paramref name="n"/>}, A = {<paramref name="ap"/>, <paramref name="n"/>}, and M = {<paramref name="mp"/>, <paramref name="n"/>}. This function’s interface is preliminary.
         /// </summary>
         /// <param name="rp">The result integer.</param>
         /// <param name="ap">The first operand integer.</param>
@@ -23634,16 +23632,16 @@ namespace MathGmp.Native
         /// <remarks>
         /// <para>
         /// If an inverse exists, return 1, otherwise return 0 and leave R undefined.
-        /// In either case, the input A is destroyed. 
+        /// In either case, the input A is destroyed.
         /// </para>
         /// <para>
         /// It is required that M is odd, and that <paramref name="nbcnt"/> &#8805; ceil(log(A + 1)) + ceil(log(M + 1)).
         /// A safe choice is <paramref name="nbcnt"/> = 2 * <paramref name="n"/> * <see cref="mp_bits_per_limb">mp_bits_per_limb</see>,
-        /// but a smaller value might improve performance if M or A are known to have leading zero bits. 
+        /// but a smaller value might improve performance if M or A are known to have leading zero bits.
         /// </para>
         /// <para>
         /// This function requires scratch space of <see cref="mpn_sec_invert_itch">mpn_sec_invert_itch</see>(<paramref name="n"/>)
-        /// limbs to be passed in the <paramref name="tp"/> parameter. 
+        /// limbs to be passed in the <paramref name="tp"/> parameter.
         /// </para>
         /// </remarks>
         /// <seealso cref="mpn_cnd_add_n">mpn_cnd_add_n</seealso>
@@ -23667,22 +23665,22 @@ namespace MathGmp.Native
         /// mp_ptr mp = new mp_ptr(new uint[] { 11 });
         /// mp_ptr rp = new mp_ptr(ap.Size);
         /// mp_ptr result = new mp_ptr(new uint[] { 4 });
-        /// 
+        ///
         /// // Create scratch space.
         /// mp_size_t size = gmp_lib.mpn_sec_invert_itch(ap.Size);
         /// mp_ptr tp = new mp_ptr(size);
-        /// 
+        ///
         /// // Set rp = ap^-1 mod mp.
         /// gmp_lib.mpn_sec_invert(rp, ap, mp, ap.Size, (uint)(2 * ap.Size* gmp_lib.mp_bits_per_limb), tp);
-        /// 
+        ///
         /// // Assert result of operation.
         /// Assert.IsTrue(rp[0] == result[0]);
-        /// 
+        ///
         /// // Release unmanaged memory.
         /// gmp_lib.free(ap, mp, rp, result, tp);
-        /// </code> 
+        /// </code>
         /// <code language="VB.NET">
-        /// </code> 
+        /// </code>
         /// </example>
         public static int mpn_sec_invert(mp_ptr rp, mp_ptr ap, /*const*/ mp_ptr mp, mp_size_t n, mp_bitcnt_t nbcnt, mp_ptr tp)
         {
@@ -23711,7 +23709,7 @@ namespace MathGmp.Native
         [SuppressUnmanagedCodeSecurity]
         private static class SafeNativeMethods
         {
-            
+
             #region "Memory allocation functions."
 
             [DllImport(LibGmp, CallingConvention = CallingConvention.Cdecl)]
