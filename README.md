@@ -1,6 +1,6 @@
 # Welcome to the GMP Native Interface for .NET Library
 
-[![Test and publish](https://github.com/nethermindeth/math.gmp.native/actions/workflows/test-publish.yml/badge.svg)](https://github.com/nethermindeth/math.gmp.native/actions/workflows/test-publish.yml)
+[![Test and publish](https://github.com/nethermindeth/math.gmp.native/actions/workflows/test.yml/badge.svg)](https://github.com/nethermindeth/math.gmp.native/actions/workflows/test.yml)
 [![Nethermind.Gmp](https://img.shields.io/nuget/v/Nethermind.Gmp)](https://www.nuget.org/packages/Nethermind.Gmp)
 
 The GMP Native Interface for .NET Library exposes to .NET (through P-Invoke and .NET types) all of
