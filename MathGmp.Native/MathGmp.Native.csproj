@@ -6,25 +6,42 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Authors>Nethermind</Authors>
+    <Copyright>Demerzel Solutions Limited</Copyright>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <PackageId>Nethermind.Gmp</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://nethermind.io</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/nethermindeth/math.gmp.native</RepositoryUrl>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <VersionPrefix>1.0.1</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="EWSoftware.SHFB" Version="2020.3.6" />
-    <PackageReference Include="EWSoftware.SHFB.NETFramework" Version="4.8.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="runtimes\linux-arm64\native\libgmp.so">
+    <Content Include="runtimes/linux-arm64/native/libgmp.so" Pack="true" PackagePath="runtimes/linux-arm64/native/libgmp.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="runtimes\linux-x64\native\libgmp.so">
+    <Content Include="runtimes/linux-x64/native/libgmp.so" Pack="true" PackagePath="runtimes/linux-x64/native/libgmp.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="runtimes\osx-arm64\native\libgmp.dylib">
+    <Content Include="runtimes/osx-arm64/native/libgmp.dylib" Pack="true" PackagePath="runtimes/osx-arm64/native/libgmp.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="runtimes\osx-x64\native\libgmp.dylib">
+    <Content Include="runtimes/osx-x64/native/libgmp.dylib" Pack="true" PackagePath="runtimes/osx-x64/native/libgmp.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="runtimes\win-x64\native\libgmp.dll">
+    <Content Include="runtimes/win-x64/native/libgmp.dll" Pack="true" PackagePath="runtimes/win-x64/native/libgmp.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

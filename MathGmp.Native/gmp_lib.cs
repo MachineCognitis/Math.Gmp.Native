@@ -519,7 +519,6 @@ namespace MathGmp.Native
     {
         private const string LibGmp = @"libgmp";
 
-
         // Safe handle to the loaded GMP library.
         private static SafeHandle _gmp_lib = new SafeHandle(_load_gmp_lib());
 
@@ -534,11 +533,23 @@ namespace MathGmp.Native
 
         private static IntPtr _load_gmp_lib()
         {
+            string extension;
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                extension = ".so";
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                extension = ".dll";
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                extension = ".dylib";
+            else
+                throw new PlatformNotSupportedException();
+
             // Load GMP library and create safe handle to it.
-            NativeLibrary.SetDllImportResolver(typeof(gmp_lib).Assembly, NativeLib.ImportResolver);
-            IntPtr handle = NativeLib.ImportResolver(LibGmp, typeof(gmp_lib).Assembly, default);
+            var handle = NativeLibrary.Load($"{LibGmp}{extension}", typeof(gmp_lib).Assembly, default);
+
             // Retrieve and cache GMP dynamic memory allocation functions.
             _get_memory_functions();
+
             return handle;
         }
 
