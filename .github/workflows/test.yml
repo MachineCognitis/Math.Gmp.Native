@@ -1,0 +1,26 @@
+name: Test
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+    
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+
+      - name: Test
+        working-directory: MathGmp.Native.UnitTests
+        run: dotnet test -c release
