@@ -29,16 +29,6 @@ For other builds, see the [Releases](https://github.com/MachineCognitis/Math.Gmp
 **NOTE**: On some systems, the content of the ZIP file may be blocked. To unblock it, right click on the
 ZIP file, select Properties, and click on the Unblock button, if it is present.
 
-### Making a Donation
-
-You can make a donation to support this project by clicking on the PayPal Donate button below.
-PayPal guarantees your privacy and security. I will not receive any details about your payment
-other than the amount, and your name.
-
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WUQ6Q2QC8EVDA"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" alt="PayPal - The safer, easier way to pay online!"></a>
-
-Thanks to those who have made a donation. This is much appreciated!
-
 ### Sharing
 
 <div>
